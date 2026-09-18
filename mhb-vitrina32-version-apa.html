@@ -1,181 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>La versión APA — Museo de Historia de la Biblia</title>
-<link href="estilos.css" rel="stylesheet"/>
-<style>
-.cadena{flex:none;width:76px;height:60px}
-</style>
-</head>
-<body data-vitrina="32">
-<div class="hoja">
-<header class="cabecera">
-<div class="marca">
-<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
-</a>
-<div class="marca-texto">
-<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
-<p class="sala" id="ui-sala"></p>
-</div>
-<span class="marca-num">32</span>
-<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
-</div>
-<div class="header-main">
-<div aria-hidden="true" class="emblema"><svg aria-hidden="true" class="cadena" viewBox="0 0 76 60">
-<g fill="none" stroke="currentColor" stroke-width="3.4">
-<ellipse cx="14" cy="30" rx="11" ry="8"></ellipse><ellipse cx="34" cy="30" rx="11" ry="8"></ellipse>
-<path d="M65 24 C58 24 54 27 54 30 C54 33 58 36 65 36"></path>
-</g>
-</svg></div>
-<div class="header-texto">
-<h1 id="ui-titulo"></h1>
-<p class="siglo" id="ui-siglo"></p>
-</div>
-</div>
-</header>
-<nav class="nav">
-<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
-<a class="nav-btn" id="nav-ant">‹</a>
-<select class="nav-sel" id="nav-sel"></select>
-<a class="nav-btn" id="nav-sig">›</a>
-<span class="nav-btn" id="nav-pos" style="border:none"></span>
-</nav>
-<div class="progreso"><i id="barra"></i></div>
-<main>
-<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
-<div class="mandos">
-<button class="control" id="btn-play" type="button"><svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16"><polygon fill="currentColor" points="4 3 20 12 4 21"></polygon></svg> <span id="ui-play">Escuchar</span></button>
-<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
-</div>
-<p class="aviso" hidden="" id="ui-aviso"></p>
-<div id="texto"></div>
-</main>
-<footer id="ui-pie">Museo de Historia de la Biblia</footer>
-</div>
-<script>
-const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
-const GUIA = {
- "es": {
-  "nombre": "Español",
-  "voz": "es-MX",
-  "ui": {
-   "sala": "Vitrina 32 · Museo de Historia de la Biblia",
-   "titulo": "La versión APA",
-   "siglo": "Amplificada, Parafraseada y Armonizada · 2026",
-   "play": "Escuchar",
-   "stop": "Detener",
-   "pie": "Museo de Historia de la Biblia",
-   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
-  },
-  "t": [
-   "Y llegamos a la última vitrina. En ésta no hay ningún libro antiguo. Lo que se exhibe aquí se escribió en esta ciudad, y se terminó hace muy poco.",
-   "Se llama versión APA: Amplificada, Parafraseada y Armonizada. Amplificada, porque abre lo que el texto original dice muy apretado. Parafraseada, porque lo dice en el español que usted habla hoy, no en el de hace cuatro siglos. Y armonizada, porque cuando un mismo hecho viene contado en varios libros, los junta en una sola narración, para que se pueda leer de corrido.",
-   "La escribió, libro por libro, Eduardo Padilla Uranga, el fundador de este museo. La revisión final se cerró el siete de septiembre de 2026.",
-   "Y ahora recuerde lo que acaba de ver. Un monje en una montaña de Cantabria, copiando a mano para que no se perdiera. Una reina que mandó pintar la Escritura entera para poder mirarla. Un orfebre que fundió letras de metal para poder repetirla. Un cardenal que la puso en cuatro lenguas para poder compararla. Un monje sevillano que la tradujo huyendo, para que su gente la entendiera. Un impresor mexicano que la sacó de su taller cuando el país tenía diez años.",
-   "Todos hicieron exactamente lo mismo: volver a decir el Libro en la lengua y en la forma de su propio tiempo. Ninguno se conformó con la copia que recibió.",
-   "Eso es lo que volvió a ocurrir en esta vitrina. La cadena no se cortó en 1602, ni en 1831, ni en 1951. Llegó hasta aquí.",
-   "Y una última cosa, porque estamos en México. Aquí septiembre es dos cosas a la vez: el mes de la Biblia y el mes de la Independencia. En este museo no es casualidad que caigan juntos. El país que se hizo independiente recibió la Biblia en su propia lengua casi al mismo tiempo, y desde entonces las dos historias caminan juntas. Y la versión que tiene usted delante se terminó, también, un siete de septiembre.",
-   "Por eso este recorrido no termina en un libro antiguo, sino en uno recién acabado. Y el eslabón que sigue no está en esta vitrina: ése le toca a quien venga después. Gracias por acompañarnos."
-  ]
- },
- "en": {
-  "nombre": "English",
-  "voz": "en-GB",
-  "ui": {
-   "sala": "Case 32 · Museum of the History of the Bible",
-   "titulo": "The APA version",
-   "siglo": "Amplified, Paraphrased and Harmonised · 2026",
-   "play": "Listen",
-   "stop": "Stop",
-   "pie": "Museum of the History of the Bible",
-   "aviso": "This phone has no English voice available. You can read the text instead."
-  },
-  "t": [
-   "And we come to the last case. In this one there is no ancient book. What is shown here was written in this city, and was finished very recently.",
-   "It is called the APA version: Amplified, Paraphrased and Harmonised. Amplified, because it opens up what the original text says very tightly. Paraphrased, because it says it in the Spanish you speak today, not the Spanish of four centuries ago. And harmonised, because when the same event is told in several books, it brings them together into a single narrative, so that it can be read straight through.",
-   "It was written, book by book, by Eduardo Padilla Uranga, the founder of this museum. The final revision was closed on the seventh of September, 2026.",
-   "And now remember what you have just seen. A monk on a mountain in Cantabria, copying by hand so that it would not be lost. A queen who had the whole of Scripture painted so that she could look at it. A goldsmith who cast letters of metal so that it could be repeated. A cardinal who set it out in four languages so that it could be compared. A monk from Seville who translated it on the run, so that his people could understand it. A Mexican printer who brought it out of his workshop when the country was ten years old.",
-   "They all did exactly the same thing: they said the Book again, in the language and the shape of their own time. Not one of them settled for the copy he had been handed.",
-   "That is what happened again in this case. The chain was not cut in 1602, nor in 1831, nor in 1951. It reached this far.",
-   "And one last thing, because we are in Mexico. Here September is two things at once: the month of the Bible and the month of Independence. In this museum it is no coincidence that they fall together. The country that became independent received the Bible in its own language at almost the same time, and ever since then the two stories have walked side by side. And the version in front of you was finished, as it happens, on a seventh of September.",
-   "That is why this tour does not end with an ancient book, but with one just completed. And the next link is not in this case: that one belongs to whoever comes after. Thank you for coming with us."
-  ]
- },
- "fr": {
-  "nombre": "Français",
-  "voz": "fr-FR",
-  "ui": {
-   "sala": "Vitrine 32 · Musée de l'Histoire de la Bible",
-   "titulo": "La version APA",
-   "siglo": "Amplifiée, Paraphrasée et Harmonisée · 2026",
-   "play": "Écouter",
-   "stop": "Arrêter",
-   "pie": "Musée de l'Histoire de la Bible",
-   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
-  },
-  "t": [
-   "Et nous voici à la dernière vitrine. Dans celle-ci, il n'y a aucun livre ancien. Ce qui est exposé ici a été écrit dans cette ville, et vient d'être achevé.",
-   "Cela s'appelle la version APA : Amplifiée, Paraphrasée et Harmonisée. Amplifiée, parce qu'elle ouvre ce que le texte original dit de façon très serrée. Paraphrasée, parce qu'elle le dit dans l'espagnol que vous parlez aujourd'hui, et non celui d'il y a quatre siècles. Et harmonisée, parce que lorsqu'un même fait est raconté dans plusieurs livres, elle les réunit en un seul récit, afin qu'on puisse le lire d'un trait.",
-   "Elle a été écrite, livre après livre, par Eduardo Padilla Uranga, le fondateur de ce musée. La révision finale a été close le sept septembre 2026.",
-   "Et maintenant, rappelez-vous ce que vous venez de voir. Un moine sur une montagne de Cantabrie, copiant à la main pour que cela ne se perde pas. Une reine qui fit peindre l'Écriture entière pour pouvoir la regarder. Un orfèvre qui fondit des lettres de métal pour pouvoir la répéter. Un cardinal qui la disposa en quatre langues pour pouvoir la comparer. Un moine sévillan qui la traduisit en fuyant, pour que les siens la comprennent. Un imprimeur mexicain qui la sortit de son atelier quand le pays avait dix ans.",
-   "Tous ont fait exactement la même chose : redire le Livre dans la langue et dans la forme de leur propre temps. Aucun ne s'est contenté de la copie qu'il avait reçue.",
-   "C'est ce qui s'est produit de nouveau dans cette vitrine. La chaîne ne s'est rompue ni en 1602, ni en 1831, ni en 1951. Elle est arrivée jusqu'ici.",
-   "Et une dernière chose, car nous sommes au Mexique. Ici, septembre est deux choses à la fois : le mois de la Bible et le mois de l'Indépendance. Dans ce musée, ce n'est pas un hasard s'ils tombent ensemble. Le pays devenu indépendant a reçu la Bible dans sa propre langue presque au même moment, et depuis lors les deux histoires marchent ensemble. Et la version que vous avez devant vous s'est achevée, elle aussi, un sept septembre.",
-   "C'est pourquoi ce parcours ne s'achève pas sur un livre ancien, mais sur un livre qui vient d'être terminé. Et le maillon suivant n'est pas dans cette vitrine : celui-là revient à qui viendra après. Merci de nous avoir accompagnés."
-  ]
- },
- "de": {
-  "nombre": "Deutsch",
-  "voz": "de-DE",
-  "ui": {
-   "sala": "Vitrine 32 · Museum zur Geschichte der Bibel",
-   "titulo": "Die APA-Fassung",
-   "siglo": "Erweitert, umschrieben und harmonisiert · 2026",
-   "play": "Anhören",
-   "stop": "Anhalten",
-   "pie": "Museum zur Geschichte der Bibel",
-   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
-  },
-  "t": [
-   "Und wir kommen zur letzten Vitrine. In dieser steht kein altes Buch. Was hier gezeigt wird, wurde in dieser Stadt geschrieben und vor kurzem vollendet.",
-   "Sie heißt APA-Fassung: erweitert, umschrieben und harmonisiert. Erweitert, weil sie öffnet, was der Urtext sehr gedrängt sagt. Umschrieben, weil sie es in dem Spanisch sagt, das Sie heute sprechen, und nicht in dem von vor vier Jahrhunderten. Und harmonisiert, weil sie dieselbe Begebenheit, wenn sie in mehreren Büchern erzählt wird, zu einer einzigen Erzählung zusammenführt, damit man sie in einem Zug lesen kann.",
-   "Geschrieben hat sie Buch für Buch Eduardo Padilla Uranga, der Gründer dieses Museums. Die Schlussdurchsicht wurde am siebten September 2026 abgeschlossen.",
-   "Und nun erinnern Sie sich an das, was Sie gerade gesehen haben. Ein Mönch auf einem Berg in Kantabrien, der von Hand abschrieb, damit es nicht verloren ginge. Eine Königin, die die ganze Schrift malen ließ, um sie ansehen zu können. Ein Goldschmied, der Lettern aus Metall goss, um sie wiederholen zu können. Ein Kardinal, der sie in vier Sprachen setzte, um sie vergleichen zu können. Ein Mönch aus Sevilla, der sie auf der Flucht übersetzte, damit seine Leute sie verstünden. Ein mexikanischer Drucker, der sie aus seiner Werkstatt brachte, als das Land zehn Jahre alt war.",
-   "Alle taten genau dasselbe: sie sagten das Buch neu, in der Sprache und in der Form ihrer eigenen Zeit. Keiner gab sich mit der Abschrift zufrieden, die er erhalten hatte.",
-   "Das ist es, was in dieser Vitrine noch einmal geschah. Die Kette riss nicht 1602, nicht 1831 und nicht 1951. Sie reichte bis hierher.",
-   "Und noch etwas zuletzt, denn wir sind in Mexiko. Hier ist der September zweierlei zugleich: der Monat der Bibel und der Monat der Unabhängigkeit. In diesem Museum ist es kein Zufall, dass beide zusammenfallen. Das Land, das unabhängig wurde, erhielt die Bibel in seiner eigenen Sprache fast zur selben Zeit, und seither gehen die beiden Geschichten nebeneinander her. Und die Fassung, die Sie vor sich haben, wurde ebenfalls an einem siebten September vollendet.",
-   "Darum endet dieser Rundgang nicht mit einem alten Buch, sondern mit einem eben vollendeten. Und das nächste Glied liegt nicht in dieser Vitrine: das gehört dem, der nach uns kommt. Danke, dass Sie uns begleitet haben."
-  ]
- },
- "it": {
-  "nombre": "Italiano",
-  "voz": "it-IT",
-  "ui": {
-   "sala": "Vetrina 32 · Museo di Storia della Bibbia",
-   "titulo": "La versione APA",
-   "siglo": "Amplificata, Parafrasata e Armonizzata · 2026",
-   "play": "Ascolta",
-   "stop": "Ferma",
-   "pie": "Museo di Storia della Bibbia",
-   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
-  },
-  "t": [
-   "E arriviamo all'ultima vetrina. In questa non c'è nessun libro antico. Ciò che si espone qui è stato scritto in questa città, ed è stato terminato da poco.",
-   "Si chiama versione APA: Amplificata, Parafrasata e Armonizzata. Amplificata, perché apre ciò che il testo originale dice in modo molto stretto. Parafrasata, perché lo dice nello spagnolo che lei parla oggi, non in quello di quattro secoli fa. E armonizzata, perché quando uno stesso fatto è raccontato in più libri, li riunisce in un'unica narrazione, così da poterla leggere di seguito.",
-   "L'ha scritta, libro per libro, Eduardo Padilla Uranga, il fondatore di questo museo. La revisione finale si chiuse il sette di settembre del 2026.",
-   "E ora ricordi ciò che ha appena visto. Un monaco su una montagna della Cantabria, che copiava a mano perché non andasse perduto. Una regina che fece dipingere l'intera Scrittura per poterla guardare. Un orefice che fuse lettere di metallo per poterla ripetere. Un cardinale che la dispose in quattro lingue per poterla confrontare. Un monaco sivigliano che la tradusse in fuga, perché la sua gente la capisse. Uno stampatore messicano che la fece uscire dalla sua bottega quando il paese aveva dieci anni.",
-   "Tutti fecero esattamente la stessa cosa: ridire il Libro nella lingua e nella forma del proprio tempo. Nessuno si accontentò della copia che aveva ricevuto.",
-   "È questo che è accaduto di nuovo in questa vetrina. La catena non si spezzò nel 1602, né nel 1831, né nel 1951. È arrivata fin qui.",
-   "E un'ultima cosa, perché siamo in Messico. Qui settembre è due cose insieme: il mese della Bibbia e il mese dell'Indipendenza. In questo museo non è un caso che cadano insieme. Il paese che divenne indipendente ricevette la Bibbia nella propria lingua quasi nello stesso momento, e da allora le due storie camminano insieme. E la versione che ha davanti fu terminata, anch'essa, un sette di settembre.",
-   "Per questo il percorso non finisce con un libro antico, ma con uno appena terminato. E l'anello successivo non è in questa vetrina: quello tocca a chi verrà dopo. Grazie di averci accompagnato."
-  ]
- }
-};
-</script>
-<script src="vitrinas.js"></script>
-<script src="guia.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>La versión APA — Museo de Historia de la Biblia</title>
+    <link href="estilos.css" rel="stylesheet" />
+    <style>
+      .cadena {
+        flex: none;
+        width: 76px;
+        height: 60px;
+      }
+    </style>
+  </head>
+  <body data-vitrina="32">
+    <div class="hoja">
+      <header class="cabecera">
+        <div class="marca">
+          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+              <span class="logo-fallback">MHB</span>
+            </object>
+          </a>
+          <div class="marca-texto">
+            <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+            <p class="sala" id="ui-sala"></p>
+          </div>
+          <span class="marca-num">32</span>
+          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+        </div>
+        <div class="header-main">
+          <div aria-hidden="true" class="emblema">
+            <svg aria-hidden="true" class="cadena" viewBox="0 0 76 60">
+              <g fill="none" stroke="currentColor" stroke-width="3.4">
+                <ellipse cx="14" cy="30" rx="11" ry="8"></ellipse>
+                <ellipse cx="34" cy="30" rx="11" ry="8"></ellipse>
+                <path d="M65 24 C58 24 54 27 54 30 C54 33 58 36 65 36"></path>
+              </g>
+            </svg>
+          </div>
+          <div class="header-texto">
+            <h1 id="ui-titulo"></h1>
+            <p class="siglo" id="ui-siglo"></p>
+          </div>
+        </div>
+      </header>
+      <nav class="nav">
+        <a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"
+          ><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18">
+            <path
+              d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z"
+              fill="none"
+              stroke="currentColor"
+              stroke-linejoin="round"
+              stroke-width="1.6"
+            ></path></svg
+        ></a>
+        <a class="nav-btn" id="nav-ant">‹</a>
+        <select class="nav-sel" id="nav-sel"></select>
+        <a class="nav-btn" id="nav-sig">›</a>
+        <span class="nav-btn" id="nav-pos" style="border: none"></span>
+      </nav>
+      <div class="progreso"><i id="barra"></i></div>
+      <main>
+        <div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+        <div class="mandos">
+          <button class="control" id="btn-play" type="button">
+            <svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16">
+              <polygon fill="currentColor" points="4 3 20 12 4 21"></polygon>
+            </svg>
+            <span id="ui-play">Escuchar</span>
+          </button>
+          <button class="control secundario" hidden="" id="btn-stop" type="button">
+            <span id="ui-stop">Detener</span>
+          </button>
+        </div>
+        <p class="aviso" hidden="" id="ui-aviso"></p>
+        <div id="texto"></div>
+      </main>
+      <footer id="ui-pie">Museo de Historia de la Biblia</footer>
+    </div>
+    <script>
+      const GRABACIONES = { es: "", en: "", fr: "", de: "", it: "" };
+      const GUIA = {
+        es: {
+          nombre: "Español",
+          voz: "es-MX",
+          ui: {
+            sala: "Vitrina 32",
+            titulo: "La versión APA",
+            siglo: "Amplificada, Parafraseada y Armonizada · 2026",
+            play: "Escuchar",
+            stop: "Detener",
+            pie: "Museo de Historia de la Biblia",
+            aviso: "Este teléfono no tiene voz en español. Puede leer el texto.",
+          },
+          t: [
+            "Y llegamos a la última vitrina. En ésta no hay ningún libro antiguo. Lo que se exhibe aquí se escribió en esta ciudad, y se terminó hace muy poco.",
+            "Se llama versión APA: Amplificada, Parafraseada y Armonizada. Amplificada, porque abre lo que el texto original dice muy apretado. Parafraseada, porque lo dice en el español que usted habla hoy, no en el de hace cuatro siglos. Y armonizada, porque cuando un mismo hecho viene contado en varios libros, los junta en una sola narración, para que se pueda leer de corrido.",
+            "La escribió, libro por libro, Eduardo Padilla Uranga, el fundador de este museo. La revisión final se cerró el siete de septiembre de 2026.",
+            "Y ahora recuerde lo que acaba de ver. Un monje en una montaña de Cantabria, copiando a mano para que no se perdiera. Una reina que mandó pintar la Escritura entera para poder mirarla. Un orfebre que fundió letras de metal para poder repetirla. Un cardenal que la puso en cuatro lenguas para poder compararla. Un monje sevillano que la tradujo huyendo, para que su gente la entendiera. Un impresor mexicano que la sacó de su taller cuando el país tenía diez años.",
+            "Todos hicieron exactamente lo mismo: volver a decir el Libro en la lengua y en la forma de su propio tiempo. Ninguno se conformó con la copia que recibió.",
+            "Eso es lo que volvió a ocurrir en esta vitrina. La cadena no se cortó en 1602, ni en 1831, ni en 1951. Llegó hasta aquí.",
+            "Y una última cosa, porque estamos en México. Aquí septiembre es dos cosas a la vez: el mes de la Biblia y el mes de la Independencia. En este museo no es casualidad que caigan juntos. El país que se hizo independiente recibió la Biblia en su propia lengua casi al mismo tiempo, y desde entonces las dos historias caminan juntas. Y la versión que tiene usted delante se terminó, también, un siete de septiembre.",
+            "Por eso este recorrido no termina en un libro antiguo, sino en uno recién acabado. Y el eslabón que sigue no está en esta vitrina: ése le toca a quien venga después. Gracias por acompañarnos.",
+          ],
+        },
+        en: {
+          nombre: "English",
+          voz: "en-GB",
+          ui: {
+            sala: "Case 32",
+            titulo: "The APA version",
+            siglo: "Amplified, Paraphrased and Harmonised · 2026",
+            play: "Listen",
+            stop: "Stop",
+            pie: "Museum of the History of the Bible",
+            aviso: "This phone has no English voice available. You can read the text instead.",
+          },
+          t: [
+            "And we come to the last case. In this one there is no ancient book. What is shown here was written in this city, and was finished very recently.",
+            "It is called the APA version: Amplified, Paraphrased and Harmonised. Amplified, because it opens up what the original text says very tightly. Paraphrased, because it says it in the Spanish you speak today, not the Spanish of four centuries ago. And harmonised, because when the same event is told in several books, it brings them together into a single narrative, so that it can be read straight through.",
+            "It was written, book by book, by Eduardo Padilla Uranga, the founder of this museum. The final revision was closed on the seventh of September, 2026.",
+            "And now remember what you have just seen. A monk on a mountain in Cantabria, copying by hand so that it would not be lost. A queen who had the whole of Scripture painted so that she could look at it. A goldsmith who cast letters of metal so that it could be repeated. A cardinal who set it out in four languages so that it could be compared. A monk from Seville who translated it on the run, so that his people could understand it. A Mexican printer who brought it out of his workshop when the country was ten years old.",
+            "They all did exactly the same thing: they said the Book again, in the language and the shape of their own time. Not one of them settled for the copy he had been handed.",
+            "That is what happened again in this case. The chain was not cut in 1602, nor in 1831, nor in 1951. It reached this far.",
+            "And one last thing, because we are in Mexico. Here September is two things at once: the month of the Bible and the month of Independence. In this museum it is no coincidence that they fall together. The country that became independent received the Bible in its own language at almost the same time, and ever since then the two stories have walked side by side. And the version in front of you was finished, as it happens, on a seventh of September.",
+            "That is why this tour does not end with an ancient book, but with one just completed. And the next link is not in this case: that one belongs to whoever comes after. Thank you for coming with us.",
+          ],
+        },
+        fr: {
+          nombre: "Français",
+          voz: "fr-FR",
+          ui: {
+            sala: "Vitrine 32",
+            titulo: "La version APA",
+            siglo: "Amplifiée, Paraphrasée et Harmonisée · 2026",
+            play: "Écouter",
+            stop: "Arrêter",
+            pie: "Musée de l'Histoire de la Bible",
+            aviso: "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte.",
+          },
+          t: [
+            "Et nous voici à la dernière vitrine. Dans celle-ci, il n'y a aucun livre ancien. Ce qui est exposé ici a été écrit dans cette ville, et vient d'être achevé.",
+            "Cela s'appelle la version APA : Amplifiée, Paraphrasée et Harmonisée. Amplifiée, parce qu'elle ouvre ce que le texte original dit de façon très serrée. Paraphrasée, parce qu'elle le dit dans l'espagnol que vous parlez aujourd'hui, et non celui d'il y a quatre siècles. Et harmonisée, parce que lorsqu'un même fait est raconté dans plusieurs livres, elle les réunit en un seul récit, afin qu'on puisse le lire d'un trait.",
+            "Elle a été écrite, livre après livre, par Eduardo Padilla Uranga, le fondateur de ce musée. La révision finale a été close le sept septembre 2026.",
+            "Et maintenant, rappelez-vous ce que vous venez de voir. Un moine sur une montagne de Cantabrie, copiant à la main pour que cela ne se perde pas. Une reine qui fit peindre l'Écriture entière pour pouvoir la regarder. Un orfèvre qui fondit des lettres de métal pour pouvoir la répéter. Un cardinal qui la disposa en quatre langues pour pouvoir la comparer. Un moine sévillan qui la traduisit en fuyant, pour que les siens la comprennent. Un imprimeur mexicain qui la sortit de son atelier quand le pays avait dix ans.",
+            "Tous ont fait exactement la même chose : redire le Livre dans la langue et dans la forme de leur propre temps. Aucun ne s'est contenté de la copie qu'il avait reçue.",
+            "C'est ce qui s'est produit de nouveau dans cette vitrine. La chaîne ne s'est rompue ni en 1602, ni en 1831, ni en 1951. Elle est arrivée jusqu'ici.",
+            "Et une dernière chose, car nous sommes au Mexique. Ici, septembre est deux choses à la fois : le mois de la Bible et le mois de l'Indépendance. Dans ce musée, ce n'est pas un hasard s'ils tombent ensemble. Le pays devenu indépendant a reçu la Bible dans sa propre langue presque au même moment, et depuis lors les deux histoires marchent ensemble. Et la version que vous avez devant vous s'est achevée, elle aussi, un sept septembre.",
+            "C'est pourquoi ce parcours ne s'achève pas sur un livre ancien, mais sur un livre qui vient d'être terminé. Et le maillon suivant n'est pas dans cette vitrine : celui-là revient à qui viendra après. Merci de nous avoir accompagnés.",
+          ],
+        },
+        de: {
+          nombre: "Deutsch",
+          voz: "de-DE",
+          ui: {
+            sala: "Vitrine 32",
+            titulo: "Die APA-Fassung",
+            siglo: "Erweitert, umschrieben und harmonisiert · 2026",
+            play: "Anhören",
+            stop: "Anhalten",
+            pie: "Museum zur Geschichte der Bibel",
+            aviso: "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen.",
+          },
+          t: [
+            "Und wir kommen zur letzten Vitrine. In dieser steht kein altes Buch. Was hier gezeigt wird, wurde in dieser Stadt geschrieben und vor kurzem vollendet.",
+            "Sie heißt APA-Fassung: erweitert, umschrieben und harmonisiert. Erweitert, weil sie öffnet, was der Urtext sehr gedrängt sagt. Umschrieben, weil sie es in dem Spanisch sagt, das Sie heute sprechen, und nicht in dem von vor vier Jahrhunderten. Und harmonisiert, weil sie dieselbe Begebenheit, wenn sie in mehreren Büchern erzählt wird, zu einer einzigen Erzählung zusammenführt, damit man sie in einem Zug lesen kann.",
+            "Geschrieben hat sie Buch für Buch Eduardo Padilla Uranga, der Gründer dieses Museums. Die Schlussdurchsicht wurde am siebten September 2026 abgeschlossen.",
+            "Und nun erinnern Sie sich an das, was Sie gerade gesehen haben. Ein Mönch auf einem Berg in Kantabrien, der von Hand abschrieb, damit es nicht verloren ginge. Eine Königin, die die ganze Schrift malen ließ, um sie ansehen zu können. Ein Goldschmied, der Lettern aus Metall goss, um sie wiederholen zu können. Ein Kardinal, der sie in vier Sprachen setzte, um sie vergleichen zu können. Ein Mönch aus Sevilla, der sie auf der Flucht übersetzte, damit seine Leute sie verstünden. Ein mexikanischer Drucker, der sie aus seiner Werkstatt brachte, als das Land zehn Jahre alt war.",
+            "Alle taten genau dasselbe: sie sagten das Buch neu, in der Sprache und in der Form ihrer eigenen Zeit. Keiner gab sich mit der Abschrift zufrieden, die er erhalten hatte.",
+            "Das ist es, was in dieser Vitrine noch einmal geschah. Die Kette riss nicht 1602, nicht 1831 und nicht 1951. Sie reichte bis hierher.",
+            "Und noch etwas zuletzt, denn wir sind in Mexiko. Hier ist der September zweierlei zugleich: der Monat der Bibel und der Monat der Unabhängigkeit. In diesem Museum ist es kein Zufall, dass beide zusammenfallen. Das Land, das unabhängig wurde, erhielt die Bibel in seiner eigenen Sprache fast zur selben Zeit, und seither gehen die beiden Geschichten nebeneinander her. Und die Fassung, die Sie vor sich haben, wurde ebenfalls an einem siebten September vollendet.",
+            "Darum endet dieser Rundgang nicht mit einem alten Buch, sondern mit einem eben vollendeten. Und das nächste Glied liegt nicht in dieser Vitrine: das gehört dem, der nach uns kommt. Danke, dass Sie uns begleitet haben.",
+          ],
+        },
+        it: {
+          nombre: "Italiano",
+          voz: "it-IT",
+          ui: {
+            sala: "Vetrina 32",
+            titulo: "La versione APA",
+            siglo: "Amplificata, Parafrasata e Armonizzata · 2026",
+            play: "Ascolta",
+            stop: "Ferma",
+            pie: "Museo di Storia della Bibbia",
+            aviso: "Questo telefono non ha una voce italiana. Può leggere il testo.",
+          },
+          t: [
+            "E arriviamo all'ultima vetrina. In questa non c'è nessun libro antico. Ciò che si espone qui è stato scritto in questa città, ed è stato terminato da poco.",
+            "Si chiama versione APA: Amplificata, Parafrasata e Armonizzata. Amplificata, perché apre ciò che il testo originale dice in modo molto stretto. Parafrasata, perché lo dice nello spagnolo che lei parla oggi, non in quello di quattro secoli fa. E armonizzata, perché quando uno stesso fatto è raccontato in più libri, li riunisce in un'unica narrazione, così da poterla leggere di seguito.",
+            "L'ha scritta, libro per libro, Eduardo Padilla Uranga, il fondatore di questo museo. La revisione finale si chiuse il sette di settembre del 2026.",
+            "E ora ricordi ciò che ha appena visto. Un monaco su una montagna della Cantabria, che copiava a mano perché non andasse perduto. Una regina che fece dipingere l'intera Scrittura per poterla guardare. Un orefice che fuse lettere di metallo per poterla ripetere. Un cardinale che la dispose in quattro lingue per poterla confrontare. Un monaco sivigliano che la tradusse in fuga, perché la sua gente la capisse. Uno stampatore messicano che la fece uscire dalla sua bottega quando il paese aveva dieci anni.",
+            "Tutti fecero esattamente la stessa cosa: ridire il Libro nella lingua e nella forma del proprio tempo. Nessuno si accontentò della copia che aveva ricevuto.",
+            "È questo che è accaduto di nuovo in questa vetrina. La catena non si spezzò nel 1602, né nel 1831, né nel 1951. È arrivata fin qui.",
+            "E un'ultima cosa, perché siamo in Messico. Qui settembre è due cose insieme: il mese della Bibbia e il mese dell'Indipendenza. In questo museo non è un caso che cadano insieme. Il paese che divenne indipendente ricevette la Bibbia nella propria lingua quasi nello stesso momento, e da allora le due storie camminano insieme. E la versione che ha davanti fu terminata, anch'essa, un sette di settembre.",
+            "Per questo il percorso non finisce con un libro antico, ma con uno appena terminato. E l'anello successivo non è in questa vetrina: quello tocca a chi verrà dopo. Grazie di averci accompagnato.",
+          ],
+        },
+      };
+    </script>
+    <script src="vitrinas.js"></script>
+    <script src="guia.js"></script>
+  </body>
 </html>

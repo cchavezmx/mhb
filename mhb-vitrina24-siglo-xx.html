@@ -1,202 +1,235 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Las seis del siglo veinte — Museo de Historia de la Biblia</title>
-<link href="estilos.css" rel="stylesheet"/>
-<style>
-.tres{flex:none;display:flex;gap:4px;align-items:flex-end}
-  .tres i{display:block;width:10px;border-radius:1px}
-</style>
-</head>
-<body data-vitrina="24">
-<div class="hoja">
-<header class="cabecera">
-<div class="marca">
-<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
-</a>
-<div class="marca-texto">
-<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
-<p class="sala" id="ui-sala"></p>
-</div>
-<span class="marca-num">24</span>
-<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
-</div>
-<div class="header-main">
-<div aria-hidden="true" class="emblema"><div aria-hidden="true" class="tres"><i style="height:56px;background:#B4763A"></i><i style="height:48px;background:#7C5A7A"></i><i style="height:60px;background:#3F6B5A"></i><i style="height:52px;background:#A8443A"></i><i style="height:44px;background:#4A6A8A"></i><i style="height:58px;background:#8A7A3A"></i></div></div>
-<div class="header-texto">
-<h1 id="ui-titulo"></h1>
-<p class="siglo" id="ui-siglo"></p>
-</div>
-</div>
-</header>
-<nav class="nav">
-<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
-<a class="nav-btn" id="nav-ant">‹</a>
-<select class="nav-sel" id="nav-sel"></select>
-<a class="nav-btn" id="nav-sig">›</a>
-<span class="nav-btn" id="nav-pos" style="border:none"></span>
-</nav>
-<div class="progreso"><i id="barra"></i></div>
-<main>
-<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
-<div class="mandos">
-<button class="control" id="btn-play" type="button"><svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16"><polygon fill="currentColor" points="4 3 20 12 4 21"></polygon></svg> <span id="ui-play">Escuchar</span></button>
-<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
-</div>
-<p class="aviso" hidden="" id="ui-aviso"></p>
-<div id="texto"></div>
-</main>
-<footer id="ui-pie">Museo de Historia de la Biblia</footer>
-</div>
-<script>
-const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
-const GUIA = {
- "es": {
-  "nombre": "Español",
-  "voz": "es-MX",
-  "ui": {
-   "sala": "Vitrina 24 · Museo de Historia de la Biblia",
-   "titulo": "Las seis del siglo veinte",
-   "siglo": "De Nácar-Colunga a Schökel · 1944-1975",
-   "play": "Escuchar",
-   "stop": "Detener",
-   "pie": "Museo de Historia de la Biblia",
-   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
-  },
-  "t": [
-   "Seis Biblias en una sola vitrina, de un lado y otro del mar, hechas casi al mismo tiempo. Y las seis nacieron del mismo documento.",
-   "El 30 de septiembre de 1943, el papa Pío XII publicó la encíclica Divino afflante Spiritu. En ella autorizó por fin a los católicos a traducir la Biblia directamente del hebreo y del griego, y no de la Vulgata latina. Cuatro siglos llevaba la Iglesia traduciendo del latín. Ese día se abrió la puerta.",
-   "Y mire lo rápido que entraron.",
-   "En 1944, en Madrid, apareció la de Nácar-Colunga. Eloíno Nácar tradujo el Antiguo Testamento del hebreo; Alberto Colunga, el Nuevo del griego. Es la primera Biblia católica completa en español traducida de las lenguas originales.",
-   "En 1947, también en Madrid, la de Bover-Cantera. José María Bover, jesuita, y Francisco Cantera, hebraísta. Ésta es la edición de estudio: crítica, anotada, con aparato. La que se usa para trabajar el texto, no para leerlo de corrido.",
-   "Y en 1951, del otro lado del mar, la de Straubinger. Juan Straubinger era un sacerdote alemán que tuvo que salir de su país por su oposición al nazismo. Acabó en La Plata, Argentina, dando clases de Sagrada Escritura. Ahí la tradujo, desde los originales. Es la primera Biblia católica completa traducida de las lenguas originales en América Latina, y la hizo un refugiado.",
-   "Y en 1963 apareció ésta, la de los siete tomos. Se llama La Sagrada Biblia más bella del mundo, la dirigió Alejandro Díez Macho y la publicó Editorial Codex. Díez Macho era el mayor especialista del mundo en los targumes, las versiones arameas del Antiguo Testamento. También tradujo de los originales, con comentarios, y el texto va a tres columnas.",
-   "Pero fíjese en la diferencia con las demás. Aquéllas se hicieron para estudiar. Ésta se hizo para entrar a las casas: salió por fascículos, semana con semana, en formato grande, a todo color, con cientos de ilustraciones. La gente la fue juntando y después la mandó encuadernar. Es la Biblia de la sala, no la del escritorio.",
-   "En 1967 apareció en español la Biblia de Jerusalén. Había nacido en francés, en la Escuela Bíblica de Jerusalén, y llegó con algo que ninguna de las anteriores traía: las notas de una escuela que estaba excavando en el propio terreno. No sólo traduce. Le dice al lector dónde queda ese lugar, cuándo ocurrió aquello y qué se ha encontrado bajo la tierra. Por eso se volvió la Biblia de estudio más usada del mundo hispano.",
-   "Y en 1975, la Nueva Biblia Española, de Luis Alonso Schökel y Juan Mateos. Ésta se propuso algo distinto de todas las demás: que el castellano bíblico dejara de sonar a traducción. Schökel era poeta además de biblista, y eso se nota en cada página. Es la que mejor suena leída en voz alta de todas las de esta vitrina.",
-   "Ahora sume. Entre 1944 y 1975, en poco más de treinta años, el español tuvo seis Biblias nuevas traducidas desde el hebreo y el griego. Antes de eso habían pasado casi cuatro siglos sin ninguna.",
-   "Y ahora vuelva usted a la fecha de aquella encíclica: 30 de septiembre. No es un día cualquiera. Es la fiesta de san Jerónimo, el hombre que hizo la Vulgata dieciséis siglos antes. Por eso, en México, septiembre es el mes de la Biblia.",
-   "Con estas seis se cierra la cadena de traductores"
-  ]
- },
- "en": {
-  "nombre": "English",
-  "voz": "en-GB",
-  "ui": {
-   "sala": "Case 24 · Museum of the History of the Bible",
-   "titulo": "The six of the twentieth century",
-   "siglo": "From Nácar-Colunga to Schökel · 1944-1975",
-   "play": "Listen",
-   "stop": "Stop",
-   "pie": "Museum of the History of the Bible",
-   "aviso": "This phone has no English voice available. You can read the text instead."
-  },
-  "t": [
-   "Six Bibles in a single case, from either side of the ocean, made at almost the same time. And all six were born of the same document.",
-   "On the thirtieth of September 1943, Pope Pius the Twelfth published the encyclical Divino afflante Spiritu. In it he at last authorised Catholics to translate the Bible directly from the Hebrew and the Greek, and not from the Latin Vulgate. For four centuries the Church had been translating from Latin. That day the door opened.",
-   "And see how quickly they went through it.",
-   "In 1944, in Madrid, the Nácar-Colunga appeared. Eloíno Nácar translated the Old Testament from the Hebrew; Alberto Colunga, the New from the Greek. It is the first complete Catholic Bible in Spanish translated from the original languages.",
-   "In 1947, also in Madrid, the Bover-Cantera. José María Bover, a Jesuit, and Francisco Cantera, a Hebrew scholar. This is the study edition: critical, annotated, with an apparatus. The one you use to work on the text, not to read straight through.",
-   "And in 1951, on the other side of the ocean, the Straubinger. Juan Straubinger was a German priest who had to leave his country for his opposition to Nazism. He ended up in La Plata, in Argentina, teaching Sacred Scripture. There he translated it, from the originals. It is the first complete Catholic Bible translated from the original languages in Latin America, and a refugee made it.",
-   "And in 1963 this one appeared, the one in seven volumes. It is called The Most Beautiful Bible in the World, it was directed by Alejandro Díez Macho and published by Editorial Codex. Díez Macho was the world's foremost specialist in the Targums, the Aramaic versions of the Old Testament. He too translated from the originals, with commentary, and the text runs in three columns.",
-   "But notice the difference from the others. Those were made for study. This one was made to come into people's homes: it appeared in instalments, week by week, in large format, in full colour, with hundreds of illustrations. People collected it and then had it bound. It is the Bible of the front room, not of the desk.",
-   "In 1967 the Jerusalem Bible appeared in Spanish. It had been born in French, at the École Biblique in Jerusalem, and it came with something none of the others had: the notes of a school that was digging in the ground itself. It does not merely translate. It tells the reader where that place is, when that happened, and what has been found beneath the soil. That is why it became the most widely used study Bible in the Spanish-speaking world.",
-   "And in 1975, the Nueva Biblia Española, by Luis Alonso Schökel and Juan Mateos. This one set itself a different aim from all the rest: that biblical Spanish should stop sounding like a translation. Schökel was a poet as well as a biblical scholar, and it shows on every page. Of everything in this case, it is the one that sounds best read aloud.",
-   "Now add it up. Between 1944 and 1975, in a little over thirty years, Spanish gained six new Bibles translated from the Hebrew and the Greek. Before that, almost four centuries had gone by without a single one.",
-   "And now go back to the date of that encyclical: the thirtieth of September. It is not just any day. It is the feast of Saint Jerome, the man who made the Vulgate sixteen centuries earlier. That is why, in Mexico, September is the month of the Bible.",
-   "With these six, the chain of translators"
-  ]
- },
- "fr": {
-  "nombre": "Français",
-  "voz": "fr-FR",
-  "ui": {
-   "sala": "Vitrine 24 · Musée de l'Histoire de la Bible",
-   "titulo": "Les six du vingtième siècle",
-   "siglo": "De Nácar-Colunga à Schökel · 1944-1975",
-   "play": "Écouter",
-   "stop": "Arrêter",
-   "pie": "Musée de l'Histoire de la Bible",
-   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
-  },
-  "t": [
-   "Six Bibles dans une seule vitrine, des deux côtés de la mer, faites presque en même temps. Et toutes six sont nées du même document.",
-   "Le 30 septembre 1943, le pape Pie XII publia l'encyclique Divino afflante Spiritu. Il y autorisait enfin les catholiques à traduire la Bible directement de l'hébreu et du grec, et non de la Vulgate latine. Depuis quatre siècles, l'Église traduisait du latin. Ce jour-là, la porte s'ouvrit.",
-   "Et voyez avec quelle rapidité ils s'y sont engouffrés.",
-   "En 1944, à Madrid, parut la Nácar-Colunga. Eloíno Nácar traduisit l'Ancien Testament de l'hébreu ; Alberto Colunga, le Nouveau du grec. C'est la première Bible catholique complète en espagnol traduite des langues originales.",
-   "En 1947, à Madrid également, la Bover-Cantera. José María Bover, jésuite, et Francisco Cantera, hébraïsant. C'est l'édition d'étude : critique, annotée, avec un apparat. Celle dont on se sert pour travailler le texte, non pour le lire d'un trait.",
-   "Et en 1951, de l'autre côté de la mer, la Straubinger. Juan Straubinger était un prêtre allemand qui dut quitter son pays pour son opposition au nazisme. Il finit à La Plata, en Argentine, enseignant l'Écriture sainte. C'est là qu'il la traduisit, à partir des originaux. C'est la première Bible catholique complète traduite des langues originales en Amérique latine, et elle est l'œuvre d'un réfugié.",
-   "Et en 1963 parut celle-ci, celle des sept volumes. Elle s'appelle La plus belle Bible du monde, elle fut dirigée par Alejandro Díez Macho et publiée par Editorial Codex. Díez Macho était le plus grand spécialiste mondial des targums, les versions araméennes de l'Ancien Testament. Lui aussi traduisit des originaux, avec commentaires, et le texte court sur trois colonnes.",
-   "Mais voyez la différence avec les autres. Celles-là furent faites pour l'étude. Celle-ci fut faite pour entrer dans les maisons : elle parut en fascicules, semaine après semaine, en grand format, en couleurs, avec des centaines d'illustrations. Les gens la réunissaient puis la faisaient relier. C'est la Bible du salon, non celle du bureau.",
-   "En 1967 parut en espagnol la Bible de Jérusalem. Elle était née en français, à l'École biblique de Jérusalem, et elle apportait quelque chose qu'aucune des précédentes n'avait : les notes d'une école qui fouillait sur le terrain même. Elle ne se contente pas de traduire. Elle dit au lecteur où se trouve ce lieu, quand cela s'est passé et ce qu'on a trouvé sous la terre. C'est pourquoi elle est devenue la Bible d'étude la plus utilisée du monde hispanophone.",
-   "Et en 1975, la Nueva Biblia Española, de Luis Alonso Schökel et Juan Mateos. Celle-ci s'est fixé un but différent de toutes les autres : que l'espagnol biblique cesse de sonner comme une traduction. Schökel était poète autant que bibliste, et cela se voit à chaque page. De tout ce qui est dans cette vitrine, c'est celle qui sonne le mieux lue à voix haute.",
-   "Faites le compte. Entre 1944 et 1975, en un peu plus de trente ans, l'espagnol a eu six Bibles nouvelles traduites de l'hébreu et du grec. Auparavant, près de quatre siècles s'étaient écoulés sans aucune.",
-   "Et maintenant revenez à la date de cette encyclique : le 30 septembre. Ce n'est pas un jour quelconque. C'est la fête de saint Jérôme, l'homme qui fit la Vulgate seize siècles plus tôt. C'est pourquoi, au Mexique, septembre est le mois de la Bible.",
-   "Avec ces six-là s'achève la chaîne des traducteurs"
-  ]
- },
- "de": {
-  "nombre": "Deutsch",
-  "voz": "de-DE",
-  "ui": {
-   "sala": "Vitrine 24 · Museum zur Geschichte der Bibel",
-   "titulo": "Die sechs des zwanzigsten Jahrhunderts",
-   "siglo": "Von Nácar-Colunga bis Schökel · 1944-1975",
-   "play": "Anhören",
-   "stop": "Anhalten",
-   "pie": "Museum zur Geschichte der Bibel",
-   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
-  },
-  "t": [
-   "Sechs Bibeln in einer einzigen Vitrine, von beiden Seiten des Meeres, fast zur selben Zeit entstanden. Und alle sechs gehen auf dasselbe Dokument zurück.",
-   "Am 30. September 1943 veröffentlichte Papst Pius der Zwölfte die Enzyklika Divino afflante Spiritu. Darin erlaubte er den Katholiken endlich, die Bibel unmittelbar aus dem Hebräischen und dem Griechischen zu übersetzen und nicht aus der lateinischen Vulgata. Vier Jahrhunderte lang hatte die Kirche aus dem Lateinischen übersetzt. An jenem Tag ging die Tür auf.",
-   "Und sehen Sie, wie schnell sie hindurchgingen.",
-   "1944 erschien in Madrid die Nácar-Colunga. Eloíno Nácar übersetzte das Alte Testament aus dem Hebräischen, Alberto Colunga das Neue aus dem Griechischen. Es ist die erste vollständige katholische Bibel auf Spanisch, die aus den Ursprachen übersetzt wurde.",
-   "1947, ebenfalls in Madrid, die Bover-Cantera. José María Bover, Jesuit, und Francisco Cantera, Hebraist. Dies ist die Studienausgabe: kritisch, kommentiert, mit Apparat. Die, mit der man am Text arbeitet, nicht die, die man durchliest.",
-   "Und 1951, jenseits des Meeres, die Straubinger. Juan Straubinger war ein deutscher Priester, der wegen seines Widerstands gegen den Nationalsozialismus sein Land verlassen musste. Er landete in La Plata in Argentinien und lehrte dort Heilige Schrift. Dort übersetzte er sie, aus den Ursprachen. Es ist die erste vollständige katholische Bibel, die in Lateinamerika aus den Ursprachen übersetzt wurde, und gemacht hat sie ein Flüchtling.",
-   "Und 1963 erschien diese hier, die in sieben Bänden. Sie heißt Die schönste Bibel der Welt, geleitet hat sie Alejandro Díez Macho, verlegt wurde sie bei Editorial Codex. Díez Macho war der weltweit führende Fachmann für die Targumim, die aramäischen Fassungen des Alten Testaments. Auch er übersetzte aus den Ursprachen, mit Kommentaren, und der Text läuft in drei Spalten.",
-   "Doch sehen Sie den Unterschied zu den anderen. Jene waren zum Studium gemacht. Diese war gemacht, um in die Häuser zu kommen: sie erschien in Lieferungen, Woche für Woche, in großem Format, in Farbe, mit Hunderten von Abbildungen. Die Leute sammelten sie und ließen sie dann binden. Es ist die Bibel der guten Stube, nicht die des Schreibtischs.",
-   "1967 erschien die Jerusalemer Bibel auf Spanisch. Geboren war sie auf Französisch, an der École Biblique in Jerusalem, und sie brachte etwas mit, was keine der früheren hatte: die Anmerkungen einer Schule, die im Boden selbst grub. Sie übersetzt nicht nur. Sie sagt dem Leser, wo jener Ort liegt, wann jenes geschah und was man unter der Erde gefunden hat. Darum wurde sie zur meistgebrauchten Studienbibel der spanischsprachigen Welt.",
-   "Und 1975 die Nueva Biblia Española von Luis Alonso Schökel und Juan Mateos. Diese setzte sich ein anderes Ziel als alle übrigen: das biblische Spanisch sollte aufhören, nach Übersetzung zu klingen. Schökel war Dichter und Bibelwissenschaftler zugleich, und das merkt man auf jeder Seite. Von allem in dieser Vitrine klingt sie laut gelesen am besten.",
-   "Nun rechnen Sie zusammen. Zwischen 1944 und 1975, in etwas mehr als dreißig Jahren, bekam das Spanische sechs neue Bibeln, aus dem Hebräischen und dem Griechischen übersetzt. Davor waren fast vier Jahrhunderte ohne eine einzige vergangen.",
-   "Und nun kehren Sie zum Datum jener Enzyklika zurück: der 30. September. Das ist kein beliebiger Tag. Es ist das Fest des heiligen Hieronymus, des Mannes, der sechzehn Jahrhunderte zuvor die Vulgata schuf. Darum ist in Mexiko der September der Monat der Bibel.",
-   "Mit diesen sechs schließt sich die Kette der Übersetzer"
-  ]
- },
- "it": {
-  "nombre": "Italiano",
-  "voz": "it-IT",
-  "ui": {
-   "sala": "Vetrina 24 · Museo di Storia della Bibbia",
-   "titulo": "Le sei del Novecento",
-   "siglo": "Da Nácar-Colunga a Schökel · 1944-1975",
-   "play": "Ascolta",
-   "stop": "Ferma",
-   "pie": "Museo di Storia della Bibbia",
-   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
-  },
-  "t": [
-   "Sei Bibbie in una sola vetrina, di qua e di là dal mare, fatte quasi nello stesso momento. E tutte e sei nacquero dallo stesso documento.",
-   "Il 30 settembre 1943 papa Pio XII pubblicò l'enciclica Divino afflante Spiritu. In essa autorizzava finalmente i cattolici a tradurre la Bibbia direttamente dall'ebraico e dal greco, e non dalla Vulgata latina. Per quattro secoli la Chiesa aveva tradotto dal latino. Quel giorno si aprì la porta.",
-   "E guardi con quanta rapidità vi entrarono.",
-   "Nel 1944, a Madrid, uscì la Nácar-Colunga. Eloíno Nácar tradusse l'Antico Testamento dall'ebraico; Alberto Colunga il Nuovo dal greco. È la prima Bibbia cattolica completa in spagnolo tradotta dalle lingue originali.",
-   "Nel 1947, sempre a Madrid, la Bover-Cantera. José María Bover, gesuita, e Francisco Cantera, ebraista. Questa è l'edizione di studio: critica, annotata, con apparato. Quella che si usa per lavorare sul testo, non per leggerlo di seguito.",
-   "E nel 1951, dall'altra parte del mare, la Straubinger. Juan Straubinger era un sacerdote tedesco che dovette lasciare il suo paese per la sua opposizione al nazismo. Finì a La Plata, in Argentina, a insegnare Sacra Scrittura. Lì la tradusse, dagli originali. È la prima Bibbia cattolica completa tradotta dalle lingue originali in America Latina, e la fece un rifugiato.",
-   "E nel 1963 uscì questa, quella dei sette volumi. Si chiama La Bibbia più bella del mondo, la diresse Alejandro Díez Macho e la pubblicò Editorial Codex. Díez Macho era il massimo specialista mondiale dei targumim, le versioni aramaiche dell'Antico Testamento. Anche lui tradusse dagli originali, con commenti, e il testo corre su tre colonne.",
-   "Ma guardi la differenza con le altre. Quelle furono fatte per studiare. Questa fu fatta per entrare nelle case: uscì a fascicoli, settimana dopo settimana, in grande formato, a colori, con centinaia di illustrazioni. La gente la metteva insieme e poi la faceva rilegare. È la Bibbia del salotto, non quella della scrivania.",
-   "Nel 1967 uscì in spagnolo la Bibbia di Gerusalemme. Era nata in francese, all'École Biblique di Gerusalemme, e arrivava con qualcosa che nessuna delle precedenti aveva: le note di una scuola che stava scavando sul terreno stesso. Non si limita a tradurre. Dice al lettore dove si trova quel luogo, quando accadde quel fatto e che cosa si è trovato sotto la terra. Per questo divenne la Bibbia di studio più usata del mondo ispanico.",
-   "E nel 1975, la Nueva Biblia Española, di Luis Alonso Schökel e Juan Mateos. Questa si propose qualcosa di diverso da tutte le altre: che lo spagnolo biblico smettesse di suonare come una traduzione. Schökel era poeta oltre che biblista, e si vede a ogni pagina. Di tutto ciò che sta in questa vetrina, è quella che suona meglio letta ad alta voce.",
-   "Ora faccia la somma. Fra il 1944 e il 1975, in poco più di trent'anni, lo spagnolo ebbe sei Bibbie nuove tradotte dall'ebraico e dal greco. Prima di allora erano passati quasi quattro secoli senza nessuna.",
-   "E ora torni alla data di quell'enciclica: 30 settembre. Non è un giorno qualunque. È la festa di san Girolamo, l'uomo che fece la Vulgata sedici secoli prima. Per questo, in Messico, settembre è il mese della Bibbia.",
-   "Con queste sei si chiude la catena di traduttori"
-  ]
- }
-};
-</script>
-<script src="vitrinas.js"></script>
-<script src="guia.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Las seis del siglo veinte — Museo de Historia de la Biblia</title>
+    <link href="estilos.css" rel="stylesheet" />
+    <style>
+      .tres {
+        flex: none;
+        display: flex;
+        gap: 4px;
+        align-items: flex-end;
+      }
+      .tres i {
+        display: block;
+        width: 10px;
+        border-radius: 1px;
+      }
+    </style>
+  </head>
+  <body data-vitrina="24">
+    <div class="hoja">
+      <header class="cabecera">
+        <div class="marca">
+          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+              <span class="logo-fallback">MHB</span>
+            </object>
+          </a>
+          <div class="marca-texto">
+            <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+            <p class="sala" id="ui-sala"></p>
+          </div>
+          <span class="marca-num">24</span>
+          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+        </div>
+        <div class="header-main">
+          <div aria-hidden="true" class="emblema">
+            <div aria-hidden="true" class="tres">
+              <i style="height: 56px; background: #b4763a"></i><i style="height: 48px; background: #7c5a7a"></i
+              ><i style="height: 60px; background: #3f6b5a"></i><i style="height: 52px; background: #a8443a"></i
+              ><i style="height: 44px; background: #4a6a8a"></i><i style="height: 58px; background: #8a7a3a"></i>
+            </div>
+          </div>
+          <div class="header-texto">
+            <h1 id="ui-titulo"></h1>
+            <p class="siglo" id="ui-siglo"></p>
+          </div>
+        </div>
+      </header>
+      <nav class="nav">
+        <a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"
+          ><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18">
+            <path
+              d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z"
+              fill="none"
+              stroke="currentColor"
+              stroke-linejoin="round"
+              stroke-width="1.6"
+            ></path></svg
+        ></a>
+        <a class="nav-btn" id="nav-ant">‹</a>
+        <select class="nav-sel" id="nav-sel"></select>
+        <a class="nav-btn" id="nav-sig">›</a>
+        <span class="nav-btn" id="nav-pos" style="border: none"></span>
+      </nav>
+      <div class="progreso"><i id="barra"></i></div>
+      <main>
+        <div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+        <div class="mandos">
+          <button class="control" id="btn-play" type="button">
+            <svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16">
+              <polygon fill="currentColor" points="4 3 20 12 4 21"></polygon>
+            </svg>
+            <span id="ui-play">Escuchar</span>
+          </button>
+          <button class="control secundario" hidden="" id="btn-stop" type="button">
+            <span id="ui-stop">Detener</span>
+          </button>
+        </div>
+        <p class="aviso" hidden="" id="ui-aviso"></p>
+        <div id="texto"></div>
+      </main>
+      <footer id="ui-pie">Museo de Historia de la Biblia</footer>
+    </div>
+    <script>
+      const GRABACIONES = { es: "", en: "", fr: "", de: "", it: "" };
+      const GUIA = {
+        es: {
+          nombre: "Español",
+          voz: "es-MX",
+          ui: {
+            sala: "Vitrina 24",
+            titulo: "Las seis del siglo veinte",
+            siglo: "De Nácar-Colunga a Schökel · 1944-1975",
+            play: "Escuchar",
+            stop: "Detener",
+            pie: "Museo de Historia de la Biblia",
+            aviso: "Este teléfono no tiene voz en español. Puede leer el texto.",
+          },
+          t: [
+            "Seis Biblias en una sola vitrina, de un lado y otro del mar, hechas casi al mismo tiempo. Y las seis nacieron del mismo documento.",
+            "El 30 de septiembre de 1943, el papa Pío XII publicó la encíclica Divino afflante Spiritu. En ella autorizó por fin a los católicos a traducir la Biblia directamente del hebreo y del griego, y no de la Vulgata latina. Cuatro siglos llevaba la Iglesia traduciendo del latín. Ese día se abrió la puerta.",
+            "Y mire lo rápido que entraron.",
+            "En 1944, en Madrid, apareció la de Nácar-Colunga. Eloíno Nácar tradujo el Antiguo Testamento del hebreo; Alberto Colunga, el Nuevo del griego. Es la primera Biblia católica completa en español traducida de las lenguas originales.",
+            "En 1947, también en Madrid, la de Bover-Cantera. José María Bover, jesuita, y Francisco Cantera, hebraísta. Ésta es la edición de estudio: crítica, anotada, con aparato. La que se usa para trabajar el texto, no para leerlo de corrido.",
+            "Y en 1951, del otro lado del mar, la de Straubinger. Juan Straubinger era un sacerdote alemán que tuvo que salir de su país por su oposición al nazismo. Acabó en La Plata, Argentina, dando clases de Sagrada Escritura. Ahí la tradujo, desde los originales. Es la primera Biblia católica completa traducida de las lenguas originales en América Latina, y la hizo un refugiado.",
+            "Y en 1963 apareció ésta, la de los siete tomos. Se llama La Sagrada Biblia más bella del mundo, la dirigió Alejandro Díez Macho y la publicó Editorial Codex. Díez Macho era el mayor especialista del mundo en los targumes, las versiones arameas del Antiguo Testamento. También tradujo de los originales, con comentarios, y el texto va a tres columnas.",
+            "Pero fíjese en la diferencia con las demás. Aquéllas se hicieron para estudiar. Ésta se hizo para entrar a las casas: salió por fascículos, semana con semana, en formato grande, a todo color, con cientos de ilustraciones. La gente la fue juntando y después la mandó encuadernar. Es la Biblia de la sala, no la del escritorio.",
+            "En 1967 apareció en español la Biblia de Jerusalén. Había nacido en francés, en la Escuela Bíblica de Jerusalén, y llegó con algo que ninguna de las anteriores traía: las notas de una escuela que estaba excavando en el propio terreno. No sólo traduce. Le dice al lector dónde queda ese lugar, cuándo ocurrió aquello y qué se ha encontrado bajo la tierra. Por eso se volvió la Biblia de estudio más usada del mundo hispano.",
+            "Y en 1975, la Nueva Biblia Española, de Luis Alonso Schökel y Juan Mateos. Ésta se propuso algo distinto de todas las demás: que el castellano bíblico dejara de sonar a traducción. Schökel era poeta además de biblista, y eso se nota en cada página. Es la que mejor suena leída en voz alta de todas las de esta vitrina.",
+            "Ahora sume. Entre 1944 y 1975, en poco más de treinta años, el español tuvo seis Biblias nuevas traducidas desde el hebreo y el griego. Antes de eso habían pasado casi cuatro siglos sin ninguna.",
+            "Y ahora vuelva usted a la fecha de aquella encíclica: 30 de septiembre. No es un día cualquiera. Es la fiesta de san Jerónimo, el hombre que hizo la Vulgata dieciséis siglos antes. Por eso, en México, septiembre es el mes de la Biblia.",
+            "Con estas seis se cierra la cadena de traductores",
+          ],
+        },
+        en: {
+          nombre: "English",
+          voz: "en-GB",
+          ui: {
+            sala: "Case 24",
+            titulo: "The six of the twentieth century",
+            siglo: "From Nácar-Colunga to Schökel · 1944-1975",
+            play: "Listen",
+            stop: "Stop",
+            pie: "Museum of the History of the Bible",
+            aviso: "This phone has no English voice available. You can read the text instead.",
+          },
+          t: [
+            "Six Bibles in a single case, from either side of the ocean, made at almost the same time. And all six were born of the same document.",
+            "On the thirtieth of September 1943, Pope Pius the Twelfth published the encyclical Divino afflante Spiritu. In it he at last authorised Catholics to translate the Bible directly from the Hebrew and the Greek, and not from the Latin Vulgate. For four centuries the Church had been translating from Latin. That day the door opened.",
+            "And see how quickly they went through it.",
+            "In 1944, in Madrid, the Nácar-Colunga appeared. Eloíno Nácar translated the Old Testament from the Hebrew; Alberto Colunga, the New from the Greek. It is the first complete Catholic Bible in Spanish translated from the original languages.",
+            "In 1947, also in Madrid, the Bover-Cantera. José María Bover, a Jesuit, and Francisco Cantera, a Hebrew scholar. This is the study edition: critical, annotated, with an apparatus. The one you use to work on the text, not to read straight through.",
+            "And in 1951, on the other side of the ocean, the Straubinger. Juan Straubinger was a German priest who had to leave his country for his opposition to Nazism. He ended up in La Plata, in Argentina, teaching Sacred Scripture. There he translated it, from the originals. It is the first complete Catholic Bible translated from the original languages in Latin America, and a refugee made it.",
+            "And in 1963 this one appeared, the one in seven volumes. It is called The Most Beautiful Bible in the World, it was directed by Alejandro Díez Macho and published by Editorial Codex. Díez Macho was the world's foremost specialist in the Targums, the Aramaic versions of the Old Testament. He too translated from the originals, with commentary, and the text runs in three columns.",
+            "But notice the difference from the others. Those were made for study. This one was made to come into people's homes: it appeared in instalments, week by week, in large format, in full colour, with hundreds of illustrations. People collected it and then had it bound. It is the Bible of the front room, not of the desk.",
+            "In 1967 the Jerusalem Bible appeared in Spanish. It had been born in French, at the École Biblique in Jerusalem, and it came with something none of the others had: the notes of a school that was digging in the ground itself. It does not merely translate. It tells the reader where that place is, when that happened, and what has been found beneath the soil. That is why it became the most widely used study Bible in the Spanish-speaking world.",
+            "And in 1975, the Nueva Biblia Española, by Luis Alonso Schökel and Juan Mateos. This one set itself a different aim from all the rest: that biblical Spanish should stop sounding like a translation. Schökel was a poet as well as a biblical scholar, and it shows on every page. Of everything in this case, it is the one that sounds best read aloud.",
+            "Now add it up. Between 1944 and 1975, in a little over thirty years, Spanish gained six new Bibles translated from the Hebrew and the Greek. Before that, almost four centuries had gone by without a single one.",
+            "And now go back to the date of that encyclical: the thirtieth of September. It is not just any day. It is the feast of Saint Jerome, the man who made the Vulgate sixteen centuries earlier. That is why, in Mexico, September is the month of the Bible.",
+            "With these six, the chain of translators",
+          ],
+        },
+        fr: {
+          nombre: "Français",
+          voz: "fr-FR",
+          ui: {
+            sala: "Vitrine 24",
+            titulo: "Les six du vingtième siècle",
+            siglo: "De Nácar-Colunga à Schökel · 1944-1975",
+            play: "Écouter",
+            stop: "Arrêter",
+            pie: "Musée de l'Histoire de la Bible",
+            aviso: "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte.",
+          },
+          t: [
+            "Six Bibles dans une seule vitrine, des deux côtés de la mer, faites presque en même temps. Et toutes six sont nées du même document.",
+            "Le 30 septembre 1943, le pape Pie XII publia l'encyclique Divino afflante Spiritu. Il y autorisait enfin les catholiques à traduire la Bible directement de l'hébreu et du grec, et non de la Vulgate latine. Depuis quatre siècles, l'Église traduisait du latin. Ce jour-là, la porte s'ouvrit.",
+            "Et voyez avec quelle rapidité ils s'y sont engouffrés.",
+            "En 1944, à Madrid, parut la Nácar-Colunga. Eloíno Nácar traduisit l'Ancien Testament de l'hébreu ; Alberto Colunga, le Nouveau du grec. C'est la première Bible catholique complète en espagnol traduite des langues originales.",
+            "En 1947, à Madrid également, la Bover-Cantera. José María Bover, jésuite, et Francisco Cantera, hébraïsant. C'est l'édition d'étude : critique, annotée, avec un apparat. Celle dont on se sert pour travailler le texte, non pour le lire d'un trait.",
+            "Et en 1951, de l'autre côté de la mer, la Straubinger. Juan Straubinger était un prêtre allemand qui dut quitter son pays pour son opposition au nazisme. Il finit à La Plata, en Argentine, enseignant l'Écriture sainte. C'est là qu'il la traduisit, à partir des originaux. C'est la première Bible catholique complète traduite des langues originales en Amérique latine, et elle est l'œuvre d'un réfugié.",
+            "Et en 1963 parut celle-ci, celle des sept volumes. Elle s'appelle La plus belle Bible du monde, elle fut dirigée par Alejandro Díez Macho et publiée par Editorial Codex. Díez Macho était le plus grand spécialiste mondial des targums, les versions araméennes de l'Ancien Testament. Lui aussi traduisit des originaux, avec commentaires, et le texte court sur trois colonnes.",
+            "Mais voyez la différence avec les autres. Celles-là furent faites pour l'étude. Celle-ci fut faite pour entrer dans les maisons : elle parut en fascicules, semaine après semaine, en grand format, en couleurs, avec des centaines d'illustrations. Les gens la réunissaient puis la faisaient relier. C'est la Bible du salon, non celle du bureau.",
+            "En 1967 parut en espagnol la Bible de Jérusalem. Elle était née en français, à l'École biblique de Jérusalem, et elle apportait quelque chose qu'aucune des précédentes n'avait : les notes d'une école qui fouillait sur le terrain même. Elle ne se contente pas de traduire. Elle dit au lecteur où se trouve ce lieu, quand cela s'est passé et ce qu'on a trouvé sous la terre. C'est pourquoi elle est devenue la Bible d'étude la plus utilisée du monde hispanophone.",
+            "Et en 1975, la Nueva Biblia Española, de Luis Alonso Schökel et Juan Mateos. Celle-ci s'est fixé un but différent de toutes les autres : que l'espagnol biblique cesse de sonner comme une traduction. Schökel était poète autant que bibliste, et cela se voit à chaque page. De tout ce qui est dans cette vitrine, c'est celle qui sonne le mieux lue à voix haute.",
+            "Faites le compte. Entre 1944 et 1975, en un peu plus de trente ans, l'espagnol a eu six Bibles nouvelles traduites de l'hébreu et du grec. Auparavant, près de quatre siècles s'étaient écoulés sans aucune.",
+            "Et maintenant revenez à la date de cette encyclique : le 30 septembre. Ce n'est pas un jour quelconque. C'est la fête de saint Jérôme, l'homme qui fit la Vulgate seize siècles plus tôt. C'est pourquoi, au Mexique, septembre est le mois de la Bible.",
+            "Avec ces six-là s'achève la chaîne des traducteurs",
+          ],
+        },
+        de: {
+          nombre: "Deutsch",
+          voz: "de-DE",
+          ui: {
+            sala: "Vitrine 24",
+            titulo: "Die sechs des zwanzigsten Jahrhunderts",
+            siglo: "Von Nácar-Colunga bis Schökel · 1944-1975",
+            play: "Anhören",
+            stop: "Anhalten",
+            pie: "Museum zur Geschichte der Bibel",
+            aviso: "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen.",
+          },
+          t: [
+            "Sechs Bibeln in einer einzigen Vitrine, von beiden Seiten des Meeres, fast zur selben Zeit entstanden. Und alle sechs gehen auf dasselbe Dokument zurück.",
+            "Am 30. September 1943 veröffentlichte Papst Pius der Zwölfte die Enzyklika Divino afflante Spiritu. Darin erlaubte er den Katholiken endlich, die Bibel unmittelbar aus dem Hebräischen und dem Griechischen zu übersetzen und nicht aus der lateinischen Vulgata. Vier Jahrhunderte lang hatte die Kirche aus dem Lateinischen übersetzt. An jenem Tag ging die Tür auf.",
+            "Und sehen Sie, wie schnell sie hindurchgingen.",
+            "1944 erschien in Madrid die Nácar-Colunga. Eloíno Nácar übersetzte das Alte Testament aus dem Hebräischen, Alberto Colunga das Neue aus dem Griechischen. Es ist die erste vollständige katholische Bibel auf Spanisch, die aus den Ursprachen übersetzt wurde.",
+            "1947, ebenfalls in Madrid, die Bover-Cantera. José María Bover, Jesuit, und Francisco Cantera, Hebraist. Dies ist die Studienausgabe: kritisch, kommentiert, mit Apparat. Die, mit der man am Text arbeitet, nicht die, die man durchliest.",
+            "Und 1951, jenseits des Meeres, die Straubinger. Juan Straubinger war ein deutscher Priester, der wegen seines Widerstands gegen den Nationalsozialismus sein Land verlassen musste. Er landete in La Plata in Argentinien und lehrte dort Heilige Schrift. Dort übersetzte er sie, aus den Ursprachen. Es ist die erste vollständige katholische Bibel, die in Lateinamerika aus den Ursprachen übersetzt wurde, und gemacht hat sie ein Flüchtling.",
+            "Und 1963 erschien diese hier, die in sieben Bänden. Sie heißt Die schönste Bibel der Welt, geleitet hat sie Alejandro Díez Macho, verlegt wurde sie bei Editorial Codex. Díez Macho war der weltweit führende Fachmann für die Targumim, die aramäischen Fassungen des Alten Testaments. Auch er übersetzte aus den Ursprachen, mit Kommentaren, und der Text läuft in drei Spalten.",
+            "Doch sehen Sie den Unterschied zu den anderen. Jene waren zum Studium gemacht. Diese war gemacht, um in die Häuser zu kommen: sie erschien in Lieferungen, Woche für Woche, in großem Format, in Farbe, mit Hunderten von Abbildungen. Die Leute sammelten sie und ließen sie dann binden. Es ist die Bibel der guten Stube, nicht die des Schreibtischs.",
+            "1967 erschien die Jerusalemer Bibel auf Spanisch. Geboren war sie auf Französisch, an der École Biblique in Jerusalem, und sie brachte etwas mit, was keine der früheren hatte: die Anmerkungen einer Schule, die im Boden selbst grub. Sie übersetzt nicht nur. Sie sagt dem Leser, wo jener Ort liegt, wann jenes geschah und was man unter der Erde gefunden hat. Darum wurde sie zur meistgebrauchten Studienbibel der spanischsprachigen Welt.",
+            "Und 1975 die Nueva Biblia Española von Luis Alonso Schökel und Juan Mateos. Diese setzte sich ein anderes Ziel als alle übrigen: das biblische Spanisch sollte aufhören, nach Übersetzung zu klingen. Schökel war Dichter und Bibelwissenschaftler zugleich, und das merkt man auf jeder Seite. Von allem in dieser Vitrine klingt sie laut gelesen am besten.",
+            "Nun rechnen Sie zusammen. Zwischen 1944 und 1975, in etwas mehr als dreißig Jahren, bekam das Spanische sechs neue Bibeln, aus dem Hebräischen und dem Griechischen übersetzt. Davor waren fast vier Jahrhunderte ohne eine einzige vergangen.",
+            "Und nun kehren Sie zum Datum jener Enzyklika zurück: der 30. September. Das ist kein beliebiger Tag. Es ist das Fest des heiligen Hieronymus, des Mannes, der sechzehn Jahrhunderte zuvor die Vulgata schuf. Darum ist in Mexiko der September der Monat der Bibel.",
+            "Mit diesen sechs schließt sich die Kette der Übersetzer",
+          ],
+        },
+        it: {
+          nombre: "Italiano",
+          voz: "it-IT",
+          ui: {
+            sala: "Vetrina 24",
+            titulo: "Le sei del Novecento",
+            siglo: "Da Nácar-Colunga a Schökel · 1944-1975",
+            play: "Ascolta",
+            stop: "Ferma",
+            pie: "Museo di Storia della Bibbia",
+            aviso: "Questo telefono non ha una voce italiana. Può leggere il testo.",
+          },
+          t: [
+            "Sei Bibbie in una sola vetrina, di qua e di là dal mare, fatte quasi nello stesso momento. E tutte e sei nacquero dallo stesso documento.",
+            "Il 30 settembre 1943 papa Pio XII pubblicò l'enciclica Divino afflante Spiritu. In essa autorizzava finalmente i cattolici a tradurre la Bibbia direttamente dall'ebraico e dal greco, e non dalla Vulgata latina. Per quattro secoli la Chiesa aveva tradotto dal latino. Quel giorno si aprì la porta.",
+            "E guardi con quanta rapidità vi entrarono.",
+            "Nel 1944, a Madrid, uscì la Nácar-Colunga. Eloíno Nácar tradusse l'Antico Testamento dall'ebraico; Alberto Colunga il Nuovo dal greco. È la prima Bibbia cattolica completa in spagnolo tradotta dalle lingue originali.",
+            "Nel 1947, sempre a Madrid, la Bover-Cantera. José María Bover, gesuita, e Francisco Cantera, ebraista. Questa è l'edizione di studio: critica, annotata, con apparato. Quella che si usa per lavorare sul testo, non per leggerlo di seguito.",
+            "E nel 1951, dall'altra parte del mare, la Straubinger. Juan Straubinger era un sacerdote tedesco che dovette lasciare il suo paese per la sua opposizione al nazismo. Finì a La Plata, in Argentina, a insegnare Sacra Scrittura. Lì la tradusse, dagli originali. È la prima Bibbia cattolica completa tradotta dalle lingue originali in America Latina, e la fece un rifugiato.",
+            "E nel 1963 uscì questa, quella dei sette volumi. Si chiama La Bibbia più bella del mondo, la diresse Alejandro Díez Macho e la pubblicò Editorial Codex. Díez Macho era il massimo specialista mondiale dei targumim, le versioni aramaiche dell'Antico Testamento. Anche lui tradusse dagli originali, con commenti, e il testo corre su tre colonne.",
+            "Ma guardi la differenza con le altre. Quelle furono fatte per studiare. Questa fu fatta per entrare nelle case: uscì a fascicoli, settimana dopo settimana, in grande formato, a colori, con centinaia di illustrazioni. La gente la metteva insieme e poi la faceva rilegare. È la Bibbia del salotto, non quella della scrivania.",
+            "Nel 1967 uscì in spagnolo la Bibbia di Gerusalemme. Era nata in francese, all'École Biblique di Gerusalemme, e arrivava con qualcosa che nessuna delle precedenti aveva: le note di una scuola che stava scavando sul terreno stesso. Non si limita a tradurre. Dice al lettore dove si trova quel luogo, quando accadde quel fatto e che cosa si è trovato sotto la terra. Per questo divenne la Bibbia di studio più usata del mondo ispanico.",
+            "E nel 1975, la Nueva Biblia Española, di Luis Alonso Schökel e Juan Mateos. Questa si propose qualcosa di diverso da tutte le altre: che lo spagnolo biblico smettesse di suonare come una traduzione. Schökel era poeta oltre che biblista, e si vede a ogni pagina. Di tutto ciò che sta in questa vetrina, è quella che suona meglio letta ad alta voce.",
+            "Ora faccia la somma. Fra il 1944 e il 1975, in poco più di trent'anni, lo spagnolo ebbe sei Bibbie nuove tradotte dall'ebraico e dal greco. Prima di allora erano passati quasi quattro secoli senza nessuna.",
+            "E ora torni alla data di quell'enciclica: 30 settembre. Non è un giorno qualunque. È la festa di san Girolamo, l'uomo che fece la Vulgata sedici secoli prima. Per questo, in Messico, settembre è il mese della Bibbia.",
+            "Con queste sei si chiude la catena di traduttori",
+          ],
+        },
+      };
+    </script>
+    <script src="vitrinas.js"></script>
+    <script src="guia.js"></script>
+  </body>
 </html>

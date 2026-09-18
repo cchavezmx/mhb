@@ -1,197 +1,229 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Las Biblias de hoy — Museo de Historia de la Biblia</title>
-<link href="estilos.css" rel="stylesheet"/>
-<style>
-.familias{flex:none;display:flex;gap:5px;align-items:flex-end}
-  .familias i{display:block;width:16px;border-radius:2px}
-</style>
-</head>
-<body data-vitrina="26">
-<div class="hoja">
-<header class="cabecera">
-<div class="marca">
-<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
-</a>
-<div class="marca-texto">
-<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
-<p class="sala" id="ui-sala"></p>
-</div>
-<span class="marca-num">26</span>
-<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
-</div>
-<div class="header-main">
-<div aria-hidden="true" class="emblema"><div aria-hidden="true" class="familias"><i style="height:58px;background:#C06A2E"></i><i style="height:48px;background:#E0E4E2"></i><i style="height:38px;background:#7FA6B2"></i></div></div>
-<div class="header-texto">
-<h1 id="ui-titulo"></h1>
-<p class="siglo" id="ui-siglo"></p>
-</div>
-</div>
-</header>
-<nav class="nav">
-<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
-<a class="nav-btn" id="nav-ant">‹</a>
-<select class="nav-sel" id="nav-sel"></select>
-<a class="nav-btn" id="nav-sig">›</a>
-<span class="nav-btn" id="nav-pos" style="border:none"></span>
-</nav>
-<div class="progreso"><i id="barra"></i></div>
-<main>
-<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
-<div class="mandos">
-<button class="control" id="btn-play" type="button"><svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16"><polygon fill="currentColor" points="4 3 20 12 4 21"></polygon></svg> <span id="ui-play">Escuchar</span></button>
-<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
-</div>
-<p class="aviso" hidden="" id="ui-aviso"></p>
-<div id="texto"></div>
-</main>
-<footer id="ui-pie">Museo de Historia de la Biblia</footer>
-</div>
-<script>
-const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
-const GUIA = {
- "es": {
-  "nombre": "Español",
-  "voz": "es-MX",
-  "ui": {
-   "sala": "Vitrina 26 · Museo de Historia de la Biblia",
-   "titulo": "Las Biblias de hoy",
-   "siglo": "Reina-Valera · las que se ciñen · las que explican",
-   "play": "Escuchar",
-   "stop": "Detener",
-   "pie": "Museo de Historia de la Biblia",
-   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
-  },
-  "t": [
-   "Éstas son las de ahora. Las que usted puede comprar esta tarde en cualquier librería, y las que probablemente tiene en su casa.",
-   "Son muchas, y esa cantidad desconcierta a cualquiera. Para no perderse, mírelas en tres familias.",
-   "La primera familia no es una traducción nueva: es una sola traducción revisada muchas veces. Es la Reina-Valera. Aquí están la de 1909, la de 1960, que es la más leída en toda América Latina, la de 1995, la Contemporánea y la Actualizada. Todas vienen del mismo libro que usted vio en las vitrinas dieciocho y diecinueve. Cuatro siglos y medio corrigiendo el mismo texto en vez de empezar otro.",
-   "La segunda familia busca pegarse al original lo más posible, aunque el castellano quede algo tieso. El ejemplo claro es la Biblia de las Américas. Cerca de ahí están las que buscan el equilibrio entre fidelidad y naturalidad: la Nueva Versión Internacional y la Biblia de América.",
-   "La tercera familia pone por delante que se entienda. Dios Habla Hoy fue la primera que se hizo así en nuestra lengua. La Traducción en Lenguaje Actual se pensó para quien tiene poca práctica de lectura, con frases cortas y palabras de uso común, y se probó con lectores reales antes de publicarse. La Nueva Traducción Viviente busca que, leída en voz alta, parezca escrita hoy.",
-   "Y en el extremo de esa familia está La Biblia al Día, que ya no es traducción sino paráfrasis: alguien vuelve a contar el texto con sus propias palabras. Reténgalo, porque a esa misma familia pertenece la versión que cierra este recorrido.",
-   "Ahora fíjese en lo que cambió, porque es el final del camino que ha venido recorriendo.",
-   "Durante siglos, traducir la Biblia fue obra de un hombre solo. Casiodoro de Reina tardó doce años, huyendo. Valera le dedicó otros veinte. Un hombre, una vida, un libro.",
-   "Éstas las hicieron equipos. Decenas de especialistas de varios países: biblistas, lingüistas y gente que sabe cómo se habla hoy en México, en Colombia, en Argentina y en España. Cada pasaje se discutió en comité, se probó con lectores y después se revisó.",
-   "Y cambió también la pregunta. Antes se preguntaba una sola cosa: ¿esto dice exactamente lo mismo que el original? Ahora se pregunta además: ¿lo entiende la persona que lo va a leer? Es la vieja idea de Lutero, la de salir a oír hablar a la gente en el mercado, convertida en método de trabajo.",
-   "Las bilingües merecen párrafo aparte, porque son hijas directas de dos vitrinas que usted ya vio: la Políglota de Alcalá y la English Hexapla. Dos lenguas, una junto a otra, para que el lector compare por sí mismo. Lo que en 1514 costó quince años y una fortuna, hoy cabe en un tomo de bolsillo.",
-   "Y todavía queda algo pendiente. Todas éstas están en español. Faltan las lenguas en que este libro se lee hoy en el mundo, y en este país. De eso tratan las vitrinas que siguen."
-  ]
- },
- "en": {
-  "nombre": "English",
-  "voz": "en-GB",
-  "ui": {
-   "sala": "Case 26 · Museum of the History of the Bible",
-   "titulo": "The Bibles of today",
-   "siglo": "Reina-Valera · the close ones · the clear ones",
-   "play": "Listen",
-   "stop": "Stop",
-   "pie": "Museum of the History of the Bible",
-   "aviso": "This phone has no English voice available. You can read the text instead."
-  },
-  "t": [
-   "These are the ones of today. The ones you could buy this afternoon in any bookshop, and the ones you probably have at home.",
-   "There are a great many, and that number bewilders anyone. So as not to get lost, look at them in three families.",
-   "The first family is not a new translation at all: it is one translation revised many times over. It is the Reina-Valera. Here are the 1909, the 1960, which is the most widely read in all of Latin America, the 1995, the Contemporánea and the Actualizada. All of them come from the same book you saw in cases eighteen and nineteen. Four and a half centuries correcting the same text instead of starting another.",
-   "The second family tries to stay as close to the original as possible, even if the Spanish comes out a little stiff. The clear example is the Biblia de las Américas. Nearby are those that seek the balance between faithfulness and naturalness: the Nueva Versión Internacional and the Biblia de América.",
-   "The third family puts understanding first. Dios Habla Hoy was the first made that way in our language. The Traducción en Lenguaje Actual was designed for the reader of little practice, with short sentences and everyday words, and was tested on real readers before publication. The Nueva Traducción Viviente aims to sound, read aloud, as though it had been written today.",
-   "And at the far edge of that family is La Biblia al Día, which is no longer a translation but a paraphrase: someone retells the text in his own words. Keep that in mind, because the version that closes this tour belongs to that same family.",
-   "Now notice what changed, because it is the end of the road you have been travelling.",
-   "For centuries, translating the Bible was the work of one man alone. Casiodoro de Reina took twelve years, on the run. Valera gave it twenty more. One man, one life, one book.",
-   "These were made by teams. Dozens of specialists from several countries: biblical scholars, linguists, and people who know how Spanish is actually spoken today in Mexico, in Colombia, in Argentina and in Spain. Every passage was argued out in committee, tested on readers, and then revised.",
-   "And the question changed too. Before, only one thing was asked: does this say exactly what the original says? Now something else is asked as well: will the person who reads it understand it? It is Luther's old idea, going out to hear people speak in the marketplace, turned into a working method.",
-   "The bilingual editions deserve a word of their own, because they descend directly from two cases you have already seen: the Polyglot of Alcalá and the English Hexapla. Two languages, side by side, so the reader can compare for himself. What in 1514 cost fifteen years and a fortune now fits in a pocket volume.",
-   "And something is still pending. All of these are in Spanish. Missing are the languages in which this book is read today across the world, and in this country. That is what the next cases are about."
-  ]
- },
- "fr": {
-  "nombre": "Français",
-  "voz": "fr-FR",
-  "ui": {
-   "sala": "Vitrine 26 · Musée de l'Histoire de la Bible",
-   "titulo": "Les Bibles d'aujourd'hui",
-   "siglo": "Reina-Valera · les littérales · les claires",
-   "play": "Écouter",
-   "stop": "Arrêter",
-   "pie": "Musée de l'Histoire de la Bible",
-   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
-  },
-  "t": [
-   "Voici celles d'aujourd'hui. Celles que vous pourriez acheter cet après-midi dans n'importe quelle librairie, et celles que vous avez probablement chez vous.",
-   "Elles sont nombreuses, et ce nombre déconcerte tout le monde. Pour ne pas s'y perdre, regardez-les en trois familles.",
-   "La première famille n'est pas une traduction nouvelle : c'est une seule traduction révisée bien des fois. C'est la Reina-Valera. Voici celle de 1909, celle de 1960, la plus lue dans toute l'Amérique latine, celle de 1995, la Contemporánea et l'Actualizada. Toutes viennent du même livre que vous avez vu dans les vitrines dix-huit et dix-neuf. Quatre siècles et demi à corriger le même texte au lieu d'en commencer un autre.",
-   "La deuxième famille cherche à coller au maximum à l'original, quitte à ce que l'espagnol soit un peu raide. L'exemple net est la Biblia de las Américas. Tout près se tiennent celles qui cherchent l'équilibre entre fidélité et naturel : la Nueva Versión Internacional et la Biblia de América.",
-   "La troisième famille met la compréhension en premier. Dios Habla Hoy fut la première faite ainsi dans notre langue. La Traducción en Lenguaje Actual a été conçue pour qui a peu l'habitude de lire, avec des phrases courtes et des mots courants, et elle a été testée auprès de lecteurs réels avant de paraître. La Nueva Traducción Viviente veut que, lue à voix haute, elle semble écrite aujourd'hui.",
-   "Et à l'extrémité de cette famille se trouve La Biblia al Día, qui n'est plus une traduction mais une paraphrase : quelqu'un raconte à nouveau le texte avec ses propres mots. Retenez-le, car c'est à cette même famille qu'appartient la version qui clôt ce parcours.",
-   "Regardez maintenant ce qui a changé, car c'est la fin du chemin que vous avez parcouru.",
-   "Pendant des siècles, traduire la Bible fut l'œuvre d'un seul homme. Casiodoro de Reina y mit douze ans, en fuite. Valera y consacra vingt de plus. Un homme, une vie, un livre.",
-   "Celles-ci ont été faites par des équipes. Des dizaines de spécialistes de plusieurs pays : biblistes, linguistes, et des gens qui savent comment on parle aujourd'hui au Mexique, en Colombie, en Argentine et en Espagne. Chaque passage a été discuté en comité, testé auprès de lecteurs, puis révisé.",
-   "Et la question a changé elle aussi. Avant, on demandait une seule chose : est-ce que cela dit exactement ce que dit l'original ? Maintenant on demande aussi : celui qui va le lire, le comprendra-t-il ? C'est la vieille idée de Luther, sortir écouter parler les gens au marché, devenue méthode de travail.",
-   "Les bilingues méritent un paragraphe à part, car elles descendent directement de deux vitrines que vous avez déjà vues : la Polyglotte d'Alcalá et l'English Hexapla. Deux langues, l'une à côté de l'autre, pour que le lecteur compare lui-même. Ce qui en 1514 coûtait quinze ans et une fortune tient aujourd'hui dans un volume de poche.",
-   "Et il reste quelque chose en suspens. Toutes celles-ci sont en espagnol. Manquent les langues dans lesquelles ce livre se lit aujourd'hui dans le monde, et dans ce pays. C'est l'objet des vitrines suivantes."
-  ]
- },
- "de": {
-  "nombre": "Deutsch",
-  "voz": "de-DE",
-  "ui": {
-   "sala": "Vitrine 26 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Bibeln von heute",
-   "siglo": "Reina-Valera · die genauen · die verständlichen",
-   "play": "Anhören",
-   "stop": "Anhalten",
-   "pie": "Museum zur Geschichte der Bibel",
-   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
-  },
-  "t": [
-   "Dies sind die von heute. Die, die Sie heute Nachmittag in jeder Buchhandlung kaufen könnten, und die, die Sie wahrscheinlich zu Hause haben.",
-   "Es sind viele, und diese Menge verwirrt jeden. Um sich nicht zu verlieren, betrachten Sie sie in drei Familien.",
-   "Die erste Familie ist gar keine neue Übersetzung: es ist eine einzige Übersetzung, viele Male überarbeitet. Es ist die Reina-Valera. Hier stehen die von 1909, die von 1960, die meistgelesene in ganz Lateinamerika, die von 1995, die Contemporánea und die Actualizada. Alle stammen aus demselben Buch, das Sie in den Vitrinen achtzehn und neunzehn gesehen haben. Viereinhalb Jahrhunderte, in denen derselbe Text verbessert wurde, statt einen neuen zu beginnen.",
-   "Die zweite Familie will so nah wie möglich am Original bleiben, auch wenn das Spanische dabei etwas steif gerät. Das klare Beispiel ist die Biblia de las Américas. Daneben stehen jene, die das Gleichgewicht zwischen Treue und Natürlichkeit suchen: die Nueva Versión Internacional und die Biblia de América.",
-   "Die dritte Familie stellt das Verstehen voran. Dios Habla Hoy war die erste, die in unserer Sprache so gemacht wurde. Die Traducción en Lenguaje Actual wurde für Leser mit wenig Übung entworfen, mit kurzen Sätzen und alltäglichen Wörtern, und vor der Veröffentlichung an echten Lesern erprobt. Die Nueva Traducción Viviente will, dass sie laut gelesen klingt, als wäre sie heute geschrieben.",
-   "Und am äußeren Rand dieser Familie steht La Biblia al Día, die keine Übersetzung mehr ist, sondern eine Umschreibung: jemand erzählt den Text mit eigenen Worten nach. Merken Sie sich das, denn zu genau dieser Familie gehört die Fassung, die diesen Rundgang beschließt.",
-   "Achten Sie nun darauf, was sich geändert hat, denn es ist das Ende des Weges, den Sie gegangen sind.",
-   "Jahrhundertelang war das Übersetzen der Bibel das Werk eines einzelnen Mannes. Casiodoro de Reina brauchte zwölf Jahre, auf der Flucht. Valera gab ihr zwanzig weitere. Ein Mann, ein Leben, ein Buch.",
-   "Diese hier haben Teams gemacht. Dutzende Fachleute aus mehreren Ländern: Bibelwissenschaftler, Sprachwissenschaftler und Menschen, die wissen, wie heute in Mexiko, in Kolumbien, in Argentinien und in Spanien wirklich gesprochen wird. Jede Stelle wurde im Ausschuss durchgesprochen, an Lesern erprobt und dann überarbeitet.",
-   "Und auch die Frage hat sich geändert. Früher fragte man nur eines: sagt das genau dasselbe wie das Original? Heute fragt man außerdem: versteht es der, der es lesen wird? Es ist Luthers alte Idee, dem Volk auf dem Markt aufs Maul zu schauen, zur Arbeitsmethode geworden.",
-   "Die zweisprachigen verdienen einen eigenen Absatz, denn sie stammen unmittelbar von zwei Vitrinen ab, die Sie schon gesehen haben: der Polyglotte von Alcalá und der English Hexapla. Zwei Sprachen nebeneinander, damit der Leser selbst vergleicht. Was 1514 fünfzehn Jahre und ein Vermögen kostete, passt heute in einen Taschenband.",
-   "Und etwas steht noch aus. Alle diese sind auf Spanisch. Es fehlen die Sprachen, in denen dieses Buch heute in der Welt gelesen wird, und in diesem Land. Davon handeln die nächsten Vitrinen."
-  ]
- },
- "it": {
-  "nombre": "Italiano",
-  "voz": "it-IT",
-  "ui": {
-   "sala": "Vetrina 26 · Museo di Storia della Bibbia",
-   "titulo": "Le Bibbie di oggi",
-   "siglo": "Reina-Valera · le letterali · le chiare",
-   "play": "Ascolta",
-   "stop": "Ferma",
-   "pie": "Museo di Storia della Bibbia",
-   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
-  },
-  "t": [
-   "Queste sono quelle di oggi. Quelle che potrebbe comprare questo pomeriggio in qualsiasi libreria, e quelle che probabilmente ha in casa.",
-   "Sono molte, e quel numero disorienta chiunque. Per non perdersi, le guardi in tre famiglie.",
-   "La prima famiglia non è affatto una traduzione nuova: è una sola traduzione rivista molte volte. È la Reina-Valera. Qui ci sono quella del 1909, quella del 1960, la più letta in tutta l'America Latina, quella del 1995, la Contemporánea e la Actualizada. Tutte vengono dallo stesso libro che ha visto nelle vetrine diciotto e diciannove. Quattro secoli e mezzo a correggere lo stesso testo invece di cominciarne un altro.",
-   "La seconda famiglia cerca di attaccarsi il più possibile all'originale, anche se lo spagnolo resta un po' rigido. L'esempio chiaro è la Biblia de las Américas. Accanto stanno quelle che cercano l'equilibrio fra fedeltà e naturalezza: la Nueva Versión Internacional e la Biblia de América.",
-   "La terza famiglia mette al primo posto la comprensione. Dios Habla Hoy fu la prima fatta così nella nostra lingua. La Traducción en Lenguaje Actual fu pensata per chi ha poca pratica di lettura, con frasi brevi e parole d'uso comune, e fu provata su lettori reali prima di uscire. La Nueva Traducción Viviente vuole che, letta ad alta voce, sembri scritta oggi.",
-   "E all'estremo di quella famiglia sta La Biblia al Día, che non è più traduzione ma parafrasi: qualcuno racconta di nuovo il testo con parole sue. Se lo ricordi, perché a quella stessa famiglia appartiene la versione che chiude questo percorso.",
-   "Ora guardi che cosa è cambiato, perché è la fine del cammino che ha percorso.",
-   "Per secoli, tradurre la Bibbia fu opera di un uomo solo. Casiodoro de Reina impiegò dodici anni, in fuga. Valera le dedicò altri venti. Un uomo, una vita, un libro.",
-   "Queste le hanno fatte delle squadre. Decine di specialisti di più paesi: biblisti, linguisti e gente che sa come si parla oggi in Messico, in Colombia, in Argentina e in Spagna. Ogni passo è stato discusso in commissione, provato su lettori e poi rivisto.",
-   "Ed è cambiata anche la domanda. Prima se ne faceva una sola: questo dice esattamente ciò che dice l'originale? Ora se ne fa anche un'altra: lo capirà chi lo leggerà? È la vecchia idea di Lutero, uscire ad ascoltare come parla la gente al mercato, diventata metodo di lavoro.",
-   "Le bilingui meritano un paragrafo a parte, perché discendono direttamente da due vetrine che ha già visto: la Poliglotta di Alcalá e l'English Hexapla. Due lingue, una accanto all'altra, perché il lettore confronti da sé. Quello che nel 1514 costò quindici anni e una fortuna, oggi sta in un volume tascabile.",
-   "E resta ancora qualcosa in sospeso. Tutte queste sono in spagnolo. Mancano le lingue in cui questo libro si legge oggi nel mondo, e in questo paese. Di questo trattano le vetrine che seguono."
-  ]
- }
-};
-</script>
-<script src="vitrinas.js"></script>
-<script src="guia.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Las Biblias de hoy — Museo de Historia de la Biblia</title>
+    <link href="estilos.css" rel="stylesheet" />
+    <style>
+      .familias {
+        flex: none;
+        display: flex;
+        gap: 5px;
+        align-items: flex-end;
+      }
+      .familias i {
+        display: block;
+        width: 16px;
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body data-vitrina="26">
+    <div class="hoja">
+      <header class="cabecera">
+        <div class="marca">
+          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+              <span class="logo-fallback">MHB</span>
+            </object>
+          </a>
+          <div class="marca-texto">
+            <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+            <p class="sala" id="ui-sala"></p>
+          </div>
+          <span class="marca-num">26</span>
+          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+        </div>
+        <div class="header-main">
+          <div aria-hidden="true" class="emblema">
+            <div aria-hidden="true" class="familias">
+              <i style="height: 58px; background: #c06a2e"></i><i style="height: 48px; background: #e0e4e2"></i
+              ><i style="height: 38px; background: #7fa6b2"></i>
+            </div>
+          </div>
+          <div class="header-texto">
+            <h1 id="ui-titulo"></h1>
+            <p class="siglo" id="ui-siglo"></p>
+          </div>
+        </div>
+      </header>
+      <nav class="nav">
+        <a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"
+          ><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18">
+            <path
+              d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z"
+              fill="none"
+              stroke="currentColor"
+              stroke-linejoin="round"
+              stroke-width="1.6"
+            ></path></svg
+        ></a>
+        <a class="nav-btn" id="nav-ant">‹</a>
+        <select class="nav-sel" id="nav-sel"></select>
+        <a class="nav-btn" id="nav-sig">›</a>
+        <span class="nav-btn" id="nav-pos" style="border: none"></span>
+      </nav>
+      <div class="progreso"><i id="barra"></i></div>
+      <main>
+        <div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+        <div class="mandos">
+          <button class="control" id="btn-play" type="button">
+            <svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16">
+              <polygon fill="currentColor" points="4 3 20 12 4 21"></polygon>
+            </svg>
+            <span id="ui-play">Escuchar</span>
+          </button>
+          <button class="control secundario" hidden="" id="btn-stop" type="button">
+            <span id="ui-stop">Detener</span>
+          </button>
+        </div>
+        <p class="aviso" hidden="" id="ui-aviso"></p>
+        <div id="texto"></div>
+      </main>
+      <footer id="ui-pie">Museo de Historia de la Biblia</footer>
+    </div>
+    <script>
+      const GRABACIONES = { es: "", en: "", fr: "", de: "", it: "" };
+      const GUIA = {
+        es: {
+          nombre: "Español",
+          voz: "es-MX",
+          ui: {
+            sala: "Vitrina 26",
+            titulo: "Las Biblias de hoy",
+            siglo: "Reina-Valera · las que se ciñen · las que explican",
+            play: "Escuchar",
+            stop: "Detener",
+            pie: "Museo de Historia de la Biblia",
+            aviso: "Este teléfono no tiene voz en español. Puede leer el texto.",
+          },
+          t: [
+            "Éstas son las de ahora. Las que usted puede comprar esta tarde en cualquier librería, y las que probablemente tiene en su casa.",
+            "Son muchas, y esa cantidad desconcierta a cualquiera. Para no perderse, mírelas en tres familias.",
+            "La primera familia no es una traducción nueva: es una sola traducción revisada muchas veces. Es la Reina-Valera. Aquí están la de 1909, la de 1960, que es la más leída en toda América Latina, la de 1995, la Contemporánea y la Actualizada. Todas vienen del mismo libro que usted vio en las vitrinas dieciocho y diecinueve. Cuatro siglos y medio corrigiendo el mismo texto en vez de empezar otro.",
+            "La segunda familia busca pegarse al original lo más posible, aunque el castellano quede algo tieso. El ejemplo claro es la Biblia de las Américas. Cerca de ahí están las que buscan el equilibrio entre fidelidad y naturalidad: la Nueva Versión Internacional y la Biblia de América.",
+            "La tercera familia pone por delante que se entienda. Dios Habla Hoy fue la primera que se hizo así en nuestra lengua. La Traducción en Lenguaje Actual se pensó para quien tiene poca práctica de lectura, con frases cortas y palabras de uso común, y se probó con lectores reales antes de publicarse. La Nueva Traducción Viviente busca que, leída en voz alta, parezca escrita hoy.",
+            "Y en el extremo de esa familia está La Biblia al Día, que ya no es traducción sino paráfrasis: alguien vuelve a contar el texto con sus propias palabras. Reténgalo, porque a esa misma familia pertenece la versión que cierra este recorrido.",
+            "Ahora fíjese en lo que cambió, porque es el final del camino que ha venido recorriendo.",
+            "Durante siglos, traducir la Biblia fue obra de un hombre solo. Casiodoro de Reina tardó doce años, huyendo. Valera le dedicó otros veinte. Un hombre, una vida, un libro.",
+            "Éstas las hicieron equipos. Decenas de especialistas de varios países: biblistas, lingüistas y gente que sabe cómo se habla hoy en México, en Colombia, en Argentina y en España. Cada pasaje se discutió en comité, se probó con lectores y después se revisó.",
+            "Y cambió también la pregunta. Antes se preguntaba una sola cosa: ¿esto dice exactamente lo mismo que el original? Ahora se pregunta además: ¿lo entiende la persona que lo va a leer? Es la vieja idea de Lutero, la de salir a oír hablar a la gente en el mercado, convertida en método de trabajo.",
+            "Las bilingües merecen párrafo aparte, porque son hijas directas de dos vitrinas que usted ya vio: la Políglota de Alcalá y la English Hexapla. Dos lenguas, una junto a otra, para que el lector compare por sí mismo. Lo que en 1514 costó quince años y una fortuna, hoy cabe en un tomo de bolsillo.",
+            "Y todavía queda algo pendiente. Todas éstas están en español. Faltan las lenguas en que este libro se lee hoy en el mundo, y en este país. De eso tratan las vitrinas que siguen.",
+          ],
+        },
+        en: {
+          nombre: "English",
+          voz: "en-GB",
+          ui: {
+            sala: "Case 26",
+            titulo: "The Bibles of today",
+            siglo: "Reina-Valera · the close ones · the clear ones",
+            play: "Listen",
+            stop: "Stop",
+            pie: "Museum of the History of the Bible",
+            aviso: "This phone has no English voice available. You can read the text instead.",
+          },
+          t: [
+            "These are the ones of today. The ones you could buy this afternoon in any bookshop, and the ones you probably have at home.",
+            "There are a great many, and that number bewilders anyone. So as not to get lost, look at them in three families.",
+            "The first family is not a new translation at all: it is one translation revised many times over. It is the Reina-Valera. Here are the 1909, the 1960, which is the most widely read in all of Latin America, the 1995, the Contemporánea and the Actualizada. All of them come from the same book you saw in cases eighteen and nineteen. Four and a half centuries correcting the same text instead of starting another.",
+            "The second family tries to stay as close to the original as possible, even if the Spanish comes out a little stiff. The clear example is the Biblia de las Américas. Nearby are those that seek the balance between faithfulness and naturalness: the Nueva Versión Internacional and the Biblia de América.",
+            "The third family puts understanding first. Dios Habla Hoy was the first made that way in our language. The Traducción en Lenguaje Actual was designed for the reader of little practice, with short sentences and everyday words, and was tested on real readers before publication. The Nueva Traducción Viviente aims to sound, read aloud, as though it had been written today.",
+            "And at the far edge of that family is La Biblia al Día, which is no longer a translation but a paraphrase: someone retells the text in his own words. Keep that in mind, because the version that closes this tour belongs to that same family.",
+            "Now notice what changed, because it is the end of the road you have been travelling.",
+            "For centuries, translating the Bible was the work of one man alone. Casiodoro de Reina took twelve years, on the run. Valera gave it twenty more. One man, one life, one book.",
+            "These were made by teams. Dozens of specialists from several countries: biblical scholars, linguists, and people who know how Spanish is actually spoken today in Mexico, in Colombia, in Argentina and in Spain. Every passage was argued out in committee, tested on readers, and then revised.",
+            "And the question changed too. Before, only one thing was asked: does this say exactly what the original says? Now something else is asked as well: will the person who reads it understand it? It is Luther's old idea, going out to hear people speak in the marketplace, turned into a working method.",
+            "The bilingual editions deserve a word of their own, because they descend directly from two cases you have already seen: the Polyglot of Alcalá and the English Hexapla. Two languages, side by side, so the reader can compare for himself. What in 1514 cost fifteen years and a fortune now fits in a pocket volume.",
+            "And something is still pending. All of these are in Spanish. Missing are the languages in which this book is read today across the world, and in this country. That is what the next cases are about.",
+          ],
+        },
+        fr: {
+          nombre: "Français",
+          voz: "fr-FR",
+          ui: {
+            sala: "Vitrine 26",
+            titulo: "Les Bibles d'aujourd'hui",
+            siglo: "Reina-Valera · les littérales · les claires",
+            play: "Écouter",
+            stop: "Arrêter",
+            pie: "Musée de l'Histoire de la Bible",
+            aviso: "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte.",
+          },
+          t: [
+            "Voici celles d'aujourd'hui. Celles que vous pourriez acheter cet après-midi dans n'importe quelle librairie, et celles que vous avez probablement chez vous.",
+            "Elles sont nombreuses, et ce nombre déconcerte tout le monde. Pour ne pas s'y perdre, regardez-les en trois familles.",
+            "La première famille n'est pas une traduction nouvelle : c'est une seule traduction révisée bien des fois. C'est la Reina-Valera. Voici celle de 1909, celle de 1960, la plus lue dans toute l'Amérique latine, celle de 1995, la Contemporánea et l'Actualizada. Toutes viennent du même livre que vous avez vu dans les vitrines dix-huit et dix-neuf. Quatre siècles et demi à corriger le même texte au lieu d'en commencer un autre.",
+            "La deuxième famille cherche à coller au maximum à l'original, quitte à ce que l'espagnol soit un peu raide. L'exemple net est la Biblia de las Américas. Tout près se tiennent celles qui cherchent l'équilibre entre fidélité et naturel : la Nueva Versión Internacional et la Biblia de América.",
+            "La troisième famille met la compréhension en premier. Dios Habla Hoy fut la première faite ainsi dans notre langue. La Traducción en Lenguaje Actual a été conçue pour qui a peu l'habitude de lire, avec des phrases courtes et des mots courants, et elle a été testée auprès de lecteurs réels avant de paraître. La Nueva Traducción Viviente veut que, lue à voix haute, elle semble écrite aujourd'hui.",
+            "Et à l'extrémité de cette famille se trouve La Biblia al Día, qui n'est plus une traduction mais une paraphrase : quelqu'un raconte à nouveau le texte avec ses propres mots. Retenez-le, car c'est à cette même famille qu'appartient la version qui clôt ce parcours.",
+            "Regardez maintenant ce qui a changé, car c'est la fin du chemin que vous avez parcouru.",
+            "Pendant des siècles, traduire la Bible fut l'œuvre d'un seul homme. Casiodoro de Reina y mit douze ans, en fuite. Valera y consacra vingt de plus. Un homme, une vie, un livre.",
+            "Celles-ci ont été faites par des équipes. Des dizaines de spécialistes de plusieurs pays : biblistes, linguistes, et des gens qui savent comment on parle aujourd'hui au Mexique, en Colombie, en Argentine et en Espagne. Chaque passage a été discuté en comité, testé auprès de lecteurs, puis révisé.",
+            "Et la question a changé elle aussi. Avant, on demandait une seule chose : est-ce que cela dit exactement ce que dit l'original ? Maintenant on demande aussi : celui qui va le lire, le comprendra-t-il ? C'est la vieille idée de Luther, sortir écouter parler les gens au marché, devenue méthode de travail.",
+            "Les bilingues méritent un paragraphe à part, car elles descendent directement de deux vitrines que vous avez déjà vues : la Polyglotte d'Alcalá et l'English Hexapla. Deux langues, l'une à côté de l'autre, pour que le lecteur compare lui-même. Ce qui en 1514 coûtait quinze ans et une fortune tient aujourd'hui dans un volume de poche.",
+            "Et il reste quelque chose en suspens. Toutes celles-ci sont en espagnol. Manquent les langues dans lesquelles ce livre se lit aujourd'hui dans le monde, et dans ce pays. C'est l'objet des vitrines suivantes.",
+          ],
+        },
+        de: {
+          nombre: "Deutsch",
+          voz: "de-DE",
+          ui: {
+            sala: "Vitrine 26",
+            titulo: "Die Bibeln von heute",
+            siglo: "Reina-Valera · die genauen · die verständlichen",
+            play: "Anhören",
+            stop: "Anhalten",
+            pie: "Museum zur Geschichte der Bibel",
+            aviso: "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen.",
+          },
+          t: [
+            "Dies sind die von heute. Die, die Sie heute Nachmittag in jeder Buchhandlung kaufen könnten, und die, die Sie wahrscheinlich zu Hause haben.",
+            "Es sind viele, und diese Menge verwirrt jeden. Um sich nicht zu verlieren, betrachten Sie sie in drei Familien.",
+            "Die erste Familie ist gar keine neue Übersetzung: es ist eine einzige Übersetzung, viele Male überarbeitet. Es ist die Reina-Valera. Hier stehen die von 1909, die von 1960, die meistgelesene in ganz Lateinamerika, die von 1995, die Contemporánea und die Actualizada. Alle stammen aus demselben Buch, das Sie in den Vitrinen achtzehn und neunzehn gesehen haben. Viereinhalb Jahrhunderte, in denen derselbe Text verbessert wurde, statt einen neuen zu beginnen.",
+            "Die zweite Familie will so nah wie möglich am Original bleiben, auch wenn das Spanische dabei etwas steif gerät. Das klare Beispiel ist die Biblia de las Américas. Daneben stehen jene, die das Gleichgewicht zwischen Treue und Natürlichkeit suchen: die Nueva Versión Internacional und die Biblia de América.",
+            "Die dritte Familie stellt das Verstehen voran. Dios Habla Hoy war die erste, die in unserer Sprache so gemacht wurde. Die Traducción en Lenguaje Actual wurde für Leser mit wenig Übung entworfen, mit kurzen Sätzen und alltäglichen Wörtern, und vor der Veröffentlichung an echten Lesern erprobt. Die Nueva Traducción Viviente will, dass sie laut gelesen klingt, als wäre sie heute geschrieben.",
+            "Und am äußeren Rand dieser Familie steht La Biblia al Día, die keine Übersetzung mehr ist, sondern eine Umschreibung: jemand erzählt den Text mit eigenen Worten nach. Merken Sie sich das, denn zu genau dieser Familie gehört die Fassung, die diesen Rundgang beschließt.",
+            "Achten Sie nun darauf, was sich geändert hat, denn es ist das Ende des Weges, den Sie gegangen sind.",
+            "Jahrhundertelang war das Übersetzen der Bibel das Werk eines einzelnen Mannes. Casiodoro de Reina brauchte zwölf Jahre, auf der Flucht. Valera gab ihr zwanzig weitere. Ein Mann, ein Leben, ein Buch.",
+            "Diese hier haben Teams gemacht. Dutzende Fachleute aus mehreren Ländern: Bibelwissenschaftler, Sprachwissenschaftler und Menschen, die wissen, wie heute in Mexiko, in Kolumbien, in Argentinien und in Spanien wirklich gesprochen wird. Jede Stelle wurde im Ausschuss durchgesprochen, an Lesern erprobt und dann überarbeitet.",
+            "Und auch die Frage hat sich geändert. Früher fragte man nur eines: sagt das genau dasselbe wie das Original? Heute fragt man außerdem: versteht es der, der es lesen wird? Es ist Luthers alte Idee, dem Volk auf dem Markt aufs Maul zu schauen, zur Arbeitsmethode geworden.",
+            "Die zweisprachigen verdienen einen eigenen Absatz, denn sie stammen unmittelbar von zwei Vitrinen ab, die Sie schon gesehen haben: der Polyglotte von Alcalá und der English Hexapla. Zwei Sprachen nebeneinander, damit der Leser selbst vergleicht. Was 1514 fünfzehn Jahre und ein Vermögen kostete, passt heute in einen Taschenband.",
+            "Und etwas steht noch aus. Alle diese sind auf Spanisch. Es fehlen die Sprachen, in denen dieses Buch heute in der Welt gelesen wird, und in diesem Land. Davon handeln die nächsten Vitrinen.",
+          ],
+        },
+        it: {
+          nombre: "Italiano",
+          voz: "it-IT",
+          ui: {
+            sala: "Vetrina 26",
+            titulo: "Le Bibbie di oggi",
+            siglo: "Reina-Valera · le letterali · le chiare",
+            play: "Ascolta",
+            stop: "Ferma",
+            pie: "Museo di Storia della Bibbia",
+            aviso: "Questo telefono non ha una voce italiana. Può leggere il testo.",
+          },
+          t: [
+            "Queste sono quelle di oggi. Quelle che potrebbe comprare questo pomeriggio in qualsiasi libreria, e quelle che probabilmente ha in casa.",
+            "Sono molte, e quel numero disorienta chiunque. Per non perdersi, le guardi in tre famiglie.",
+            "La prima famiglia non è affatto una traduzione nuova: è una sola traduzione rivista molte volte. È la Reina-Valera. Qui ci sono quella del 1909, quella del 1960, la più letta in tutta l'America Latina, quella del 1995, la Contemporánea e la Actualizada. Tutte vengono dallo stesso libro che ha visto nelle vetrine diciotto e diciannove. Quattro secoli e mezzo a correggere lo stesso testo invece di cominciarne un altro.",
+            "La seconda famiglia cerca di attaccarsi il più possibile all'originale, anche se lo spagnolo resta un po' rigido. L'esempio chiaro è la Biblia de las Américas. Accanto stanno quelle che cercano l'equilibrio fra fedeltà e naturalezza: la Nueva Versión Internacional e la Biblia de América.",
+            "La terza famiglia mette al primo posto la comprensione. Dios Habla Hoy fu la prima fatta così nella nostra lingua. La Traducción en Lenguaje Actual fu pensata per chi ha poca pratica di lettura, con frasi brevi e parole d'uso comune, e fu provata su lettori reali prima di uscire. La Nueva Traducción Viviente vuole che, letta ad alta voce, sembri scritta oggi.",
+            "E all'estremo di quella famiglia sta La Biblia al Día, che non è più traduzione ma parafrasi: qualcuno racconta di nuovo il testo con parole sue. Se lo ricordi, perché a quella stessa famiglia appartiene la versione che chiude questo percorso.",
+            "Ora guardi che cosa è cambiato, perché è la fine del cammino che ha percorso.",
+            "Per secoli, tradurre la Bibbia fu opera di un uomo solo. Casiodoro de Reina impiegò dodici anni, in fuga. Valera le dedicò altri venti. Un uomo, una vita, un libro.",
+            "Queste le hanno fatte delle squadre. Decine di specialisti di più paesi: biblisti, linguisti e gente che sa come si parla oggi in Messico, in Colombia, in Argentina e in Spagna. Ogni passo è stato discusso in commissione, provato su lettori e poi rivisto.",
+            "Ed è cambiata anche la domanda. Prima se ne faceva una sola: questo dice esattamente ciò che dice l'originale? Ora se ne fa anche un'altra: lo capirà chi lo leggerà? È la vecchia idea di Lutero, uscire ad ascoltare come parla la gente al mercato, diventata metodo di lavoro.",
+            "Le bilingui meritano un paragrafo a parte, perché discendono direttamente da due vetrine che ha già visto: la Poliglotta di Alcalá e l'English Hexapla. Due lingue, una accanto all'altra, perché il lettore confronti da sé. Quello che nel 1514 costò quindici anni e una fortuna, oggi sta in un volume tascabile.",
+            "E resta ancora qualcosa in sospeso. Tutte queste sono in spagnolo. Mancano le lingue in cui questo libro si legge oggi nel mondo, e in questo paese. Di questo trattano le vetrine che seguono.",
+          ],
+        },
+      };
+    </script>
+    <script src="vitrinas.js"></script>
+    <script src="guia.js"></script>
+  </body>
 </html>

@@ -1,176 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>El Beato de Liébana — Museo de Historia de la Biblia</title>
-<link href="estilos.css" rel="stylesheet"/>
-<style>
-.franjas{flex:none;width:64px;height:64px;border-radius:2px;background:linear-gradient(to bottom,currentColor 0 25%,currentColor 25% 50%,currentColor 50% 75%,currentColor 75% 100%)}
-</style>
-</head>
-<body data-vitrina="5">
-<div class="hoja">
-<header class="cabecera">
-<div class="marca">
-<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
-</a>
-<div class="marca-texto">
-<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
-<p class="sala" id="ui-sala"></p>
-</div>
-<span class="marca-num">05</span>
-<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
-</div>
-<div class="header-main">
-<div aria-hidden="true" class="emblema"><div aria-hidden="true" class="franjas"></div></div>
-<div class="header-texto">
-<h1 id="ui-titulo"></h1>
-<p class="siglo" id="ui-siglo"></p>
-</div>
-</div>
-</header>
-<nav class="nav">
-<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
-<a class="nav-btn" id="nav-ant">‹</a>
-<select class="nav-sel" id="nav-sel"></select>
-<a class="nav-btn" id="nav-sig">›</a>
-<span class="nav-btn" id="nav-pos" style="border:none"></span>
-</nav>
-<div class="progreso"><i id="barra"></i></div>
-<main>
-<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
-<div class="mandos">
-<button class="control" id="btn-play" type="button"><svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16"><polygon fill="currentColor" points="4 3 20 12 4 21"></polygon></svg> <span id="ui-play">Escuchar</span></button>
-<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
-</div>
-<p class="aviso" hidden="" id="ui-aviso"></p>
-<div id="texto"></div>
-</main>
-<footer id="ui-pie">Museo de Historia de la Biblia</footer>
-</div>
-<script>
-const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
-const GUIA = {
- "es": {
-  "nombre": "Español",
-  "voz": "es-MX",
-  "ui": {
-   "sala": "Vitrina 5 · Museo de Historia de la Biblia",
-   "titulo": "El Beato de Liébana",
-   "siglo": "Comentario al Apocalipsis, año 776",
-   "play": "Escuchar",
-   "stop": "Detener",
-   "pie": "Museo de Historia de la Biblia",
-   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
-  },
-  "t": [
-   "Bienvenido. Tiene usted delante uno de los libros más extraño de este museo. Y le comento algo desde ahora: no es una Biblia. Es un comentario del Apocalipsis.",
-   "Hacia el año 776, en un monasterio perdido entre las montañas de Cantabria, un monje llamado Beato se sentó a explicar el último libro de las Escrituras: el Apocalipsis. España vivía entonces bajo la conquista musulmana. Del norte cristiano quedaba apenas una franja de montaña. Y en esa franja, un monje decidió que lo más urgente era entender el fin del mundo.",
-   "Beato no inventó nada, y lo sabía. Reunió lo que otros habían escrito antes que él: Ticonio, Jerónimo, Agustín, Isidoro, Gregorio. Su obra es un arca. Metió dentro lo que estaba a punto de perderse. Lo que él nunca imaginó fue lo que harían sus copistas. Doscientos años después, los monjes que volvieron a escribir su libro lo llenaron de pinturas. Y ahí nació algo que no existe en ningún otro sitio del mundo.",
-   "Mire los colores. Rojo, amarillo, verde, franjas enteras de color puro. Las figuras lo miran a usted de frente, con los ojos enormes. Nadie intentó que pareciera real. No pintaban lo que se ve, pintaban lo que se cree.",
-   "Ahí está la Mujer vestida del sol. Ahí está la Bestia. Y ahí está uno de los mapas del mundo más antiguos de toda la cristiandad.",
-   "Dos nombres para recordar. Magio, que firmó su copia hacia el año 945. Y Ende, una mujer, que se llamó a sí misma pintrix, pintora, y ayudante de Dios. Es la primera pintora con nombre conocido de Occidente.",
-   "Un último dato interesante, estas páginas, mil años después, inspiraron una novela que quizá usted ha leído o visto en película : El nombre de la rosa.",
-   "Este libro le enseñó a ver la Escritura a gente que no sabía leerla. Por eso abre nuestro recorrido."
-  ]
- },
- "en": {
-  "nombre": "English",
-  "voz": "en-GB",
-  "ui": {
-   "sala": "Case 5 · Museum of the History of the Bible",
-   "titulo": "The Beatus of Liébana",
-   "siglo": "Commentary on the Apocalypse, year 776",
-   "play": "Listen",
-   "stop": "Stop",
-   "pie": "Museum of the History of the Bible",
-   "aviso": "This phone has no English voice available. You can read the text instead."
-  },
-  "t": [
-   "Welcome. In front of you stands one of the strangest books in this museum. And let me tell you now: it is not a Bible. It is a commentary on the Apocalypse.",
-   "It is a commentary. Around the year 776, in a monastery lost among the mountains of Cantabria, in northern Spain, a monk named Beatus sat down to explain the last book of Scripture: the Apocalypse. Spain was then under Muslim rule. Of Christian Spain there remained only a narrow strip of mountains. And on that strip, a monk decided that the most urgent thing of all was to understand the end of the world.",
-   "Beatus invented nothing, and he knew it. He gathered what others had written before him: Tyconius, Jerome, Augustine, Isidore, Gregory. His work is an ark. He put inside it everything that was about to be lost. What he never imagined was what his copyists would do. Two hundred years later, the monks who wrote his book out again filled it with paintings. And there something was born that exists nowhere else in the world.",
-   "Look at the colours. Red, yellow, green, whole bands of pure colour. The figures look straight at you, with enormous eyes. No one tried to make them look real. They did not paint what the eye sees. They painted what the heart believes.",
-   "There is the Woman clothed with the sun. There is the Beast. And there is one of the oldest maps of the world in all Christendom.",
-   "Two names worth remembering. Magius, who signed his copy around the year 945. And Ende, a woman, who called herself pintrix, painter, and helper of God. She is the first woman painter known by name in the West.",
-   "One last curious detail: a thousand years later, these pages inspired a novel you may have read or seen as a film: The Name of the Rose.",
-   "This book taught people who could not read Scripture how to see it. That is why it opens our tour."
-  ]
- },
- "fr": {
-  "nombre": "Français",
-  "voz": "fr-FR",
-  "ui": {
-   "sala": "Vitrine 5 · Musée de l'Histoire de la Bible",
-   "titulo": "Le Beatus de Liébana",
-   "siglo": "Commentaire de l'Apocalypse, an 776",
-   "play": "Écouter",
-   "stop": "Arrêter",
-   "pie": "Musée de l'Histoire de la Bible",
-   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
-  },
-  "t": [
-   "Bienvenue. Vous avez devant vous l'un des livres les plus étranges de ce musée. Et je vous le dis dès maintenant : ce n'est pas une Bible. C'est un commentaire de l'Apocalypse.",
-   "C'est un commentaire. Vers l'an 776, dans un monastère perdu au milieu des montagnes de Cantabrie, au nord de l'Espagne, un moine nommé Beatus s'est assis pour expliquer le dernier livre des Écritures : l'Apocalypse. L'Espagne vivait alors sous la conquête musulmane. De l'Espagne chrétienne il ne restait qu'une étroite bande de montagnes. Et sur cette bande, un moine a décidé que le plus urgent était de comprendre la fin du monde.",
-   "Beatus n'a rien inventé, et il le savait. Il a rassemblé ce que d'autres avaient écrit avant lui : Tyconius, Jérôme, Augustin, Isidore, Grégoire. Son œuvre est une arche. Il y a mis tout ce qui risquait de se perdre. Ce qu'il n'a jamais imaginé, c'est ce qu'en feraient ses copistes. Deux cents ans plus tard, les moines qui ont recopié son livre l'ont rempli de peintures. Et là est né quelque chose qui n'existe nulle part ailleurs.",
-   "Regardez les couleurs. Rouge, jaune, vert : des bandes entières de couleur pure. Les figures vous regardent en face, avec des yeux immenses. Personne n'a cherché à faire vrai. Ils ne peignaient pas ce que l'on voit. Ils peignaient ce que l'on croit.",
-   "Voici la Femme vêtue de soleil. Voici la Bête. Et voici l'une des plus anciennes cartes du monde de toute la chrétienté.",
-   "Deux noms à retenir. Magius, qui a signé sa copie vers l'an 945. Et Ende, une femme, qui s'est appelée elle-même pintrix, peintre et servante de Dieu. C'est la première femme peintre connue par son nom en Occident.",
-   "Un dernier détail curieux : mille ans plus tard, ces pages ont inspiré un roman que vous avez peut-être lu ou vu au cinéma : Le Nom de la rose.",
-   "Ce livre a appris à voir l'Écriture à des gens qui ne savaient pas la lire. C'est pourquoi il ouvre notre parcours."
-  ]
- },
- "de": {
-  "nombre": "Deutsch",
-  "voz": "de-DE",
-  "ui": {
-   "sala": "Vitrine 5 · Museum zur Geschichte der Bibel",
-   "titulo": "Der Beatus von Liébana",
-   "siglo": "Kommentar zur Offenbarung, Jahr 776",
-   "play": "Anhören",
-   "stop": "Anhalten",
-   "pie": "Museum zur Geschichte der Bibel",
-   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
-  },
-  "t": [
-   "Willkommen. Vor Ihnen steht eines der seltsamsten Bücher dieses Museums. Und ich sage es Ihnen gleich: Es ist keine Bibel. Es ist ein Kommentar zur Offenbarung.",
-   "Es ist ein Kommentar. Um das Jahr 776 setzte sich in einem Kloster, verloren in den Bergen Kantabriens im Norden Spaniens, ein Mönch namens Beatus hin, um das letzte Buch der Heiligen Schrift zu erklären: die Offenbarung. Spanien stand damals unter muslimischer Herrschaft. Vom christlichen Spanien blieb nur ein schmaler Streifen Gebirge. Und auf diesem Streifen entschied ein Mönch, das Dringendste sei, das Ende der Welt zu verstehen.",
-   "Beatus hat nichts erfunden, und er wusste es. Er sammelte, was andere vor ihm geschrieben hatten: Tyconius, Hieronymus, Augustinus, Isidor, Gregor. Sein Werk ist eine Arche. Er legte hinein, was verloren zu gehen drohte. Was er nie ahnte, war das, was seine Abschreiber daraus machen würden. Zweihundert Jahre später füllten die Mönche, die sein Buch neu schrieben, es mit Bildern. Und dort entstand etwas, das es sonst nirgends auf der Welt gibt.",
-   "Sehen Sie die Farben. Rot, Gelb, Grün, ganze Bänder aus reiner Farbe. Die Gestalten blicken Sie frontal an, mit riesigen Augen. Niemand wollte, dass es echt aussieht. Sie malten nicht, was man sieht. Sie malten, was man glaubt.",
-   "Hier ist die Frau, mit der Sonne bekleidet. Hier ist das Tier. Und hier ist eine der ältesten Weltkarten der ganzen Christenheit.",
-   "Zwei Namen zum Merken. Magius, der seine Abschrift um das Jahr 945 signierte. Und Ende, eine Frau, die sich selbst pintrix nannte, Malerin und Gehilfin Gottes. Sie ist die erste namentlich bekannte Malerin des Abendlandes.",
-   "Eine letzte merkwürdige Einzelheit: tausend Jahre später haben diese Seiten einen Roman angeregt, den Sie vielleicht gelesen oder als Film gesehen haben: Der Name der Rose.",
-   "Dieses Buch lehrte Menschen, die die Schrift nicht lesen konnten, sie zu sehen. Deshalb eröffnet es unseren Rundgang."
-  ]
- },
- "it": {
-  "nombre": "Italiano",
-  "voz": "it-IT",
-  "ui": {
-   "sala": "Vetrina 5 · Museo di Storia della Bibbia",
-   "titulo": "Il Beato di Liébana",
-   "siglo": "Commento all'Apocalisse, anno 776",
-   "play": "Ascolta",
-   "stop": "Ferma",
-   "pie": "Museo di Storia della Bibbia",
-   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
-  },
-  "t": [
-   "Benvenuto. Ha davanti uno dei libri più strani di questo museo. E glielo dico subito: non è una Bibbia. È un commento all'Apocalisse.",
-   "È un commento. Verso l'anno 776, in un monastero sperduto tra le montagne della Cantabria, nel nord della Spagna, un monaco di nome Beato si sedette a spiegare l'ultimo libro delle Scritture: l'Apocalisse. La Spagna viveva allora sotto la conquista musulmana. Della Spagna cristiana restava soltanto una stretta fascia di montagne. E su quella fascia un monaco decise che la cosa più urgente fosse capire la fine del mondo.",
-   "Beato non inventò nulla, e lo sapeva. Raccolse ciò che altri avevano scritto prima di lui: Ticonio, Girolamo, Agostino, Isidoro, Gregorio. La sua opera è un'arca. Vi mise dentro tutto ciò che stava per perdersi. Quello che non immaginò mai fu ciò che ne avrebbero fatto i suoi copisti. Duecento anni dopo, i monaci che riscrissero il suo libro lo riempirono di pitture. E lì nacque qualcosa che non esiste in nessun altro luogo al mondo.",
-   "Guardi i colori. Rosso, giallo, verde: intere fasce di colore puro. Le figure la guardano in faccia, con occhi enormi. Nessuno cercò di farle sembrare reali. Non dipingevano ciò che si vede. Dipingevano ciò che si crede.",
-   "Ecco la Donna vestita di sole. Ecco la Bestia. Ed ecco una delle più antiche carte del mondo di tutta la cristianità.",
-   "Due nomi da ricordare. Magio, che firmò la sua copia verso l'anno 945. Ed Ende, una donna, che chiamò sé stessa pintrix, pittrice e aiutante di Dio. È la prima pittrice conosciuta per nome in Occidente.",
-   "Un ultimo dato curioso: mille anni dopo, queste pagine ispirarono un romanzo che forse ha letto o visto al cinema: Il nome della rosa.",
-   "Questo libro insegnò a vedere la Scrittura a gente che non sapeva leggerla. Per questo apre il nostro percorso."
-  ]
- }
-};
-</script>
-<script src="vitrinas.js"></script>
-<script src="guia.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>El Beato de Liébana — Museo de Historia de la Biblia</title>
+    <link href="estilos.css" rel="stylesheet" />
+    <style>
+      .franjas {
+        flex: none;
+        width: 64px;
+        height: 64px;
+        border-radius: 2px;
+        background: linear-gradient(
+          to bottom,
+          currentColor 0 25%,
+          currentColor 25% 50%,
+          currentColor 50% 75%,
+          currentColor 75% 100%
+        );
+      }
+    </style>
+  </head>
+  <body data-vitrina="5">
+    <div class="hoja">
+      <header class="cabecera">
+        <div class="marca">
+          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+              <span class="logo-fallback">MHB</span>
+            </object>
+          </a>
+          <div class="marca-texto">
+            <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+            <p class="sala" id="ui-sala"></p>
+          </div>
+          <span class="marca-num">05</span>
+          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+        </div>
+        <div class="header-main">
+          <div aria-hidden="true" class="emblema"><div aria-hidden="true" class="franjas"></div></div>
+          <div class="header-texto">
+            <h1 id="ui-titulo"></h1>
+            <p class="siglo" id="ui-siglo"></p>
+          </div>
+        </div>
+      </header>
+      <nav class="nav">
+        <a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"
+          ><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18">
+            <path
+              d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z"
+              fill="none"
+              stroke="currentColor"
+              stroke-linejoin="round"
+              stroke-width="1.6"
+            ></path></svg
+        ></a>
+        <a class="nav-btn" id="nav-ant">‹</a>
+        <select class="nav-sel" id="nav-sel"></select>
+        <a class="nav-btn" id="nav-sig">›</a>
+        <span class="nav-btn" id="nav-pos" style="border: none"></span>
+      </nav>
+      <div class="progreso"><i id="barra"></i></div>
+      <main>
+        <div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+        <div class="mandos">
+          <button class="control" id="btn-play" type="button">
+            <svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16">
+              <polygon fill="currentColor" points="4 3 20 12 4 21"></polygon>
+            </svg>
+            <span id="ui-play">Escuchar</span>
+          </button>
+          <button class="control secundario" hidden="" id="btn-stop" type="button">
+            <span id="ui-stop">Detener</span>
+          </button>
+        </div>
+        <p class="aviso" hidden="" id="ui-aviso"></p>
+        <div id="texto"></div>
+      </main>
+      <footer id="ui-pie">Museo de Historia de la Biblia</footer>
+    </div>
+    <script>
+      const GRABACIONES = { es: "", en: "", fr: "", de: "", it: "" };
+      const GUIA = {
+        es: {
+          nombre: "Español",
+          voz: "es-MX",
+          ui: {
+            sala: "Vitrina 5",
+            titulo: "El Beato de Liébana",
+            siglo: "Comentario al Apocalipsis, año 776",
+            play: "Escuchar",
+            stop: "Detener",
+            pie: "Museo de Historia de la Biblia",
+            aviso: "Este teléfono no tiene voz en español. Puede leer el texto.",
+          },
+          t: [
+            "Bienvenido. Tiene usted delante uno de los libros más extraño de este museo. Y le comento algo desde ahora: no es una Biblia. Es un comentario del Apocalipsis.",
+            "Hacia el año 776, en un monasterio perdido entre las montañas de Cantabria, un monje llamado Beato se sentó a explicar el último libro de las Escrituras: el Apocalipsis. España vivía entonces bajo la conquista musulmana. Del norte cristiano quedaba apenas una franja de montaña. Y en esa franja, un monje decidió que lo más urgente era entender el fin del mundo.",
+            "Beato no inventó nada, y lo sabía. Reunió lo que otros habían escrito antes que él: Ticonio, Jerónimo, Agustín, Isidoro, Gregorio. Su obra es un arca. Metió dentro lo que estaba a punto de perderse. Lo que él nunca imaginó fue lo que harían sus copistas. Doscientos años después, los monjes que volvieron a escribir su libro lo llenaron de pinturas. Y ahí nació algo que no existe en ningún otro sitio del mundo.",
+            "Mire los colores. Rojo, amarillo, verde, franjas enteras de color puro. Las figuras lo miran a usted de frente, con los ojos enormes. Nadie intentó que pareciera real. No pintaban lo que se ve, pintaban lo que se cree.",
+            "Ahí está la Mujer vestida del sol. Ahí está la Bestia. Y ahí está uno de los mapas del mundo más antiguos de toda la cristiandad.",
+            "Dos nombres para recordar. Magio, que firmó su copia hacia el año 945. Y Ende, una mujer, que se llamó a sí misma pintrix, pintora, y ayudante de Dios. Es la primera pintora con nombre conocido de Occidente.",
+            "Un último dato interesante, estas páginas, mil años después, inspiraron una novela que quizá usted ha leído o visto en película : El nombre de la rosa.",
+            "Este libro le enseñó a ver la Escritura a gente que no sabía leerla. Por eso abre nuestro recorrido.",
+          ],
+        },
+        en: {
+          nombre: "English",
+          voz: "en-GB",
+          ui: {
+            sala: "Case 5",
+            titulo: "The Beatus of Liébana",
+            siglo: "Commentary on the Apocalypse, year 776",
+            play: "Listen",
+            stop: "Stop",
+            pie: "Museum of the History of the Bible",
+            aviso: "This phone has no English voice available. You can read the text instead.",
+          },
+          t: [
+            "Welcome. In front of you stands one of the strangest books in this museum. And let me tell you now: it is not a Bible. It is a commentary on the Apocalypse.",
+            "It is a commentary. Around the year 776, in a monastery lost among the mountains of Cantabria, in northern Spain, a monk named Beatus sat down to explain the last book of Scripture: the Apocalypse. Spain was then under Muslim rule. Of Christian Spain there remained only a narrow strip of mountains. And on that strip, a monk decided that the most urgent thing of all was to understand the end of the world.",
+            "Beatus invented nothing, and he knew it. He gathered what others had written before him: Tyconius, Jerome, Augustine, Isidore, Gregory. His work is an ark. He put inside it everything that was about to be lost. What he never imagined was what his copyists would do. Two hundred years later, the monks who wrote his book out again filled it with paintings. And there something was born that exists nowhere else in the world.",
+            "Look at the colours. Red, yellow, green, whole bands of pure colour. The figures look straight at you, with enormous eyes. No one tried to make them look real. They did not paint what the eye sees. They painted what the heart believes.",
+            "There is the Woman clothed with the sun. There is the Beast. And there is one of the oldest maps of the world in all Christendom.",
+            "Two names worth remembering. Magius, who signed his copy around the year 945. And Ende, a woman, who called herself pintrix, painter, and helper of God. She is the first woman painter known by name in the West.",
+            "One last curious detail: a thousand years later, these pages inspired a novel you may have read or seen as a film: The Name of the Rose.",
+            "This book taught people who could not read Scripture how to see it. That is why it opens our tour.",
+          ],
+        },
+        fr: {
+          nombre: "Français",
+          voz: "fr-FR",
+          ui: {
+            sala: "Vitrine 5",
+            titulo: "Le Beatus de Liébana",
+            siglo: "Commentaire de l'Apocalypse, an 776",
+            play: "Écouter",
+            stop: "Arrêter",
+            pie: "Musée de l'Histoire de la Bible",
+            aviso: "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte.",
+          },
+          t: [
+            "Bienvenue. Vous avez devant vous l'un des livres les plus étranges de ce musée. Et je vous le dis dès maintenant : ce n'est pas une Bible. C'est un commentaire de l'Apocalypse.",
+            "C'est un commentaire. Vers l'an 776, dans un monastère perdu au milieu des montagnes de Cantabrie, au nord de l'Espagne, un moine nommé Beatus s'est assis pour expliquer le dernier livre des Écritures : l'Apocalypse. L'Espagne vivait alors sous la conquête musulmane. De l'Espagne chrétienne il ne restait qu'une étroite bande de montagnes. Et sur cette bande, un moine a décidé que le plus urgent était de comprendre la fin du monde.",
+            "Beatus n'a rien inventé, et il le savait. Il a rassemblé ce que d'autres avaient écrit avant lui : Tyconius, Jérôme, Augustin, Isidore, Grégoire. Son œuvre est une arche. Il y a mis tout ce qui risquait de se perdre. Ce qu'il n'a jamais imaginé, c'est ce qu'en feraient ses copistes. Deux cents ans plus tard, les moines qui ont recopié son livre l'ont rempli de peintures. Et là est né quelque chose qui n'existe nulle part ailleurs.",
+            "Regardez les couleurs. Rouge, jaune, vert : des bandes entières de couleur pure. Les figures vous regardent en face, avec des yeux immenses. Personne n'a cherché à faire vrai. Ils ne peignaient pas ce que l'on voit. Ils peignaient ce que l'on croit.",
+            "Voici la Femme vêtue de soleil. Voici la Bête. Et voici l'une des plus anciennes cartes du monde de toute la chrétienté.",
+            "Deux noms à retenir. Magius, qui a signé sa copie vers l'an 945. Et Ende, une femme, qui s'est appelée elle-même pintrix, peintre et servante de Dieu. C'est la première femme peintre connue par son nom en Occident.",
+            "Un dernier détail curieux : mille ans plus tard, ces pages ont inspiré un roman que vous avez peut-être lu ou vu au cinéma : Le Nom de la rose.",
+            "Ce livre a appris à voir l'Écriture à des gens qui ne savaient pas la lire. C'est pourquoi il ouvre notre parcours.",
+          ],
+        },
+        de: {
+          nombre: "Deutsch",
+          voz: "de-DE",
+          ui: {
+            sala: "Vitrine 5",
+            titulo: "Der Beatus von Liébana",
+            siglo: "Kommentar zur Offenbarung, Jahr 776",
+            play: "Anhören",
+            stop: "Anhalten",
+            pie: "Museum zur Geschichte der Bibel",
+            aviso: "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen.",
+          },
+          t: [
+            "Willkommen. Vor Ihnen steht eines der seltsamsten Bücher dieses Museums. Und ich sage es Ihnen gleich: Es ist keine Bibel. Es ist ein Kommentar zur Offenbarung.",
+            "Es ist ein Kommentar. Um das Jahr 776 setzte sich in einem Kloster, verloren in den Bergen Kantabriens im Norden Spaniens, ein Mönch namens Beatus hin, um das letzte Buch der Heiligen Schrift zu erklären: die Offenbarung. Spanien stand damals unter muslimischer Herrschaft. Vom christlichen Spanien blieb nur ein schmaler Streifen Gebirge. Und auf diesem Streifen entschied ein Mönch, das Dringendste sei, das Ende der Welt zu verstehen.",
+            "Beatus hat nichts erfunden, und er wusste es. Er sammelte, was andere vor ihm geschrieben hatten: Tyconius, Hieronymus, Augustinus, Isidor, Gregor. Sein Werk ist eine Arche. Er legte hinein, was verloren zu gehen drohte. Was er nie ahnte, war das, was seine Abschreiber daraus machen würden. Zweihundert Jahre später füllten die Mönche, die sein Buch neu schrieben, es mit Bildern. Und dort entstand etwas, das es sonst nirgends auf der Welt gibt.",
+            "Sehen Sie die Farben. Rot, Gelb, Grün, ganze Bänder aus reiner Farbe. Die Gestalten blicken Sie frontal an, mit riesigen Augen. Niemand wollte, dass es echt aussieht. Sie malten nicht, was man sieht. Sie malten, was man glaubt.",
+            "Hier ist die Frau, mit der Sonne bekleidet. Hier ist das Tier. Und hier ist eine der ältesten Weltkarten der ganzen Christenheit.",
+            "Zwei Namen zum Merken. Magius, der seine Abschrift um das Jahr 945 signierte. Und Ende, eine Frau, die sich selbst pintrix nannte, Malerin und Gehilfin Gottes. Sie ist die erste namentlich bekannte Malerin des Abendlandes.",
+            "Eine letzte merkwürdige Einzelheit: tausend Jahre später haben diese Seiten einen Roman angeregt, den Sie vielleicht gelesen oder als Film gesehen haben: Der Name der Rose.",
+            "Dieses Buch lehrte Menschen, die die Schrift nicht lesen konnten, sie zu sehen. Deshalb eröffnet es unseren Rundgang.",
+          ],
+        },
+        it: {
+          nombre: "Italiano",
+          voz: "it-IT",
+          ui: {
+            sala: "Vetrina 5",
+            titulo: "Il Beato di Liébana",
+            siglo: "Commento all'Apocalisse, anno 776",
+            play: "Ascolta",
+            stop: "Ferma",
+            pie: "Museo di Storia della Bibbia",
+            aviso: "Questo telefono non ha una voce italiana. Può leggere il testo.",
+          },
+          t: [
+            "Benvenuto. Ha davanti uno dei libri più strani di questo museo. E glielo dico subito: non è una Bibbia. È un commento all'Apocalisse.",
+            "È un commento. Verso l'anno 776, in un monastero sperduto tra le montagne della Cantabria, nel nord della Spagna, un monaco di nome Beato si sedette a spiegare l'ultimo libro delle Scritture: l'Apocalisse. La Spagna viveva allora sotto la conquista musulmana. Della Spagna cristiana restava soltanto una stretta fascia di montagne. E su quella fascia un monaco decise che la cosa più urgente fosse capire la fine del mondo.",
+            "Beato non inventò nulla, e lo sapeva. Raccolse ciò che altri avevano scritto prima di lui: Ticonio, Girolamo, Agostino, Isidoro, Gregorio. La sua opera è un'arca. Vi mise dentro tutto ciò che stava per perdersi. Quello che non immaginò mai fu ciò che ne avrebbero fatto i suoi copisti. Duecento anni dopo, i monaci che riscrissero il suo libro lo riempirono di pitture. E lì nacque qualcosa che non esiste in nessun altro luogo al mondo.",
+            "Guardi i colori. Rosso, giallo, verde: intere fasce di colore puro. Le figure la guardano in faccia, con occhi enormi. Nessuno cercò di farle sembrare reali. Non dipingevano ciò che si vede. Dipingevano ciò che si crede.",
+            "Ecco la Donna vestita di sole. Ecco la Bestia. Ed ecco una delle più antiche carte del mondo di tutta la cristianità.",
+            "Due nomi da ricordare. Magio, che firmò la sua copia verso l'anno 945. Ed Ende, una donna, che chiamò sé stessa pintrix, pittrice e aiutante di Dio. È la prima pittrice conosciuta per nome in Occidente.",
+            "Un ultimo dato curioso: mille anni dopo, queste pagine ispirarono un romanzo che forse ha letto o visto al cinema: Il nome della rosa.",
+            "Questo libro insegnò a vedere la Scrittura a gente che non sapeva leggerla. Per questo apre il nostro percorso.",
+          ],
+        },
+      };
+    </script>
+    <script src="vitrinas.js"></script>
+    <script src="guia.js"></script>
+  </body>
 </html>
