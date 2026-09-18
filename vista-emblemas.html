@@ -1,0 +1,1220 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Emblemas propuestos · Museo de Historia de la Biblia</title>
+    <link href="estilos.css" rel="stylesheet" />
+    <style>
+      /* Pagina de muestra. No se enlaza desde ninguna vitrina y no altera nada.
+     Las clases van con prefijo ve- porque estilos.css ya usa .ficha para las
+     tarjetas del plano, y sin prefijo se heredaba su display:flex. */
+      .ve-muestra {
+        max-width: 62rem;
+        margin: 0 auto;
+        padding: 2.2rem 1.2rem 4rem;
+      }
+      .ve-muestra h1 {
+        font-size: 1.7rem;
+        margin: 0 0 0.5rem;
+      }
+      .ve-intro {
+        font-size: 0.92rem;
+        color: var(--suave);
+        margin: 0 0 2.2rem;
+        max-width: 40rem;
+      }
+      .ve-rejilla {
+        display: grid;
+        gap: 1.1rem;
+        grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+      }
+      .ve-ficha {
+        display: block;
+        border: 1px solid var(--linea);
+        background: var(--claro);
+        overflow: hidden;
+      }
+      /* mismo fondo y mismo dorado que el encabezado real de las vitrinas */
+      .ve-lienzo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.4rem;
+        padding: 1.4rem 1rem;
+        background: var(--cabecera);
+        color: var(--acento);
+      }
+      .ve-lienzo .emblema {
+        color: inherit;
+      }
+      .ve-grande {
+        flex: none;
+        width: 104px;
+        height: 104px;
+      }
+      .ve-grande svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .ve-pie {
+        padding: 0.75rem 0.9rem 0.9rem;
+      }
+      .ve-num {
+        font-size: 0.66rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--acento);
+      }
+      .ve-tit {
+        margin: 0.2rem 0 0.2rem;
+        font-size: 0.92rem;
+        line-height: 1.3;
+      }
+      .ve-sub {
+        margin: 0;
+        font-size: 0.76rem;
+        font-style: italic;
+        color: var(--suave);
+      }
+      .ve-arch {
+        margin: 0.5rem 0 0;
+        font-size: 0.64rem;
+        color: var(--suave);
+        opacity: 0.75;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        word-break: break-all;
+      }
+      .ve-nota {
+        margin-top: 2.4rem;
+        padding: 0.95rem 1.1rem;
+        background: var(--claro);
+        border-left: 3px solid var(--acento);
+        font-size: 0.85rem;
+      }
+      .ve-nota p {
+        margin: 0 0 0.5rem;
+      }
+      .ve-nota p:last-child {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="ve-muestra">
+      <h1>Emblemas propuestos</h1>
+      <p class="ve-intro">
+        Emblemas de las vitrinas 10 a 32. Cada uno aparece dos veces sobre el fondo real del encabezado: a la izquierda
+        en su tamaño definitivo de 64&nbsp;px, y a la derecha ampliado para ver el detalle. Esta página es solo una
+        muestra: las vitrinas siguen con sus emblemas actuales y no se modificó ninguna.
+      </p>
+      <div class="ve-rejilla">
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="10" y="12" width="12" height="40" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="26" y="12" width="12" height="40" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="42" y="12" width="12" height="40" fill="none" stroke="currentColor" stroke-width="3" />
+                <line x1="14" y1="20" x2="18" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="30" y1="20" x2="34" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="46" y1="20" x2="50" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="10" y="12" width="12" height="40" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="26" y="12" width="12" height="40" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="42" y="12" width="12" height="40" fill="none" stroke="currentColor" stroke-width="3" />
+                <line x1="14" y1="20" x2="18" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="30" y1="20" x2="34" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="46" y1="20" x2="50" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 10</div>
+            <p class="ve-tit">La Biblia Políglota Complutense</p>
+            <p class="ve-sub">Alcalá de Henares, 1514–1517 · seis tomos</p>
+            <p class="ve-arch">mhb-vitrina10-poliglota-complutense.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="14" y="14" width="16" height="36" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="34" y="14" width="16" height="36" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M18 22 h8 M18 28 h8 M18 34 h8 M18 40 h8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M38 22 h8 M38 28 h8 M38 34 h8 M38 40 h8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="14" y="14" width="16" height="36" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="34" y="14" width="16" height="36" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M18 22 h8 M18 28 h8 M18 34 h8 M18 40 h8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M38 22 h8 M38 28 h8 M38 34 h8 M38 40 h8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 11</div>
+            <p class="ve-tit">El Nuevo Testamento de Erasmo</p>
+            <p class="ve-sub">Basilea, 1516 · el Textus Receptus</p>
+            <p class="ve-arch">mhb-vitrina11-textus-receptus.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M32 44 C 32 44, 18 30, 18 22 C 18 16, 26 12, 32 20 C 38 12, 46 16, 46 22 C 46 30, 32 44, 32 44 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path d="M32 22 L32 34 M28 26 L36 26" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M32 44 C 32 44, 18 30, 18 22 C 18 16, 26 12, 32 20 C 38 12, 46 16, 46 22 C 46 30, 32 44, 32 44 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path d="M32 22 L32 34 M28 26 L36 26" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 12</div>
+            <p class="ve-tit">La Biblia de Lutero</p>
+            <p class="ve-sub">Wittenberg, 1522–1534</p>
+            <p class="ve-arch">mhb-vitrina12-biblia-de-lutero.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="8" y="14" width="48" height="8" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="8" y="28" width="48" height="24" fill="none" stroke="currentColor" stroke-width="3" />
+                <line x1="16" y1="28" x2="16" y2="52" stroke="currentColor" stroke-width="3" />
+                <line x1="24" y1="28" x2="24" y2="52" stroke="currentColor" stroke-width="3" />
+                <line x1="32" y1="28" x2="32" y2="52" stroke="currentColor" stroke-width="3" />
+                <line x1="40" y1="28" x2="40" y2="52" stroke="currentColor" stroke-width="3" />
+                <line x1="48" y1="28" x2="48" y2="52" stroke="currentColor" stroke-width="3" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="8" y="14" width="48" height="8" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="8" y="28" width="48" height="24" fill="none" stroke="currentColor" stroke-width="3" />
+                <line x1="16" y1="28" x2="16" y2="52" stroke="currentColor" stroke-width="3" />
+                <line x1="24" y1="28" x2="24" y2="52" stroke="currentColor" stroke-width="3" />
+                <line x1="32" y1="28" x2="32" y2="52" stroke="currentColor" stroke-width="3" />
+                <line x1="40" y1="28" x2="40" y2="52" stroke="currentColor" stroke-width="3" />
+                <line x1="48" y1="28" x2="48" y2="52" stroke="currentColor" stroke-width="3" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 13</div>
+            <p class="ve-tit">La English Hexapla</p>
+            <p class="ve-sub">Londres, 1841 · seis versiones inglesas</p>
+            <p class="ve-arch">mhb-vitrina13-english-hexapla.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="18" y="24" width="8" height="30" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="28" y="20" width="8" height="34" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="38" y="26" width="8" height="28" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M24 20 L20 20 L20 14 L24 14 C26 14 26 17 24 17 L20 17"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M34 16 L30 16 L30 10 L34 10 C36 10 36 13 34 13 L30 13"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M40 22 L44 16 L44 22"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="18" y="24" width="8" height="30" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="28" y="20" width="8" height="34" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="38" y="26" width="8" height="28" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M24 20 L20 20 L20 14 L24 14 C26 14 26 17 24 17 L20 17"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M34 16 L30 16 L30 10 L34 10 C36 10 36 13 34 13 L30 13"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M40 22 L44 16 L44 22"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 14</div>
+            <p class="ve-tit">El Vita Christi de Montesino</p>
+            <p class="ve-sub">Sevilla, Cromberger, 1531 · tercera parte</p>
+            <p class="ve-arch">mhb-vitrina14-vita-christi.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="16" y="44" width="32" height="6" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M16 44 C 16 20, 32 16, 32 16 C 32 16, 48 20, 48 44"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                />
+                <path
+                  d="M24 44 C 24 28, 32 16, 32 16 C 32 16, 40 28, 40 44"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                />
+                <path d="M32 16 L32 8 M28 12 L36 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="16" y="44" width="32" height="6" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M16 44 C 16 20, 32 16, 32 16 C 32 16, 48 20, 48 44"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                />
+                <path
+                  d="M24 44 C 24 28, 32 16, 32 16 C 32 16, 40 28, 40 44"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                />
+                <path d="M32 16 L32 8 M28 12 L36 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 15</div>
+            <p class="ve-tit">El Nuevo Testamento de Enzinas</p>
+            <p class="ve-sub">Amberes, 1543 · el primero en castellano</p>
+            <p class="ve-arch">mhb-vitrina15-enzinas.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <polygon
+                  points="32,12 14,44 50,44"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="32,52 14,20 50,20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <polygon
+                  points="32,12 14,44 50,44"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="32,52 14,20 50,20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 16</div>
+            <p class="ve-tit">La Biblia de Ferrara</p>
+            <p class="ve-sub">Ferrara, 1553 · el Antiguo Testamento sefardí</p>
+            <p class="ve-arch">mhb-vitrina16-biblia-de-ferrara.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <path
+                  d="M 22 14 Q 12 32 22 50 L 42 50 Q 52 32 42 14 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path d="M 16 26 Q 32 28 48 26" fill="none" stroke="currentColor" stroke-width="3" />
+                <path d="M 16 38 Q 32 40 48 38" fill="none" stroke="currentColor" stroke-width="3" />
+                <path d="M 27 14.5 Q 22 32 27 49.5" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M 37 14.5 Q 42 32 37 49.5" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <path
+                  d="M 22 14 Q 12 32 22 50 L 42 50 Q 52 32 42 14 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path d="M 16 26 Q 32 28 48 26" fill="none" stroke="currentColor" stroke-width="3" />
+                <path d="M 16 38 Q 32 40 48 38" fill="none" stroke="currentColor" stroke-width="3" />
+                <path d="M 27 14.5 Q 22 32 27 49.5" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M 37 14.5 Q 42 32 37 49.5" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 17</div>
+            <p class="ve-tit">El Nuevo Testamento de Pérez de Pineda</p>
+            <p class="ve-sub">Ginebra, 1556 · con pie de imprenta falso</p>
+            <p class="ve-arch">mhb-vitrina17-perez-de-pineda.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <polygon
+                  points="32,24 40,28 40,36 32,40 24,36 24,28"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="32,8 40,12 40,20 32,24 24,20 24,12"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="32,40 40,44 40,52 32,56 24,52 24,44"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="18,16 26,20 26,28 18,32 10,28 10,20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="18,32 26,36 26,44 18,48 10,44 10,36"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="46,16 54,20 54,28 46,32 38,28 38,20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="46,32 54,36 54,44 46,48 38,44 38,36"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <polygon
+                  points="32,24 40,28 40,36 32,40 24,36 24,28"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="32,8 40,12 40,20 32,24 24,20 24,12"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="32,40 40,44 40,52 32,56 24,52 24,44"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="18,16 26,20 26,28 18,32 10,28 10,20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="18,32 26,36 26,44 18,48 10,44 10,36"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="46,16 54,20 54,28 46,32 38,28 38,20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <polygon
+                  points="46,32 54,36 54,44 46,48 38,44 38,36"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 18</div>
+            <p class="ve-tit">La Biblia del Oso</p>
+            <p class="ve-sub">Basilea, 1569 · Casiodoro de Reina</p>
+            <p class="ve-arch">mhb-vitrina18-biblia-del-oso.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <path
+                  d="M26 12 L38 12 L36 20 C 46 24, 46 44, 38 52 L26 52 C 18 44, 18 24, 28 20 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M37 22 C 48 20, 52 32, 42 38"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+                <line x1="22" y1="52" x2="42" y2="52" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <path
+                  d="M26 12 L38 12 L36 20 C 46 24, 46 44, 38 52 L26 52 C 18 44, 18 24, 28 20 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M37 22 C 48 20, 52 32, 42 38"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+                <line x1="22" y1="52" x2="42" y2="52" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 19</div>
+            <p class="ve-tit">La Biblia del Cántaro</p>
+            <p class="ve-sub">Ámsterdam, 1602 · Cipriano de Valera</p>
+            <p class="ve-arch">mhb-vitrina19-biblia-del-cantaro.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="12" y="12" width="40" height="40" rx="2" fill="none" stroke="currentColor" stroke-width="3" />
+                <line x1="32" y1="12" x2="32" y2="52" stroke="currentColor" stroke-width="2" />
+                <path
+                  d="M16 20 h12 M16 28 h12 M16 36 h12 M16 44 h12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M36 20 h12 M36 28 h12 M36 36 h12 M36 44 h12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="12" y="12" width="40" height="40" rx="2" fill="none" stroke="currentColor" stroke-width="3" />
+                <line x1="32" y1="12" x2="32" y2="52" stroke="currentColor" stroke-width="2" />
+                <path
+                  d="M16 20 h12 M16 28 h12 M16 36 h12 M16 44 h12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M36 20 h12 M36 28 h12 M36 36 h12 M36 44 h12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 20</div>
+            <p class="ve-tit">La Biblia del Padre Scío</p>
+            <p class="ve-sub">Valencia, 1790–1793 · primera edición</p>
+            <p class="ve-arch">mhb-vitrina20-biblia-de-scio.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <line x1="6" y1="54" x2="58" y2="54" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <rect x="10" y="24" width="4" height="30" fill="currentColor" />
+                <rect x="15" y="18" width="4" height="36" fill="currentColor" />
+                <rect x="20" y="28" width="4" height="26" fill="currentColor" />
+                <rect x="25" y="22" width="4" height="32" fill="currentColor" />
+                <rect x="30" y="14" width="4" height="40" fill="currentColor" />
+                <rect x="35" y="26" width="4" height="28" fill="currentColor" />
+                <rect x="40" y="20" width="4" height="34" fill="currentColor" />
+                <rect x="45" y="30" width="4" height="24" fill="currentColor" />
+                <rect x="50" y="16" width="4" height="38" fill="currentColor" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <line x1="6" y1="54" x2="58" y2="54" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <rect x="10" y="24" width="4" height="30" fill="currentColor" />
+                <rect x="15" y="18" width="4" height="36" fill="currentColor" />
+                <rect x="20" y="28" width="4" height="26" fill="currentColor" />
+                <rect x="25" y="22" width="4" height="32" fill="currentColor" />
+                <rect x="30" y="14" width="4" height="40" fill="currentColor" />
+                <rect x="35" y="26" width="4" height="28" fill="currentColor" />
+                <rect x="40" y="20" width="4" height="34" fill="currentColor" />
+                <rect x="45" y="30" width="4" height="24" fill="currentColor" />
+                <rect x="50" y="16" width="4" height="38" fill="currentColor" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 21</div>
+            <p class="ve-tit">La Biblia de Torres Amat</p>
+            <p class="ve-sub">Madrid, 1823–1825 · nueve tomos</p>
+            <p class="ve-arch">mhb-vitrina21-torres-amat.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <path d="M24 54 C 24 46, 40 46, 40 54" fill="none" stroke="currentColor" stroke-width="3" />
+                <line x1="16" y1="54" x2="48" y2="54" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <path d="M32 46 L32 20" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M32 30 C 20 30, 14 18, 14 18 C 22 24, 32 24, 32 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M32 30 C 44 30, 50 18, 50 18 C 42 24, 32 24, 32 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M32 20 C 30 14, 36 10, 40 14 L36 18 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <path d="M24 54 C 24 46, 40 46, 40 54" fill="none" stroke="currentColor" stroke-width="3" />
+                <line x1="16" y1="54" x2="48" y2="54" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <path d="M32 46 L32 20" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M32 30 C 20 30, 14 18, 14 18 C 22 24, 32 24, 32 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M32 30 C 44 30, 50 18, 50 18 C 42 24, 32 24, 32 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M32 20 C 30 14, 36 10, 40 14 L36 18 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 22</div>
+            <p class="ve-tit">La Biblia de Vence, de Galván</p>
+            <p class="ve-sub">México, 1831–1833 · veinticinco tomos</p>
+            <p class="ve-arch">mhb-vitrina22-vence-de-galvan.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="8" y="16" width="22" height="32" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M12 40 L18 24 L26 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <circle cx="16" cy="22" r="2" fill="currentColor" />
+                <rect x="34" y="16" width="22" height="32" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M34 20 L56 42 M34 24 L56 46 M34 28 L56 50 M34 32 L52 50 M34 36 L48 50 M34 40 L44 50"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M56 20 L34 42 M56 24 L34 46 M56 28 L34 50 M56 32 L38 50 M56 36 L42 50 M56 40 L46 50"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="8" y="16" width="22" height="32" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M12 40 L18 24 L26 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <circle cx="16" cy="22" r="2" fill="currentColor" />
+                <rect x="34" y="16" width="22" height="32" fill="none" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M34 20 L56 42 M34 24 L56 46 M34 28 L56 50 M34 32 L52 50 M34 36 L48 50 M34 40 L44 50"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M56 20 L34 42 M56 24 L34 46 M56 28 L34 50 M56 32 L38 50 M56 36 L42 50 M56 40 L46 50"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 23</div>
+            <p class="ve-tit">Los grabados: Schnorr y Doré</p>
+            <p class="ve-sub">Uguet 1878 · Doré 1866</p>
+            <p class="ve-arch">mhb-vitrina23-grabados.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="10" y="16" width="6" height="32" fill="#E63946" />
+                <rect x="18" y="16" width="6" height="32" fill="#F4A261" />
+                <rect x="26" y="16" width="6" height="32" fill="#E9C46A" />
+                <rect x="34" y="16" width="6" height="32" fill="#2A9D8F" />
+                <rect x="42" y="16" width="6" height="32" fill="#264653" />
+                <rect x="50" y="16" width="6" height="32" fill="#8AB17D" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="10" y="16" width="6" height="32" fill="#E63946" />
+                <rect x="18" y="16" width="6" height="32" fill="#F4A261" />
+                <rect x="26" y="16" width="6" height="32" fill="#E9C46A" />
+                <rect x="34" y="16" width="6" height="32" fill="#2A9D8F" />
+                <rect x="42" y="16" width="6" height="32" fill="#264653" />
+                <rect x="50" y="16" width="6" height="32" fill="#8AB17D" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 24</div>
+            <p class="ve-tit">Las seis del siglo veinte</p>
+            <p class="ve-sub">De Nácar-Colunga a Schökel · 1944-1975</p>
+            <p class="ve-arch">mhb-vitrina24-siglo-xx.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <circle cx="26" cy="26" r="14" fill="currentColor" fill-opacity="0.4" />
+                <circle cx="40" cy="30" r="12" fill="currentColor" fill-opacity="0.6" />
+                <circle cx="30" cy="42" r="16" fill="currentColor" fill-opacity="0.3" />
+                <path
+                  d="M18 20 C 30 10, 40 40, 50 30"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <circle cx="26" cy="26" r="14" fill="currentColor" fill-opacity="0.4" />
+                <circle cx="40" cy="30" r="12" fill="currentColor" fill-opacity="0.6" />
+                <circle cx="30" cy="42" r="16" fill="currentColor" fill-opacity="0.3" />
+                <path
+                  d="M18 20 C 30 10, 40 40, 50 30"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 25</div>
+            <p class="ve-tit">La Biblia de Dalí</p>
+            <p class="ve-sub">Milán, 1964 · ciento cinco acuarelas</p>
+            <p class="ve-arch">mhb-vitrina25-biblia-de-dali.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="14" y="16" width="10" height="32" fill="#2A9D8F" />
+                <rect x="27" y="16" width="10" height="32" fill="#E9C46A" />
+                <rect x="40" y="16" width="10" height="32" fill="#E63946" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="14" y="16" width="10" height="32" fill="#2A9D8F" />
+                <rect x="27" y="16" width="10" height="32" fill="#E9C46A" />
+                <rect x="40" y="16" width="10" height="32" fill="#E63946" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 26</div>
+            <p class="ve-tit">Las Biblias de hoy</p>
+            <p class="ve-sub">Reina-Valera · las que se ciñen · las que explican</p>
+            <p class="ve-arch">mhb-vitrina26-biblias-de-hoy.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="18" y="10" width="28" height="44" rx="4" fill="none" stroke="currentColor" stroke-width="3" />
+                <circle cx="26" cy="20" r="4" fill="currentColor" />
+                <circle cx="38" cy="20" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="26" cy="32" r="4" fill="currentColor" />
+                <circle cx="38" cy="32" r="4" fill="currentColor" />
+                <circle cx="26" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="38" cy="44" r="4" fill="currentColor" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="18" y="10" width="28" height="44" rx="4" fill="none" stroke="currentColor" stroke-width="3" />
+                <circle cx="26" cy="20" r="4" fill="currentColor" />
+                <circle cx="38" cy="20" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="26" cy="32" r="4" fill="currentColor" />
+                <circle cx="38" cy="32" r="4" fill="currentColor" />
+                <circle cx="26" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="38" cy="44" r="4" fill="currentColor" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 27</div>
+            <p class="ve-tit">La Biblia en Braille</p>
+            <p class="ve-sub">Seis puntos · unos cuarenta volúmenes</p>
+            <p class="ve-arch">mhb-vitrina27-braille.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <line x1="8" y1="16" x2="56" y2="16" stroke="currentColor" stroke-width="3" />
+                <line x1="8" y1="48" x2="56" y2="48" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M8 40 L16 40 L16 32 L24 32 L24 24 L40 24 L40 40 L32 40 L32 32"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M48 48 L48 40 L56 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <line x1="8" y1="16" x2="56" y2="16" stroke="currentColor" stroke-width="3" />
+                <line x1="8" y1="48" x2="56" y2="48" stroke="currentColor" stroke-width="3" />
+                <path
+                  d="M8 40 L16 40 L16 32 L24 32 L24 24 L40 24 L40 40 L32 40 L32 32"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M48 48 L48 40 L56 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 28</div>
+            <p class="ve-tit">Las lenguas de México</p>
+            <p class="ve-sub">Cincuenta y seis variantes lingüísticas</p>
+            <p class="ve-arch">mhb-vitrina28-lenguas-de-mexico.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <path
+                  d="M14 26 L18 16 L22 26 M15 23 L21 23"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M28 26 L30 26 C 28 20, 36 20, 34 26 L36 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M44 26 L50 16 M44 16 L47 21 M50 26 L47 21"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <rect x="14" y="32" width="8" height="6" fill="none" stroke="currentColor" stroke-width="2" />
+                <line x1="18" y1="30" x2="18" y2="42" stroke="currentColor" stroke-width="2" />
+                <path
+                  d="M28 34 h8 M32 32 v10 M32 38 C 30 42, 28 40, 30 36 C 34 32, 38 36, 34 40 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M46 32 c -2 0, -2 4, 0 4 c 2 0, 2 -4, 0 -4 Z M42 32 h8 M46 36 v6 M42 42 h8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M20 56 L20 46 M20 51 C 24 51, 24 46, 20 46 M20 51 L24 56"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M34 46 C 30 46, 30 50, 32 52 C 28 52, 28 58, 36 56"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M44 48 v6 c 0 2, 6 2, 6 -2 v-4 m-6 2 h6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <path
+                  d="M14 26 L18 16 L22 26 M15 23 L21 23"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M28 26 L30 26 C 28 20, 36 20, 34 26 L36 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M44 26 L50 16 M44 16 L47 21 M50 26 L47 21"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <rect x="14" y="32" width="8" height="6" fill="none" stroke="currentColor" stroke-width="2" />
+                <line x1="18" y1="30" x2="18" y2="42" stroke="currentColor" stroke-width="2" />
+                <path
+                  d="M28 34 h8 M32 32 v10 M32 38 C 30 42, 28 40, 30 36 C 34 32, 38 36, 34 40 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M46 32 c -2 0, -2 4, 0 4 c 2 0, 2 -4, 0 -4 Z M42 32 h8 M46 36 v6 M42 42 h8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M20 56 L20 46 M20 51 C 24 51, 24 46, 20 46 M20 51 L24 56"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M34 46 C 30 46, 30 50, 32 52 C 28 52, 28 58, 36 56"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M44 48 v6 c 0 2, 6 2, 6 -2 v-4 m-6 2 h6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 29</div>
+            <p class="ve-tit">Las lenguas del mundo</p>
+            <p class="ve-sub">Cincuenta lenguas · nueve alfabetos</p>
+            <p class="ve-arch">mhb-vitrina29-lenguas-del-mundo.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="10" y="16" width="24" height="32" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="38" y="28" width="12" height="20" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="54" y="40" width="4" height="8" fill="currentColor" />
+                <line x1="10" y1="48" x2="60" y2="48" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="10" y="16" width="24" height="32" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="38" y="28" width="12" height="20" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="54" y="40" width="4" height="8" fill="currentColor" />
+                <line x1="10" y1="48" x2="60" y2="48" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 30</div>
+            <p class="ve-tit">Las Biblias miniatura</p>
+            <p class="ve-sub">De la Biblia de pulga al microscopio</p>
+            <p class="ve-arch">mhb-vitrina30-biblias-miniatura.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <line x1="10" y1="48" x2="54" y2="48" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                <path d="M16 48 A 16 16 0 0 1 48 48" fill="none" stroke="currentColor" stroke-width="3" />
+                <path d="M24 48 A 8 8 0 0 1 40 48" fill="none" stroke="currentColor" stroke-width="3" />
+                <path d="M8 48 A 24 24 0 0 1 56 48" fill="none" stroke="currentColor" stroke-width="3" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <line x1="10" y1="48" x2="54" y2="48" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                <path d="M16 48 A 16 16 0 0 1 48 48" fill="none" stroke="currentColor" stroke-width="3" />
+                <path d="M24 48 A 8 8 0 0 1 40 48" fill="none" stroke="currentColor" stroke-width="3" />
+                <path d="M8 48 A 24 24 0 0 1 56 48" fill="none" stroke="currentColor" stroke-width="3" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 31</div>
+            <p class="ve-tit">La sección infantil</p>
+            <p class="ve-sub">La primera Biblia de casi todos</p>
+            <p class="ve-arch">mhb-vitrina31-seccion-infantil.html</p>
+          </div>
+        </div>
+        <div class="ve-ficha">
+          <div class="ve-lienzo">
+            <div aria-hidden="true" class="emblema">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="12" y="24" width="20" height="16" rx="8" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="22" y="32" width="20" height="16" rx="8" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="32" y="24" width="20" height="16" rx="8" fill="none" stroke="currentColor" stroke-width="3" />
+              </svg>
+            </div>
+            <div aria-hidden="true" class="ve-grande">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="12" y="24" width="20" height="16" rx="8" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="22" y="32" width="20" height="16" rx="8" fill="none" stroke="currentColor" stroke-width="3" />
+                <rect x="32" y="24" width="20" height="16" rx="8" fill="none" stroke="currentColor" stroke-width="3" />
+              </svg>
+            </div>
+          </div>
+          <div class="ve-pie">
+            <div class="ve-num">Vitrina 32</div>
+            <p class="ve-tit">La versión APA</p>
+            <p class="ve-sub">Amplificada, Parafraseada y Armonizada · 2026</p>
+            <p class="ve-arch">mhb-vitrina32-version-apa.html</p>
+          </div>
+        </div>
+      </div>
+      <div class="ve-nota">
+        <p><strong>Faltan 10 de los 33:</strong> la portada y las vitrinas 1 a 9.</p>
+        <p>
+          Nada de esto está instalado. Para llevarlo a producción hay que sustituir el bloque <code>.emblema</code> de
+          cada página y, en las que hoy se dibujan con CSS, borrar además su regla en el <code>&lt;style&gt;</code> de
+          esa misma página.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
