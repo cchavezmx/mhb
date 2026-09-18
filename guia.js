@@ -87,7 +87,6 @@
     set("ui-play", g.ui.play);
     set("ui-stop", g.ui.stop);
     set("ui-pie", g.ui.pie);
-    set("ui-museo", g.ui.pie);
     if ($("ui-aviso")) $("ui-aviso").hidden = true;
     var texto = $("texto");
     if (texto) {

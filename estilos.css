@@ -26,11 +26,12 @@ a:hover{color:var(--tinta)}
 .logo-slot img{max-width:100%;max-height:100%;display:block;object-fit:contain}
 .logo-fallback{font-size:.72rem;letter-spacing:.16em;line-height:1}
 .logo-li3d{flex:none;width:72px;height:72px;display:flex;align-items:center;justify-content:center;
-  overflow:hidden;border-radius:50%;background:#FBF8F1;box-shadow:0 0 0 1px rgba(31,30,27,.12)}
+  overflow:hidden;background:#FBF8F1;box-shadow:0 0 0 1px rgba(31,30,27,.12)}
 .logo-li3d img{max-width:92%;max-height:92%;display:block;object-fit:contain}
 .marca-texto{flex:1;min-width:0}
 .museo{margin:0;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.9;color:var(--tinta)}
 .sala{margin:.15rem 0 0;font-size:.78rem;font-style:italic;opacity:.75;color:var(--suave)}
+.sala:empty{display:none}
 .marca-num{flex:none;font-size:.78rem;letter-spacing:.1em;opacity:.85;color:var(--suave)}
 
 .header-main{display:flex;gap:1.2rem;align-items:center;margin-top:1.6rem}
