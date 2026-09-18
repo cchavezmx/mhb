@@ -95,6 +95,12 @@ a:hover {
   flex: 1;
   min-width: 0;
 }
+/* En la portada el bloque solo lleva el nombre del museo (no hay "Vitrina N"),
+   asi que se centra en el hueco entre los dos logos. En las vitrinas se deja
+   alineado a la izquierda, donde las dos lineas forman columna con el logo. */
+.marca-inicio .marca-texto {
+  text-align: center;
+}
 .museo {
   margin: 0;
   font-size: 0.72rem;
