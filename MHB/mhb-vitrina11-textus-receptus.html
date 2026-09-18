@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>El Nuevo Testamento de Erasmo — Museo de Historia de la Biblia</title>
+<link href="estilos.css" rel="stylesheet"/>
+<style>
+.paralelo{flex:none;background:var(--claro);padding:6px;display:flex;gap:6px}
+  .lado{width:24px;height:64px}
+  .lado.griego{background:repeating-linear-gradient(to bottom,var(--cabecera) 0 1.3px,transparent 1.3px 4.6px)}
+  .lado.latin{background:repeating-linear-gradient(to bottom,var(--acento) 0 1.3px,transparent 1.3px 4.6px)}
+</style>
+</head>
+<body data-vitrina="11">
+<div class="hoja">
+<header class="cabecera">
+<div class="marca">
+<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
+</a>
+<div class="marca-texto">
+<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+<p class="sala" id="ui-sala"></p>
+</div>
+<span class="marca-num">11</span>
+<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
+</div>
+<div class="header-main">
+<div aria-hidden="true" class="emblema"><div aria-hidden="true" class="paralelo"><div class="lado griego"></div><div class="lado latin"></div></div></div>
+<div class="header-texto">
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div>
+</div>
+</header>
+<nav class="nav">
+<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="nav-btn" id="nav-ant">‹</a>
+<select class="nav-sel" id="nav-sel"></select>
+<a class="nav-btn" id="nav-sig">›</a>
+<span class="nav-btn" id="nav-pos" style="border:none"></span>
+</nav>
+<div class="progreso"><i id="barra"></i></div>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play" type="button">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 11 · Museo de Historia de la Biblia",
+   "titulo": "El Nuevo Testamento de Erasmo",
+   "siglo": "Basilea, 1516 · el Textus Receptus",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Este libro se hizo de prisa, con pocos manuscritos y con errores, pero, aun así, cambió al mundo.",
+   "Basilea, Suiza, marzo de 1,516. Erasmo de Rotterdam, el humanista más famoso de Europa, publica el Nuevo Testamento en griego con una nueva traducción latina hecha por él. El impresor Froben quería ganarle a los españoles, que ya tenían el suyo impreso pero detenido, esperando permiso. Y ganaron: éste fue el primer Nuevo Testamento griego publicado.",
+   "El propio Erasmo lo reconoció después con una frase que todavía se cita: más que editado, dijo, fue precipitado. Y es cierto. Usó los pocos manuscritos griegos que había en Basilea, todos tardíos. Al llegar al Apocalipsis descubrió que a su ejemplar le faltaba la última hoja. ¿Qué hizo? Tomó la Vulgata latina y tradujo esos versículos finales al griego, él mismo. Quedaron en el texto unas palabras que no aparecen en ningún manuscrito griego del mundo.",
+   "Lo verdaderamente explosivo, sin embargo, no fue el griego: fue su traducción latina. Al corregir la Vulgata, Erasmo demostró que el texto oficial de la Iglesia se podía discutir, y si se podía discutir, se podía traducir.",
+   "Lo que vino después lo conoce usted. Lutero tradujo al alemán desde la segunda edición de Erasmo. Tyndale, al inglés. Casiodoro de Reina y Cipriano de Valera, al castellano. De este tomo descienden la Biblia King James (Rey Jacobo) y la Reina-Valera.",
+   "Y el nombre viene de un anuncio publicitario. En 1,633, los impresores Elzevir escribieron en su prólogo que el lector tenía en las manos el texto recibido por todos. Textus receptus. Se les quedó.",
+   "Y aquí termina el recorrido. Empezamos con un monje que copiaba a mano en una montaña de Cantabria, para que el Libro no se perdiera. Terminamos con un texto impreso del que descienden las Biblias que hoy están en su casa. Mil doscientos años entre una hoja y la otra, y siempre la misma obsesión: que no se pierda, y que llegue a más manos."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 11 · Museum of the History of the Bible",
+   "titulo": "The New Testament of Erasmus",
+   "siglo": "Basel, 1516 · the Textus Receptus",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "This book was made in a hurry, with few manuscripts and with mistakes in it. And it changed the world.",
+   "Basel, Switzerland, March 1516. Erasmus of Rotterdam, the most famous humanist in Europe, publishes the New Testament in Greek together with a new Latin translation of his own. The printer Froben wanted to beat the Spaniards, who had already printed theirs but were held up, waiting for permission. They won: this was the first Greek New Testament ever published.",
+   "Erasmus himself admitted it afterwards, in a phrase still quoted today: it was thrown together, he said, rather than edited. And it is true. He used the few Greek manuscripts available in Basel, all of them late. When he reached the Apocalypse he found that his copy was missing its last leaf. What did he do? He took the Latin Vulgate and translated those final verses back into Greek himself. A few words remain in the text that appear in no Greek manuscript anywhere in the world.",
+   "What was truly explosive, however, was not the Greek: it was his Latin translation. By correcting the Vulgate, Erasmus showed that the official text of the Church could be questioned. And if it could be questioned, it could be translated.",
+   "What came next you already know. Luther translated into German from Erasmus's second edition. Tyndale, into English. Casiodoro de Reina and Cipriano de Valera, into Spanish. From this volume descend the King James Bible and the Reina-Valera.",
+   "And the name comes from an advertisement. In 1633 the Elzevir printers wrote in their preface that the reader held in his hands the text received by all. Textus receptus. The name stuck.",
+   "From this volume printed in Basel came the translations into the living languages. The cases that follow are exactly those: German, English and, from there on, our own."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 11 · Musée de l'Histoire de la Bible",
+   "titulo": "Le Nouveau Testament d'Érasme",
+   "siglo": "Bâle, 1516 · le Textus Receptus",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Ce livre fut fait à la hâte, avec peu de manuscrits et avec des fautes. Et il a changé le monde.",
+   "Bâle, Suisse, mars 1516. Érasme de Rotterdam, l'humaniste le plus célèbre d'Europe, publie le Nouveau Testament en grec accompagné d'une nouvelle traduction latine de sa main. L'imprimeur Froben voulait devancer les Espagnols, qui avaient déjà imprimé le leur mais restaient bloqués, en attente d'autorisation. Ils gagnèrent : ce fut le premier Nouveau Testament grec publié.",
+   "Érasme lui-même l'a reconnu ensuite, dans une phrase qu'on cite encore : il fut précipité, dit-il, plutôt qu'édité. Et c'est vrai. Il utilisa les rares manuscrits grecs disponibles à Bâle, tous tardifs. Arrivé à l'Apocalypse, il découvrit qu'il manquait le dernier feuillet à son exemplaire. Que fit-il ? Il prit la Vulgate latine et traduisit lui-même ces derniers versets en grec. Il reste dans le texte quelques mots qui ne figurent dans aucun manuscrit grec au monde.",
+   "Mais le vraiment explosif ne fut pas le grec : ce fut sa traduction latine. En corrigeant la Vulgate, Érasme montra que le texte officiel de l'Église pouvait être discuté. Et s'il pouvait être discuté, il pouvait être traduit.",
+   "Ce qui suivit, vous le connaissez. Luther traduisit en allemand à partir de la deuxième édition d'Érasme. Tyndale, en anglais. Casiodoro de Reina et Cipriano de Valera, en castillan. De ce volume descendent la Bible du roi Jacques et la Reina-Valera.",
+   "Et le nom vient d'une réclame. En 1633, les imprimeurs Elzevier écrivirent dans leur préface que le lecteur tenait entre ses mains le texte reçu par tous. Textus receptus. Le nom leur est resté.",
+   "De ce volume imprimé à Bâle sont sorties les traductions dans les langues vivantes. Les vitrines qui suivent sont celles-là : l'allemand, l'anglais et, à partir de là, la nôtre."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 11 · Museum zur Geschichte der Bibel",
+   "titulo": "Das Neue Testament des Erasmus",
+   "siglo": "Basel, 1516 · der Textus Receptus",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Dieses Buch entstand in Eile, mit wenigen Handschriften und mit Fehlern. Und es hat die Welt verändert.",
+   "Basel, Schweiz, März 1516. Erasmus von Rotterdam, der berühmteste Humanist Europas, veröffentlicht das Neue Testament auf Griechisch, zusammen mit einer neuen lateinischen Übersetzung aus seiner Feder. Der Drucker Froben wollte den Spaniern zuvorkommen, die das ihre bereits gedruckt hatten, aber auf die Erlaubnis warten mussten. Sie gewannen: dies war das erste veröffentlichte griechische Neue Testament.",
+   "Erasmus selbst hat es später eingeräumt, in einem Satz, der noch immer zitiert wird: es sei eher hinuntergestürzt als herausgegeben worden. Und das stimmt. Er benutzte die wenigen griechischen Handschriften, die in Basel zu haben waren, allesamt spät. Als er zur Offenbarung kam, fehlte seinem Exemplar das letzte Blatt. Was tat er? Er nahm die lateinische Vulgata und übersetzte diese Schlussverse selbst ins Griechische zurück. Im Text stehen bis heute einige Wörter, die in keiner griechischen Handschrift der Welt vorkommen.",
+   "Das wirklich Sprengkräftige war jedoch nicht das Griechische: es war seine lateinische Übersetzung. Indem er die Vulgata verbesserte, zeigte Erasmus, dass der amtliche Text der Kirche bestreitbar war. Und was bestreitbar ist, ist übersetzbar.",
+   "Was danach kam, kennen Sie. Luther übersetzte aus der zweiten Ausgabe des Erasmus ins Deutsche. Tyndale ins Englische. Casiodoro de Reina und Cipriano de Valera ins Spanische. Von diesem Band stammen die King-James-Bibel und die Reina-Valera ab.",
+   "Und der Name stammt aus einer Werbezeile. 1633 schrieben die Drucker Elzevier in ihrer Vorrede, der Leser halte den von allen angenommenen Text in Händen. Textus receptus. Der Name blieb haften.",
+   "Aus diesem in Basel gedruckten Band gingen die Übersetzungen in die lebenden Sprachen hervor. Die folgenden Vitrinen sind genau diese: das Deutsche, das Englische und, von da an, unsere eigene."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 11 · Museo di Storia della Bibbia",
+   "titulo": "Il Nuovo Testamento di Erasmo",
+   "siglo": "Basilea, 1516 · il Textus Receptus",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Questo libro fu fatto in fretta, con pochi manoscritti e con errori. E cambiò il mondo.",
+   "Basilea, Svizzera, marzo 1516. Erasmo da Rotterdam, l'umanista più famoso d'Europa, pubblica il Nuovo Testamento in greco insieme a una nuova traduzione latina di sua mano. Lo stampatore Froben voleva battere gli spagnoli, che il loro l'avevano già stampato ma tenuto fermo, in attesa del permesso. Vinsero: questo fu il primo Nuovo Testamento greco pubblicato.",
+   "Lo riconobbe poi Erasmo stesso, con una frase ancora citata: fu precipitato, disse, più che curato. Ed è vero. Usò i pochi manoscritti greci disponibili a Basilea, tutti tardi. Arrivato all'Apocalisse, scoprì che al suo esemplare mancava l'ultimo foglio. Che fece? Prese la Vulgata latina e tradusse lui stesso quei versetti finali in greco. Nel testo restano alcune parole che non compaiono in nessun manoscritto greco al mondo.",
+   "Ma la cosa davvero esplosiva non fu il greco: fu la sua traduzione latina. Correggendo la Vulgata, Erasmo dimostrò che il testo ufficiale della Chiesa poteva essere discusso. E se poteva essere discusso, poteva essere tradotto.",
+   "Quel che venne dopo lo conosce. Lutero tradusse in tedesco dalla seconda edizione di Erasmo. Tyndale in inglese. Casiodoro de Reina e Cipriano de Valera in castigliano. Da questo volume discendono la Bibbia di re Giacomo e la Reina-Valera.",
+   "E il nome viene da una frase pubblicitaria. Nel 1633 gli stampatori Elzevier scrissero nella prefazione che il lettore aveva tra le mani il testo ricevuto da tutti. Textus receptus. Il nome restò.",
+   "Da questo volume stampato a Basilea nacquero le traduzioni nelle lingue vive. Le vetrine che seguono sono proprio quelle: il tedesco, l'inglese e, da lì in avanti, la nostra."
+  ]
+ }
+};
+</script>
+<script src="vitrinas.js"></script>
+<script src="guia.js"></script>
+</body>
+</html>

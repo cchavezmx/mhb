@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>La Biblia del Padre Scío — Museo de Historia de la Biblia</title>
+<style>
+  :root{ --fondo:#F2EDE0;--claro:#FBF6EB;--tinta:#231E17;--cabecera:#5A4A2E;--acento:#8C6B2F;--marca:rgba(140,107,47,.26); }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fondo);color:var(--tinta);
+    font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
+    font-size:20px;line-height:1.62;-webkit-text-size-adjust:100%;}
+  .hoja{max-width:40rem;margin:0 auto;padding:0 0 4rem}
+  header{background:var(--cabecera);color:var(--claro);padding:2.2rem 1.4rem 2rem;}
+  .sala{font-size:.78em;margin:0 0 .45rem;opacity:.85}
+  h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .dos{flex:none;background:var(--claro);padding:6px;display:flex;gap:6px}
+  .dos .c{width:24px;height:58px;background:repeating-linear-gradient(to bottom,var(--tinta) 0 1.2px,transparent 1.2px 4.4px)}
+  .dos .n{width:54px;height:12px;background:repeating-linear-gradient(to bottom,var(--acento) 0 1px,transparent 1px 3px)}
+  .dos .caja{display:flex;flex-direction:column;gap:5px}
+  .dos .fila{display:flex;gap:6px}
+
+  main{padding:0 1.4rem}
+  .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
+  .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
+    background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);border-radius:2px;cursor:pointer}
+  .idiomas button[aria-pressed="true"]{background:var(--cabecera);color:var(--claro);border-color:var(--cabecera)}
+  .idiomas button:focus-visible,.control:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  .mandos{display:flex;gap:.6rem;align-items:center;margin:0 0 1.8rem}
+  .control{font:inherit;font-size:1em;display:inline-flex;align-items:center;gap:.55rem;
+    padding:.85rem 1.5rem;min-height:52px;background:var(--acento);color:#FFF6E6;border:none;border-radius:2px;cursor:pointer}
+  .control.secundario{background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);padding:.85rem 1.1rem}
+  .control[hidden]{display:none}
+  .aviso{font-size:.8em;font-style:italic;margin:-1.2rem 0 1.8rem;color:#7a5c3e}
+  p.parrafo{margin:0 0 1.15rem;transition:background-color .25s}
+  p.parrafo.sonando{background:var(--marca);box-shadow:0 0 0 .35rem var(--marca)}
+  footer{margin:2.8rem 1.4rem 0;padding-top:1.2rem;border-top:1px solid rgba(40,32,25,.25);
+         font-size:.8em;font-style:italic;color:#7a5c3e}
+  @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
+
+  .header-marca{display:flex;justify-content:flex-end;margin:0 0 .9rem}
+  .logo-mhb{flex:none;width:56px;height:56px;color:var(--claro);opacity:.92}
+  .logo-mhb svg{width:100%;height:100%}
+  .header-main{display:flex;gap:1.3rem;align-items:center}
+  .header-texto{flex:1}
+</style>
+</head>
+<body>
+<div class="hoja">
+<header><div class="header-marca"><div aria-label="Museo de Historia de la Biblia" class="logo-mhb">
+<svg aria-hidden="true" viewBox="0 0 64 64">
+<path d="M10 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<path d="M36 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<line stroke="currentColor" stroke-width="2" x1="32" x2="32" y1="12" y2="52"></line>
+</svg>
+</div></div><div class="header-main"><div aria-hidden="true" class="dos"><div class="caja"><div class="fila"><div class="c"></div><div class="c"></div></div><div class="n"></div></div></div><div class="header-texto">
+<p class="sala" id="ui-sala"></p>
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div></div></header>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+// Si pone aquí la URL de un MP3, esa voz sustituye a la del teléfono.
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 20 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia del Padre Scío",
+   "siglo": "Valencia, 1790–1793 · primera edición",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Doscientos treinta y un años. Ése es el tiempo que estuvo prohibido en España tener la Biblia en castellano.",
+   "La prohibición venía del Índice de 1,551. Poseer las Escrituras en lengua vulgar era delito de Inquisición. Por eso Casiodoro de Reina, el de unas salas atrás, tuvo que imprimir la suya en Suiza y a escondidas.",
+   "En 1,782, bajo Carlos III, la regla cambió. La Inquisición permitió por fin las traducciones a lengua vulgar, con una condición: que llevaran notas tomadas de los Padres de la Iglesia. Nadie debía leer la Biblia solo.",
+   "El primero en aprovechar ese permiso fue Felipe Scío de San Miguel, sacerdote escolapio, maestro de los hijos del rey y después obispo electo de Segovia. Tradujo de la Vulgata latina, no del hebreo ni del griego, porque la Vulgata era el texto oficial de la Iglesia.",
+   "Los tomos fueron saliendo en Valencia, de la imprenta de los Orga, entre 1,790 y 1,793. Y el que usted tiene delante es de aquella primera edición.",
+   "Ábralo y verá dos columnas: el latín de un lado, el castellano del otro. Debajo, las notas. Esa disposición no es un capricho de editor: es la ley de 1,782 hecha página.",
+   "Y ahora la comparación que sólo se puede hacer en un museo como éste. Vaya usted de esta vitrina a la de la Biblia del Oso, y regrese. Dos hombres tradujeron la Biblia al castellano. Al primero lo quemaron en efigie en Sevilla y murió desterrado. Al segundo lo nombraron obispo y maestro de príncipes. Entre uno y otro hay doscientos veintiún años, y ninguna diferencia en el trabajo. Lo único que cambió fue el permiso."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 20 · Museum of the History of the Bible",
+   "titulo": "Father Scío's Bible",
+   "siglo": "Valencia, 1790–1793 · first edition",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Two hundred and thirty-one years. That is how long it was forbidden in Spain to own the Bible in Spanish.",
+   "The ban came from the Index of 1551. To possess the Scriptures in the common tongue was an offence for the Inquisition. That is why Casiodoro de Reina, from a few cases back, had to print his in Switzerland and in secret.",
+   "In 1782, under Charles the Third, the rule changed. The Inquisition at last permitted translations into the common tongue, on one condition: that they carry notes drawn from the Fathers of the Church. Nobody was to read the Bible alone.",
+   "The first to take up that permission was Felipe Scío de San Miguel, a Piarist priest, tutor to the king's children and later bishop-elect of Segovia. He translated from the Latin Vulgate, not from the Hebrew or the Greek, because the Vulgate was the official text of the Church.",
+   "The volumes came out in Valencia, from the Orga press, between 1790 and 1793. And the one before you belongs to that first edition.",
+   "Open it and you will see two columns: the Latin on one side, the Spanish on the other. Underneath, the notes. That arrangement is not a publisher's whim: it is the law of 1782 turned into a page.",
+   "And now the comparison that can only be made in a museum like this one. Walk from this case to the one with the Bear Bible, and come back. Two men translated the Bible into Spanish. The first was burned in effigy in Seville and died in exile. The second was made a bishop and tutor to princes. Two hundred and twenty-one years lie between them, and there is no difference in the work. The only thing that changed was the permission."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 20 · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible du Père Scío",
+   "siglo": "Valence, 1790–1793 · première édition",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Deux cent trente et un ans. C'est le temps pendant lequel il fut interdit en Espagne de posséder la Bible en espagnol.",
+   "L'interdiction venait de l'Index de 1551. Posséder les Écritures en langue vulgaire était un délit relevant de l'Inquisition. C'est pourquoi Casiodoro de Reina, celui de quelques vitrines plus tôt, dut imprimer la sienne en Suisse et en cachette.",
+   "En 1782, sous Charles III, la règle changea. L'Inquisition permit enfin les traductions en langue vulgaire, à une condition : qu'elles portent des notes tirées des Pères de l'Église. Personne ne devait lire la Bible seul.",
+   "Le premier à profiter de cette permission fut Felipe Scío de San Miguel, prêtre piariste, précepteur des enfants du roi et plus tard évêque élu de Ségovie. Il traduisit de la Vulgate latine, non de l'hébreu ni du grec, parce que la Vulgate était le texte officiel de l'Église.",
+   "Les volumes parurent à Valence, sur les presses des Orga, entre 1790 et 1793. Et celui que vous avez devant vous appartient à cette première édition.",
+   "Ouvrez-le et vous verrez deux colonnes : le latin d'un côté, l'espagnol de l'autre. En dessous, les notes. Cette disposition n'est pas un caprice d'éditeur : c'est la loi de 1782 devenue page.",
+   "Et maintenant la comparaison que seul un musée comme celui-ci permet. Allez de cette vitrine à celle de la Bible de l'Ours, puis revenez. Deux hommes ont traduit la Bible en espagnol. Le premier fut brûlé en effigie à Séville et mourut en exil. Le second fut fait évêque et précepteur de princes. Deux cent vingt et un ans les séparent, et aucune différence dans le travail. La seule chose qui ait changé, c'est la permission."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 20 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Bibel des Pater Scío",
+   "siglo": "Valencia, 1790–1793 · Erstausgabe",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Zweihunderteinunddreißig Jahre. So lange war es in Spanien verboten, die Bibel auf Spanisch zu besitzen.",
+   "Das Verbot stammte aus dem Index von 1551. Die Schrift in der Volkssprache zu besitzen war ein Fall für die Inquisition. Darum musste Casiodoro de Reina, der Mann aus einem der früheren Vitrinen, die seine heimlich in der Schweiz drucken lassen.",
+   "1782, unter Karl dem Dritten, änderte sich die Regel. Die Inquisition erlaubte endlich Übersetzungen in die Volkssprache, unter einer Bedingung: sie mussten Anmerkungen aus den Kirchenvätern enthalten. Niemand sollte die Bibel allein lesen.",
+   "Der erste, der diese Erlaubnis nutzte, war Felipe Scío de San Miguel, Piaristenpater, Lehrer der Königskinder und später erwählter Bischof von Segovia. Er übersetzte aus der lateinischen Vulgata, nicht aus dem Hebräischen oder Griechischen, denn die Vulgata war der amtliche Text der Kirche.",
+   "Die Bände erschienen in Valencia, in der Druckerei der Orga, zwischen 1790 und 1793. Und der vor Ihnen gehört zu jener ersten Ausgabe.",
+   "Schlagen Sie ihn auf, und Sie sehen zwei Spalten: das Latein auf der einen Seite, das Spanische auf der anderen. Darunter die Anmerkungen. Diese Anordnung ist keine Laune des Verlegers: sie ist das Gesetz von 1782, zur Seite geworden.",
+   "Und nun der Vergleich, den nur ein Museum wie dieses erlaubt. Gehen Sie von dieser Vitrine zu der mit der Bärenbibel und kommen Sie zurück. Zwei Männer haben die Bibel ins Spanische übersetzt. Den ersten verbrannte man in Sevilla in effigie, und er starb in der Verbannung. Den zweiten machte man zum Bischof und zum Lehrer von Prinzen. Zweihunderteinundzwanzig Jahre liegen dazwischen, und an der Arbeit ist kein Unterschied. Geändert hat sich nur die Erlaubnis."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 20 · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia di padre Scío",
+   "siglo": "Valencia, 1790–1793 · prima edizione",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Duecentotrentun anni. È il tempo per cui in Spagna fu proibito possedere la Bibbia in spagnolo.",
+   "Il divieto veniva dall'Indice del 1551. Possedere le Scritture in lingua volgare era reato di Inquisizione. Per questo Casiodoro de Reina, quello di alcune vetrine fa, dovette stampare la sua in Svizzera e di nascosto.",
+   "Nel 1782, sotto Carlo III, la regola cambiò. L'Inquisizione permise finalmente le traduzioni in lingua volgare, a una condizione: che portassero note tratte dai Padri della Chiesa. Nessuno doveva leggere la Bibbia da solo.",
+   "Il primo ad approfittare di quel permesso fu Felipe Scío de San Miguel, sacerdote scolopio, maestro dei figli del re e poi vescovo eletto di Segovia. Tradusse dalla Vulgata latina, non dall'ebraico né dal greco, perché la Vulgata era il testo ufficiale della Chiesa.",
+   "I volumi uscirono a Valencia, dalla stamperia degli Orga, fra il 1790 e il 1793. E quello che ha davanti appartiene a quella prima edizione.",
+   "Lo apra e vedrà due colonne: il latino da un lato, lo spagnolo dall'altro. Sotto, le note. Quella disposizione non è un capriccio dell'editore: è la legge del 1782 fatta pagina.",
+   "E ora il confronto che solo un museo come questo consente. Vada da questa vetrina a quella della Bibbia dell'Orso, e torni. Due uomini tradussero la Bibbia in spagnolo. Il primo fu bruciato in effigie a Siviglia e morì esule. Il secondo fu fatto vescovo e maestro di principi. Fra i due ci sono duecentoventun anni, e nessuna differenza nel lavoro. L'unica cosa che cambiò fu il permesso."
+  ]
+ }
+};
+
+const $ = id => document.getElementById(id);
+let actual = "es", audio = null;
+
+function pintarIdiomas(){
+  $("idiomas").innerHTML = "";
+  Object.keys(GUIA).forEach(k=>{
+    const b = document.createElement("button");
+    b.textContent = GUIA[k].nombre;
+    b.setAttribute("aria-pressed", k===actual);
+    b.onclick = ()=>{ detener(); actual = k; pintar(); };
+    $("idiomas").appendChild(b);
+  });
+}
+function pintar(){
+  const g = GUIA[actual];
+  document.documentElement.lang = actual;
+  $("ui-sala").textContent = g.ui.sala;
+  $("ui-titulo").textContent = g.ui.titulo;
+  $("ui-siglo").textContent = g.ui.siglo;
+  $("ui-play").textContent = g.ui.play;
+  $("ui-stop").textContent = g.ui.stop;
+  $("ui-pie").textContent = g.ui.pie;
+  $("ui-aviso").hidden = true;
+  $("texto").innerHTML = "";
+  g.t.forEach((p,i)=>{
+    const el = document.createElement("p");
+    el.className = "parrafo"; el.id = "p"+i; el.textContent = p;
+    $("texto").appendChild(el);
+  });
+  pintarIdiomas();
+}
+function marcar(i){
+  document.querySelectorAll(".parrafo.sonando").forEach(e=>e.classList.remove("sonando"));
+  if(i>=0){ const el = $("p"+i); if(el) el.classList.add("sonando"); }
+}
+function detener(){
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  if(audio){ audio.pause(); audio = null; }
+  marcar(-1);
+  $("btn-stop").hidden = true;
+  $("btn-play").hidden = false;
+}
+
+// Preferencias de voz: primero la región (México), luego el timbre masculino.
+const REGION = { es:["es-MX","es-US","es-419","es"], en:["en-US","en-GB","en"], fr:["fr-FR","fr"], de:["de-DE","de"], it:["it-IT","it"] };
+const HOMBRES = ["juan","jorge","diego","carlos","miguel","male","hombre","masculino","alex","aaron","daniel","fred","thomas","nicolas","mathieu","markus","yannick","hans","stefan","luca","federico","cosimo","alessio"];
+const MUJERES = ["paulina","monica","mónica","angelica","angélica","esperanza","marisol","samantha","karen","moira","tessa","amelie","amélie","audrey","anna","petra","katja","alice","elsa","female","mujer","femenino"];
+
+function elegirVoz(codigo){
+  const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : []);
+  if(!vs.length) return null;
+  const base = codigo.slice(0,2);
+  for(const reg of (REGION[base] || [base])){
+    const cand = vs.filter(v => v.lang.replace("_","-").toLowerCase().startsWith(reg.toLowerCase()));
+    if(!cand.length) continue;
+    const h = cand.find(v => HOMBRES.some(n => v.name.toLowerCase().includes(n)));
+    if(h) return h;
+    const neutra = cand.find(v => !MUJERES.some(n => v.name.toLowerCase().includes(n)));
+    return neutra || cand[0];
+  }
+  return null;
+}
+function hayVoz(codigo){
+  if(!window.speechSynthesis) return false;
+  const vs = speechSynthesis.getVoices();
+  if(!vs.length) return true;
+  return vs.some(v => v.lang.slice(0,2) === codigo.slice(0,2));
+}
+function escuchar(){
+  const g = GUIA[actual];
+  detener();
+  $("btn-play").hidden = true;
+  $("btn-stop").hidden = false;
+  if(GRABACIONES[actual]){
+    audio = new Audio(GRABACIONES[actual]);
+    audio.onended = detener;
+    audio.play();
+    return;
+  }
+  if(!window.speechSynthesis || !hayVoz(g.voz)){
+    $("ui-aviso").textContent = g.ui.aviso;
+    $("ui-aviso").hidden = false;
+    detener();
+    return;
+  }
+  const vozElegida = elegirVoz(g.voz);
+  g.t.forEach((p,i)=>{
+    const u = new SpeechSynthesisUtterance(p);
+    u.lang = g.voz; u.rate = 0.92;
+    if(vozElegida) u.voice = vozElegida;
+    u.onstart = ()=>marcar(i);
+    if(i===g.t.length-1) u.onend = detener;
+    speechSynthesis.speak(u);
+  });
+}
+$("btn-play").onclick = escuchar;
+$("btn-stop").onclick = detener;
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
+pintar();
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Las Grandes Horas de Ana de Bretaña — Museo de Historia de la Biblia</title>
+<link href="estilos.css" rel="stylesheet"/>
+<style>
+.rama{flex:none;width:34px;height:76px}
+  .marco{border:2px solid var(--acento);padding:1rem .9rem;display:flex;gap:1rem;align-items:center}
+</style>
+</head>
+<body data-vitrina="9">
+<div class="hoja">
+<header class="cabecera">
+<div class="marca">
+<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
+</a>
+<div class="marca-texto">
+<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+<p class="sala" id="ui-sala"></p>
+</div>
+<span class="marca-num">09</span>
+<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
+</div>
+<div class="header-main">
+<div aria-hidden="true" class="emblema"><svg aria-hidden="true" class="rama" viewBox="0 0 34 76">
+<path d="M17 74 V22" fill="none" stroke="currentColor" stroke-width="2"></path>
+<path d="M17 58 C9 56 5 48 6 42 C14 43 18 50 17 58 Z" fill="currentColor"></path>
+<path d="M17 46 C25 44 29 36 28 30 C20 31 16 38 17 46 Z" fill="currentColor"></path>
+<path d="M17 34 C9 32 5 24 6 18 C14 19 18 26 17 34 Z" fill="currentColor"></path>
+<circle cx="17" cy="14" fill="currentColor" r="6"></circle><circle cx="17" cy="14" fill="currentColor" r="2.4"></circle></svg></div>
+<div class="header-texto">
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div>
+</div>
+</header>
+<nav class="nav">
+<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="nav-btn" id="nav-ant">‹</a>
+<select class="nav-sel" id="nav-sel"></select>
+<a class="nav-btn" id="nav-sig">›</a>
+<span class="nav-btn" id="nav-pos" style="border:none"></span>
+</nav>
+<div class="progreso"><i id="barra"></i></div>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play" type="button">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 9 · Museo de Historia de la Biblia",
+   "titulo": "Las Grandes Horas de Ana de Bretaña",
+   "siglo": "Tours, 1503–1508 · Jean Bourdichon",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Cincuenta años después de Gutenberg, una reina de Francia mandó hacer un libro a mano. Ésta se llamaba Ana de Bretaña y fue reina de Francia dos veces: primero con Carlos VIII y, al morir éste, con Luis XII. Podía comprar libros impresos, que ya se contaban por miles, pero encargó uno solo, único, e irrepetible.",
+   "Lo pintó Jean Bourdichon, pintor de cuatro reyes de Francia, entre 1,503 y 1,508. Cinco años de trabajo para un solo ejemplar.",
+   "Y conviene decir qué es un libro de horas, porque no es una Biblia. Es el libro para orar en casa. Contiene salmos, pasajes del Evangelio, oraciones repartidas por las horas del día. Fue el libro más copiado de toda la Edad Media. El verdadero libro de la gente.",
+   "Mire las cuarenta y nueve pinturas de página entera, con su marco de oro sobre pergamino teñido de negro. No son miniaturas: son cuadros. Tienen perspectiva, primer plano, y sobre todo tienen noche. La Natividad alumbrada por la estrella. La huida a Egipto entre montañas oscuras. El beso de Judas, entre lámparas y antorchas.",
+   "Y ahora mire los márgenes. Ahí está lo que hace único a este libro en el mundo: trescientas treinta y siete plantas pintadas del natural, con su nombre científico en latín arriba y su nombre popular en francés abajo. Entre ellas, insectos, caracoles, animalitos. Son dos libros en uno: un devocionario y un herbario.",
+   "Piense en la fecha. Mientras Bourdichon pintaba con tanto cuidado las plantas de su jardín, del otro lado del mar empezaban a llegar a Europa plantas que nadie allá había visto nunca.",
+   "Ana murió en 1,514, a los treinta y seis años. Su libro se conserva hoy en París.",
+   "Aquí la Escritura ya no está en el monasterio, ni en la corte, ni en el taller del impresor. Está en la recámara de una mujer que oraba sola, con un jardín pintado en las orillas de cada página."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 9 · Museum of the History of the Bible",
+   "titulo": "The Great Hours of Anne of Brittany",
+   "siglo": "Tours, 1503–1508 · Jean Bourdichon",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Fifty years after Gutenberg, a queen of France had a book made by hand. This one. Her name was Anne of Brittany, and she was queen of France twice over: first with Charles the Eighth and, when he died, with Louis the Twelfth. She could have bought printed books, which by then ran into the thousands. She commissioned a single one, unique, unrepeatable.",
+   "It was painted by Jean Bourdichon, court painter to four kings of France, between 1503 and 1508. Five years of work for one single copy.",
+   "And it is worth saying what a book of hours is, because it is not a Bible. It is the book for praying at home: psalms, passages from the Gospels, prayers spread across the hours of the day. It was the most copied book of the whole Middle Ages. The real book of the people.",
+   "Look at the forty-nine full-page paintings, framed in gold against parchment dyed black. They are not miniatures: they are pictures. They have perspective, they have a foreground, and above all they have night. The Nativity lit by the star. The flight into Egypt among dark mountains. The kiss of Judas, among lamps and torches.",
+   "And now look at the margins. That is what makes this book unique in the world: three hundred and thirty-seven plants painted from life, with their scientific name in Latin above and their common name in French below. Among them, insects, snails, small creatures. It is two books in one: a prayer book and a herbal.",
+   "Think about the date. While Bourdichon was painting the plants of his garden with such care, from the other side of the sea plants were beginning to reach Europe that nobody there had ever seen.",
+   "Anne died in 1514, at the age of thirty-six. Her book is kept today in Paris.",
+   "Here Scripture is no longer in the monastery, nor at court, nor in the printer's workshop. It is in the bedchamber of a woman praying alone, with a garden painted along the edge of every page."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 9 · Musée de l'Histoire de la Bible",
+   "titulo": "Les Grandes Heures d'Anne de Bretagne",
+   "siglo": "Tours, 1503–1508 · Jean Bourdichon",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Cinquante ans après Gutenberg, une reine de France fit faire un livre à la main. Celui-ci. Elle s'appelait Anne de Bretagne et fut reine de France deux fois : d'abord avec Charles VIII et, à la mort de celui-ci, avec Louis XII. Elle pouvait acheter des livres imprimés, qui se comptaient déjà par milliers. Elle en commanda un seul, unique, irremplaçable.",
+   "Il fut peint par Jean Bourdichon, peintre de quatre rois de France, entre 1503 et 1508. Cinq années de travail pour un seul exemplaire.",
+   "Et il faut dire ce qu'est un livre d'heures, car ce n'est pas une Bible. C'est le livre pour prier chez soi : des psaumes, des passages de l'Évangile, des prières réparties selon les heures du jour. Ce fut le livre le plus copié de tout le Moyen Âge. Le véritable livre des gens.",
+   "Regardez les quarante-neuf peintures pleine page, encadrées d'or sur un parchemin teint en noir. Ce ne sont pas des miniatures : ce sont des tableaux. Ils ont de la perspective, un premier plan, et surtout ils ont la nuit. La Nativité éclairée par l'étoile. La fuite en Égypte parmi des montagnes obscures. Le baiser de Judas, entre lampes et torches.",
+   "Et maintenant regardez les marges. C'est là ce qui rend ce livre unique au monde : trois cent trente-sept plantes peintes d'après nature, avec leur nom scientifique en latin au-dessus et leur nom populaire en français au-dessous. Parmi elles, des insectes, des escargots, de petits animaux. Ce sont deux livres en un : un livre de prière et un herbier.",
+   "Pensez à la date. Pendant que Bourdichon peignait avec tant de soin les plantes de son jardin, de l'autre côté de la mer commençaient à arriver en Europe des plantes que personne là-bas n'avait jamais vues.",
+   "Anne mourut en 1514, à trente-six ans. Son livre est conservé aujourd'hui à Paris.",
+   "Ici l'Écriture n'est plus au monastère, ni à la cour, ni dans l'atelier de l'imprimeur. Elle est dans la chambre d'une femme qui priait seule, avec un jardin peint au bord de chaque page."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 9 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Grandes Heures der Anne de Bretagne",
+   "siglo": "Tours, 1503–1508 · Jean Bourdichon",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Fünfzig Jahre nach Gutenberg ließ eine Königin von Frankreich ein Buch von Hand anfertigen. Dieses. Sie hieß Anne de Bretagne und war zweimal Königin von Frankreich: zuerst mit Karl dem Achten und, nach dessen Tod, mit Ludwig dem Zwölften. Sie hätte gedruckte Bücher kaufen können, die es damals schon zu Tausenden gab. Sie gab ein einziges in Auftrag, einmalig, unwiederholbar.",
+   "Gemalt hat es Jean Bourdichon, Hofmaler von vier französischen Königen, zwischen 1503 und 1508. Fünf Jahre Arbeit für ein einziges Exemplar.",
+   "Und man sollte sagen, was ein Stundenbuch ist, denn eine Bibel ist es nicht. Es ist das Buch zum Beten zu Hause: Psalmen, Stellen aus den Evangelien, Gebete, verteilt über die Stunden des Tages. Es war das meistabgeschriebene Buch des gesamten Mittelalters. Das wirkliche Buch der Leute.",
+   "Sehen Sie die neunundvierzig ganzseitigen Gemälde, in Gold gerahmt auf schwarz gefärbtem Pergament. Es sind keine Miniaturen: es sind Bilder. Sie haben Perspektive, sie haben einen Vordergrund, und vor allem haben sie Nacht. Die Geburt Christi, vom Stern erhellt. Die Flucht nach Ägypten zwischen dunklen Bergen. Der Judaskuss, zwischen Lampen und Fackeln.",
+   "Und nun sehen Sie sich die Ränder an. Dort liegt, was dieses Buch weltweit einzigartig macht: dreihundertsiebenunddreißig nach der Natur gemalte Pflanzen, mit ihrem wissenschaftlichen Namen auf Latein darüber und ihrem volkstümlichen Namen auf Französisch darunter. Dazwischen Insekten, Schnecken, kleine Tiere. Es sind zwei Bücher in einem: ein Gebetbuch und ein Kräuterbuch.",
+   "Denken Sie an das Datum. Während Bourdichon die Pflanzen seines Gartens mit solcher Sorgfalt malte, begannen von der anderen Seite des Meeres Pflanzen nach Europa zu kommen, die dort noch niemand gesehen hatte.",
+   "Anne starb 1514, im Alter von sechsunddreißig Jahren. Ihr Buch wird heute in Paris aufbewahrt.",
+   "Hier ist die Schrift nicht mehr im Kloster, nicht mehr bei Hofe, nicht mehr in der Werkstatt des Druckers. Sie ist in der Kammer einer Frau, die allein betete, mit einem Garten, gemalt an den Rand jeder Seite."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 9 · Museo di Storia della Bibbia",
+   "titulo": "Le Grandi Ore di Anna di Bretagna",
+   "siglo": "Tours, 1503–1508 · Jean Bourdichon",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Cinquant'anni dopo Gutenberg, una regina di Francia fece fare un libro a mano. Questo. Si chiamava Anna di Bretagna e fu regina di Francia due volte: prima con Carlo VIII e, alla morte di lui, con Luigi XII. Poteva comprare libri stampati, che ormai si contavano a migliaia. Ne commissionò uno solo, unico, irripetibile.",
+   "Lo dipinse Jean Bourdichon, pittore di quattro re di Francia, tra il 1503 e il 1508. Cinque anni di lavoro per una sola copia.",
+   "E conviene dire che cos'è un libro d'ore, perché non è una Bibbia. È il libro per pregare in casa: salmi, passi del Vangelo, preghiere distribuite lungo le ore del giorno. Fu il libro più copiato di tutto il Medioevo. Il vero libro della gente.",
+   "Guardi i quarantanove dipinti a piena pagina, incorniciati d'oro su pergamena tinta di nero. Non sono miniature: sono quadri. Hanno prospettiva, hanno un primo piano, e soprattutto hanno la notte. La Natività illuminata dalla stella. La fuga in Egitto tra montagne scure. Il bacio di Giuda, tra lampade e torce.",
+   "E ora guardi i margini. Lì sta ciò che rende questo libro unico al mondo: trecentotrentasette piante dipinte dal vero, con il loro nome scientifico in latino sopra e il loro nome popolare in francese sotto. In mezzo, insetti, lumache, piccoli animali. Sono due libri in uno: un devozionale e un erbario.",
+   "Pensi alla data. Mentre Bourdichon dipingeva con tanta cura le piante del suo giardino, dall'altra parte del mare cominciavano ad arrivare in Europa piante che nessuno là aveva mai visto.",
+   "Anna morì nel 1514, a trentasei anni. Il suo libro è conservato oggi a Parigi.",
+   "Qui la Scrittura non è più nel monastero, né a corte, né nella bottega dello stampatore. È nella camera di una donna che pregava da sola, con un giardino dipinto sul bordo di ogni pagina."
+  ]
+ }
+};
+</script>
+<script src="vitrinas.js"></script>
+<script src="guia.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Las lenguas del mundo — Museo de Historia de la Biblia</title>
+<style>
+  :root{ --fondo:#EFEDE6;--claro:#FAF8F2;--tinta:#1C1B19;--cabecera:#27506B;--acento:#B0642C;--marca:rgba(176,100,44,.26); }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fondo);color:var(--tinta);
+    font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
+    font-size:20px;line-height:1.62;-webkit-text-size-adjust:100%;}
+  .hoja{max-width:40rem;margin:0 auto;padding:0 0 4rem}
+  header{background:var(--cabecera);color:var(--claro);padding:2.2rem 1.4rem 2rem;}
+  .sala{font-size:.78em;margin:0 0 .45rem;opacity:.85}
+  h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .alfabetos{flex:none;display:grid;grid-template-columns:repeat(4,20px);gap:4px;
+    font-size:15px;line-height:20px;text-align:center;color:var(--claro)}
+  .alfabetos span{display:block;background:rgba(255,255,255,.14);border-radius:2px}
+
+  main{padding:0 1.4rem}
+  .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
+  .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
+    background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);border-radius:2px;cursor:pointer}
+  .idiomas button[aria-pressed="true"]{background:var(--cabecera);color:var(--claro);border-color:var(--cabecera)}
+  .idiomas button:focus-visible,.control:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  .mandos{display:flex;gap:.6rem;align-items:center;margin:0 0 1.8rem}
+  .control{font:inherit;font-size:1em;display:inline-flex;align-items:center;gap:.55rem;
+    padding:.85rem 1.5rem;min-height:52px;background:var(--acento);color:#FFF6E6;border:none;border-radius:2px;cursor:pointer}
+  .control.secundario{background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);padding:.85rem 1.1rem}
+  .control[hidden]{display:none}
+  .aviso{font-size:.8em;font-style:italic;margin:-1.2rem 0 1.8rem;color:#7a5c3e}
+  p.parrafo{margin:0 0 1.15rem;transition:background-color .25s}
+  p.parrafo.sonando{background:var(--marca);box-shadow:0 0 0 .35rem var(--marca)}
+  footer{margin:2.8rem 1.4rem 0;padding-top:1.2rem;border-top:1px solid rgba(40,32,25,.25);
+         font-size:.8em;font-style:italic;color:#7a5c3e}
+  @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
+
+  .header-marca{display:flex;justify-content:flex-end;margin:0 0 .9rem}
+  .logo-mhb{flex:none;width:56px;height:56px;color:var(--claro);opacity:.92}
+  .logo-mhb svg{width:100%;height:100%}
+  .header-main{display:flex;gap:1.3rem;align-items:center}
+  .header-texto{flex:1}
+</style>
+</head>
+<body>
+<div class="hoja">
+<header><div class="header-marca"><div aria-label="Museo de Historia de la Biblia" class="logo-mhb">
+<svg aria-hidden="true" viewBox="0 0 64 64">
+<path d="M10 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<path d="M36 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<line stroke="currentColor" stroke-width="2" x1="32" x2="32" y1="12" y2="52"></line>
+</svg>
+</div></div><div class="header-main"><div aria-hidden="true" class="alfabetos"><span>A</span><span>Ω</span><span>א</span><span>Я</span><span>中</span><span>あ</span><span>한</span><span>ع</span></div><div class="header-texto">
+<p class="sala" id="ui-sala"></p>
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div></div></header>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+// Si pone aquí la URL de un MP3, esa voz sustituye a la del teléfono.
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 29 · Museo de Historia de la Biblia",
+   "titulo": "Las lenguas del mundo",
+   "siglo": "Cincuenta lenguas · nueve alfabetos",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Cincuenta lenguas en una sola vitrina.",
+   "Empiece por las tres del centro: hebreo, griego y latín. Según el evangelio de Juan, ésas fueron las tres lenguas en que estaba escrito el letrero que clavaron sobre la cruz. Todo lo demás que ve aquí sale de ahí.",
+   "Ahora mire el ruso. Ese alfabeto se llama cirílico por Cirilo, un monje que en el siglo nueve inventó un alfabeto entero para poder traducir la Escritura a la lengua de los eslavos, que no tenían escritura propia. La lengua escrita nació para formar este libro.",
+   "Mire el coreano. Ese alfabeto, el hangul, lo mandó crear un rey a mediados del siglo quince, con un argumento que usted ya oyó en la vitrina de Lutero: que la gente común no podía con los caracteres chinos y merecía poder leer.",
+   "Mire el chino, y fíjese sobre todo en el papel: es papel de arroz, tan delgado que se transparenta. Así se imprimían las Biblias que debían pesar poco y caber en cualquier parte.",
+   "Y ahora las tres de África oriental: amárico, tigriña y oromo. Etiopía es uno de los países cristianos más antiguos del mundo, desde el siglo cuarto, y su Biblia tiene el canon más amplio que existe: ochenta y un libros, con textos que ninguna otra tradición conserva, como los libros de Henoc.",
+   "Y busque ahora el árabe y el turco. El árabe, porque hay comunidades cristianas que llevan más de mil años leyendo la Escritura en la misma lengua en que se escribió el Corán. Y el turco, porque la primera traducción a esa lengua la hizo en el siglo diecisiete un polaco convertido al islam que servía de intérprete en la corte otomana, y quedó inédita más de cien años. El ejemplar que usted tiene delante es moderno, en el alfabeto latino que Turquía adoptó en 1,928, cuando dejó atrás la escritura árabe.",
+   "El checo tiene su propia historia: Jan Hus predicó y tradujo en esa lengua cien años antes que Lutero, y lo quemaron por ello en 1,415. El afrikáans es casi lo contrario: su Biblia completa salió en 1933, y fue uno de los libros que terminó de convertir esa habla en lengua escrita.",
+   "Cuente los alfabetos que tiene delante. Latino, cirílico, griego, hebreo, árabe, chino, japonés, coreano, etíope. Nueve maneras distintas de dibujar sonidos.",
+   "Y ninguno de estos libros dice nada distinto de los demás. Es el mismo texto, cincuenta veces, buscando cada vez una boca nueva."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 29 · Museum of the History of the Bible",
+   "titulo": "The languages of the world",
+   "siglo": "Fifty languages · nine alphabets",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Fifty languages in a single case.",
+   "Start with the three in the middle: Hebrew, Greek and Latin. According to the Gospel of John, those were the three languages in which the notice nailed above the cross was written. Everything else you see here comes from there.",
+   "Now look at the Russian. That alphabet is called Cyrillic after Cyril, a monk who in the ninth century invented an entire alphabet in order to translate Scripture into the language of the Slavs, who had no writing of their own. Written language was born to carry this book.",
+   "Look at the Korean. That alphabet, hangul, was commissioned by a king in the middle of the fifteenth century, with an argument you already heard in Luther's case: that ordinary people could not manage the Chinese characters and deserved to be able to read.",
+   "Look at the Chinese, and above all look at the paper: it is rice paper, so thin you can see through it. That is how Bibles were printed when they had to weigh little and fit anywhere.",
+   "And now the three from East Africa: Amharic, Tigrinya and Oromo. Ethiopia is one of the oldest Christian countries in the world, since the fourth century, and its Bible has the widest canon there is: eighty-one books, including texts no other tradition preserves, such as the book of Enoch.",
+   "And now look for the Arabic and the Turkish. The Arabic, because there are Christian communities that have been reading Scripture for more than a thousand years in the very language the Koran was written in. And the Turkish, because the first translation into that language was made in the seventeenth century by a Pole converted to Islam who served as an interpreter at the Ottoman court, and it stayed unpublished for more than a hundred years. The copy before you is modern, in the Latin alphabet Turkey adopted in 1928, when it left the Arabic script behind.",
+   "Czech has a story of its own: Jan Hus preached and translated in that language a hundred years before Luther, and they burned him for it in 1415. Afrikaans is almost the opposite: its complete Bible came out in 1933, and it was one of the books that finished turning that speech into a written language.",
+   "Count the alphabets in front of you. Latin, Cyrillic, Greek, Hebrew, Arabic, Chinese, Japanese, Korean, Ethiopic. Nine different ways of drawing sounds.",
+   "And not one of these books says anything different from the others. It is the same text, fifty times over, looking each time for a new mouth."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 29 · Musée de l'Histoire de la Bible",
+   "titulo": "Les langues du monde",
+   "siglo": "Cinquante langues · neuf alphabets",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Cinquante langues dans une seule vitrine.",
+   "Commencez par les trois du milieu : hébreu, grec et latin. Selon l'évangile de Jean, ce furent les trois langues de l'écriteau cloué au-dessus de la croix. Tout le reste de ce que vous voyez ici en découle.",
+   "Regardez maintenant le russe. Cet alphabet s'appelle cyrillique d'après Cyrille, un moine qui au neuvième siècle inventa un alphabet entier pour pouvoir traduire l'Écriture dans la langue des Slaves, qui n'avaient pas d'écriture. La langue écrite est née pour porter ce livre.",
+   "Regardez le coréen. Cet alphabet, le hangul, fut commandé par un roi au milieu du quinzième siècle, avec un argument que vous avez déjà entendu dans la vitrine de Luther : que les gens du commun ne venaient pas à bout des caractères chinois et méritaient de pouvoir lire.",
+   "Regardez le chinois, et surtout regardez le papier : c'est du papier de riz, si fin qu'il est translucide. C'est ainsi qu'on imprimait les Bibles qui devaient peser peu et tenir n'importe où.",
+   "Et maintenant les trois d'Afrique orientale : amharique, tigrigna et oromo. L'Éthiopie est l'un des plus anciens pays chrétiens du monde, depuis le quatrième siècle, et sa Bible a le canon le plus large qui existe : quatre-vingt-un livres, avec des textes qu'aucune autre tradition ne conserve, comme le livre d'Hénoch.",
+   "Et cherchez maintenant l'arabe et le turc. L'arabe, parce qu'il existe des communautés chrétiennes qui lisent l'Écriture depuis plus de mille ans dans la langue même où fut écrit le Coran. Et le turc, parce que la première traduction dans cette langue fut faite au dix-septième siècle par un Polonais converti à l'islam, interprète à la cour ottomane, et qu'elle resta inédite plus de cent ans. L'exemplaire que vous avez devant vous est moderne, dans l'alphabet latin que la Turquie a adopté en 1928, quand elle a abandonné l'écriture arabe.",
+   "Le tchèque a sa propre histoire : Jan Hus prêcha et traduisit dans cette langue cent ans avant Luther, et on le brûla pour cela en 1415. L'afrikaans est presque l'inverse : sa Bible complète parut en 1933, et ce fut l'un des livres qui achevèrent de faire de ce parler une langue écrite.",
+   "Comptez les alphabets que vous avez devant vous. Latin, cyrillique, grec, hébreu, arabe, chinois, japonais, coréen, éthiopien. Neuf manières différentes de dessiner des sons.",
+   "Et aucun de ces livres ne dit rien de différent des autres. C'est le même texte, cinquante fois, cherchant chaque fois une bouche nouvelle."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 29 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Sprachen der Welt",
+   "siglo": "Fünfzig Sprachen · neun Alphabete",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Fünfzig Sprachen in einer einzigen Vitrine.",
+   "Beginnen Sie mit den dreien in der Mitte: Hebräisch, Griechisch und Latein. Nach dem Johannesevangelium waren das die drei Sprachen, in denen die Tafel über dem Kreuz geschrieben stand. Alles Übrige, was Sie hier sehen, geht davon aus.",
+   "Sehen Sie nun das Russische an. Dieses Alphabet heißt kyrillisch nach Kyrill, einem Mönch, der im neunten Jahrhundert ein ganzes Alphabet erfand, um die Schrift in die Sprache der Slawen übersetzen zu können, die keine eigene Schrift hatten. Die Schriftsprache entstand, um dieses Buch zu tragen.",
+   "Sehen Sie das Koreanische an. Dieses Alphabet, Hangul, ließ ein König Mitte des fünfzehnten Jahrhunderts schaffen, mit einem Argument, das Sie schon in der Vitrine Luthers gehört haben: dass das einfache Volk mit den chinesischen Zeichen nicht zurechtkam und es verdiente, lesen zu können.",
+   "Sehen Sie das Chinesische an, und vor allem das Papier: es ist Reispapier, so dünn, dass es durchscheint. So druckte man Bibeln, die wenig wiegen und überall hineinpassen mussten.",
+   "Und nun die drei aus Ostafrika: Amharisch, Tigrinya und Oromo. Äthiopien ist eines der ältesten christlichen Länder der Welt, seit dem vierten Jahrhundert, und seine Bibel hat den weitesten Kanon, den es gibt: einundachtzig Bücher, mit Texten, die keine andere Tradition bewahrt, wie das Buch Henoch.",
+   "Und suchen Sie nun das Arabische und das Türkische. Das Arabische, weil es christliche Gemeinden gibt, die seit mehr als tausend Jahren die Schrift in eben der Sprache lesen, in der der Koran geschrieben wurde. Und das Türkische, weil die erste Übersetzung in diese Sprache im siebzehnten Jahrhundert ein zum Islam übergetretener Pole anfertigte, Dolmetscher am osmanischen Hof, und sie mehr als hundert Jahre unveröffentlicht blieb. Das Exemplar vor Ihnen ist modern, in der lateinischen Schrift, die die Türkei 1928 übernahm, als sie die arabische aufgab.",
+   "Das Tschechische hat seine eigene Geschichte: Jan Hus predigte und übersetzte in dieser Sprache hundert Jahre vor Luther, und man verbrannte ihn dafür im Jahr 1415. Afrikaans ist fast das Gegenteil: seine vollständige Bibel erschien 1933, und sie war eines der Bücher, die diese Mundart endgültig zur Schriftsprache machten.",
+   "Zählen Sie die Alphabete, die vor Ihnen liegen. Lateinisch, kyrillisch, griechisch, hebräisch, arabisch, chinesisch, japanisch, koreanisch, äthiopisch. Neun verschiedene Weisen, Laute zu zeichnen.",
+   "Und keines dieser Bücher sagt etwas anderes als die übrigen. Es ist derselbe Text, fünfzigmal, und sucht jedes Mal einen neuen Mund."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 29 · Museo di Storia della Bibbia",
+   "titulo": "Le lingue del mondo",
+   "siglo": "Cinquanta lingue · nove alfabeti",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Cinquanta lingue in una sola vetrina.",
+   "Cominci dalle tre al centro: ebraico, greco e latino. Secondo il vangelo di Giovanni, furono queste le tre lingue del cartello inchiodato sopra la croce. Tutto il resto che vede qui viene di lì.",
+   "Ora guardi il russo. Quell'alfabeto si chiama cirillico da Cirillo, un monaco che nel nono secolo inventò un alfabeto intero per poter tradurre la Scrittura nella lingua degli slavi, che non avevano scrittura propria. La lingua scritta nacque per portare questo libro.",
+   "Guardi il coreano. Quell'alfabeto, lo hangul, lo fece creare un re a metà del Quattrocento, con un argomento che ha già sentito nella vetrina di Lutero: che la gente comune non ce la faceva con i caratteri cinesi e meritava di poter leggere.",
+   "Guardi il cinese, e soprattutto guardi la carta: è carta di riso, così sottile da essere trasparente. Così si stampavano le Bibbie che dovevano pesare poco e stare dappertutto.",
+   "E ora le tre dell'Africa orientale: amarico, tigrino e oromo. L'Etiopia è uno dei paesi cristiani più antichi del mondo, dal quarto secolo, e la sua Bibbia ha il canone più ampio che esista: ottantun libri, con testi che nessun'altra tradizione conserva, come il libro di Enoc.",
+   "E cerchi ora l'arabo e il turco. L'arabo, perché ci sono comunità cristiane che da più di mille anni leggono la Scrittura nella stessa lingua in cui fu scritto il Corano. E il turco, perché la prima traduzione in quella lingua la fece nel Seicento un polacco convertito all'islam, interprete alla corte ottomana, e rimase inedita per più di cent'anni. L'esemplare che ha davanti è moderno, nell'alfabeto latino che la Turchia adottò nel 1928, quando abbandonò la scrittura araba.",
+   "Il ceco ha una storia propria: Jan Hus predicò e tradusse in quella lingua cento anni prima di Lutero, e per questo lo bruciarono nel 1415. L'afrikaans è quasi l'opposto: la sua Bibbia completa uscì nel 1933, e fu uno dei libri che finirono di trasformare quella parlata in lingua scritta.",
+   "Conti gli alfabeti che ha davanti. Latino, cirillico, greco, ebraico, arabo, cinese, giapponese, coreano, etiopico. Nove modi diversi di disegnare i suoni.",
+   "E nessuno di questi libri dice nulla di diverso dagli altri. È lo stesso testo, cinquanta volte, che cerca ogni volta una bocca nuova."
+  ]
+ }
+};
+
+const $ = id => document.getElementById(id);
+let actual = "es", audio = null;
+
+function pintarIdiomas(){
+  $("idiomas").innerHTML = "";
+  Object.keys(GUIA).forEach(k=>{
+    const b = document.createElement("button");
+    b.textContent = GUIA[k].nombre;
+    b.setAttribute("aria-pressed", k===actual);
+    b.onclick = ()=>{ detener(); actual = k; pintar(); };
+    $("idiomas").appendChild(b);
+  });
+}
+function pintar(){
+  const g = GUIA[actual];
+  document.documentElement.lang = actual;
+  $("ui-sala").textContent = g.ui.sala;
+  $("ui-titulo").textContent = g.ui.titulo;
+  $("ui-siglo").textContent = g.ui.siglo;
+  $("ui-play").textContent = g.ui.play;
+  $("ui-stop").textContent = g.ui.stop;
+  $("ui-pie").textContent = g.ui.pie;
+  $("ui-aviso").hidden = true;
+  $("texto").innerHTML = "";
+  g.t.forEach((p,i)=>{
+    const el = document.createElement("p");
+    el.className = "parrafo"; el.id = "p"+i; el.textContent = p;
+    $("texto").appendChild(el);
+  });
+  pintarIdiomas();
+}
+function marcar(i){
+  document.querySelectorAll(".parrafo.sonando").forEach(e=>e.classList.remove("sonando"));
+  if(i>=0){ const el = $("p"+i); if(el) el.classList.add("sonando"); }
+}
+function detener(){
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  if(audio){ audio.pause(); audio = null; }
+  marcar(-1);
+  $("btn-stop").hidden = true;
+  $("btn-play").hidden = false;
+}
+
+// Preferencias de voz: primero la región (México), luego el timbre masculino.
+const REGION = { es:["es-MX","es-US","es-419","es"], en:["en-US","en-GB","en"], fr:["fr-FR","fr"], de:["de-DE","de"], it:["it-IT","it"] };
+const HOMBRES = ["juan","jorge","diego","carlos","miguel","male","hombre","masculino","alex","aaron","daniel","fred","thomas","nicolas","mathieu","markus","yannick","hans","stefan","luca","federico","cosimo","alessio"];
+const MUJERES = ["paulina","monica","mónica","angelica","angélica","esperanza","marisol","samantha","karen","moira","tessa","amelie","amélie","audrey","anna","petra","katja","alice","elsa","female","mujer","femenino"];
+
+function elegirVoz(codigo){
+  const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : []);
+  if(!vs.length) return null;
+  const base = codigo.slice(0,2);
+  for(const reg of (REGION[base] || [base])){
+    const cand = vs.filter(v => v.lang.replace("_","-").toLowerCase().startsWith(reg.toLowerCase()));
+    if(!cand.length) continue;
+    const h = cand.find(v => HOMBRES.some(n => v.name.toLowerCase().includes(n)));
+    if(h) return h;
+    const neutra = cand.find(v => !MUJERES.some(n => v.name.toLowerCase().includes(n)));
+    return neutra || cand[0];
+  }
+  return null;
+}
+function hayVoz(codigo){
+  if(!window.speechSynthesis) return false;
+  const vs = speechSynthesis.getVoices();
+  if(!vs.length) return true;
+  return vs.some(v => v.lang.slice(0,2) === codigo.slice(0,2));
+}
+function escuchar(){
+  const g = GUIA[actual];
+  detener();
+  $("btn-play").hidden = true;
+  $("btn-stop").hidden = false;
+  if(GRABACIONES[actual]){
+    audio = new Audio(GRABACIONES[actual]);
+    audio.onended = detener;
+    audio.play();
+    return;
+  }
+  if(!window.speechSynthesis || !hayVoz(g.voz)){
+    $("ui-aviso").textContent = g.ui.aviso;
+    $("ui-aviso").hidden = false;
+    detener();
+    return;
+  }
+  const vozElegida = elegirVoz(g.voz);
+  g.t.forEach((p,i)=>{
+    const u = new SpeechSynthesisUtterance(p);
+    u.lang = g.voz; u.rate = 0.92;
+    if(vozElegida) u.voice = vozElegida;
+    u.onstart = ()=>marcar(i);
+    if(i===g.t.length-1) u.onend = detener;
+    speechSynthesis.speak(u);
+  });
+}
+$("btn-play").onclick = escuchar;
+$("btn-stop").onclick = detener;
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
+pintar();
+</script>
+</body>
+</html>

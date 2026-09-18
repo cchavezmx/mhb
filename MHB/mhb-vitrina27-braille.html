@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>La Biblia en Braille — Museo de Historia de la Biblia</title>
+<link href="estilos.css" rel="stylesheet"/>
+<style>
+.puntos{flex:none;display:grid;grid-template-columns:repeat(2,14px);gap:8px}
+  .puntos i{display:block;width:14px;height:14px;border-radius:50%;background:var(--claro);opacity:.35}
+  .puntos i.alto{opacity:1;box-shadow:0 2px 0 rgba(0,0,0,.35)}
+</style>
+</head>
+<body data-vitrina="27">
+<div class="hoja">
+<header class="cabecera">
+<div class="marca">
+<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
+</a>
+<div class="marca-texto">
+<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+<p class="sala" id="ui-sala"></p>
+</div>
+<span class="marca-num">27</span>
+<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
+</div>
+<div class="header-main">
+<div aria-hidden="true" class="emblema"><div aria-hidden="true" class="puntos"><i class="alto"></i><i></i><i class="alto"></i><i class="alto"></i><i></i><i class="alto"></i></div></div>
+<div class="header-texto">
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div>
+</div>
+</header>
+<nav class="nav">
+<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="nav-btn" id="nav-ant">‹</a>
+<select class="nav-sel" id="nav-sel"></select>
+<a class="nav-btn" id="nav-sig">›</a>
+<span class="nav-btn" id="nav-pos" style="border:none"></span>
+</nav>
+<div class="progreso"><i id="barra"></i></div>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play" type="button">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 27 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia en Braille",
+   "siglo": "Seis puntos · unos cuarenta volúmenes",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Ésta no se lee con los ojos, se lee con las manos.",
+   "El sistema lo inventó un muchacho francés llamado Louis Braille. Se quedó ciego a los tres años, jugando con una herramienta de punta en el taller de su padre, que era talabartero. A los diez entró al instituto de jóvenes ciegos de París. A los quince ya tenía resuelto el problema.",
+   "Partió de un invento militar. Un capitán llamado Charles Barbier había ideado una escritura de puntos en relieve para que los soldados pudieran leer órdenes de noche, sin encender una luz que los delatara. Usaba doce puntos y era muy difícil de manejar. Braille la redujo a seis. Seis puntos, que caben enteros bajo la yema de un dedo, y cuyas sesenta y tres combinaciones alcanzan para todo el alfabeto, los números, la puntuación y hasta la música.",
+   "Y no se lo aceptaron. La escuela prohibió su método durante años; los maestros, que veían, preferían las letras de imprenta en relieve, porque ésas ellos las podían leer. Braille murió de tuberculosis en 1,852, a los cuarenta y tres años. Francia adoptó su sistema oficialmente dos años después de enterrarlo.",
+   "Ahora mire el tamaño de esta vitrina. La Biblia en braille no cabe en un tomo: son alrededor de cuarenta volúmenes, decenas de kilos, varios metros de repisa. El punto en relieve ocupa muchísimo más espacio que la tinta. Quien la lee completa recorre kilómetros con los dedos.",
+   "Y piense en lo que ha visto en el recorrido. Un monje la pintó para quien no sabía leer. Gutenberg la multiplicó para quien no podía pagarla. Casiodoro la tradujo para quien no entendía latín. Todos le abrieron la puerta a alguien que estaba afuera.",
+   "Esto es lo mismo, con otro sentido. Durante tres mil años el Libro se recibió por el oído o por la vista. Aquí, por primera vez, se recibe por las manos."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 27 · Museum of the History of the Bible",
+   "titulo": "The Bible in Braille",
+   "siglo": "Six dots · some forty volumes",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "This one is not read with the eyes.",
+   "The system was invented by a French boy named Louis Braille. He went blind at three, playing with a sharp tool in the workshop of his father, who was a harness maker. At ten he entered the institute for blind youth in Paris. By fifteen he had solved the problem.",
+   "He started from a military invention. A captain named Charles Barbier had devised a writing of raised dots so that soldiers could read orders at night without striking a light that would give them away. It used twelve dots and was very hard to handle. Braille reduced it to six. Six dots, which fit whole beneath the pad of a finger, and whose sixty-three combinations are enough for the entire alphabet, the numbers, the punctuation and even music.",
+   "And they would not accept it. The school banned his method for years; the teachers, who could see, preferred raised printed letters, because those they themselves could read. Braille died of tuberculosis in 1852, at forty-three. France officially adopted his system two years after burying him.",
+   "Now look at the size of this case. The Bible in braille does not fit in one volume: it runs to some forty volumes, tens of kilos, several metres of shelf. A raised dot takes up far more case than ink. Whoever reads it through travels kilometres with the fingers.",
+   "And think about what you have seen on this tour. A monk painted it for those who could not read. Gutenberg multiplied it for those who could not pay for it. Casiodoro translated it for those who did not understand Latin. Every one of them opened the door to somebody who was outside.",
+   "This is the same thing, through another sense. For three thousand years the Book was received by the ear or by the eye. Here, for the first time, it is received by the hands."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 27 · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible en braille",
+   "siglo": "Six points · une quarantaine de volumes",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Celle-ci ne se lit pas avec les yeux.",
+   "Le système fut inventé par un garçon français nommé Louis Braille. Il devint aveugle à trois ans, en jouant avec un outil pointu dans l'atelier de son père, qui était bourrelier. À dix ans il entra à l'institut des jeunes aveugles de Paris. À quinze ans, il avait résolu le problème.",
+   "Il partit d'une invention militaire. Un capitaine nommé Charles Barbier avait imaginé une écriture de points en relief pour que les soldats puissent lire des ordres la nuit, sans allumer une lumière qui les trahirait. Elle utilisait douze points et était très difficile à manier. Braille la réduisit à six. Six points, qui tiennent entiers sous la pulpe d'un doigt, et dont les soixante-trois combinaisons suffisent pour tout l'alphabet, les chiffres, la ponctuation et même la musique.",
+   "Et on ne l'accepta pas. L'école interdit sa méthode pendant des années ; les maîtres, qui voyaient, préféraient les lettres d'imprimerie en relief, parce que celles-là, eux, ils pouvaient les lire. Braille mourut de la tuberculose en 1852, à quarante-trois ans. La France adopta officiellement son système deux ans après l'avoir enterré.",
+   "Regardez maintenant la taille de cette vitrine. La Bible en braille ne tient pas en un volume : elle fait environ quarante volumes, des dizaines de kilos, plusieurs mètres d'étagère. Le point en relief occupe bien plus de place que l'encre. Celui qui la lit en entier parcourt des kilomètres avec les doigts.",
+   "Et pensez à ce que vous avez vu dans ce parcours. Un moine l'a peinte pour ceux qui ne savaient pas lire. Gutenberg l'a multipliée pour ceux qui ne pouvaient pas la payer. Casiodoro l'a traduite pour ceux qui ne comprenaient pas le latin. Tous ont ouvert la porte à quelqu'un qui était dehors.",
+   "Ceci est la même chose, par un autre sens. Pendant trois mille ans, le Livre s'est reçu par l'oreille ou par les yeux. Ici, pour la première fois, il se reçoit par les mains."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 27 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Bibel in Blindenschrift",
+   "siglo": "Sechs Punkte · etwa vierzig Bände",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Diese hier liest man nicht mit den Augen.",
+   "Erfunden hat das System ein französischer Junge namens Louis Braille. Mit drei Jahren erblindete er, als er in der Werkstatt seines Vaters, eines Sattlers, mit einem spitzen Werkzeug spielte. Mit zehn kam er in das Institut für blinde Jugendliche in Paris. Mit fünfzehn hatte er das Problem gelöst.",
+   "Er ging von einer militärischen Erfindung aus. Ein Hauptmann namens Charles Barbier hatte eine Punktschrift ersonnen, damit Soldaten nachts Befehle lesen konnten, ohne ein Licht anzuzünden, das sie verraten hätte. Sie benutzte zwölf Punkte und war sehr schwer zu handhaben. Braille verringerte sie auf sechs. Sechs Punkte, die ganz unter die Fingerkuppe passen, und deren dreiundsechzig Kombinationen für das ganze Alphabet reichen, für die Zahlen, die Zeichensetzung und sogar für die Noten.",
+   "Und man nahm es ihm nicht ab. Die Schule verbot seine Methode jahrelang; die Lehrer, die sehen konnten, zogen erhabene Druckbuchstaben vor, weil sie die selbst lesen konnten. Braille starb 1852 mit dreiundvierzig Jahren an Tuberkulose. Frankreich übernahm sein System amtlich zwei Jahre nachdem man ihn begraben hatte.",
+   "Sehen Sie nun die Größe dieser Vitrine. Die Bibel in Blindenschrift passt nicht in einen Band: es sind etwa vierzig Bände, Dutzende Kilo, mehrere Meter Regal. Ein erhabener Punkt braucht weit mehr Platz als Tinte. Wer sie ganz liest, legt mit den Fingern Kilometer zurück.",
+   "Und denken Sie an das, was Sie auf diesem Rundgang gesehen haben. Ein Mönch malte sie für die, die nicht lesen konnten. Gutenberg vervielfältigte sie für die, die sie nicht bezahlen konnten. Casiodoro übersetzte sie für die, die kein Latein verstanden. Alle öffneten die Tür für jemanden, der draußen stand.",
+   "Dies ist dasselbe, durch einen anderen Sinn. Dreitausend Jahre lang wurde das Buch mit dem Ohr oder mit den Augen empfangen. Hier wird es zum ersten Mal mit den Händen empfangen."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 27 · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia in braille",
+   "siglo": "Sei punti · una quarantina di volumi",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Questa non si legge con gli occhi.",
+   "Il sistema lo inventò un ragazzo francese di nome Louis Braille. Divenne cieco a tre anni, giocando con un attrezzo appuntito nella bottega del padre, che era sellaio. A dieci entrò nell'istituto dei giovani ciechi di Parigi. A quindici aveva già risolto il problema.",
+   "Partì da un'invenzione militare. Un capitano di nome Charles Barbier aveva ideato una scrittura a punti in rilievo perché i soldati potessero leggere gli ordini di notte, senza accendere una luce che li tradisse. Usava dodici punti ed era molto difficile da maneggiare. Braille la ridusse a sei. Sei punti, che stanno interi sotto il polpastrello di un dito, e le cui sessantatré combinazioni bastano per tutto l'alfabeto, i numeri, la punteggiatura e perfino la musica.",
+   "E non glielo accettarono. La scuola proibì il suo metodo per anni; i maestri, che ci vedevano, preferivano le lettere a stampa in rilievo, perché quelle loro potevano leggerle. Braille morì di tubercolosi nel 1852, a quarantatré anni. La Francia adottò ufficialmente il suo sistema due anni dopo averlo seppellito.",
+   "Ora guardi la dimensione di questa vetrina. La Bibbia in braille non sta in un volume: sono circa quaranta volumi, decine di chili, vari metri di scaffale. Il punto in rilievo occupa molto più spazio dell'inchiostro. Chi la legge tutta percorre chilometri con le dita.",
+   "E pensi a ciò che ha visto nel percorso. Un monaco la dipinse per chi non sapeva leggere. Gutenberg la moltiplicò per chi non poteva pagarla. Casiodoro la tradusse per chi non capiva il latino. Tutti aprirono la porta a qualcuno che stava fuori.",
+   "Questo è lo stesso, con un altro senso. Per tremila anni il Libro si è ricevuto con l'udito o con la vista. Qui, per la prima volta, si riceve con le mani."
+  ]
+ }
+};
+</script>
+<script src="vitrinas.js"></script>
+<script src="guia.js"></script>
+</body>
+</html>

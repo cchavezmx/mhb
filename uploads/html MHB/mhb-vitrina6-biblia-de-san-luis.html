@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>La Biblia de San Luis — Museo de Historia de la Biblia</title>
+<style>
+  :root{ --fondo:#F0E8D5;--claro:#FAF4E6;--tinta:#33261A;--cabecera:#22407E;--acento:#C8992C;--marca:rgba(200,153,44,.3); }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fondo);color:var(--tinta);
+    font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
+    font-size:20px;line-height:1.62;-webkit-text-size-adjust:100%;}
+  .hoja{max-width:40rem;margin:0 auto;padding:0 0 4rem}
+  header{background:var(--cabecera);color:var(--claro);padding:2.2rem 1.4rem 2rem;}
+  .sala{font-size:.78em;margin:0 0 .45rem;opacity:.85}
+  h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .reticula{display:grid;grid-template-columns:repeat(2,14px);gap:7px;flex:none}
+  .reticula i{display:block;width:14px;height:14px;border-radius:50%;border:1.5px solid var(--acento)}
+  .reticula i.lleno{background:var(--acento)}
+
+  main{padding:0 1.4rem}
+  .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
+  .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
+    background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);border-radius:2px;cursor:pointer}
+  .idiomas button[aria-pressed="true"]{background:var(--cabecera);color:var(--claro);border-color:var(--cabecera)}
+  .idiomas button:focus-visible,.control:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  .mandos{display:flex;gap:.6rem;align-items:center;margin:0 0 1.8rem}
+  .control{font:inherit;font-size:1em;display:inline-flex;align-items:center;gap:.55rem;
+    padding:.85rem 1.5rem;min-height:52px;background:var(--acento);color:#FFF6E6;border:none;border-radius:2px;cursor:pointer}
+  .control.secundario{background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);padding:.85rem 1.1rem}
+  .control[hidden]{display:none}
+  .aviso{font-size:.8em;font-style:italic;margin:-1.2rem 0 1.8rem;color:#7a5c3e}
+  p.parrafo{margin:0 0 1.15rem;transition:background-color .25s}
+  p.parrafo.sonando{background:var(--marca);box-shadow:0 0 0 .35rem var(--marca)}
+  footer{margin:2.8rem 1.4rem 0;padding-top:1.2rem;border-top:1px solid rgba(40,32,25,.25);
+         font-size:.8em;font-style:italic;color:#7a5c3e}
+  @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
+
+  .header-marca{display:flex;justify-content:flex-end;margin:0 0 .9rem}
+  .logo-mhb{flex:none;width:56px;height:56px;color:var(--claro);opacity:.92}
+  .logo-mhb svg{width:100%;height:100%}
+  .header-main{display:flex;gap:1.3rem;align-items:center}
+  .header-texto{flex:1}
+</style>
+</head>
+<body>
+<div class="hoja">
+<header><div class="header-marca"><div aria-label="Museo de Historia de la Biblia" class="logo-mhb">
+<svg aria-hidden="true" viewBox="0 0 64 64">
+<path d="M10 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<path d="M36 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<line stroke="currentColor" stroke-width="2" x1="32" x2="32" y1="12" y2="52"></line>
+</svg>
+</div></div><div class="header-main"><div aria-hidden="true" class="reticula"><i class="lleno"></i><i class="lleno"></i><i></i><i></i><i class="lleno"></i><i class="lleno"></i><i></i><i></i></div><div class="header-texto">
+<p class="sala" id="ui-sala"></p>
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div></div></header>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+// Si pone aquí la URL de un MP3, esa voz sustituye a la del teléfono.
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 6 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia de San Luis",
+   "siglo": "París, 1226–1234 · tres tomos",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Tres tomos. Mil doscientas treinta páginas. Casi cinco mil medallones pintados uno por uno. Está usted delante del libro más caro de su siglo.",
+   "Lo mandó hacer una madre para su hijo. Blanca de Castilla, hija de Alfonso VIII, reina de Francia, quiso que su primogénito aprendiera las Escrituras antes de aprender a gobernar. El taller de París tardó ocho años, de 1,226 a 1,234. El niño se llamaba Luis. Hoy lo conocemos como san Luis, rey de Francia.",
+   "Mire cómo está armada la página. Dos columnas de cuatro círculos cada una: ocho medallones. Los de la primera y la tercera fila cuentan la escena bíblica. Los de la segunda y la cuarta dicen lo que esa escena significa. Imagen, sentido. Imagen, sentido. Al lado, unas pocas líneas de letra gótica, y nada más.",
+   "No es una Biblia completa. Es otra cosa: es más bien una Biblia para ver. Y no es casualidad que parezca un vitral. En esos mismos años se estaban levantando las catedrales góticas, y quien pasaba estas hojas estaba acostumbrado a leer su fe en los rosetones, a contraluz.",
+   "El fondo es oro bruñido. El azul es lapislázuli, piedra traída de Oriente y molida. Sólo el pergamino consumió los rebaños de media comarca.",
+   "Y ahora lo que nos toca de cerca. Años después, el rey Luis le regaló esta Biblia a Alfonso X de Castilla, el Sabio, que la nombra en su testamento: otra Biblia en tres libros estoriada que nos dio el rey Luis de Francia. Desde entonces se guarda en la catedral de Toledo. Las últimas hojas del tercer tomo acabaron en Nueva York, y allí siguen.",
+   "El Beato enseñó a ver la Escritura. Esta Biblia enseñó a entenderla. Falta todavía que alguien la ponga en las manos de todos. Eso ocurrirá doscientos años después, en la sala siguiente."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 6 · Museum of the History of the Bible",
+   "titulo": "The Bible of Saint Louis",
+   "siglo": "Paris, 1226–1234 · three volumes",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Three volumes. One thousand two hundred and thirty pages. Almost five thousand medallions, painted one by one. You are standing before the most expensive book of its century.",
+   "A mother had it made for her son. Blanche of Castile, daughter of Alfonso the Eighth, queen of France, wanted her first-born to learn the Scriptures before he learned to govern. The Paris workshop took eight years, from 1226 to 1234. The boy was called Louis. Today we know him as Saint Louis, king of France.",
+   "Look at how the page is built. Two columns of four circles each: eight medallions. The first and third rows tell the biblical scene. The second and fourth tell you what that scene means. Image, meaning. Image, meaning. Beside them, a few lines of gothic script, and nothing more.",
+   "It is not a complete Bible. It is something else: a Bible made to be looked at. And it is no accident that it resembles stained glass. In those very years the gothic cathedrals were going up, and whoever turned these pages was used to reading his faith in the rose windows, against the light.",
+   "The background is burnished gold. The blue is lapis lazuli, stone brought from the East and ground to powder. The parchment alone consumed the flocks of half a county.",
+   "And now the part that belongs to us. Years later King Louis gave this Bible to Alfonso the Tenth of Castile, the Wise, who names it in his will: another Bible, in three books, with pictures, that King Louis of France gave us. Since then it has been kept in the cathedral of Toledo. The last leaves of the third volume ended up in New York, and there they remain.",
+   "The Beatus taught people to see Scripture. This Bible taught them to understand it. What is still missing is someone to put it into everybody's hands. That will happen two hundred years later, in the next case."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 6 · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible de Saint Louis",
+   "siglo": "Paris, 1226–1234 · trois volumes",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Trois volumes. Mille deux cent trente pages. Près de cinq mille médaillons peints un par un. Vous avez devant vous le livre le plus cher de son siècle.",
+   "C'est une mère qui l'a fait faire pour son fils. Blanche de Castille, fille d'Alphonse VIII, reine de France, voulait que son aîné apprenne les Écritures avant d'apprendre à gouverner. L'atelier parisien y a mis huit ans, de 1226 à 1234. L'enfant s'appelait Louis. Nous le connaissons aujourd'hui comme saint Louis, roi de France.",
+   "Regardez comment la page est construite. Deux colonnes de quatre cercles chacune : huit médaillons. Ceux de la première et de la troisième rangée racontent la scène biblique. Ceux de la deuxième et de la quatrième disent ce que cette scène signifie. Image, sens. Image, sens. À côté, quelques lignes d'écriture gothique, et rien de plus.",
+   "Ce n'est pas une Bible complète. C'est autre chose : une Bible faite pour être regardée. Et ce n'est pas un hasard si elle ressemble à un vitrail. Dans ces mêmes années s'élevaient les cathédrales gothiques, et celui qui tournait ces feuillets avait l'habitude de lire sa foi dans les rosaces, à contre-jour.",
+   "Le fond est en or bruni. Le bleu est du lapis-lazuli, pierre venue d'Orient et broyée. Le parchemin à lui seul a consommé les troupeaux d'une demi-contrée.",
+   "Et voici ce qui nous touche de près. Des années plus tard, le roi Louis offrit cette Bible à Alphonse X de Castille, le Sage, qui la nomme dans son testament : une autre Bible, en trois livres, à images, que nous donna le roi Louis de France. Depuis lors elle est conservée dans la cathédrale de Tolède. Les derniers feuillets du troisième volume ont fini à New York, et y sont encore.",
+   "Le Beatus a appris aux hommes à voir l'Écriture. Cette Bible leur a appris à la comprendre. Il manque encore quelqu'un pour la mettre entre toutes les mains. Cela arrivera deux cents ans plus tard, dans la vitrine suivante."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 6 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Bibel des heiligen Ludwig",
+   "siglo": "Paris, 1226–1234 · drei Bände",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Drei Bände. Eintausendzweihundertdreißig Seiten. Fast fünftausend Medaillons, eines nach dem anderen gemalt. Sie stehen vor dem teuersten Buch seines Jahrhunderts.",
+   "Eine Mutter ließ es für ihren Sohn anfertigen. Blanka von Kastilien, Tochter Alfons' des Achten, Königin von Frankreich, wollte, dass ihr Erstgeborener die Heilige Schrift lernte, bevor er das Regieren lernte. Die Pariser Werkstatt brauchte acht Jahre, von 1226 bis 1234. Der Junge hieß Ludwig. Heute kennen wir ihn als den heiligen Ludwig, König von Frankreich.",
+   "Sehen Sie, wie die Seite aufgebaut ist. Zwei Spalten mit je vier Kreisen: acht Medaillons. Die erste und die dritte Reihe erzählen die biblische Szene. Die zweite und die vierte sagen, was diese Szene bedeutet. Bild, Deutung. Bild, Deutung. Daneben ein paar Zeilen gotischer Schrift, und nichts weiter.",
+   "Es ist keine vollständige Bibel. Es ist etwas anderes: eine Bibel zum Anschauen. Und es ist kein Zufall, dass sie wie ein Kirchenfenster aussieht. In genau diesen Jahren wuchsen die gotischen Kathedralen empor, und wer diese Blätter umschlug, war es gewohnt, seinen Glauben in den Rosetten zu lesen, gegen das Licht.",
+   "Der Grund ist poliertes Gold. Das Blau ist Lapislazuli, ein Stein aus dem Osten, zu Pulver gemahlen. Allein das Pergament verbrauchte die Herden einer halben Landschaft.",
+   "Und nun das, was uns näher angeht. Jahre später schenkte König Ludwig diese Bibel Alfons dem Zehnten von Kastilien, dem Weisen, der sie in seinem Testament nennt: eine andere Bibel, in drei Büchern, mit Bildern, die uns König Ludwig von Frankreich gab. Seither wird sie in der Kathedrale von Toledo aufbewahrt. Die letzten Blätter des dritten Bandes landeten in New York und sind bis heute dort.",
+   "Der Beatus lehrte die Menschen, die Schrift zu sehen. Diese Bibel lehrte sie, die Schrift zu verstehen. Es fehlt noch jemand, der sie allen in die Hand gibt. Das geschieht zweihundert Jahre später, in der nächsten Vitrine."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 6 · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia di San Luigi",
+   "siglo": "Parigi, 1226–1234 · tre volumi",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Tre volumi. Milleduecentotrenta pagine. Quasi cinquemila medaglioni dipinti uno per uno. Ha davanti a sé il libro più caro del suo secolo.",
+   "Lo fece fare una madre per suo figlio. Bianca di Castiglia, figlia di Alfonso VIII, regina di Francia, volle che il suo primogenito imparasse le Scritture prima di imparare a governare. La bottega parigina impiegò otto anni, dal 1226 al 1234. Il bambino si chiamava Luigi. Oggi lo conosciamo come san Luigi, re di Francia.",
+   "Guardi come è costruita la pagina. Due colonne di quattro cerchi ciascuna: otto medaglioni. Quelli della prima e della terza fila raccontano la scena biblica. Quelli della seconda e della quarta dicono che cosa quella scena significa. Immagine, senso. Immagine, senso. Accanto, poche righe di scrittura gotica, e nulla più.",
+   "Non è una Bibbia completa. È un'altra cosa: una Bibbia fatta per essere guardata. E non è un caso che sembri una vetrata. In quegli stessi anni si innalzavano le cattedrali gotiche, e chi voltava questi fogli era abituato a leggere la propria fede nei rosoni, in controluce.",
+   "Il fondo è oro brunito. L'azzurro è lapislazzuli, pietra portata dall'Oriente e macinata. La sola pergamena consumò le greggi di mezza contrada.",
+   "E ora ciò che ci tocca da vicino. Anni dopo, il re Luigi regalò questa Bibbia ad Alfonso X di Castiglia, il Saggio, che la nomina nel suo testamento: un'altra Bibbia, in tre libri, con figure, che ci diede il re Luigi di Francia. Da allora è custodita nella cattedrale di Toledo. Gli ultimi fogli del terzo volume finirono a New York, e lì si trovano ancora.",
+   "Il Beato insegnò a vedere la Scrittura. Questa Bibbia insegnò a comprenderla. Manca ancora qualcuno che la metta nelle mani di tutti. Accadrà duecento anni dopo, nella vetrina seguente."
+  ]
+ }
+};
+
+const $ = id => document.getElementById(id);
+let actual = "es", audio = null;
+
+function pintarIdiomas(){
+  $("idiomas").innerHTML = "";
+  Object.keys(GUIA).forEach(k=>{
+    const b = document.createElement("button");
+    b.textContent = GUIA[k].nombre;
+    b.setAttribute("aria-pressed", k===actual);
+    b.onclick = ()=>{ detener(); actual = k; pintar(); };
+    $("idiomas").appendChild(b);
+  });
+}
+function pintar(){
+  const g = GUIA[actual];
+  document.documentElement.lang = actual;
+  $("ui-sala").textContent = g.ui.sala;
+  $("ui-titulo").textContent = g.ui.titulo;
+  $("ui-siglo").textContent = g.ui.siglo;
+  $("ui-play").textContent = g.ui.play;
+  $("ui-stop").textContent = g.ui.stop;
+  $("ui-pie").textContent = g.ui.pie;
+  $("ui-aviso").hidden = true;
+  $("texto").innerHTML = "";
+  g.t.forEach((p,i)=>{
+    const el = document.createElement("p");
+    el.className = "parrafo"; el.id = "p"+i; el.textContent = p;
+    $("texto").appendChild(el);
+  });
+  pintarIdiomas();
+}
+function marcar(i){
+  document.querySelectorAll(".parrafo.sonando").forEach(e=>e.classList.remove("sonando"));
+  if(i>=0){ const el = $("p"+i); if(el) el.classList.add("sonando"); }
+}
+function detener(){
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  if(audio){ audio.pause(); audio = null; }
+  marcar(-1);
+  $("btn-stop").hidden = true;
+  $("btn-play").hidden = false;
+}
+
+// Preferencias de voz: primero la región (México), luego el timbre masculino.
+const REGION = { es:["es-MX","es-US","es-419","es"], en:["en-US","en-GB","en"], fr:["fr-FR","fr"], de:["de-DE","de"], it:["it-IT","it"] };
+const HOMBRES = ["juan","jorge","diego","carlos","miguel","male","hombre","masculino","alex","aaron","daniel","fred","thomas","nicolas","mathieu","markus","yannick","hans","stefan","luca","federico","cosimo","alessio"];
+const MUJERES = ["paulina","monica","mónica","angelica","angélica","esperanza","marisol","samantha","karen","moira","tessa","amelie","amélie","audrey","anna","petra","katja","alice","elsa","female","mujer","femenino"];
+
+function elegirVoz(codigo){
+  const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : []);
+  if(!vs.length) return null;
+  const base = codigo.slice(0,2);
+  for(const reg of (REGION[base] || [base])){
+    const cand = vs.filter(v => v.lang.replace("_","-").toLowerCase().startsWith(reg.toLowerCase()));
+    if(!cand.length) continue;
+    const h = cand.find(v => HOMBRES.some(n => v.name.toLowerCase().includes(n)));
+    if(h) return h;
+    const neutra = cand.find(v => !MUJERES.some(n => v.name.toLowerCase().includes(n)));
+    return neutra || cand[0];
+  }
+  return null;
+}
+function hayVoz(codigo){
+  if(!window.speechSynthesis) return false;
+  const vs = speechSynthesis.getVoices();
+  if(!vs.length) return true;
+  return vs.some(v => v.lang.slice(0,2) === codigo.slice(0,2));
+}
+function escuchar(){
+  const g = GUIA[actual];
+  detener();
+  $("btn-play").hidden = true;
+  $("btn-stop").hidden = false;
+  if(GRABACIONES[actual]){
+    audio = new Audio(GRABACIONES[actual]);
+    audio.onended = detener;
+    audio.play();
+    return;
+  }
+  if(!window.speechSynthesis || !hayVoz(g.voz)){
+    $("ui-aviso").textContent = g.ui.aviso;
+    $("ui-aviso").hidden = false;
+    detener();
+    return;
+  }
+  const vozElegida = elegirVoz(g.voz);
+  g.t.forEach((p,i)=>{
+    const u = new SpeechSynthesisUtterance(p);
+    u.lang = g.voz; u.rate = 0.92;
+    if(vozElegida) u.voice = vozElegida;
+    u.onstart = ()=>marcar(i);
+    if(i===g.t.length-1) u.onend = detener;
+    speechSynthesis.speak(u);
+  });
+}
+$("btn-play").onclick = escuchar;
+$("btn-stop").onclick = detener;
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
+pintar();
+</script>
+</body>
+</html>

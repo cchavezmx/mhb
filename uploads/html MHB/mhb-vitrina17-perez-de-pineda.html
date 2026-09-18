@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>El Nuevo Testamento de Pérez de Pineda — Museo de Historia de la Biblia</title>
+<style>
+  :root{ --fondo:#F0E9DC;--claro:#FAF4E8;--tinta:#241A12;--cabecera:#4A2C1A;--acento:#7B1F2B;--marca:rgba(123,31,43,.2); }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fondo);color:var(--tinta);
+    font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
+    font-size:20px;line-height:1.62;-webkit-text-size-adjust:100%;}
+  .hoja{max-width:40rem;margin:0 auto;padding:0 0 4rem}
+  header{background:var(--cabecera);color:var(--claro);padding:2.2rem 1.4rem 2rem;}
+  .sala{font-size:.78em;margin:0 0 .45rem;opacity:.85}
+  h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .barril{flex:none;width:64px;height:64px}
+
+  main{padding:0 1.4rem}
+  .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
+  .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
+    background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);border-radius:2px;cursor:pointer}
+  .idiomas button[aria-pressed="true"]{background:var(--cabecera);color:var(--claro);border-color:var(--cabecera)}
+  .idiomas button:focus-visible,.control:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  .mandos{display:flex;gap:.6rem;align-items:center;margin:0 0 1.8rem}
+  .control{font:inherit;font-size:1em;display:inline-flex;align-items:center;gap:.55rem;
+    padding:.85rem 1.5rem;min-height:52px;background:var(--acento);color:#FFF6E6;border:none;border-radius:2px;cursor:pointer}
+  .control.secundario{background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);padding:.85rem 1.1rem}
+  .control[hidden]{display:none}
+  .aviso{font-size:.8em;font-style:italic;margin:-1.2rem 0 1.8rem;color:#7a5c3e}
+  p.parrafo{margin:0 0 1.15rem;transition:background-color .25s}
+  p.parrafo.sonando{background:var(--marca);box-shadow:0 0 0 .35rem var(--marca)}
+  footer{margin:2.8rem 1.4rem 0;padding-top:1.2rem;border-top:1px solid rgba(40,32,25,.25);
+         font-size:.8em;font-style:italic;color:#7a5c3e}
+  @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
+
+  .header-marca{display:flex;justify-content:flex-end;margin:0 0 .9rem}
+  .logo-mhb{flex:none;width:56px;height:56px;color:var(--claro);opacity:.92}
+  .logo-mhb svg{width:100%;height:100%}
+  .header-main{display:flex;gap:1.3rem;align-items:center}
+  .header-texto{flex:1}
+</style>
+</head>
+<body>
+<div class="hoja">
+<header><div class="header-marca"><div aria-label="Museo de Historia de la Biblia" class="logo-mhb">
+<svg aria-hidden="true" viewBox="0 0 64 64">
+<path d="M10 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<path d="M36 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<line stroke="currentColor" stroke-width="2" x1="32" x2="32" y1="12" y2="52"></line>
+</svg>
+</div></div><div class="header-main"><svg aria-hidden="true" class="barril" viewBox="0 0 64 64">
+<path d="M20 10 C12 22 12 42 20 54 L44 54 C52 42 52 22 44 10 Z" fill="#8A5A2B"></path>
+<rect fill="#E7DCC6" height="5" width="42" x="11" y="18"></rect>
+<rect fill="#E7DCC6" height="5" width="46" x="9" y="30"></rect>
+<rect fill="#E7DCC6" height="5" width="42" x="11" y="42"></rect></svg><div class="header-texto">
+<p class="sala" id="ui-sala"></p>
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div></div></header>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+// Si pone aquí la URL de un MP3, esa voz sustituye a la del teléfono.
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 17 · Museo de Historia de la Biblia",
+   "titulo": "El Nuevo Testamento de Pérez de Pineda",
+   "siglo": "Ginebra, 1556 · con pie de imprenta falso",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Este libro entró a España escondido en barriles de vino. Lo tradujo Juan Pérez de Pineda, sevillano, huido a Ginebra. Se imprimió en 1,556, y en la portada dice que se hizo en Venecia, en casa de un tal Juan Philadelpho. Mentira completa: ni Venecia, ni Philadelpho. Se imprimió en Ginebra. El pie falso era para proteger a quien lo llevara encima. Porque el problema no era traducirlo. Era meterlo a España.",
+   "De eso se encargó un hombre pequeño de estatura al que llamaban Julianillo: Julián Hernández. Cruzó la frontera con los ejemplares metidos entre toneles de vino y los repartió en Sevilla, en el mismo monasterio de San Isidoro del Campo donde estaban Casiodoro de Reina y Cipriano de Valera. Ese cargamento fue lo que encendió la mecha: poco después el monasterio entero tuvo que huir.",
+   "A Julianillo lo delataron. Lo torturaron durante tres años sin sacarle un nombre. Lo quemaron vivo en Sevilla, en el auto de fe de 1,560.",
+   "Juan Pérez murió en París en 1,567. Dejó dispuesto en su testamento que todo su dinero se usara para imprimir la Biblia en castellano.",
+   "Piénselo un momento: un traductor en Ginebra, un contrabandista en la frontera y unos monjes en Sevilla, ninguno en el mismo país, trabajando en la misma cadena. Uno murió quemado. Otro murió en el destierro. Los otros son los de las dos salas siguientes."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 17 · Museum of the History of the Bible",
+   "titulo": "The New Testament of Pérez de Pineda",
+   "siglo": "Geneva, 1556 · with a false imprint",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "This book entered Spain hidden in barrels of wine. It was translated by Juan Pérez de Pineda, a man from Seville who had fled to Geneva. It was printed in 1556, and the title page says it was made in Venice, at the house of one Juan Philadelpho. A complete lie: no Venice, no Philadelpho. It was printed in Geneva. The false imprint was there to protect whoever carried it. Because the problem was not translating it. The problem was getting it in.",
+   "That was the work of a small man they called Julianillo: Julián Hernández. He crossed the border with the copies packed among casks of wine and distributed them in Seville, in the very monastery of San Isidoro del Campo where Casiodoro de Reina and Cipriano de Valera were living. That cargo lit the fuse: soon afterwards the whole monastery had to flee.",
+   "Julianillo was betrayed. They tortured him for three years without getting a single name out of him. They burned him alive in Seville, at the auto-da-fé of 1560.",
+   "Juan Pérez died in Paris in 1567. He laid down in his will that all his money was to be used to print the Bible in Spanish.",
+   "Think about it for a moment: a translator in Geneva, a smuggler at the border and some monks in Seville, none of them in the same country, working in the same chain. One died at the stake. One died in exile. The others are in the next two cases."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 17 · Musée de l'Histoire de la Bible",
+   "titulo": "Le Nouveau Testament de Pérez de Pineda",
+   "siglo": "Genève, 1556 · avec une fausse adresse",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Ce livre est entré en Espagne caché dans des tonneaux de vin. Il fut traduit par Juan Pérez de Pineda, sévillan, réfugié à Genève. Il fut imprimé en 1556, et la page de titre dit qu'il fut fait à Venise, chez un certain Juan Philadelpho. Mensonge complet : ni Venise, ni Philadelpho. Il fut imprimé à Genève. La fausse adresse servait à protéger celui qui le porterait sur lui. Car le problème n'était pas de le traduire. C'était de le faire entrer.",
+   "De cela s'est chargé un homme de petite taille qu'on appelait Julianillo : Julián Hernández. Il passa la frontière avec les exemplaires glissés entre des fûts de vin et les distribua à Séville, dans ce même monastère de San Isidoro del Campo où se trouvaient Casiodoro de Reina et Cipriano de Valera. Cette cargaison alluma la mèche : peu après, tout le monastère dut fuir.",
+   "Julianillo fut dénoncé. On le tortura pendant trois ans sans lui arracher un seul nom. On le brûla vif à Séville, à l'autodafé de 1560.",
+   "Juan Pérez mourut à Paris en 1567. Il stipula dans son testament que tout son argent servirait à imprimer la Bible en espagnol.",
+   "Songez-y un instant : un traducteur à Genève, un contrebandier à la frontière et des moines à Séville, aucun dans le même pays, travaillant à la même chaîne. L'un mourut sur le bûcher. L'autre mourut en exil. Les autres sont dans les deux vitrines suivantes."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 17 · Museum zur Geschichte der Bibel",
+   "titulo": "Das Neue Testament des Pérez de Pineda",
+   "siglo": "Genf, 1556 · mit falschem Druckvermerk",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Dieses Buch gelangte in Weinfässern versteckt nach Spanien. Übersetzt hat es Juan Pérez de Pineda, ein Sevillaner, der nach Genf geflohen war. Gedruckt wurde es 1556, und auf dem Titelblatt steht, es sei in Venedig entstanden, im Hause eines gewissen Juan Philadelpho. Eine glatte Lüge: kein Venedig, kein Philadelpho. Gedruckt wurde es in Genf. Die falsche Angabe sollte den schützen, der es bei sich trug. Denn das Problem war nicht, es zu übersetzen. Das Problem war, es hineinzubringen.",
+   "Darum kümmerte sich ein kleiner Mann, den man Julianillo nannte: Julián Hernández. Er überquerte die Grenze mit den Exemplaren zwischen Weinfässern und verteilte sie in Sevilla, in eben jenem Kloster San Isidoro del Campo, in dem Casiodoro de Reina und Cipriano de Valera lebten. Diese Ladung zündete die Lunte: kurz darauf musste das ganze Kloster fliehen.",
+   "Julianillo wurde verraten. Man folterte ihn drei Jahre lang, ohne ihm einen einzigen Namen abzupressen. Man verbrannte ihn 1560 bei lebendigem Leibe in Sevilla, beim Autodafé.",
+   "Juan Pérez starb 1567 in Paris. In seinem Testament bestimmte er, dass sein gesamtes Geld dazu verwendet werden sollte, die Bibel auf Spanisch zu drucken.",
+   "Denken Sie einen Augenblick darüber nach: ein Übersetzer in Genf, ein Schmuggler an der Grenze und einige Mönche in Sevilla, keiner im selben Land, und alle an derselben Kette arbeitend. Einer starb auf dem Scheiterhaufen. Einer starb in der Verbannung. Die anderen finden Sie in den beiden nächsten Vitrinenn."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 17 · Museo di Storia della Bibbia",
+   "titulo": "Il Nuovo Testamento di Pérez de Pineda",
+   "siglo": "Ginevra, 1556 · con falso frontespizio",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Questo libro entrò in Spagna nascosto nelle botti di vino. Lo tradusse Juan Pérez de Pineda, sivigliano, fuggito a Ginevra. Fu stampato nel 1556, e sul frontespizio si dice che fu fatto a Venezia, in casa di un certo Juan Philadelpho. Menzogna completa: né Venezia, né Philadelpho. Fu stampato a Ginevra. La falsa indicazione serviva a proteggere chi lo portasse addosso. Perché il problema non era tradurlo. Era farlo entrare.",
+   "Di questo si incaricò un uomo di piccola statura che chiamavano Julianillo: Julián Hernández. Passò la frontiera con le copie infilate tra le botti di vino e le distribuì a Siviglia, in quello stesso monastero di San Isidoro del Campo dove stavano Casiodoro de Reina e Cipriano de Valera. Quel carico accese la miccia: poco dopo l'intero monastero dovette fuggire.",
+   "Julianillo fu denunciato. Lo torturarono per tre anni senza cavargli un solo nome. Lo bruciarono vivo a Siviglia, nell'autodafé del 1560.",
+   "Juan Pérez morì a Parigi nel 1567. Dispose nel testamento che tutto il suo denaro servisse a stampare la Bibbia in spagnolo.",
+   "Ci pensi un momento: un traduttore a Ginevra, un contrabbandiere alla frontiera e dei monaci a Siviglia, nessuno nello stesso paese, al lavoro nella stessa catena. Uno morì sul rogo. Un altro morì in esilio. Gli altri sono nelle due vetrine seguenti."
+  ]
+ }
+};
+
+const $ = id => document.getElementById(id);
+let actual = "es", audio = null;
+
+function pintarIdiomas(){
+  $("idiomas").innerHTML = "";
+  Object.keys(GUIA).forEach(k=>{
+    const b = document.createElement("button");
+    b.textContent = GUIA[k].nombre;
+    b.setAttribute("aria-pressed", k===actual);
+    b.onclick = ()=>{ detener(); actual = k; pintar(); };
+    $("idiomas").appendChild(b);
+  });
+}
+function pintar(){
+  const g = GUIA[actual];
+  document.documentElement.lang = actual;
+  $("ui-sala").textContent = g.ui.sala;
+  $("ui-titulo").textContent = g.ui.titulo;
+  $("ui-siglo").textContent = g.ui.siglo;
+  $("ui-play").textContent = g.ui.play;
+  $("ui-stop").textContent = g.ui.stop;
+  $("ui-pie").textContent = g.ui.pie;
+  $("ui-aviso").hidden = true;
+  $("texto").innerHTML = "";
+  g.t.forEach((p,i)=>{
+    const el = document.createElement("p");
+    el.className = "parrafo"; el.id = "p"+i; el.textContent = p;
+    $("texto").appendChild(el);
+  });
+  pintarIdiomas();
+}
+function marcar(i){
+  document.querySelectorAll(".parrafo.sonando").forEach(e=>e.classList.remove("sonando"));
+  if(i>=0){ const el = $("p"+i); if(el) el.classList.add("sonando"); }
+}
+function detener(){
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  if(audio){ audio.pause(); audio = null; }
+  marcar(-1);
+  $("btn-stop").hidden = true;
+  $("btn-play").hidden = false;
+}
+
+// Preferencias de voz: primero la región (México), luego el timbre masculino.
+const REGION = { es:["es-MX","es-US","es-419","es"], en:["en-US","en-GB","en"], fr:["fr-FR","fr"], de:["de-DE","de"], it:["it-IT","it"] };
+const HOMBRES = ["juan","jorge","diego","carlos","miguel","male","hombre","masculino","alex","aaron","daniel","fred","thomas","nicolas","mathieu","markus","yannick","hans","stefan","luca","federico","cosimo","alessio"];
+const MUJERES = ["paulina","monica","mónica","angelica","angélica","esperanza","marisol","samantha","karen","moira","tessa","amelie","amélie","audrey","anna","petra","katja","alice","elsa","female","mujer","femenino"];
+
+function elegirVoz(codigo){
+  const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : []);
+  if(!vs.length) return null;
+  const base = codigo.slice(0,2);
+  for(const reg of (REGION[base] || [base])){
+    const cand = vs.filter(v => v.lang.replace("_","-").toLowerCase().startsWith(reg.toLowerCase()));
+    if(!cand.length) continue;
+    const h = cand.find(v => HOMBRES.some(n => v.name.toLowerCase().includes(n)));
+    if(h) return h;
+    const neutra = cand.find(v => !MUJERES.some(n => v.name.toLowerCase().includes(n)));
+    return neutra || cand[0];
+  }
+  return null;
+}
+function hayVoz(codigo){
+  if(!window.speechSynthesis) return false;
+  const vs = speechSynthesis.getVoices();
+  if(!vs.length) return true;
+  return vs.some(v => v.lang.slice(0,2) === codigo.slice(0,2));
+}
+function escuchar(){
+  const g = GUIA[actual];
+  detener();
+  $("btn-play").hidden = true;
+  $("btn-stop").hidden = false;
+  if(GRABACIONES[actual]){
+    audio = new Audio(GRABACIONES[actual]);
+    audio.onended = detener;
+    audio.play();
+    return;
+  }
+  if(!window.speechSynthesis || !hayVoz(g.voz)){
+    $("ui-aviso").textContent = g.ui.aviso;
+    $("ui-aviso").hidden = false;
+    detener();
+    return;
+  }
+  const vozElegida = elegirVoz(g.voz);
+  g.t.forEach((p,i)=>{
+    const u = new SpeechSynthesisUtterance(p);
+    u.lang = g.voz; u.rate = 0.92;
+    if(vozElegida) u.voice = vozElegida;
+    u.onstart = ()=>marcar(i);
+    if(i===g.t.length-1) u.onend = detener;
+    speechSynthesis.speak(u);
+  });
+}
+$("btn-play").onclick = escuchar;
+$("btn-stop").onclick = detener;
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
+pintar();
+</script>
+</body>
+</html>

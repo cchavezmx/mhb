@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import bs4; print(bs4.__version__); from bs4 import BeautifulSoup; soup=BeautifulSoup('<svg viewBox="0 0 10 10"></svg>','html.parser'); print(soup); soup=BeautifulSoup('<svg viewBox="0 0 10 10"></svg>','lxml'); print(soup); soup=BeautifulSoup('<svg viewBox="0 0 10 10"></svg>','html5lib'); print(soup)
+                                                                                                                                                                                                                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/bs4/__init__.py", line 366, in __init__
+    raise FeatureNotFound(
+    ...<3 lines>...
+    )
+bs4.exceptions.FeatureNotFound: Couldn't find a tree builder with the features you requested: html5lib. Do you need to install a parser library?
+  File "<string>", line 1, in <module>
+    import bs4; print(bs4.__version__); from bs4 import BeautifulSoup; soup=BeautifulSoup('<svg viewBox="0 0 10 10"></svg>','html.parser'); print(soup); soup=BeautifulSoup('<svg viewBox="0 0 10 10"></svg>','lxml'); print(soup); soup=BeautifulSoup('<svg viewBox="0 0 10 10"></svg>','html5lib'); print(soup)
+                                                                                                                                                                                                                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/bs4/__init__.py", line 366, in __init__
+    raise FeatureNotFound(
+    ...<3 lines>...
+    )
+bs4.exceptions.FeatureNotFound: Couldn't find a tree builder with the features you requested: html5lib. Do you need to install a parser library?

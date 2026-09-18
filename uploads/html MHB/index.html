@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Museo de Historia de la Biblia</title>
+<style>
+  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fondo);color:var(--tinta);
+    font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
+    font-size:20px;line-height:1.62;-webkit-text-size-adjust:100%;}
+  .hoja{max-width:40rem;margin:0 auto;padding:0 0 4rem}
+  header{background:var(--cabecera);color:var(--claro);padding:2.2rem 1.4rem 2rem;}
+  .sala{font-size:.78em;margin:0 0 .45rem;opacity:.85}
+  h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .rutas{flex:none;display:flex;flex-direction:column;gap:7px;justify-content:center}
+  .rutas i{display:block;height:7px;border-radius:4px;background:var(--acento)}
+
+  main{padding:0 1.4rem}
+  .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
+  .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
+    background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);border-radius:2px;cursor:pointer}
+  .idiomas button[aria-pressed="true"]{background:var(--cabecera);color:var(--claro);border-color:var(--cabecera)}
+  .idiomas button:focus-visible,.control:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  .mandos{display:flex;gap:.6rem;align-items:center;margin:0 0 1.8rem}
+  .control{font:inherit;font-size:1em;display:inline-flex;align-items:center;gap:.55rem;
+    padding:.85rem 1.5rem;min-height:52px;background:var(--acento);color:#FFF6E6;border:none;border-radius:2px;cursor:pointer}
+  .control.secundario{background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);padding:.85rem 1.1rem}
+  .control[hidden]{display:none}
+  .aviso{font-size:.8em;font-style:italic;margin:-1.2rem 0 1.8rem;color:#7a5c3e}
+  p.parrafo{margin:0 0 1.15rem;transition:background-color .25s}
+  p.parrafo.sonando{background:var(--marca);box-shadow:0 0 0 .35rem var(--marca)}
+  footer{margin:2.8rem 1.4rem 0;padding-top:1.2rem;border-top:1px solid rgba(40,32,25,.25);
+         font-size:.8em;font-style:italic;color:#7a5c3e}
+  @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
+
+  .header-marca{display:flex;justify-content:flex-end;margin:0 0 .9rem}
+  .logo-mhb{flex:none;width:56px;height:56px;color:var(--claro);opacity:.92}
+  .logo-mhb svg{width:100%;height:100%}
+  .header-main{display:flex;gap:1.3rem;align-items:center}
+  .header-texto{flex:1}
+</style>
+</head>
+<body>
+<div class="hoja">
+<header><div class="header-marca"><div aria-label="Museo de Historia de la Biblia" class="logo-mhb">
+<svg aria-hidden="true" viewBox="0 0 64 64">
+<path d="M10 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<path d="M36 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<line stroke="currentColor" stroke-width="2" x1="32" x2="32" y1="12" y2="52"></line>
+</svg>
+</div></div><div class="header-main"><div aria-hidden="true" class="rutas"><i style="width:72px"></i><i style="width:44px"></i><i style="width:56px"></i></div><div class="header-texto">
+<p class="sala" id="ui-sala"></p>
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div></div></header>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+// Si pone aquí la URL de un MP3, esa voz sustituye a la del teléfono.
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Museo de Historia de la Biblia",
+   "titulo": "Bienvenida",
+   "siglo": "Treinta y dos vitrinas · tres recorridos",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Bienvenido al Museo de Historia de la Biblia.",
+   "Lo que va a ver son treinta y dos vitrinas. El Libro que contienen empezó a escribirse hace unos tres mil quinientos años, con Moisés. Lo que aquí se exhibe es lo que vino después: el viaje de ese texto hasta llegar a sus manos. Ese viaje empieza en el material mismo sobre el que se escribió, y termina con un libro escrito en esta ciudad y terminado en septiembre de 2026.",
+   "En cada vitrina hay un código como el que acaba de escanear. Tóquelo, elija su idioma y escuche. Cada uno dura dos o tres minutos. No hace falta verlo todo. Le proponemos tres maneras de recorrerlo.",
+   "El recorrido completo: las treinta y dos vitrinas, en orden, poco más de una hora. Es el que cuenta la historia entera, de la copia a mano hasta la última impresión actual.",
+   "El recorrido corto, para quien trae prisa: seis vitrinas, quince minutos. La cinco, el Beato de Liébana. La ocho, Gutenberg. La dieciocho, la Biblia del Oso. La veintidós, la primera Biblia impresa en América. La veintiocho, las lenguas de este país. Y la treinta y dos, la última.",
+   "Y el recorrido de septiembre, porque en México septiembre es dos cosas a la vez: el mes de la Biblia y el mes de la Independencia. También son seis. La veinte, la veintiuna y la veintidós, que son las Biblias que llegaron a este país y la que se hizo aquí. La veinticuatro, donde se explica por qué septiembre es tan importante. La veintiocho, las lenguas de México. Y la treinta y dos.",
+   "Y una cosa que conviene decirle de antemano, antes de que empiece. Este museo no exhibe objetos: exhibe la historia de la Palabra. Cada página de cada libro es un eslabón que se une en la cadena del conocimiento de la humanidad, y lo que usted va a recorrer es esa cadena entera.",
+   "Por eso buena parte de lo que verá son facsímiles: reproducciones hechas hoja por hoja de originales que están en Módena, en Toledo, en París o en Nueva York. Cuando una pieza es original, la cédula lo dice.",
+   "Empiece por donde guste. El número está marcado en cada vitrina, pero lo recomendable es que haga el recorrido completo. Esperamos que sea de bendición para usted."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Museum of the History of the Bible",
+   "titulo": "Welcome",
+   "siglo": "Thirty-two cases · three tours",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Welcome to the Museum of the History of the Bible.",
+   "What you are about to see is thirty-two cases. The Book they contain began to be written some three thousand five hundred years ago, with Moses. What is exhibited here is what came afterwards: the journey of that text until it reached your hands. That journey begins with the very material it was written on, and ends with a book written in this city and finished in September 2026.",
+   "On every case there is a code like the one you have just scanned. Tap it, choose your language and listen. Each one lasts two or three minutes. You do not have to see it all. We suggest three ways of going round.",
+   "The full tour: all thirty-two cases, in order, a little over an hour. It is the one that tells the whole story, from copying by hand to the latest printing of today.",
+   "The short tour, for anyone in a hurry: six cases, fifteen minutes. Number five, the Beatus of Liébana. Number eight, Gutenberg. Number eighteen, the Bear Bible. Number twenty-two, the first Bible printed in the Americas. Number twenty-eight, the languages of this country. And number thirty-two, the last one.",
+   "And the September tour, because in Mexico September is two things at once: the month of the Bible and the month of Independence. Six cases again. Twenty, twenty-one and twenty-two, the Bibles that arrived in this country and the one that was made here. Twenty-four, which explains why September matters so much. Twenty-eight, the languages of Mexico. And thirty-two.",
+   "And one thing worth telling you beforehand, before you begin. This museum does not exhibit objects: it exhibits the history of the Word. Every page of every book is a link joined into the chain of human knowledge, and what you are about to walk through is that whole chain.",
+   "That is why a good part of what you will see are facsimiles: reproductions made leaf by leaf from originals that are in Modena, in Toledo, in Paris or in New York. When a piece is an original, the label says so.",
+   "Begin wherever you like. The number is marked on every case, though we recommend doing the full tour. We hope it will be a blessing to you."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Musée de l'Histoire de la Bible",
+   "titulo": "Bienvenue",
+   "siglo": "Trente-deux vitrines · trois parcours",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Bienvenue au Musée de l'Histoire de la Bible.",
+   "Ce que vous allez voir, ce sont trente-deux vitrines. Le Livre qu'elles contiennent a commencé à s'écrire il y a quelque trois mille cinq cents ans, avec Moïse. Ce qui est exposé ici, c'est ce qui est venu après : le voyage de ce texte jusqu'à parvenir entre vos mains. Ce voyage commence par la matière même sur laquelle il fut écrit, et se termine avec un livre écrit dans cette ville et achevé en septembre 2026.",
+   "Sur chaque vitrine il y a un code comme celui que vous venez de scanner. Touchez-le, choisissez votre langue et écoutez. Chacun dure deux ou trois minutes. Il n'est pas nécessaire de tout voir. Nous vous proposons trois façons de parcourir le musée.",
+   "Le parcours complet : les trente-deux vitrines, dans l'ordre, un peu plus d'une heure. C'est celui qui raconte toute l'histoire, de la copie à la main jusqu'à la dernière impression d'aujourd'hui.",
+   "Le parcours court, pour qui est pressé : six vitrines, quinze minutes. La cinq, le Beatus de Liébana. La huit, Gutenberg. La dix-huit, la Bible de l'Ours. La vingt-deux, la première Bible imprimée en Amérique. La vingt-huit, les langues de ce pays. Et la trente-deux, la dernière.",
+   "Et le parcours de septembre, car au Mexique septembre est deux choses à la fois : le mois de la Bible et le mois de l'Indépendance. Six vitrines également. La vingt, la vingt et un et la vingt-deux, les Bibles qui sont arrivées dans ce pays et celle qui y a été faite. La vingt-quatre, qui explique pourquoi septembre compte tant. La vingt-huit, les langues du Mexique. Et la trente-deux.",
+   "Et une chose qu'il convient de vous dire d'avance, avant de commencer. Ce musée n'expose pas des objets : il expose l'histoire de la Parole. Chaque page de chaque livre est un maillon qui s'ajoute à la chaîne de la connaissance humaine, et ce que vous allez parcourir, c'est cette chaîne entière.",
+   "C'est pourquoi une bonne partie de ce que vous verrez sont des fac-similés : des reproductions faites feuillet par feuillet d'originaux qui se trouvent à Modène, à Tolède, à Paris ou à New York. Quand une pièce est un original, le cartel le dit.",
+   "Commencez où vous voulez. Le numéro est indiqué sur chaque vitrine, mais nous vous recommandons de faire le parcours complet. Nous espérons qu'il sera pour vous une bénédiction."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Museum zur Geschichte der Bibel",
+   "titulo": "Willkommen",
+   "siglo": "Zweiunddreißig Vitrinen · drei Rundgänge",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Willkommen im Museum zur Geschichte der Bibel.",
+   "Was Sie sehen werden, sind zweiunddreißig Vitrinen. Das Buch, das sie enthalten, begann vor etwa dreitausendfünfhundert Jahren geschrieben zu werden, mit Mose. Was hier ausgestellt wird, ist das, was danach kam: die Reise dieses Textes, bis er in Ihre Hände gelangte. Diese Reise beginnt beim Material selbst, auf dem er geschrieben wurde, und endet mit einem Buch, das in dieser Stadt geschrieben und im September 2026 vollendet wurde.",
+   "An jeder Vitrine ist ein Code wie der, den Sie eben gescannt haben. Tippen Sie ihn an, wählen Sie Ihre Sprache und hören Sie zu. Jeder dauert zwei bis drei Minuten. Sie müssen nicht alles sehen. Wir schlagen Ihnen drei Wege vor.",
+   "Der vollständige Rundgang: alle zweiunddreißig Vitrinen, der Reihe nach, etwas mehr als eine Stunde. Er erzählt die ganze Geschichte, vom Abschreiben von Hand bis zum jüngsten Druck von heute.",
+   "Der kurze Rundgang, für Eilige: sechs Vitrinen, fünfzehn Minuten. Nummer fünf, der Beatus von Liébana. Nummer acht, Gutenberg. Nummer achtzehn, die Bärenbibel. Nummer zweiundzwanzig, die erste in Amerika gedruckte Bibel. Nummer achtundzwanzig, die Sprachen dieses Landes. Und Nummer zweiunddreißig, die letzte.",
+   "Und der September-Rundgang, denn in Mexiko ist der September zweierlei zugleich: der Monat der Bibel und der Monat der Unabhängigkeit. Ebenfalls sechs Vitrinen. Zwanzig, einundzwanzig und zweiundzwanzig, die Bibeln, die in dieses Land kamen, und die, die hier gemacht wurde. Vierundzwanzig, wo erklärt wird, warum der September so wichtig ist. Achtundzwanzig, die Sprachen Mexikos. Und zweiunddreißig.",
+   "Und eines sollte vorher gesagt sein, bevor Sie beginnen. Dieses Museum stellt keine Gegenstände aus: es stellt die Geschichte des Wortes aus. Jede Seite jedes Buches ist ein Glied in der Kette des menschlichen Wissens, und was Sie durchwandern werden, ist diese ganze Kette.",
+   "Darum ist ein guter Teil dessen, was Sie sehen werden, Faksimiles: Blatt für Blatt gefertigte Nachbildungen von Originalen, die in Modena, in Toledo, in Paris oder in New York liegen. Wenn ein Stück ein Original ist, sagt es das Schild.",
+   "Beginnen Sie, wo Sie möchten. Die Nummer steht an jeder Vitrine, doch wir empfehlen den vollständigen Rundgang. Wir hoffen, dass er Ihnen zum Segen wird."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Museo di Storia della Bibbia",
+   "titulo": "Benvenuto",
+   "siglo": "Trentadue vetrine · tre percorsi",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Benvenuto al Museo di Storia della Bibbia.",
+   "Quello che sta per vedere sono trentadue vetrine. Il Libro che contengono cominciò a scriversi circa tremilacinquecento anni fa, con Mosè. Quello che qui si espone è ciò che venne dopo: il viaggio di quel testo fino ad arrivare nelle sue mani. Quel viaggio comincia dalla materia stessa su cui fu scritto, e finisce con un libro scritto in questa città e terminato nel settembre del 2026.",
+   "Su ogni vetrina c'è un codice come quello che ha appena scansionato. Lo tocchi, scelga la sua lingua e ascolti. Ognuno dura due o tre minuti. Non è necessario vedere tutto. Le proponiamo tre modi di percorrerlo.",
+   "Il percorso completo: tutte le trentadue vetrine, in ordine, poco più di un'ora. È quello che racconta l'intera storia, dalla copia a mano fino all'ultima stampa di oggi.",
+   "Il percorso breve, per chi ha fretta: sei vetrine, quindici minuti. La cinque, il Beato di Liébana. La otto, Gutenberg. La diciotto, la Bibbia dell'Orso. La ventidue, la prima Bibbia stampata in America. La ventotto, le lingue di questo paese. E la trentadue, l'ultima.",
+   "E il percorso di settembre, perché in Messico settembre è due cose insieme: il mese della Bibbia e il mese dell'Indipendenza. Anche qui sei vetrine. La venti, la ventuno e la ventidue, le Bibbie che arrivarono in questo paese e quella che vi fu fatta. La ventiquattro, dove si spiega perché settembre conta tanto. La ventotto, le lingue del Messico. E la trentadue.",
+   "E una cosa che conviene dirle in anticipo, prima di cominciare. Questo museo non espone oggetti: espone la storia della Parola. Ogni pagina di ogni libro è un anello che si unisce alla catena della conoscenza dell'umanità, e quello che sta per percorrere è quella catena intera.",
+   "Per questo buona parte di ciò che vedrà sono facsimili: riproduzioni fatte foglio per foglio di originali che si trovano a Modena, a Toledo, a Parigi o a New York. Quando un pezzo è originale, la didascalia lo dice.",
+   "Cominci da dove preferisce. Il numero è segnato su ogni vetrina, ma le consigliamo di fare il percorso completo. Speriamo che sia di benedizione per lei."
+  ]
+ }
+};
+
+const $ = id => document.getElementById(id);
+let actual = "es", audio = null;
+
+function pintarIdiomas(){
+  $("idiomas").innerHTML = "";
+  Object.keys(GUIA).forEach(k=>{
+    const b = document.createElement("button");
+    b.textContent = GUIA[k].nombre;
+    b.setAttribute("aria-pressed", k===actual);
+    b.onclick = ()=>{ detener(); actual = k; pintar(); };
+    $("idiomas").appendChild(b);
+  });
+}
+function pintar(){
+  const g = GUIA[actual];
+  document.documentElement.lang = actual;
+  $("ui-sala").textContent = g.ui.sala;
+  $("ui-titulo").textContent = g.ui.titulo;
+  $("ui-siglo").textContent = g.ui.siglo;
+  $("ui-play").textContent = g.ui.play;
+  $("ui-stop").textContent = g.ui.stop;
+  $("ui-pie").textContent = g.ui.pie;
+  $("ui-aviso").hidden = true;
+  $("texto").innerHTML = "";
+  g.t.forEach((p,i)=>{
+    const el = document.createElement("p");
+    el.className = "parrafo"; el.id = "p"+i; el.textContent = p;
+    $("texto").appendChild(el);
+  });
+  pintarIdiomas();
+}
+function marcar(i){
+  document.querySelectorAll(".parrafo.sonando").forEach(e=>e.classList.remove("sonando"));
+  if(i>=0){ const el = $("p"+i); if(el) el.classList.add("sonando"); }
+}
+function detener(){
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  if(audio){ audio.pause(); audio = null; }
+  marcar(-1);
+  $("btn-stop").hidden = true;
+  $("btn-play").hidden = false;
+}
+
+// Preferencias de voz: primero la región (México), luego el timbre masculino.
+const REGION = { es:["es-MX","es-US","es-419","es"], en:["en-US","en-GB","en"], fr:["fr-FR","fr"], de:["de-DE","de"], it:["it-IT","it"] };
+const HOMBRES = ["juan","jorge","diego","carlos","miguel","male","hombre","masculino","alex","aaron","daniel","fred","thomas","nicolas","mathieu","markus","yannick","hans","stefan","luca","federico","cosimo","alessio"];
+const MUJERES = ["paulina","monica","mónica","angelica","angélica","esperanza","marisol","samantha","karen","moira","tessa","amelie","amélie","audrey","anna","petra","katja","alice","elsa","female","mujer","femenino"];
+
+function elegirVoz(codigo){
+  const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : []);
+  if(!vs.length) return null;
+  const base = codigo.slice(0,2);
+  for(const reg of (REGION[base] || [base])){
+    const cand = vs.filter(v => v.lang.replace("_","-").toLowerCase().startsWith(reg.toLowerCase()));
+    if(!cand.length) continue;
+    const h = cand.find(v => HOMBRES.some(n => v.name.toLowerCase().includes(n)));
+    if(h) return h;
+    const neutra = cand.find(v => !MUJERES.some(n => v.name.toLowerCase().includes(n)));
+    return neutra || cand[0];
+  }
+  return null;
+}
+function hayVoz(codigo){
+  if(!window.speechSynthesis) return false;
+  const vs = speechSynthesis.getVoices();
+  if(!vs.length) return true;
+  return vs.some(v => v.lang.slice(0,2) === codigo.slice(0,2));
+}
+function escuchar(){
+  const g = GUIA[actual];
+  detener();
+  $("btn-play").hidden = true;
+  $("btn-stop").hidden = false;
+  if(GRABACIONES[actual]){
+    audio = new Audio(GRABACIONES[actual]);
+    audio.onended = detener;
+    audio.play();
+    return;
+  }
+  if(!window.speechSynthesis || !hayVoz(g.voz)){
+    $("ui-aviso").textContent = g.ui.aviso;
+    $("ui-aviso").hidden = false;
+    detener();
+    return;
+  }
+  const vozElegida = elegirVoz(g.voz);
+  g.t.forEach((p,i)=>{
+    const u = new SpeechSynthesisUtterance(p);
+    u.lang = g.voz; u.rate = 0.92;
+    if(vozElegida) u.voice = vozElegida;
+    u.onstart = ()=>marcar(i);
+    if(i===g.t.length-1) u.onend = detener;
+    speechSynthesis.speak(u);
+  });
+}
+$("btn-play").onclick = escuchar;
+$("btn-stop").onclick = detener;
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
+pintar();
+</script>
+</body>
+</html>

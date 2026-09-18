@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>La Biblia de Ferrara — Museo de Historia de la Biblia</title>
+<link href="estilos.css" rel="stylesheet"/>
+<style>
+.estrella{flex:none;width:64px;height:64px}
+</style>
+</head>
+<body data-vitrina="16">
+<div class="hoja">
+<header class="cabecera">
+<div class="marca">
+<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
+</a>
+<div class="marca-texto">
+<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+<p class="sala" id="ui-sala"></p>
+</div>
+<span class="marca-num">16</span>
+<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
+</div>
+<div class="header-main">
+<div aria-hidden="true" class="emblema"><svg aria-hidden="true" class="estrella" viewBox="0 0 64 64">
+<path d="M32 8 L54 46 L10 46 Z" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path d="M32 56 L10 18 L54 18 Z" fill="none" stroke="currentColor" stroke-width="3"></path></svg></div>
+<div class="header-texto">
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div>
+</div>
+</header>
+<nav class="nav">
+<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="nav-btn" id="nav-ant">‹</a>
+<select class="nav-sel" id="nav-sel"></select>
+<a class="nav-btn" id="nav-sig">›</a>
+<span class="nav-btn" id="nav-pos" style="border:none"></span>
+</nav>
+<div class="progreso"><i id="barra"></i></div>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play" type="button">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 16 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia de Ferrara",
+   "siglo": "Ferrara, 1553 · el Antiguo Testamento sefardí",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Ésta es la Biblia de los que se fueron. En 1,492 los judíos fueron expulsados de España. Salieron con su lengua a cuestas: siguieron hablando castellano en Salónica, en Esmirna, en Ámsterdam, durante siglos. Y en 1,553, en la ciudad italiana de Ferrara, cuyo duque les había dado refugio, imprimieron el Antiguo Testamento en esa lengua que se habían llevado.",
+   "La tradujeron dos hombres, y cada uno tenía dos nombres. Abraham Usque, que en Portugal se había llamado Duarte Pinel. Y Yom Tob Atias, que se había llamado Jerónimo de Vargas. Dos nombres cada uno, porque habían vivido fingiendo ser cristianos para sobrevivir. Aquí, por fin, firmaron con el suyo.",
+   "Tradujeron del hebreo palabra por palabra, pegados al original hasta donde el castellano aguanta. Por eso suena rara, antigua, con el orden de las frases volteado. No es torpeza: es fidelidad llevada al extremo. Se hicieron dos emisiones. Una dedicada al duque de Ferrara. Otra dedicada a doña Gracia Nasi, la gran señora judía que rescataba refugiados por media Europa.",
+   "Y hay un puente que vale la pena que usted conozca. Casiodoro de Reina, el de la Biblia del Oso, usó esta traducción y lo dijo por escrito, con elogios. Un monje católico fugado de Sevilla, apoyándose en el trabajo de unos judíos expulsados de la misma tierra. Los dos desterrados por lo mismo, ayudándose sin conocerse."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 16 · Museum of the History of the Bible",
+   "titulo": "The Ferrara Bible",
+   "siglo": "Ferrara, 1553 · the Sephardic Old Testament",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "This is the Bible of those who left. In 1492 the Jews were expelled from Spain. They went out carrying their language with them: they went on speaking Spanish in Salonica, in Smyrna, in Amsterdam, for centuries. And in 1553, in the Italian city of Ferrara, whose duke had given them refuge, they printed the Old Testament in that language they had carried away.",
+   "Two men translated it, and each of them had two names. Abraham Usque, who in Portugal had been called Duarte Pinel. And Yom Tob Atias, who had been called Jerónimo de Vargas. Two names each, because they had lived pretending to be Christians in order to survive. Here, at last, they signed with their own.",
+   "They translated from the Hebrew word for word, clinging to the original as far as Spanish will bear it. That is why it sounds strange, archaic, with the order of the phrases turned around. It is not clumsiness: it is faithfulness carried to the limit. Two issues were made. One dedicated to the Duke of Ferrara. The other dedicated to Doña Gracia Nasi, the great Jewish lady who was rescuing refugees across half of Europe.",
+   "And there is a bridge here worth knowing about. Casiodoro de Reina, the man behind the Bear Bible, used this translation and said so in writing, with praise. A Catholic monk on the run from Seville, leaning on the work of Jews expelled from that same land. Both exiled for the same thing, helping each other without ever meeting."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 16 · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible de Ferrare",
+   "siglo": "Ferrare, 1553 · l'Ancien Testament séfarade",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Voici la Bible de ceux qui sont partis. En 1492, les juifs furent expulsés d'Espagne. Ils partirent avec leur langue sur le dos : ils continuèrent à parler espagnol à Salonique, à Smyrne, à Amsterdam, pendant des siècles. Et en 1553, dans la ville italienne de Ferrare, dont le duc leur avait donné refuge, ils imprimèrent l'Ancien Testament dans cette langue qu'ils avaient emportée.",
+   "Deux hommes la traduisirent, et chacun avait deux noms. Abraham Usque, qui au Portugal s'était appelé Duarte Pinel. Et Yom Tob Atias, qui s'était appelé Jerónimo de Vargas. Deux noms chacun, parce qu'ils avaient vécu en feignant d'être chrétiens pour survivre. Ici, enfin, ils signèrent du leur.",
+   "Ils traduisirent de l'hébreu mot pour mot, collés à l'original autant que l'espagnol le supporte. C'est pourquoi cela sonne étrange, ancien, avec l'ordre des phrases retourné. Ce n'est pas de la maladresse : c'est la fidélité poussée à l'extrême. Il y eut deux émissions. L'une dédiée au duc de Ferrare. L'autre dédiée à doña Gracia Nasi, la grande dame juive qui sauvait des réfugiés à travers la moitié de l'Europe.",
+   "Et il y a là un pont qui mérite d'être connu. Casiodoro de Reina, celui de la Bible de l'Ours, s'est servi de cette traduction et l'a dit par écrit, avec éloges. Un moine catholique en fuite de Séville, s'appuyant sur le travail de juifs expulsés de cette même terre. Tous deux bannis pour la même chose, s'entraidant sans se connaître."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 16 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Ferrara-Bibel",
+   "siglo": "Ferrara, 1553 · das sephardische Alte Testament",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Dies ist die Bibel derer, die fortgingen. 1492 wurden die Juden aus Spanien vertrieben. Sie gingen und trugen ihre Sprache mit sich: sie sprachen weiter Spanisch in Saloniki, in Smyrna, in Amsterdam, jahrhundertelang. Und 1553 druckten sie in der italienischen Stadt Ferrara, deren Herzog ihnen Zuflucht gewährt hatte, das Alte Testament in eben jener Sprache, die sie mitgenommen hatten.",
+   "Zwei Männer übersetzten es, und jeder von ihnen hatte zwei Namen. Abraham Usque, der in Portugal Duarte Pinel geheißen hatte. Und Yom Tob Atias, der Jerónimo de Vargas geheißen hatte. Je zwei Namen, weil sie gelebt hatten, indem sie Christen vortäuschten, um zu überleben. Hier unterschrieben sie endlich mit dem eigenen.",
+   "Sie übersetzten Wort für Wort aus dem Hebräischen, dicht am Original, so weit das Spanische es erträgt. Darum klingt es fremd, altertümlich, mit umgestellter Wortfolge. Das ist keine Ungeschicklichkeit: es ist bis zum Äußersten getriebene Treue. Es gab zwei Ausgaben. Eine dem Herzog von Ferrara gewidmet. Die andere Doña Gracia Nasi gewidmet, der großen jüdischen Dame, die in halb Europa Flüchtlinge rettete.",
+   "Und hier gibt es eine Brücke, die man kennen sollte. Casiodoro de Reina, der Mann der Bärenbibel, benutzte diese Übersetzung und sagte es schriftlich, mit Lob. Ein katholischer Mönch auf der Flucht aus Sevilla, gestützt auf die Arbeit von Juden, die aus demselben Land vertrieben worden waren. Beide verbannt um derselben Sache willen, einander helfend, ohne sich je zu begegnen."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 16 · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia di Ferrara",
+   "siglo": "Ferrara, 1553 · l'Antico Testamento sefardita",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Questa è la Bibbia di quelli che se ne andarono. Nel 1492 gli ebrei furono espulsi dalla Spagna. Partirono portandosi addosso la loro lingua: continuarono a parlare spagnolo a Salonicco, a Smirne, ad Amsterdam, per secoli. E nel 1553, nella città italiana di Ferrara, il cui duca aveva dato loro rifugio, stamparono l'Antico Testamento in quella lingua che si erano portati via.",
+   "La tradussero due uomini, e ciascuno aveva due nomi. Abraham Usque, che in Portogallo si era chiamato Duarte Pinel. E Yom Tob Atias, che si era chiamato Jerónimo de Vargas. Due nomi ciascuno, perché erano vissuti fingendosi cristiani per sopravvivere. Qui, finalmente, firmarono con il proprio.",
+   "Tradussero dall'ebraico parola per parola, attaccati all'originale fin dove lo spagnolo regge. Per questo suona strana, antica, con l'ordine delle frasi rovesciato. Non è goffaggine: è fedeltà portata all'estremo. Se ne fecero due emissioni. Una dedicata al duca di Ferrara. L'altra dedicata a donna Gracia Nasi, la grande signora ebrea che salvava rifugiati per mezza Europa.",
+   "E qui c'è un ponte che vale la pena conoscere. Casiodoro de Reina, quello della Bibbia dell'Orso, usò questa traduzione e lo disse per iscritto, con elogi. Un monaco cattolico in fuga da Siviglia, appoggiato al lavoro di ebrei espulsi dalla stessa terra. Entrambi esiliati per la stessa ragione, aiutandosi senza conoscersi."
+  ]
+ }
+};
+</script>
+<script src="vitrinas.js"></script>
+<script src="guia.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>La Peshitta — Museo de Historia de la Biblia</title>
+<link href="estilos.css" rel="stylesheet"/>
+<style>
+.oriente{flex:none;width:70px;height:62px}
+</style>
+</head>
+<body data-vitrina="4">
+<div class="hoja">
+<header class="cabecera">
+<div class="marca">
+<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
+</a>
+<div class="marca-texto">
+<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+<p class="sala" id="ui-sala"></p>
+</div>
+<span class="marca-num">04</span>
+<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
+</div>
+<div class="header-main">
+<div aria-hidden="true" class="emblema"><svg aria-hidden="true" class="oriente" viewBox="0 0 70 62">
+<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="3">
+<path d="M8 16 H62"></path><path d="M8 28 H50"></path><path d="M8 40 H58"></path><path d="M8 52 H44"></path></g>
+<circle cx="62" cy="31" fill="currentColor" r="5"></circle></svg></div>
+<div class="header-texto">
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div>
+</div>
+</header>
+<nav class="nav">
+<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="nav-btn" id="nav-ant">‹</a>
+<select class="nav-sel" id="nav-sel"></select>
+<a class="nav-btn" id="nav-sig">›</a>
+<span class="nav-btn" id="nav-pos" style="border:none"></span>
+</nav>
+<div class="progreso"><i id="barra"></i></div>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play" type="button">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 4 · Museo de Historia de la Biblia",
+   "titulo": "La Peshitta",
+   "siglo": "La Biblia siríaca · siglos II al V",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Todo lo que va a ver en este museo viajó hacia el poniente: de Jerusalén a Roma, a España, a Alemania, a Inglaterra, y de ahí cruzando el mar hasta aquí. Esta vitrina es la otra mitad de la historia: la rama que se fue hacia el oriente.",
+   "Se llama Peshitta, que en siríaco quiere decir la sencilla, la común. Es la Biblia de las iglesias de Siria y de Mesopotamia.",
+   "Su Antiguo Testamento se tradujo directamente del hebreo, probablemente en el siglo segundo. Su Nuevo Testamento quedó fijado a principios del siglo quinto, y vino a sustituir algo aún más antiguo: una armonía de los cuatro evangelios contados como una sola narración, que las iglesias siríacas usaron antes que los evangelios por separado.",
+   "Y ahora lo que hace única a esta pieza. El siríaco es una forma del arameo, que era la lengua de la casa y de la calle en la Galilea de Jesús. En los evangelios quedaron unas cuantas palabras sin traducir: talitha kumi, effetá, eloí eloí lemá sabactani. Ésas están en arameo. No es exactamente la misma variante que usted tiene delante, pero es la misma familia. Es lo más cerca que se puede estar del sonido original.",
+   "Otro detalle que sorprende: a este Nuevo Testamento le faltan libros. No trae la segunda de Pedro, ni la segunda y tercera de Juan, ni Judas, ni el Apocalipsis. Veintidós libros en vez de veintisiete. No es un error ni una mutilación: es una fotografía de un momento en que todavía se estaba decidiendo qué entraba y qué no.",
+   "Y viajó lejísimos. Los misioneros siríacos la llevaron a Persia, a la India y a Asia central. En la ciudad china de Xi'an se conserva una estela del año 781 que deja constancia de cristianos usando esta lengua en China. En Kerala, al sur de la India, hay comunidades que la siguen usando hoy.",
+   "A Europa llegó tarde y casi por casualidad: el primer Nuevo Testamento siríaco impreso en Occidente se hizo en Viena, en 1,555, porque un sacerdote de Mardin llamado Moisés cruzó medio mundo con un manuscrito bajo el brazo.",
+   "El ejemplar que usted ve es una edición moderna, y eso no es un defecto: es precisamente lo que queremos mostrarle. Este texto lleva mil setecientos años imprimiéndose sin interrupción porque nunca ha dejado de usarse. Se lee en voz alta, cada semana, en las iglesias siríacas de Medio Oriente y de la India.",
+   "Guárdese esa idea para todo el recorrido. Lo que va a ver a partir de aquí no son reliquias. Son herramientas de trabajo que alguien sigue usando."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 4 · Museum of the History of the Bible",
+   "titulo": "The Peshitta",
+   "siglo": "The Syriac Bible · second to fifth century",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Everything you are about to see in this museum travelled westward: from Jerusalem to Rome, to Spain, to Germany, to England, and from there across the sea to here. This case is the other half of the story: the branch that went east.",
+   "It is called the Peshitta, which in Syriac means the simple one, the common one. It is the Bible of the churches of Syria and Mesopotamia.",
+   "Its Old Testament was translated directly from the Hebrew, probably in the second century. Its New Testament was settled at the beginning of the fifth century, and it replaced something older still: a harmony of the four Gospels told as a single narrative, which the Syriac churches used before they used the Gospels separately.",
+   "And now what makes this piece unique. Syriac is a form of Aramaic, which was the language of the house and the street in the Galilee of Jesus. A few words were left untranslated in the Gospels: talitha kumi, ephphatha, eloi eloi lema sabachthani. Those are Aramaic. It is not exactly the same variety you have before you, but it is the same family. It is as close as one can get to the original sound.",
+   "Another detail that surprises people: this New Testament is missing books. It does not contain the second letter of Peter, nor the second and third of John, nor Jude, nor Revelation. Twenty-two books instead of twenty-seven. It is not an error or a mutilation: it is a photograph of a moment when it was still being decided what was in and what was out.",
+   "And it travelled enormously far. Syriac missionaries carried it to Persia, to India and to central Asia. In the Chinese city of Xi'an there survives a stele of the year 781 recording Christians using this language in China. In Kerala, in southern India, there are communities still using it today.",
+   "It reached Europe late and almost by chance: the first Syriac New Testament printed in the West was made in Vienna in 1555, because a priest from Mardin named Moses crossed half the world with a manuscript under his arm.",
+   "The copy you see is a modern edition, and that is not a shortcoming: it is precisely what we want to show you. This text has been printed without interruption for seventeen hundred years because it has never stopped being used. It is read aloud, every week, in the Syriac churches of the Middle East and of India.",
+   "Keep that idea with you for the whole tour. What you are going to see from here on are not relics. They are working tools that somebody is still using."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 4 · Musée de l'Histoire de la Bible",
+   "titulo": "La Peshitta",
+   "siglo": "La Bible syriaque · du deuxième au cinquième siècle",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Tout ce que vous allez voir dans ce musée a voyagé vers l'ouest : de Jérusalem à Rome, en Espagne, en Allemagne, en Angleterre, et de là en traversant la mer jusqu'ici. Cette vitrine est l'autre moitié de l'histoire : la branche qui est partie vers l'orient.",
+   "Elle s'appelle Peshitta, ce qui en syriaque veut dire la simple, la commune. C'est la Bible des Églises de Syrie et de Mésopotamie.",
+   "Son Ancien Testament fut traduit directement de l'hébreu, probablement au deuxième siècle. Son Nouveau Testament fut fixé au début du cinquième siècle, et il remplaça quelque chose de plus ancien encore : une harmonie des quatre évangiles racontés comme un seul récit, que les Églises syriaques utilisèrent avant les évangiles séparés.",
+   "Et voici ce qui rend cette pièce unique. Le syriaque est une forme de l'araméen, qui était la langue de la maison et de la rue dans la Galilée de Jésus. Quelques mots sont restés sans traduction dans les évangiles : talitha koumi, effata, éloï éloï lema sabachthani. Ceux-là sont en araméen. Ce n'est pas exactement la même variante que celle que vous avez devant vous, mais c'est la même famille. C'est ce qu'on peut approcher de plus près du son original.",
+   "Autre détail surprenant : il manque des livres à ce Nouveau Testament. Il ne contient pas la deuxième de Pierre, ni la deuxième et la troisième de Jean, ni Jude, ni l'Apocalypse. Vingt-deux livres au lieu de vingt-sept. Ce n'est ni une erreur ni une mutilation : c'est la photographie d'un moment où l'on décidait encore ce qui entrait et ce qui n'entrait pas.",
+   "Et elle a voyagé très loin. Les missionnaires syriaques la portèrent en Perse, en Inde et en Asie centrale. Dans la ville chinoise de Xi'an se conserve une stèle de l'an 781 attestant des chrétiens usant de cette langue en Chine. Au Kerala, au sud de l'Inde, des communautés l'utilisent encore aujourd'hui.",
+   "Elle arriva en Europe tard et presque par hasard : le premier Nouveau Testament syriaque imprimé en Occident fut fait à Vienne, en 1555, parce qu'un prêtre de Mardin nommé Moïse traversa la moitié du monde avec un manuscrit sous le bras.",
+   "L'exemplaire que vous voyez est une édition moderne, et ce n'est pas un défaut : c'est précisément ce que nous voulons vous montrer. Ce texte s'imprime sans interruption depuis mille sept cents ans parce qu'il n'a jamais cessé d'être utilisé. On le lit à voix haute, chaque semaine, dans les Églises syriaques du Moyen-Orient et de l'Inde.",
+   "Gardez cette idée pour tout le parcours. Ce que vous allez voir à partir d'ici ne sont pas des reliques. Ce sont des outils de travail que quelqu'un utilise encore."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 4 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Peschitta",
+   "siglo": "Die syrische Bibel · 2. bis 5. Jahrhundert",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Alles, was Sie in diesem Museum sehen werden, reiste nach Westen: von Jerusalem nach Rom, nach Spanien, nach Deutschland, nach England und von dort über das Meer bis hierher. Diese Vitrine ist die andere Hälfte der Geschichte: der Zweig, der nach Osten ging.",
+   "Sie heißt Peschitta, was auf Syrisch die Einfache, die Gewöhnliche bedeutet. Es ist die Bibel der Kirchen Syriens und Mesopotamiens.",
+   "Ihr Altes Testament wurde unmittelbar aus dem Hebräischen übersetzt, wahrscheinlich im zweiten Jahrhundert. Ihr Neues Testament wurde zu Beginn des fünften Jahrhunderts festgelegt und trat an die Stelle von etwas noch Älterem: einer Harmonie der vier Evangelien, als eine einzige Erzählung erzählt, die die syrischen Kirchen benutzten, bevor sie die Evangelien einzeln benutzten.",
+   "Und nun das, was dieses Stück einzigartig macht. Syrisch ist eine Form des Aramäischen, und Aramäisch war die Sprache des Hauses und der Straße im Galiläa Jesu. In den Evangelien blieben einige Wörter unübersetzt: talitha kumi, effata, eloi eloi lema sabachthani. Diese sind aramäisch. Es ist nicht genau dieselbe Spielart, die Sie vor sich haben, aber es ist dieselbe Familie. Näher kann man dem ursprünglichen Klang nicht kommen.",
+   "Noch eine überraschende Einzelheit: diesem Neuen Testament fehlen Bücher. Es enthält weder den zweiten Petrusbrief noch den zweiten und dritten Johannesbrief, weder den Judasbrief noch die Offenbarung. Zweiundzwanzig Bücher statt siebenundzwanzig. Das ist kein Fehler und keine Verstümmelung: es ist eine Momentaufnahme aus einer Zeit, in der noch entschieden wurde, was dazugehört und was nicht.",
+   "Und sie reiste sehr weit. Syrische Missionare trugen sie nach Persien, nach Indien und nach Zentralasien. In der chinesischen Stadt Xi'an steht eine Stele aus dem Jahr 781, die Christen bezeugt, die in China diese Sprache benutzten. In Kerala, im Süden Indiens, gibt es Gemeinden, die sie bis heute gebrauchen.",
+   "Nach Europa kam sie spät und fast durch Zufall: das erste im Westen gedruckte syrische Neue Testament entstand 1555 in Wien, weil ein Priester aus Mardin namens Moses mit einer Handschrift unter dem Arm die halbe Welt durchquerte.",
+   "Das Exemplar, das Sie sehen, ist eine moderne Ausgabe, und das ist kein Mangel: es ist genau das, was wir Ihnen zeigen wollen. Dieser Text wird seit siebzehnhundert Jahren ohne Unterbrechung gedruckt, weil er nie aufgehört hat, gebraucht zu werden. Er wird jede Woche laut gelesen, in den syrischen Kirchen des Nahen Ostens und Indiens.",
+   "Behalten Sie diesen Gedanken für den ganzen Rundgang. Was Sie von hier an sehen werden, sind keine Reliquien. Es sind Arbeitsgeräte, die jemand noch benutzt."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 4 · Museo di Storia della Bibbia",
+   "titulo": "La Peshitta",
+   "siglo": "La Bibbia siriaca · dal II al V secolo",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Tutto ciò che vedrà in questo museo viaggiò verso occidente: da Gerusalemme a Roma, in Spagna, in Germania, in Inghilterra, e di lì attraverso il mare fino a qui. Questa vetrina è l'altra metà della storia: il ramo che andò verso oriente.",
+   "Si chiama Peshitta, che in siriaco vuol dire la semplice, la comune. È la Bibbia delle chiese di Siria e di Mesopotamia.",
+   "Il suo Antico Testamento fu tradotto direttamente dall'ebraico, probabilmente nel secondo secolo. Il suo Nuovo Testamento fu fissato all'inizio del quinto secolo, e venne a sostituire qualcosa di ancora più antico: un'armonia dei quattro vangeli raccontati come un'unica narrazione, che le chiese siriache usarono prima dei vangeli separati.",
+   "E ora ciò che rende unico questo pezzo. Il siriaco è una forma dell'aramaico, che era la lingua della casa e della strada nella Galilea di Gesù. Nei vangeli rimasero alcune parole non tradotte: talitha kumi, effatà, eloì eloì lemà sabactàni. Quelle sono in aramaico. Non è esattamente la stessa variante che ha davanti, ma è la stessa famiglia. È quanto di più vicino si possa stare al suono originale.",
+   "Un altro dettaglio che sorprende: a questo Nuovo Testamento mancano dei libri. Non contiene la seconda di Pietro, né la seconda e la terza di Giovanni, né Giuda, né l'Apocalisse. Ventidue libri invece di ventisette. Non è un errore né una mutilazione: è la fotografia di un momento in cui si stava ancora decidendo che cosa entrava e che cosa no.",
+   "E viaggiò lontanissimo. I missionari siriaci la portarono in Persia, in India e in Asia centrale. Nella città cinese di Xi'an si conserva una stele dell'anno 781 che attesta cristiani che usavano questa lingua in Cina. In Kerala, nel sud dell'India, ci sono comunità che la usano ancora oggi.",
+   "In Europa arrivò tardi e quasi per caso: il primo Nuovo Testamento siriaco stampato in Occidente fu fatto a Vienna, nel 1555, perché un sacerdote di Mardin di nome Mosè attraversò mezzo mondo con un manoscritto sotto il braccio.",
+   "L'esemplare che vede è un'edizione moderna, e non è un difetto: è proprio quello che vogliamo mostrarle. Questo testo si stampa senza interruzione da millesettecento anni perché non ha mai smesso di essere usato. Si legge ad alta voce, ogni settimana, nelle chiese siriache del Medio Oriente e dell'India.",
+   "Si tenga questa idea per tutto il percorso. Quello che vedrà da qui in avanti non sono reliquie. Sono strumenti di lavoro che qualcuno sta ancora usando."
+  ]
+ }
+};
+</script>
+<script src="vitrinas.js"></script>
+<script src="guia.js"></script>
+</body>
+</html>

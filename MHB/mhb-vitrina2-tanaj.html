@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>El Tanaj y la tradición judía — Museo de Historia de la Biblia</title>
+<link href="estilos.css" rel="stylesheet"/>
+<style>
+.rollo{flex:none;width:74px;height:60px}
+</style>
+</head>
+<body data-vitrina="2">
+<div class="hoja">
+<header class="cabecera">
+<div class="marca">
+<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
+</a>
+<div class="marca-texto">
+<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+<p class="sala" id="ui-sala"></p>
+</div>
+<span class="marca-num">02</span>
+<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
+</div>
+<div class="header-main">
+<div aria-hidden="true" class="emblema"><svg aria-hidden="true" class="rollo" viewBox="0 0 74 60">
+<rect fill="currentColor" height="36" width="42" x="16" y="12"></rect>
+<g opacity=".5" stroke="currentColor" stroke-width="2"><path d="M22 20 H52"></path><path d="M22 27 H52"></path><path d="M22 34 H46"></path><path d="M22 41 H52"></path></g>
+<rect fill="currentColor" height="48" rx="6" width="12" x="6" y="6"></rect><rect fill="currentColor" height="48" rx="6" width="12" x="56" y="6"></rect></svg></div>
+<div class="header-texto">
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div>
+</div>
+</header>
+<nav class="nav">
+<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="nav-btn" id="nav-ant">‹</a>
+<select class="nav-sel" id="nav-sel"></select>
+<a class="nav-btn" id="nav-sig">›</a>
+<span class="nav-btn" id="nav-pos" style="border:none"></span>
+</nav>
+<div class="progreso"><i id="barra"></i></div>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play" type="button">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 2 · Museo de Historia de la Biblia",
+   "titulo": "El Tanaj y la tradición judía",
+   "siglo": "Torá, Tanaj, Talmud y Midrash",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Éste es el principio de todo. Y no es un libro: es un rollo. La Torá son los cinco primeros libros, Génesis, Éxodo, Levítico, Números y Deuteronomio, escritos en hebreo. Y se copian todavía hoy exactamente como hace dos mil años.",
+   "Y antes de seguir, una palabra que le va a servir en todo el recorrido: Tanaj, así se llama la Biblia hebrea completa (Antiguo Testamento), y el nombre es un acrónimo de sus tres partes. Torá, la ley. Neviim, los profetas. Ketuvim, los escritos.",
+   "Son los mismos libros que usted tiene en su Antiguo Testamento, pero en otro orden y con otro criterio. Y fíjese en la consecuencia: el Tanaj no termina en Malaquías, termina en Crónicas. Cierra con la orden de subir a reconstruir el Templo, no con la espera del Mesías. El mismo material, ordenado de otro modo, cuenta otra cosa.",
+   "Aquí está lo que cualquiera debería saber. Un rollo de Torá lo escribe a mano un escriba entrenado, sobre pergamino, con pluma y tinta. Tarda alrededor de un año. No puede escribir una sola letra de memoria: tiene que ir mirando otro rollo. Cuenta letras, cuenta palabras, y sabe cuál es la letra que va exactamente a la mitad del texto.",
+   "Y si se equivoca al escribir el Nombre de Dios, esa hoja no se corrige. Se desecha.",
+   "Ese sistema es la razón de que el texto haya llegado tan estable hasta nosotros. Cuando en 1,947 aparecieron los rollos del mar Muerto, con mil años de antigüedad sobre las copias que se conocían, el texto resultó ser prácticamente el mismo.",
+   "Al lado tiene el Talmud, y conviene decir qué es, porque no es Biblia. Es la discusión: siglos de maestros preguntando, respondiendo y contradiciéndose alrededor del texto, puestos por escrito y ordenados. En su página, el pasaje va en el centro y los comentarios lo rodean por todos lados, de épocas distintas, conversando entre sí.",
+   "Es, si lo piensa, el invento de algo que hoy nos parece natural: que un texto venga acompañado de lo que otros han dicho de él. Las notas al pie de cualquier Biblia de estudio que verá más adelante en este museo descienden de esa idea.",
+   "Y falta la cuarta pieza de esta vitrina: el Midrash. Si el Talmud discute la ley, el Midrash cuenta. Rellena los huecos del relato. Pregunta qué iba pensando Abraham camino del monte, qué dijo el mar al abrirse, de qué hablaron Caín y Abel antes del golpe. Es la interpretación por vía de la narración.",
+   "Y aquí hay algo que conviene que se lleve usted a la última vitrina de este museo. El Midrash es, literalmente, paráfrasis antigua: amplificar el texto y volver a contarlo para que se entienda y para que llegue. Eso que parece un invento moderno tiene mil ochocientos años.",
+   "Y una cosa más, que a veces se olvida. Los cristianos no tradujeron el Antiguo Testamento de la nada. Lo recibieron ya escrito, ya copiado y ya cuidado durante siglos por manos judías. Todo lo que verá a partir de aquí empieza en esta vitrina."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 2 · Museum of the History of the Bible",
+   "titulo": "The Tanakh and the Jewish tradition",
+   "siglo": "Torah, Tanakh, Talmud and Midrash",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "This is the beginning of everything. And it is not a book: it is a scroll. The Torah is the first five books, Genesis, Exodus, Leviticus, Numbers and Deuteronomy, written in Hebrew. And they are still copied today exactly as they were two thousand years ago.",
+   "And before we go on, a word that will serve you throughout the tour: Tanakh. That is the name of the complete Hebrew Bible, and it is an acronym of its three parts. Torah, the law. Nevi'im, the prophets. Ketuvim, the writings.",
+   "They are the same books you have in your Old Testament, but in a different order and by a different criterion. And notice the consequence: the Tanakh does not end with Malachi, it ends with Chronicles. It closes with the command to go up and rebuild the Temple, not with the waiting for a Messiah. The same material, arranged differently, tells a different story.",
+   "Here is what everyone ought to know. A Torah scroll is written by hand by a trained scribe, on parchment, with quill and ink. It takes about a year. He may not write a single letter from memory: he has to keep looking at another scroll. He counts letters, he counts words, and he knows which letter falls exactly at the middle of the text.",
+   "And if he makes a mistake writing the Name of God, that sheet is not corrected. It is discarded.",
+   "That system is the reason the text has come down to us so stable. When the Dead Sea Scrolls appeared in 1947, a thousand years older than the copies then known, the text turned out to be practically the same.",
+   "Beside it you have the Talmud, and it is worth saying what it is, because it is not the Bible. It is the discussion: centuries of teachers asking, answering and contradicting one another around the text, written down and arranged. On its page the passage sits in the centre and the commentaries surround it on every side, from different ages, talking to each other.",
+   "It is, if you think about it, the invention of something that seems natural to us now: that a text should come accompanied by what others have said about it. The footnotes in any study Bible you will see further along in this museum descend from that idea.",
+   "And there is a fourth piece in this case: the Midrash. If the Talmud argues the law, the Midrash tells stories. It fills in the gaps of the narrative. It asks what Abraham was thinking on the way up the mountain, what the sea said as it parted, what Cain and Abel talked about before the blow. It is interpretation by way of narration.",
+   "And here is something worth carrying with you to the last case in this museum. The Midrash is, quite literally, ancient paraphrase: amplifying the text and retelling it so that it will be understood and will reach people. What looks like a modern invention is eighteen hundred years old.",
+   "And one more thing, which is sometimes forgotten. Christians did not translate the Old Testament out of nothing. They received it already written, already copied and already guarded for centuries by Jewish hands. Everything you will see from here on begins in this case."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 2 · Musée de l'Histoire de la Bible",
+   "titulo": "Le Tanakh et la tradition juive",
+   "siglo": "Torah, Tanakh, Talmud et Midrash",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Voici le commencement de tout. Et ce n'est pas un livre : c'est un rouleau. La Torah, ce sont les cinq premiers livres, Genèse, Exode, Lévitique, Nombres et Deutéronome, écrits en hébreu. Et on les copie aujourd'hui encore exactement comme il y a deux mille ans.",
+   "Et avant d'aller plus loin, un mot qui vous servira tout au long du parcours : Tanakh, c'est le nom de la Bible hébraïque complète, l'Ancien Testament, et c'est un acronyme de ses trois parties. Torah, la loi. Neviim, les prophètes. Ketouvim, les écrits.",
+   "Ce sont les mêmes livres que ceux de votre Ancien Testament, mais dans un autre ordre et selon un autre critère. Et voyez la conséquence : le Tanakh ne finit pas par Malachie, il finit par les Chroniques. Il se ferme sur l'ordre de monter reconstruire le Temple, non sur l'attente du Messie. La même matière, autrement ordonnée, raconte autre chose.",
+   "Voici ce que chacun devrait savoir. Un rouleau de Torah est écrit à la main par un scribe formé, sur parchemin, à la plume et à l'encre. Cela prend environ un an. Il ne peut pas écrire une seule lettre de mémoire : il doit regarder un autre rouleau. Il compte les lettres, il compte les mots, et il sait quelle lettre tombe exactement au milieu du texte.",
+   "Et s'il se trompe en écrivant le Nom de Dieu, ce feuillet ne se corrige pas. On le met au rebut.",
+   "Ce système est la raison pour laquelle le texte nous est parvenu si stable. Quand les manuscrits de la mer Morte parurent en 1947, plus anciens de mille ans que les copies alors connues, le texte se révéla pratiquement identique.",
+   "À côté, vous avez le Talmud, et il convient de dire ce que c'est, car ce n'est pas la Bible. C'est la discussion : des siècles de maîtres qui interrogent, répondent et se contredisent autour du texte, mis par écrit et ordonnés. Sur sa page, le passage est au centre et les commentaires l'entourent de tous côtés, d'époques différentes, conversant entre eux.",
+   "C'est, si l'on y songe, l'invention de quelque chose qui nous paraît naturel aujourd'hui : qu'un texte soit accompagné de ce que d'autres en ont dit. Les notes de bas de page de n'importe quelle Bible d'étude que vous verrez plus loin dans ce musée descendent de cette idée.",
+   "Et il manque la quatrième pièce de cette vitrine : le Midrash. Si le Talmud discute la loi, le Midrash raconte. Il comble les creux du récit. Il demande à quoi pensait Abraham en montant la montagne, ce que dit la mer en s'ouvrant, de quoi parlèrent Caïn et Abel avant le coup. C'est l'interprétation par la voie du récit.",
+   "Et voici quelque chose qu'il vaut la peine d'emporter jusqu'à la dernière vitrine de ce musée. Le Midrash est, littéralement, une paraphrase ancienne : amplifier le texte et le raconter à nouveau pour qu'il se comprenne et qu'il parvienne. Ce qui semble une invention moderne a mille huit cents ans.",
+   "Et encore une chose, que l'on oublie parfois. Les chrétiens n'ont pas traduit l'Ancien Testament à partir de rien. Ils l'ont reçu déjà écrit, déjà copié et déjà gardé pendant des siècles par des mains juives. Tout ce que vous verrez à partir d'ici commence dans cette vitrine."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 2 · Museum zur Geschichte der Bibel",
+   "titulo": "Der Tanach und die jüdische Überlieferung",
+   "siglo": "Tora, Tanach, Talmud und Midrasch",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Dies ist der Anfang von allem. Und es ist kein Buch: es ist eine Rolle. Die Tora sind die ersten fünf Bücher, Genesis, Exodus, Levitikus, Numeri und Deuteronomium, auf Hebräisch geschrieben. Und sie werden bis heute genau so abgeschrieben wie vor zweitausend Jahren.",
+   "Und bevor wir weitergehen, ein Wort, das Ihnen auf dem ganzen Rundgang nützen wird: Tanach, so heißt die vollständige hebräische Bibel, das Alte Testament, und der Name ist ein Akronym seiner drei Teile. Tora, das Gesetz. Newiim, die Propheten. Ketuwim, die Schriften.",
+   "Es sind dieselben Bücher, die Sie in Ihrem Alten Testament haben, aber in anderer Reihenfolge und nach einem anderen Maßstab. Und sehen Sie die Folge: der Tanach endet nicht mit Maleachi, er endet mit der Chronik. Er schließt mit dem Befehl, hinaufzuziehen und den Tempel wieder aufzubauen, nicht mit dem Warten auf den Messias. Derselbe Stoff, anders geordnet, erzählt etwas anderes.",
+   "Hier ist, was jeder wissen sollte. Eine Torarolle schreibt ein ausgebildeter Schreiber von Hand, auf Pergament, mit Feder und Tinte. Er braucht etwa ein Jahr. Er darf keinen einzigen Buchstaben aus dem Gedächtnis schreiben: er muss auf eine andere Rolle blicken. Er zählt Buchstaben, er zählt Wörter, und er weiß, welcher Buchstabe genau in der Mitte des Textes steht.",
+   "Und wenn er sich beim Schreiben des Namens Gottes irrt, wird dieses Blatt nicht verbessert. Es wird verworfen.",
+   "Dieses System ist der Grund, warum der Text so unverändert zu uns gelangt ist. Als 1947 die Schriftrollen vom Toten Meer auftauchten, tausend Jahre älter als die bis dahin bekannten Abschriften, erwies sich der Text als praktisch derselbe.",
+   "Daneben steht der Talmud, und man sollte sagen, was er ist, denn er ist nicht die Bibel. Er ist die Diskussion: Jahrhunderte von Lehrern, die rund um den Text fragen, antworten und einander widersprechen, aufgeschrieben und geordnet. Auf seiner Seite steht der Abschnitt in der Mitte, und die Kommentare umgeben ihn von allen Seiten, aus verschiedenen Zeiten, miteinander im Gespräch.",
+   "Es ist, wenn man darüber nachdenkt, die Erfindung von etwas, das uns heute selbstverständlich scheint: dass ein Text begleitet wird von dem, was andere über ihn gesagt haben. Die Fußnoten jeder Studienbibel, die Sie später in diesem Museum sehen werden, stammen von dieser Idee ab.",
+   "Und es fehlt das vierte Stück dieser Vitrine: der Midrasch. Wenn der Talmud das Gesetz erörtert, so erzählt der Midrasch. Er füllt die Lücken der Erzählung. Er fragt, was Abraham auf dem Weg den Berg hinauf dachte, was das Meer sagte, als es sich teilte, worüber Kain und Abel vor dem Schlag sprachen. Es ist Auslegung auf dem Weg der Erzählung.",
+   "Und hier ist etwas, das Sie bis zur letzten Vitrine dieses Museums mitnehmen sollten. Der Midrasch ist buchstäblich alte Paraphrase: den Text erweitern und neu erzählen, damit er verstanden wird und ankommt. Was wie eine moderne Erfindung aussieht, ist achtzehnhundert Jahre alt.",
+   "Und noch etwas, das manchmal vergessen wird. Die Christen haben das Alte Testament nicht aus dem Nichts übersetzt. Sie erhielten es bereits geschrieben, bereits abgeschrieben und jahrhundertelang von jüdischen Händen gehütet. Alles, was Sie von hier an sehen, beginnt in dieser Vitrine."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 2 · Museo di Storia della Bibbia",
+   "titulo": "Il Tanak e la tradizione ebraica",
+   "siglo": "Torà, Tanak, Talmud e Midrash",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Questo è il principio di tutto. E non è un libro: è un rotolo. La Torà sono i primi cinque libri, Genesi, Esodo, Levitico, Numeri e Deuteronomio, scritti in ebraico. E si copiano ancora oggi esattamente come duemila anni fa.",
+   "E prima di proseguire, una parola che le servirà in tutto il percorso: Tanak, così si chiama la Bibbia ebraica completa, l'Antico Testamento, e il nome è un acronimo delle sue tre parti. Torà, la legge. Neviim, i profeti. Ketuvim, gli scritti.",
+   "Sono gli stessi libri che ha nel suo Antico Testamento, ma in un altro ordine e con un altro criterio. E guardi la conseguenza: il Tanak non finisce con Malachia, finisce con le Cronache. Si chiude con l'ordine di salire a ricostruire il Tempio, non con l'attesa del Messia. Lo stesso materiale, ordinato in altro modo, racconta un'altra cosa.",
+   "Ecco quello che chiunque dovrebbe sapere. Un rotolo della Torà lo scrive a mano uno scriba addestrato, su pergamena, con penna e inchiostro. Impiega circa un anno. Non può scrivere una sola lettera a memoria: deve guardare un altro rotolo. Conta le lettere, conta le parole, e sa qual è la lettera che cade esattamente a metà del testo.",
+   "E se sbaglia scrivendo il Nome di Dio, quel foglio non si corregge. Si scarta.",
+   "Quel sistema è la ragione per cui il testo ci è giunto così stabile. Quando nel 1947 comparvero i rotoli del Mar Morto, più antichi di mille anni rispetto alle copie allora note, il testo risultò praticamente lo stesso.",
+   "Accanto ha il Talmud, e conviene dire che cos'è, perché non è Bibbia. È la discussione: secoli di maestri che domandano, rispondono e si contraddicono attorno al testo, messi per iscritto e ordinati. Nella sua pagina il passo sta al centro e i commenti lo circondano da ogni lato, di epoche diverse, conversando fra loro.",
+   "È, se ci pensa, l'invenzione di qualcosa che oggi ci sembra naturale: che un testo sia accompagnato da ciò che altri ne hanno detto. Le note a piè di pagina di qualsiasi Bibbia di studio che vedrà più avanti in questo museo discendono da quell'idea.",
+   "E manca il quarto pezzo di questa vetrina: il Midrash. Se il Talmud discute la legge, il Midrash racconta. Riempie i vuoti del racconto. Chiede che cosa pensava Abramo salendo il monte, che cosa disse il mare aprendosi, di che cosa parlarono Caino e Abele prima del colpo. È l'interpretazione per via di narrazione.",
+   "Ed ecco qualcosa che conviene portarsi fino all'ultima vetrina di questo museo. Il Midrash è, letteralmente, parafrasi antica: amplificare il testo e raccontarlo di nuovo perché si capisca e perché arrivi. Quello che sembra un'invenzione moderna ha milleottocento anni.",
+   "E ancora una cosa, che a volte si dimentica. I cristiani non tradussero l'Antico Testamento dal nulla. Lo ricevettero già scritto, già copiato e già custodito per secoli da mani ebraiche. Tutto ciò che vedrà da qui in avanti comincia in questa vetrina."
+  ]
+ }
+};
+</script>
+<script src="vitrinas.js"></script>
+<script src="guia.js"></script>
+</body>
+</html>

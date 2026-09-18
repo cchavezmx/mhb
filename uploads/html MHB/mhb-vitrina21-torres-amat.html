@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>La Biblia de Torres Amat — Museo de Historia de la Biblia</title>
+<style>
+  :root{ --fondo:#F1EBDE;--claro:#FAF5E9;--tinta:#241E18;--cabecera:#3B3A52;--acento:#8A5A2B;--marca:rgba(138,90,43,.24); }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fondo);color:var(--tinta);
+    font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
+    font-size:20px;line-height:1.62;-webkit-text-size-adjust:100%;}
+  .hoja{max-width:40rem;margin:0 auto;padding:0 0 4rem}
+  header{background:var(--cabecera);color:var(--claro);padding:2.2rem 1.4rem 2rem;}
+  .sala{font-size:.78em;margin:0 0 .45rem;opacity:.85}
+  h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .tomos{flex:none;display:flex;gap:3px;align-items:flex-end}
+  .tomos i{display:block;width:6px;background:var(--acento);border-radius:1px}
+
+  main{padding:0 1.4rem}
+  .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
+  .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
+    background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);border-radius:2px;cursor:pointer}
+  .idiomas button[aria-pressed="true"]{background:var(--cabecera);color:var(--claro);border-color:var(--cabecera)}
+  .idiomas button:focus-visible,.control:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  .mandos{display:flex;gap:.6rem;align-items:center;margin:0 0 1.8rem}
+  .control{font:inherit;font-size:1em;display:inline-flex;align-items:center;gap:.55rem;
+    padding:.85rem 1.5rem;min-height:52px;background:var(--acento);color:#FFF6E6;border:none;border-radius:2px;cursor:pointer}
+  .control.secundario{background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);padding:.85rem 1.1rem}
+  .control[hidden]{display:none}
+  .aviso{font-size:.8em;font-style:italic;margin:-1.2rem 0 1.8rem;color:#7a5c3e}
+  p.parrafo{margin:0 0 1.15rem;transition:background-color .25s}
+  p.parrafo.sonando{background:var(--marca);box-shadow:0 0 0 .35rem var(--marca)}
+  footer{margin:2.8rem 1.4rem 0;padding-top:1.2rem;border-top:1px solid rgba(40,32,25,.25);
+         font-size:.8em;font-style:italic;color:#7a5c3e}
+  @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
+
+  .header-marca{display:flex;justify-content:flex-end;margin:0 0 .9rem}
+  .logo-mhb{flex:none;width:56px;height:56px;color:var(--claro);opacity:.92}
+  .logo-mhb svg{width:100%;height:100%}
+  .header-main{display:flex;gap:1.3rem;align-items:center}
+  .header-texto{flex:1}
+</style>
+</head>
+<body>
+<div class="hoja">
+<header><div class="header-marca"><div aria-label="Museo de Historia de la Biblia" class="logo-mhb">
+<svg aria-hidden="true" viewBox="0 0 64 64">
+<path d="M10 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<path d="M36 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<line stroke="currentColor" stroke-width="2" x1="32" x2="32" y1="12" y2="52"></line>
+</svg>
+</div></div><div class="header-main"><div aria-hidden="true" class="tomos"><i style="height:46px"></i><i style="height:52px"></i><i style="height:48px"></i><i style="height:56px"></i><i style="height:50px"></i><i style="height:58px"></i><i style="height:46px"></i><i style="height:54px"></i><i style="height:50px"></i></div><div class="header-texto">
+<p class="sala" id="ui-sala"></p>
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div></div></header>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+// Si pone aquí la URL de un MP3, esa voz sustituye a la del teléfono.
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 21 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia de Torres Amat",
+   "siglo": "Madrid, 1823–1825 · nueve tomos",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Y ésta es la que llegó a México. La que estuvo en los burós, en los libreros de las salas, en las manos de nuestros bisabuelos.",
+   "La hizo Félix Torres Amat, catalán, capellán del rey y después obispo de Astorga. Se publicó en Madrid, en nueve tomos, entre 1,823 y 1,825. También traducida de la Vulgata latina, también con notas al pie, en la línea que había abierto el padre Scío treinta años antes.",
+   "Pero ésta corrió con otra suerte. Se reimprimió una vez y otra, en España y en América, durante todo el siglo diecinueve y buena parte del veinte. Fue, sin discusión, la Biblia en español más leída de su tiempo. Si en su familia hubo una Biblia antigua, es muy probable que fuera ésta.",
+   "Y ahora la sombra, porque en este museo se cuenta todo.",
+   "Casi desde el primer día se le acusó a Torres Amat de que la traducción no era suya. Que había trabajado sobre el manuscrito inédito de un jesuita, el padre José Miguel Petisco, muerto en 1,800, y que no le dio el crédito que le tocaba. El pleito lleva dos siglos sin resolverse. Hay ediciones modernas que, por si acaso, la llaman Petisco Torres Amat, con los dos apellidos.",
+   "No podemos decirle a usted quién tenía la razón. Nadie puede, todavía. Pero fíjese en lo que significa esa discusión: llevamos dos siglos peleando por quién merece el crédito de haber traducido la Biblia al español. Hubo un tiempo, no tan lejano, en que por hacerlo lo quemaban a uno.",
+   "Con ésta, la Biblia en español ya estaba en las casas. Faltaba que se imprimiera aquí, en nuestro país. Eso es la sala siguiente."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 21 · Museum of the History of the Bible",
+   "titulo": "The Torres Amat Bible",
+   "siglo": "Madrid, 1823–1825 · nine volumes",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "And this is the one that reached Mexico. The one on the bedside tables, on the shelves of the front room, in the hands of our great-grandparents.",
+   "It was made by Félix Torres Amat, a Catalan, chaplain to the king and later bishop of Astorga. It was published in Madrid, in nine volumes, between 1823 and 1825. Translated from the Latin Vulgate as well, with footnotes as well, along the line that Father Scío had opened thirty years earlier.",
+   "But this one had a different fate. It was reprinted again and again, in Spain and in the Americas, throughout the nineteenth century and much of the twentieth. It was, beyond argument, the most widely read Catholic Bible in Spanish of its time. If there was an old Bible in your family, it was very probably this one.",
+   "And now the shadow, because in this museum everything gets told.",
+   "Almost from the first day Torres Amat was accused of the translation not being his. That he had worked from the unpublished manuscript of a Jesuit, Father José Miguel Petisco, who died in 1800, and that he did not give him the credit he was owed. The quarrel has gone two centuries without being settled. There are modern editions which, just in case, call it the Petisco–Torres Amat, with both surnames.",
+   "We cannot tell you who was right. Nobody can, not yet. But consider what that argument means: we have spent two centuries fighting over who deserves the credit for translating the Bible into Spanish. There was a time, not so long ago, when men were burned for doing it.",
+   "With this one, the Bible in Spanish was already in people's homes. What was still missing was for it to be printed here, in our own country. That is the next case."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 21 · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible de Torres Amat",
+   "siglo": "Madrid, 1823–1825 · neuf volumes",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Et voici celle qui est arrivée au Mexique. Celle des tables de nuit, des étagères du salon, des mains de nos arrière-grands-parents.",
+   "Elle fut faite par Félix Torres Amat, catalan, chapelain du roi puis évêque d'Astorga. Elle parut à Madrid, en neuf volumes, entre 1823 et 1825. Traduite elle aussi de la Vulgate latine, avec des notes en bas de page elle aussi, dans la ligne ouverte par le père Scío trente ans plus tôt.",
+   "Mais celle-ci connut un autre sort. Elle fut réimprimée encore et encore, en Espagne et en Amérique, tout au long du dix-neuvième siècle et pendant une bonne partie du vingtième. Ce fut, sans discussion, la Bible catholique en espagnol la plus lue de son temps. S'il y avait une vieille Bible dans votre famille, c'était très probablement celle-ci.",
+   "Et maintenant l'ombre au tableau, car dans ce musée on raconte tout.",
+   "Presque dès le premier jour, on reprocha à Torres Amat que la traduction ne fût pas de lui. Qu'il avait travaillé sur le manuscrit inédit d'un jésuite, le père José Miguel Petisco, mort en 1800, sans lui rendre le crédit qui lui revenait. La querelle dure depuis deux siècles sans être tranchée. Certaines éditions modernes, par précaution, l'appellent Petisco–Torres Amat, avec les deux noms.",
+   "Nous ne pouvons pas vous dire qui avait raison. Personne ne le peut encore. Mais voyez ce que signifie cette dispute : cela fait deux siècles que l'on se bat pour savoir qui mérite d'avoir traduit la Bible en espagnol. Il fut un temps, pas si lointain, où l'on vous brûlait pour l'avoir fait.",
+   "Avec celle-ci, la Bible en espagnol était déjà dans les maisons. Il restait qu'elle fût imprimée ici, dans notre pays. C'est la vitrine suivante."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 21 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Torres-Amat-Bibel",
+   "siglo": "Madrid, 1823–1825 · neun Bände",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Und dies ist die, die nach Mexiko kam. Die auf den Nachttischen stand, in den Regalen der guten Stube, in den Händen unserer Urgroßeltern.",
+   "Gemacht hat sie Félix Torres Amat, ein Katalane, Kaplan des Königs und später Bischof von Astorga. Sie erschien in Madrid, in neun Bänden, zwischen 1823 und 1825. Ebenfalls aus der lateinischen Vulgata übersetzt, ebenfalls mit Fußnoten, in der Linie, die Pater Scío dreißig Jahre zuvor eröffnet hatte.",
+   "Doch diese hatte ein anderes Schicksal. Sie wurde immer wieder nachgedruckt, in Spanien und in Amerika, das ganze neunzehnte Jahrhundert hindurch und einen guten Teil des zwanzigsten. Sie war, unbestritten, die meistgelesene katholische Bibel auf Spanisch ihrer Zeit. Wenn es in Ihrer Familie eine alte Bibel gab, war es höchstwahrscheinlich diese.",
+   "Und nun der Schatten, denn in diesem Museum wird alles erzählt.",
+   "Fast vom ersten Tag an wurde Torres Amat vorgeworfen, die Übersetzung sei nicht von ihm. Er habe nach der unveröffentlichten Handschrift eines Jesuiten gearbeitet, des 1800 verstorbenen Paters José Miguel Petisco, und ihm nicht die gebührende Anerkennung gegeben. Der Streit ist seit zwei Jahrhunderten nicht entschieden. Es gibt moderne Ausgaben, die sie vorsichtshalber Petisco–Torres Amat nennen, mit beiden Namen.",
+   "Wir können Ihnen nicht sagen, wer recht hatte. Niemand kann das bislang. Aber bedenken Sie, was dieser Streit bedeutet: seit zwei Jahrhunderten streiten wir darüber, wem die Ehre gebührt, die Bibel ins Spanische übersetzt zu haben. Es gab eine Zeit, gar nicht so lange her, in der man dafür verbrannt wurde.",
+   "Mit dieser war die Bibel auf Spanisch bereits in den Häusern. Es fehlte noch, dass sie hier gedruckt wurde, in unserem eigenen Land. Das ist der nächste Vitrine."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 21 · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia di Torres Amat",
+   "siglo": "Madrid, 1823–1825 · nove volumi",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "E questa è quella che arrivò in Messico. Quella dei comodini, degli scaffali del salotto, delle mani dei nostri bisnonni.",
+   "La fece Félix Torres Amat, catalano, cappellano del re e poi vescovo di Astorga. Fu pubblicata a Madrid, in nove volumi, fra il 1823 e il 1825. Tradotta anch'essa dalla Vulgata latina, anch'essa con note a piè di pagina, nella linea aperta da padre Scío trent'anni prima.",
+   "Ma questa ebbe altra sorte. Fu ristampata una volta e un'altra, in Spagna e in America, per tutto l'Ottocento e buona parte del Novecento. Fu, senza discussione, la Bibbia cattolica in spagnolo più letta del suo tempo. Se nella sua famiglia c'era una Bibbia antica, molto probabilmente era questa.",
+   "E ora l'ombra, perché in questo museo si racconta tutto.",
+   "Quasi dal primo giorno si accusò Torres Amat che la traduzione non fosse sua. Che avesse lavorato sul manoscritto inedito di un gesuita, padre José Miguel Petisco, morto nel 1800, senza dargli il credito dovuto. La lite dura da due secoli senza soluzione. Ci sono edizioni moderne che, per prudenza, la chiamano Petisco–Torres Amat, con i due cognomi.",
+   "Non possiamo dirle chi avesse ragione. Nessuno può ancora. Ma guardi che cosa significa quella discussione: sono due secoli che litighiamo su chi merita il credito di aver tradotto la Bibbia in spagnolo. C'è stato un tempo, non tanto lontano, in cui per farlo si finiva sul rogo.",
+   "Con questa, la Bibbia in spagnolo era già nelle case. Mancava che si stampasse qui, nel nostro paese. È la vetrina seguente."
+  ]
+ }
+};
+
+const $ = id => document.getElementById(id);
+let actual = "es", audio = null;
+
+function pintarIdiomas(){
+  $("idiomas").innerHTML = "";
+  Object.keys(GUIA).forEach(k=>{
+    const b = document.createElement("button");
+    b.textContent = GUIA[k].nombre;
+    b.setAttribute("aria-pressed", k===actual);
+    b.onclick = ()=>{ detener(); actual = k; pintar(); };
+    $("idiomas").appendChild(b);
+  });
+}
+function pintar(){
+  const g = GUIA[actual];
+  document.documentElement.lang = actual;
+  $("ui-sala").textContent = g.ui.sala;
+  $("ui-titulo").textContent = g.ui.titulo;
+  $("ui-siglo").textContent = g.ui.siglo;
+  $("ui-play").textContent = g.ui.play;
+  $("ui-stop").textContent = g.ui.stop;
+  $("ui-pie").textContent = g.ui.pie;
+  $("ui-aviso").hidden = true;
+  $("texto").innerHTML = "";
+  g.t.forEach((p,i)=>{
+    const el = document.createElement("p");
+    el.className = "parrafo"; el.id = "p"+i; el.textContent = p;
+    $("texto").appendChild(el);
+  });
+  pintarIdiomas();
+}
+function marcar(i){
+  document.querySelectorAll(".parrafo.sonando").forEach(e=>e.classList.remove("sonando"));
+  if(i>=0){ const el = $("p"+i); if(el) el.classList.add("sonando"); }
+}
+function detener(){
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  if(audio){ audio.pause(); audio = null; }
+  marcar(-1);
+  $("btn-stop").hidden = true;
+  $("btn-play").hidden = false;
+}
+
+// Preferencias de voz: primero la región (México), luego el timbre masculino.
+const REGION = { es:["es-MX","es-US","es-419","es"], en:["en-US","en-GB","en"], fr:["fr-FR","fr"], de:["de-DE","de"], it:["it-IT","it"] };
+const HOMBRES = ["juan","jorge","diego","carlos","miguel","male","hombre","masculino","alex","aaron","daniel","fred","thomas","nicolas","mathieu","markus","yannick","hans","stefan","luca","federico","cosimo","alessio"];
+const MUJERES = ["paulina","monica","mónica","angelica","angélica","esperanza","marisol","samantha","karen","moira","tessa","amelie","amélie","audrey","anna","petra","katja","alice","elsa","female","mujer","femenino"];
+
+function elegirVoz(codigo){
+  const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : []);
+  if(!vs.length) return null;
+  const base = codigo.slice(0,2);
+  for(const reg of (REGION[base] || [base])){
+    const cand = vs.filter(v => v.lang.replace("_","-").toLowerCase().startsWith(reg.toLowerCase()));
+    if(!cand.length) continue;
+    const h = cand.find(v => HOMBRES.some(n => v.name.toLowerCase().includes(n)));
+    if(h) return h;
+    const neutra = cand.find(v => !MUJERES.some(n => v.name.toLowerCase().includes(n)));
+    return neutra || cand[0];
+  }
+  return null;
+}
+function hayVoz(codigo){
+  if(!window.speechSynthesis) return false;
+  const vs = speechSynthesis.getVoices();
+  if(!vs.length) return true;
+  return vs.some(v => v.lang.slice(0,2) === codigo.slice(0,2));
+}
+function escuchar(){
+  const g = GUIA[actual];
+  detener();
+  $("btn-play").hidden = true;
+  $("btn-stop").hidden = false;
+  if(GRABACIONES[actual]){
+    audio = new Audio(GRABACIONES[actual]);
+    audio.onended = detener;
+    audio.play();
+    return;
+  }
+  if(!window.speechSynthesis || !hayVoz(g.voz)){
+    $("ui-aviso").textContent = g.ui.aviso;
+    $("ui-aviso").hidden = false;
+    detener();
+    return;
+  }
+  const vozElegida = elegirVoz(g.voz);
+  g.t.forEach((p,i)=>{
+    const u = new SpeechSynthesisUtterance(p);
+    u.lang = g.voz; u.rate = 0.92;
+    if(vozElegida) u.voice = vozElegida;
+    u.onstart = ()=>marcar(i);
+    if(i===g.t.length-1) u.onend = detener;
+    speechSynthesis.speak(u);
+  });
+}
+$("btn-play").onclick = escuchar;
+$("btn-stop").onclick = detener;
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
+pintar();
+</script>
+</body>
+</html>

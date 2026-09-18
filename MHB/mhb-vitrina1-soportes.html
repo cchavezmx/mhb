@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Los soportes de la antigüedad — Museo de Historia de la Biblia</title>
+<link href="estilos.css" rel="stylesheet"/>
+<style>
+.soportes{flex:none;display:flex;gap:6px;align-items:center}
+  .soportes .rollo{width:18px;height:58px;border-radius:9px;background:var(--acento)}
+  .soportes .hoja{width:26px;height:50px;background:var(--claro);
+    background-image:repeating-linear-gradient(90deg,rgba(110,90,52,.35) 0 1px,transparent 1px 4px)}
+</style>
+</head>
+<body data-vitrina="1">
+<div class="hoja">
+<header class="cabecera">
+<div class="marca">
+<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
+</a>
+<div class="marca-texto">
+<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+<p class="sala" id="ui-sala"></p>
+</div>
+<span class="marca-num">01</span>
+<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
+</div>
+<div class="header-main">
+<div aria-hidden="true" class="emblema"><div aria-hidden="true" class="soportes"><div class="rollo"></div><div class="hoja"></div><div class="hoja"></div></div></div>
+<div class="header-texto">
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div>
+</div>
+</header>
+<nav class="nav">
+<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="nav-btn" id="nav-ant">‹</a>
+<select class="nav-sel" id="nav-sel"></select>
+<a class="nav-btn" id="nav-sig">›</a>
+<span class="nav-btn" id="nav-pos" style="border:none"></span>
+</nav>
+<div class="progreso"><i id="barra"></i></div>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play" type="button">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 1 · Museo de Historia de la Biblia",
+   "titulo": "Los soportes de la antigüedad",
+   "siglo": "Papiro, pergamino y el nacimiento del códice",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Antes de hablar de traductores y de imprentas, hay que hablar de algo más simple: sobre qué se escribió todo esto.",
+   "Aquí tiene papiro. Se hacía en Egipto con el tallo de una planta de río. Se cortaba en tiras, se cruzaban dos capas, se golpeaban hasta que soltaran su propia savia y quedaban pegadas solas. Ni pegamento ni costura. Sobre eso escribió medio mundo antiguo durante tres mil años.",
+   "Tiene un defecto grave: no aguanta la humedad. Por eso los papiros que han llegado hasta nosotros vienen casi todos de la arena seca de Egipto. Y por eso no queda un solo original del Nuevo Testamento: se escribieron en papiro, y el papiro se deshizo.",
+   "El pergamino es otra cosa. Es piel de animal, oveja, cabra o ternero, raspada, estirada y secada a tensión. Es caro: para una Biblia entera hacían falta los rebaños de media comarca. Pero dura siglos, aguanta doblarse y se puede escribir de los dos lados.",
+   "Y ese detalle cambió la forma del libro. El papiro se enrollaba. El pergamino se podía doblar y coser en cuadernos. De ahí nace el códice, que es el libro tal como usted lo conoce: hojas, lomo, y la posibilidad de abrirlo por en medio. Los cristianos adoptaron el códice muy pronto, y con eso se pudo buscar un pasaje en vez de recorrer un rollo entero.",
+   "Los papiros que ve en esta vitrina no son bíblicos. Son documentos egipcios corrientes: cuentas, contratos, cartas. Están aquí precisamente por eso. Éste es el material sobre el que el mundo antiguo escribía todo, lo sagrado y lo cotidiano, y es el material sobre el que empezó a escribirse el Libro que verá en las vitrinas siguientes.",
+   "Fíjese en lo que sostiene su mano cada vez que abre una Biblia. Una planta de río, una piel de cabra, papel de trapo, papel de máquina. La cadena que recorre este museo está hecha también de eso."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 1 · Museum of the History of the Bible",
+   "titulo": "The writing surfaces of antiquity",
+   "siglo": "Papyrus, parchment and the birth of the codex",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Before we talk about translators and printing presses, we have to talk about something simpler: what all this was written on.",
+   "Here is papyrus. It was made in Egypt from the stem of a river plant. It was cut into strips, two layers were laid crosswise, and they were beaten until they released their own sap and stuck together on their own. No glue, no stitching. Half the ancient world wrote on that for three thousand years.",
+   "It has one serious flaw: it cannot stand damp. That is why nearly all the papyri that have reached us come from the dry sand of Egypt. And that is why not one original of the New Testament survives: they were written on papyrus, and the papyrus fell apart.",
+   "Parchment is another matter. It is animal skin, sheep, goat or calf, scraped, stretched and dried under tension. It is expensive: a whole Bible took the flocks of half a county. But it lasts for centuries, it can be folded, and it can be written on both sides.",
+   "And that detail changed the shape of the book. Papyrus was rolled up. Parchment could be folded and sewn into gatherings. From that comes the codex, which is the book as you know it: leaves, a spine, and the possibility of opening it in the middle. Christians adopted the codex very early, and with it you could look up a passage instead of running through a whole scroll.",
+   "The papyri you see in this case are not biblical. They are ordinary Egyptian documents: accounts, contracts, letters. They are here for exactly that reason. This is the material on which the ancient world wrote everything, the sacred and the everyday, and it is the material on which the Book you will see in the following cases began to be written.",
+   "Think about what your hand is holding every time you open a Bible. A river plant, a goat's skin, rag paper, machine paper. The chain that runs through this museum is made of that too."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 1 · Musée de l'Histoire de la Bible",
+   "titulo": "Les supports de l'Antiquité",
+   "siglo": "Papyrus, parchemin et la naissance du codex",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Avant de parler de traducteurs et d'imprimeries, il faut parler de quelque chose de plus simple : sur quoi tout cela a été écrit.",
+   "Voici du papyrus. On le fabriquait en Égypte avec la tige d'une plante de rivière. On la coupait en lanières, on croisait deux couches, on les battait jusqu'à ce qu'elles libèrent leur propre sève et elles collaient d'elles-mêmes. Ni colle ni couture. La moitié du monde antique a écrit là-dessus pendant trois mille ans.",
+   "Il a un défaut grave : il ne supporte pas l'humidité. C'est pourquoi presque tous les papyrus qui nous sont parvenus viennent du sable sec d'Égypte. Et c'est pourquoi il ne reste pas un seul original du Nouveau Testament : ils furent écrits sur papyrus, et le papyrus s'est défait.",
+   "Le parchemin, c'est autre chose. C'est une peau d'animal, mouton, chèvre ou veau, grattée, tendue et séchée sous tension. Il coûte cher : une Bible entière demandait les troupeaux d'une demi-contrée. Mais il dure des siècles, il supporte d'être plié et on peut écrire des deux côtés.",
+   "Et ce détail a changé la forme du livre. Le papyrus s'enroulait. Le parchemin pouvait se plier et se coudre en cahiers. De là naît le codex, c'est-à-dire le livre tel que vous le connaissez : des feuillets, un dos, et la possibilité de l'ouvrir au milieu. Les chrétiens ont adopté le codex très tôt, et avec lui on a pu chercher un passage au lieu de dérouler tout un rouleau.",
+   "Les papyrus que vous voyez dans cette vitrine ne sont pas bibliques. Ce sont des documents égyptiens ordinaires : comptes, contrats, lettres. Ils sont ici précisément pour cela. C'est le matériau sur lequel le monde antique écrivait tout, le sacré et le quotidien, et c'est le matériau sur lequel a commencé à s'écrire le Livre que vous verrez dans les vitrines suivantes.",
+   "Pensez à ce que tient votre main chaque fois que vous ouvrez une Bible. Une plante de rivière, une peau de chèvre, du papier de chiffon, du papier de machine. La chaîne que parcourt ce musée est faite de cela aussi."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 1 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Schriftträger der Antike",
+   "siglo": "Papyrus, Pergament und die Geburt des Kodex",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Bevor wir von Übersetzern und Druckpressen sprechen, müssen wir von etwas Einfacherem sprechen: worauf das alles geschrieben wurde.",
+   "Hier ist Papyrus. Er wurde in Ägypten aus dem Stängel einer Flusspflanze gemacht. Man schnitt ihn in Streifen, legte zwei Lagen über Kreuz und klopfte sie, bis sie ihren eigenen Saft abgaben und von selbst zusammenhielten. Kein Leim, keine Naht. Darauf schrieb die halbe antike Welt dreitausend Jahre lang.",
+   "Er hat einen schweren Mangel: er verträgt keine Feuchtigkeit. Darum stammen fast alle Papyri, die uns erreicht haben, aus dem trockenen Sand Ägyptens. Und darum ist kein einziges Original des Neuen Testaments erhalten: sie wurden auf Papyrus geschrieben, und der Papyrus zerfiel.",
+   "Pergament ist etwas anderes. Es ist Tierhaut, vom Schaf, von der Ziege oder vom Kalb, geschabt, gespannt und unter Spannung getrocknet. Es ist teuer: für eine ganze Bibel brauchte es die Herden einer halben Landschaft. Aber es hält Jahrhunderte, lässt sich falten und auf beiden Seiten beschreiben.",
+   "Und diese Einzelheit veränderte die Form des Buches. Papyrus wurde gerollt. Pergament ließ sich falten und zu Lagen heften. Daraus entsteht der Kodex, also das Buch, wie Sie es kennen: Blätter, ein Rücken und die Möglichkeit, es in der Mitte aufzuschlagen. Die Christen übernahmen den Kodex sehr früh, und damit konnte man eine Stelle nachschlagen, statt eine ganze Rolle abzulaufen.",
+   "Die Papyri, die Sie in dieser Vitrine sehen, sind nicht biblisch. Es sind gewöhnliche ägyptische Dokumente: Abrechnungen, Verträge, Briefe. Genau deshalb sind sie hier. Dies ist das Material, auf dem die antike Welt alles schrieb, das Heilige und das Alltägliche, und es ist das Material, auf dem das Buch zu entstehen begann, das Sie in den nächsten Vitrinen sehen werden.",
+   "Denken Sie daran, was Ihre Hand jedes Mal hält, wenn Sie eine Bibel aufschlagen. Eine Flusspflanze, eine Ziegenhaut, Hadernpapier, Maschinenpapier. Die Kette, die durch dieses Museum läuft, besteht auch daraus."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 1 · Museo di Storia della Bibbia",
+   "titulo": "I supporti dell'antichità",
+   "siglo": "Papiro, pergamena e la nascita del codice",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Prima di parlare di traduttori e di stamperie, bisogna parlare di qualcosa di più semplice: su che cosa fu scritto tutto questo.",
+   "Ecco il papiro. Si faceva in Egitto con il fusto di una pianta di fiume. Si tagliava a strisce, si incrociavano due strati, si battevano finché non rilasciavano la propria linfa e restavano incollati da soli. Né colla né cucitura. Su quello scrisse mezzo mondo antico per tremila anni.",
+   "Ha un difetto grave: non regge l'umidità. Per questo i papiri giunti fino a noi vengono quasi tutti dalla sabbia secca dell'Egitto. E per questo non resta un solo originale del Nuovo Testamento: furono scritti su papiro, e il papiro si disfece.",
+   "La pergamena è un'altra cosa. È pelle animale, pecora, capra o vitello, raschiata, tesa e seccata in tensione. Costa cara: per una Bibbia intera servivano le greggi di mezza contrada. Ma dura secoli, sopporta di essere piegata e si può scrivere su entrambi i lati.",
+   "E quel dettaglio cambiò la forma del libro. Il papiro si arrotolava. La pergamena si poteva piegare e cucire in fascicoli. Di lì nasce il codice, cioè il libro come lei lo conosce: fogli, dorso, e la possibilità di aprirlo nel mezzo. I cristiani adottarono il codice molto presto, e con esso si poté cercare un passo invece di scorrere un intero rotolo.",
+   "I papiri che vede in questa vetrina non sono biblici. Sono documenti egiziani ordinari: conti, contratti, lettere. Sono qui proprio per questo. Questo è il materiale su cui il mondo antico scriveva tutto, il sacro e il quotidiano, ed è il materiale su cui cominciò a scriversi il Libro che vedrà nelle vetrine seguenti.",
+   "Pensi a che cosa tiene la sua mano ogni volta che apre una Bibbia. Una pianta di fiume, una pelle di capra, carta di stracci, carta di macchina. La catena che percorre questo museo è fatta anche di questo."
+  ]
+ }
+};
+</script>
+<script src="vitrinas.js"></script>
+<script src="guia.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>La Biblia del Cántaro — Museo de Historia de la Biblia</title>
+<link href="estilos.css" rel="stylesheet"/>
+<style>
+.cantaro{flex:none;width:64px;height:64px}
+</style>
+</head>
+<body data-vitrina="19">
+<div class="hoja">
+<header class="cabecera">
+<div class="marca">
+<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
+</a>
+<div class="marca-texto">
+<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+<p class="sala" id="ui-sala"></p>
+</div>
+<span class="marca-num">19</span>
+<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
+</div>
+<div class="header-main">
+<div aria-hidden="true" class="emblema"><svg aria-hidden="true" class="cantaro" viewBox="0 0 64 64">
+<path d="M22 16 L42 16 L46 30 C46 44 40 52 32 52 C24 52 18 44 18 30 Z" fill="currentColor"></path>
+<path d="M42 22 C52 22 54 32 46 36" fill="none" stroke="currentColor" stroke-width="4"></path>
+<path d="M20 12 C24 6 40 6 44 12" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path d="M32 58 V50" stroke="currentColor" stroke-width="3"></path>
+<path d="M32 52 C26 50 24 45 25 41 C30 42 33 47 32 52 Z" fill="currentColor"></path></svg></div>
+<div class="header-texto">
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div>
+</div>
+</header>
+<nav class="nav">
+<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="nav-btn" id="nav-ant">‹</a>
+<select class="nav-sel" id="nav-sel"></select>
+<a class="nav-btn" id="nav-sig">›</a>
+<span class="nav-btn" id="nav-pos" style="border:none"></span>
+</nav>
+<div class="progreso"><i id="barra"></i></div>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play" type="button">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 19 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia del Cántaro",
+   "siglo": "Ámsterdam, 1602 · Cipriano de Valera",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Mire la portada. Hay dos hombres y un arbolito. Uno lo está plantando. El otro lo riega con un cántaro. Eso no es un adorno. Es una cita de san Pablo a los corintios: yo planté, Apolos regó, pero Dios dio el crecimiento. Y es también, exactamente, la historia de este libro. Por ese cántaro la conocemos hoy con ese nombre.",
+   "El que plantó fue Casiodoro de Reina, el de la sala anterior. El que regó fue Cipriano de Valera, su compañero en el monasterio de Sevilla, que huyó con él en 1,557.",
+   "Valera vivió casi cincuenta años en Inglaterra. Y dedicó veinte de esos años a revisar, cotejar y corregir la Biblia de su amigo. Veinte años sobre un libro que ya estaba hecho. Se publicó en Ámsterdam, en 1,602.",
+   "¿Y qué hizo exactamente? Limpió erratas, ajustó el castellano, ordenó el texto y movió los libros deuterocanónicos a una sección aparte, entre los dos Testamentos.",
+   "De esta revisión de 1,602 viene, por línea directa, la Reina-Valera que hoy leen millones de personas en toda América. Los dos apellidos del título son estos dos hombres, que se conocieron de jóvenes en un monasterio sevillano y escaparon juntos una noche de 1,557.",
+   "Casiodoro nunca vio esta edición: llevaba ocho años muerto cuando se logró editarla."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 19 · Museum of the History of the Bible",
+   "titulo": "The Pitcher Bible",
+   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Look at the title page. There are two men and a small tree. One is planting it. The other is watering it from a pitcher. That is not decoration. It is a quotation from Saint Paul to the Corinthians: I planted, Apollos watered, but God gave the increase. And it is also, exactly, the story of this book. Because of that pitcher we know it today by that name.",
+   "The one who planted was Casiodoro de Reina, from the previous case. The one who watered was Cipriano de Valera, his companion at the monastery in Seville, who fled with him in 1557.",
+   "Valera lived almost fifty years in England. And he gave twenty of those years to revising, collating and correcting his friend's Bible. Twenty years on a book that was already finished. It was published in Amsterdam in 1602.",
+   "And what exactly did he do? He cleaned up misprints, adjusted the Spanish, ordered the text, and moved the deuterocanonical books into a separate section between the two Testaments.",
+   "From this revision of 1602 descends, in a direct line, the Reina-Valera that millions of people read today across the Americas. The two surnames in the title are these two men, who met as young men in a monastery in Seville and escaped together one night in 1557.",
+   "Casiodoro never saw this edition: he had been dead eight years."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 19 · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible de la Cruche",
+   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Regardez la page de titre. Il y a deux hommes et un petit arbre. L'un le plante. L'autre l'arrose avec une cruche. Ce n'est pas un ornement. C'est une citation de saint Paul aux Corinthiens : j'ai planté, Apollos a arrosé, mais c'est Dieu qui a fait croître. Et c'est aussi, exactement, l'histoire de ce livre. C'est à cause de cette cruche qu'on l'appelle ainsi aujourd'hui.",
+   "Celui qui a planté fut Casiodoro de Reina, celui de la vitrine précédente. Celui qui a arrosé fut Cipriano de Valera, son compagnon au monastère de Séville, qui s'enfuit avec lui en 1557.",
+   "Valera vécut près de cinquante ans en Angleterre. Et il consacra vingt de ces années à réviser, collationner et corriger la Bible de son ami. Vingt ans sur un livre déjà achevé. Elle parut à Amsterdam en 1602.",
+   "Et qu'a-t-il fait au juste ? Il a nettoyé les coquilles, ajusté l'espagnol, mis le texte en ordre et déplacé les livres deutérocanoniques dans une section à part, entre les deux Testaments.",
+   "De cette révision de 1602 descend, en ligne directe, la Reina-Valera que des millions de personnes lisent aujourd'hui dans toute l'Amérique. Les deux noms du titre sont ces deux hommes, qui se connurent jeunes dans un monastère sévillan et s'enfuirent ensemble une nuit de 1557.",
+   "Casiodoro n'a jamais vu cette édition : il était mort depuis huit ans."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 19 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Krugbibel",
+   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Sehen Sie das Titelblatt an. Da sind zwei Männer und ein Bäumchen. Der eine pflanzt es. Der andere begießt es aus einem Krug. Das ist kein Schmuck. Es ist ein Zitat des Apostels Paulus an die Korinther: ich habe gepflanzt, Apollos hat begossen, aber Gott hat das Gedeihen gegeben. Und es ist zugleich genau die Geschichte dieses Buches. Wegen dieses Kruges nennen wir es heute so.",
+   "Gepflanzt hat Casiodoro de Reina, der Mann aus dem vorigen Vitrine. Begossen hat Cipriano de Valera, sein Gefährte aus dem Kloster in Sevilla, der 1557 mit ihm floh.",
+   "Valera lebte fast fünfzig Jahre in England. Und zwanzig dieser Jahre widmete er der Durchsicht, dem Vergleich und der Verbesserung der Bibel seines Freundes. Zwanzig Jahre an einem Buch, das schon fertig war. Erschienen ist sie 1602 in Amsterdam.",
+   "Und was tat er genau? Er beseitigte Druckfehler, glättete das Spanische, ordnete den Text und stellte die deuterokanonischen Bücher in einen eigenen Abschnitt zwischen die beiden Testamente.",
+   "Von dieser Revision von 1602 stammt in gerader Linie die Reina-Valera ab, die heute Millionen Menschen in ganz Amerika lesen. Die beiden Namen im Titel sind diese beiden Männer, die sich als junge Leute in einem Kloster in Sevilla kennenlernten und in einer Nacht des Jahres 1557 gemeinsam flohen.",
+   "Casiodoro hat diese Ausgabe nie gesehen: er war seit acht Jahren tot."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 19 · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia della Brocca",
+   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Guardi il frontespizio. Ci sono due uomini e un alberello. Uno lo sta piantando. L'altro lo annaffia con una brocca. Non è un ornamento. È una citazione di san Paolo ai Corinzi: io ho piantato, Apollo ha annaffiato, ma Dio ha fatto crescere. Ed è anche, esattamente, la storia di questo libro. Per quella brocca oggi la chiamiamo così.",
+   "Chi piantò fu Casiodoro de Reina, quello della vetrina precedente. Chi annaffiò fu Cipriano de Valera, suo compagno nel monastero di Siviglia, che fuggì con lui nel 1557.",
+   "Valera visse quasi cinquant'anni in Inghilterra. E dedicò venti di quegli anni a rivedere, collazionare e correggere la Bibbia dell'amico. Vent'anni su un libro già fatto. Fu pubblicata ad Amsterdam nel 1602.",
+   "E che cosa fece esattamente? Ripulì i refusi, aggiustò lo spagnolo, mise in ordine il testo e spostò i libri deuterocanonici in una sezione a parte, fra i due Testamenti.",
+   "Da questa revisione del 1602 discende, in linea diretta, la Reina-Valera che oggi leggono milioni di persone in tutta l'America. I due cognomi del titolo sono questi due uomini, che si conobbero da giovani in un monastero sivigliano e fuggirono insieme una notte del 1557.",
+   "Casiodoro non vide mai questa edizione: era morto da otto anni."
+  ]
+ }
+};
+</script>
+<script src="vitrinas.js"></script>
+<script src="guia.js"></script>
+</body>
+</html>

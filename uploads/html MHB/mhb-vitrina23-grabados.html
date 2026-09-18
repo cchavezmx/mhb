@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Los grabados: Schnorr y Doré — Museo de Historia de la Biblia</title>
+<style>
+  :root{ --fondo:#EFEBE3;--claro:#FAF7F0;--tinta:#1C1917;--cabecera:#262220;--acento:#8A6A3B;--marca:rgba(138,106,59,.26); }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fondo);color:var(--tinta);
+    font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
+    font-size:20px;line-height:1.62;-webkit-text-size-adjust:100%;}
+  .hoja{max-width:40rem;margin:0 auto;padding:0 0 4rem}
+  header{background:var(--cabecera);color:var(--claro);padding:2.2rem 1.4rem 2rem;}
+  .sala{font-size:.78em;margin:0 0 .45rem;opacity:.85}
+  h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .estampas{flex:none;display:flex;gap:5px;background:var(--claro);padding:5px}
+  .estampas div{width:28px;height:58px}
+  .estampas .clara{background:repeating-linear-gradient(to bottom,var(--tinta) 0 1px,transparent 1px 6px)}
+  .estampas .densa{background:repeating-linear-gradient(115deg,var(--tinta) 0 2.4px,transparent 2.4px 3.6px)}
+
+  main{padding:0 1.4rem}
+  .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
+  .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
+    background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);border-radius:2px;cursor:pointer}
+  .idiomas button[aria-pressed="true"]{background:var(--cabecera);color:var(--claro);border-color:var(--cabecera)}
+  .idiomas button:focus-visible,.control:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  .mandos{display:flex;gap:.6rem;align-items:center;margin:0 0 1.8rem}
+  .control{font:inherit;font-size:1em;display:inline-flex;align-items:center;gap:.55rem;
+    padding:.85rem 1.5rem;min-height:52px;background:var(--acento);color:#FFF6E6;border:none;border-radius:2px;cursor:pointer}
+  .control.secundario{background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);padding:.85rem 1.1rem}
+  .control[hidden]{display:none}
+  .aviso{font-size:.8em;font-style:italic;margin:-1.2rem 0 1.8rem;color:#7a5c3e}
+  p.parrafo{margin:0 0 1.15rem;transition:background-color .25s}
+  p.parrafo.sonando{background:var(--marca);box-shadow:0 0 0 .35rem var(--marca)}
+  footer{margin:2.8rem 1.4rem 0;padding-top:1.2rem;border-top:1px solid rgba(40,32,25,.25);
+         font-size:.8em;font-style:italic;color:#7a5c3e}
+  @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
+
+  .header-marca{display:flex;justify-content:flex-end;margin:0 0 .9rem}
+  .logo-mhb{flex:none;width:56px;height:56px;color:var(--claro);opacity:.92}
+  .logo-mhb svg{width:100%;height:100%}
+  .header-main{display:flex;gap:1.3rem;align-items:center}
+  .header-texto{flex:1}
+</style>
+</head>
+<body>
+<div class="hoja">
+<header><div class="header-marca"><div aria-label="Museo de Historia de la Biblia" class="logo-mhb">
+<svg aria-hidden="true" viewBox="0 0 64 64">
+<path d="M10 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<path d="M36 14 h18 v36 h-18 z" fill="currentColor" opacity="0.9"></path>
+<line stroke="currentColor" stroke-width="2" x1="32" x2="32" y1="12" y2="52"></line>
+</svg>
+</div></div><div class="header-main"><div aria-hidden="true" class="estampas"><div class="clara"></div><div class="densa"></div></div><div class="header-texto">
+<p class="sala" id="ui-sala"></p>
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div></div></header>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+// Si pone aquí la URL de un MP3, esa voz sustituye a la del teléfono.
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 23 · Museo de Historia de la Biblia",
+   "titulo": "Los grabados: Schnorr y Doré",
+   "siglo": "Uguet 1878 · Doré 1866",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Mire estas dos Biblias abiertas, una junto a la otra. Las dos son del siglo diecinueve. Las dos tienen alrededor de doscientos cuarenta grabados. Y no se parecen en nada.",
+   "La primera viene de Alemania. Julius Schnorr von Carolsfeld publicó La Biblia en imágenes entre 1,852 y 1,860: doscientas cuarenta estampas de línea clara, dibujo firme y escenas serenas. Todo se ve, todo está ordenado, nadie grita. Esos grabados son los que el editor español Justo Uguet tomó para Las Primeras Bellezas del Mundo, en 1,878, los tres tomos que usted tiene delante.",
+   "La segunda viene de Francia. Gustavo Doré, nacido en Estrasburgo, publicó su Biblia en Tours en 1,866, con doscientos cuarenta y un grabados. No había cumplido treinta y cinco años. Doré no dibujaba escenas: dibujaba luz. Mire el Diluvio, o Sansón, o Daniel entre los leones. Hay profundidad, hay tormenta, hay muchedumbres enteras metidas en una estampa del tamaño de su mano. Él dibujaba directamente sobre el taco de madera y un equipo de grabadores lo tallaba línea por línea.",
+   "Y ocurrió algo que él no calculó. Su Biblia se reimprimió, se copió y se pirateó en medio mundo. Terminó siendo la manera en que Occidente se imagina las Escrituras. Cuando usted se representa a Sansón derribando las columnas del templo, lo más probable es que esté recordando un grabado de Doré sin saber que es suyo.",
+   "Cuando llegó el cine, los directores copiaron sus encuadres casi tal cual: Doré hizo cine sesenta años antes de que existiera.",
+   "Y ahora recuerde dónde empezó este recorrido. En la primera sala, un monje pintaba el Apocalipsis para gente que no sabía leer. En la segunda, una reina mandó pintar la Biblia entera en medallones de oro. Mil años después vuelve a ocurrir lo mismo: la Escritura contada otra vez en imágenes. Sólo que aquéllas eran ejemplares únicos, hechos a mano para un rey. Éstas se imprimieron por millones y entraron a cualquier casa.",
+   "Se lo dejo como advertencia, para que salga usted pensándolo: casi todo lo que cree recordar de la Biblia, en realidad lo recuerda de estas páginas."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 23 · Museum of the History of the Bible",
+   "titulo": "The engravings: Schnorr and Doré",
+   "siglo": "Uguet 1878 · Doré 1866",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Look at these two Bibles lying open, side by side. Both are from the nineteenth century. Both have around two hundred and forty engravings. And they are nothing alike.",
+   "The first comes from Germany. Julius Schnorr von Carolsfeld published The Bible in Pictures between 1852 and 1860: two hundred and forty plates of clear line, firm drawing and calm scenes. Everything is visible, everything is in order, nobody is shouting. Those are the engravings the Spanish publisher Justo Uguet took for The First Beauties of the World, in 1878, the three volumes you have before you.",
+   "The second comes from France. Gustave Doré, born in Strasbourg, published his Bible in Tours in 1866, with two hundred and forty-one engravings. He was not yet thirty-five. Doré did not draw scenes: he drew light. Look at the Flood, or Samson, or Daniel among the lions. There is depth, there is storm, there are whole crowds packed into a plate the size of your hand. He drew straight onto the woodblock and a team of engravers cut it line by line.",
+   "And something happened that he had not reckoned on. His Bible was reprinted, copied and pirated across half the world. It ended up being the way the West imagines the Scriptures. When you picture Samson bringing down the pillars of the temple, you are most probably remembering an engraving by Doré without knowing it is his.",
+   "When the cinema came, directors copied his framing almost exactly: Doré made films sixty years before films existed.",
+   "And now remember where this tour began. In the first case, a monk was painting the Apocalypse for people who could not read. In the second, a queen had the whole Bible painted in medallions of gold. A thousand years later the same thing happens again: Scripture told once more in pictures. Except that those were unique copies, made by hand for a king. These were printed in their millions and went into any house at all.",
+   "I leave you with a warning, so that you go out thinking about it: almost everything you believe you remember of the Bible, you actually remember from these pages."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 23 · Musée de l'Histoire de la Bible",
+   "titulo": "Les gravures : Schnorr et Doré",
+   "siglo": "Uguet 1878 · Doré 1866",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Regardez ces deux Bibles ouvertes, l'une à côté de l'autre. Toutes deux sont du dix-neuvième siècle. Toutes deux comptent environ deux cent quarante gravures. Et elles ne se ressemblent en rien.",
+   "La première vient d'Allemagne. Julius Schnorr von Carolsfeld publia La Bible en images entre 1852 et 1860 : deux cent quarante planches de trait clair, au dessin ferme et aux scènes sereines. Tout se voit, tout est en ordre, personne ne crie. Ce sont ces gravures que l'éditeur espagnol Justo Uguet reprit pour Les Premières Beautés du Monde, en 1878, les trois volumes que vous avez devant vous.",
+   "La seconde vient de France. Gustave Doré, né à Strasbourg, publia sa Bible à Tours en 1866, avec deux cent quarante et une gravures. Il n'avait pas trente-cinq ans. Doré ne dessinait pas des scènes : il dessinait la lumière. Regardez le Déluge, ou Samson, ou Daniel parmi les lions. Il y a de la profondeur, de la tempête, des foules entières tenant dans une planche de la taille de votre main. Il dessinait directement sur le bois et une équipe de graveurs le taillait trait par trait.",
+   "Et il arriva une chose qu'il n'avait pas calculée. Sa Bible fut réimprimée, copiée et piratée dans la moitié du monde. Elle est devenue la manière dont l'Occident se représente les Écritures. Quand vous imaginez Samson abattant les colonnes du temple, vous vous souvenez très probablement d'une gravure de Doré sans savoir qu'elle est de lui.",
+   "Quand le cinéma est venu, les réalisateurs ont copié ses cadrages presque tels quels : Doré a fait du cinéma soixante ans avant le cinéma.",
+   "Et maintenant rappelez-vous où ce parcours a commencé. Dans la première vitrine, un moine peignait l'Apocalypse pour des gens qui ne savaient pas lire. Dans la deuxième, une reine fit peindre la Bible entière en médaillons d'or. Mille ans plus tard, la même chose recommence : l'Écriture racontée de nouveau en images. Sauf que celles-là étaient des exemplaires uniques, faits à la main pour un roi. Celles-ci furent imprimées par millions et sont entrées dans n'importe quelle maison.",
+   "Je vous laisse sur un avertissement, pour que vous sortiez en y pensant : presque tout ce que vous croyez vous rappeler de la Bible, vous vous le rappelez en réalité de ces pages."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 23 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Stiche: Schnorr und Doré",
+   "siglo": "Uguet 1878 · Doré 1866",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Sehen Sie diese beiden aufgeschlagenen Bibeln an, eine neben der anderen. Beide stammen aus dem neunzehnten Jahrhundert. Beide enthalten etwa zweihundertvierzig Stiche. Und sie ähneln einander in nichts.",
+   "Die erste kommt aus Deutschland. Julius Schnorr von Carolsfeld veröffentlichte Die Bibel in Bildern zwischen 1852 und 1860: zweihundertvierzig Blätter von klarer Linie, festem Strich und ruhigen Szenen. Alles ist sichtbar, alles ist geordnet, niemand schreit. Diese Stiche übernahm der spanische Verleger Justo Uguet 1878 für Die ersten Schönheiten der Welt, die drei Bände, die Sie vor sich haben.",
+   "Die zweite kommt aus Frankreich. Gustave Doré, geboren in Straßburg, veröffentlichte seine Bibel 1866 in Tours, mit zweihunderteinundvierzig Stichen. Er war noch keine fünfunddreißig. Doré zeichnete keine Szenen: er zeichnete Licht. Sehen Sie die Sintflut an, oder Simson, oder Daniel unter den Löwen. Da ist Tiefe, da ist Sturm, da stecken ganze Menschenmengen in einem Blatt von der Größe Ihrer Hand. Er zeichnete unmittelbar auf den Holzstock, und eine Mannschaft von Stechern schnitt es Linie für Linie.",
+   "Und es geschah etwas, womit er nicht gerechnet hatte. Seine Bibel wurde in der halben Welt nachgedruckt, kopiert und raubgedruckt. Sie wurde am Ende zu der Art, wie der Westen sich die Schrift vorstellt. Wenn Sie sich Simson vorstellen, wie er die Säulen des Tempels niederreißt, erinnern Sie sich höchstwahrscheinlich an einen Stich Dorés, ohne zu wissen, dass er von ihm ist.",
+   "Als das Kino kam, kopierten die Regisseure seine Bildausschnitte fast unverändert: Doré machte Kino sechzig Jahre, bevor es das Kino gab.",
+   "Und nun erinnern Sie sich, wo dieser Rundgang begann. Im ersten Vitrine malte ein Mönch die Offenbarung für Leute, die nicht lesen konnten. Im zweiten ließ eine Königin die ganze Bibel in Goldmedaillons malen. Tausend Jahre später geschieht dasselbe noch einmal: die Schrift, abermals in Bildern erzählt. Nur dass jene Einzelstücke waren, von Hand für einen König gemacht. Diese wurden millionenfach gedruckt und kamen in jedes beliebige Haus.",
+   "Ich lasse Sie mit einer Warnung: fast alles, was Sie von der Bibel zu erinnern glauben, erinnern Sie in Wahrheit von diesen Seiten."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 23 · Museo di Storia della Bibbia",
+   "titulo": "Le incisioni: Schnorr e Doré",
+   "siglo": "Uguet 1878 · Doré 1866",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Guardi queste due Bibbie aperte, una accanto all'altra. Sono entrambe dell'Ottocento. Hanno entrambe circa duecentoquaranta incisioni. E non si somigliano affatto.",
+   "La prima viene dalla Germania. Julius Schnorr von Carolsfeld pubblicò La Bibbia in immagini fra il 1852 e il 1860: duecentoquaranta tavole di linea chiara, disegno fermo e scene serene. Tutto si vede, tutto è in ordine, nessuno grida. Sono quelle incisioni che l'editore spagnolo Justo Uguet riprese per Le Prime Bellezze del Mondo, nel 1878, i tre volumi che ha davanti.",
+   "La seconda viene dalla Francia. Gustave Doré, nato a Strasburgo, pubblicò la sua Bibbia a Tours nel 1866, con duecentoquarantuno incisioni. Non aveva ancora trentacinque anni. Doré non disegnava scene: disegnava la luce. Guardi il Diluvio, o Sansone, o Daniele fra i leoni. C'è profondità, c'è tempesta, ci sono folle intere dentro una tavola grande quanto la sua mano. Disegnava direttamente sul legno e una squadra di incisori lo intagliava linea per linea.",
+   "E accadde una cosa che non aveva calcolato. La sua Bibbia fu ristampata, copiata e piratata in mezzo mondo. Finì per diventare il modo in cui l'Occidente si immagina le Scritture. Quando lei si raffigura Sansone che abbatte le colonne del tempio, molto probabilmente sta ricordando un'incisione di Doré senza sapere che è sua.",
+   "Quando arrivò il cinema, i registi copiarono le sue inquadrature quasi tali e quali: Doré fece cinema sessant'anni prima che il cinema esistesse.",
+   "E ora ricordi dove è cominciato questo percorso. Nella prima vetrina, un monaco dipingeva l'Apocalisse per gente che non sapeva leggere. Nella seconda, una regina fece dipingere l'intera Bibbia in medaglioni d'oro. Mille anni dopo accade di nuovo la stessa cosa: la Scrittura raccontata ancora per immagini. Solo che quelli erano esemplari unici, fatti a mano per un re. Queste furono stampate a milioni ed entrarono in qualunque casa.",
+   "Glielo lascio come avvertimento, perché esca pensandoci: quasi tutto ciò che crede di ricordare della Bibbia, in realtà lo ricorda da queste pagine."
+  ]
+ }
+};
+
+const $ = id => document.getElementById(id);
+let actual = "es", audio = null;
+
+function pintarIdiomas(){
+  $("idiomas").innerHTML = "";
+  Object.keys(GUIA).forEach(k=>{
+    const b = document.createElement("button");
+    b.textContent = GUIA[k].nombre;
+    b.setAttribute("aria-pressed", k===actual);
+    b.onclick = ()=>{ detener(); actual = k; pintar(); };
+    $("idiomas").appendChild(b);
+  });
+}
+function pintar(){
+  const g = GUIA[actual];
+  document.documentElement.lang = actual;
+  $("ui-sala").textContent = g.ui.sala;
+  $("ui-titulo").textContent = g.ui.titulo;
+  $("ui-siglo").textContent = g.ui.siglo;
+  $("ui-play").textContent = g.ui.play;
+  $("ui-stop").textContent = g.ui.stop;
+  $("ui-pie").textContent = g.ui.pie;
+  $("ui-aviso").hidden = true;
+  $("texto").innerHTML = "";
+  g.t.forEach((p,i)=>{
+    const el = document.createElement("p");
+    el.className = "parrafo"; el.id = "p"+i; el.textContent = p;
+    $("texto").appendChild(el);
+  });
+  pintarIdiomas();
+}
+function marcar(i){
+  document.querySelectorAll(".parrafo.sonando").forEach(e=>e.classList.remove("sonando"));
+  if(i>=0){ const el = $("p"+i); if(el) el.classList.add("sonando"); }
+}
+function detener(){
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  if(audio){ audio.pause(); audio = null; }
+  marcar(-1);
+  $("btn-stop").hidden = true;
+  $("btn-play").hidden = false;
+}
+
+// Preferencias de voz: primero la región (México), luego el timbre masculino.
+const REGION = { es:["es-MX","es-US","es-419","es"], en:["en-US","en-GB","en"], fr:["fr-FR","fr"], de:["de-DE","de"], it:["it-IT","it"] };
+const HOMBRES = ["juan","jorge","diego","carlos","miguel","male","hombre","masculino","alex","aaron","daniel","fred","thomas","nicolas","mathieu","markus","yannick","hans","stefan","luca","federico","cosimo","alessio"];
+const MUJERES = ["paulina","monica","mónica","angelica","angélica","esperanza","marisol","samantha","karen","moira","tessa","amelie","amélie","audrey","anna","petra","katja","alice","elsa","female","mujer","femenino"];
+
+function elegirVoz(codigo){
+  const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : []);
+  if(!vs.length) return null;
+  const base = codigo.slice(0,2);
+  for(const reg of (REGION[base] || [base])){
+    const cand = vs.filter(v => v.lang.replace("_","-").toLowerCase().startsWith(reg.toLowerCase()));
+    if(!cand.length) continue;
+    const h = cand.find(v => HOMBRES.some(n => v.name.toLowerCase().includes(n)));
+    if(h) return h;
+    const neutra = cand.find(v => !MUJERES.some(n => v.name.toLowerCase().includes(n)));
+    return neutra || cand[0];
+  }
+  return null;
+}
+function hayVoz(codigo){
+  if(!window.speechSynthesis) return false;
+  const vs = speechSynthesis.getVoices();
+  if(!vs.length) return true;
+  return vs.some(v => v.lang.slice(0,2) === codigo.slice(0,2));
+}
+function escuchar(){
+  const g = GUIA[actual];
+  detener();
+  $("btn-play").hidden = true;
+  $("btn-stop").hidden = false;
+  if(GRABACIONES[actual]){
+    audio = new Audio(GRABACIONES[actual]);
+    audio.onended = detener;
+    audio.play();
+    return;
+  }
+  if(!window.speechSynthesis || !hayVoz(g.voz)){
+    $("ui-aviso").textContent = g.ui.aviso;
+    $("ui-aviso").hidden = false;
+    detener();
+    return;
+  }
+  const vozElegida = elegirVoz(g.voz);
+  g.t.forEach((p,i)=>{
+    const u = new SpeechSynthesisUtterance(p);
+    u.lang = g.voz; u.rate = 0.92;
+    if(vozElegida) u.voice = vozElegida;
+    u.onstart = ()=>marcar(i);
+    if(i===g.t.length-1) u.onend = detener;
+    speechSynthesis.speak(u);
+  });
+}
+$("btn-play").onclick = escuchar;
+$("btn-stop").onclick = detener;
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
+pintar();
+</script>
+</body>
+</html>

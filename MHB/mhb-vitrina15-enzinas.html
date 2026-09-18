@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>El Nuevo Testamento de Enzinas — Museo de Historia de la Biblia</title>
+<link href="estilos.css" rel="stylesheet"/>
+<style>
+.corona{flex:none;width:64px;height:64px}
+</style>
+</head>
+<body data-vitrina="15">
+<div class="hoja">
+<header class="cabecera">
+<div class="marca">
+<a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+<img alt="" src="LOGO_MHB.png" onerror="this.remove();this.parentNode.querySelector('.logo-fallback').hidden=false"/><span class="logo-fallback" hidden="">MHB</span>
+</a>
+<div class="marca-texto">
+<p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
+<p class="sala" id="ui-sala"></p>
+</div>
+<span class="marca-num">15</span>
+<img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.jpg"/>
+</div>
+<div class="header-main">
+<div aria-hidden="true" class="emblema"><svg aria-hidden="true" class="corona" viewBox="0 0 64 64">
+<path d="M10 44 L10 26 L20 34 L32 18 L44 34 L54 26 L54 44 Z" fill="currentColor"></path>
+<rect fill="currentColor" height="7" width="44" x="10" y="46"></rect>
+<circle cx="10" cy="24" fill="currentColor" r="3.5"></circle><circle cx="32" cy="15" fill="currentColor" r="4"></circle>
+<circle cx="54" cy="24" fill="currentColor" r="3.5"></circle></svg></div>
+<div class="header-texto">
+<h1 id="ui-titulo"></h1>
+<p class="siglo" id="ui-siglo"></p>
+</div>
+</div>
+</header>
+<nav class="nav">
+<a class="nav-btn" href="index.html" id="nav-inicio" aria-label="Inicio"><svg aria-hidden="true" height="18" viewBox="0 0 24 24" width="18"><path d="M12 3l9 8h-3v8h-5v-5h-2v5H6v-8H3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="nav-btn" id="nav-ant">‹</a>
+<select class="nav-sel" id="nav-sel"></select>
+<a class="nav-btn" id="nav-sig">›</a>
+<span class="nav-btn" id="nav-pos" style="border:none"></span>
+</nav>
+<div class="progreso"><i id="barra"></i></div>
+<main>
+<div aria-label="Idioma" class="idiomas" id="idiomas" role="group"></div>
+<div class="mandos">
+<button class="control" id="btn-play" type="button">▶ <span id="ui-play">Escuchar</span></button>
+<button class="control secundario" hidden="" id="btn-stop" type="button"><span id="ui-stop">Detener</span></button>
+</div>
+<p class="aviso" hidden="" id="ui-aviso"></p>
+<div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 15 · Museo de Historia de la Biblia",
+   "titulo": "El Nuevo Testamento de Enzinas",
+   "siglo": "Amberes, 1543 · el primero en castellano",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Un muchacho de veintisiete años le puso este libro en las manos al hombre más poderoso del mundo. Y por eso terminó en la cárcel. Se llamaba Francisco de Enzinas, era de Burgos, y había estudiado en Lovaina y en Wittenberg, donde vivió en casa de Melanchthon. Tradujo el Nuevo Testamento al castellano desde el griego de Erasmo, el mismo que usted vio unas salas atrás. Se imprimió en Amberes, en 1,543. Es el primer Nuevo Testamento completo en nuestra lengua salido de una imprenta.",
+   "Y entonces hizo algo que nadie esperaba: en lugar de esconderlo, pidió audiencia con el emperador Carlos V y se lo entregó en persona, en Bruselas. El emperador le preguntó quién era el autor. Él contestó que él mismo. Carlos V le dijo que si el libro era lo que decía ser, no habría problema, y lo mandó con su confesor.",
+   "Pocos días después estaba preso. Quince meses encerrado en Bruselas. Escapó en 1,545 por una puerta que encontró abierta una noche, y ya nunca volvió a España. Murió de peste en Estrasburgo en 1,552, a los treinta y cuatro años.",
+   "Fíjese en el detalle, porque dice mucho: no lo encarcelaron por esconder el libro. Lo encarcelaron por enseñarlo. Y con éste empieza la parte del recorrido que más nos toca. De aquí en adelante, todo lo que verá está en nuestra lengua."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 15 · Museum of the History of the Bible",
+   "titulo": "The New Testament of Enzinas",
+   "siglo": "Antwerp, 1543 · the first in Spanish",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "A young man of twenty-seven placed this book in the hands of the most powerful man in the world. And that is how he ended up in prison. His name was Francisco de Enzinas. He came from Burgos and had studied in Louvain and in Wittenberg, where he lodged in the house of Melanchthon. He translated the New Testament into Spanish from the Greek of Erasmus, the very book you saw a few cases back. It was printed in Antwerp in 1543. It is the first complete New Testament in our language to come off a printing press.",
+   "And then he did something nobody expected: instead of hiding it, he asked for an audience with the emperor Charles the Fifth and handed it to him in person, in Brussels. The emperor asked who the author was. He answered that he was. Charles told him that if the book was what it claimed to be there would be no problem, and sent him to his confessor.",
+   "A few days later he was under arrest. Fifteen months shut up in Brussels. He escaped in 1545 through a door he found open one night, and never returned to Spain. He died of the plague in Strasbourg in 1552, aged thirty-four.",
+   "Notice the detail, because it says a great deal: he was not imprisoned for hiding the book. He was imprisoned for showing it. And notice the difference from the previous case. That one told the Gospels and explained them. This one is the text itself, plain, with nobody in between. From here on, that is what you will see."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 15 · Musée de l'Histoire de la Bible",
+   "titulo": "Le Nouveau Testament d'Enzinas",
+   "siglo": "Anvers, 1543 · le premier en espagnol",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Un jeune homme de vingt-sept ans mit ce livre entre les mains de l'homme le plus puissant du monde. Et c'est ainsi qu'il finit en prison. Il s'appelait Francisco de Enzinas, il était de Burgos, et il avait étudié à Louvain et à Wittenberg, où il logeait chez Melanchthon. Il traduisit le Nouveau Testament en espagnol à partir du grec d'Érasme, celui-là même que vous avez vu quelques vitrines plus tôt. Il fut imprimé à Anvers en 1543. C'est le premier Nouveau Testament complet dans notre langue sorti d'une presse.",
+   "Et alors il fit une chose que personne n'attendait : au lieu de le cacher, il demanda audience à l'empereur Charles Quint et le lui remit en personne, à Bruxelles. L'empereur demanda qui en était l'auteur. Il répondit que c'était lui. Charles Quint lui dit que si le livre était ce qu'il prétendait être, il n'y aurait pas de problème, et l'envoya à son confesseur.",
+   "Quelques jours plus tard il était en prison. Quinze mois enfermé à Bruxelles. Il s'évada en 1545 par une porte trouvée ouverte une nuit, et ne revint jamais en Espagne. Il mourut de la peste à Strasbourg en 1552, à trente-quatre ans.",
+   "Remarquez le détail, car il en dit long : on ne l'a pas emprisonné pour avoir caché le livre. On l'a emprisonné pour l'avoir montré. Et voyez la différence avec la vitrine précédente. Celle-là racontait les évangiles et les expliquait. Celle-ci est le texte lui-même, tel quel, sans personne entre deux. À partir d'ici, c'est cela que vous verrez."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 15 · Museum zur Geschichte der Bibel",
+   "titulo": "Das Neue Testament des Enzinas",
+   "siglo": "Antwerpen, 1543 · das erste auf Spanisch",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Ein junger Mann von siebenundzwanzig Jahren legte dieses Buch dem mächtigsten Mann der Welt in die Hände. Und darum landete er im Gefängnis. Er hieß Francisco de Enzinas, stammte aus Burgos und hatte in Löwen und in Wittenberg studiert, wo er im Hause Melanchthons wohnte. Er übersetzte das Neue Testament ins Spanische aus dem Griechischen des Erasmus, eben jenem Buch, das Sie einige Vitrinen zuvor gesehen haben. Gedruckt wurde es 1543 in Antwerpen. Es ist das erste vollständige Neue Testament in unserer Sprache, das eine Druckerpresse verließ.",
+   "Und dann tat er etwas, das niemand erwartete: statt es zu verbergen, erbat er eine Audienz bei Kaiser Karl dem Fünften und überreichte es ihm persönlich, in Brüssel. Der Kaiser fragte, wer der Verfasser sei. Er antwortete: er selbst. Karl sagte ihm, wenn das Buch sei, was es zu sein vorgebe, werde es kein Problem geben, und schickte ihn zu seinem Beichtvater.",
+   "Wenige Tage später saß er in Haft. Fünfzehn Monate eingeschlossen in Brüssel. 1545 entkam er durch eine Tür, die er eines Nachts offen fand, und kehrte nie nach Spanien zurück. Er starb 1552 in Straßburg an der Pest, vierunddreißig Jahre alt.",
+   "Achten Sie auf diese Einzelheit, denn sie sagt viel: man sperrte ihn nicht ein, weil er das Buch versteckte. Man sperrte ihn ein, weil er es zeigte. Und sehen Sie den Unterschied zur vorigen Vitrine. Jene erzählte die Evangelien und erklärte sie. Diese ist der Text selbst, unvermittelt, ohne jemanden dazwischen. Von hier an werden Sie das sehen."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 15 · Museo di Storia della Bibbia",
+   "titulo": "Il Nuovo Testamento di Enzinas",
+   "siglo": "Anversa, 1543 · il primo in spagnolo",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Un ragazzo di ventisette anni mise questo libro nelle mani dell'uomo più potente del mondo. Ed è così che finì in carcere. Si chiamava Francisco de Enzinas, era di Burgos, e aveva studiato a Lovanio e a Wittenberg, dove abitava in casa di Melantone. Tradusse il Nuovo Testamento in spagnolo dal greco di Erasmo, proprio quello che ha visto alcune vetrine fa. Fu stampato ad Anversa nel 1543. È il primo Nuovo Testamento completo nella nostra lingua uscito da un torchio.",
+   "E allora fece una cosa che nessuno si aspettava: invece di nasconderlo, chiese udienza all'imperatore Carlo V e glielo consegnò di persona, a Bruxelles. L'imperatore chiese chi ne fosse l'autore. Rispose che era lui. Carlo gli disse che se il libro era quello che diceva di essere non ci sarebbero stati problemi, e lo mandò dal suo confessore.",
+   "Pochi giorni dopo era in prigione. Quindici mesi rinchiuso a Bruxelles. Fuggì nel 1545 da una porta che una notte trovò aperta, e non tornò mai più in Spagna. Morì di peste a Strasburgo nel 1552, a trentaquattro anni.",
+   "Noti il dettaglio, perché dice molto: non lo incarcerarono per aver nascosto il libro. Lo incarcerarono per averlo mostrato. E guardi la differenza con la vetrina precedente. Quella raccontava i vangeli e li spiegava. Questa è il testo stesso, tale e quale, senza nessuno in mezzo. Da qui in avanti, è questo che vedrà."
+  ]
+ }
+};
+</script>
+<script src="vitrinas.js"></script>
+<script src="guia.js"></script>
+</body>
+</html>
