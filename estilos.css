@@ -69,11 +69,16 @@ main{padding:0 1.4rem}
 .idiomas button:hover{border-color:var(--acento)}
 .idiomas button[aria-pressed="true"]{background:var(--cabecera);color:var(--claro);border-color:var(--cabecera)}
 .idiomas button[aria-pressed="true"]:hover{background:var(--tinta);border-color:var(--tinta)}
-.mandos{display:flex;gap:.6rem;align-items:center;margin:0 0 1.8rem}
-.control{font:inherit;font-size:1em;display:inline-flex;align-items:center;gap:.55rem;
-  padding:.85rem 1.5rem;min-height:52px;background:var(--acento);color:#FFF6E6;
-  border:none;border-radius:2px;cursor:pointer}
-.control.secundario{background:transparent;color:var(--tinta);border:1.5px solid var(--linea);padding:.85rem 1.1rem}
+.mandos{display:flex;justify-content:center;gap:.6rem;align-items:center;margin:0 0 1.8rem}
+.control{font:inherit;font-size:.92em;font-weight:500;display:inline-flex;align-items:center;gap:.55rem;
+  padding:.75rem 1.4rem;min-height:48px;background:var(--acento);color:#FFF6E6;
+  border:none;border-radius:8px;cursor:pointer;box-shadow:0 2px 6px rgba(168,131,44,.25);
+  transition:background-color .15s,box-shadow .15s,transform .1s}
+.control:hover{background:#8f6f24;box-shadow:0 4px 10px rgba(168,131,44,.32)}
+.control:active{transform:translateY(1px)}
+.control.secundario{background:var(--claro);color:var(--tinta);border:1px solid var(--linea);
+  padding:.75rem 1.1rem;box-shadow:none}
+.control.secundario:hover{background:var(--fondo);border-color:var(--acento);box-shadow:none}
 .control[hidden]{display:none}
 .aviso{font-size:.8em;font-style:italic;margin:-1.2rem 0 1.8rem;color:var(--suave)}
 p.parrafo{margin:0 0 1.15rem;transition:background-color .25s}
