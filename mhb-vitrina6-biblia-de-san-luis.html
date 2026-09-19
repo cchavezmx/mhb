@@ -7,47 +7,37 @@
     <link href="favicon.ico" rel="icon" sizes="any" />
     <link href="apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="estilos.css" rel="stylesheet" />
-    <style>
-      .reticula {
-        display: grid;
-        grid-template-columns: repeat(2, 14px);
-        gap: 7px;
-        flex: none;
-      }
-      .reticula i {
-        display: block;
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        border: 1.5px solid var(--acento);
-      }
-      .reticula i.lleno {
-        background: var(--acento);
-      }
-    </style>
   </head>
   <body data-vitrina="6">
     <div class="hoja">
       <header class="cabecera">
         <div class="marca">
-          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
-              <span class="logo-fallback">MHB</span>
-            </object>
-          </a>
+          <div class="marca-lado">
+            <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+              <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+                <span class="logo-fallback">MHB</span>
+              </object>
+            </a>
+          </div>
           <div class="marca-texto">
             <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
             <p class="sala" id="ui-sala"></p>
           </div>
-          <span class="marca-num">06</span>
-          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          <div class="marca-lado marca-lado-fin">
+            <span class="marca-num">06</span>
+            <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          </div>
         </div>
         <div class="header-main">
           <div aria-hidden="true" class="emblema">
-            <div aria-hidden="true" class="reticula">
-              <i class="lleno"></i><i class="lleno"></i><i></i><i></i><i class="lleno"></i><i class="lleno"></i><i></i
-              ><i></i>
-            </div>
+            <svg aria-hidden="true" viewBox="0 0 64 64">
+              <circle cx="23" cy="16" r="7" fill="none" stroke="currentColor" stroke-width="3" />
+              <circle cx="23" cy="32" r="7" fill="none" stroke="currentColor" stroke-width="3" />
+              <circle cx="23" cy="48" r="7" fill="none" stroke="currentColor" stroke-width="3" />
+              <circle cx="41" cy="16" r="7" fill="none" stroke="currentColor" stroke-width="3" />
+              <circle cx="41" cy="32" r="7" fill="none" stroke="currentColor" stroke-width="3" />
+              <circle cx="41" cy="48" r="7" fill="none" stroke="currentColor" stroke-width="3" />
+            </svg>
           </div>
           <div class="header-texto">
             <h1 id="ui-titulo"></h1>

@@ -7,37 +7,41 @@
     <link href="favicon.ico" rel="icon" sizes="any" />
     <link href="apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="estilos.css" rel="stylesheet" />
-    <style>
-      .barril {
-        flex: none;
-        width: 64px;
-        height: 64px;
-      }
-    </style>
   </head>
   <body data-vitrina="17">
     <div class="hoja">
       <header class="cabecera">
         <div class="marca">
-          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
-              <span class="logo-fallback">MHB</span>
-            </object>
-          </a>
+          <div class="marca-lado">
+            <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+              <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+                <span class="logo-fallback">MHB</span>
+              </object>
+            </a>
+          </div>
           <div class="marca-texto">
             <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
             <p class="sala" id="ui-sala"></p>
           </div>
-          <span class="marca-num">17</span>
-          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          <div class="marca-lado marca-lado-fin">
+            <span class="marca-num">17</span>
+            <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          </div>
         </div>
         <div class="header-main">
           <div aria-hidden="true" class="emblema">
-            <svg aria-hidden="true" class="barril" viewBox="0 0 64 64">
-              <path d="M20 10 C12 22 12 42 20 54 L44 54 C52 42 52 22 44 10 Z" fill="currentColor"></path>
-              <rect fill="currentColor" height="5" width="42" x="11" y="18"></rect>
-              <rect fill="currentColor" height="5" width="46" x="9" y="30"></rect>
-              <rect fill="currentColor" height="5" width="42" x="11" y="42"></rect>
+            <svg aria-hidden="true" viewBox="0 0 64 64">
+              <path
+                d="M 22 14 Q 12 32 22 50 L 42 50 Q 52 32 42 14 Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
+              <path d="M 16 26 Q 32 28 48 26" fill="none" stroke="currentColor" stroke-width="3" />
+              <path d="M 16 38 Q 32 40 48 38" fill="none" stroke="currentColor" stroke-width="3" />
+              <path d="M 27 14.5 Q 22 32 27 49.5" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M 37 14.5 Q 42 32 37 49.5" fill="none" stroke="currentColor" stroke-width="2" />
             </svg>
           </div>
           <div class="header-texto">

@@ -7,35 +7,44 @@
     <link href="favicon.ico" rel="icon" sizes="any" />
     <link href="apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="estilos.css" rel="stylesheet" />
-    <style>
-      .estrella {
-        flex: none;
-        width: 64px;
-        height: 64px;
-      }
-    </style>
   </head>
   <body data-vitrina="16">
     <div class="hoja">
       <header class="cabecera">
         <div class="marca">
-          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
-              <span class="logo-fallback">MHB</span>
-            </object>
-          </a>
+          <div class="marca-lado">
+            <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+              <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+                <span class="logo-fallback">MHB</span>
+              </object>
+            </a>
+          </div>
           <div class="marca-texto">
             <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
             <p class="sala" id="ui-sala"></p>
           </div>
-          <span class="marca-num">16</span>
-          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          <div class="marca-lado marca-lado-fin">
+            <span class="marca-num">16</span>
+            <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          </div>
         </div>
         <div class="header-main">
           <div aria-hidden="true" class="emblema">
-            <svg aria-hidden="true" class="estrella" viewBox="0 0 64 64">
-              <path d="M32 8 L54 46 L10 46 Z" fill="none" stroke="currentColor" stroke-width="3"></path>
-              <path d="M32 56 L10 18 L54 18 Z" fill="none" stroke="currentColor" stroke-width="3"></path>
+            <svg aria-hidden="true" viewBox="0 0 64 64">
+              <polygon
+                points="32,12 14,44 50,44"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
+              <polygon
+                points="32,52 14,20 50,20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
             </svg>
           </div>
           <div class="header-texto">

@@ -7,48 +7,45 @@
     <link href="favicon.ico" rel="icon" sizes="any" />
     <link href="apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="estilos.css" rel="stylesheet" />
-    <style>
-      .paralelo {
-        flex: none;
-        background: var(--claro);
-        padding: 6px;
-        display: flex;
-        gap: 6px;
-      }
-      .lado {
-        width: 24px;
-        height: 64px;
-      }
-      .lado.griego {
-        background: repeating-linear-gradient(to bottom, var(--cabecera) 0 1.3px, transparent 1.3px 4.6px);
-      }
-      .lado.latin {
-        background: repeating-linear-gradient(to bottom, var(--acento) 0 1.3px, transparent 1.3px 4.6px);
-      }
-    </style>
   </head>
   <body data-vitrina="11">
     <div class="hoja">
       <header class="cabecera">
         <div class="marca">
-          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
-              <span class="logo-fallback">MHB</span>
-            </object>
-          </a>
+          <div class="marca-lado">
+            <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+              <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+                <span class="logo-fallback">MHB</span>
+              </object>
+            </a>
+          </div>
           <div class="marca-texto">
             <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
             <p class="sala" id="ui-sala"></p>
           </div>
-          <span class="marca-num">11</span>
-          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          <div class="marca-lado marca-lado-fin">
+            <span class="marca-num">11</span>
+            <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          </div>
         </div>
         <div class="header-main">
           <div aria-hidden="true" class="emblema">
-            <div aria-hidden="true" class="paralelo">
-              <div class="lado griego"></div>
-              <div class="lado latin"></div>
-            </div>
+            <svg aria-hidden="true" viewBox="0 0 64 64">
+              <rect x="14" y="14" width="16" height="36" fill="none" stroke="currentColor" stroke-width="3" />
+              <rect x="34" y="14" width="16" height="36" fill="none" stroke="currentColor" stroke-width="3" />
+              <path
+                d="M18 22 h8 M18 28 h8 M18 34 h8 M18 40 h8"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M38 22 h8 M38 28 h8 M38 34 h8 M38 40 h8"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
           </div>
           <div class="header-texto">
             <h1 id="ui-titulo"></h1>

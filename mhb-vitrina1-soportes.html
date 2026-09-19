@@ -7,50 +7,65 @@
     <link href="favicon.ico" rel="icon" sizes="any" />
     <link href="apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="estilos.css" rel="stylesheet" />
-    <style>
-      .soportes {
-        flex: none;
-        display: flex;
-        gap: 6px;
-        align-items: center;
-      }
-      .soportes .rollo {
-        width: 18px;
-        height: 58px;
-        border-radius: 9px;
-        background: var(--acento);
-      }
-      .soportes .hoja {
-        width: 26px;
-        height: 50px;
-        background: var(--claro);
-        background-image: repeating-linear-gradient(90deg, rgba(110, 90, 52, 0.35) 0 1px, transparent 1px 4px);
-      }
-    </style>
   </head>
   <body data-vitrina="1">
     <div class="hoja">
       <header class="cabecera">
         <div class="marca">
-          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
-              <span class="logo-fallback">MHB</span>
-            </object>
-          </a>
+          <div class="marca-lado">
+            <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+              <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+                <span class="logo-fallback">MHB</span>
+              </object>
+            </a>
+          </div>
           <div class="marca-texto">
             <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
             <p class="sala" id="ui-sala"></p>
           </div>
-          <span class="marca-num">01</span>
-          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          <div class="marca-lado marca-lado-fin">
+            <span class="marca-num">01</span>
+            <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          </div>
         </div>
         <div class="header-main">
           <div aria-hidden="true" class="emblema">
-            <div aria-hidden="true" class="soportes">
-              <div class="rollo"></div>
-              <div class="hoja"></div>
-              <div class="hoja"></div>
-            </div>
+            <svg aria-hidden="true" viewBox="0 0 64 64">
+              <!-- Códice -->
+              <path
+                d="M36 20 L56 20 L56 52 L36 52 Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M36 20 L32 24 L32 56 L36 52"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
+              <line x1="40" y1="28" x2="52" y2="28" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              <line x1="40" y1="36" x2="52" y2="36" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              <!-- Rollo -->
+              <path
+                d="M8 12 C8 8, 16 8, 16 12 L16 44 C16 48, 8 48, 8 44 Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16 16 L28 16 L28 48 L16 48"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
+              <line x1="12" y1="8" x2="12" y2="4" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              <line x1="12" y1="48" x2="12" y2="52" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+            </svg>
           </div>
           <div class="header-texto">
             <h1 id="ui-titulo"></h1>

@@ -91,14 +91,24 @@ a:hover {
   display: block;
   object-fit: contain;
 }
-.marca-texto {
-  flex: 1;
-  min-width: 0;
+/* Los dos lados reparten por igual el espacio sobrante (flex-basis 0), asi que
+   el nombre del museo queda centrado en la barra y no solo en el hueco libre:
+   a la derecha pesan mas el numero de vitrina y el sello, y sin esto el titulo
+   se recorreria hacia la izquierda. Los lados van sin min-width: 0 a proposito,
+   para que no encojan por debajo del logo ni del sello; en pantallas angostas
+   cede primero el texto, que se parte en dos lineas y sigue centrado. */
+.marca-lado {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
 }
-/* En la portada el bloque solo lleva el nombre del museo (no hay "Vitrina N"),
-   asi que se centra en el hueco entre los dos logos. En las vitrinas se deja
-   alineado a la izquierda, donde las dos lineas forman columna con el logo. */
-.marca-inicio .marca-texto {
+.marca-lado-fin {
+  justify-content: flex-end;
+}
+.marca-texto {
+  flex: 0 1 auto;
+  min-width: 0;
   text-align: center;
 }
 .museo {

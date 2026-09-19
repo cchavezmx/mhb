@@ -7,44 +7,41 @@
     <link href="favicon.ico" rel="icon" sizes="any" />
     <link href="apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="estilos.css" rel="stylesheet" />
-    <style>
-      .tomos {
-        flex: none;
-        display: flex;
-        gap: 3px;
-        align-items: flex-end;
-      }
-      .tomos i {
-        display: block;
-        width: 6px;
-        background: var(--acento);
-        border-radius: 1px;
-      }
-    </style>
   </head>
   <body data-vitrina="21">
     <div class="hoja">
       <header class="cabecera">
         <div class="marca">
-          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
-              <span class="logo-fallback">MHB</span>
-            </object>
-          </a>
+          <div class="marca-lado">
+            <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+              <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+                <span class="logo-fallback">MHB</span>
+              </object>
+            </a>
+          </div>
           <div class="marca-texto">
             <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
             <p class="sala" id="ui-sala"></p>
           </div>
-          <span class="marca-num">21</span>
-          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          <div class="marca-lado marca-lado-fin">
+            <span class="marca-num">21</span>
+            <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          </div>
         </div>
         <div class="header-main">
           <div aria-hidden="true" class="emblema">
-            <div aria-hidden="true" class="tomos">
-              <i style="height: 46px"></i><i style="height: 52px"></i><i style="height: 48px"></i
-              ><i style="height: 56px"></i><i style="height: 50px"></i><i style="height: 58px"></i
-              ><i style="height: 46px"></i><i style="height: 54px"></i><i style="height: 50px"></i>
-            </div>
+            <svg aria-hidden="true" viewBox="0 0 64 64">
+              <line x1="6" y1="54" x2="58" y2="54" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              <rect x="10" y="24" width="4" height="30" fill="currentColor" />
+              <rect x="15" y="18" width="4" height="36" fill="currentColor" />
+              <rect x="20" y="28" width="4" height="26" fill="currentColor" />
+              <rect x="25" y="22" width="4" height="32" fill="currentColor" />
+              <rect x="30" y="14" width="4" height="40" fill="currentColor" />
+              <rect x="35" y="26" width="4" height="28" fill="currentColor" />
+              <rect x="40" y="20" width="4" height="34" fill="currentColor" />
+              <rect x="45" y="30" width="4" height="24" fill="currentColor" />
+              <rect x="50" y="16" width="4" height="38" fill="currentColor" />
+            </svg>
           </div>
           <div class="header-texto">
             <h1 id="ui-titulo"></h1>

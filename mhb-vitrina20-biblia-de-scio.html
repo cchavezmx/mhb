@@ -7,62 +7,45 @@
     <link href="favicon.ico" rel="icon" sizes="any" />
     <link href="apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="estilos.css" rel="stylesheet" />
-    <style>
-      .dos {
-        flex: none;
-        background: var(--claro);
-        padding: 6px;
-        display: flex;
-        gap: 6px;
-      }
-      .dos .c {
-        width: 24px;
-        height: 58px;
-        background: repeating-linear-gradient(to bottom, var(--tinta) 0 1.2px, transparent 1.2px 4.4px);
-      }
-      .dos .n {
-        width: 54px;
-        height: 12px;
-        background: repeating-linear-gradient(to bottom, var(--acento) 0 1px, transparent 1px 3px);
-      }
-      .dos .caja {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-      }
-      .dos .fila {
-        display: flex;
-        gap: 6px;
-      }
-    </style>
   </head>
   <body data-vitrina="20">
     <div class="hoja">
       <header class="cabecera">
         <div class="marca">
-          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
-              <span class="logo-fallback">MHB</span>
-            </object>
-          </a>
+          <div class="marca-lado">
+            <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+              <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+                <span class="logo-fallback">MHB</span>
+              </object>
+            </a>
+          </div>
           <div class="marca-texto">
             <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
             <p class="sala" id="ui-sala"></p>
           </div>
-          <span class="marca-num">20</span>
-          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          <div class="marca-lado marca-lado-fin">
+            <span class="marca-num">20</span>
+            <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          </div>
         </div>
         <div class="header-main">
           <div aria-hidden="true" class="emblema">
-            <div aria-hidden="true" class="dos">
-              <div class="caja">
-                <div class="fila">
-                  <div class="c"></div>
-                  <div class="c"></div>
-                </div>
-                <div class="n"></div>
-              </div>
-            </div>
+            <svg aria-hidden="true" viewBox="0 0 64 64">
+              <rect x="12" y="12" width="40" height="40" rx="2" fill="none" stroke="currentColor" stroke-width="3" />
+              <line x1="32" y1="12" x2="32" y2="52" stroke="currentColor" stroke-width="2" />
+              <path
+                d="M16 20 h12 M16 28 h12 M16 36 h12 M16 44 h12"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M36 20 h12 M36 28 h12 M36 36 h12 M36 44 h12"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
           </div>
           <div class="header-texto">
             <h1 id="ui-titulo"></h1>

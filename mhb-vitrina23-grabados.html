@@ -7,48 +7,51 @@
     <link href="favicon.ico" rel="icon" sizes="any" />
     <link href="apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="estilos.css" rel="stylesheet" />
-    <style>
-      .estampas {
-        flex: none;
-        display: flex;
-        gap: 5px;
-        background: var(--claro);
-        padding: 5px;
-      }
-      .estampas div {
-        width: 28px;
-        height: 58px;
-      }
-      .estampas .clara {
-        background: repeating-linear-gradient(to bottom, var(--tinta) 0 1px, transparent 1px 6px);
-      }
-      .estampas .densa {
-        background: repeating-linear-gradient(115deg, var(--tinta) 0 2.4px, transparent 2.4px 3.6px);
-      }
-    </style>
   </head>
   <body data-vitrina="23">
     <div class="hoja">
       <header class="cabecera">
         <div class="marca">
-          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
-              <span class="logo-fallback">MHB</span>
-            </object>
-          </a>
+          <div class="marca-lado">
+            <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+              <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+                <span class="logo-fallback">MHB</span>
+              </object>
+            </a>
+          </div>
           <div class="marca-texto">
             <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
             <p class="sala" id="ui-sala"></p>
           </div>
-          <span class="marca-num">23</span>
-          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          <div class="marca-lado marca-lado-fin">
+            <span class="marca-num">23</span>
+            <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          </div>
         </div>
         <div class="header-main">
           <div aria-hidden="true" class="emblema">
-            <div aria-hidden="true" class="estampas">
-              <div class="clara"></div>
-              <div class="densa"></div>
-            </div>
+            <svg aria-hidden="true" viewBox="0 0 64 64">
+              <rect x="8" y="16" width="22" height="32" fill="none" stroke="currentColor" stroke-width="3" />
+              <path
+                d="M12 40 L18 24 L26 40"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linejoin="round"
+              />
+              <circle cx="16" cy="22" r="2" fill="currentColor" />
+              <rect x="34" y="16" width="22" height="32" fill="none" stroke="currentColor" stroke-width="3" />
+              <path
+                d="M34 20 L56 42 M34 24 L56 46 M34 28 L56 50 M34 32 L52 50 M34 36 L48 50 M34 40 L44 50"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M56 20 L34 42 M56 24 L34 46 M56 28 L34 50 M56 32 L38 50 M56 36 L42 50 M56 40 L46 50"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+            </svg>
           </div>
           <div class="header-texto">
             <h1 id="ui-titulo"></h1>

@@ -7,53 +7,44 @@
     <link href="favicon.ico" rel="icon" sizes="any" />
     <link href="apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="estilos.css" rel="stylesheet" />
-    <style>
-      .pagina {
-        flex: none;
-        background: var(--claro);
-        padding: 6px;
-        display: flex;
-        gap: 6px;
-      }
-      .columna {
-        position: relative;
-        width: 26px;
-        height: 62px;
-        background: repeating-linear-gradient(to bottom, var(--tinta) 0 1.2px, transparent 1.2px 4.4px);
-      }
-      .columna:first-child::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 7px;
-        height: 9px;
-        background: var(--acento);
-      }
-    </style>
   </head>
   <body data-vitrina="8">
     <div class="hoja">
       <header class="cabecera">
         <div class="marca">
-          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
-              <span class="logo-fallback">MHB</span>
-            </object>
-          </a>
+          <div class="marca-lado">
+            <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+              <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+                <span class="logo-fallback">MHB</span>
+              </object>
+            </a>
+          </div>
           <div class="marca-texto">
             <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
             <p class="sala" id="ui-sala"></p>
           </div>
-          <span class="marca-num">08</span>
-          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          <div class="marca-lado marca-lado-fin">
+            <span class="marca-num">08</span>
+            <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          </div>
         </div>
         <div class="header-main">
           <div aria-hidden="true" class="emblema">
-            <div aria-hidden="true" class="pagina">
-              <div class="columna"></div>
-              <div class="columna"></div>
-            </div>
+            <svg aria-hidden="true" viewBox="0 0 64 64">
+              <rect x="14" y="8" width="36" height="48" fill="none" stroke="currentColor" stroke-width="3" />
+              <line x1="20" y1="16" x2="28" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="20" y1="22" x2="28" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="20" y1="28" x2="28" y2="28" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="20" y1="34" x2="28" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="20" y1="40" x2="28" y2="40" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="20" y1="46" x2="28" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="36" y1="16" x2="44" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="36" y1="22" x2="44" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="36" y1="28" x2="44" y2="28" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="36" y1="34" x2="44" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="36" y1="40" x2="44" y2="40" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <line x1="36" y1="46" x2="44" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
           </div>
           <div class="header-texto">
             <h1 id="ui-titulo"></h1>

@@ -7,46 +7,58 @@
     <link href="favicon.ico" rel="icon" sizes="any" />
     <link href="apple-touch-icon.png" rel="apple-touch-icon" />
     <link href="estilos.css" rel="stylesheet" />
-    <style>
-      .rama {
-        flex: none;
-        width: 34px;
-        height: 76px;
-      }
-      .marco {
-        border: 2px solid var(--acento);
-        padding: 1rem 0.9rem;
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-      }
-    </style>
   </head>
   <body data-vitrina="9">
     <div class="hoja">
       <header class="cabecera">
         <div class="marca">
-          <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
-            <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
-              <span class="logo-fallback">MHB</span>
-            </object>
-          </a>
+          <div class="marca-lado">
+            <a class="logo-slot" href="index.html" aria-label="Museo de Historia de la Biblia — inicio">
+              <object data="LOGO_MHB.png" type="image/png" aria-hidden="true">
+                <span class="logo-fallback">MHB</span>
+              </object>
+            </a>
+          </div>
           <div class="marca-texto">
             <p class="museo" id="ui-museo">Museo de Historia de la Biblia</p>
             <p class="sala" id="ui-sala"></p>
           </div>
-          <span class="marca-num">09</span>
-          <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          <div class="marca-lado marca-lado-fin">
+            <span class="marca-num">09</span>
+            <img alt="La Iglesia del Tercer Día A.R." class="logo-li3d" src="LI3D.png" />
+          </div>
         </div>
         <div class="header-main">
           <div aria-hidden="true" class="emblema">
-            <svg aria-hidden="true" class="rama" viewBox="0 0 34 76">
-              <path d="M17 74 V22" fill="none" stroke="currentColor" stroke-width="2"></path>
-              <path d="M17 58 C9 56 5 48 6 42 C14 43 18 50 17 58 Z" fill="currentColor"></path>
-              <path d="M17 46 C25 44 29 36 28 30 C20 31 16 38 17 46 Z" fill="currentColor"></path>
-              <path d="M17 34 C9 32 5 24 6 18 C14 19 18 26 17 34 Z" fill="currentColor"></path>
-              <circle cx="17" cy="14" fill="currentColor" r="6"></circle>
-              <circle cx="17" cy="14" fill="currentColor" r="2.4"></circle>
+            <svg aria-hidden="true" viewBox="0 0 64 64">
+              <path
+                d="M32 56 Q 30 32 44 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+              <path
+                d="M32 46 Q 20 44 16 34 Q 24 30 31 38"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M36 34 Q 48 36 52 26 Q 44 22 39 30"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M40 20 Q 30 18 26 10 Q 34 6 42 14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
             </svg>
           </div>
           <div class="header-texto">
