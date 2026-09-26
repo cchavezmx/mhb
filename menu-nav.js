@@ -123,7 +123,16 @@
     // Selector
     html += '<select class="mhb-nav-sel" id="mhb-sel" aria-label="' + esc(u.ir) + '">';
     for (var i = 0; i < RUTAS.length; i++) {
-      var label = RUTAS[i].t[idiomaActual] || RUTAS[i].t.es;
+      // Etiquetas cortas para el selector; "Inicio" conserva su nombre largo
+      var label;
+      if (i === 0) {
+        label = RUTAS[i].t[idiomaActual] || RUTAS[i].t.es;
+      } else {
+        var partes = (RUTAS[i].t.es).split(' · ');
+        var tipo = partes[0]; // p.ej. "Vitrina 4b"
+        var num = String(i);
+        label = num + ' ' + tipo;
+      }
       html += '<option value="' + i + '"' + (i === idx ? ' selected' : '') + '>' + esc(label) + '</option>';
     }
     html += '</select>';
