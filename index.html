@@ -38,6 +38,7 @@
          font-size:.8em;font-style:italic;color:#7a5c3e}
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
+  <link rel="stylesheet" href="menu-nav.css">
 </head>
 <body>
 <div class="hoja">
@@ -49,6 +50,9 @@
     <p class="siglo" id="ui-siglo"></p>
   </div>
 </header>
+
+  <div class="progreso"><i id="mhb-barra"></i></div>
+  <nav class="mhb-nav" id="mhb-nav" aria-label="Navegación"></nav>
 <main>
   <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
   <div class="mandos">
@@ -281,5 +285,6 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
+  <script src="menu-nav.js" defer></script>
 </body>
 </html>

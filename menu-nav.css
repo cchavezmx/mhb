@@ -1,0 +1,75 @@
+/* Menú de navegación entre vitrinas — diseño mínimo */
+.mhb-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.4rem;
+  background: #fbf8f1;
+  border-bottom: 1px solid rgba(31, 30, 27, 0.18);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.mhb-nav-btn {
+  font: inherit;
+  font-size: 0.85em;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0 0.65rem;
+  background: transparent;
+  color: #1f1e1b;
+  border: 1px solid rgba(31, 30, 27, 0.18);
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.mhb-nav-btn:hover {
+  border-color: #a8832c;
+  color: #1f1e1b;
+}
+.mhb-nav-btn[aria-disabled="true"] {
+  opacity: 0.35;
+  pointer-events: none;
+}
+.mhb-nav-sel {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 0.82em;
+  min-height: 44px;
+  padding: 0 0.4rem;
+  background: transparent;
+  color: #1f1e1b;
+  border: 1px solid rgba(31, 30, 27, 0.18);
+  border-radius: 2px;
+}
+.mhb-nav-pos {
+  font: inherit;
+  font-size: 0.78em;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  color: #7a6a4e;
+  white-space: nowrap;
+}
+.mhb-nav-btn:focus-visible,
+.mhb-nav-sel:focus-visible {
+  outline: 3px solid #a8832c;
+  outline-offset: 2px;
+}
+.progreso {
+  height: 3px;
+  background: rgba(31, 30, 27, 0.12);
+}
+.progreso i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #a8832c;
+  transition: width 0.2s ease;
+}
