@@ -1,3 +1,16 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.museohistoriadelabiblia.mx"
+        }
+      ],
+      "destination": "https://museohistoriadelabiblia.mx/$1",
+      "permanent": true
+    }
+  ]
 }
