@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Códice de Alepo — Museo de Historia de la Biblia</title>
+<style>
+  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fondo);color:var(--tinta);
+    font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
+    font-size:20px;line-height:1.62;-webkit-text-size-adjust:100%;}
+  .hoja{max-width:40rem;margin:0 auto;padding:0 0 4rem}
+  header{background:var(--cabecera);color:var(--claro);padding:2.2rem 1.4rem 2rem;
+         display:flex;gap:1.3rem;align-items:center}
+  .sala{font-size:.78em;margin:0 0 .45rem;opacity:.85}
+  h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
+
+  main{padding:0 1.4rem}
+  .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
+  .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
+    background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);border-radius:2px;cursor:pointer}
+  .idiomas button[aria-pressed="true"]{background:var(--cabecera);color:var(--claro);border-color:var(--cabecera)}
+  .idiomas button:focus-visible,.control:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  .mandos{display:flex;gap:.6rem;align-items:center;margin:0 0 1.8rem}
+  .control{font:inherit;font-size:1em;display:inline-flex;align-items:center;gap:.55rem;
+    padding:.85rem 1.5rem;min-height:52px;background:var(--acento);color:#FFF6E6;border:none;border-radius:2px;cursor:pointer}
+  .control.secundario{background:transparent;color:var(--tinta);border:1.5px solid rgba(40,32,25,.35);padding:.85rem 1.1rem}
+  .control[hidden]{display:none}
+  .aviso{font-size:.8em;font-style:italic;margin:-1.2rem 0 1.8rem;color:#7a5c3e}
+  p.parrafo{margin:0 0 1.15rem;transition:background-color .25s}
+  p.parrafo.sonando{background:var(--marca);box-shadow:0 0 0 .35rem var(--marca)}
+  footer{margin:2.8rem 1.4rem 0;padding-top:1.2rem;border-top:1px solid rgba(40,32,25,.25);
+         font-size:.8em;font-style:italic;color:#7a5c3e}
+  @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
+</style>
+</head>
+<body>
+<div class="hoja">
+<header>
+  <div class="emb" aria-hidden="true"></div>
+  <div>
+    <p class="sala" id="ui-sala"></p>
+    <h1 id="ui-titulo"></h1>
+    <p class="siglo" id="ui-siglo"></p>
+  </div>
+</header>
+<main>
+  <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
+  <div class="mandos">
+    <button class="control" id="btn-play">▶ <span id="ui-play">Escuchar</span></button>
+    <button class="control secundario" id="btn-stop" hidden><span id="ui-stop">Detener</span></button>
+  </div>
+  <p class="aviso" id="ui-aviso" hidden></p>
+  <div id="texto"></div>
+</main>
+<footer id="ui-pie">Museo de Historia de la Biblia</footer>
+</div>
+<script>
+// Si pone aquí la URL de un MP3, esa voz sustituye a la del teléfono.
+const GRABACIONES = { es:"", en:"", fr:"", de:"", it:"" };
+const GUIA = {
+ "es": {
+  "nombre": "Español",
+  "voz": "es-MX",
+  "ui": {
+   "sala": "Vitrina 4b · Museo de Historia de la Biblia",
+   "titulo": "El Códice de Alepo",
+   "siglo": "",
+   "play": "Escuchar",
+   "stop": "Detener",
+   "pie": "Museo de Historia de la Biblia",
+   "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
+  },
+  "t": [
+   "Éste es el texto hebreo más exacto que existe. Y estuvo a punto de perderse por completo.",
+   "Es una copia de la Biblia hebrea entera, escrita hace más de mil años en Tiberíades, a orillas del lago de Galilea. Los especialistas lo fechan entre 920 y 930 d.C.",
+   "Las consonantes las copió el escriba Shlomo ben Buyaá. Las vocales, los acentos y las notas al margen los puso Aarón ben Asher, el último de una familia que llevaba cinco generaciones dedicada a lo mismo.",
+   "Y conviene explicar a qué se dedicaban, porque es el corazón de esta pieza. El hebreo se escribe sin vocales: las mismas consonantes pueden leerse de varias maneras. Durante siglos, esos maestros de Tiberíades, los masoretas, inventaron un sistema de puntos y rayas para fijar la pronunciación exacta sin tocar ni una sola letra del texto recibido. Lo dejaron todo anotado al margen: cuántas veces aparece cada palabra, dónde hay una forma rara, qué se lee distinto de como está escrito.",
+   "Ese trabajo lo hicieron para que nadie, nunca, tuviera que adivinar.",
+   "Y funcionó. En el siglo doce, Maimónides examinó este códice y dictaminó que era el modelo a seguir para escribir un rollo de la Torá. Con eso se convirtió en la referencia de todo el judaísmo.",
+   "Después vino el viaje. El códice llegó a la sinagoga de Alepo, en Siria, y ahí se guardó durante unos seiscientos años, bajo llave, en una caja de hierro. La comunidad le decía la Corona, y casi no lo enseñaba.",
+   "En 1,947, en los disturbios que siguieron a la partición de Palestina, la sinagoga ardió. De las cuatrocientas ochenta y siete hojas del códice, sobrevivieron doscientas noventa y cuatro. Se perdió casi todo el Pentateuco: lo que falta es, precisamente, la Torá.",
+   "Lo que quedó se escondió diez años, se sacó de Siria en secreto y se depositó en Jerusalén en 1,958. Hoy está en el Santuario del Libro. Y de vez en cuando aparece una hoja suelta en manos de alguien.",
+   "Y ahora mire lo que tiene delante, junto al rollo y al Talmud. En la vitrina anterior le contamos que un escriba cuenta letras y palabras para no equivocarse. Éste es el resultado de ese sistema llevado al extremo, y es también la prueba de que funcionó: durante mil años, miles de copias hechas a mano en lugares que no se conocían entre sí siguieron diciendo lo mismo.",
+   "Un detalle para quien lo mire con calma: en este códice las Crónicas no van al final, como en las Biblias hebreas impresas de hoy, sino al principio de los Escritos."
+  ]
+ }
+};
+
+const $ = id => document.getElementById(id);
+let actual = "es", audio = null;
+
+function pintarIdiomas(){
+  $("idiomas").innerHTML = "";
+  Object.keys(GUIA).forEach(k=>{
+    const b = document.createElement("button");
+    b.textContent = GUIA[k].nombre;
+    b.setAttribute("aria-pressed", k===actual);
+    b.onclick = ()=>{ detener(); actual = k; pintar(); };
+    $("idiomas").appendChild(b);
+  });
+}
+function pintar(){
+  const g = GUIA[actual];
+  document.documentElement.lang = actual;
+  $("ui-sala").textContent = g.ui.sala;
+  $("ui-titulo").textContent = g.ui.titulo;
+  $("ui-siglo").textContent = g.ui.siglo;
+  $("ui-play").textContent = g.ui.play;
+  $("ui-stop").textContent = g.ui.stop;
+  $("ui-pie").textContent = g.ui.pie;
+  $("ui-aviso").hidden = true;
+  $("texto").innerHTML = "";
+  g.t.forEach((p,i)=>{
+    const el = document.createElement("p");
+    el.className = "parrafo"; el.id = "p"+i; el.textContent = p;
+    $("texto").appendChild(el);
+  });
+  pintarIdiomas();
+}
+function marcar(i){
+  document.querySelectorAll(".parrafo.sonando").forEach(e=>e.classList.remove("sonando"));
+  if(i>=0){ const el = $("p"+i); if(el) el.classList.add("sonando"); }
+}
+function detener(){
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  if(audio){ audio.pause(); audio = null; }
+  marcar(-1);
+  $("btn-stop").hidden = true;
+  $("btn-play").hidden = false;
+}
+
+// Preferencias de voz: primero la región (México), luego el timbre masculino.
+const REGION = { es:["es-MX","es-US","es-419","es"], en:["en-US","en-GB","en"], fr:["fr-FR","fr"], de:["de-DE","de"], it:["it-IT","it"] };
+const HOMBRES = ["juan","jorge","diego","carlos","miguel","male","hombre","masculino","alex","aaron","daniel","fred","thomas","nicolas","mathieu","markus","yannick","hans","stefan","luca","federico","cosimo","alessio"];
+const MUJERES = ["paulina","monica","mónica","angelica","angélica","esperanza","marisol","samantha","karen","moira","tessa","amelie","amélie","audrey","anna","petra","katja","alice","elsa","female","mujer","femenino"];
+
+function elegirVoz(codigo){
+  const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : []);
+  if(!vs.length) return null;
+  const base = codigo.slice(0,2);
+  for(const reg of (REGION[base] || [base])){
+    const cand = vs.filter(v => v.lang.replace("_","-").toLowerCase().startsWith(reg.toLowerCase()));
+    if(!cand.length) continue;
+    const h = cand.find(v => HOMBRES.some(n => v.name.toLowerCase().includes(n)));
+    if(h) return h;
+    const neutra = cand.find(v => !MUJERES.some(n => v.name.toLowerCase().includes(n)));
+    return neutra || cand[0];
+  }
+  return null;
+}
+function hayVoz(codigo){
+  if(!window.speechSynthesis) return false;
+  const vs = speechSynthesis.getVoices();
+  if(!vs.length) return true;
+  return vs.some(v => v.lang.slice(0,2) === codigo.slice(0,2));
+}
+function escuchar(){
+  const g = GUIA[actual];
+  detener();
+  $("btn-play").hidden = true;
+  $("btn-stop").hidden = false;
+  if(GRABACIONES[actual]){
+    audio = new Audio(GRABACIONES[actual]);
+    audio.onended = detener;
+    audio.play();
+    return;
+  }
+  if(!window.speechSynthesis || !hayVoz(g.voz)){
+    $("ui-aviso").textContent = g.ui.aviso;
+    $("ui-aviso").hidden = false;
+    detener();
+    return;
+  }
+  const vozElegida = elegirVoz(g.voz);
+  g.t.forEach((p,i)=>{
+    const u = new SpeechSynthesisUtterance(p);
+    u.lang = g.voz; u.rate = 0.92;
+    if(vozElegida) u.voice = vozElegida;
+    u.onstart = ()=>marcar(i);
+    if(i===g.t.length-1) u.onend = detener;
+    speechSynthesis.speak(u);
+  });
+}
+$("btn-play").onclick = escuchar;
+$("btn-stop").onclick = detener;
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
+pintar();
+</script>
+</body>
+</html>
