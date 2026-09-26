@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/vitrina(\\d+)", "destination": "/vitrina$1.html" }
+  ]
+}
