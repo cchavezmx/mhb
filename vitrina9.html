@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La Hexapla de Orígenes — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  :root{ --fondo:#F0EFE8;--claro:#FAF9F3;--tinta:#1D1D18;--cabecera:#3B3A2C;--acento:#8A7C3C;--marca:rgba(138,124,60,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,8 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
+  .seis{flex:none;display:flex;gap:3px}
+  .seis i{display:block;width:8px;height:60px;background:var(--acento)}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,20 +39,21 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="emb" aria-hidden="true"></div>
+  <div class="seis" aria-hidden="true"><i></i><i style="opacity:.85"></i><i style="opacity:.7"></i><i style="opacity:.55"></i><i style="opacity:.4"></i><i style="opacity:.28"></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
     <p class="siglo" id="ui-siglo"></p>
   </div>
 </header>
-
   <div class="progreso"><i id="mhb-barra"></i></div>
   <nav class="mhb-nav" id="mhb-nav" aria-label="Navegación"></nav>
+
 <main>
   <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
   <div class="mandos">
@@ -71,9 +73,9 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 4a · Museo de Historia de la Biblia",
+   "sala": "Vitrina 4 · Museo de Historia de la Biblia",
    "titulo": "La Hexapla de Orígenes",
-   "siglo": "",
+   "siglo": "Cesarea, hacia el año 245 · seis columnas",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
@@ -82,14 +84,164 @@ const GUIA = {
   "t": [
    "Este libro no existe. Lo que usted tiene delante es el rastro de un libro perdido, y el más ambicioso que produjeron los primeros siglos del cristianismo.",
    "Cesarea, en la costa de Palestina, hacia el año 245. Un sabio venido de Alejandría, Orígenes, lleva casi veinte años en una tarea descomunal: quiere saber qué dice exactamente el Antiguo Testamento.",
-   "Tenía un problema entre manos. Los cristianos leían el griego de los Setenta, el que usted acaba de ver en la vitrina anterior. Los judíos leían el hebreo. Y no siempre decían lo mismo. Cuando unos y otros discutían, cada quien citaba su texto, y no había manera de averiguar quién tenía razón.",
+   "Tenía un problema entre manos. Los cristianos leían el griego de los Setenta, el que usted acaba de ver. Los judíos leían el hebreo. Y no siempre decían lo mismo. Cuando unos y otros discutían, cada quien citaba su texto, y no había manera de averiguar quién tenía razón.",
    "La solución de Orígenes fue ponerlo todo a la vista al mismo tiempo. Seis columnas. De ahí el nombre: Hexapla, la séxtuple. En la primera, el hebreo. En la segunda, ese mismo hebreo escrito con letras griegas, para poder pronunciarlo. Y luego cuatro versiones griegas: la de Áquila, la de Símaco, la de los Setenta y la de Teodoción.",
    "Y todavía hizo algo más. En la columna de los Setenta puso unas marcas al margen: una señal para lo que sobraba frente al hebreo, otra para lo que faltaba y él completaba. Con eso, cualquiera podía ver de un vistazo en qué punto se separaban los textos.",
    "Eso, que suena tan sencillo, es el primer trabajo de crítica textual de la historia. Todas las Biblias de estudio que hoy traen una nota al pie diciendo que otros manuscritos dicen otra cosa descienden de aquellas seis columnas.",
-   "El costo fue monstruoso. Se calcula que pasaban de seis mil páginas, tal vez quince volúmenes. Nadie logró copiarla entera jamás. El ejemplar único se guardó en la biblioteca de Cesarea, donde lo consultó san Jerónimo para hacer la Vulgata que verá usted dos vitrinas más adelante. Y ahí se perdió, probablemente en el siglo séptimo.",
+   "El costo fue monstruoso. Se calcula que pasaban de seis mil páginas, tal vez quince volúmenes. Nadie logró copiarla entera jamás. El ejemplar único se guardó en la biblioteca de Cesarea, donde lo consultó san Jerónimo para hacer la Vulgata que verá usted más adelante. Y ahí se perdió, probablemente en el siglo séptimo.",
    "De aquella montaña de páginas sobreviven migajas: una traducción siríaca, un palimpsesto hallado en Milán y un fragmento de Salmos que apareció en El Cairo. Y un detalle que sorprende a los especialistas: los dos testigos directos que quedan traen cinco columnas, no seis.",
    "Lo que usted tiene delante es el trabajo de Frederick Field, publicado en Oxford en 1,875: dos tomos donde reunió, línea por línea, todo lo que los Padres de la Iglesia citaron de aquella obra perdida. Es, hasta hoy, la manera de leer lo que queda de la Hexapla.",
-   "Y guárdese la idea, porque va a volver dos veces en este recorrido. Columnas paralelas para comparar lenguas. Eso mismo hará el cardenal Cisneros en Alcalá mil trescientos años después, y lo harán los ingleses en el siglo diecinueve. Todos ellos están copiando a un hombre que trabajaba en Cesarea en el año 245 d.C."
+   "Y guárdese la idea, porque va a volver dos veces en este recorrido. Columnas paralelas para comparar lenguas. Eso mismo hará el cardenal Cisneros en Alcalá mil trescientos años después, y lo harán los ingleses en el siglo diecinueve. Todos ellos están copiando a un hombre que trabajaba en Cesarea en el año 245."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 4 · Museum of the History of the Bible",
+   "titulo": "Origen's Hexapla",
+   "siglo": "Caesarea, about the year 245 · six columns",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "This book does not exist. What you have before you is the trace of a lost book, and the most ambitious that the first centuries of Christianity produced.",
+   "Caesarea, on the coast of Palestine, about the year 245. A scholar from Alexandria, Origen, has spent nearly twenty years on a colossal task: he wants to know exactly what the Old Testament says.",
+   "He had a problem on his hands. Christians read the Greek of the Seventy, which you have just seen. Jews read the Hebrew. And they did not always say the same thing. When the two sides argued, each quoted his own text, and there was no way of finding out who was right.",
+   "Origen's solution was to set it all out in view at once. Six columns. Hence the name: Hexapla, the sixfold. In the first, the Hebrew. In the second, that same Hebrew written in Greek letters, so that it could be pronounced. And then four Greek versions: that of Aquila, that of Symmachus, that of the Seventy and that of Theodotion.",
+   "And he did something more. In the column of the Seventy he put marks in the margin: one sign for what was there over and above the Hebrew, another for what was missing and he supplied. With that, anyone could see at a glance where the texts parted company.",
+   "That, which sounds so simple, is the first work of textual criticism in history. Every study Bible today that carries a footnote saying other manuscripts read differently descends from those six columns.",
+   "The cost was monstrous. It is reckoned to have run to more than six thousand pages, perhaps fifteen volumes. Nobody ever managed to copy it entire. The single exemplar was kept in the library of Caesarea, where Saint Jerome consulted it to make the Vulgate you will see further on. And there it was lost, probably in the seventh century.",
+   "Of that mountain of pages only crumbs survive: a Syriac translation, a palimpsest found in Milan and a fragment of Psalms that turned up in Cairo. And one detail that surprises the specialists: the two direct witnesses that remain carry five columns, not six.",
+   "What you have before you is the work of Frederick Field, published in Oxford in 1875: two volumes in which he gathered, line by line, everything the Fathers of the Church quoted from that lost work. It is, to this day, the way to read what remains of the Hexapla.",
+   "And keep the idea, because it will come back twice on this tour. Parallel columns to compare languages. Cardinal Cisneros will do the same in Alcalá thirteen hundred years later, and the English will do it in the nineteenth century. All of them are copying a man who was working in Caesarea in the year 245."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 4 · Musée de l'Histoire de la Bible",
+   "titulo": "Les Hexaples d'Origène",
+   "siglo": "Césarée, vers l'an 245 · six colonnes",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Ce livre n'existe pas. Ce que vous avez devant vous est la trace d'un livre perdu, et le plus ambitieux qu'aient produit les premiers siècles du christianisme.",
+   "Césarée, sur la côte de Palestine, vers l'an 245. Un savant venu d'Alexandrie, Origène, consacre depuis près de vingt ans à une tâche démesurée : il veut savoir ce que dit exactement l'Ancien Testament.",
+   "Il avait un problème sur les bras. Les chrétiens lisaient le grec des Septante, celui que vous venez de voir. Les juifs lisaient l'hébreu. Et ils ne disaient pas toujours la même chose. Quand les uns et les autres discutaient, chacun citait son texte, et il n'y avait pas moyen de savoir qui avait raison.",
+   "La solution d'Origène fut de tout mettre sous les yeux en même temps. Six colonnes. De là le nom : Hexaples, la sextuple. Dans la première, l'hébreu. Dans la deuxième, ce même hébreu écrit en lettres grecques, pour pouvoir le prononcer. Puis quatre versions grecques : celle d'Aquila, celle de Symmaque, celle des Septante et celle de Théodotion.",
+   "Et il fit encore autre chose. Dans la colonne des Septante il plaça des marques en marge : un signe pour ce qui était en trop par rapport à l'hébreu, un autre pour ce qui manquait et qu'il complétait. Ainsi, n'importe qui pouvait voir d'un coup d'œil où les textes se séparaient.",
+   "Cela, qui semble si simple, est le premier travail de critique textuelle de l'histoire. Toutes les Bibles d'étude qui portent aujourd'hui une note disant que d'autres manuscrits lisent autrement descendent de ces six colonnes.",
+   "Le coût fut monstrueux. On estime qu'elle dépassait six mille pages, peut-être quinze volumes. Personne ne parvint jamais à la copier en entier. L'exemplaire unique fut gardé à la bibliothèque de Césarée, où saint Jérôme le consulta pour faire la Vulgate que vous verrez plus loin. Et c'est là qu'il se perdit, probablement au septième siècle.",
+   "De cette montagne de pages il ne survit que des miettes : une traduction syriaque, un palimpseste trouvé à Milan et un fragment des Psaumes apparu au Caire. Et un détail qui surprend les spécialistes : les deux témoins directs qui restent portent cinq colonnes, non six.",
+   "Ce que vous avez devant vous est le travail de Frederick Field, publié à Oxford en 1875 : deux volumes où il réunit, ligne par ligne, tout ce que les Pères de l'Église citèrent de cette œuvre perdue. C'est, jusqu'à aujourd'hui, la manière de lire ce qui reste des Hexaples.",
+   "Et gardez cette idée, car elle reviendra deux fois dans ce parcours. Des colonnes parallèles pour comparer les langues. C'est ce que fera le cardinal Cisneros à Alcalá mille trois cents ans plus tard, et ce que feront les Anglais au dix-neuvième siècle. Tous copient un homme qui travaillait à Césarée en l'an 245."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 4 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Hexapla des Origenes",
+   "siglo": "Cäsarea, um das Jahr 245 · sechs Spalten",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Dieses Buch gibt es nicht. Was Sie vor sich haben, ist die Spur eines verlorenen Buches, und zwar des ehrgeizigsten, das die ersten Jahrhunderte des Christentums hervorbrachten.",
+   "Cäsarea an der Küste Palästinas, um das Jahr 245. Ein Gelehrter aus Alexandria, Origenes, arbeitet seit fast zwanzig Jahren an einer ungeheuren Aufgabe: er will wissen, was das Alte Testament genau sagt.",
+   "Er hatte ein Problem. Die Christen lasen das Griechisch der Siebzig, das Sie eben gesehen haben. Die Juden lasen das Hebräische. Und sie sagten nicht immer dasselbe. Wenn beide Seiten stritten, zitierte jeder seinen Text, und es gab keine Möglichkeit herauszufinden, wer recht hatte.",
+   "Die Lösung des Origenes war, alles zugleich vor Augen zu stellen. Sechs Spalten. Daher der Name: Hexapla, die Sechsfache. In der ersten das Hebräische. In der zweiten dasselbe Hebräisch in griechischen Buchstaben, damit man es aussprechen konnte. Und dann vier griechische Fassungen: die des Aquila, die des Symmachus, die der Siebzig und die des Theodotion.",
+   "Und er tat noch mehr. In der Spalte der Siebzig setzte er Zeichen an den Rand: eines für das, was gegenüber dem Hebräischen zu viel war, ein anderes für das, was fehlte und was er ergänzte. So konnte jeder auf einen Blick sehen, wo die Texte auseinandergingen.",
+   "Das, was so einfach klingt, ist die erste textkritische Arbeit der Geschichte. Jede Studienbibel, die heute eine Fußnote trägt, andere Handschriften läsen anders, stammt von jenen sechs Spalten ab.",
+   "Der Aufwand war ungeheuerlich. Man schätzt, dass es mehr als sechstausend Seiten waren, vielleicht fünfzehn Bände. Niemand hat sie je ganz abgeschrieben. Das einzige Exemplar lag in der Bibliothek von Cäsarea, wo Hieronymus es für die Vulgata heranzog, die Sie weiter hinten sehen werden. Und dort ging es verloren, vermutlich im siebten Jahrhundert.",
+   "Von jenem Berg von Seiten sind nur Krumen übrig: eine syrische Übersetzung, ein in Mailand gefundener Palimpsest und ein Psalmenfragment, das in Kairo auftauchte. Und eine Einzelheit, die die Fachleute überrascht: die beiden erhaltenen unmittelbaren Zeugen haben fünf Spalten, nicht sechs.",
+   "Was Sie vor sich haben, ist die Arbeit von Frederick Field, 1875 in Oxford erschienen: zwei Bände, in denen er Zeile für Zeile alles sammelte, was die Kirchenväter aus jenem verlorenen Werk zitierten. Es ist bis heute die Art, das Verbliebene der Hexapla zu lesen.",
+   "Und behalten Sie den Gedanken, denn er kehrt in diesem Rundgang zweimal wieder. Parallele Spalten, um Sprachen zu vergleichen. Genau das wird Kardinal Cisneros dreizehnhundert Jahre später in Alcalá tun, und die Engländer werden es im neunzehnten Jahrhundert tun. Sie alle kopieren einen Mann, der im Jahr 245 in Cäsarea arbeitete."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 4 · Museo di Storia della Bibbia",
+   "titulo": "L'Esapla di Origene",
+   "siglo": "Cesarea, verso l'anno 245 · sei colonne",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Questo libro non esiste. Ciò che ha davanti è la traccia di un libro perduto, e il più ambizioso che abbiano prodotto i primi secoli del cristianesimo.",
+   "Cesarea, sulla costa della Palestina, verso l'anno 245. Un dotto venuto da Alessandria, Origene, è da quasi vent'anni impegnato in un'impresa smisurata: vuole sapere che cosa dice esattamente l'Antico Testamento.",
+   "Aveva un problema per le mani. I cristiani leggevano il greco dei Settanta, quello che lei ha appena visto. Gli ebrei leggevano l'ebraico. E non sempre dicevano la stessa cosa. Quando gli uni e gli altri discutevano, ciascuno citava il proprio testo, e non c'era modo di sapere chi avesse ragione.",
+   "La soluzione di Origene fu metterlo tutto sotto gli occhi nello stesso momento. Sei colonne. Di qui il nome: Esapla, la sestuplice. Nella prima, l'ebraico. Nella seconda, lo stesso ebraico scritto in lettere greche, per poterlo pronunciare. E poi quattro versioni greche: quella di Aquila, quella di Simmaco, quella dei Settanta e quella di Teodozione.",
+   "E fece ancora dell'altro. Nella colonna dei Settanta mise dei segni al margine: uno per ciò che era in più rispetto all'ebraico, un altro per ciò che mancava e che lui integrava. Così chiunque poteva vedere a colpo d'occhio dove i testi si separavano.",
+   "Questo, che suona tanto semplice, è il primo lavoro di critica testuale della storia. Tutte le Bibbie di studio che oggi portano una nota dicendo che altri manoscritti leggono diversamente discendono da quelle sei colonne.",
+   "Il costo fu mostruoso. Si calcola che superasse le seimila pagine, forse quindici volumi. Nessuno riuscì mai a copiarla per intero. L'esemplare unico fu custodito nella biblioteca di Cesarea, dove san Girolamo lo consultò per fare la Vulgata che vedrà più avanti. E lì andò perduto, probabilmente nel settimo secolo.",
+   "Di quella montagna di pagine sopravvivono briciole: una traduzione siriaca, un palinsesto trovato a Milano e un frammento di Salmi comparso al Cairo. E un dettaglio che sorprende gli specialisti: i due testimoni diretti rimasti hanno cinque colonne, non sei.",
+   "Ciò che ha davanti è il lavoro di Frederick Field, pubblicato a Oxford nel 1875: due volumi in cui raccolse, riga per riga, tutto ciò che i Padri della Chiesa citarono di quell'opera perduta. È, ancora oggi, il modo di leggere ciò che resta dell'Esapla.",
+   "E si tenga questa idea, perché tornerà due volte in questo percorso. Colonne parallele per confrontare lingue. Lo stesso farà il cardinale Cisneros ad Alcalá milletrecento anni dopo, e lo faranno gli inglesi nell'Ottocento. Tutti stanno copiando un uomo che lavorava a Cesarea nell'anno 245."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 4 · Museu de História da Bíblia",
+   "titulo": "A Héxapla de Orígenes",
+   "siglo": "Cesareia, por volta do ano 245 · seis colunas",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Este livro não existe. O que você tem diante de si é o rastro de um livro perdido, e o mais ambicioso que produziram os primeiros séculos do cristianismo.",
+   "Cesareia, na costa da Palestina, por volta do ano 245. Um sábio vindo de Alexandria, Orígenes, está há quase vinte anos numa tarefa descomunal: quer saber o que diz exatamente o Antigo Testamento.",
+   "Tinha um problema nas mãos. Os cristãos liam o grego dos Setenta, aquele que você acabou de ver. Os judeus liam o hebraico. E nem sempre diziam a mesma coisa. Quando uns e outros discutiam, cada qual citava o seu texto, e não havia como averiguar quem tinha razão.",
+   "A solução de Orígenes foi pôr tudo à vista ao mesmo tempo. Seis colunas. Daí o nome: Héxapla, a sêxtupla. Na primeira, o hebraico. Na segunda, esse mesmo hebraico escrito com letras gregas, para poder pronunciá-lo. E depois quatro versões gregas: a de Áquila, a de Símaco, a dos Setenta e a de Teodocião.",
+   "E ainda fez mais. Na coluna dos Setenta pôs marcas à margem: um sinal para o que sobrava em relação ao hebraico, outro para o que faltava e ele completava. Com isso, qualquer um podia ver de relance em que ponto os textos se separavam.",
+   "Isso, que soa tão simples, é o primeiro trabalho de crítica textual da história. Todas as Bíblias de estudo que hoje trazem uma nota de rodapé dizendo que outros manuscritos dizem outra coisa descendem daquelas seis colunas.",
+   "O custo foi monstruoso. Calcula-se que passava de seis mil páginas, talvez quinze volumes. Ninguém conseguiu copiá-la inteira jamais. O exemplar único ficou na biblioteca de Cesareia, onde são Jerônimo o consultou para fazer a Vulgata que você verá mais adiante. E ali se perdeu, provavelmente no século sétimo.",
+   "Daquela montanha de páginas sobrevivem migalhas: uma tradução siríaca, um palimpsesto achado em Milão e um fragmento de Salmos que apareceu no Cairo. E um detalhe que surpreende os especialistas: as duas testemunhas diretas que restam trazem cinco colunas, não seis.",
+   "O que você tem diante de si é o trabalho de Frederick Field, publicado em Oxford em 1875: dois volumes onde reuniu, linha por linha, tudo o que os Padres da Igreja citaram daquela obra perdida. É, até hoje, a maneira de ler o que resta da Héxapla.",
+   "E guarde a ideia, porque ela vai voltar duas vezes neste percurso. Colunas paralelas para comparar línguas. Isso mesmo fará o cardeal Cisneros em Alcalá mil e trezentos anos depois, e o farão os ingleses no século dezenove. Todos eles estão copiando um homem que trabalhava em Cesareia no ano 245."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 4 · Музей истории Библии",
+   "titulo": "Гексапла Оригена",
+   "siglo": "Кесария, около 245 года · шесть столбцов",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Этой книги не существует. Перед вами след утраченной книги — самой честолюбивой из всех, какие создали первые века христианства.",
+   "Кесария на побережье Палестины, около 245 года. Учёный, пришедший из Александрии, Ориген, почти двадцать лет занят непомерным трудом: он хочет знать, что именно говорит Ветхий Завет.",
+   "Перед ним стояла трудность. Христиане читали греческий текст Семидесяти — тот, который вы только что видели. Иудеи читали еврейский. И говорили они не всегда одно и то же. Когда те и другие спорили, каждый ссылался на свой текст, и не было способа выяснить, кто прав.",
+   "Ориген решил выставить всё разом перед глазами. Шесть столбцов. Отсюда название: Гексапла, шестистолпная. В первом — еврейский текст. Во втором — тот же еврейский, записанный греческими буквами, чтобы его можно было произнести. А затем четыре греческих перевода: Акилы, Симмаха, Семидесяти и Феодотиона.",
+   "И он сделал ещё кое-что. В столбце Семидесяти он поставил на полях знаки: один — для того, что было лишним против еврейского, другой — для того, чего недоставало и что он восполнял. Так всякий мог с одного взгляда увидеть, где тексты расходятся.",
+   "Это, столь простое на слух, — первая работа по текстологии в истории. Все учебные Библии, где сегодня стоит сноска «в других рукописях читается иначе», происходят от тех шести столбцов.",
+   "Труд был чудовищным. Считают, что он превышал шесть тысяч страниц, возможно пятнадцать томов. Целиком его не переписал никто и никогда. Единственный экземпляр хранился в библиотеке Кесарии, где с ним работал святой Иероним, создавая Вульгату, которую вы увидите дальше. Там он и пропал — вероятно, в седьмом веке.",
+   "От той горы страниц уцелели крохи: сирийский перевод, палимпсест, найденный в Милане, и отрывок Псалмов, обнаруженный в Каире. И одна подробность, удивляющая специалистов: оба сохранившихся прямых свидетеля содержат пять столбцов, а не шесть.",
+   "Перед вами труд Фредерика Филда, изданный в Оксфорде в 1875 году: два тома, в которых он строка за строкой собрал всё, что отцы Церкви цитировали из этого утраченного сочинения. До сего дня это единственный способ прочесть то, что осталось от Гексаплы.",
+   "И запомните эту мысль: она вернётся на нашем пути дважды. Параллельные столбцы, чтобы сравнивать языки. То же самое сделает кардинал Сиснерос в Алькале тысячу триста лет спустя, и то же сделают англичане в девятнадцатом веке. Все они повторяют человека, работавшего в Кесарии в 245 году."
   ]
  }
 };
@@ -194,6 +346,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

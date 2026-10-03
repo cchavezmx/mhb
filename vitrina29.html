@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La English Hexapla — Museo de Historia de la Biblia</title>
+<title>El Nuevo Testamento de Enzinas — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F1EDE2;--claro:#FBF7EC;--tinta:#1E1A13;--cabecera:#1E3A2C;--acento:#9B2418;--marca:rgba(155,36,24,.16); }
+  :root{ --fondo:#F1EEE7;--claro:#FAF7F1;--tinta:#1C1B16;--cabecera:#3A2E3E;--acento:#7A5A8A;--marca:rgba(122,90,138,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,10 +17,8 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .hexa{flex:none;background:var(--claro);padding:6px}
-  .hexa .griego{height:5px;background:var(--acento);margin-bottom:5px}
-  .hexa .seis{display:flex;gap:3px}
-  .hexa .c{width:9px;height:54px;background:repeating-linear-gradient(to bottom,var(--tinta) 0 1.1px,transparent 1.1px 4.3px)}
+  .mano{flex:none;width:64px;height:62px;border:2.5px solid var(--acento);border-radius:4px 4px 14px 14px;display:flex;align-items:flex-start;justify-content:center;padding-top:8px}
+  .mano b{display:block;width:34px;height:24px;background:var(--acento);border-radius:2px}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -41,11 +39,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="hexa" aria-hidden="true"><div class="griego"></div><div class="seis"><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div></div></div>
+  <div class="mano" aria-hidden="true"><b></b></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -74,130 +73,147 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 13 · Museo de Historia de la Biblia",
-   "titulo": "La English Hexapla",
-   "siglo": "Londres, 1841 · seis versiones inglesas",
+   "sala": "Vitrina 17a · Museo de Historia de la Biblia",
+   "titulo": "El Nuevo Testamento de Enzinas",
+   "siglo": "Amberes, 1,543 · el primero en castellano",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Seis versiones inglesas del Nuevo Testamento, una junto a otra, y arriba de todas el griego. Eso es este libro. Londres, 1,841, de la casa Samuel Bagster.",
-   "El nombre lo tomaron de Orígenes, aquel sabio del siglo tercero que puso seis columnas en una página para comparar textos. Mil seiscientos años después, los ingleses hicieron lo mismo con su propia lengua.",
-   "Mire las columnas, de izquierda a derecha, y va usted leyendo trescientos años de historia.",
-   "La primera es la de Wiclif, del año 1,380. La primera Biblia en inglés. Traducida del latín, a mano, antes de que existiera la imprenta. A Wiclif lo declararon hereje después de muerto; desenterraron sus huesos, los quemaron y echaron las cenizas al río.",
-   "La segunda es la de Tyndale, de 1,534. Él sí tradujo del griego, del texto de Erasmo que usted acaba de ver en la sala anterior. Lo hizo huyendo, escondido en Alemania y en Amberes. Lo traicionaron, lo estrangularon y lo quemaron en 1,536. Sus últimas palabras, dicen, fueron una oración pidiendo que Dios le abriera los ojos al rey de Inglaterra.",
-   "La tercera es la de Cranmer, de 1,539, la Gran Biblia, la primera autorizada oficialmente. A Cranmer también lo quemaron, diecisiete años después.",
-   "La cuarta es la de Ginebra, de 1,557, hecha por ingleses exiliados que huían de una reina católica. La quinta es la de Reims, de 1,582, hecha por ingleses exiliados que huían de una reina protestante. Dos grupos de desterrados, corriendo en direcciones contrarias, por el mismo motivo: traducir la Biblia. Y hoy sus dos trabajos duermen en la misma página, a un dedo de distancia.",
-   "La sexta es la King James (rey Jacobo), de 1,611. La que se volvió la Biblia del mundo de habla inglesa por más de tres siglos.",
-   "Y ahora acérquese y compare la columna de Tyndale con la de 1,611. Están casi iguales. Aquellos cuarenta y siete eruditos del rey copiaron a Tyndale casi palabra por palabra. El hombre a quien quemaron por traducir terminó siendo el autor principal de la Biblia oficial de Inglaterra, sin que su nombre apareciera en ninguna parte.",
-   "Eso es lo que este libro permite ver, y por eso lo tenemos aquí. Tres de estas seis columnas las escribieron hombres que murieron en la hoguera o cuyos restos acabaron en ella. Ninguna de esas muertes detuvo una sola palabra.",
-   "Falta todavía una lengua en este recorrido, y es la suya. Ésa está en la vitrina siguiente."
+   "Un muchacho de veintisiete años le puso este libro en las manos al hombre más poderoso del mundo. Y por eso terminó en la cárcel.",
+   "Se llamaba Francisco de Enzinas, era de Burgos, y había estudiado en Lovaina y en Wittenberg, donde vivió en casa de Melanchthon. Tradujo el Nuevo Testamento al castellano desde el griego de Erasmo, el mismo que usted vio unas vitrinas atrás. Se imprimió en Amberes, en 1,543. Es el primer Nuevo Testamento completo en nuestra lengua salido de una imprenta.",
+   "Y entonces hizo algo que nadie esperaba: en lugar de esconderlo, pidió audiencia con el emperador Carlos quinto y se lo entregó en persona, en Bruselas. El emperador le preguntó quién era el autor. Él contestó que él mismo. Carlos le dijo que si el libro era lo que decía ser, no habría problema, y lo mandó con su confesor.",
+   "Pocos días después estaba preso. Quince meses encerrado en Bruselas. Escapó en 1,545 por una puerta que encontró abierta una noche, y ya nunca volvió a España. Murió de peste en Estrasburgo en 1,552, a los treinta y cuatro años.",
+   "Fíjese en el detalle, porque dice mucho: no lo encarcelaron por esconder el libro. Lo encarcelaron por enseñarlo.",
+   "Y con éste empieza la parte del recorrido que más nos toca. De aquí en adelante, todo lo que verá está en nuestra lengua."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 13 · Museum of the History of the Bible",
-   "titulo": "The English Hexapla",
-   "siglo": "London, 1841 · six English versions",
+   "sala": "Case 17a · Museum of the History of the Bible",
+   "titulo": "Enzinas's New Testament",
+   "siglo": "Antwerp, 1543 · the first in Spanish",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Six English versions of the New Testament, one beside the other, and above them all the Greek. That is what this book is. London, 1841, from the house of Samuel Bagster.",
-   "The name they borrowed from Origen, that scholar of the third century who set six columns on a page in order to compare texts. Sixteen hundred years later, the English did the same with their own language.",
-   "Look at the columns, from left to right, and you are reading three hundred years of history.",
-   "The first is Wyclif's, from the year 1380. The first Bible in English. Translated from the Latin, by hand, before printing existed. Wyclif was declared a heretic after his death; they dug up his bones, burned them, and threw the ashes into the river.",
-   "The second is Tyndale's, from 1534. He did translate from the Greek, from the text of Erasmus you saw earlier on this tour. He did it on the run, hiding in Germany and in Antwerp. He was betrayed, strangled and burned in 1536. His last words, they say, were a prayer that God would open the eyes of the king of England.",
-   "The third is Cranmer's, from 1539, the Great Bible, the first one officially authorised. Cranmer too was burned, seventeen years later.",
-   "The fourth is the Geneva, from 1557, made by English exiles fleeing a Catholic queen. The fifth is the Rheims, from 1582, made by English exiles fleeing a Protestant queen. Two groups of exiles, running in opposite directions, for the same reason: to translate the Bible. And today their two works sleep on the same page, a finger's width apart.",
-   "The sixth is King James's, from 1611. The one that became the Bible of the English-speaking world for more than three centuries.",
-   "Now come closer and compare Tyndale's column with the one from 1611. They are almost the same. Those forty-seven scholars of the king copied Tyndale almost word for word. The man they burned for translating ended up as the principal author of the official Bible of England, without his name appearing anywhere in it.",
-   "That is what this book lets you see, and that is why it is here. Three of these six columns were written by men who died at the stake, or whose remains ended up there. Not one of those deaths stopped a single word.",
-   "One language is still missing from this tour, and it is yours. That one is in the next case."
+   "A young man of twenty-seven put this book into the hands of the most powerful man in the world. And for that he ended up in prison.",
+   "His name was Francisco de Enzinas, he was from Burgos, and he had studied at Louvain and at Wittenberg, where he lived in Melanchthon's house. He translated the New Testament into Spanish from the Greek of Erasmus, the same one you saw a few cases back. It was printed in Antwerp, in 1543. It is the first complete New Testament in our language to come off a printing press.",
+   "And then he did something nobody expected: instead of hiding it, he asked for an audience with the emperor Charles the Fifth and handed it to him in person, in Brussels. The emperor asked who the author was. He answered that he was. Charles told him that if the book was what it claimed to be there would be no trouble, and sent him to his confessor.",
+   "A few days later he was under arrest. Fifteen months shut up in Brussels. He escaped in 1545 through a door he found open one night, and never returned to Spain. He died of plague in Strasbourg in 1552, at the age of thirty-four.",
+   "Note the detail, because it says a great deal: he was not imprisoned for hiding the book. He was imprisoned for showing it.",
+   "And with this begins the part of the tour that touches us most closely. From here on, everything you will see is in our own language."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 13 · Musée de l'Histoire de la Bible",
-   "titulo": "L'English Hexapla",
-   "siglo": "Londres, 1841 · six versions anglaises",
+   "sala": "Vitrine 17a · Musée de l'Histoire de la Bible",
+   "titulo": "Le Nouveau Testament d'Enzinas",
+   "siglo": "Anvers, 1543 · le premier en castillan",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Six versions anglaises du Nouveau Testament, l'une à côté de l'autre, et au-dessus de toutes, le grec. Voilà ce qu'est ce livre. Londres, 1841, de la maison Samuel Bagster.",
-   "Le nom, ils l'ont emprunté à Origène, ce savant du troisième siècle qui disposa six colonnes sur une page pour comparer les textes. Seize cents ans plus tard, les Anglais ont fait de même avec leur propre langue.",
-   "Regardez les colonnes, de gauche à droite : vous lisez trois cents ans d'histoire.",
-   "La première est celle de Wiclif, de l'an 1380. La première Bible en anglais. Traduite du latin, à la main, avant même l'imprimerie. Wiclif fut déclaré hérétique après sa mort ; on déterra ses os, on les brûla et on jeta les cendres dans la rivière.",
-   "La deuxième est celle de Tyndale, de 1534. Lui, il a traduit du grec, du texte d'Érasme que vous avez vu plus tôt dans ce parcours. Il l'a fait en fuite, caché en Allemagne et à Anvers. Il fut trahi, étranglé et brûlé en 1536. Ses derniers mots, dit-on, furent une prière pour que Dieu ouvre les yeux du roi d'Angleterre.",
-   "La troisième est celle de Cranmer, de 1539, la Grande Bible, la première autorisée officiellement. Cranmer aussi fut brûlé, dix-sept ans plus tard.",
-   "La quatrième est celle de Genève, de 1557, faite par des exilés anglais fuyant une reine catholique. La cinquième est celle de Reims, de 1582, faite par des exilés anglais fuyant une reine protestante. Deux groupes de bannis, courant en sens contraire, pour la même raison : traduire la Bible. Et aujourd'hui leurs deux travaux dorment sur la même page, à un doigt l'un de l'autre.",
-   "La sixième est celle du roi Jacques, de 1611. Celle qui devint la Bible du monde anglophone pendant plus de trois siècles.",
-   "Approchez-vous maintenant et comparez la colonne de Tyndale avec celle de 1611. Elles sont presque identiques. Ces quarante-sept savants du roi ont copié Tyndale presque mot pour mot. L'homme qu'on avait brûlé pour avoir traduit devint l'auteur principal de la Bible officielle d'Angleterre, sans que son nom figure nulle part.",
-   "C'est cela que ce livre permet de voir, et c'est pour cela qu'il est ici. Trois de ces six colonnes ont été écrites par des hommes morts sur le bûcher, ou dont les restes y ont fini. Aucune de ces morts n'a arrêté un seul mot.",
-   "Il manque encore une langue à ce parcours, et c'est la vôtre. Celle-là est dans la vitrine suivante."
+   "Un jeune homme de vingt-sept ans mit ce livre entre les mains de l'homme le plus puissant du monde. Et pour cela il finit en prison.",
+   "Il s'appelait Francisco de Enzinas, il était de Burgos, et il avait étudié à Louvain et à Wittenberg, où il vécut chez Melanchthon. Il traduisit le Nouveau Testament en castillan à partir du grec d'Érasme, celui-là même que vous avez vu quelques vitrines plus tôt. Il fut imprimé à Anvers, en 1543. C'est le premier Nouveau Testament complet en notre langue sorti d'une imprimerie.",
+   "Et alors il fit ce que personne n'attendait : au lieu de le cacher, il demanda audience à l'empereur Charles Quint et le lui remit en personne, à Bruxelles. L'empereur lui demanda qui en était l'auteur. Il répondit que c'était lui. Charles lui dit que si le livre était ce qu'il prétendait être, il n'y aurait pas de problème, et l'envoya à son confesseur.",
+   "Peu de jours après il était prisonnier. Quinze mois enfermé à Bruxelles. Il s'évada en 1545 par une porte qu'il trouva ouverte une nuit, et il ne revint jamais en Espagne. Il mourut de la peste à Strasbourg en 1552, à trente-quatre ans.",
+   "Remarquez le détail, car il en dit long : on ne l'emprisonna pas pour avoir caché le livre. On l'emprisonna pour l'avoir montré.",
+   "Et avec celui-ci commence la partie du parcours qui nous touche le plus. À partir d'ici, tout ce que vous verrez est dans notre langue."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 13 · Museum zur Geschichte der Bibel",
-   "titulo": "Die English Hexapla",
-   "siglo": "London, 1841 · sechs englische Fassungen",
+   "sala": "Vitrine 17a · Museum zur Geschichte der Bibel",
+   "titulo": "Das Neue Testament des Enzinas",
+   "siglo": "Antwerpen, 1543 · das erste auf Spanisch",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Sechs englische Fassungen des Neuen Testaments, eine neben der anderen, und über ihnen allen das Griechische. Das ist dieses Buch. London, 1841, aus dem Hause Samuel Bagster.",
-   "Den Namen entliehen sie Origenes, jenem Gelehrten des dritten Jahrhunderts, der sechs Spalten auf eine Seite setzte, um Texte zu vergleichen. Sechzehnhundert Jahre später taten die Engländer dasselbe mit ihrer eigenen Sprache.",
-   "Sehen Sie sich die Spalten an, von links nach rechts: Sie lesen dreihundert Jahre Geschichte.",
-   "Die erste ist die von Wiclif, aus dem Jahr 1380. Die erste Bibel auf Englisch. Aus dem Lateinischen übersetzt, von Hand, bevor es den Buchdruck gab. Wiclif wurde nach seinem Tod zum Ketzer erklärt; man grub seine Gebeine aus, verbrannte sie und warf die Asche in den Fluss.",
-   "Die zweite ist die von Tyndale, aus dem Jahr 1534. Er übersetzte aus dem Griechischen, aus dem Text des Erasmus, den Sie früher auf diesem Rundgang gesehen haben. Er tat es auf der Flucht, versteckt in Deutschland und in Antwerpen. Er wurde verraten, erdrosselt und 1536 verbrannt. Seine letzten Worte, so heißt es, waren ein Gebet, Gott möge dem König von England die Augen öffnen.",
-   "Die dritte ist die von Cranmer, aus dem Jahr 1539, die Große Bibel, die erste amtlich genehmigte. Auch Cranmer wurde verbrannt, siebzehn Jahre später.",
-   "Die vierte ist die Genfer, von 1557, gemacht von englischen Verbannten auf der Flucht vor einer katholischen Königin. Die fünfte ist die von Reims, von 1582, gemacht von englischen Verbannten auf der Flucht vor einer protestantischen Königin. Zwei Gruppen von Vertriebenen, die in entgegengesetzte Richtungen liefen, aus demselben Grund: die Bibel zu übersetzen. Und heute schlafen ihre beiden Werke auf derselben Seite, einen Finger breit voneinander entfernt.",
-   "Die sechste ist die des Königs Jakob, von 1611. Jene, die für mehr als drei Jahrhunderte zur Bibel der englischsprachigen Welt wurde.",
-   "Treten Sie nun näher und vergleichen Sie die Spalte Tyndales mit der von 1611. Sie sind fast gleich. Jene siebenundvierzig Gelehrten des Königs schrieben Tyndale beinahe Wort für Wort ab. Der Mann, den man für das Übersetzen verbrannt hatte, wurde zum Hauptverfasser der amtlichen Bibel Englands, ohne dass sein Name irgendwo erschien.",
-   "Das ist es, was dieses Buch sehen lässt, und darum steht es hier. Drei dieser sechs Spalten schrieben Männer, die auf dem Scheiterhaufen starben oder deren Gebeine dort endeten. Keiner dieser Tode hat ein einziges Wort aufgehalten.",
-   "Eine Sprache fehlt diesem Rundgang noch, und es ist die Ihre. Die steht in der nächsten Vitrine."
+   "Ein junger Mann von siebenundzwanzig Jahren legte dieses Buch dem mächtigsten Mann der Welt in die Hände. Und dafür landete er im Gefängnis.",
+   "Er hieß Francisco de Enzinas, war aus Burgos und hatte in Löwen und in Wittenberg studiert, wo er im Hause Melanchthons lebte. Er übersetzte das Neue Testament ins Spanische aus dem Griechischen des Erasmus, eben jenem, das Sie einige Vitrinen zuvor gesehen haben. Gedruckt wurde es in Antwerpen, 1543. Es ist das erste vollständige Neue Testament in unserer Sprache, das aus einer Druckerpresse kam.",
+   "Und dann tat er, was niemand erwartete: statt es zu verbergen, erbat er eine Audienz bei Kaiser Karl dem Fünften und überreichte es ihm persönlich, in Brüssel. Der Kaiser fragte, wer der Verfasser sei. Er antwortete, er selbst. Karl sagte ihm, wenn das Buch sei, was es zu sein vorgebe, werde es keine Schwierigkeiten geben, und schickte ihn zu seinem Beichtvater.",
+   "Wenige Tage später saß er in Haft. Fünfzehn Monate eingeschlossen in Brüssel. 1545 entkam er durch eine Tür, die er eines Nachts offen fand, und kehrte nie nach Spanien zurück. Er starb 1552 in Straßburg an der Pest, mit vierunddreißig Jahren.",
+   "Beachten Sie die Einzelheit, denn sie sagt viel: man sperrte ihn nicht ein, weil er das Buch versteckte. Man sperrte ihn ein, weil er es zeigte.",
+   "Und mit diesem beginnt der Teil des Rundgangs, der uns am nächsten angeht. Von hier an ist alles, was Sie sehen werden, in unserer Sprache."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 13 · Museo di Storia della Bibbia",
-   "titulo": "L'English Hexapla",
-   "siglo": "Londra, 1841 · sei versioni inglesi",
+   "sala": "Vetrina 17a · Museo di Storia della Bibbia",
+   "titulo": "Il Nuovo Testamento di Enzinas",
+   "siglo": "Anversa, 1543 · il primo in castigliano",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Sei versioni inglesi del Nuovo Testamento, una accanto all'altra, e sopra tutte il greco. Questo è il libro che ha davanti. Londra, 1841, della casa Samuel Bagster.",
-   "Il nome lo presero da Origene, quel dotto del terzo secolo che dispose sei colonne su una pagina per confrontare i testi. Milleseicento anni dopo, gli inglesi fecero lo stesso con la propria lingua.",
-   "Guardi le colonne, da sinistra a destra: sta leggendo trecento anni di storia.",
-   "La prima è quella di Wiclif, dell'anno 1380. La prima Bibbia in inglese. Tradotta dal latino, a mano, prima che esistesse la stampa. Wiclif fu dichiarato eretico dopo morto; ne dissotterrarono le ossa, le bruciarono e gettarono le ceneri nel fiume.",
-   "La seconda è quella di Tyndale, del 1534. Lui tradusse dal greco, dal testo di Erasmo che ha visto prima in questo percorso. Lo fece in fuga, nascosto in Germania e ad Anversa. Fu tradito, strangolato e bruciato nel 1536. Le sue ultime parole, si dice, furono una preghiera perché Dio aprisse gli occhi al re d'Inghilterra.",
-   "La terza è quella di Cranmer, del 1539, la Grande Bibbia, la prima autorizzata ufficialmente. Anche Cranmer fu bruciato, diciassette anni dopo.",
-   "La quarta è quella di Ginevra, del 1557, fatta da esuli inglesi in fuga da una regina cattolica. La quinta è quella di Reims, del 1582, fatta da esuli inglesi in fuga da una regina protestante. Due gruppi di esuli, che correvano in direzioni opposte, per la stessa ragione: tradurre la Bibbia. E oggi le loro due opere dormono sulla stessa pagina, a un dito di distanza.",
-   "La sesta è quella di re Giacomo, del 1611. Quella che divenne la Bibbia del mondo anglofono per più di tre secoli.",
-   "Ora si avvicini e confronti la colonna di Tyndale con quella del 1611. Sono quasi uguali. Quei quarantasette dotti del re copiarono Tyndale quasi parola per parola. L'uomo che avevano bruciato per aver tradotto divenne l'autore principale della Bibbia ufficiale d'Inghilterra, senza che il suo nome comparisse da nessuna parte.",
-   "È questo che il libro permette di vedere, ed è per questo che sta qui. Tre di queste sei colonne le scrissero uomini morti sul rogo, o le cui spoglie finirono lì. Nessuna di quelle morti fermò una sola parola.",
-   "Manca ancora una lingua in questo percorso, ed è la sua. Quella è nella vetrina seguente."
+   "Un giovane di ventisette anni mise questo libro nelle mani dell'uomo più potente del mondo. E per questo finì in carcere.",
+   "Si chiamava Francisco de Enzinas, era di Burgos, e aveva studiato a Lovanio e a Wittenberg, dove visse in casa di Melantone. Tradusse il Nuovo Testamento in castigliano dal greco di Erasmo, lo stesso che lei ha visto qualche vetrina fa. Fu stampato ad Anversa, nel 1543. È il primo Nuovo Testamento completo nella nostra lingua uscito da una stamperia.",
+   "E allora fece ciò che nessuno si aspettava: invece di nasconderlo, chiese udienza all'imperatore Carlo quinto e glielo consegnò di persona, a Bruxelles. L'imperatore gli chiese chi fosse l'autore. Rispose che era lui. Carlo gli disse che se il libro era quello che diceva di essere non ci sarebbero stati problemi, e lo mandò dal suo confessore.",
+   "Pochi giorni dopo era prigioniero. Quindici mesi rinchiuso a Bruxelles. Fuggì nel 1545 da una porta che una notte trovò aperta, e non tornò mai più in Spagna. Morì di peste a Strasburgo nel 1552, a trentaquattro anni.",
+   "Noti il dettaglio, perché dice molto: non lo incarcerarono per aver nascosto il libro. Lo incarcerarono per averlo mostrato.",
+   "E con questo comincia la parte del percorso che più ci tocca. Da qui in avanti, tutto ciò che vedrà è nella nostra lingua."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 17a · Museu de História da Bíblia",
+   "titulo": "O Novo Testamento de Enzinas",
+   "siglo": "Antuérpia, 1543 · o primeiro em castelhano",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Um rapaz de vinte e sete anos pôs este livro nas mãos do homem mais poderoso do mundo. E por isso acabou na cadeia.",
+   "Chamava-se Francisco de Enzinas, era de Burgos, e tinha estudado em Lovaina e em Wittenberg, onde viveu em casa de Melanchthon. Traduziu o Novo Testamento para o castelhano a partir do grego de Erasmo, o mesmo que você viu umas vitrines atrás. Imprimiu-se em Antuérpia, em 1543. É o primeiro Novo Testamento completo na nossa língua saído de uma imprensa.",
+   "E então fez algo que ninguém esperava: em vez de escondê-lo, pediu audiência ao imperador Carlos quinto e entregou-lho em pessoa, em Bruxelas. O imperador perguntou-lhe quem era o autor. Respondeu que ele mesmo. Carlos disse-lhe que se o livro era o que dizia ser, não haveria problema, e mandou-o ao seu confessor.",
+   "Poucos dias depois estava preso. Quinze meses encerrado em Bruxelas. Escapou em 1545 por uma porta que encontrou aberta uma noite, e nunca mais voltou à Espanha. Morreu de peste em Estrasburgo em 1552, aos trinta e quatro anos.",
+   "Repare no detalhe, porque diz muito: não o prenderam por esconder o livro. Prenderam-no por mostrá-lo.",
+   "E com este começa a parte do percurso que mais nos toca. Daqui em diante, tudo o que verá está na nossa língua."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 17a · Музей истории Библии",
+   "titulo": "Новый Завет Энсинаса",
+   "siglo": "Антверпен, 1543 · первый по-испански",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Юноша двадцати семи лет вложил эту книгу в руки самому могущественному человеку мира. И за это оказался в тюрьме.",
+   "Его звали Франсиско де Энсинас, он был из Бургоса и учился в Лёвене и в Виттенберге, где жил в доме Меланхтона. Он перевёл Новый Завет на испанский с греческого текста Эразма — того самого, который вы видели несколькими витринами раньше. Книга напечатана в Антверпене в 1543 году. Это первый полный Новый Завет на нашем языке, вышедший из типографии.",
+   "И тогда он сделал то, чего никто не ожидал: вместо того чтобы прятать книгу, он попросил аудиенции у императора Карла Пятого и вручил её лично, в Брюсселе. Император спросил, кто автор. Он ответил: он сам. Карл сказал ему, что если книга такова, какой себя объявляет, беды не будет, и направил его к своему духовнику.",
+   "Через несколько дней он был под стражей. Пятнадцать месяцев взаперти в Брюсселе. Он бежал в 1545 году через дверь, которую однажды ночью нашёл открытой, и в Испанию уже не вернулся. Умер от чумы в Страсбурге в 1552 году, тридцати четырёх лет.",
+   "Обратите внимание на подробность, она говорит о многом: его посадили не за то, что он прятал книгу. Его посадили за то, что он её показал.",
+   "И с неё начинается та часть нашего пути, которая ближе всего нам самим. Отсюда и дальше всё, что вы увидите, — на нашем языке."
   ]
  }
 };
@@ -302,6 +318,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

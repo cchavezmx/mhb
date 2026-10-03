@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vacía — Museo de Historia de la Biblia</title>
+<title>La vitrina vacía — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  :root{ --fondo:#F3F2EE;--claro:#FBFBF8;--tinta:#1C1C18;--cabecera:#33332E;--acento:#A8832C;--marca:rgba(168,131,44,.25); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
+  .abierta{flex:none;display:flex;align-items:center}
+  .abierta i{display:block;width:26px;height:17px;border:3px solid var(--acento);border-radius:9px;margin-right:-7px}
+  .abierta i.hueco{border-style:dashed;opacity:.5}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,20 +40,21 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="emb" aria-hidden="true"></div>
+  <div class="abierta" aria-hidden="true"><i></i><i></i><i class="hueco"></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
     <p class="siglo" id="ui-siglo"></p>
   </div>
 </header>
-
   <div class="progreso"><i id="mhb-barra"></i></div>
   <nav class="mhb-nav" id="mhb-nav" aria-label="Navegación"></nav>
+
 <main>
   <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
   <div class="mandos">
@@ -72,23 +75,125 @@ const GUIA = {
   "voz": "es-MX",
   "ui": {
    "sala": "Vitrina 30 · Museo de Historia de la Biblia",
-   "titulo": "Vacía",
-   "siglo": "",
+   "titulo": "La vitrina vacía",
+   "siglo": "El eslabón que sigue",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Todavía falta una vitrina. Vaya a verla: es la última, y está vacía, y no es un descuido.",
+   "Todavía falta una vitrina. Vaya a verla: es la última, está vacía, y no es un descuido.",
    "Es el eslabón que sigue. El libro todavía no está aquí: ése le toca editarlo a quien venga después, que muy probablemente aún no ha nacido. Pero seguramente el Señor ya escogió a alguien para que continúe con la cadena de conocimiento y bendición de los hijos de Dios.",
-   "Gracias por acompañarnos.",
-   "Al Dios eterno, invisible pero real, sea la Gloria, la Honra y la Alabanza, por siempre y para siempre. Amén y",
-   "amen, esto se los dejo de tarea.",
-   "Apóstol Eduardo Padilla Uranga, Th. D.",
-   "Iglesia del Tercer Día. A.R.",
-   "Museo Historia de la Biblia México.",
-   "20/ Septiembre/ del año 26 del Tercer Milenio*/*/"
+   "Gracias por acompañarnos."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 30 · Museum of the History of the Bible",
+   "titulo": "The empty case",
+   "siglo": "The link that comes next",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "There is still one case left. Go and see it: it is the last, it is empty, and that is no oversight.",
+   "It is the link that comes next. The book is not here yet: that one is for whoever comes after to make, and he has most likely not been born. But surely the Lord has already chosen someone to carry on the chain of knowledge and blessing of the children of God.",
+   "Thank you for walking with us."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 30 · Musée de l'Histoire de la Bible",
+   "titulo": "La vitrine vide",
+   "siglo": "Le maillon qui suit",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Il reste encore une vitrine. Allez la voir : c'est la dernière, elle est vide, et ce n'est pas un oubli.",
+   "C'est le maillon qui suit. Le livre n'y est pas encore : celui-là, c'est à celui qui viendra après de l'éditer, et il n'est très probablement pas encore né. Mais sûrement le Seigneur a déjà choisi quelqu'un pour continuer la chaîne de connaissance et de bénédiction des enfants de Dieu.",
+   "Merci de nous avoir accompagnés."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 30 · Museum zur Geschichte der Bibel",
+   "titulo": "Die leere Vitrine",
+   "siglo": "Das nächste Glied",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Eine Vitrine fehlt noch. Gehen Sie sie ansehen: es ist die letzte, sie ist leer, und das ist kein Versehen.",
+   "Sie ist das nächste Glied. Das Buch ist noch nicht da: dieses muss der herausgeben, der nach uns kommt, und höchstwahrscheinlich ist er noch nicht geboren. Aber gewiss hat der Herr schon jemanden erwählt, der die Kette des Wissens und des Segens der Kinder Gottes fortsetzt.",
+   "Danke, dass Sie uns begleitet haben."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 30 · Museo di Storia della Bibbia",
+   "titulo": "La vetrina vuota",
+   "siglo": "L'anello che segue",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Manca ancora una vetrina. Vada a vederla: è l'ultima, è vuota, e non è una svista.",
+   "È l'anello che segue. Il libro non è ancora qui: quello tocca pubblicarlo a chi verrà dopo, e molto probabilmente non è ancora nato. Ma di certo il Signore ha già scelto qualcuno perché continui la catena di conoscenza e di benedizione dei figli di Dio.",
+   "Grazie per averci accompagnato."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 30 · Museu de História da Bíblia",
+   "titulo": "A vitrine vazia",
+   "siglo": "O elo que segue",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Ainda falta uma vitrine. Vá vê-la: é a última, está vazia, e não é um descuido.",
+   "É o elo que segue. O livro ainda não está aqui: esse cabe editá-lo a quem vier depois, que muito provavelmente ainda não nasceu. Mas certamente o Senhor já escolheu alguém para que continue a corrente de conhecimento e bênção dos filhos de Deus.",
+   "Obrigado por nos acompanhar."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 30 · Музей истории Библии",
+   "titulo": "Пустая витрина",
+   "siglo": "Следующее звено",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Осталась ещё одна витрина. Подойдите к ней: она последняя, она пуста, и это не оплошность.",
+   "Это следующее звено. Книги здесь ещё нет: её предстоит издать тому, кто придёт после, и он, скорее всего, ещё не родился. Но наверняка Господь уже избрал того, кто продолжит цепь знания и благословения детей Божиих.",
+   "Спасибо, что были с нами."
   ]
  }
 };
@@ -193,6 +298,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

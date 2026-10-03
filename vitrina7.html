@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>El Templo de Salomón — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  :root{ --fondo:#F3F0E6;--claro:#FBF9F2;--tinta:#1E1C16;--cabecera:#5C4A22;--acento:#B08A2E;--marca:rgba(176,138,46,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
+  .temp{flex:none;display:flex;align-items:flex-end;gap:5px}
+  .temp b{display:block;width:10px;height:56px;background:var(--acento);border-radius:2px}
+  .temp i{display:block;width:34px;height:44px;background:var(--acento);opacity:.55}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,20 +40,21 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="emb" aria-hidden="true"></div>
+  <div class="temp" aria-hidden="true"><b></b><i></i><b></b></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
     <p class="siglo" id="ui-siglo"></p>
   </div>
 </header>
-
   <div class="progreso"><i id="mhb-barra"></i></div>
   <nav class="mhb-nav" id="mhb-nav" aria-label="Navegación"></nav>
+
 <main>
   <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
   <div class="mandos">
@@ -73,7 +76,7 @@ const GUIA = {
   "ui": {
    "sala": "Maqueta 3 · Museo de Historia de la Biblia",
    "titulo": "El Templo de Salomón",
-   "siglo": "",
+   "siglo": "Jerusalén, hacia 966 antes de Cristo",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
@@ -82,14 +85,164 @@ const GUIA = {
   "t": [
    "Lo primero que sorprende de esta maqueta es el tamaño. El Templo de Salomón no era grande.",
    "El libro de los Reyes da las medidas: sesenta codos de largo, veinte de ancho y treinta de alto. Con el codo común de 45 centímetros, son unos 27 metros de largo por 9 de ancho y 13 y medio de alto. Cualquier iglesia de barrio de esta ciudad es más grande. No se construyó para que cupiera gente dentro: la gente se quedaba fuera, en los atrios. Se construyó para guardar algo.",
-   "Lo empezó Salomón en el cuarto año de su reinado, hacia el año 966 antes de Cristo, y tardó siete años. La madera de cedro y el maestro de obra los mandó Hiram, rey de Tiro; la piedra se labró en la cantera, de modo que en la obra no se oyó ni un martillo.",
+   "Lo empezó Salomón en el cuarto año de su reinado, hacia el año 966 antes de Cristo, y tardó siete años en construirlo. La madera de cedro y el maestro de obra los mandó Hiram, rey de Tiro; la piedra se labró en la cantera, de modo que en la obra no se oyó ni un martillo.",
    "Tenía tres partes, una detrás de otra. El pórtico, a la entrada. Luego el Lugar Santo, con el Candelabro, la mesa y el Altar del incienso. Y al fondo, el Lugar Santísimo, un cubo perfecto de veinte codos por lado, enteramente recubierto de oro, con dos querubines de madera de olivo de diez codos de alto: tan grandes que sus alas tocaban las dos paredes y se rozaban en el centro.",
-   "Debajo de esas alas se puso el Arca del Pacto, la que usted acaba de ver en la Maqueta 1. Ahí termina su viaje por el desierto: el Santuario portátil se volvió edificio de piedra.",
-   "Fíjese también en las dos columnas de bronce de la entrada. Tenían nombre propio, y eso es rarísimo: Jaquín y Boaz. Y en el atrio, el mar de bronce, una pila enorme sostenida por doce bueyes.",
+   "Debajo de esas alas se puso el Arca del Pacto, la que usted acaba de ver en la primera maqueta. Ahí termina su viaje por el desierto: el Santuario portátil se volvió edificio de piedra.",
+   "Fíjese también en las dos columnas de bronce de la entrada. Tenían nombre propio, y eso es rarísimo: Jaquín, que quiere decir Él establecerá, y Boaz, en Él está la fortaleza. Y en el atrio, el mar de bronce, una pila enorme sostenida por doce bueyes.",
    "Y ahora lo que hace que este edificio esté en un museo de la Biblia, y no sólo en uno de arquitectura.",
    "Hacia el año 622 antes de Cristo, durante unas obras de reparación en este Templo, el sumo sacerdote encontró un libro. Era el libro de la Ley, que llevaba generaciones olvidado. Se lo leyeron al rey Josías, y el rey rasgó sus vestiduras al oírlo, porque entendió cuánto se habían apartado. De esa lectura salió la mayor reforma religiosa de la historia de Judá.",
    "Un libro perdido, encontrado entre los escombros de una obra, que al leerse cambió un reino entero. Ésa es, en una sola escena, la historia que cuenta este museo.",
-   "El Templo fue destruido por los babilonios en el año 586 antes de Cristo, y con la destrucción desapareció el Arca."
+   "El Templo fue destruido por los babilonios en el año 586 antes de Cristo, y con la destrucción desaparecieron el Arca y los libros de la Ley."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Model 3 · Museum of the History of the Bible",
+   "titulo": "Solomon's Temple",
+   "siglo": "Jerusalem, about 966 before Christ",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "The first thing that surprises you about this model is the size. Solomon's Temple was not large.",
+   "The book of Kings gives the measurements: sixty cubits long, twenty wide and thirty high. Taking the common cubit of 45 centimetres, that is about 27 metres long by 9 wide and 13 and a half high. Any parish church in this city is bigger. It was not built to hold people inside: the people stayed outside, in the courts. It was built to keep something.",
+   "Solomon began it in the fourth year of his reign, about the year 966 before Christ, and it took seven years to build. The cedar wood and the master builder were sent by Hiram, king of Tyre; the stone was dressed at the quarry, so that not a hammer was heard on the site.",
+   "It had three parts, one behind the other. The porch, at the entrance. Then the Holy Place, with the lampstand, the table and the altar of incense. And at the far end, the Most Holy Place, a perfect cube of twenty cubits a side, entirely overlaid with gold, with two cherubim of olive wood ten cubits high: so large that their wings touched the two walls and met in the middle.",
+   "Beneath those wings the Ark of the Covenant was placed, the one you have just seen in the first model. There its journey through the desert ends: the portable sanctuary became a building of stone.",
+   "Notice too the two bronze pillars at the entrance. They had names of their own, which is most unusual: Jachin, meaning he will establish, and Boaz, in him is strength. And in the court, the bronze sea, a huge basin resting on twelve oxen.",
+   "And now what makes this building belong in a museum of the Bible, and not only in one of architecture.",
+   "About the year 622 before Christ, during repair work in this Temple, the high priest found a book. It was the book of the Law, forgotten for generations. They read it to King Josiah, and the king tore his garments when he heard it, because he understood how far they had strayed. From that reading came the greatest religious reform in the history of Judah.",
+   "A lost book, found among the rubble of a building site, which on being read changed an entire kingdom. That is, in a single scene, the story this museum tells.",
+   "The Temple was destroyed by the Babylonians in the year 586 before Christ, and with its destruction the Ark and the books of the Law disappeared."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Maquette 3 · Musée de l'Histoire de la Bible",
+   "titulo": "Le Temple de Salomon",
+   "siglo": "Jérusalem, vers 966 avant le Christ",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "La première chose qui surprend dans cette maquette, c'est la taille. Le Temple de Salomon n'était pas grand.",
+   "Le livre des Rois donne les mesures : soixante coudées de long, vingt de large et trente de haut. Avec la coudée commune de 45 centimètres, cela fait environ 27 mètres de long sur 9 de large et 13 et demi de haut. N'importe quelle église de quartier de cette ville est plus grande. Il ne fut pas bâti pour contenir du monde : les gens restaient dehors, dans les parvis. Il fut bâti pour garder quelque chose.",
+   "Salomon le commença la quatrième année de son règne, vers l'an 966 avant le Christ, et il fallut sept ans pour le bâtir. Le bois de cèdre et le maître d'œuvre furent envoyés par Hiram, roi de Tyr ; la pierre fut taillée à la carrière, si bien qu'on n'entendit pas un marteau sur le chantier.",
+   "Il avait trois parties, l'une derrière l'autre. Le portique, à l'entrée. Puis le Lieu saint, avec le chandelier, la table et l'autel de l'encens. Et au fond, le Saint des saints, un cube parfait de vingt coudées de côté, entièrement recouvert d'or, avec deux chérubins de bois d'olivier de dix coudées de haut : si grands que leurs ailes touchaient les deux murs et se rejoignaient au centre.",
+   "Sous ces ailes fut placée l'Arche d'Alliance, celle que vous venez de voir dans la première maquette. Là s'achève son voyage par le désert : le sanctuaire portatif devint un édifice de pierre.",
+   "Remarquez aussi les deux colonnes de bronze de l'entrée. Elles portaient un nom propre, ce qui est rarissime : Jakin, c'est-à-dire il établira, et Boaz, en lui est la force. Et dans le parvis, la mer de bronze, une cuve énorme portée par douze bœufs.",
+   "Et voici maintenant ce qui fait que cet édifice a sa place dans un musée de la Bible, et pas seulement dans un musée d'architecture.",
+   "Vers l'an 622 avant le Christ, lors de travaux de réparation dans ce Temple, le grand prêtre trouva un livre. C'était le livre de la Loi, oublié depuis des générations. On le lut au roi Josias, et le roi déchira ses vêtements en l'entendant, car il comprit à quel point on s'était éloigné. De cette lecture sortit la plus grande réforme religieuse de l'histoire de Juda.",
+   "Un livre perdu, trouvé dans les décombres d'un chantier, qui en étant lu changea tout un royaume. C'est, en une seule scène, l'histoire que raconte ce musée.",
+   "Le Temple fut détruit par les Babyloniens en l'an 586 avant le Christ, et avec sa destruction disparurent l'Arche et les livres de la Loi."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Modell 3 · Museum zur Geschichte der Bibel",
+   "titulo": "Der Tempel Salomos",
+   "siglo": "Jerusalem, um 966 vor Christus",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Das Erste, was an diesem Modell überrascht, ist die Größe. Der Tempel Salomos war nicht groß.",
+   "Das Buch der Könige gibt die Maße an: sechzig Ellen lang, zwanzig breit und dreißig hoch. Bei der gemeinen Elle von 45 Zentimetern sind das etwa 27 Meter Länge, 9 Breite und 13 einhalb Höhe. Jede Vorstadtkirche dieser Stadt ist größer. Er wurde nicht gebaut, damit Menschen hineinpassten: die Leute blieben draußen, in den Vorhöfen. Er wurde gebaut, um etwas zu verwahren.",
+   "Salomo begann ihn im vierten Jahr seiner Herrschaft, um das Jahr 966 vor Christus, und es dauerte sieben Jahre, ihn zu bauen. Das Zedernholz und den Baumeister schickte Hiram, der König von Tyrus; der Stein wurde im Steinbruch zugerichtet, sodass auf der Baustelle kein Hammer zu hören war.",
+   "Er hatte drei Teile, einen hinter dem anderen. Die Vorhalle am Eingang. Dann das Heilige, mit dem Leuchter, dem Tisch und dem Räucheraltar. Und ganz hinten das Allerheiligste, ein vollkommener Würfel von zwanzig Ellen Seitenlänge, ganz mit Gold überzogen, mit zwei Cherubim aus Olivenholz von zehn Ellen Höhe: so groß, dass ihre Flügel die beiden Wände berührten und sich in der Mitte trafen.",
+   "Unter diesen Flügeln wurde die Bundeslade aufgestellt, die Sie eben im ersten Modell gesehen haben. Dort endet ihre Reise durch die Wüste: das tragbare Heiligtum wurde ein Bau aus Stein.",
+   "Beachten Sie auch die beiden bronzenen Säulen am Eingang. Sie trugen eigene Namen, was höchst selten ist: Jachin, das heißt er wird befestigen, und Boas, in ihm ist Stärke. Und im Vorhof das eherne Meer, ein riesiges Becken, getragen von zwölf Rindern.",
+   "Und nun das, was diesen Bau in ein Museum der Bibel gehören lässt und nicht nur in eines der Architektur.",
+   "Um das Jahr 622 vor Christus fand der Hohepriester bei Ausbesserungsarbeiten in diesem Tempel ein Buch. Es war das Buch des Gesetzes, seit Generationen vergessen. Man las es dem König Joschija vor, und der König zerriss seine Kleider, als er es hörte, denn er begriff, wie weit man sich entfernt hatte. Aus dieser Lesung ging die größte religiöse Reform in der Geschichte Judas hervor.",
+   "Ein verlorenes Buch, gefunden im Schutt einer Baustelle, das beim Lesen ein ganzes Königreich veränderte. Das ist, in einer einzigen Szene, die Geschichte, die dieses Museum erzählt.",
+   "Der Tempel wurde 586 vor Christus von den Babyloniern zerstört, und mit der Zerstörung verschwanden die Lade und die Bücher des Gesetzes."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Modello 3 · Museo di Storia della Bibbia",
+   "titulo": "Il Tempio di Salomone",
+   "siglo": "Gerusalemme, verso il 966 avanti Cristo",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "La prima cosa che sorprende di questo modello è la dimensione. Il Tempio di Salomone non era grande.",
+   "Il libro dei Re dà le misure: sessanta cubiti di lunghezza, venti di larghezza e trenta di altezza. Con il cubito comune di 45 centimetri, sono circa 27 metri di lunghezza per 9 di larghezza e 13 e mezzo di altezza. Qualunque chiesa di quartiere di questa città è più grande. Non fu costruito perché la gente ci stesse dentro: la gente restava fuori, nei cortili. Fu costruito per custodire qualcosa.",
+   "Lo cominciò Salomone nel quarto anno del suo regno, verso l'anno 966 avanti Cristo, e ci vollero sette anni per costruirlo. Il legno di cedro e il capomastro li mandò Hiram, re di Tiro; la pietra fu lavorata in cava, così che nel cantiere non si udì un solo martello.",
+   "Aveva tre parti, una dietro l'altra. Il portico, all'ingresso. Poi il Luogo Santo, con il candelabro, la tavola e l'altare dell'incenso. E in fondo il Luogo Santissimo, un cubo perfetto di venti cubiti per lato, interamente rivestito d'oro, con due cherubini di legno d'ulivo alti dieci cubiti: tanto grandi che le loro ali toccavano le due pareti e si sfioravano al centro.",
+   "Sotto quelle ali fu posta l'Arca dell'Alleanza, quella che lei ha appena visto nel primo modello. Lì finisce il suo viaggio nel deserto: il santuario portatile divenne edificio di pietra.",
+   "Noti anche le due colonne di bronzo dell'ingresso. Avevano un nome proprio, cosa rarissima: Iachin, che vuol dire egli stabilirà, e Boaz, in lui è la forza. E nel cortile il mare di bronzo, una vasca enorme sostenuta da dodici buoi.",
+   "E ora ciò che fa sì che questo edificio stia in un museo della Bibbia, e non soltanto in uno di architettura.",
+   "Verso l'anno 622 avanti Cristo, durante lavori di riparazione in questo Tempio, il sommo sacerdote trovò un libro. Era il libro della Legge, dimenticato da generazioni. Lo lessero al re Giosia, e il re si stracciò le vesti nell'udirlo, perché capì quanto si fossero allontanati. Da quella lettura nacque la più grande riforma religiosa della storia di Giuda.",
+   "Un libro perduto, trovato tra le macerie di un cantiere, che leggendolo cambiò un regno intero. È, in una sola scena, la storia che racconta questo museo.",
+   "Il Tempio fu distrutto dai babilonesi nell'anno 586 avanti Cristo, e con la distruzione scomparvero l'Arca e i libri della Legge."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Maquete 3 · Museu de História da Bíblia",
+   "titulo": "O Templo de Salomão",
+   "siglo": "Jerusalém, por volta de 966 antes de Cristo",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "A primeira coisa que surpreende nesta maquete é o tamanho. O Templo de Salomão não era grande.",
+   "O livro dos Reis dá as medidas: sessenta côvados de comprimento, vinte de largura e trinta de altura. Com o côvado comum de 45 centímetros, são cerca de 27 metros de comprimento por 9 de largura e 13 e meio de altura. Qualquer igreja de bairro desta cidade é maior. Não foi construído para caber gente dentro: as pessoas ficavam fora, nos átrios. Foi construído para guardar algo.",
+   "Salomão o começou no quarto ano do seu reinado, por volta do ano 966 antes de Cristo, e levou sete anos para construí-lo. A madeira de cedro e o mestre de obras foram enviados por Hirão, rei de Tiro; a pedra foi lavrada na pedreira, de modo que na obra não se ouviu um único martelo.",
+   "Tinha três partes, uma atrás da outra. O pórtico, na entrada. Depois o Lugar Santo, com o candelabro, a mesa e o altar do incenso. E ao fundo o Lugar Santíssimo, um cubo perfeito de vinte côvados de lado, inteiramente revestido de ouro, com dois querubins de madeira de oliveira de dez côvados de altura: tão grandes que suas asas tocavam as duas paredes e se roçavam no centro.",
+   "Debaixo dessas asas foi posta a Arca da Aliança, a que você acabou de ver na primeira maquete. Ali termina a sua viagem pelo deserto: o santuário portátil tornou-se edifício de pedra.",
+   "Repare também nas duas colunas de bronze da entrada. Tinham nome próprio, e isso é raríssimo: Jaquim, que quer dizer ele estabelecerá, e Boaz, nele está a força. E no átrio, o mar de bronze, uma pia enorme sustentada por doze bois.",
+   "E agora o que faz com que este edifício esteja num museu da Bíblia, e não apenas num de arquitetura.",
+   "Por volta do ano 622 antes de Cristo, durante obras de reparo neste Templo, o sumo sacerdote encontrou um livro. Era o livro da Lei, esquecido havia gerações. Leram-no ao rei Josias, e o rei rasgou as suas vestes ao ouvi-lo, porque entendeu o quanto se haviam afastado. Dessa leitura saiu a maior reforma religiosa da história de Judá.",
+   "Um livro perdido, encontrado entre os escombros de uma obra, que ao ser lido mudou um reino inteiro. Essa é, numa única cena, a história que este museu conta.",
+   "O Templo foi destruído pelos babilônios no ano 586 antes de Cristo, e com a destruição desapareceram a Arca e os livros da Lei."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Макет 3 · Музей истории Библии",
+   "titulo": "Храм Соломона",
+   "siglo": "Иерусалим, около 966 года до Р. Х.",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Первое, что удивляет в этом макете, — размер. Храм Соломона не был большим.",
+   "Книга Царств даёт размеры: шестьдесят локтей в длину, двадцать в ширину и тридцать в высоту. При обычном локте в 45 сантиметров это около 27 метров длины, 9 ширины и 13 с половиной высоты. Любая приходская церковь этого города больше. Его строили не для того, чтобы внутри помещались люди: народ оставался снаружи, во дворах. Его строили, чтобы хранить нечто.",
+   "Соломон начал его на четвёртом году своего царствования, около 966 года до Рождества Христова, и строил семь лет. Кедровое дерево и главного мастера прислал Хирам, царь Тирский; камень обтёсывали в каменоломне, так что на стройке не было слышно ни одного молотка.",
+   "В нём было три части, одна за другой. Притвор у входа. Затем Святое, со светильником, столом и жертвенником курения. И в глубине Святое Святых — совершенный куб в двадцать локтей по стороне, целиком покрытый золотом, с двумя херувимами из масличного дерева в десять локтей высотой: столь большими, что их крылья касались обеих стен и сходились посередине.",
+   "Под этими крыльями поставили Ковчег Завета — тот самый, который вы только что видели на первом макете. Там кончается его странствие по пустыне: переносное святилище стало каменным зданием.",
+   "Обратите внимание и на две бронзовые колонны у входа. У них были собственные имена, что бывает крайне редко: Иахин — «Он утвердит» — и Воаз — «в Нём сила». А во дворе — медное море, огромная чаша на двенадцати волах.",
+   "А теперь о том, почему это здание стоит в музее Библии, а не только в музее архитектуры.",
+   "Около 622 года до Рождества Христова, во время ремонтных работ в этом Храме, первосвященник нашёл книгу. Это была книга Закона, забытая на поколения. Её прочли царю Иосии, и царь разодрал на себе одежды, услышав её, потому что понял, как далеко они отошли. Из этого чтения родилась величайшая религиозная реформа в истории Иудеи.",
+   "Потерянная книга, найденная среди строительного мусора, которая, будучи прочитана, изменила целое царство. Это и есть — в одной сцене — история, которую рассказывает наш музей.",
+   "Храм был разрушен вавилонянами в 586 году до Рождества Христова, и вместе с разрушением исчезли Ковчег и книги Закона."
   ]
  }
 };
@@ -194,6 +347,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

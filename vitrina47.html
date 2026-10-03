@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Las Biblias miniatura — Museo de Historia de la Biblia</title>
+<title>La Biblia en microfilm — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F0EDE6;--claro:#FBF8F2;--tinta:#1E1C19;--cabecera:#44464E;--acento:#9A6B2F;--marca:rgba(154,107,47,.28); }
+  :root{ --fondo:#EEEFF0;--claro:#F8F9FA;--tinta:#1A1B1C;--cabecera:#2E3A42;--acento:#6A7A82;--marca:rgba(106,122,130,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,8 +17,10 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .tamanos{flex:none;display:flex;gap:6px;align-items:flex-end}
-  .tamanos i{display:block;background:var(--acento);border-radius:1px}
+  .film{flex:none;width:66px;height:40px;background:var(--cabecera);border-radius:2px;display:flex;align-items:center;justify-content:center;position:relative}
+  .film:before,.film:after{content:'';position:absolute;left:3px;right:3px;height:5px;background:repeating-linear-gradient(to right,var(--claro) 0 4px,transparent 4px 9px)}
+  .film:before{top:3px}.film:after{bottom:3px}
+  .film b{display:block;width:12px;height:12px;background:var(--claro);opacity:.9}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -39,11 +41,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="tamanos" aria-hidden="true"><i style="width:34px;height:52px"></i><i style="width:14px;height:20px"></i><i style="width:5px;height:7px"></i></div>
+  <div class="film" aria-hidden="true"><b></b></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -72,110 +75,147 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 30 · Museo de Historia de la Biblia",
-   "titulo": "Las Biblias miniatura",
-   "siglo": "De la Biblia de pulga al microscopio",
+   "sala": "Mesa 1 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia en microfilm",
+   "siglo": "Más pequeña que una estampilla",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Acérquese. Todo lo de esta vitrina cabe en la palma de una mano, y una de las piezas no la va a poder ver sin ayuda.",
-   "Las Biblias miniatura tienen tres siglos de historia y no se hicieron por capricho. Se hicieron para viajar escondidas. Cabían en un bolsillo de chaleco, en un relicario, dentro de un reloj. Hubo tiempos y lugares donde llevar una Biblia encima era peligroso, y el tamaño era la única forma de llevarla.",
-   "Después vinieron las de los soldados. En la Primera y en la Segunda Guerra se repartieron millones de Nuevos Testamentos diminutos, para que cupieran en el uniforme. Muchos Nuevos Testamentos volvieron a casa en el bolsillo de alguien que sí volvió.",
-   "Y luego está el puro alarde técnico. En 1,896, en Glasgow, la casa Bryce imprimió un Nuevo Testamento de menos de dos centímetros de alto, con tipo tan pequeño que se vendía con su propia lupa. Le decían la Biblia de pulga.",
-   "En el siglo veinte la cosa se volvió difícil de creer: hay Biblias grabadas en superficies del tamaño de la cabeza de un alfiler, escritas con haz de iones, que sólo se leen con microscopio. Una de ellas viajó al espacio.",
-   "Ahora piense en el contraste dentro de este mismo museo. En la vitrina de Galván hay tomos de varios kilos que se leen en un atril, con las dos manos. Aquí tiene el mismo texto, completo, en algo que pesa menos que una moneda.",
-   "Mil doscientos años empujando en la misma dirección: que quepa en más manos. Al final también empezó a caber en más bolsillos."
+   "Acérquese al microscopio. Lo que está ahí dentro es una Biblia completa.",
+   "Está en microfilm: una película fotográfica en la que cada página se reduce tantas veces que el texto entero cabe en un cuadro más pequeño que una estampilla. A simple vista no se ve nada, sólo una lámina gris. Con el aumento aparecen los renglones.",
+   "El microfilm se inventó para otra cosa: para guardar archivos, periódicos y actas en poco espacio, y para poder copiarlos y ponerlos a salvo. Durante buena parte del siglo veinte fue la manera de conservar lo que no debía perderse.",
+   "Y con la Biblia se usó para lo mismo de siempre, que es lo que cuenta este museo: para que pudiera viajar. Cabe en un bolsillo, no pesa nada, se esconde en cualquier parte y se reproduce a bajo costo. Lo mismo que buscaban las Biblias miniatura de la vitrina de al lado, resuelto con fotografía en vez de con imprenta.",
+   "Piénselo un momento. Un rollo de Torá pesa varios kilos y tarda un año en escribirse. El Amiatino que vio al principio pesa treinta y cuatro kilos. Y esto que está mirando por el microscopio dice lo mismo y cabe en la uña de su dedo pulgar.",
+   "Cada siglo encontró su manera de hacer el Libro más ligero. Ninguno le quitó una palabra."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 30 · Museum of the History of the Bible",
-   "titulo": "The miniature Bibles",
-   "siglo": "From the flea Bible to the microscope",
+   "sala": "Table 1 · Museum of the History of the Bible",
+   "titulo": "The Bible on microfilm",
+   "siglo": "Smaller than a postage stamp",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Come closer. Everything in this case fits in the palm of a hand, and one of the pieces you will not be able to see without help.",
-   "Miniature Bibles have three centuries of history and were not made on a whim. They were made to travel hidden. They fitted in a waistcoat pocket, in a locket, inside a watch. There were times and places where carrying a Bible was dangerous, and smallness was the only way to carry it.",
-   "Then came the soldiers' ones. In the First and Second World Wars millions of tiny New Testaments were handed out, so that they would fit in a uniform. Many came home in the pocket of someone who came home.",
-   "And then there is sheer technical bravado. In 1896, in Glasgow, the house of Bryce printed a New Testament less than two centimetres tall, in type so small that it was sold with its own magnifying glass. They called it the flea Bible.",
-   "In the twentieth century it became hard to believe: there are Bibles engraved on surfaces the size of a pinhead, written with an ion beam, readable only under a microscope. One of them travelled into space.",
-   "Now think of the contrast within this same museum. In Galván's case there are volumes weighing several kilos, read on a lectern, with both hands. Here you have the same text, complete, in something that weighs less than a coin.",
-   "Twelve hundred years pushing in the same direction: that it should fit in more hands. In the end it began to fit in more pockets too."
+   "Come up to the microscope. What is inside there is a complete Bible.",
+   "It is on microfilm: a photographic film in which each page is reduced so many times that the whole text fits into a frame smaller than a postage stamp. To the naked eye there is nothing to see, only a grey sheet. Under magnification the lines appear.",
+   "Microfilm was invented for something else: to keep archives, newspapers and records in little space, and to be able to copy them and put them out of danger. For a good part of the twentieth century it was the way of preserving what must not be lost.",
+   "And with the Bible it was used for the same purpose as always, which is what this museum tells of: so that it could travel. It fits in a pocket, it weighs nothing, it hides anywhere and it is reproduced cheaply. The same thing the miniature Bibles in the case next door were after, solved with photography instead of printing.",
+   "Think about it a moment. A Torah scroll weighs several kilos and takes a year to write. The Amiatinus you saw at the beginning weighs thirty-four kilos. And this that you are looking at through the microscope says the same thing and fits under your thumbnail.",
+   "Every century found its way of making the Book lighter. Not one of them took a word out of it."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 30 · Musée de l'Histoire de la Bible",
-   "titulo": "Les Bibles miniatures",
-   "siglo": "De la Bible puce au microscope",
+   "sala": "Table 1 · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible sur microfilm",
+   "siglo": "Plus petite qu'un timbre",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Approchez-vous. Tout ce qui est dans cette vitrine tient dans la paume d'une main, et l'une des pièces, vous ne pourrez pas la voir sans aide.",
-   "Les Bibles miniatures ont trois siècles d'histoire et n'ont pas été faites par caprice. Elles ont été faites pour voyager cachées. Elles tenaient dans une poche de gilet, dans un médaillon, à l'intérieur d'une montre. Il y eut des temps et des lieux où porter une Bible sur soi était dangereux, et la petitesse était le seul moyen de la porter.",
-   "Puis vinrent celles des soldats. Pendant la Première et la Seconde Guerre, on distribua des millions de minuscules Nouveaux Testaments, pour qu'ils tiennent dans l'uniforme. Beaucoup sont rentrés à la maison dans la poche de quelqu'un qui, lui, est rentré.",
-   "Et puis il y a la pure prouesse technique. En 1896, à Glasgow, la maison Bryce imprima un Nouveau Testament de moins de deux centimètres de haut, en caractères si petits qu'il se vendait avec sa propre loupe. On l'appelait la Bible puce.",
-   "Au vingtième siècle, la chose devint difficile à croire : il existe des Bibles gravées sur des surfaces grandes comme une tête d'épingle, écrites au faisceau d'ions, lisibles seulement au microscope. L'une d'elles est allée dans l'espace.",
-   "Pensez maintenant au contraste à l'intérieur de ce même musée. Dans la vitrine de Galván, il y a des volumes de plusieurs kilos qu'on lit sur un lutrin, à deux mains. Ici, vous avez le même texte, complet, dans quelque chose qui pèse moins qu'une pièce de monnaie.",
-   "Mille deux cents ans à pousser dans la même direction : qu'il tienne dans plus de mains. À la fin, il s'est aussi mis à tenir dans plus de poches."
+   "Approchez-vous du microscope. Ce qui est là-dedans est une Bible complète.",
+   "Elle est sur microfilm : une pellicule photographique où chaque page est réduite tant de fois que le texte entier tient dans un carré plus petit qu'un timbre. À l'œil nu on ne voit rien, seulement une plaque grise. Au grossissement apparaissent les lignes.",
+   "Le microfilm fut inventé pour autre chose : pour garder des archives, des journaux et des actes dans peu d'espace, et pour pouvoir les copier et les mettre à l'abri. Pendant une bonne part du vingtième siècle ce fut la manière de conserver ce qui ne devait pas se perdre.",
+   "Et avec la Bible on s'en servit pour la même chose que toujours, qui est ce que raconte ce musée : pour qu'elle pût voyager. Elle tient dans une poche, ne pèse rien, se cache n'importe où et se reproduit à bas prix. La même chose que cherchaient les Bibles miniatures de la vitrine d'à côté, résolue par la photographie au lieu de l'imprimerie.",
+   "Pensez-y un instant. Un rouleau de Torah pèse plusieurs kilos et met un an à s'écrire. L'Amiatinus que vous avez vu au début pèse trente-quatre kilos. Et ceci que vous regardez au microscope dit la même chose et tient sous l'ongle de votre pouce.",
+   "Chaque siècle trouva sa façon de rendre le Livre plus léger. Aucun ne lui ôta un mot."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 30 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Miniaturbibeln",
-   "siglo": "Von der Flohbibel bis zum Mikroskop",
+   "sala": "Tisch 1 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Bibel auf Mikrofilm",
+   "siglo": "Kleiner als eine Briefmarke",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Treten Sie näher. Alles in dieser Vitrine passt in eine Handfläche, und eines der Stücke werden Sie ohne Hilfe nicht sehen können.",
-   "Miniaturbibeln haben drei Jahrhunderte Geschichte und entstanden nicht aus einer Laune. Sie wurden gemacht, um versteckt zu reisen. Sie passten in eine Westentasche, in ein Medaillon, in eine Uhr. Es gab Zeiten und Orte, an denen es gefährlich war, eine Bibel bei sich zu tragen, und die Kleinheit war die einzige Möglichkeit, sie zu tragen.",
-   "Dann kamen die der Soldaten. Im Ersten und im Zweiten Weltkrieg wurden Millionen winziger Neuer Testamente ausgegeben, damit sie in die Uniform passten. Viele kamen in der Tasche von jemandem nach Hause, der nach Hause kam.",
-   "Und dann gibt es die reine technische Prahlerei. 1896 druckte in Glasgow das Haus Bryce ein Neues Testament von weniger als zwei Zentimetern Höhe, in so kleiner Schrift, dass es mit einer eigenen Lupe verkauft wurde. Man nannte es die Flohbibel.",
-   "Im zwanzigsten Jahrhundert wurde die Sache kaum noch glaublich: es gibt Bibeln, eingraviert auf Flächen von der Größe eines Stecknadelkopfes, mit einem Ionenstrahl geschrieben, nur unter dem Mikroskop lesbar. Eine davon flog ins All.",
-   "Denken Sie nun an den Gegensatz innerhalb dieses Museums. Im Vitrine Galváns stehen Bände von mehreren Kilo, die man auf einem Pult mit beiden Händen liest. Hier haben Sie denselben Text, vollständig, in etwas, das weniger wiegt als eine Münze.",
-   "Zwölfhundert Jahre lang derselbe Antrieb: dass es in mehr Hände passe. Am Ende begann es auch, in mehr Taschen zu passen."
+   "Treten Sie ans Mikroskop. Was dort drin liegt, ist eine vollständige Bibel.",
+   "Sie ist auf Mikrofilm: ein fotografischer Film, auf dem jede Seite so oft verkleinert ist, dass der ganze Text in ein Feld kleiner als eine Briefmarke passt. Mit bloßem Auge sieht man nichts, nur ein graues Blatt. Unter Vergrößerung erscheinen die Zeilen.",
+   "Der Mikrofilm wurde für anderes erfunden: um Archive, Zeitungen und Akten auf kleinem Raum zu verwahren und um sie kopieren und in Sicherheit bringen zu können. Einen guten Teil des zwanzigsten Jahrhunderts war er die Art, zu bewahren, was nicht verloren gehen durfte.",
+   "Und bei der Bibel gebrauchte man ihn zu dem, wozu immer, und davon handelt dieses Museum: damit sie reisen konnte. Sie passt in eine Tasche, wiegt nichts, versteckt sich überall und wird billig vervielfältigt. Dasselbe, was die Miniaturbibeln der Vitrine nebenan suchten, mit Fotografie statt mit Druck gelöst.",
+   "Denken Sie einen Augenblick nach. Eine Torarolle wiegt mehrere Kilo und braucht ein Jahr zum Schreiben. Der Amiatinus, den Sie am Anfang sahen, wiegt vierunddreißig Kilo. Und das, was Sie durch das Mikroskop betrachten, sagt dasselbe und passt unter Ihren Daumennagel.",
+   "Jedes Jahrhundert fand seine Art, das Buch leichter zu machen. Keines nahm ihm ein Wort."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 30 · Museo di Storia della Bibbia",
-   "titulo": "Le Bibbie in miniatura",
-   "siglo": "Dalla Bibbia pulce al microscopio",
+   "sala": "Tavolo 1 · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia su microfilm",
+   "siglo": "Più piccola di un francobollo",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Si avvicini. Tutto ciò che sta in questa vetrina entra nel palmo di una mano, e uno dei pezzi non riuscirà a vederlo senza aiuto.",
-   "Le Bibbie in miniatura hanno tre secoli di storia e non furono fatte per capriccio. Furono fatte per viaggiare nascoste. Stavano in un taschino, in un medaglione, dentro un orologio. Ci furono tempi e luoghi in cui portare addosso una Bibbia era pericoloso, e la piccolezza era l'unico modo di portarla.",
-   "Poi vennero quelle dei soldati. Nella Prima e nella Seconda guerra si distribuirono milioni di minuscoli Nuovi Testamenti, perché stessero nella divisa. Molti tornarono a casa nella tasca di qualcuno che tornò.",
-   "E poi c'è la pura bravata tecnica. Nel 1896, a Glasgow, la casa Bryce stampò un Nuovo Testamento alto meno di due centimetri, con caratteri così piccoli che si vendeva con la sua lente. Lo chiamavano la Bibbia pulce.",
-   "Nel Novecento la cosa divenne difficile da credere: ci sono Bibbie incise su superfici grandi come una capocchia di spillo, scritte con un fascio di ioni, leggibili solo al microscopio. Una di esse è andata nello spazio.",
-   "Ora pensi al contrasto dentro questo stesso museo. Nella vetrina di Galván ci sono volumi di vari chili che si leggono su un leggio, con due mani. Qui ha lo stesso testo, completo, in qualcosa che pesa meno di una moneta.",
-   "Milleduecento anni a spingere nella stessa direzione: che entri in più mani. Alla fine cominciò a entrare anche in più tasche."
+   "Si avvicini al microscopio. Ciò che sta lì dentro è una Bibbia completa.",
+   "È su microfilm: una pellicola fotografica in cui ogni pagina si riduce tante volte che il testo intero sta in un quadro più piccolo di un francobollo. A occhio nudo non si vede nulla, solo una lastra grigia. Con l'ingrandimento compaiono le righe.",
+   "Il microfilm fu inventato per altro: per conservare archivi, giornali e atti in poco spazio, e per poterli copiare e metterli al sicuro. Per buona parte del Novecento fu il modo di conservare ciò che non doveva perdersi.",
+   "E con la Bibbia si usò per la stessa cosa di sempre, che è ciò che racconta questo museo: perché potesse viaggiare. Sta in una tasca, non pesa nulla, si nasconde ovunque e si riproduce a basso costo. La stessa cosa che cercavano le Bibbie in miniatura della vetrina accanto, risolta con la fotografia invece che con la stampa.",
+   "Ci pensi un momento. Un rotolo di Torà pesa parecchi chili e ci vuole un anno per scriverlo. L'Amiatino che ha visto all'inizio pesa trentaquattro chili. E questo che sta guardando al microscopio dice la stessa cosa e sta sotto l'unghia del suo pollice.",
+   "Ogni secolo trovò il suo modo di rendere il Libro più leggero. Nessuno gli tolse una parola."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Mesa 1 · Museu de História da Bíblia",
+   "titulo": "A Bíblia em microfilme",
+   "siglo": "Menor que um selo",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Aproxime-se do microscópio. O que está ali dentro é uma Bíblia completa.",
+   "Está em microfilme: uma película fotográfica em que cada página se reduz tantas vezes que o texto inteiro cabe num quadro menor que um selo. A olho nu não se vê nada, só uma lâmina cinzenta. Com a ampliação aparecem as linhas.",
+   "O microfilme inventou-se para outra coisa: para guardar arquivos, jornais e atas em pouco espaço, e para poder copiá-los e pô-los a salvo. Durante boa parte do século vinte foi a maneira de conservar o que não devia perder-se.",
+   "E com a Bíblia usou-se para o mesmo de sempre, que é o que este museu conta: para que pudesse viajar. Cabe num bolso, não pesa nada, esconde-se em qualquer parte e reproduz-se a baixo custo. O mesmo que buscavam as Bíblias miniatura da vitrine ao lado, resolvido com fotografia em vez de imprensa.",
+   "Pense um momento. Um rolo de Torá pesa vários quilos e leva um ano a escrever-se. O Amiatino que viu ao princípio pesa trinta e quatro quilos. E isto que está olhando pelo microscópio diz o mesmo e cabe na unha do seu polegar.",
+   "Cada século encontrou a sua maneira de tornar o Livro mais leve. Nenhum lhe tirou uma palavra."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Стол 1 · Музей истории Библии",
+   "titulo": "Библия на микрофильме",
+   "siglo": "Меньше почтовой марки",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Подойдите к микроскопу. То, что внутри, — полная Библия.",
+   "Она на микрофильме: фотоплёнка, где каждая страница уменьшена столько раз, что весь текст умещается в кадре меньше почтовой марки. Невооружённым глазом не видно ничего, только серая пластинка. При увеличении проступают строки.",
+   "Микрофильм изобрели для другого: чтобы хранить архивы, газеты и акты на малом пространстве и чтобы их можно было копировать и уберечь. Добрую часть двадцатого века это был способ сохранять то, что не должно пропасть.",
+   "А с Библией его применили ради того же, ради чего всегда, — ради того, о чём рассказывает этот музей: чтобы она могла путешествовать. Она умещается в кармане, ничего не весит, прячется где угодно и дёшево размножается. То же самое, чего добивались миниатюрные Библии в соседней витрине, только решённое фотографией, а не печатью.",
+   "Подумайте минуту. Свиток Торы весит несколько килограммов, и на его написание уходит год. Амиатинский кодекс, который вы видели в начале, весит тридцать четыре килограмма. А то, на что вы смотрите в микроскоп, говорит то же самое и умещается под ногтем большого пальца.",
+   "Каждый век нашёл свой способ сделать Книгу легче. Ни один не отнял у неё ни слова."
   ]
  }
 };
@@ -280,6 +320,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

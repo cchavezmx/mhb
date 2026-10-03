@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia de Lutero — Museo de Historia de la Biblia</title>
+<title>La vida de Cristo — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EDE1;--claro:#FAF5E9;--tinta:#231D16;--cabecera:#2C4A7C;--acento:#A82418;--marca:rgba(201,162,39,.32); }
+  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,8 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .rosa{flex:none;width:68px;height:68px}
+  .tres{flex:none;display:flex;gap:6px;align-items:flex-end}
+  .tres i{display:block;width:16px;background:var(--acento);border-radius:2px}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,19 +39,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="rosa" viewBox="0 0 68 68" aria-hidden="true">
-    <circle cx="34" cy="34" r="32" fill="none" stroke="#C9A227" stroke-width="3"/>
-    <circle cx="34" cy="34" r="28" fill="#2C4A7C"/>
-    <g fill="#F7F3E8"><ellipse cx="34" cy="17" rx="7" ry="9"/><ellipse cx="34" cy="51" rx="7" ry="9"/>
-      <ellipse cx="17" cy="34" rx="9" ry="7"/><ellipse cx="51" cy="34" rx="9" ry="7"/>
-      <ellipse cx="22" cy="22" rx="7" ry="6" transform="rotate(-45 22 22)"/>
-      <ellipse cx="46" cy="46" rx="7" ry="6" transform="rotate(-45 46 46)"/></g>
-    <path d="M34 22 L42 34 L34 46 L26 34 Z" fill="#A82418"/>
-    <path d="M34 26 V42 M28 33 H40" stroke="#14110D" stroke-width="3.4" stroke-linecap="square"/></svg>
+  <div class="tres" aria-hidden="true"><i style="height:58px"></i><i style="height:40px"></i><i style="height:52px"></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -79,110 +73,140 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 12 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia de Lutero",
-   "siglo": "Wittenberg, 1522–1534",
+   "sala": "Vitrina 15 · Museo de Historia de la Biblia",
+   "titulo": "La vida de Cristo",
+   "siglo": "Tres siglos, tres maneras",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Un hombre escondido en un castillo, con nombre falso, tradujo esto en once semanas.",
-   "Año 1521. Martín Lutero acaba de ser condenado en la Dieta de Worms. Está fuera de la ley: cualquiera puede matarlo sin castigo. Sus amigos lo secuestran y lo esconden en el castillo de Wartburgo, donde vive disfrazado, con barba y ropa de caballero, bajo el nombre de Jorge.",
-   "Ahí, encerrado, se pone a traducir el Nuevo Testamento al alemán. Trabaja sobre el griego de Erasmo, el libro que usted vio en la sala anterior. Termina en once semanas. Se imprime en septiembre de 1,522. El Antiguo Testamento le llevaría doce años más, y la Biblia completa salió en 1,534.",
-   "Ahora bien: lo importante no fue la rapidez. Fue cómo tradujo. Lutero no quiso pasar el latín palabra por palabra. Decía que para traducir bien hay que salir a la calle y mirar cómo habla la gente: la madre en su casa, los niños jugando, el hombre en el mercado. Que hay que oírlos hablar, y escribir como ellos hablan.",
-   "Y ocurrió algo que casi nadie previó. Alemania estaba partida en decenas de dialectos. Este libro se imprimió tantas veces, y se leyó en tantos púlpitos, que la manera de hablar de Lutero acabó imponiéndose sobre todas las demás. El alemán moderno salió, en buena medida, de estas páginas. Una Biblia terminó fabricando un idioma.",
-   "Un detalle honesto, porque este museo no esconde nada. En la carta a los Romanos, Lutero agregó una palabra que no está en el griego: solamente, la fe sola. Se lo reclamaron, y él escribió un tratado entero defendiéndose. Ahí se ve algo que vale para toda esta sala: traducir nunca es sólo traducir. Siempre hay alguien decidiendo.",
-   "Y lo que Lutero estaba haciendo en alemán, otros lo intentaban al mismo tiempo en inglés, y varios de ellos lo pagaron con la vida. Eso es lo que verá en la sala siguiente."
+   "Esta vitrina tiene tres libros y una sola idea. Los tres cuentan la vida de Cristo, y entre el primero y el último hay trescientos veintiún años.",
+   "El de la izquierda es de 1,531 y la cuenta con palabras: los cuatro evangelios refundidos en una sola narración, con comentarios.",
+   "El de en medio es de mediados del siglo dieciocho y la cuenta sin palabras: ciento veinte estampas, una por escena. Alguien, después, tradujo a mano al español el pie de las ciento veinte.",
+   "El de la derecha es de 1,852 y vuelve a las palabras, ahora con el comentario de los siglos encima.",
+   "Tres siglos, tres maneras de hacer el mismo encargo. Cada uno tiene su código: escúchelos en orden, o escoja el que le interese."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 12 · Museum of the History of the Bible",
-   "titulo": "Luther's Bible",
-   "siglo": "Wittenberg, 1522–1534",
+   "sala": "Case 15 · Museum of the History of the Bible",
+   "titulo": "The Life of Christ",
+   "siglo": "Three centuries, three ways",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "A man hidden in a castle, under a false name, translated this in eleven weeks.",
-   "The year is 1521. Martin Luther has just been condemned at the Diet of Worms. He is an outlaw: anyone may kill him without punishment. His friends kidnap him and hide him in the castle of Wartburg, where he lives in disguise, bearded and dressed as a knight, under the name of George.",
-   "There, shut away, he sets about translating the New Testament into German. He works from the Greek of Erasmus, the book you saw in the previous case. He finishes in eleven weeks. It is printed in September 1522. The Old Testament would take him twelve more years, and the complete Bible appeared in 1534.",
-   "But the important thing was not the speed. It was how he translated. Luther refused to carry the Latin across word for word. He said that to translate well you must go out into the street and watch how people speak: the mother at home, the children at play, the man in the marketplace. You must listen to them, and then write the way they talk.",
-   "And something happened that almost nobody foresaw. Germany was split into dozens of dialects. This book was printed so many times, and read from so many pulpits, that Luther's way of speaking ended up prevailing over all the others. Modern German came, in good measure, out of these pages. A Bible ended up manufacturing a language.",
-   "One honest detail, because this museum hides nothing. In the letter to the Romans, Luther added a word that is not in the Greek: only, faith alone. He was taken to task for it, and he wrote a whole treatise in his own defence. There you see something that holds for this entire case: translating is never merely translating. Somebody is always deciding.",
-   "And what Luther was doing in German, others were attempting at the same time in English, and several of them paid for it with their lives. That is what you will see in the next case."
+   "This case holds three books and a single idea. All three tell the life of Christ, and between the first and the last there are three hundred and twenty-one years.",
+   "The one on the left is from 1531 and tells it with words: the four gospels recast as a single narrative, with commentary.",
+   "The one in the middle is from the mid-eighteenth century and tells it without words: a hundred and twenty prints, one for each scene. Someone, afterwards, translated all hundred and twenty captions into Spanish by hand.",
+   "The one on the right is from 1852 and returns to words, now with the commentary of the centuries on top.",
+   "Three centuries, three ways of carrying out the same commission. Each has its own code: listen to them in order, or choose the one that interests you."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 12 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible de Luther",
-   "siglo": "Wittenberg, 1522–1534",
+   "sala": "Vitrine 15 · Musée de l'Histoire de la Bible",
+   "titulo": "La vie du Christ",
+   "siglo": "Trois siècles, trois manières",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Un homme caché dans un château, sous un faux nom, a traduit ceci en onze semaines.",
-   "Nous sommes en 1521. Martin Luther vient d'être condamné à la Diète de Worms. Il est hors la loi : n'importe qui peut le tuer sans être puni. Ses amis l'enlèvent et le cachent au château de la Wartbourg, où il vit déguisé, barbu et vêtu en chevalier, sous le nom de Georges.",
-   "Là, enfermé, il se met à traduire le Nouveau Testament en allemand. Il travaille sur le grec d'Érasme, le livre que vous avez vu dans la vitrine précédente. Il termine en onze semaines. L'ouvrage est imprimé en septembre 1522. L'Ancien Testament lui prendra douze ans de plus, et la Bible complète paraîtra en 1534.",
-   "Mais l'important ne fut pas la rapidité. Ce fut sa manière de traduire. Luther a refusé de faire passer le latin mot à mot. Il disait que pour bien traduire il faut sortir dans la rue et regarder comment les gens parlent : la mère chez elle, les enfants qui jouent, l'homme au marché. Il faut les écouter, et écrire comme ils parlent.",
-   "Et il arriva une chose que presque personne n'avait prévue. L'Allemagne était morcelée en des dizaines de dialectes. Ce livre fut imprimé tant de fois, et lu dans tant de chaires, que la façon de parler de Luther finit par s'imposer à toutes les autres. L'allemand moderne est sorti, pour une bonne part, de ces pages. Une Bible a fini par fabriquer une langue.",
-   "Un détail honnête, car ce musée ne cache rien. Dans l'épître aux Romains, Luther a ajouté un mot qui n'est pas dans le grec : seulement, la foi seule. On le lui reprocha, et il écrivit tout un traité pour se défendre. On y voit une chose valable pour toute cette vitrine : traduire n'est jamais seulement traduire. Il y a toujours quelqu'un qui décide.",
-   "Et ce que Luther faisait en allemand, d'autres le tentaient au même moment en anglais, et plusieurs l'ont payé de leur vie. C'est ce que vous verrez dans la vitrine suivante."
+   "Cette vitrine contient trois livres et une seule idée. Tous trois racontent la vie du Christ, et entre le premier et le dernier il y a trois cent vingt et un ans.",
+   "Celui de gauche est de 1531 et la raconte avec des mots : les quatre évangiles refondus en un seul récit, avec des commentaires.",
+   "Celui du milieu est du milieu du dix-huitième siècle et la raconte sans mots : cent vingt estampes, une par scène. Quelqu'un, ensuite, traduisit à la main en espagnol les cent vingt légendes.",
+   "Celui de droite est de 1852 et revient aux mots, désormais avec le commentaire des siècles par-dessus.",
+   "Trois siècles, trois manières d'exécuter la même commande. Chacun a son code : écoutez-les dans l'ordre, ou choisissez celui qui vous intéresse."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 12 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Lutherbibel",
-   "siglo": "Wittenberg, 1522–1534",
+   "sala": "Vitrine 15 · Museum zur Geschichte der Bibel",
+   "titulo": "Das Leben Christi",
+   "siglo": "Drei Jahrhunderte, drei Arten",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Ein Mann, versteckt in einer Burg, unter falschem Namen, hat dies in elf Wochen übersetzt.",
-   "Das Jahr ist 1521. Martin Luther ist soeben auf dem Reichstag zu Worms verurteilt worden. Er ist vogelfrei: jeder darf ihn ungestraft töten. Seine Freunde entführen ihn und verstecken ihn auf der Wartburg, wo er verkleidet lebt, mit Bart und in Ritterkleidung, unter dem Namen Junker Jörg.",
-   "Dort, eingeschlossen, macht er sich daran, das Neue Testament ins Deutsche zu übersetzen. Er arbeitet nach dem Griechischen des Erasmus, dem Buch, das Sie in der vorigen Vitrine gesehen haben. In elf Wochen ist er fertig. Im September 1522 wird es gedruckt. Das Alte Testament sollte ihn zwölf weitere Jahre kosten, und die vollständige Bibel erschien 1534.",
-   "Doch das Wichtige war nicht die Geschwindigkeit. Es war die Art, wie er übersetzte. Luther wollte das Latein nicht Wort für Wort hinübertragen. Man müsse, sagte er, auf die Gasse gehen und dem Volk aufs Maul schauen: der Mutter im Hause, den Kindern beim Spiel, dem Mann auf dem Markt. Man müsse sie reden hören und schreiben, wie sie reden.",
-   "Und es geschah etwas, das fast niemand vorausgesehen hatte. Deutschland war in Dutzende von Mundarten zersplittert. Dieses Buch wurde so oft gedruckt und von so vielen Kanzeln gelesen, dass Luthers Sprechweise sich am Ende gegen alle anderen durchsetzte. Das moderne Deutsch ist zu einem guten Teil aus diesen Seiten hervorgegangen. Eine Bibel hat am Ende eine Sprache gemacht.",
-   "Eine ehrliche Anmerkung, denn dieses Museum verbirgt nichts. Im Römerbrief fügte Luther ein Wort hinzu, das im Griechischen nicht steht: allein, der Glaube allein. Man machte ihm Vorwürfe, und er schrieb eine ganze Schrift zu seiner Verteidigung. Darin zeigt sich etwas, was für diese ganze Vitrine gilt: Übersetzen ist nie bloß Übersetzen. Immer entscheidet jemand.",
-   "Und was Luther auf Deutsch tat, versuchten andere zur selben Zeit auf Englisch, und mehrere von ihnen bezahlten es mit dem Leben. Das werden Sie in der nächsten Vitrine sehen."
+   "Diese Vitrine enthält drei Bücher und einen einzigen Gedanken. Alle drei erzählen das Leben Christi, und zwischen dem ersten und dem letzten liegen dreihunderteinundzwanzig Jahre.",
+   "Das linke ist von 1531 und erzählt es mit Worten: die vier Evangelien zu einer einzigen Erzählung verschmolzen, mit Auslegungen.",
+   "Das mittlere stammt aus der Mitte des achtzehnten Jahrhunderts und erzählt es ohne Worte: hundertzwanzig Stiche, einer je Szene. Jemand hat später alle hundertzwanzig Bildunterschriften von Hand ins Spanische übersetzt.",
+   "Das rechte ist von 1852 und kehrt zu den Worten zurück, nun mit dem Kommentar der Jahrhunderte darüber.",
+   "Drei Jahrhunderte, drei Arten, denselben Auftrag auszuführen. Jedes hat seinen eigenen Code: hören Sie sie der Reihe nach, oder wählen Sie das, was Sie interessiert."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 12 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia di Lutero",
-   "siglo": "Wittenberg, 1522–1534",
+   "sala": "Vetrina 15 · Museo di Storia della Bibbia",
+   "titulo": "La vita di Cristo",
+   "siglo": "Tre secoli, tre modi",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Un uomo nascosto in un castello, sotto falso nome, tradusse questo in undici settimane.",
-   "Siamo nel 1521. Martin Lutero è appena stato condannato alla Dieta di Worms. È fuorilegge: chiunque può ucciderlo senza castigo. I suoi amici lo rapiscono e lo nascondono nel castello della Wartburg, dove vive travestito, con la barba e in abito da cavaliere, sotto il nome di Giorgio.",
-   "Lì, rinchiuso, si mette a tradurre il Nuovo Testamento in tedesco. Lavora sul greco di Erasmo, il libro che ha visto nella vetrina precedente. Finisce in undici settimane. Viene stampato nel settembre del 1522. L'Antico Testamento gli costerà altri dodici anni, e la Bibbia completa uscì nel 1534.",
-   "Ma l'importante non fu la rapidità. Fu il modo in cui tradusse. Lutero non volle travasare il latino parola per parola. Diceva che per tradurre bene bisogna uscire in strada e guardare come parla la gente: la madre in casa, i bambini che giocano, l'uomo al mercato. Bisogna ascoltarli, e scrivere come loro parlano.",
-   "E accadde una cosa che quasi nessuno aveva previsto. La Germania era spezzata in decine di dialetti. Questo libro fu stampato tante volte, e letto da tanti pulpiti, che il modo di parlare di Lutero finì per imporsi su tutti gli altri. Il tedesco moderno è uscito, in buona parte, da queste pagine. Una Bibbia finì per fabbricare una lingua.",
-   "Un dettaglio onesto, perché questo museo non nasconde nulla. Nella lettera ai Romani, Lutero aggiunse una parola che nel greco non c'è: soltanto, la fede sola. Glielo rimproverarono, e scrisse un intero trattato per difendersi. Lì si vede una cosa che vale per tutta questa vetrina: tradurre non è mai soltanto tradurre. C'è sempre qualcuno che decide.",
-   "E quello che Lutero faceva in tedesco, altri lo tentavano nello stesso tempo in inglese, e diversi di loro lo pagarono con la vita. È questo che vedrà nella vetrina seguente."
+   "Questa vetrina ha tre libri e una sola idea. Tutti e tre raccontano la vita di Cristo, e fra il primo e l'ultimo ci sono trecentoventuno anni.",
+   "Quello di sinistra è del 1531 e la racconta con parole: i quattro vangeli rifusi in un'unica narrazione, con commenti.",
+   "Quello di mezzo è della metà del Settecento e la racconta senza parole: centoventi stampe, una per scena. Qualcuno, dopo, tradusse a mano in spagnolo tutte le centoventi didascalie.",
+   "Quello di destra è del 1852 e torna alle parole, ora con il commento dei secoli sopra.",
+   "Tre secoli, tre modi di eseguire lo stesso incarico. Ciascuno ha il suo codice: li ascolti in ordine, oppure scelga quello che le interessa."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 15 · Museu de História da Bíblia",
+   "titulo": "A vida de Cristo",
+   "siglo": "Três séculos, três maneiras",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Esta vitrine tem três livros e uma só ideia. Os três contam a vida de Cristo, e entre o primeiro e o último há trezentos e vinte e um anos.",
+   "O da esquerda é de 1531 e a conta com palavras: os quatro evangelhos refundidos numa só narrativa, com comentários.",
+   "O do meio é de meados do século dezoito e a conta sem palavras: cento e vinte estampas, uma por cena. Alguém, depois, traduziu à mão para o espanhol as cento e vinte legendas.",
+   "O da direita é de 1852 e volta às palavras, agora com o comentário dos séculos por cima.",
+   "Três séculos, três maneiras de cumprir o mesmo encargo. Cada um tem o seu código: ouça-os em ordem, ou escolha o que lhe interesse."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 15 · Музей истории Библии",
+   "titulo": "Жизнь Христа",
+   "siglo": "Три века, три способа",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "В этой витрине три книги и одна мысль. Все три рассказывают жизнь Христа, и между первой и последней — триста двадцать один год.",
+   "Книга слева — 1531 года, и она рассказывает словами: четыре Евангелия, сведённые в единое повествование, с толкованиями.",
+   "Средняя — середины восемнадцатого века, и она рассказывает без слов: сто двадцать гравюр, по одной на сцену. Кто-то потом от руки перевёл на испанский все сто двадцать подписей.",
+   "Книга справа — 1852 года, и она возвращается к словам, теперь с комментарием веков поверх них.",
+   "Три века, три способа исполнить один и тот же заказ. У каждой свой код: слушайте по порядку или выберите ту, что вам интересна."
   ]
  }
 };
@@ -287,6 +311,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

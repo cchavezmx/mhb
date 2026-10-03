@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>El Nuevo Testamento de Pérez de Pineda — Museo de Historia de la Biblia</title>
+<title>El Breviario Romano — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F0E9DC;--claro:#FAF4E8;--tinta:#241A12;--cabecera:#4A2C1A;--acento:#7B1F2B;--marca:rgba(123,31,43,.2); }
+  :root{ --fondo:#F1EFE9;--claro:#FAF8F3;--tinta:#1C1B17;--cabecera:#33302A;--acento:#8A2E2E;--marca:rgba(138,46,46,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,8 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .barril{flex:none;width:64px;height:64px}
+  .horas{flex:none;width:62px;height:62px;border:2.5px solid var(--acento);border-radius:50%;position:relative}
+  .horas i{position:absolute;left:50%;top:50%;width:2.5px;background:var(--acento);transform-origin:top center}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,15 +39,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="barril" viewBox="0 0 64 64" aria-hidden="true">
-   <path d="M20 10 C12 22 12 42 20 54 L44 54 C52 42 52 22 44 10 Z" fill="#8A5A2B"/>
-   <rect x="11" y="18" width="42" height="5" fill="#E7DCC6"/>
-   <rect x="9" y="30" width="46" height="5" fill="#E7DCC6"/>
-   <rect x="11" y="42" width="42" height="5" fill="#E7DCC6"/></svg>
+  <div class="horas" aria-hidden="true"><i style="height:22px;transform:translate(-50%,0) rotate(0deg)"></i><i style="height:22px;transform:translate(-50%,0) rotate(51deg)"></i><i style="height:22px;transform:translate(-50%,0) rotate(102deg)"></i><i style="height:22px;transform:translate(-50%,0) rotate(154deg)"></i><i style="height:22px;transform:translate(-50%,0) rotate(206deg)"></i><i style="height:22px;transform:translate(-50%,0) rotate(257deg)"></i><i style="height:22px;transform:translate(-50%,0) rotate(308deg)"></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -75,100 +73,161 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 17 · Museo de Historia de la Biblia",
-   "titulo": "El Nuevo Testamento de Pérez de Pineda",
-   "siglo": "Ginebra, 1556 · con pie de imprenta falso",
+   "sala": "Vitrina 17d · Museo de Historia de la Biblia",
+   "titulo": "El Breviario Romano",
+   "siglo": "Trento, 1,568 · esta impresión, 1,752",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Este libro entró a España escondido en barriles de vino. Lo tradujo Juan Pérez de Pineda, sevillano, huido a Ginebra. Se imprimió en 1,556, y en la portada dice que se hizo en Venecia, en casa de un tal Juan Philadelpho. Mentira completa: ni Venecia, ni Philadelpho. Se imprimió en Ginebra. El pie falso era para proteger a quien lo llevara encima. Porque el problema no era traducirlo. Era meterlo a España.",
-   "De eso se encargó un hombre pequeño de estatura al que llamaban Julianillo: Julián Hernández. Cruzó la frontera con los ejemplares metidos entre toneles de vino y los repartió en Sevilla, en el mismo monasterio de San Isidoro del Campo donde estaban Casiodoro de Reina y Cipriano de Valera. Ese cargamento fue lo que encendió la mecha: poco después el monasterio entero tuvo que huir.",
-   "A Julianillo lo delataron. Lo torturaron durante tres años sin sacarle un nombre. Lo quemaron vivo en Sevilla, en el auto de fe de 1,560.",
-   "Juan Pérez murió en París en 1,567. Dejó dispuesto en su testamento que todo su dinero se usara para imprimir la Biblia en castellano.",
-   "Piénselo un momento: un traductor en Ginebra, un contrabandista en la frontera y unos monjes en Sevilla, ninguno en el mismo país, trabajando en la misma cadena. Uno murió quemado. Otro murió en el destierro. Los otros son los de las dos salas siguientes."
+   "Este libro no es una Biblia. Y sin embargo casi todo lo que hay dentro es Biblia.",
+   "Es un breviario: el libro del oficio divino, lo que el clero estaba obligado a rezar todos los días de su vida, repartido en las horas de la jornada. Los maitines, que es la primera hora, se rezaban de madrugada, antes del amanecer. Los laudes al salir el sol, y así todo el día hasta la noche.",
+   "Y esto es lo que conviene que sepa. El corazón del breviario es el salterio, y el salterio se recorría entero cada semana: los ciento cincuenta salmos, de principio a fin, en siete días. A eso se le sumaban lecturas bíblicas repartidas por todo el año, y antífonas e himnos armados con versículos. Un sacerdote que rezaba el breviario recitaba más Escritura en un año que la mayoría de los cristianos en toda su vida.",
+   "El nombre viene de ahí: Breviario, lo abreviado. Antes hacían falta varios libros para rezar el oficio: el salterio por un lado, el leccionario por otro, el himnario y el antifonario aparte. Alguien tuvo la idea de juntarlo todo en un solo volumen que se pudiera cargar. Es, en pequeño, la misma idea que la de una Biblia en un tomo.",
+   "Éste viene del Concilio de Trento. El concilio encargó la reforma y el papa Pío quinto la promulgó en 1,568, con una bula que unificó el oficio para toda la Iglesia latina y suprimió los usos locales, salvo los que tuvieran más de doscientos años de antigüedad. Por esa excepción sobrevivieron el rito mozárabe de Toledo y el ambrosiano de Milán.",
+   "El ejemplar que tiene delante es una impresión de 1,752. Y fíjese en un detalle de la portada: dice San Pío quinto. Con lo de santo. Pío quinto fue canonizado en 1,712, así que esa sola palabra fecha el libro después de ese año. Las portadas también hablan.",
+   "Y ahora la razón por la que este libro está aquí, en un museo de la Biblia. Durante los siglos en que tener la Escritura en lengua vulgar era delito, ésta era la forma en que la Escritura circulaba a diario: en latín, por vía del oficio, en manos de cada sacerdote, todos los días, sin falta. No llegaba a la casa de la gente, pero no dejó de recitarse ni un solo día en cuatro siglos.",
+   "Y mire las fechas. Este breviario se promulgó en 1,568. Al año siguiente, en 1,569, un monje sevillano fugado imprimía en Basilea la Biblia entera en castellano, para que la leyera cualquiera. Roma poniendo la Escritura en manos del clero, y un desterrado poniéndola en manos del pueblo, con un año de diferencia. Ésa es la vitrina que sigue."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 17 · Museum of the History of the Bible",
-   "titulo": "The New Testament of Pérez de Pineda",
-   "siglo": "Geneva, 1556 · with a false imprint",
+   "sala": "Case 17d · Museum of the History of the Bible",
+   "titulo": "The Roman Breviary",
+   "siglo": "Trent, 1568 · this printing, 1752",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "This book entered Spain hidden in barrels of wine. It was translated by Juan Pérez de Pineda, a man from Seville who had fled to Geneva. It was printed in 1556, and the title page says it was made in Venice, at the house of one Juan Philadelpho. A complete lie: no Venice, no Philadelpho. It was printed in Geneva. The false imprint was there to protect whoever carried it. Because the problem was not translating it. The problem was getting it in.",
-   "That was the work of a small man they called Julianillo: Julián Hernández. He crossed the border with the copies packed among casks of wine and distributed them in Seville, in the very monastery of San Isidoro del Campo where Casiodoro de Reina and Cipriano de Valera were living. That cargo lit the fuse: soon afterwards the whole monastery had to flee.",
-   "Julianillo was betrayed. They tortured him for three years without getting a single name out of him. They burned him alive in Seville, at the auto-da-fé of 1560.",
-   "Juan Pérez died in Paris in 1567. He laid down in his will that all his money was to be used to print the Bible in Spanish.",
-   "Think about it for a moment: a translator in Geneva, a smuggler at the border and some monks in Seville, none of them in the same country, working in the same chain. One died at the stake. One died in exile. The others are in the next two cases."
+   "This book is not a Bible. And yet almost everything inside it is Bible.",
+   "It is a breviary: the book of the divine office, what the clergy were bound to pray every day of their lives, spread over the hours of the day. Matins, which is the first hour, was prayed before dawn, in the dark. Lauds at sunrise, and so on all day until night.",
+   "And this is what you should know. The heart of the breviary is the psalter, and the psalter was gone through entire every week: the hundred and fifty psalms, from beginning to end, in seven days. To that were added biblical readings spread over the whole year, and antiphons and hymns built out of verses. A priest who prayed the breviary recited more Scripture in a year than most Christians in a whole lifetime.",
+   "The name comes from that: Breviary, the abridged thing. Before, several books were needed to pray the office: the psalter on one side, the lectionary on another, the hymnal and the antiphonary apart. Someone had the idea of putting it all into a single volume that could be carried. It is, in miniature, the same idea as a Bible in one volume.",
+   "This one comes from the Council of Trent. The council ordered the reform and Pope Pius the Fifth promulgated it in 1568, with a bull that unified the office for the whole Latin Church and suppressed local uses, save those more than two hundred years old. By that exception the Mozarabic rite of Toledo and the Ambrosian of Milan survived.",
+   "The copy before you is a printing of 1752. And note a detail on the title page: it says Saint Pius the Fifth. With the saint. Pius the Fifth was canonised in 1712, so that one word dates the book after that year. Title pages speak too.",
+   "And now the reason this book is here, in a museum of the Bible. During the centuries when owning Scripture in the common tongue was a crime, this was the way Scripture circulated daily: in Latin, by way of the office, in the hands of every priest, every day, without fail. It did not reach people's houses, but it was not left unrecited for a single day in four hundred years.",
+   "And look at the dates. This breviary was promulgated in 1568. The following year, in 1569, a runaway monk from Seville was printing in Basel the whole Bible in Spanish, for anyone at all to read. Rome putting Scripture into the hands of the clergy, and an exile putting it into the hands of the people, one year apart. That is the next case."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 17 · Musée de l'Histoire de la Bible",
-   "titulo": "Le Nouveau Testament de Pérez de Pineda",
-   "siglo": "Genève, 1556 · avec une fausse adresse",
+   "sala": "Vitrine 17d · Musée de l'Histoire de la Bible",
+   "titulo": "Le Bréviaire romain",
+   "siglo": "Trente, 1568 · cette impression, 1752",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Ce livre est entré en Espagne caché dans des tonneaux de vin. Il fut traduit par Juan Pérez de Pineda, sévillan, réfugié à Genève. Il fut imprimé en 1556, et la page de titre dit qu'il fut fait à Venise, chez un certain Juan Philadelpho. Mensonge complet : ni Venise, ni Philadelpho. Il fut imprimé à Genève. La fausse adresse servait à protéger celui qui le porterait sur lui. Car le problème n'était pas de le traduire. C'était de le faire entrer.",
-   "De cela s'est chargé un homme de petite taille qu'on appelait Julianillo : Julián Hernández. Il passa la frontière avec les exemplaires glissés entre des fûts de vin et les distribua à Séville, dans ce même monastère de San Isidoro del Campo où se trouvaient Casiodoro de Reina et Cipriano de Valera. Cette cargaison alluma la mèche : peu après, tout le monastère dut fuir.",
-   "Julianillo fut dénoncé. On le tortura pendant trois ans sans lui arracher un seul nom. On le brûla vif à Séville, à l'autodafé de 1560.",
-   "Juan Pérez mourut à Paris en 1567. Il stipula dans son testament que tout son argent servirait à imprimer la Bible en espagnol.",
-   "Songez-y un instant : un traducteur à Genève, un contrebandier à la frontière et des moines à Séville, aucun dans le même pays, travaillant à la même chaîne. L'un mourut sur le bûcher. L'autre mourut en exil. Les autres sont dans les deux vitrines suivantes."
+   "Ce livre n'est pas une Bible. Et pourtant presque tout ce qu'il contient est Bible.",
+   "C'est un bréviaire : le livre de l'office divin, ce que le clergé était obligé de réciter tous les jours de sa vie, réparti selon les heures de la journée. Les matines, qui sont la première heure, se récitaient avant l'aube, dans l'obscurité. Les laudes au lever du soleil, et ainsi tout le jour jusqu'à la nuit.",
+   "Et voici ce qu'il convient de savoir. Le cœur du bréviaire est le psautier, et le psautier se parcourait en entier chaque semaine : les cent cinquante psaumes, du début à la fin, en sept jours. À cela s'ajoutaient des lectures bibliques réparties sur toute l'année, et des antiennes et des hymnes bâtis avec des versets. Un prêtre qui récitait le bréviaire disait plus d'Écriture en un an que la plupart des chrétiens en toute une vie.",
+   "Le nom vient de là : Bréviaire, l'abrégé. Auparavant il fallait plusieurs livres pour dire l'office : le psautier d'un côté, le lectionnaire de l'autre, l'hymnaire et l'antiphonaire à part. Quelqu'un eut l'idée de tout réunir en un seul volume qu'on pût porter. C'est, en petit, la même idée qu'une Bible en un tome.",
+   "Celui-ci vient du concile de Trente. Le concile ordonna la réforme et le pape Pie V la promulgua en 1568, par une bulle qui unifia l'office pour toute l'Église latine et supprima les usages locaux, sauf ceux qui avaient plus de deux cents ans. Par cette exception survécurent le rite mozarabe de Tolède et l'ambrosien de Milan.",
+   "L'exemplaire que vous avez devant vous est une impression de 1752. Et remarquez un détail de la page de titre : elle dit saint Pie V. Avec le saint. Pie V fut canonisé en 1712, si bien que ce seul mot date le livre d'après cette année-là. Les pages de titre parlent aussi.",
+   "Et voici la raison pour laquelle ce livre est ici, dans un musée de la Bible. Pendant les siècles où posséder l'Écriture en langue vulgaire était un délit, c'était ainsi que l'Écriture circulait chaque jour : en latin, par la voie de l'office, entre les mains de chaque prêtre, tous les jours, sans faute. Elle n'arrivait pas dans la maison des gens, mais elle ne cessa pas d'être récitée un seul jour en quatre siècles.",
+   "Et regardez les dates. Ce bréviaire fut promulgué en 1568. L'année suivante, en 1569, un moine sévillan en fuite imprimait à Bâle la Bible entière en castillan, pour que n'importe qui pût la lire. Rome mettant l'Écriture entre les mains du clergé, et un banni la mettant entre les mains du peuple, à un an d'intervalle. C'est la vitrine qui suit."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 17 · Museum zur Geschichte der Bibel",
-   "titulo": "Das Neue Testament des Pérez de Pineda",
-   "siglo": "Genf, 1556 · mit falschem Druckvermerk",
+   "sala": "Vitrine 17d · Museum zur Geschichte der Bibel",
+   "titulo": "Das Römische Brevier",
+   "siglo": "Trient, 1568 · dieser Druck, 1752",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Dieses Buch gelangte in Weinfässern versteckt nach Spanien. Übersetzt hat es Juan Pérez de Pineda, ein Sevillaner, der nach Genf geflohen war. Gedruckt wurde es 1556, und auf dem Titelblatt steht, es sei in Venedig entstanden, im Hause eines gewissen Juan Philadelpho. Eine glatte Lüge: kein Venedig, kein Philadelpho. Gedruckt wurde es in Genf. Die falsche Angabe sollte den schützen, der es bei sich trug. Denn das Problem war nicht, es zu übersetzen. Das Problem war, es hineinzubringen.",
-   "Darum kümmerte sich ein kleiner Mann, den man Julianillo nannte: Julián Hernández. Er überquerte die Grenze mit den Exemplaren zwischen Weinfässern und verteilte sie in Sevilla, in eben jenem Kloster San Isidoro del Campo, in dem Casiodoro de Reina und Cipriano de Valera lebten. Diese Ladung zündete die Lunte: kurz darauf musste das ganze Kloster fliehen.",
-   "Julianillo wurde verraten. Man folterte ihn drei Jahre lang, ohne ihm einen einzigen Namen abzupressen. Man verbrannte ihn 1560 bei lebendigem Leibe in Sevilla, beim Autodafé.",
-   "Juan Pérez starb 1567 in Paris. In seinem Testament bestimmte er, dass sein gesamtes Geld dazu verwendet werden sollte, die Bibel auf Spanisch zu drucken.",
-   "Denken Sie einen Augenblick darüber nach: ein Übersetzer in Genf, ein Schmuggler an der Grenze und einige Mönche in Sevilla, keiner im selben Land, und alle an derselben Kette arbeitend. Einer starb auf dem Scheiterhaufen. Einer starb in der Verbannung. Die anderen finden Sie in den beiden nächsten Vitrinenn."
+   "Dieses Buch ist keine Bibel. Und doch ist fast alles, was darin steht, Bibel.",
+   "Es ist ein Brevier: das Buch des Stundengebets, das, was die Geistlichen alle Tage ihres Lebens zu beten hatten, über die Stunden des Tages verteilt. Die Matutin, die erste Hore, wurde vor der Morgendämmerung gebetet, im Dunkeln. Die Laudes bei Sonnenaufgang, und so fort den ganzen Tag bis in die Nacht.",
+   "Und dies sollten Sie wissen. Das Herz des Breviers ist der Psalter, und der Psalter wurde jede Woche ganz durchgebetet: die hundertfünfzig Psalmen, von Anfang bis Ende, in sieben Tagen. Dazu kamen biblische Lesungen, über das ganze Jahr verteilt, und Antiphonen und Hymnen, aus Versen gebaut. Ein Priester, der das Brevier betete, sprach in einem Jahr mehr Schrift als die meisten Christen in ihrem ganzen Leben.",
+   "Daher kommt der Name: Brevier, das Verkürzte. Zuvor brauchte man mehrere Bücher, um das Offizium zu beten: den Psalter, das Lektionar, dazu Hymnar und Antiphonar. Jemand kam auf den Gedanken, alles in einen einzigen tragbaren Band zu fassen. Es ist im Kleinen derselbe Gedanke wie eine Bibel in einem Band.",
+   "Dieses stammt vom Konzil von Trient. Das Konzil trug die Reform auf, und Papst Pius der Fünfte verkündete sie 1568 mit einer Bulle, die das Offizium für die ganze lateinische Kirche vereinheitlichte und die örtlichen Gebräuche abschaffte, ausgenommen jene, die älter als zweihundert Jahre waren. Durch diese Ausnahme überlebten der mozarabische Ritus von Toledo und der ambrosianische von Mailand.",
+   "Das Exemplar vor Ihnen ist ein Druck von 1752. Und beachten Sie eine Einzelheit auf dem Titelblatt: es heißt dort heiliger Pius der Fünfte. Mit dem Heiligen. Pius der Fünfte wurde 1712 heiliggesprochen, und so datiert dieses eine Wort das Buch nach jenem Jahr. Auch Titelblätter reden.",
+   "Und nun der Grund, weshalb dieses Buch hier steht, in einem Museum der Bibel. In den Jahrhunderten, in denen der Besitz der Schrift in der Volkssprache ein Vergehen war, war dies die Weise, in der die Schrift täglich umlief: auf Latein, auf dem Weg des Offiziums, in den Händen jedes Priesters, jeden Tag, ohne Ausnahme. Sie kam nicht in die Häuser der Leute, aber sie blieb in vier Jahrhunderten keinen einzigen Tag ungesprochen.",
+   "Und sehen Sie die Daten. Dieses Brevier wurde 1568 verkündet. Im Jahr darauf, 1569, druckte ein entflohener Mönch aus Sevilla in Basel die ganze Bibel auf Spanisch, damit jedermann sie lesen könne. Rom legte die Schrift in die Hände des Klerus, und ein Verbannter legte sie in die Hände des Volkes, im Abstand eines Jahres. Das ist die nächste Vitrine."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 17 · Museo di Storia della Bibbia",
-   "titulo": "Il Nuovo Testamento di Pérez de Pineda",
-   "siglo": "Ginevra, 1556 · con falso frontespizio",
+   "sala": "Vetrina 17d · Museo di Storia della Bibbia",
+   "titulo": "Il Breviario Romano",
+   "siglo": "Trento, 1568 · questa stampa, 1752",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Questo libro entrò in Spagna nascosto nelle botti di vino. Lo tradusse Juan Pérez de Pineda, sivigliano, fuggito a Ginevra. Fu stampato nel 1556, e sul frontespizio si dice che fu fatto a Venezia, in casa di un certo Juan Philadelpho. Menzogna completa: né Venezia, né Philadelpho. Fu stampato a Ginevra. La falsa indicazione serviva a proteggere chi lo portasse addosso. Perché il problema non era tradurlo. Era farlo entrare.",
-   "Di questo si incaricò un uomo di piccola statura che chiamavano Julianillo: Julián Hernández. Passò la frontiera con le copie infilate tra le botti di vino e le distribuì a Siviglia, in quello stesso monastero di San Isidoro del Campo dove stavano Casiodoro de Reina e Cipriano de Valera. Quel carico accese la miccia: poco dopo l'intero monastero dovette fuggire.",
-   "Julianillo fu denunciato. Lo torturarono per tre anni senza cavargli un solo nome. Lo bruciarono vivo a Siviglia, nell'autodafé del 1560.",
-   "Juan Pérez morì a Parigi nel 1567. Dispose nel testamento che tutto il suo denaro servisse a stampare la Bibbia in spagnolo.",
-   "Ci pensi un momento: un traduttore a Ginevra, un contrabbandiere alla frontiera e dei monaci a Siviglia, nessuno nello stesso paese, al lavoro nella stessa catena. Uno morì sul rogo. Un altro morì in esilio. Gli altri sono nelle due vetrine seguenti."
+   "Questo libro non è una Bibbia. Eppure quasi tutto ciò che c'è dentro è Bibbia.",
+   "È un breviario: il libro dell'ufficio divino, ciò che il clero era obbligato a recitare tutti i giorni della propria vita, distribuito nelle ore della giornata. Il mattutino, che è la prima ora, si recitava prima dell'alba, al buio. Le lodi al sorgere del sole, e così tutto il giorno fino alla notte.",
+   "Ed ecco ciò che conviene sapere. Il cuore del breviario è il salterio, e il salterio si percorreva per intero ogni settimana: i centocinquanta salmi, dal principio alla fine, in sette giorni. A questo si aggiungevano letture bibliche distribuite per tutto l'anno, e antifone e inni costruiti con versetti. Un sacerdote che recitava il breviario diceva più Scrittura in un anno di quanta la maggior parte dei cristiani in tutta la vita.",
+   "Il nome viene di lì: Breviario, ciò che è abbreviato. Prima servivano più libri per recitare l'ufficio: il salterio da una parte, il lezionario dall'altra, l'innario e l'antifonario a parte. Qualcuno ebbe l'idea di riunire tutto in un solo volume che si potesse portare. È, in piccolo, la stessa idea di una Bibbia in un tomo.",
+   "Questo viene dal Concilio di Trento. Il concilio ordinò la riforma e il papa Pio quinto la promulgò nel 1568, con una bolla che unificò l'ufficio per tutta la Chiesa latina e soppresse gli usi locali, salvo quelli che avessero più di duecento anni. Per quell'eccezione sopravvissero il rito mozarabico di Toledo e l'ambrosiano di Milano.",
+   "L'esemplare che ha davanti è una stampa del 1752. E noti un dettaglio del frontespizio: dice san Pio quinto. Con il santo. Pio quinto fu canonizzato nel 1712, cosicché quella sola parola data il libro dopo quell'anno. Anche i frontespizi parlano.",
+   "E ora la ragione per cui questo libro sta qui, in un museo della Bibbia. Nei secoli in cui possedere la Scrittura in lingua volgare era reato, questa era la forma in cui la Scrittura circolava ogni giorno: in latino, per via dell'ufficio, nelle mani di ogni sacerdote, tutti i giorni, senza fallo. Non arrivava nelle case della gente, ma non smise di essere recitata un solo giorno in quattro secoli.",
+   "E guardi le date. Questo breviario fu promulgato nel 1568. L'anno seguente, nel 1569, un monaco sivigliano fuggiasco stampava a Basilea la Bibbia intera in castigliano, perché la leggesse chiunque. Roma metteva la Scrittura nelle mani del clero, e un esule la metteva nelle mani del popolo, a un anno di distanza. È la vetrina che segue."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 17d · Museu de História da Bíblia",
+   "titulo": "O Breviário Romano",
+   "siglo": "Trento, 1568 · esta impressão, 1752",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Este livro não é uma Bíblia. E no entanto quase tudo o que há dentro é Bíblia.",
+   "É um breviário: o livro do ofício divino, o que o clero era obrigado a rezar todos os dias da sua vida, repartido pelas horas da jornada. As matinas, que são a primeira hora, rezavam-se de madrugada, antes do amanhecer. As laudes ao sair o sol, e assim todo o dia até a noite.",
+   "E isto é o que convém saber. O coração do breviário é o saltério, e o saltério percorria-se inteiro cada semana: os cento e cinquenta salmos, do princípio ao fim, em sete dias. A isso somavam-se leituras bíblicas repartidas por todo o ano, e antífonas e hinos armados com versículos. Um sacerdote que rezava o breviário recitava mais Escritura num ano do que a maioria dos cristãos em toda a vida.",
+   "O nome vem daí: Breviário, o abreviado. Antes eram precisos vários livros para rezar o ofício: o saltério de um lado, o lecionário de outro, o hinário e o antifonário à parte. Alguém teve a ideia de juntar tudo num só volume que se pudesse carregar. É, em pequeno, a mesma ideia de uma Bíblia num tomo.",
+   "Este vem do Concílio de Trento. O concílio encarregou a reforma e o papa Pio quinto promulgou-a em 1568, com uma bula que unificou o ofício para toda a Igreja latina e suprimiu os usos locais, salvo os que tivessem mais de duzentos anos de antiguidade. Por essa exceção sobreviveram o rito moçárabe de Toledo e o ambrosiano de Milão.",
+   "O exemplar que tem diante de si é uma impressão de 1752. E repare num detalhe do frontispício: diz São Pio quinto. Com o de santo. Pio quinto foi canonizado em 1712, portanto essa só palavra data o livro depois desse ano. Os frontispícios também falam.",
+   "E agora a razão pela qual este livro está aqui, num museu da Bíblia. Durante os séculos em que ter a Escritura em língua vulgar era crime, esta era a forma em que a Escritura circulava a diário: em latim, por via do ofício, nas mãos de cada sacerdote, todos os dias, sem falta. Não chegava à casa das pessoas, mas não deixou de ser recitada um só dia em quatro séculos.",
+   "E olhe as datas. Este breviário foi promulgado em 1568. No ano seguinte, em 1569, um monge sevilhano fugido imprimia em Basileia a Bíblia inteira em castelhano, para que a lesse qualquer um. Roma pondo a Escritura nas mãos do clero, e um desterrado pondo-a nas mãos do povo, com um ano de diferença. Essa é a vitrine que segue."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 17d · Музей истории Библии",
+   "titulo": "Римский бревиарий",
+   "siglo": "Тренто, 1568 · это издание, 1752",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Эта книга не Библия. И всё же почти всё, что в ней есть, — Библия.",
+   "Это бревиарий: книга церковного часослова, то, что духовенство обязано было вычитывать каждый день своей жизни, распределённое по часам суток. Утреня, первый час, читалась до рассвета, в темноте. Хвалитны — на восходе солнца, и так весь день до ночи.",
+   "И вот что стоит знать. Сердце бревиария — псалтирь, и псалтирь прочитывалась целиком каждую неделю: сто пятьдесят псалмов, от начала до конца, за семь дней. К этому добавлялись библейские чтения, распределённые на весь год, и антифоны и гимны, составленные из стихов. Священник, читавший бревиарий, произносил за год больше Писания, чем большинство христиан за всю жизнь.",
+   "Отсюда и название: бревиарий — сокращённое. Прежде для службы требовалось несколько книг: псалтирь, лекционарий, гимнарий и антифонарий по отдельности. Кому-то пришло в голову соединить всё в одном переносном томе. Это в малом та же мысль, что и Библия в одном томе.",
+   "Этот бревиарий восходит к Тридентскому собору. Собор поручил реформу, и папа Пий Пятый обнародовал её в 1568 году буллой, которая объединила службу для всей латинской Церкви и упразднила местные обычаи, кроме тех, что были старше двухсот лет. Благодаря этому исключению уцелели мосарабский обряд Толедо и амвросианский обряд Милана.",
+   "Экземпляр перед вами — издание 1752 года. И обратите внимание на подробность титульного листа: там написано «святой Пий Пятый». Со словом «святой». Пий Пятый был причислен к лику святых в 1712 году, так что одно это слово датирует книгу позже того года. Титульные листы тоже говорят.",
+   "А теперь о том, почему эта книга стоит здесь, в музее Библии. В те века, когда хранить Писание на народном языке было преступлением, именно так Писание обращалось ежедневно: по-латыни, через службу, в руках каждого священника, каждый день, без исключения. Оно не доходило до домов людей, но за четыре столетия не осталось непрочитанным ни одного дня.",
+   "И посмотрите на даты. Этот бревиарий обнародован в 1568 году. А на следующий, в 1569-м, беглый севильский монах печатал в Базеле всю Библию по-испански, чтобы её мог прочесть кто угодно. Рим вкладывал Писание в руки духовенства, а изгнанник — в руки народа, с разницей в один год. Это следующая витрина."
   ]
  }
 };
@@ -273,6 +332,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

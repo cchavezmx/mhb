@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Los grabados: Schnorr y Doré — Museo de Historia de la Biblia</title>
+<title>La mancha. La Biblia de Dalí — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#EFEBE3;--claro:#FAF7F0;--tinta:#1C1917;--cabecera:#262220;--acento:#8A6A3B;--marca:rgba(138,106,59,.26); }
+  :root{ --fondo:#F6F2EA;--claro:#FDFAF4;--tinta:#1B1916;--cabecera:#2E3E6B;--acento:#C25A2E;--marca:rgba(194,90,46,.32); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,10 +17,8 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .estampas{flex:none;display:flex;gap:5px;background:var(--claro);padding:5px}
-  .estampas div{width:28px;height:58px}
-  .estampas .clara{background:repeating-linear-gradient(to bottom,var(--tinta) 0 1px,transparent 1px 6px)}
-  .estampas .densa{background:repeating-linear-gradient(115deg,var(--tinta) 0 2.4px,transparent 2.4px 3.6px)}
+  .mancha{flex:none;width:66px;height:62px;position:relative}
+  .mancha i{position:absolute;border-radius:50%;filter:blur(1px)}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -41,11 +39,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="estampas" aria-hidden="true"><div class="clara"></div><div class="densa"></div></div>
+  <div class="mancha" aria-hidden="true"><i style="left:4px;top:8px;width:34px;height:30px;background:#C25A2E;opacity:.8"></i><i style="left:26px;top:22px;width:36px;height:34px;background:#2E3E6B;opacity:.6"></i><i style="left:14px;top:34px;width:20px;height:18px;background:#C9A23A;opacity:.75"></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -74,110 +73,168 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 23 · Museo de Historia de la Biblia",
-   "titulo": "Los grabados: Schnorr y Doré",
-   "siglo": "Uguet 1878 · Doré 1866",
+   "sala": "Vitrina 25b · Museo de Historia de la Biblia",
+   "titulo": "La mancha. La Biblia de Dalí",
+   "siglo": "Milán, Rizzoli, 1,964",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Mire estas dos Biblias abiertas, una junto a la otra. Las dos son del siglo diecinueve. Las dos tienen alrededor de doscientos cuarenta grabados. Y no se parecen en nada.",
-   "La primera viene de Alemania. Julius Schnorr von Carolsfeld publicó La Biblia en imágenes entre 1,852 y 1,860: doscientas cuarenta estampas de línea clara, dibujo firme y escenas serenas. Todo se ve, todo está ordenado, nadie grita. Esos grabados son los que el editor español Justo Uguet tomó para Las Primeras Bellezas del Mundo, en 1,878, los tres tomos que usted tiene delante.",
-   "La segunda viene de Francia. Gustavo Doré, nacido en Estrasburgo, publicó su Biblia en Tours en 1,866, con doscientos cuarenta y un grabados. No había cumplido treinta y cinco años. Doré no dibujaba escenas: dibujaba luz. Mire el Diluvio, o Sansón, o Daniel entre los leones. Hay profundidad, hay tormenta, hay muchedumbres enteras metidas en una estampa del tamaño de su mano. Él dibujaba directamente sobre el taco de madera y un equipo de grabadores lo tallaba línea por línea.",
-   "Y ocurrió algo que él no calculó. Su Biblia se reimprimió, se copió y se pirateó en medio mundo. Terminó siendo la manera en que Occidente se imagina las Escrituras. Cuando usted se representa a Sansón derribando las columnas del templo, lo más probable es que esté recordando un grabado de Doré sin saber que es suyo.",
-   "Cuando llegó el cine, los directores copiaron sus encuadres casi tal cual: Doré hizo cine sesenta años antes de que existiera.",
-   "Y ahora recuerde dónde empezó este recorrido. En la primera sala, un monje pintaba el Apocalipsis para gente que no sabía leer. En la segunda, una reina mandó pintar la Biblia entera en medallones de oro. Mil años después vuelve a ocurrir lo mismo: la Escritura contada otra vez en imágenes. Sólo que aquéllas eran ejemplares únicos, hechos a mano para un rey. Éstas se imprimieron por millones y entraron a cualquier casa.",
-   "Se lo dejo como advertencia, para que salga usted pensándolo: casi todo lo que cree recordar de la Biblia, en realidad lo recuerda de estas páginas."
+   "Ciento cinco acuarelas, y el pintor más escandaloso del siglo veinte.",
+   "En 1,963, un médico de Turín llamado Giuseppe Albaretto le encargó a Salvador Dalí que ilustrara la Biblia. Albaretto era católico devoto y amigo suyo, y lo hizo con una intención declarada: que Dalí, obligado a leer la Escritura entera para pintarla, volviera a la fe.",
+   "Dalí aceptó. Trabajó entre 1,963 y 1,964. El resultado se publicó en Milán, en la casa Rizzoli: cinco tomos con el texto de la Vulgata latina y las acuarelas reproducidas una por una, en una edición corta y numerada. La que usted tiene delante es aquella primera, la de 1,964.",
+   "Lo que hizo no se parece a nada de lo que ha visto en las vitrinas anteriores. No hay contorno, no hay línea firme, no hay escena ordenada. Hay manchas de color que estallan, figuras que se disuelven a medio formar, espacios en blanco enormes. A veces arrojaba la pintura sobre el papel y después dibujaba encima lo que la mancha le sugería.",
+   "Compare con la vitrina de los grabados. Schnorr dibujaba lo que se ve. Doré dibujaba la luz. Dalí no hace ninguna de las dos cosas: pinta lo que ocurre dentro de uno mientras lee. Es la Escritura vista desde el sueño.",
+   "Y ahí está la paradoja que hace grande a esta pieza. La Iglesia llevaba mil quinientos años discutiendo cuál es la manera correcta de representar lo sagrado. Y una de las respuestas más poderosas del siglo veinte la dio un surrealista al que muchos tenían por un payaso.",
+   "Si funcionó o no el plan del doctor Albaretto, cada quien lo juzgará. Dalí murió en 1,989 y está enterrado bajo la cúpula de su propio museo, en Figueras. Lo que quedó de aquel encargo es esto que usted tiene delante.",
+   "Y todavía faltan vitrinas por ver. Las que siguen ya no tratan de cómo se tradujo este Libro, sino de hasta dónde llegó.",
+   "Pintar con la mancha es dejarle al lector la mitad del trabajo."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 23 · Museum of the History of the Bible",
-   "titulo": "The engravings: Schnorr and Doré",
-   "siglo": "Uguet 1878 · Doré 1866",
+   "sala": "Case 25b · Museum of the History of the Bible",
+   "titulo": "The stain. Dalí's Bible",
+   "siglo": "Milan, Rizzoli, 1964",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Look at these two Bibles lying open, side by side. Both are from the nineteenth century. Both have around two hundred and forty engravings. And they are nothing alike.",
-   "The first comes from Germany. Julius Schnorr von Carolsfeld published The Bible in Pictures between 1852 and 1860: two hundred and forty plates of clear line, firm drawing and calm scenes. Everything is visible, everything is in order, nobody is shouting. Those are the engravings the Spanish publisher Justo Uguet took for The First Beauties of the World, in 1878, the three volumes you have before you.",
-   "The second comes from France. Gustave Doré, born in Strasbourg, published his Bible in Tours in 1866, with two hundred and forty-one engravings. He was not yet thirty-five. Doré did not draw scenes: he drew light. Look at the Flood, or Samson, or Daniel among the lions. There is depth, there is storm, there are whole crowds packed into a plate the size of your hand. He drew straight onto the woodblock and a team of engravers cut it line by line.",
-   "And something happened that he had not reckoned on. His Bible was reprinted, copied and pirated across half the world. It ended up being the way the West imagines the Scriptures. When you picture Samson bringing down the pillars of the temple, you are most probably remembering an engraving by Doré without knowing it is his.",
-   "When the cinema came, directors copied his framing almost exactly: Doré made films sixty years before films existed.",
-   "And now remember where this tour began. In the first case, a monk was painting the Apocalypse for people who could not read. In the second, a queen had the whole Bible painted in medallions of gold. A thousand years later the same thing happens again: Scripture told once more in pictures. Except that those were unique copies, made by hand for a king. These were printed in their millions and went into any house at all.",
-   "I leave you with a warning, so that you go out thinking about it: almost everything you believe you remember of the Bible, you actually remember from these pages."
+   "A hundred and five watercolours, and the most scandalous painter of the twentieth century.",
+   "In 1963, a doctor from Turin named Giuseppe Albaretto commissioned Salvador Dalí to illustrate the Bible. Albaretto was a devout Catholic and a friend of his, and he did it with a declared intention: that Dalí, forced to read the whole of Scripture in order to paint it, should come back to the faith.",
+   "Dalí accepted. He worked between 1963 and 1964. The result was published in Milan, by the house of Rizzoli: five volumes with the text of the Latin Vulgate and the watercolours reproduced one by one, in a short, numbered edition. The one before you is that first edition, of 1964.",
+   "What he did is nothing like anything you have seen in the previous cases. There is no outline, no firm line, no orderly scene. There are bursts of colour, figures that dissolve half-formed, enormous empty spaces. Sometimes he threw the paint onto the paper and afterwards drew over it whatever the stain suggested to him.",
+   "Compare it with the case of the engravings. Schnorr drew what is seen. Doré drew the light. Dalí does neither: he paints what happens inside a person while reading. It is Scripture seen from within a dream.",
+   "And there lies the paradox that makes this piece great. The Church had spent fifteen hundred years arguing over the right way to represent the sacred. And one of the most powerful answers of the twentieth century was given by a surrealist whom many took for a clown.",
+   "Whether Doctor Albaretto's plan worked, each will judge for himself. Dalí died in 1989 and is buried beneath the dome of his own museum, in Figueres. What remains of that commission is this, before you.",
+   "And there are still cases to see. Those that follow are no longer about how this Book was translated, but about how far it reached.",
+   "To paint with the stain is to leave the reader half the work."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 23 · Musée de l'Histoire de la Bible",
-   "titulo": "Les gravures : Schnorr et Doré",
-   "siglo": "Uguet 1878 · Doré 1866",
+   "sala": "Vitrine 25b · Musée de l'Histoire de la Bible",
+   "titulo": "La tache. La Bible de Dalí",
+   "siglo": "Milan, Rizzoli, 1964",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Regardez ces deux Bibles ouvertes, l'une à côté de l'autre. Toutes deux sont du dix-neuvième siècle. Toutes deux comptent environ deux cent quarante gravures. Et elles ne se ressemblent en rien.",
-   "La première vient d'Allemagne. Julius Schnorr von Carolsfeld publia La Bible en images entre 1852 et 1860 : deux cent quarante planches de trait clair, au dessin ferme et aux scènes sereines. Tout se voit, tout est en ordre, personne ne crie. Ce sont ces gravures que l'éditeur espagnol Justo Uguet reprit pour Les Premières Beautés du Monde, en 1878, les trois volumes que vous avez devant vous.",
-   "La seconde vient de France. Gustave Doré, né à Strasbourg, publia sa Bible à Tours en 1866, avec deux cent quarante et une gravures. Il n'avait pas trente-cinq ans. Doré ne dessinait pas des scènes : il dessinait la lumière. Regardez le Déluge, ou Samson, ou Daniel parmi les lions. Il y a de la profondeur, de la tempête, des foules entières tenant dans une planche de la taille de votre main. Il dessinait directement sur le bois et une équipe de graveurs le taillait trait par trait.",
-   "Et il arriva une chose qu'il n'avait pas calculée. Sa Bible fut réimprimée, copiée et piratée dans la moitié du monde. Elle est devenue la manière dont l'Occident se représente les Écritures. Quand vous imaginez Samson abattant les colonnes du temple, vous vous souvenez très probablement d'une gravure de Doré sans savoir qu'elle est de lui.",
-   "Quand le cinéma est venu, les réalisateurs ont copié ses cadrages presque tels quels : Doré a fait du cinéma soixante ans avant le cinéma.",
-   "Et maintenant rappelez-vous où ce parcours a commencé. Dans la première vitrine, un moine peignait l'Apocalypse pour des gens qui ne savaient pas lire. Dans la deuxième, une reine fit peindre la Bible entière en médaillons d'or. Mille ans plus tard, la même chose recommence : l'Écriture racontée de nouveau en images. Sauf que celles-là étaient des exemplaires uniques, faits à la main pour un roi. Celles-ci furent imprimées par millions et sont entrées dans n'importe quelle maison.",
-   "Je vous laisse sur un avertissement, pour que vous sortiez en y pensant : presque tout ce que vous croyez vous rappeler de la Bible, vous vous le rappelez en réalité de ces pages."
+   "Cent cinq aquarelles, et le peintre le plus scandaleux du vingtième siècle.",
+   "En 1963, un médecin de Turin nommé Giuseppe Albaretto commanda à Salvador Dalí d'illustrer la Bible. Albaretto était catholique fervent et son ami, et il le fit avec une intention déclarée : que Dalí, obligé de lire toute l'Écriture pour la peindre, revînt à la foi.",
+   "Dalí accepta. Il travailla entre 1963 et 1964. Le résultat parut à Milan, chez Rizzoli : cinq volumes avec le texte de la Vulgate latine et les aquarelles reproduites une à une, en une édition courte et numérotée. Celle que vous avez devant vous est cette première, celle de 1964.",
+   "Ce qu'il fit ne ressemble à rien de ce que vous avez vu dans les vitrines précédentes. Pas de contour, pas de ligne ferme, pas de scène ordonnée. Il y a des taches de couleur qui éclatent, des figures qui se dissolvent à demi formées, d'énormes espaces blancs. Parfois il jetait la peinture sur le papier puis dessinait par-dessus ce que la tache lui suggérait.",
+   "Comparez avec la vitrine des gravures. Schnorr dessinait ce qui se voit. Doré dessinait la lumière. Dalí ne fait ni l'un ni l'autre : il peint ce qui se passe à l'intérieur de soi pendant la lecture. C'est l'Écriture vue depuis le rêve.",
+   "Et voilà le paradoxe qui fait la grandeur de cette pièce. L'Église discutait depuis mille cinq cents ans de la manière correcte de représenter le sacré. Et l'une des réponses les plus puissantes du vingtième siècle fut donnée par un surréaliste que beaucoup tenaient pour un pitre.",
+   "Si le plan du docteur Albaretto a marché, chacun en jugera. Dalí mourut en 1989 et repose sous la coupole de son propre musée, à Figueras. Ce qui resta de cette commande, c'est ce que vous avez devant vous.",
+   "Et il reste encore des vitrines à voir. Celles qui suivent ne traitent plus de la façon dont ce Livre fut traduit, mais de jusqu'où il alla.",
+   "Peindre avec la tache, c'est laisser au lecteur la moitié du travail."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 23 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Stiche: Schnorr und Doré",
-   "siglo": "Uguet 1878 · Doré 1866",
+   "sala": "Vitrine 25b · Museum zur Geschichte der Bibel",
+   "titulo": "Der Fleck. Die Dalí-Bibel",
+   "siglo": "Mailand, Rizzoli, 1964",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Sehen Sie diese beiden aufgeschlagenen Bibeln an, eine neben der anderen. Beide stammen aus dem neunzehnten Jahrhundert. Beide enthalten etwa zweihundertvierzig Stiche. Und sie ähneln einander in nichts.",
-   "Die erste kommt aus Deutschland. Julius Schnorr von Carolsfeld veröffentlichte Die Bibel in Bildern zwischen 1852 und 1860: zweihundertvierzig Blätter von klarer Linie, festem Strich und ruhigen Szenen. Alles ist sichtbar, alles ist geordnet, niemand schreit. Diese Stiche übernahm der spanische Verleger Justo Uguet 1878 für Die ersten Schönheiten der Welt, die drei Bände, die Sie vor sich haben.",
-   "Die zweite kommt aus Frankreich. Gustave Doré, geboren in Straßburg, veröffentlichte seine Bibel 1866 in Tours, mit zweihunderteinundvierzig Stichen. Er war noch keine fünfunddreißig. Doré zeichnete keine Szenen: er zeichnete Licht. Sehen Sie die Sintflut an, oder Simson, oder Daniel unter den Löwen. Da ist Tiefe, da ist Sturm, da stecken ganze Menschenmengen in einem Blatt von der Größe Ihrer Hand. Er zeichnete unmittelbar auf den Holzstock, und eine Mannschaft von Stechern schnitt es Linie für Linie.",
-   "Und es geschah etwas, womit er nicht gerechnet hatte. Seine Bibel wurde in der halben Welt nachgedruckt, kopiert und raubgedruckt. Sie wurde am Ende zu der Art, wie der Westen sich die Schrift vorstellt. Wenn Sie sich Simson vorstellen, wie er die Säulen des Tempels niederreißt, erinnern Sie sich höchstwahrscheinlich an einen Stich Dorés, ohne zu wissen, dass er von ihm ist.",
-   "Als das Kino kam, kopierten die Regisseure seine Bildausschnitte fast unverändert: Doré machte Kino sechzig Jahre, bevor es das Kino gab.",
-   "Und nun erinnern Sie sich, wo dieser Rundgang begann. Im ersten Vitrine malte ein Mönch die Offenbarung für Leute, die nicht lesen konnten. Im zweiten ließ eine Königin die ganze Bibel in Goldmedaillons malen. Tausend Jahre später geschieht dasselbe noch einmal: die Schrift, abermals in Bildern erzählt. Nur dass jene Einzelstücke waren, von Hand für einen König gemacht. Diese wurden millionenfach gedruckt und kamen in jedes beliebige Haus.",
-   "Ich lasse Sie mit einer Warnung: fast alles, was Sie von der Bibel zu erinnern glauben, erinnern Sie in Wahrheit von diesen Seiten."
+   "Hundertfünf Aquarelle, und der skandalöseste Maler des zwanzigsten Jahrhunderts.",
+   "1963 beauftragte ein Arzt aus Turin namens Giuseppe Albaretto Salvador Dalí, die Bibel zu illustrieren. Albaretto war frommer Katholik und sein Freund, und er tat es mit erklärter Absicht: dass Dalí, gezwungen, die ganze Schrift zu lesen, um sie zu malen, zum Glauben zurückfände.",
+   "Dalí nahm an. Er arbeitete zwischen 1963 und 1964. Das Ergebnis erschien in Mailand, im Hause Rizzoli: fünf Bände mit dem Text der lateinischen Vulgata und den einzeln wiedergegebenen Aquarellen, in einer kleinen, nummerierten Auflage. Das vor Ihnen ist jene erste, von 1964.",
+   "Was er machte, gleicht nichts von dem, was Sie in den vorigen Vitrinen gesehen haben. Es gibt keinen Umriss, keine feste Linie, keine geordnete Szene. Es gibt aufplatzende Farbflecken, Gestalten, die sich halb geformt auflösen, riesige weiße Flächen. Manchmal warf er die Farbe aufs Papier und zeichnete danach darüber, was der Fleck ihm eingab.",
+   "Vergleichen Sie mit der Vitrine der Stiche. Schnorr zeichnete, was man sieht. Doré zeichnete das Licht. Dalí tut keines von beiden: er malt, was im Inneren eines Menschen beim Lesen geschieht. Es ist die Schrift, aus dem Traum gesehen.",
+   "Und darin liegt das Paradox, das dieses Stück groß macht. Die Kirche stritt seit fünfzehnhundert Jahren darüber, wie das Heilige recht darzustellen sei. Und eine der mächtigsten Antworten des zwanzigsten Jahrhunderts gab ein Surrealist, den viele für einen Clown hielten.",
+   "Ob der Plan des Doktors Albaretto aufging, mag jeder selbst beurteilen. Dalí starb 1989 und liegt unter der Kuppel seines eigenen Museums in Figueras begraben. Was von jenem Auftrag blieb, ist das, was Sie vor sich haben.",
+   "Und es stehen noch Vitrinen aus. Die folgenden handeln nicht mehr davon, wie dieses Buch übersetzt wurde, sondern davon, wie weit es gelangte.",
+   "Mit dem Fleck malen heißt, dem Leser die Hälfte der Arbeit zu überlassen."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 23 · Museo di Storia della Bibbia",
-   "titulo": "Le incisioni: Schnorr e Doré",
-   "siglo": "Uguet 1878 · Doré 1866",
+   "sala": "Vetrina 25b · Museo di Storia della Bibbia",
+   "titulo": "La macchia. La Bibbia di Dalí",
+   "siglo": "Milano, Rizzoli, 1964",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Guardi queste due Bibbie aperte, una accanto all'altra. Sono entrambe dell'Ottocento. Hanno entrambe circa duecentoquaranta incisioni. E non si somigliano affatto.",
-   "La prima viene dalla Germania. Julius Schnorr von Carolsfeld pubblicò La Bibbia in immagini fra il 1852 e il 1860: duecentoquaranta tavole di linea chiara, disegno fermo e scene serene. Tutto si vede, tutto è in ordine, nessuno grida. Sono quelle incisioni che l'editore spagnolo Justo Uguet riprese per Le Prime Bellezze del Mondo, nel 1878, i tre volumi che ha davanti.",
-   "La seconda viene dalla Francia. Gustave Doré, nato a Strasburgo, pubblicò la sua Bibbia a Tours nel 1866, con duecentoquarantuno incisioni. Non aveva ancora trentacinque anni. Doré non disegnava scene: disegnava la luce. Guardi il Diluvio, o Sansone, o Daniele fra i leoni. C'è profondità, c'è tempesta, ci sono folle intere dentro una tavola grande quanto la sua mano. Disegnava direttamente sul legno e una squadra di incisori lo intagliava linea per linea.",
-   "E accadde una cosa che non aveva calcolato. La sua Bibbia fu ristampata, copiata e piratata in mezzo mondo. Finì per diventare il modo in cui l'Occidente si immagina le Scritture. Quando lei si raffigura Sansone che abbatte le colonne del tempio, molto probabilmente sta ricordando un'incisione di Doré senza sapere che è sua.",
-   "Quando arrivò il cinema, i registi copiarono le sue inquadrature quasi tali e quali: Doré fece cinema sessant'anni prima che il cinema esistesse.",
-   "E ora ricordi dove è cominciato questo percorso. Nella prima vetrina, un monaco dipingeva l'Apocalisse per gente che non sapeva leggere. Nella seconda, una regina fece dipingere l'intera Bibbia in medaglioni d'oro. Mille anni dopo accade di nuovo la stessa cosa: la Scrittura raccontata ancora per immagini. Solo che quelli erano esemplari unici, fatti a mano per un re. Queste furono stampate a milioni ed entrarono in qualunque casa.",
-   "Glielo lascio come avvertimento, perché esca pensandoci: quasi tutto ciò che crede di ricordare della Bibbia, in realtà lo ricorda da queste pagine."
+   "Centocinque acquerelli, e il pittore più scandaloso del Novecento.",
+   "Nel 1963, un medico di Torino di nome Giuseppe Albaretto incaricò Salvador Dalí di illustrare la Bibbia. Albaretto era cattolico devoto e suo amico, e lo fece con un'intenzione dichiarata: che Dalí, costretto a leggere l'intera Scrittura per dipingerla, tornasse alla fede.",
+   "Dalí accettò. Lavorò fra il 1963 e il 1964. Il risultato fu pubblicato a Milano, dalla casa Rizzoli: cinque tomi con il testo della Vulgata latina e gli acquerelli riprodotti uno per uno, in un'edizione breve e numerata. Quella che ha davanti è quella prima, del 1964.",
+   "Quello che fece non somiglia a nulla di ciò che ha visto nelle vetrine precedenti. Non c'è contorno, non c'è linea ferma, non c'è scena ordinata. Ci sono macchie di colore che esplodono, figure che si dissolvono a metà formate, enormi spazi bianchi. A volte gettava la pittura sulla carta e poi disegnava sopra ciò che la macchia gli suggeriva.",
+   "Confronti con la vetrina delle incisioni. Schnorr disegnava ciò che si vede. Doré disegnava la luce. Dalí non fa né l'una né l'altra cosa: dipinge ciò che accade dentro di sé mentre si legge. È la Scrittura vista dal sogno.",
+   "E lì sta il paradosso che rende grande questo pezzo. La Chiesa discuteva da millecinquecento anni su quale sia il modo corretto di rappresentare il sacro. E una delle risposte più potenti del Novecento la diede un surrealista che molti prendevano per un pagliaccio.",
+   "Se il piano del dottor Albaretto abbia funzionato, ciascuno lo giudicherà. Dalí morì nel 1989 ed è sepolto sotto la cupola del proprio museo, a Figueras. Ciò che restò di quell'incarico è questo che lei ha davanti.",
+   "E mancano ancora vetrine da vedere. Quelle che seguono non trattano più di come fu tradotto questo Libro, ma di fin dove arrivò.",
+   "Dipingere con la macchia è lasciare al lettore metà del lavoro."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 25b · Museu de História da Bíblia",
+   "titulo": "A mancha. A Bíblia de Dalí",
+   "siglo": "Milão, Rizzoli, 1964",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Cento e cinco aquarelas, e o pintor mais escandaloso do século vinte.",
+   "Em 1963, um médico de Turim chamado Giuseppe Albaretto encarregou Salvador Dalí de ilustrar a Bíblia. Albaretto era católico devoto e seu amigo, e fê-lo com uma intenção declarada: que Dalí, obrigado a ler a Escritura inteira para pintá-la, voltasse à fé.",
+   "Dalí aceitou. Trabalhou entre 1963 e 1964. O resultado publicou-se em Milão, na casa Rizzoli: cinco tomos com o texto da Vulgata latina e as aquarelas reproduzidas uma por uma, numa edição curta e numerada. A que você tem diante de si é aquela primeira, a de 1964.",
+   "O que fez não se parece a nada do que viu nas vitrines anteriores. Não há contorno, não há linha firme, não há cena ordenada. Há manchas de cor que estalam, figuras que se dissolvem a meio formar, espaços em branco enormes. Às vezes atirava a tinta sobre o papel e depois desenhava por cima o que a mancha lhe sugeria.",
+   "Compare com a vitrine das gravuras. Schnorr desenhava o que se vê. Doré desenhava a luz. Dalí não faz nenhuma das duas coisas: pinta o que acontece dentro de cada um enquanto lê. É a Escritura vista a partir do sonho.",
+   "E aí está o paradoxo que faz grande esta peça. A Igreja levava mil e quinhentos anos discutindo qual é a maneira correta de representar o sagrado. E uma das respostas mais poderosas do século vinte deu-a um surrealista a quem muitos tinham por um palhaço.",
+   "Se funcionou ou não o plano do doutor Albaretto, cada um julgará. Dalí morreu em 1989 e está enterrado sob a cúpula do seu próprio museu, em Figueras. O que ficou daquela encomenda é isto que você tem diante de si.",
+   "E ainda faltam vitrines por ver. As que seguem já não tratam de como se traduziu este Livro, mas de até onde chegou.",
+   "Pintar com a mancha é deixar ao leitor metade do trabalho."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 25b · Музей истории Библии",
+   "titulo": "Пятно. Библия Дали",
+   "siglo": "Милан, Риццоли, 1964",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Сто пять акварелей — и самый скандальный живописец двадцатого века.",
+   "В 1963 году туринский врач по имени Джузеппе Альбаретто заказал Сальвадору Дали иллюстрации к Библии. Альбаретто был набожным католиком и его другом и сделал это с открыто заявленной целью: чтобы Дали, вынужденный прочесть всё Писание, чтобы его написать, вернулся к вере.",
+   "Дали согласился. Он работал с 1963 по 1964 год. Результат вышел в Милане, в доме Риццоли: пять томов с текстом латинской Вульгаты и акварелями, воспроизведёнными одна за другой, малым нумерованным тиражом. Перед вами именно то первое издание 1964 года.",
+   "То, что он сделал, не похоже ни на что из виденного вами в прежних витринах. Нет контура, нет твёрдой линии, нет упорядоченной сцены. Есть взрывающиеся пятна цвета, фигуры, растворяющиеся, не успев сложиться, огромные белые пространства. Иногда он выплёскивал краску на бумагу, а потом дорисовывал поверх то, что пятно ему подсказывало.",
+   "Сравните с витриной гравюр. Шнорр рисовал то, что видно. Доре рисовал свет. Дали не делает ни того, ни другого: он пишет то, что происходит внутри человека, пока тот читает. Это Писание, увиденное из сна.",
+   "И в этом парадокс, делающий эту вещь великой. Церковь полторы тысячи лет спорила о том, как правильно изображать священное. А один из самых сильных ответов двадцатого века дал сюрреалист, которого многие считали шутом.",
+   "Сработал ли замысел доктора Альбаретто, пусть каждый судит сам. Дали умер в 1989 году и похоронен под куполом собственного музея в Фигерасе. От того заказа осталось то, что перед вами.",
+   "И витрины ещё не кончились. Следующие говорят уже не о том, как эту Книгу переводили, а о том, как далеко она дошла.",
+   "Писать пятном — значит оставить читателю половину работы."
   ]
  }
 };
@@ -282,6 +339,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

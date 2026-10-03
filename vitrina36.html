@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia del Cántaro — Museo de Historia de la Biblia</title>
+<title>La Biblia del padre Scío — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F1EDDF;--claro:#FBF6E9;--tinta:#262019;--cabecera:#3F6B3A;--acento:#A9542B;--marca:rgba(169,84,43,.22); }
+  :root{ --fondo:#F1EFE8;--claro:#FAF8F2;--tinta:#1C1B16;--cabecera:#3A3328;--acento:#8A7A3A;--marca:rgba(138,122,58,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,10 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .cantaro{flex:none;width:64px;height:64px}
+  .dosc{flex:none;width:66px;height:62px;background:var(--claro);border:1.5px solid var(--acento);padding:5px;display:flex;flex-direction:column;gap:4px}
+  .dosc .fila{display:flex;gap:4px;flex:1}
+  .dosc .fila i{flex:1;background:repeating-linear-gradient(to bottom,var(--tinta) 0 1.2px,transparent 1.2px 4px);opacity:.6}
+  .dosc .notas{height:14px;background:repeating-linear-gradient(to bottom,var(--acento) 0 1px,transparent 1px 3px)}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,16 +41,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="cantaro" viewBox="0 0 64 64" aria-hidden="true">
-   <path d="M22 16 L42 16 L46 30 C46 44 40 52 32 52 C24 52 18 44 18 30 Z" fill="#A9542B"/>
-   <path d="M42 22 C52 22 54 32 46 36" fill="none" stroke="#A9542B" stroke-width="4"/>
-   <path d="M20 12 C24 6 40 6 44 12" fill="none" stroke="#A9542B" stroke-width="3"/>
-   <path d="M32 58 V50" stroke="#3F6B3A" stroke-width="3"/>
-   <path d="M32 52 C26 50 24 45 25 41 C30 42 33 47 32 52 Z" fill="#3F6B3A"/></svg>
+  <div class="dosc" aria-hidden="true"><div class="fila"><i></i><i></i></div><div class="notas"></div></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -77,20 +76,26 @@ const GUIA = {
   "voz": "es-MX",
   "ui": {
    "sala": "Vitrina 19 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia del Cántaro",
-   "siglo": "Ámsterdam, 1602 · Cipriano de Valera",
+   "titulo": "La Biblia del padre Scío",
+   "siglo": "Valencia, 1,790-1,793 · el primer permiso",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Mire la portada. Hay dos hombres y un arbolito. Uno lo está plantando. El otro lo riega con un cántaro. Eso no es un adorno. Es una cita de san Pablo a los corintios: yo planté, Apolos regó, pero Dios dio el crecimiento. Y es también, exactamente, la historia de este libro. Por ese cántaro la conocemos hoy con ese nombre.",
-   "El que plantó fue Casiodoro de Reina, el de la sala anterior. El que regó fue Cipriano de Valera, su compañero en el monasterio de Sevilla, que huyó con él en 1,557.",
-   "Valera vivió casi cincuenta años en Inglaterra. Y dedicó veinte de esos años a revisar, cotejar y corregir la Biblia de su amigo. Veinte años sobre un libro que ya estaba hecho. Se publicó en Ámsterdam, en 1,602.",
-   "¿Y qué hizo exactamente? Limpió erratas, ajustó el castellano, ordenó el texto y movió los libros deuterocanónicos a una sección aparte, entre los dos Testamentos.",
-   "De esta revisión de 1,602 viene, por línea directa, la Reina-Valera que hoy leen millones de personas en toda América. Los dos apellidos del título son estos dos hombres, que se conocieron de jóvenes en un monasterio sevillano y escaparon juntos una noche de 1,557.",
-   "Casiodoro nunca vio esta edición: llevaba ocho años muerto cuando se logró editarla."
+   "Doscientos treinta y un años. Ése es el tiempo que estuvo prohibido en España tener la Biblia en castellano.",
+   "La prohibición venía del Índice de 1,551: poseer las Escrituras en lengua vulgar era delito de Inquisición. Por eso Casiodoro de Reina, el de unas vitrinas atrás, tuvo que imprimir la suya en Suiza y meterla de contrabando.",
+   "En 1,782, ya bajo Carlos tercero, la Inquisición levantó esa prohibición. Pero no del todo: la permitió con una condición, que las traducciones se publicaran acompañadas de notas explicativas tomadas de los Padres de la Iglesia.",
+   "El miedo no era que la gente leyera la Biblia; era que la leyera por su cuenta, sin nadie que le dijera cómo entenderla. Las notas obligatorias eran precisamente eso: una voz autorizada acompañando al lector en cada página. Nadie debía leer la Biblia sin compañía.",
+   "El primero en aprovechar ese permiso fue Felipe Scío de San Miguel, sacerdote escolapio, maestro de los hijos del rey y después obispo electo de Segovia. Tradujo de la Vulgata latina, no del hebreo ni del griego, porque la Vulgata era el texto oficial de la Iglesia.",
+   "Los tomos fueron saliendo en Valencia, de la imprenta de los Orga, entre 1,790 y 1,793. Y el que usted tiene delante es de aquella primera edición.",
+   "Ábralo y verá dos columnas: el latín de un lado, el castellano del otro. Debajo, las notas. Esa disposición no es un capricho del editor: es la ley de 1,782 hecha página.",
+   "Y ahora la comparación que sólo se puede hacer en un museo como éste. Vaya usted de esta vitrina a la de la Biblia del Oso, y regrese. Dos hombres tradujeron la Biblia al castellano. Al primero lo quemaron en efigie en Sevilla y murió desterrado. Al segundo lo nombraron obispo y maestro de príncipes. Entre uno y otro hay doscientos veintiún años, y ninguna diferencia en el trabajo. Lo único que cambió fue el permiso.",
+   "Y ahora mire el ejemplar pequeño de esta vitrina. Es una Scío de bolsillo, impresa en 1,826 por la Sociedad Bíblica Británica y Extranjera, en Londres. Al año siguiente, un escocés llamado Diego Thomson entró a México repartiendo Biblias como ésta, y la usaba además como libro de lectura en las escuelas que iba fundando por donde pasaba. Fue la primera Biblia en español que circuló en este país: todavía no se imprimía ninguna aquí.",
+   "Y fíjese en dos ausencias, porque dicen mucho. Este ejemplar no lleva notas, aunque la ley española las exigía desde 1,782. Y tampoco trae los libros deuterocanónicos, porque en ese mismo año de 1,826 la Sociedad Bíblica decidió dejar de publicarlos. Es una Scío desnuda: el texto y nada más. Así entró la Biblia a México.",
+   "Cinco años después empezaría a salir de la imprenta de Galván la primera hecha aquí, que verá usted más adelante.",
+   "El trabajo era el mismo. Lo único que cambió fue el permiso."
   ]
  },
  "en": {
@@ -98,20 +103,26 @@ const GUIA = {
   "voz": "en-GB",
   "ui": {
    "sala": "Case 19 · Museum of the History of the Bible",
-   "titulo": "The Pitcher Bible",
-   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
+   "titulo": "Father Scío's Bible",
+   "siglo": "Valencia, 1790-1793 · the first permission",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Look at the title page. There are two men and a small tree. One is planting it. The other is watering it from a pitcher. That is not decoration. It is a quotation from Saint Paul to the Corinthians: I planted, Apollos watered, but God gave the increase. And it is also, exactly, the story of this book. Because of that pitcher we know it today by that name.",
-   "The one who planted was Casiodoro de Reina, from the previous case. The one who watered was Cipriano de Valera, his companion at the monastery in Seville, who fled with him in 1557.",
-   "Valera lived almost fifty years in England. And he gave twenty of those years to revising, collating and correcting his friend's Bible. Twenty years on a book that was already finished. It was published in Amsterdam in 1602.",
-   "And what exactly did he do? He cleaned up misprints, adjusted the Spanish, ordered the text, and moved the deuterocanonical books into a separate section between the two Testaments.",
-   "From this revision of 1602 descends, in a direct line, the Reina-Valera that millions of people read today across the Americas. The two surnames in the title are these two men, who met as young men in a monastery in Seville and escaped together one night in 1557.",
-   "Casiodoro never saw this edition: he had been dead eight years."
+   "Two hundred and thirty-one years. That is how long it was forbidden in Spain to own the Bible in Spanish.",
+   "The ban came from the Index of 1551: possessing the Scriptures in the common tongue was an offence for the Inquisition. That is why Casiodoro de Reina, of a few cases back, had to print his in Switzerland and smuggle it in.",
+   "In 1782, under Charles the Third, the Inquisition lifted that ban. But not entirely: it allowed translations on one condition, that they be published with explanatory notes drawn from the Fathers of the Church.",
+   "The fear was not that people would read the Bible; it was that they would read it on their own, with nobody to tell them how to understand it. The obligatory notes were exactly that: an authorised voice accompanying the reader on every page. Nobody was to read the Bible unaccompanied.",
+   "The first to take up that permission was Felipe Scío de San Miguel, a Piarist priest, tutor to the king's children and later bishop-elect of Segovia. He translated from the Latin Vulgate, not from the Hebrew or the Greek, because the Vulgate was the official text of the Church.",
+   "The volumes came out in Valencia, from the press of the Orga family, between 1790 and 1793. And the one before you is from that first edition.",
+   "Open it and you will see two columns: the Latin on one side, the Spanish on the other. Below, the notes. That arrangement is no whim of the publisher: it is the law of 1782 made page.",
+   "And now the comparison only a museum like this allows. Go from this case to that of the Bear Bible, and come back. Two men translated the Bible into Spanish. The first was burned in effigy in Seville and died in exile. The second was made a bishop and tutor to princes. Between them lie two hundred and twenty-one years, and no difference in the work. The only thing that changed was the permission.",
+   "And now look at the small copy in this case. It is a pocket Scío, printed in 1826 by the British and Foreign Bible Society, in London. The following year a Scotsman named James Thomson came into Mexico handing out Bibles like this one, and he used it besides as a reading book in the schools he founded wherever he passed. It was the first Bible in Spanish to circulate in this country: none was yet printed here.",
+   "And note two absences, because they say a great deal. This copy carries no notes, although Spanish law had required them since 1782. And it does not carry the deuterocanonical books either, because in that same year, 1826, the Bible Society decided to stop publishing them. It is a bare Scío: the text and nothing else. That is how the Bible entered Mexico.",
+   "Five years later the first one made here would begin to come off Galván's press, which you will see further on.",
+   "The work was the same. The only thing that changed was the permission."
   ]
  },
  "fr": {
@@ -119,20 +130,26 @@ const GUIA = {
   "voz": "fr-FR",
   "ui": {
    "sala": "Vitrine 19 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible de la Cruche",
-   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
+   "titulo": "La Bible du père Scío",
+   "siglo": "Valence, 1790-1793 · la première permission",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Regardez la page de titre. Il y a deux hommes et un petit arbre. L'un le plante. L'autre l'arrose avec une cruche. Ce n'est pas un ornement. C'est une citation de saint Paul aux Corinthiens : j'ai planté, Apollos a arrosé, mais c'est Dieu qui a fait croître. Et c'est aussi, exactement, l'histoire de ce livre. C'est à cause de cette cruche qu'on l'appelle ainsi aujourd'hui.",
-   "Celui qui a planté fut Casiodoro de Reina, celui de la vitrine précédente. Celui qui a arrosé fut Cipriano de Valera, son compagnon au monastère de Séville, qui s'enfuit avec lui en 1557.",
-   "Valera vécut près de cinquante ans en Angleterre. Et il consacra vingt de ces années à réviser, collationner et corriger la Bible de son ami. Vingt ans sur un livre déjà achevé. Elle parut à Amsterdam en 1602.",
-   "Et qu'a-t-il fait au juste ? Il a nettoyé les coquilles, ajusté l'espagnol, mis le texte en ordre et déplacé les livres deutérocanoniques dans une section à part, entre les deux Testaments.",
-   "De cette révision de 1602 descend, en ligne directe, la Reina-Valera que des millions de personnes lisent aujourd'hui dans toute l'Amérique. Les deux noms du titre sont ces deux hommes, qui se connurent jeunes dans un monastère sévillan et s'enfuirent ensemble une nuit de 1557.",
-   "Casiodoro n'a jamais vu cette édition : il était mort depuis huit ans."
+   "Deux cent trente et un ans. C'est le temps pendant lequel il fut interdit en Espagne de posséder la Bible en castillan.",
+   "L'interdiction venait de l'Index de 1551 : posséder les Écritures en langue vulgaire était un délit relevant de l'Inquisition. C'est pourquoi Casiodoro de Reina, celui de quelques vitrines plus tôt, dut imprimer la sienne en Suisse et la faire entrer en contrebande.",
+   "En 1782, sous Charles III, l'Inquisition leva cette interdiction. Mais pas entièrement : elle l'autorisa à une condition, que les traductions fussent publiées avec des notes explicatives tirées des Pères de l'Église.",
+   "La crainte n'était pas que les gens lussent la Bible ; c'était qu'ils la lussent seuls, sans personne pour leur dire comment la comprendre. Les notes obligatoires étaient précisément cela : une voix autorisée accompagnant le lecteur à chaque page. Nul ne devait lire la Bible sans compagnie.",
+   "Le premier à profiter de cette permission fut Felipe Scío de San Miguel, prêtre piariste, maître des enfants du roi et plus tard évêque élu de Ségovie. Il traduisit de la Vulgate latine, non de l'hébreu ni du grec, car la Vulgate était le texte officiel de l'Église.",
+   "Les volumes parurent à Valence, de l'imprimerie des Orga, entre 1790 et 1793. Et celui que vous avez devant vous est de cette première édition.",
+   "Ouvrez-le et vous verrez deux colonnes : le latin d'un côté, le castillan de l'autre. Dessous, les notes. Cette disposition n'est pas un caprice de l'éditeur : c'est la loi de 1782 faite page.",
+   "Et voici la comparaison que seul un musée comme celui-ci permet. Allez de cette vitrine à celle de la Bible de l'Ours, et revenez. Deux hommes traduisirent la Bible en castillan. Le premier fut brûlé en effigie à Séville et mourut en exil. Le second fut fait évêque et maître de princes. Entre eux il y a deux cent vingt et un ans, et aucune différence dans le travail. La seule chose qui changea fut la permission.",
+   "Et maintenant regardez le petit exemplaire de cette vitrine. C'est une Scío de poche, imprimée en 1826 par la Société biblique britannique et étrangère, à Londres. L'année suivante, un Écossais nommé James Thomson entra au Mexique en distribuant des Bibles comme celle-ci, et il s'en servait en outre comme livre de lecture dans les écoles qu'il fondait sur son passage. Ce fut la première Bible en espagnol à circuler dans ce pays : aucune n'y était encore imprimée.",
+   "Et remarquez deux absences, car elles en disent long. Cet exemplaire ne porte pas de notes, bien que la loi espagnole les exigeât depuis 1782. Et il ne contient pas non plus les livres deutérocanoniques, parce que cette même année 1826 la Société biblique décida de cesser de les publier. C'est une Scío nue : le texte et rien de plus. C'est ainsi que la Bible entra au Mexique.",
+   "Cinq ans plus tard commencerait à sortir de l'imprimerie de Galván la première faite ici, que vous verrez plus loin.",
+   "Le travail était le même. La seule chose qui changea fut la permission."
   ]
  },
  "de": {
@@ -140,20 +157,26 @@ const GUIA = {
   "voz": "de-DE",
   "ui": {
    "sala": "Vitrine 19 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Krugbibel",
-   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
+   "titulo": "Die Bibel des Paters Scío",
+   "siglo": "Valencia, 1790-1793 · die erste Erlaubnis",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Sehen Sie das Titelblatt an. Da sind zwei Männer und ein Bäumchen. Der eine pflanzt es. Der andere begießt es aus einem Krug. Das ist kein Schmuck. Es ist ein Zitat des Apostels Paulus an die Korinther: ich habe gepflanzt, Apollos hat begossen, aber Gott hat das Gedeihen gegeben. Und es ist zugleich genau die Geschichte dieses Buches. Wegen dieses Kruges nennen wir es heute so.",
-   "Gepflanzt hat Casiodoro de Reina, der Mann aus dem vorigen Vitrine. Begossen hat Cipriano de Valera, sein Gefährte aus dem Kloster in Sevilla, der 1557 mit ihm floh.",
-   "Valera lebte fast fünfzig Jahre in England. Und zwanzig dieser Jahre widmete er der Durchsicht, dem Vergleich und der Verbesserung der Bibel seines Freundes. Zwanzig Jahre an einem Buch, das schon fertig war. Erschienen ist sie 1602 in Amsterdam.",
-   "Und was tat er genau? Er beseitigte Druckfehler, glättete das Spanische, ordnete den Text und stellte die deuterokanonischen Bücher in einen eigenen Abschnitt zwischen die beiden Testamente.",
-   "Von dieser Revision von 1602 stammt in gerader Linie die Reina-Valera ab, die heute Millionen Menschen in ganz Amerika lesen. Die beiden Namen im Titel sind diese beiden Männer, die sich als junge Leute in einem Kloster in Sevilla kennenlernten und in einer Nacht des Jahres 1557 gemeinsam flohen.",
-   "Casiodoro hat diese Ausgabe nie gesehen: er war seit acht Jahren tot."
+   "Zweihunderteinunddreißig Jahre. So lange war es in Spanien verboten, die Bibel auf Spanisch zu besitzen.",
+   "Das Verbot kam vom Index von 1551: die Schrift in der Volkssprache zu besitzen war ein Vergehen vor der Inquisition. Darum musste Casiodoro de Reina, der aus einigen Vitrinen zuvor, die seine in der Schweiz drucken und einschmuggeln lassen.",
+   "1782, schon unter Karl dem Dritten, hob die Inquisition dieses Verbot auf. Aber nicht ganz: sie erlaubte es unter einer Bedingung, dass die Übersetzungen mit erklärenden Anmerkungen aus den Kirchenvätern erschienen.",
+   "Die Furcht war nicht, dass die Leute die Bibel läsen; sie war, dass sie sie auf eigene Faust läsen, ohne dass jemand ihnen sagte, wie sie zu verstehen sei. Die vorgeschriebenen Anmerkungen waren genau das: eine autorisierte Stimme, die den Leser auf jeder Seite begleitete. Niemand sollte die Bibel ohne Begleitung lesen.",
+   "Der Erste, der diese Erlaubnis nutzte, war Felipe Scío de San Miguel, Piaristenpater, Lehrer der Königskinder und später erwählter Bischof von Segovia. Er übersetzte aus der lateinischen Vulgata, nicht aus dem Hebräischen oder Griechischen, denn die Vulgata war der amtliche Text der Kirche.",
+   "Die Bände erschienen in Valencia, aus der Druckerei der Orga, zwischen 1790 und 1793. Und der vor Ihnen stammt aus jener ersten Ausgabe.",
+   "Schlagen Sie ihn auf, und Sie sehen zwei Spalten: das Latein auf der einen Seite, das Spanische auf der anderen. Darunter die Anmerkungen. Diese Anordnung ist keine Laune des Verlegers: sie ist das Gesetz von 1782, zur Seite geworden.",
+   "Und nun der Vergleich, den nur ein Museum wie dieses erlaubt. Gehen Sie von dieser Vitrine zu der der Bärenbibel und wieder zurück. Zwei Männer übersetzten die Bibel ins Spanische. Den ersten verbrannte man in Sevilla im Bildnis, und er starb in der Verbannung. Den zweiten machte man zum Bischof und zum Lehrer von Prinzen. Zwischen ihnen liegen zweihunderteinundzwanzig Jahre und kein Unterschied in der Arbeit. Das Einzige, was sich änderte, war die Erlaubnis.",
+   "Und nun sehen Sie das kleine Exemplar in dieser Vitrine an. Es ist eine Taschen-Scío, 1826 in London von der Britischen und Ausländischen Bibelgesellschaft gedruckt. Im Jahr darauf kam ein Schotte namens James Thomson nach Mexiko und verteilte Bibeln wie diese; überdies benutzte er sie als Lesebuch in den Schulen, die er überall gründete, wo er hinkam. Es war die erste spanische Bibel, die in diesem Land umlief: hier wurde noch keine gedruckt.",
+   "Und achten Sie auf zwei Auslassungen, denn sie sagen viel. Dieses Exemplar hat keine Anmerkungen, obwohl das spanische Gesetz sie seit 1782 verlangte. Und es enthält auch die deuterokanonischen Bücher nicht, weil die Bibelgesellschaft in eben jenem Jahr 1826 beschloss, sie nicht mehr zu drucken. Es ist eine nackte Scío: der Text und sonst nichts. So kam die Bibel nach Mexiko.",
+   "Fünf Jahre später sollte die erste hier gemachte aus der Druckerei Galváns kommen, die Sie weiter hinten sehen werden.",
+   "Die Arbeit war dieselbe. Das Einzige, was sich änderte, war die Erlaubnis."
   ]
  },
  "it": {
@@ -161,20 +184,80 @@ const GUIA = {
   "voz": "it-IT",
   "ui": {
    "sala": "Vetrina 19 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia della Brocca",
-   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
+   "titulo": "La Bibbia del padre Scío",
+   "siglo": "Valencia, 1790-1793 · il primo permesso",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Guardi il frontespizio. Ci sono due uomini e un alberello. Uno lo sta piantando. L'altro lo annaffia con una brocca. Non è un ornamento. È una citazione di san Paolo ai Corinzi: io ho piantato, Apollo ha annaffiato, ma Dio ha fatto crescere. Ed è anche, esattamente, la storia di questo libro. Per quella brocca oggi la chiamiamo così.",
-   "Chi piantò fu Casiodoro de Reina, quello della vetrina precedente. Chi annaffiò fu Cipriano de Valera, suo compagno nel monastero di Siviglia, che fuggì con lui nel 1557.",
-   "Valera visse quasi cinquant'anni in Inghilterra. E dedicò venti di quegli anni a rivedere, collazionare e correggere la Bibbia dell'amico. Vent'anni su un libro già fatto. Fu pubblicata ad Amsterdam nel 1602.",
-   "E che cosa fece esattamente? Ripulì i refusi, aggiustò lo spagnolo, mise in ordine il testo e spostò i libri deuterocanonici in una sezione a parte, fra i due Testamenti.",
-   "Da questa revisione del 1602 discende, in linea diretta, la Reina-Valera che oggi leggono milioni di persone in tutta l'America. I due cognomi del titolo sono questi due uomini, che si conobbero da giovani in un monastero sivigliano e fuggirono insieme una notte del 1557.",
-   "Casiodoro non vide mai questa edizione: era morto da otto anni."
+   "Duecentotrentun anni. È il tempo in cui in Spagna fu proibito possedere la Bibbia in castigliano.",
+   "Il divieto veniva dall'Indice del 1551: possedere le Scritture in lingua volgare era reato di Inquisizione. Per questo Casiodoro de Reina, quello di qualche vetrina fa, dovette stampare la sua in Svizzera e farla entrare di contrabbando.",
+   "Nel 1782, già sotto Carlo terzo, l'Inquisizione tolse quel divieto. Ma non del tutto: lo permise a una condizione, che le traduzioni si pubblicassero accompagnate da note esplicative tratte dai Padri della Chiesa.",
+   "La paura non era che la gente leggesse la Bibbia; era che la leggesse per conto proprio, senza nessuno che le dicesse come capirla. Le note obbligatorie erano precisamente questo: una voce autorizzata che accompagnava il lettore in ogni pagina. Nessuno doveva leggere la Bibbia senza compagnia.",
+   "Il primo ad approfittare di quel permesso fu Felipe Scío de San Miguel, sacerdote scolopio, maestro dei figli del re e poi vescovo eletto di Segovia. Tradusse dalla Vulgata latina, non dall'ebraico né dal greco, perché la Vulgata era il testo ufficiale della Chiesa.",
+   "I tomi uscirono a Valencia, dalla stamperia degli Orga, fra il 1790 e il 1793. E quello che ha davanti è di quella prima edizione.",
+   "Lo apra e vedrà due colonne: il latino da un lato, il castigliano dall'altro. Sotto, le note. Quella disposizione non è un capriccio dell'editore: è la legge del 1782 fatta pagina.",
+   "E ora il confronto che solo un museo come questo permette. Vada da questa vetrina a quella della Bibbia dell'Orso, e torni. Due uomini tradussero la Bibbia in castigliano. Il primo fu bruciato in effigie a Siviglia e morì esule. Il secondo fu fatto vescovo e maestro di principi. Fra l'uno e l'altro ci sono duecentoventun anni, e nessuna differenza nel lavoro. L'unica cosa che cambiò fu il permesso.",
+   "E ora guardi l'esemplare piccolo di questa vetrina. È una Scío tascabile, stampata nel 1826 dalla Società Biblica Britannica e Forestiera, a Londra. L'anno seguente uno scozzese di nome James Thomson entrò in Messico distribuendo Bibbie come questa, e per giunta la usava come libro di lettura nelle scuole che andava fondando ovunque passasse. Fu la prima Bibbia in spagnolo che circolò in questo paese: qui non se ne stampava ancora nessuna.",
+   "E noti due assenze, perché dicono molto. Questo esemplare non porta note, benché la legge spagnola le esigesse dal 1782. E non porta neppure i libri deuterocanonici, perché in quello stesso anno 1826 la Società Biblica decise di smettere di pubblicarli. È una Scío nuda: il testo e nulla più. Così entrò la Bibbia in Messico.",
+   "Cinque anni dopo avrebbe cominciato a uscire dalla stamperia di Galván la prima fatta qui, che vedrà più avanti.",
+   "Il lavoro era lo stesso. L'unica cosa che cambiò fu il permesso."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 19 · Museu de História da Bíblia",
+   "titulo": "A Bíblia do padre Scío",
+   "siglo": "Valência, 1790-1793 · a primeira permissão",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Duzentos e trinta e um anos. Esse é o tempo em que esteve proibido na Espanha ter a Bíblia em castelhano.",
+   "A proibição vinha do Índice de 1551: possuir as Escrituras em língua vulgar era delito de Inquisição. Por isso Casiodoro de Reina, o de umas vitrines atrás, teve de imprimir a sua na Suíça e metê-la de contrabando.",
+   "Em 1782, já sob Carlos terceiro, a Inquisição levantou essa proibição. Mas não de todo: permitiu-a com uma condição, que as traduções se publicassem acompanhadas de notas explicativas tiradas dos Padres da Igreja.",
+   "O medo não era que as pessoas lessem a Bíblia; era que a lessem por conta própria, sem ninguém que lhes dissesse como entendê-la. As notas obrigatórias eram precisamente isso: uma voz autorizada acompanhando o leitor em cada página. Ninguém devia ler a Bíblia sem companhia.",
+   "O primeiro a aproveitar essa permissão foi Felipe Scío de San Miguel, sacerdote escolápio, mestre dos filhos do rei e depois bispo eleito de Segóvia. Traduziu da Vulgata latina, não do hebraico nem do grego, porque a Vulgata era o texto oficial da Igreja.",
+   "Os tomos foram saindo em Valência, da imprensa dos Orga, entre 1790 e 1793. E o que você tem diante de si é daquela primeira edição.",
+   "Abra-o e verá duas colunas: o latim de um lado, o castelhano do outro. Embaixo, as notas. Essa disposição não é um capricho do editor: é a lei de 1782 feita página.",
+   "E agora a comparação que só se pode fazer num museu como este. Vá desta vitrine à da Bíblia do Urso, e volte. Dois homens traduziram a Bíblia para o castelhano. Ao primeiro queimaram-no em efígie em Sevilha e morreu desterrado. Ao segundo nomearam-no bispo e mestre de príncipes. Entre um e outro há duzentos e vinte e um anos, e nenhuma diferença no trabalho. A única coisa que mudou foi a permissão.",
+   "E agora olhe o exemplar pequeno desta vitrine. É uma Scío de bolso, impressa em 1826 pela Sociedade Bíblica Britânica e Estrangeira, em Londres. No ano seguinte, um escocês chamado James Thomson entrou no México distribuindo Bíblias como esta, e usava-a além disso como livro de leitura nas escolas que ia fundando por onde passava. Foi a primeira Bíblia em espanhol que circulou neste país: ainda não se imprimia nenhuma aqui.",
+   "E repare em duas ausências, porque dizem muito. Este exemplar não leva notas, embora a lei espanhola as exigisse desde 1782. E também não traz os livros deuterocanônicos, porque nesse mesmo ano de 1826 a Sociedade Bíblica decidiu deixar de publicá-los. É uma Scío nua: o texto e nada mais. Assim entrou a Bíblia no México.",
+   "Cinco anos depois começaria a sair da imprensa de Galván a primeira feita aqui, que você verá mais adiante.",
+   "O trabalho era o mesmo. A única coisa que mudou foi a permissão."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 19 · Музей истории Библии",
+   "titulo": "Библия отца Сио",
+   "siglo": "Валенсия, 1790-1793 · первое разрешение",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Двести тридцать один год. Столько времени в Испании было запрещено держать Библию по-кастильски.",
+   "Запрет шёл от Индекса 1551 года: владеть Писанием на народном языке было преступлением по ведомству инквизиции. Потому Касиодоро де Рейна, тот, что несколькими витринами раньше, вынужден был печатать свою в Швейцарии и ввозить контрабандой.",
+   "В 1782 году, уже при Карле Третьем, инквизиция сняла этот запрет. Но не полностью: она разрешила переводы при одном условии — чтобы они издавались с пояснительными примечаниями, взятыми у отцов Церкви.",
+   "Боялись не того, что люди станут читать Библию; боялись, что станут читать её сами, без того, кто скажет им, как её понимать. Обязательные примечания были именно этим: полномочным голосом, сопровождающим читателя на каждой странице. Никто не должен был читать Библию в одиночку.",
+   "Первым, кто воспользовался этим разрешением, был Фелипе Сио де Сан-Мигель, священник-пиарист, наставник королевских детей, а позднее избранный епископ Сеговии. Он переводил с латинской Вульгаты, а не с еврейского или греческого, потому что Вульгата была официальным текстом Церкви.",
+   "Тома выходили в Валенсии, в типографии семьи Орга, с 1790 по 1793 год. И тот, что перед вами, — из того первого издания.",
+   "Откройте его — и увидите два столбца: латынь с одной стороны, кастильский с другой. Внизу примечания. Это расположение не прихоть издателя: это закон 1782 года, ставший страницей.",
+   "А теперь сравнение, какое возможно только в таком музее. Пройдите от этой витрины к витрине Библии Медведя и вернитесь. Двое переводили Библию на испанский. Первого сожгли в изображении в Севилье, и он умер в изгнании. Второго сделали епископом и наставником принцев. Между ними двести двадцать один год — и никакой разницы в работе. Изменилось лишь разрешение.",
+   "А теперь посмотрите на маленький экземпляр в этой витрине. Это карманная Сио, напечатанная в 1826 году Британским и иностранным библейским обществом в Лондоне. На следующий год шотландец по имени Джеймс Томсон приехал в Мексику, раздавая такие Библии, и пользовался ею вдобавок как книгой для чтения в школах, которые основывал всюду, где проходил. Это была первая испанская Библия, ходившая по этой стране: здесь ещё не печатали ни одной.",
+   "И обратите внимание на два отсутствия, они говорят о многом. В этом экземпляре нет примечаний, хотя испанский закон требовал их с 1782 года. И нет второканонических книг, потому что в том же 1826 году Библейское общество решило перестать их печатать. Это голая Сио: текст и ничего больше. Такой Библия вошла в Мексику.",
+   "Пять лет спустя из типографии Гальвана начнёт выходить первая, сделанная здесь, — вы увидите её дальше.",
+   "Работа была та же. Изменилось лишь разрешение."
   ]
  }
 };
@@ -279,6 +362,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

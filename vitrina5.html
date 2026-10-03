@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La Torá — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  :root{ --fondo:#F3EFE5;--claro:#FCF9F1;--tinta:#1E1C17;--cabecera:#4A3A20;--acento:#A8832C;--marca:rgba(168,131,44,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
+  .rollo{flex:none;display:flex;align-items:center;gap:3px}
+  .rollo b{display:block;width:10px;height:62px;background:var(--acento);border-radius:5px}
+  .rollo i{display:block;width:44px;height:48px;background:var(--claro);border:1px solid var(--acento)}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,20 +40,21 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="emb" aria-hidden="true"></div>
+  <div class="rollo" aria-hidden="true"><b></b><i></i><b></b></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
     <p class="siglo" id="ui-siglo"></p>
   </div>
 </header>
-
   <div class="progreso"><i id="mhb-barra"></i></div>
   <nav class="mhb-nav" id="mhb-nav" aria-label="Navegación"></nav>
+
 <main>
   <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
   <div class="mandos">
@@ -73,7 +76,7 @@ const GUIA = {
   "ui": {
    "sala": "Vitrina 1 · Museo de Historia de la Biblia",
    "titulo": "La Torá",
-   "siglo": "",
+   "siglo": "Los cinco libros, escritos a mano",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
@@ -85,7 +88,133 @@ const GUIA = {
    "Un rollo como éste lo escribe a mano un escriba, un sofer, sobre pergamino, con pluma y tinta. Tarda cerca de un año. Son más de trescientas mil letras, sin vocales, y no puede escribir ni una de memoria: tiene que ir mirando otro rollo. Cuenta letras, cuenta palabras, y sabe cuál es la letra que cae exactamente a la mitad del texto. Si se equivoca al escribir el Nombre de Dios, esa hoja no se corrige: se retira.",
    "Ese sistema es la razón de que el texto haya llegado tan estable hasta nosotros. Cuando en 1,947 aparecieron los rollos del mar Muerto, con mil años de antigüedad sobre las copias que se conocían, el texto resultó ser prácticamente el mismo.",
    "Y fíjese en cómo se trata. Nadie lo toca con la mano: se lee siguiendo el renglón con un puntero de plata en forma de mano, el yad. En la sinagoga se lee completo a lo largo de un año, una porción cada semana, y cuando se termina el Deuteronomio se vuelve a empezar el Génesis el mismo día. De manera que nunca se acaba.",
-   "Y un detalle que lo amarra con la Maqueta 1: el armario donde se guarda la Torá en cada sinagoga se llama todavía hoy el Arca. Tres mil años después, la Palabra sigue viviendo dentro de un arca."
+   "Y un detalle que lo amarra con la primera maqueta: el armario donde se guarda la Torá en cada sinagoga se llama todavía hoy el Arca. Tres mil años después, la Palabra sigue viviendo dentro de un arca."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 1 · Museum of the History of the Bible",
+   "titulo": "The Torah",
+   "siglo": "The five books, written by hand",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Everything begins here, and it is not a book: it is a scroll.",
+   "The Torah is the first five books of the Bible: Genesis, Exodus, Leviticus, Numbers and Deuteronomy. The word is usually translated as Law, but it means something wider: teaching, instruction, the way that is shown.",
+   "A scroll like this one is written by hand by a scribe, a sofer, on parchment, with quill and ink. It takes him about a year. There are more than three hundred thousand letters, without vowels, and he may not write a single one from memory: he must keep looking at another scroll. He counts letters, he counts words, and he knows which letter falls exactly at the middle of the text. If he errs in writing the Name of God, that sheet is not corrected: it is withdrawn.",
+   "That system is the reason the text has reached us so unchanged. When the Dead Sea scrolls appeared in 1947, a thousand years older than the copies then known, the text turned out to be practically the same.",
+   "And notice how it is handled. No one touches it with the hand: it is read by following the line with a silver pointer shaped like a hand, the yad. In the synagogue it is read right through in the course of a year, a portion each week, and when Deuteronomy ends, Genesis begins again the same day. So it never finishes.",
+   "And one detail that ties it to the first model: the cabinet where the Torah is kept in every synagogue is still called the Ark. Three thousand years on, the Word still lives inside an ark."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 1 · Musée de l'Histoire de la Bible",
+   "titulo": "La Torah",
+   "siglo": "Les cinq livres, écrits à la main",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Tout commence ici, et ce n'est pas un livre : c'est un rouleau.",
+   "La Torah, ce sont les cinq premiers livres de la Bible : Genèse, Exode, Lévitique, Nombres et Deutéronome. Le mot se traduit d'ordinaire par Loi, mais il signifie quelque chose de plus large : enseignement, instruction, le chemin que l'on montre.",
+   "Un rouleau comme celui-ci est écrit à la main par un scribe, un sofer, sur parchemin, à la plume et à l'encre. Il y met près d'un an. Ce sont plus de trois cent mille lettres, sans voyelles, et il ne peut en écrire aucune de mémoire : il doit sans cesse regarder un autre rouleau. Il compte les lettres, il compte les mots, et il sait quelle lettre tombe exactement au milieu du texte. S'il se trompe en écrivant le Nom de Dieu, ce feuillet ne se corrige pas : on le retire.",
+   "Ce système est la raison pour laquelle le texte nous est parvenu si stable. Quand parurent en 1947 les rouleaux de la mer Morte, plus anciens de mille ans que les copies connues, le texte se révéla presque identique.",
+   "Et voyez comment on le traite. Personne ne le touche de la main : on le lit en suivant la ligne avec un pointeur d'argent en forme de main, le yad. À la synagogue, on le lit en entier au long d'une année, une portion chaque semaine, et quand s'achève le Deutéronome, on recommence la Genèse le même jour. De sorte qu'il ne finit jamais.",
+   "Et un détail qui le relie à la première maquette : l'armoire où l'on garde la Torah dans chaque synagogue s'appelle encore aujourd'hui l'Arche. Trois mille ans plus tard, la Parole vit toujours dans une arche."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 1 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Tora",
+   "siglo": "Die fünf Bücher, von Hand geschrieben",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Hier fängt alles an, und es ist kein Buch: es ist eine Rolle.",
+   "Die Tora sind die ersten fünf Bücher der Bibel: Genesis, Exodus, Levitikus, Numeri und Deuteronomium. Das Wort wird meist mit Gesetz übersetzt, meint aber etwas Weiteres: Lehre, Unterweisung, der Weg, der gezeigt wird.",
+   "Eine Rolle wie diese schreibt ein Schreiber, ein Sofer, von Hand auf Pergament, mit Feder und Tinte. Er braucht dafür etwa ein Jahr. Es sind mehr als dreihunderttausend Buchstaben, ohne Vokale, und keinen einzigen darf er aus dem Gedächtnis schreiben: er muss immer auf eine andere Rolle sehen. Er zählt Buchstaben, er zählt Wörter, und er weiß, welcher Buchstabe genau in der Mitte des Textes steht. Verschreibt er sich beim Namen Gottes, so wird dieses Blatt nicht verbessert: es wird aussortiert.",
+   "Dieses System ist der Grund, weshalb der Text so unverändert zu uns gelangt ist. Als 1947 die Rollen vom Toten Meer auftauchten, tausend Jahre älter als die bekannten Abschriften, erwies sich der Text als nahezu derselbe.",
+   "Und sehen Sie, wie man damit umgeht. Niemand berührt sie mit der Hand: man liest, indem man der Zeile mit einem silbernen Zeiger in Form einer Hand folgt, dem Jad. In der Synagoge wird sie im Lauf eines Jahres ganz gelesen, jede Woche ein Abschnitt, und wenn das Deuteronomium endet, beginnt am selben Tag wieder die Genesis. So hört sie nie auf.",
+   "Und eine Einzelheit, die sie mit dem ersten Modell verbindet: der Schrein, in dem die Tora in jeder Synagoge aufbewahrt wird, heißt bis heute die Lade. Dreitausend Jahre später wohnt das Wort noch immer in einer Lade."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 1 · Museo di Storia della Bibbia",
+   "titulo": "La Torà",
+   "siglo": "I cinque libri, scritti a mano",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Qui comincia tutto, e non è un libro: è un rotolo.",
+   "La Torà sono i primi cinque libri della Bibbia: Genesi, Esodo, Levitico, Numeri e Deuteronomio. La parola si traduce di solito con Legge, ma significa qualcosa di più ampio: insegnamento, istruzione, la via che viene mostrata.",
+   "Un rotolo come questo lo scrive a mano uno scriba, un sofer, su pergamena, con penna e inchiostro. Impiega circa un anno. Sono più di trecentomila lettere, senza vocali, e non può scriverne nemmeno una a memoria: deve continuare a guardare un altro rotolo. Conta lettere, conta parole, e sa qual è la lettera che cade esattamente a metà del testo. Se sbaglia scrivendo il Nome di Dio, quel foglio non si corregge: si ritira.",
+   "Quel sistema è la ragione per cui il testo è giunto fino a noi così stabile. Quando nel 1947 comparvero i rotoli del mar Morto, più antichi di mille anni rispetto alle copie conosciute, il testo risultò praticamente lo stesso.",
+   "E guardi come viene trattato. Nessuno lo tocca con la mano: si legge seguendo la riga con un puntatore d'argento a forma di mano, lo yad. Nella sinagoga si legge per intero nel corso di un anno, una porzione ogni settimana, e quando finisce il Deuteronomio si ricomincia la Genesi lo stesso giorno. Di modo che non finisce mai.",
+   "E un dettaglio che lo lega al primo modello: l'armadio dove si custodisce la Torà in ogni sinagoga si chiama ancora oggi l'Arca. Tremila anni dopo, la Parola continua a vivere dentro un'arca."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 1 · Museu de História da Bíblia",
+   "titulo": "A Torá",
+   "siglo": "Os cinco livros, escritos à mão",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Aqui começa tudo, e não é um livro: é um rolo.",
+   "A Torá são os cinco primeiros livros da Bíblia: Gênesis, Êxodo, Levítico, Números e Deuteronômio. A palavra costuma ser traduzida como Lei, mas quer dizer algo mais amplo: ensino, instrução, o caminho que se mostra.",
+   "Um rolo como este é escrito à mão por um escriba, um sofer, sobre pergaminho, com pena e tinta. Leva cerca de um ano. São mais de trezentas mil letras, sem vogais, e ele não pode escrever nenhuma de memória: tem de ir olhando outro rolo. Conta letras, conta palavras, e sabe qual é a letra que cai exatamente no meio do texto. Se errar ao escrever o Nome de Deus, essa folha não se corrige: é retirada.",
+   "Esse sistema é a razão de o texto ter chegado tão estável até nós. Quando em 1947 apareceram os rolos do mar Morto, mil anos mais antigos que as cópias conhecidas, o texto mostrou-se praticamente o mesmo.",
+   "E repare como é tratado. Ninguém o toca com a mão: lê-se seguindo a linha com um ponteiro de prata em forma de mão, o yad. Na sinagoga é lido por inteiro ao longo de um ano, uma porção por semana, e quando termina o Deuteronômio recomeça o Gênesis no mesmo dia. De modo que nunca acaba.",
+   "E um detalhe que o liga à primeira maquete: o armário onde se guarda a Torá em cada sinagoga chama-se ainda hoje a Arca. Três mil anos depois, a Palavra continua vivendo dentro de uma arca."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 1 · Музей истории Библии",
+   "titulo": "Тора",
+   "siglo": "Пять книг, написанных от руки",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Здесь начинается всё, и это не книга: это свиток.",
+   "Тора — первые пять книг Библии: Бытие, Исход, Левит, Числа и Второзаконие. Слово обычно переводят как Закон, но оно значит нечто более широкое: учение, наставление, путь, который указывают.",
+   "Такой свиток пишет от руки писец, софер, на пергаменте, пером и чернилами. На это уходит около года. Здесь более трёхсот тысяч букв, без гласных, и ни одной он не вправе написать по памяти: он должен постоянно смотреть в другой свиток. Он считает буквы, считает слова и знает, какая буква приходится ровно на середину текста. Если он ошибётся, записывая Имя Божие, такой лист не исправляют: его изымают.",
+   "Именно поэтому текст дошёл до нас почти неизменным. Когда в 1947 году нашли свитки Мёртвого моря, на тысячу лет старше известных списков, текст оказался практически тем же самым.",
+   "И посмотрите, как с ним обращаются. Никто не касается его рукой: читают, ведя по строке серебряной указкой в виде руки — она называется яд. В синагоге его прочитывают целиком за год, по отрывку в неделю, а когда заканчивается Второзаконие, в тот же день снова начинают Бытие. Так что он не кончается никогда.",
+   "И одна деталь, связывающая его с первым макетом: шкаф, где в каждой синагоге хранится Тора, и сегодня называется Ковчегом. Спустя три тысячи лет Слово по-прежнему живёт внутри ковчега."
   ]
  }
 };
@@ -190,6 +319,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

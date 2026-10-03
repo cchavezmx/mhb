@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>El Beato de Liébana — Museo de Historia de la Biblia</title>
+<title>La Biblia de San Luis — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --pergamino:#EDE3CC;--fondo:#EDE3CC;--claro:#F6EFDF;--tinta:#3A2A1C;--cabecera:#C4342B;--acento:#4E7A3F;--marca:rgba(224,163,46,.32); }
+  :root{ --fondo:#F3EFE6;--claro:#FCF9F1;--tinta:#1C1A14;--cabecera:#2B3E6B;--acento:#B08A2E;--marca:rgba(176,138,46,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .franjas{flex:none;width:64px;height:64px;border-radius:2px;background:linear-gradient(to bottom,#E0A32E 0 25%,#C4342B 25% 50%,#2E4E7E 50% 75%,#4E7A3F 75% 100%)}
+  .med{flex:none;display:grid;grid-template-columns:repeat(2,26px);gap:5px}
+  .med i{display:block;width:26px;height:26px;border-radius:50%;background:var(--acento)}
+  .med i.az{background:#2B3E6B}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,11 +40,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="franjas" aria-hidden="true"></div>
+  <div class="med" aria-hidden="true"><i></i><i class="az"></i><i class="az"></i><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -71,115 +74,154 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 5 · Museo de Historia de la Biblia",
-   "titulo": "El Beato de Liébana",
-   "siglo": "Comentario al Apocalipsis, año 776",
+   "sala": "Vitrina 7 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia de San Luis",
+   "siglo": "París, 1,226-1,234 · para un rey niño",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Bienvenido. Tiene usted delante uno de los libros más extraño de este museo. Y le comento algo desde ahora: no es una Biblia. Es un comentario del Apocalipsis.",
-   "Hacia el año 776, en un monasterio perdido entre las montañas de Cantabria, un monje llamado Beato se sentó a explicar el último libro de las Escrituras: el Apocalipsis. España vivía entonces bajo la conquista musulmana. Del norte cristiano quedaba apenas una franja de montaña. Y en esa franja, un monje decidió que lo más urgente era entender el fin del mundo.",
-   "Beato no inventó nada, y lo sabía. Reunió lo que otros habían escrito antes que él: Ticonio, Jerónimo, Agustín, Isidoro, Gregorio. Su obra es un arca. Metió dentro lo que estaba a punto de perderse. Lo que él nunca imaginó fue lo que harían sus copistas. Doscientos años después, los monjes que volvieron a escribir su libro lo llenaron de pinturas. Y ahí nació algo que no existe en ningún otro sitio del mundo.",
-   "Mire los colores. Rojo, amarillo, verde, franjas enteras de color puro. Las figuras lo miran a usted de frente, con los ojos enormes. Nadie intentó que pareciera real. No pintaban lo que se ve, pintaban lo que se cree.",
-   "Ahí está la Mujer vestida del sol. Ahí está la Bestia. Y ahí está uno de los mapas del mundo más antiguos de toda la cristiandad.",
-   "Dos nombres para recordar. Magio, que firmó su copia hacia el año 945. Y Ende, una mujer, que se llamó a sí misma pintrix, pintora, y ayudante de Dios. Es la primera pintora con nombre conocido de Occidente.",
-   "Un último dato interesante, estas páginas, mil años después, inspiraron una novela que quizá usted ha leído o visto en película : El nombre de la rosa.",
-   "Este libro le enseñó a ver la Escritura a gente que no sabía leerla. Por eso abre nuestro recorrido."
+   "Tres tomos. Mil doscientas treinta páginas. Casi cinco mil medallones pintados uno por uno. Está usted delante del libro más caro de su siglo.",
+   "Lo mandó hacer una madre para su hijo. Blanca de Castilla, hija de Alfonso octavo y reina de Francia, quiso que su primogénito aprendiera las Escrituras antes de aprender a gobernar. El taller de París tardó ocho años, de 1,226 a 1,234. El niño se llamaba Luis. Hoy lo conocemos como san Luis, rey de Francia.",
+   "Mire cómo está armada la página. Dos columnas de cuatro círculos cada una: ocho medallones. Los de la primera y la tercera fila cuentan la escena bíblica. Los de la segunda y la cuarta dicen lo que esa escena significa. Imagen, sentido. Imagen, sentido. Al lado, unas pocas líneas de letra gótica, y nada más.",
+   "No es una Biblia completa. Es otra cosa: es una Biblia para contemplar. Y no es casualidad que parezca un vitral. En esos mismos años se estaban levantando las catedrales góticas, y quien pasaba estas hojas estaba acostumbrado a leer su fe en los rosetones, a contraluz.",
+   "El fondo es oro bruñido. El azul es lapislázuli, piedra traída de Oriente y molida. Sólo el pergamino consumió los rebaños de media comarca.",
+   "Y ahora lo que nos toca de cerca. Años después, el rey Luis le regaló esta Biblia a Alfonso décimo de Castilla, el Sabio, que la nombra en su testamento como otra Biblia en tres libros estoriada que nos dio el rey Luis de Francia. Desde entonces se guarda en la catedral de Toledo. Las últimas hojas del tercer tomo acabaron en Nueva York, y allí siguen.",
+   "El Beato enseñó a ver la Escritura. Esta Biblia enseñó a entenderla. Falta todavía que alguien la ponga en las manos de todos. Eso ocurrirá doscientos años después, y lo veremos más adelante."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 5 · Museum of the History of the Bible",
-   "titulo": "The Beatus of Liébana",
-   "siglo": "Commentary on the Apocalypse, year 776",
+   "sala": "Case 7 · Museum of the History of the Bible",
+   "titulo": "The Bible of Saint Louis",
+   "siglo": "Paris, 1226-1234 · for a child king",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Welcome. In front of you stands one of the strangest books in this museum. And let me tell you now: it is not a Bible. It is a commentary on the Apocalypse.",
-   "It is a commentary. Around the year 776, in a monastery lost among the mountains of Cantabria, in northern Spain, a monk named Beatus sat down to explain the last book of Scripture: the Apocalypse. Spain was then under Muslim rule. Of Christian Spain there remained only a narrow strip of mountains. And on that strip, a monk decided that the most urgent thing of all was to understand the end of the world.",
-   "Beatus invented nothing, and he knew it. He gathered what others had written before him: Tyconius, Jerome, Augustine, Isidore, Gregory. His work is an ark. He put inside it everything that was about to be lost. What he never imagined was what his copyists would do. Two hundred years later, the monks who wrote his book out again filled it with paintings. And there something was born that exists nowhere else in the world.",
-   "Look at the colours. Red, yellow, green, whole bands of pure colour. The figures look straight at you, with enormous eyes. No one tried to make them look real. They did not paint what the eye sees. They painted what the heart believes.",
-   "There is the Woman clothed with the sun. There is the Beast. And there is one of the oldest maps of the world in all Christendom.",
-   "Two names worth remembering. Magius, who signed his copy around the year 945. And Ende, a woman, who called herself pintrix, painter, and helper of God. She is the first woman painter known by name in the West.",
-   "One last curious detail: a thousand years later, these pages inspired a novel you may have read or seen as a film: The Name of the Rose.",
-   "This book taught people who could not read Scripture how to see it. That is why it opens our tour."
+   "Three volumes. One thousand two hundred and thirty pages. Nearly five thousand medallions painted one by one. You are standing before the most expensive book of its century.",
+   "A mother had it made for her son. Blanche of Castile, daughter of Alfonso the Eighth and queen of France, wanted her firstborn to learn the Scriptures before he learned to govern. The Paris workshop took eight years, from 1226 to 1234. The boy was called Louis. Today we know him as Saint Louis, king of France.",
+   "Look at how the page is built. Two columns of four circles each: eight medallions. Those in the first and third rows tell the biblical scene. Those in the second and fourth say what that scene means. Image, meaning. Image, meaning. Beside them, a few lines of gothic script, and nothing more.",
+   "It is not a complete Bible. It is another thing: a Bible to be contemplated. And it is no accident that it looks like a stained-glass window. In those same years the gothic cathedrals were going up, and whoever turned these leaves was used to reading his faith in rose windows, against the light.",
+   "The ground is burnished gold. The blue is lapis lazuli, stone brought from the East and ground. The parchment alone consumed the flocks of half a district.",
+   "And now what touches us closely. Years later King Louis gave this Bible to Alfonso the Tenth of Castile, the Wise, who names it in his will as another Bible in three books, pictured, which the king Louis of France gave us. Since then it has been kept in the cathedral of Toledo. The last leaves of the third volume ended up in New York, and there they remain.",
+   "The Beatus taught people to see the Scriptures. This Bible taught them to understand them. It still remains for someone to put them into everyone's hands. That will happen two hundred years later, and we shall see it further on."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 5 · Musée de l'Histoire de la Bible",
-   "titulo": "Le Beatus de Liébana",
-   "siglo": "Commentaire de l'Apocalypse, an 776",
+   "sala": "Vitrine 7 · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible de Saint Louis",
+   "siglo": "Paris, 1226-1234 · pour un roi enfant",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Bienvenue. Vous avez devant vous l'un des livres les plus étranges de ce musée. Et je vous le dis dès maintenant : ce n'est pas une Bible. C'est un commentaire de l'Apocalypse.",
-   "C'est un commentaire. Vers l'an 776, dans un monastère perdu au milieu des montagnes de Cantabrie, au nord de l'Espagne, un moine nommé Beatus s'est assis pour expliquer le dernier livre des Écritures : l'Apocalypse. L'Espagne vivait alors sous la conquête musulmane. De l'Espagne chrétienne il ne restait qu'une étroite bande de montagnes. Et sur cette bande, un moine a décidé que le plus urgent était de comprendre la fin du monde.",
-   "Beatus n'a rien inventé, et il le savait. Il a rassemblé ce que d'autres avaient écrit avant lui : Tyconius, Jérôme, Augustin, Isidore, Grégoire. Son œuvre est une arche. Il y a mis tout ce qui risquait de se perdre. Ce qu'il n'a jamais imaginé, c'est ce qu'en feraient ses copistes. Deux cents ans plus tard, les moines qui ont recopié son livre l'ont rempli de peintures. Et là est né quelque chose qui n'existe nulle part ailleurs.",
-   "Regardez les couleurs. Rouge, jaune, vert : des bandes entières de couleur pure. Les figures vous regardent en face, avec des yeux immenses. Personne n'a cherché à faire vrai. Ils ne peignaient pas ce que l'on voit. Ils peignaient ce que l'on croit.",
-   "Voici la Femme vêtue de soleil. Voici la Bête. Et voici l'une des plus anciennes cartes du monde de toute la chrétienté.",
-   "Deux noms à retenir. Magius, qui a signé sa copie vers l'an 945. Et Ende, une femme, qui s'est appelée elle-même pintrix, peintre et servante de Dieu. C'est la première femme peintre connue par son nom en Occident.",
-   "Un dernier détail curieux : mille ans plus tard, ces pages ont inspiré un roman que vous avez peut-être lu ou vu au cinéma : Le Nom de la rose.",
-   "Ce livre a appris à voir l'Écriture à des gens qui ne savaient pas la lire. C'est pourquoi il ouvre notre parcours."
+   "Trois volumes. Mille deux cent trente pages. Près de cinq mille médaillons peints un à un. Vous êtes devant le livre le plus cher de son siècle.",
+   "Une mère le fit faire pour son fils. Blanche de Castille, fille d'Alphonse VIII et reine de France, voulut que son aîné apprît les Écritures avant d'apprendre à gouverner. L'atelier de Paris mit huit ans, de 1226 à 1234. L'enfant s'appelait Louis. Aujourd'hui nous le connaissons comme saint Louis, roi de France.",
+   "Regardez comment la page est bâtie. Deux colonnes de quatre cercles chacune : huit médaillons. Ceux des première et troisième rangées racontent la scène biblique. Ceux des deuxième et quatrième disent ce que cette scène signifie. Image, sens. Image, sens. À côté, quelques lignes d'écriture gothique, et rien de plus.",
+   "Ce n'est pas une Bible complète. C'est autre chose : une Bible à contempler. Et ce n'est pas un hasard si elle ressemble à un vitrail. Dans ces mêmes années s'élevaient les cathédrales gothiques, et celui qui tournait ces feuillets avait l'habitude de lire sa foi dans les rosaces, à contre-jour.",
+   "Le fond est d'or bruni. Le bleu est du lapis-lazuli, pierre venue d'Orient et broyée. Le parchemin à lui seul consuma les troupeaux d'une demi-contrée.",
+   "Et voici ce qui nous touche de près. Des années plus tard, le roi Louis offrit cette Bible à Alphonse X de Castille, le Sage, qui la nomme dans son testament : une autre Bible en trois livres, historiée, que nous donna le roi Louis de France. Depuis lors elle est gardée à la cathédrale de Tolède. Les derniers feuillets du troisième volume ont fini à New York, et ils y sont encore.",
+   "Le Beatus apprit à voir l'Écriture. Cette Bible apprit à la comprendre. Il reste encore que quelqu'un la mette entre les mains de tous. Cela arrivera deux cents ans plus tard, et nous le verrons plus loin."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 5 · Museum zur Geschichte der Bibel",
-   "titulo": "Der Beatus von Liébana",
-   "siglo": "Kommentar zur Offenbarung, Jahr 776",
+   "sala": "Vitrine 7 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Bibel des heiligen Ludwig",
+   "siglo": "Paris, 1226-1234 · für einen Kinderkönig",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Willkommen. Vor Ihnen steht eines der seltsamsten Bücher dieses Museums. Und ich sage es Ihnen gleich: Es ist keine Bibel. Es ist ein Kommentar zur Offenbarung.",
-   "Es ist ein Kommentar. Um das Jahr 776 setzte sich in einem Kloster, verloren in den Bergen Kantabriens im Norden Spaniens, ein Mönch namens Beatus hin, um das letzte Buch der Heiligen Schrift zu erklären: die Offenbarung. Spanien stand damals unter muslimischer Herrschaft. Vom christlichen Spanien blieb nur ein schmaler Streifen Gebirge. Und auf diesem Streifen entschied ein Mönch, das Dringendste sei, das Ende der Welt zu verstehen.",
-   "Beatus hat nichts erfunden, und er wusste es. Er sammelte, was andere vor ihm geschrieben hatten: Tyconius, Hieronymus, Augustinus, Isidor, Gregor. Sein Werk ist eine Arche. Er legte hinein, was verloren zu gehen drohte. Was er nie ahnte, war das, was seine Abschreiber daraus machen würden. Zweihundert Jahre später füllten die Mönche, die sein Buch neu schrieben, es mit Bildern. Und dort entstand etwas, das es sonst nirgends auf der Welt gibt.",
-   "Sehen Sie die Farben. Rot, Gelb, Grün, ganze Bänder aus reiner Farbe. Die Gestalten blicken Sie frontal an, mit riesigen Augen. Niemand wollte, dass es echt aussieht. Sie malten nicht, was man sieht. Sie malten, was man glaubt.",
-   "Hier ist die Frau, mit der Sonne bekleidet. Hier ist das Tier. Und hier ist eine der ältesten Weltkarten der ganzen Christenheit.",
-   "Zwei Namen zum Merken. Magius, der seine Abschrift um das Jahr 945 signierte. Und Ende, eine Frau, die sich selbst pintrix nannte, Malerin und Gehilfin Gottes. Sie ist die erste namentlich bekannte Malerin des Abendlandes.",
-   "Eine letzte merkwürdige Einzelheit: tausend Jahre später haben diese Seiten einen Roman angeregt, den Sie vielleicht gelesen oder als Film gesehen haben: Der Name der Rose.",
-   "Dieses Buch lehrte Menschen, die die Schrift nicht lesen konnten, sie zu sehen. Deshalb eröffnet es unseren Rundgang."
+   "Drei Bände. Eintausendzweihundertdreißig Seiten. Fast fünftausend Medaillons, eines nach dem anderen gemalt. Sie stehen vor dem teuersten Buch seines Jahrhunderts.",
+   "Eine Mutter ließ es für ihren Sohn anfertigen. Blanka von Kastilien, Tochter Alfons' des Achten und Königin von Frankreich, wollte, dass ihr Erstgeborener die Schrift lerne, bevor er regieren lerne. Die Pariser Werkstatt brauchte acht Jahre, von 1226 bis 1234. Der Junge hieß Ludwig. Heute kennen wir ihn als den heiligen Ludwig, König von Frankreich.",
+   "Sehen Sie, wie die Seite gebaut ist. Zwei Spalten mit je vier Kreisen: acht Medaillons. Die der ersten und dritten Reihe erzählen die biblische Szene. Die der zweiten und vierten sagen, was diese Szene bedeutet. Bild, Sinn. Bild, Sinn. Daneben ein paar Zeilen gotischer Schrift, und sonst nichts.",
+   "Es ist keine vollständige Bibel. Es ist etwas anderes: eine Bibel zum Betrachten. Und es ist kein Zufall, dass sie wie ein Kirchenfenster aussieht. In eben diesen Jahren wuchsen die gotischen Kathedralen, und wer diese Blätter umwandte, war gewohnt, seinen Glauben in den Rosetten zu lesen, gegen das Licht.",
+   "Der Grund ist poliertes Gold. Das Blau ist Lapislazuli, aus dem Orient gebrachter und gemahlener Stein. Allein das Pergament verbrauchte die Herden eines halben Landstrichs.",
+   "Und nun das, was uns nahe angeht. Jahre später schenkte König Ludwig diese Bibel Alfons dem Zehnten von Kastilien, dem Weisen, der sie in seinem Testament nennt: eine andere Bibel in drei Büchern, mit Bildern, die uns der König Ludwig von Frankreich gab. Seither wird sie in der Kathedrale von Toledo verwahrt. Die letzten Blätter des dritten Bandes landeten in New York, und dort sind sie noch.",
+   "Der Beatus lehrte, die Schrift zu sehen. Diese Bibel lehrte, sie zu verstehen. Es fehlt noch, dass jemand sie allen in die Hände legt. Das wird zweihundert Jahre später geschehen, und wir werden es weiter hinten sehen."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 5 · Museo di Storia della Bibbia",
-   "titulo": "Il Beato di Liébana",
-   "siglo": "Commento all'Apocalisse, anno 776",
+   "sala": "Vetrina 7 · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia di San Luigi",
+   "siglo": "Parigi, 1226-1234 · per un re bambino",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Benvenuto. Ha davanti uno dei libri più strani di questo museo. E glielo dico subito: non è una Bibbia. È un commento all'Apocalisse.",
-   "È un commento. Verso l'anno 776, in un monastero sperduto tra le montagne della Cantabria, nel nord della Spagna, un monaco di nome Beato si sedette a spiegare l'ultimo libro delle Scritture: l'Apocalisse. La Spagna viveva allora sotto la conquista musulmana. Della Spagna cristiana restava soltanto una stretta fascia di montagne. E su quella fascia un monaco decise che la cosa più urgente fosse capire la fine del mondo.",
-   "Beato non inventò nulla, e lo sapeva. Raccolse ciò che altri avevano scritto prima di lui: Ticonio, Girolamo, Agostino, Isidoro, Gregorio. La sua opera è un'arca. Vi mise dentro tutto ciò che stava per perdersi. Quello che non immaginò mai fu ciò che ne avrebbero fatto i suoi copisti. Duecento anni dopo, i monaci che riscrissero il suo libro lo riempirono di pitture. E lì nacque qualcosa che non esiste in nessun altro luogo al mondo.",
-   "Guardi i colori. Rosso, giallo, verde: intere fasce di colore puro. Le figure la guardano in faccia, con occhi enormi. Nessuno cercò di farle sembrare reali. Non dipingevano ciò che si vede. Dipingevano ciò che si crede.",
-   "Ecco la Donna vestita di sole. Ecco la Bestia. Ed ecco una delle più antiche carte del mondo di tutta la cristianità.",
-   "Due nomi da ricordare. Magio, che firmò la sua copia verso l'anno 945. Ed Ende, una donna, che chiamò sé stessa pintrix, pittrice e aiutante di Dio. È la prima pittrice conosciuta per nome in Occidente.",
-   "Un ultimo dato curioso: mille anni dopo, queste pagine ispirarono un romanzo che forse ha letto o visto al cinema: Il nome della rosa.",
-   "Questo libro insegnò a vedere la Scrittura a gente che non sapeva leggerla. Per questo apre il nostro percorso."
+   "Tre volumi. Milleduecentotrenta pagine. Quasi cinquemila medaglioni dipinti uno per uno. È davanti al libro più caro del suo secolo.",
+   "Lo fece fare una madre per il figlio. Bianca di Castiglia, figlia di Alfonso ottavo e regina di Francia, volle che il primogenito imparasse le Scritture prima di imparare a governare. La bottega di Parigi impiegò otto anni, dal 1226 al 1234. Il bambino si chiamava Luigi. Oggi lo conosciamo come san Luigi, re di Francia.",
+   "Guardi come è costruita la pagina. Due colonne di quattro cerchi ciascuna: otto medaglioni. Quelli della prima e della terza fila raccontano la scena biblica. Quelli della seconda e della quarta dicono che cosa significa quella scena. Immagine, senso. Immagine, senso. Accanto, poche righe di scrittura gotica, e nulla più.",
+   "Non è una Bibbia completa. È un'altra cosa: una Bibbia da contemplare. E non è un caso che sembri una vetrata. In quegli stessi anni si innalzavano le cattedrali gotiche, e chi voltava questi fogli era abituato a leggere la propria fede nei rosoni, in controluce.",
+   "Il fondo è oro brunito. L'azzurro è lapislazzuli, pietra portata dall'Oriente e macinata. La sola pergamena consumò le greggi di mezza contrada.",
+   "E ora ciò che ci tocca da vicino. Anni dopo, il re Luigi regalò questa Bibbia ad Alfonso decimo di Castiglia, il Saggio, che la nomina nel suo testamento come un'altra Bibbia in tre libri, istoriata, che ci diede il re Luigi di Francia. Da allora si custodisce nella cattedrale di Toledo. Gli ultimi fogli del terzo volume finirono a New York, e lì restano.",
+   "Il Beato insegnò a vedere la Scrittura. Questa Bibbia insegnò a capirla. Manca ancora che qualcuno la metta nelle mani di tutti. Accadrà duecento anni dopo, e lo vedremo più avanti."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 7 · Museu de História da Bíblia",
+   "titulo": "A Bíblia de São Luís",
+   "siglo": "Paris, 1226-1234 · para um rei menino",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Três volumes. Mil duzentas e trinta páginas. Quase cinco mil medalhões pintados um por um. Você está diante do livro mais caro do seu século.",
+   "Mandou-o fazer uma mãe para o filho. Branca de Castela, filha de Afonso oitavo e rainha de França, quis que o primogênito aprendesse as Escrituras antes de aprender a governar. A oficina de Paris levou oito anos, de 1226 a 1234. O menino chamava-se Luís. Hoje o conhecemos como são Luís, rei de França.",
+   "Veja como a página está armada. Duas colunas de quatro círculos cada uma: oito medalhões. Os da primeira e da terceira fila contam a cena bíblica. Os da segunda e da quarta dizem o que essa cena significa. Imagem, sentido. Imagem, sentido. Ao lado, umas poucas linhas de letra gótica, e nada mais.",
+   "Não é uma Bíblia completa. É outra coisa: uma Bíblia para contemplar. E não é por acaso que parece um vitral. Naqueles mesmos anos erguiam-se as catedrais góticas, e quem passava estas folhas estava acostumado a ler a sua fé nas rosáceas, a contraluz.",
+   "O fundo é ouro brunido. O azul é lápis-lazúli, pedra trazida do Oriente e moída. Só o pergaminho consumiu os rebanhos de meia região.",
+   "E agora o que nos toca de perto. Anos depois, o rei Luís deu esta Bíblia a Afonso décimo de Castela, o Sábio, que a nomeia no seu testamento como outra Bíblia em três livros, historiada, que nos deu o rei Luís de França. Desde então guarda-se na catedral de Toledo. As últimas folhas do terceiro volume foram parar em Nova York, e ali continuam.",
+   "O Beato ensinou a ver a Escritura. Esta Bíblia ensinou a entendê-la. Falta ainda que alguém a ponha nas mãos de todos. Isso acontecerá duzentos anos depois, e o veremos mais adiante."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 7 · Музей истории Библии",
+   "titulo": "Библия святого Людовика",
+   "siglo": "Париж, 1226-1234 · для короля-ребёнка",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Три тома. Тысяча двести тридцать страниц. Почти пять тысяч медальонов, написанных один за другим. Перед вами самая дорогая книга своего века.",
+   "Её заказала мать для сына. Бланка Кастильская, дочь Альфонсо Восьмого и королева Франции, хотела, чтобы её первенец узнал Писание прежде, чем научится править. Парижская мастерская работала восемь лет, с 1226 по 1234 год. Мальчика звали Людовик. Сегодня мы знаем его как святого Людовика, короля Франции.",
+   "Посмотрите, как построена страница. Два столбца по четыре круга: восемь медальонов. Те, что в первом и третьем ряду, рассказывают библейскую сцену. Те, что во втором и четвёртом, говорят, что эта сцена значит. Образ — смысл. Образ — смысл. Рядом несколько строк готическим письмом, и больше ничего.",
+   "Это не полная Библия. Это другое: Библия для созерцания. И не случайно она похожа на витраж. В те же годы поднимались готические соборы, и тот, кто перелистывал эти листы, привык читать свою веру в розетках, на просвет.",
+   "Фон — полированное золото. Синева — лазурит, камень, привезённый с Востока и растёртый в порошок. Один только пергамент поглотил стада половины округи.",
+   "А теперь то, что близко касается нас. Годы спустя король Людовик подарил эту Библию Альфонсо Десятому Кастильскому, Мудрому, который упоминает её в своём завещании как «другую Библию в трёх книгах, с изображениями, которую дал нам король Людовик Французский». С тех пор она хранится в соборе Толедо. Последние листы третьего тома оказались в Нью-Йорке и остаются там поныне.",
+   "Беат научил видеть Писание. Эта Библия научила его понимать. Остаётся ещё, чтобы кто-то вложил его в руки всем. Это произойдёт через двести лет, и мы это увидим дальше."
   ]
  }
 };
@@ -284,6 +326,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

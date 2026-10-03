@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>El Vita Christi de Montesino — Museo de Historia de la Biblia</title>
+<title>La Vida y los milagros de Jesucristo — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F0EADC;--claro:#FAF4E7;--tinta:#231C15;--cabecera:#4E2A22;--acento:#A03226;--marca:rgba(160,50,38,.2); }
+  :root{ --fondo:#F2F0E8;--claro:#FBF9F3;--tinta:#1D1C17;--cabecera:#3A3A30;--acento:#7A6A46;--marca:rgba(122,106,70,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,9 +17,10 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .tipos{flex:none;background:var(--claro);padding:7px;width:62px}
-  .tipos i{display:block;height:4px;margin-bottom:5px;background:rgba(35,28,21,.45);border-radius:1px}
-  .tipos i.gruesa{height:7px;background:var(--cabecera)}
+  .lamina{flex:none;width:58px;height:64px;background:var(--claro);border:1.5px solid var(--acento);padding:5px;display:flex;flex-direction:column;justify-content:space-between}
+  .lamina b{display:block;height:34px;background:var(--acento);opacity:.45}
+  .lamina i{display:block;height:2px;background:var(--cabecera);opacity:.6}
+  .lamina i.mano{height:1.5px;background:#2E4A7A;opacity:.85;width:78%}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -40,11 +41,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="tipos" aria-hidden="true"><i></i><i class="gruesa"></i><i></i><i></i><i class="gruesa"></i><i></i></div>
+  <div class="lamina" aria-hidden="true"><b></b><i></i><i class="mano"></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -73,140 +75,161 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 14 · Museo de Historia de la Biblia",
-   "titulo": "El Vita Christi de Montesino",
-   "siglo": "Sevilla, Cromberger, 1531 · tercera parte",
+   "sala": "Vitrina 15b · Museo de Historia de la Biblia",
+   "titulo": "La Vida y los milagros de Jesucristo",
+   "siglo": "París, Daumont · mediados del siglo XVIII",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Éste es el libro más antiguo de este museo, es casi un incunable. Y no es una Biblia.",
-   "Es la Vita Christi, la Vida de Cristo, que escribió en latín un religioso alemán de la orden de la Cartuja, en el siglo catorce, Ludolfo de Sajonia, prior en Coblenza, que dedicó buena parte de su vida a escribir en latín una Vita Christi, una Vida de Cristo. No fue un libro más: se copió a mano por cientos, se imprimió en cuanto hubo imprenta y fue uno de los libros más leídos de toda la Edad Media europea.",
-   "Ahora lo importante, y véalo en la página. Esto no es una biografía. Es una fundición de los cuatro evangelios en uno solo, contados como una sola narración, con comentarios intercalados que explican cada escena.",
-   "Y tiene un método que conviene que usted conozca, porque sin él no se entiende su influencia. Ludolfo no se conforma con contar. Le pide al lector que se meta dentro de la escena: que imagine el lugar, que mire las caras, que oiga las voces, que se ponga de pie junto a los que están ahí. Leer no era recibir información: era entrar al contexto para extraerla.",
-   "Dos siglos después, a esta obra le tocaría cambiarle la vida a un soldado. Pero vamos por partes. En 1,499, la reina Isabel la Católica le encargó personalmente la traducción al castellano a fray Ambrosio Montesino, franciscano de Huete, poeta y predicador de la corte.",
-   "Montesino trabajó en ella dos años, entre Cifuentes, Granada y su pueblo, y la obra se imprimió en cuatro partes en Alcalá de Henares, en el taller de Estanislao Polono, entre 1,502 y 1,503. Fue el primer libro impreso en aquella ciudad. La reina alcanzó a verlo: murió en 1,504.",
-   "El ejemplar que usted tiene delante es la tercera parte, de la edición sevillana de los Cromberger, de 1,531.",
-   "Fíjese en la letra. Montesino mandó imprimir con caracteres especiales, más gruesos, los pasajes que venían directamente de los evangelios, para que el lector pudiera distinguir siempre qué era Escritura y qué era explicación. Eso, en aquellos años, es una idea sorprendentemente moderna.",
-   "Volvamos al soldado. En 1,521, un caballero vasco quedó con una pierna destrozada por una bala de cañón en Pamplona. Lo llevaron a convalecer a la casa de su familia. Pidió novelas de caballerías para pasar las semanas, y en aquella casa no había ninguna. Sólo había dos libros: una vida de santos y este Vita Christi en la traducción de Montesino.",
-   "Los leyó porque no había otra cosa. Aquel hombre se llamaba Íñigo de Loyola, y de esa lectura salió su conversión, y de su conversión salió la Compañía de Jesús. El método de imaginarse dentro de la escena, que él convirtió después en sus Ejercicios Espirituales, lo aprendió aquí.",
-   "Piense también en la fecha de su ejemplar. Veinte años después de impreso, en 1,551, la Inquisición prohibió tener la Biblia en lengua vulgar, y esa prohibición duró doscientos treinta y un años. Otra obra del mismo Montesino, sus Epístolas y Evangelios, terminó en el Índice de libros prohibidos de 1,559. Este libro alcanzó a existir en una ventana que después se cerró.",
-   "Un dato más, que nos toca de cerca. La casa que imprimió este ejemplar, la de los Cromberger de Sevilla, es la misma que en 1,539 montó la primera imprenta del continente americano, en la Ciudad de México.",
-   "Y guárdese esto para la última vitrina. Cuatro evangelios fundidos en uno, amplificados con comentario, en lengua del pueblo, y con marcas tipográficas para separar el texto sagrado de la paráfrasis. Eso es lo que tiene delante, impreso hace casi quinientos años."
+   "Ciento veinte estampas, y una letra a mano que no es del impresor.",
+   "La portada lo dice en latín y en francés: Vida y milagros de Cristo, sacados del Nuevo Testamento. Y abajo, el pie de imprenta: en París, en casa de Daumont, calle de la Ferronnerie, en el Águila de Oro.",
+   "Ese domicilio lo fecha casi solo. Daumont fue uno de los grandes mercaderes de estampas de París: vendía vistas, mapas, papel pintado y láminas populares. Estuvo en la calle de la Ferronnerie desde 1,746, y en 1,757 se mudó a la calle San Martín. Y el papel lo confirma: al trasluz lleva la marca de agua Auvernia, 1,742, que es la que impuso una ordenanza real francesa a partir de ese año. Así que este libro se hizo a mediados del siglo dieciocho.",
+   "Adentro, las ciento veinte láminas cuentan escena por escena la vida de Jesús. Al pie de cada una, la leyenda va grabada en dos lenguas: primero el latín y enseguida el francés.",
+   "Y ahora acérquese, porque lo que importa está debajo. Debajo de cada leyenda impresa hay unos renglones escritos a mano, con tinta, en español. Son la traducción. Y no es una nota suelta ni el apunte de alguien que pasaba: es la misma letra en las ciento veinte láminas, de la primera a la última.",
+   "Piense en lo que eso significa. Alguien tuvo este libro en las manos, entendió que quien lo iba a ver no leía latín ni francés, y se sentó a traducirlo entero, lámina por lámina, con su propia pluma. Nadie se lo encargó. No hay firma. No cobró por ello.",
+   "Y fíjese en los tres libros de esta vitrina. El de la izquierda lo tradujo un fraile por encargo de una reina. El de la derecha, dos traductores por encargo de un editor de París. Y éste, una persona sin nombre, en la mesa de su casa, para que alguien a quien quería pudiera entender lo que estaba viendo.",
+   "Tres maneras de hacer exactamente lo mismo. Y sólo una sin firma."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 14 · Museum of the History of the Bible",
-   "titulo": "Montesino's Vita Christi",
-   "siglo": "Seville, Cromberger, 1531 · third part",
+   "sala": "Case 15b · Museum of the History of the Bible",
+   "titulo": "The Life and Miracles of Jesus Christ",
+   "siglo": "Paris, Daumont · mid-eighteenth century",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "This is the oldest book in this museum. And it is not a Bible.",
-   "It is the Vita Christi, the Life of Christ, written in Latin in the fourteenth century by a German religious of the Carthusian order, Ludolph of Saxony, prior in Koblenz, who devoted much of his life to it. It was not just another book: it was copied by hand in the hundreds, printed as soon as there was printing, and it was one of the most widely read books of the whole European Middle Ages.",
-   "Now the important thing, and you can see it on the page. This is not a biography. It is a recasting of the four Gospels into one, told as a single narrative, with commentary woven in to explain each scene.",
-   "And it has a method worth knowing, because without it its influence makes no sense. Ludolph is not content to narrate. He asks the reader to step inside the scene: to imagine the place, to look at the faces, to hear the voices, to stand there among those present. Reading was not receiving information: it was entering.",
-   "Two centuries later, this work would change a soldier's life. But let us take it in order. In 1499, Queen Isabella of Castile personally commissioned the Spanish translation from Friar Ambrosio Montesino, a Franciscan from Huete, poet and preacher at court.",
-   "Montesino worked on it for two years, between Cifuentes, Granada and his home town, and the work was printed in four parts in Alcalá de Henares, in the workshop of Estanislao Polono, between 1502 and 1503. It was the first book printed in that city. The queen lived to see it: she died in 1504.",
-   "The copy before you is the third part, from the Seville edition of the Cromberger press, of 1531.",
-   "And look at the type. Montesino had the passages that came straight from the Gospels printed in special, heavier characters, so that the reader could always tell which was Scripture and which was explanation. In those years, that is a strikingly modern idea.",
-   "Let us return to the soldier. In 1521, a Basque gentleman had his leg shattered by a cannonball at Pamplona. They carried him home to his family's house to recover. He asked for chivalric romances to pass the weeks, and there were none in that house. There were only two books: a life of the saints and this Vita Christi in Montesino's translation.",
-   "He read them because there was nothing else. That man was called Íñigo de Loyola, and out of that reading came his conversion, and out of his conversion came the Society of Jesus. The method of imagining oneself inside the scene, which he later turned into his Spiritual Exercises, he learned here.",
-   "Think about the date as well. Twenty years after this copy was printed, in 1551, the Inquisition forbade owning the Bible in the common tongue, and that ban lasted two hundred and thirty-one years. Another work by the same Montesino, his Epistles and Gospels, ended up on the Index of forbidden books in 1559. This book managed to exist in a window that afterwards closed.",
-   "One more detail, close to home. The house that printed this copy, the Crombergers of Seville, is the same one that in 1539 set up the first printing press on the American continent, in Mexico City.",
-   "And keep this in mind for the last case. Four Gospels recast into one, amplified with commentary, in the language of the people, and with typographic marks to separate the sacred text from the paraphrase. That is what you have in front of you, printed almost five hundred years ago."
+   "A hundred and twenty prints, and a handwriting that is not the printer's.",
+   "The title page says it in Latin and in French: the Life and miracles of Christ, drawn from the New Testament. And below, the imprint: at Paris, at the house of Daumont, in the rue de la Ferronnerie, at the Golden Eagle.",
+   "That address almost dates it by itself. Daumont was one of the great print-sellers of Paris: he sold views, maps, wallpaper and popular plates. He was in the rue de la Ferronnerie from 1746, and in 1757 he moved to the rue Saint-Martin. And the paper confirms it: held to the light it bears the watermark Auvergne, 1742, which a French royal ordinance imposed from that year on. So this book was made in the middle of the eighteenth century.",
+   "Inside, the hundred and twenty plates tell the life of Jesus scene by scene. At the foot of each, the caption is engraved in two languages: first the Latin and then the French.",
+   "And now come closer, because what matters is underneath. Below each printed caption there are a few lines written by hand, in ink, in Spanish. They are the translation. And it is not a stray note nor the jotting of someone passing by: it is the same hand on all hundred and twenty plates, from the first to the last.",
+   "Think what that means. Someone held this book, understood that whoever was going to look at it read neither Latin nor French, and sat down to translate the whole of it, plate by plate, with his own pen. Nobody commissioned it. There is no signature. He was not paid for it.",
+   "And look at the three books in this case. The one on the left was translated by a friar at a queen's command. The one on the right, by two translators at the command of a Paris publisher. And this one, by a person without a name, at the table of his house, so that someone he loved might understand what he was seeing.",
+   "Three ways of doing exactly the same thing. And only one without a signature."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 14 · Musée de l'Histoire de la Bible",
-   "titulo": "La Vita Christi de Montesino",
-   "siglo": "Séville, Cromberger, 1531 · troisième partie",
+   "sala": "Vitrine 15b · Musée de l'Histoire de la Bible",
+   "titulo": "La Vie et les miracles de Jésus-Christ",
+   "siglo": "Paris, Daumont · milieu du XVIIIe siècle",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Voici le livre le plus ancien de ce musée. Et ce n'est pas une Bible.",
-   "C'est la Vita Christi, la Vie du Christ, écrite en latin au quatorzième siècle par un religieux allemand de l'ordre des chartreux, Ludolphe de Saxe, prieur à Coblence, qui y consacra une grande part de sa vie. Ce ne fut pas un livre de plus : on le copia à la main par centaines, on l'imprima dès qu'il y eut des presses, et il fut l'un des livres les plus lus de tout le Moyen Âge européen.",
-   "Et voici l'essentiel, visible sur la page. Ce n'est pas une biographie. C'est une refonte des quatre évangiles en un seul, racontés comme un unique récit, avec des commentaires intercalés qui expliquent chaque scène.",
-   "Et il a une méthode qu'il faut connaître, car sans elle on ne comprend pas son influence. Ludolphe ne se contente pas de raconter. Il demande au lecteur d'entrer dans la scène : d'imaginer le lieu, de regarder les visages, d'entendre les voix, de se tenir debout parmi ceux qui sont là. Lire n'était pas recevoir une information : c'était entrer.",
-   "Deux siècles plus tard, cet ouvrage allait changer la vie d'un soldat. Mais procédons par ordre. En 1499, la reine Isabelle la Catholique confia personnellement la traduction en castillan à frère Ambrosio Montesino, franciscain de Huete, poète et prédicateur de la cour.",
-   "Montesino y travailla deux ans, entre Cifuentes, Grenade et sa ville natale, et l'ouvrage fut imprimé en quatre parties à Alcalá de Henares, dans l'atelier d'Estanislao Polono, entre 1502 et 1503. Ce fut le premier livre imprimé dans cette ville. La reine put le voir : elle mourut en 1504.",
-   "L'exemplaire que vous avez devant vous est la troisième partie, de l'édition sévillane des Cromberger, de 1531.",
-   "Regardez les caractères. Montesino fit imprimer en caractères spéciaux, plus gras, les passages venant directement des évangiles, pour que le lecteur pût toujours distinguer ce qui était Écriture et ce qui était explication. En ce temps-là, c'est une idée étonnamment moderne.",
-   "Revenons au soldat. En 1521, un gentilhomme basque eut une jambe fracassée par un boulet de canon à Pampelune. On le transporta chez les siens pour qu'il s'y rétablisse. Il demanda des romans de chevalerie pour passer les semaines, et il n'y en avait aucun dans cette maison. Il n'y avait que deux livres : une vie des saints et cette Vita Christi dans la traduction de Montesino.",
-   "Il les lut parce qu'il n'y avait rien d'autre. Cet homme s'appelait Íñigo de Loyola, et de cette lecture sortit sa conversion, et de sa conversion sortit la Compagnie de Jésus. La méthode qui consiste à s'imaginer dans la scène, qu'il transforma ensuite en ses Exercices spirituels, il l'a apprise ici.",
-   "Pensez aussi à la date. Vingt ans après l'impression de cet exemplaire, en 1551, l'Inquisition interdit de posséder la Bible en langue vulgaire, et cette interdiction dura deux cent trente et un ans. Un autre ouvrage du même Montesino, ses Épîtres et Évangiles, finit à l'Index des livres interdits en 1559. Ce livre a pu exister dans une fenêtre qui s'est refermée ensuite.",
-   "Un détail de plus, qui nous touche de près. La maison qui imprima cet exemplaire, celle des Cromberger de Séville, est la même qui installa en 1539 la première imprimerie du continent américain, à Mexico.",
-   "Et gardez ceci pour la dernière vitrine. Quatre évangiles refondus en un seul, amplifiés par le commentaire, en langue du peuple, et avec des marques typographiques pour séparer le texte sacré de la paraphrase. Voilà ce que vous avez devant vous, imprimé il y a presque cinq cents ans."
+   "Cent vingt estampes, et une écriture à la main qui n'est pas celle de l'imprimeur.",
+   "La page de titre le dit en latin et en français : Vie et miracles du Christ, tirés du Nouveau Testament. Et en bas, l'adresse : à Paris, chez Daumont, rue de la Ferronnerie, à l'Aigle d'Or.",
+   "Cette adresse le date presque à elle seule. Daumont fut l'un des grands marchands d'estampes de Paris : il vendait des vues, des cartes, du papier peint et des planches populaires. Il fut rue de la Ferronnerie à partir de 1746, et en 1757 il déménagea rue Saint-Martin. Et le papier le confirme : à contre-jour il porte le filigrane Auvergne, 1742, celui qu'imposa une ordonnance royale française à partir de cette année-là. Ce livre fut donc fait au milieu du dix-huitième siècle.",
+   "À l'intérieur, les cent vingt planches racontent scène par scène la vie de Jésus. Au bas de chacune, la légende est gravée en deux langues : d'abord le latin, puis le français.",
+   "Et maintenant approchez-vous, car l'essentiel est dessous. Sous chaque légende imprimée il y a quelques lignes écrites à la main, à l'encre, en espagnol. C'est la traduction. Et ce n'est pas une note isolée ni le griffonnage de quelqu'un de passage : c'est la même écriture sur les cent vingt planches, de la première à la dernière.",
+   "Pensez à ce que cela signifie. Quelqu'un eut ce livre entre les mains, comprit que celui qui allait le regarder ne lisait ni le latin ni le français, et s'assit pour le traduire en entier, planche après planche, de sa propre plume. Personne ne le lui avait demandé. Il n'y a pas de signature. Il ne fut pas payé pour cela.",
+   "Et regardez les trois livres de cette vitrine. Celui de gauche fut traduit par un frère sur commande d'une reine. Celui de droite, par deux traducteurs sur commande d'un éditeur parisien. Et celui-ci, par une personne sans nom, à la table de sa maison, pour que quelqu'un qu'elle aimait pût comprendre ce qu'il voyait.",
+   "Trois manières de faire exactement la même chose. Et une seule sans signature."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 14 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Vita Christi des Montesino",
-   "siglo": "Sevilla, Cromberger, 1531 · dritter Teil",
+   "sala": "Vitrine 15b · Museum zur Geschichte der Bibel",
+   "titulo": "Das Leben und die Wunder Jesu Christi",
+   "siglo": "Paris, Daumont · Mitte des 18. Jahrhunderts",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Dies ist das älteste Buch dieses Museums. Und es ist keine Bibel.",
-   "Es ist die Vita Christi, das Leben Christi, im vierzehnten Jahrhundert lateinisch verfasst von einem deutschen Ordensmann der Kartäuser, Ludolf von Sachsen, Prior in Koblenz, der einen großen Teil seines Lebens daran wandte. Es war nicht irgendein Buch: es wurde hundertfach von Hand abgeschrieben, gedruckt, sobald es den Druck gab, und war eines der meistgelesenen Bücher des gesamten europäischen Mittelalters.",
-   "Nun das Wichtige, und Sie sehen es auf der Seite. Dies ist keine Biographie. Es ist eine Verschmelzung der vier Evangelien zu einem einzigen, als eine fortlaufende Erzählung, mit eingeschobenen Kommentaren, die jede Szene erklären.",
-   "Und es hat eine Methode, die man kennen sollte, denn ohne sie versteht man seine Wirkung nicht. Ludolf begnügt sich nicht damit zu erzählen. Er verlangt vom Leser, in die Szene hineinzutreten: sich den Ort vorzustellen, die Gesichter anzusehen, die Stimmen zu hören, unter den Anwesenden zu stehen. Lesen hieß nicht, Auskunft zu empfangen: es hieß, einzutreten.",
-   "Zwei Jahrhunderte später sollte dieses Werk das Leben eines Soldaten verändern. Aber der Reihe nach. 1499 gab Königin Isabella die Katholische die spanische Übersetzung persönlich bei Bruder Ambrosio Montesino in Auftrag, einem Franziskaner aus Huete, Dichter und Prediger am Hofe.",
-   "Montesino arbeitete zwei Jahre daran, zwischen Cifuentes, Granada und seiner Heimatstadt, und das Werk wurde in vier Teilen in Alcalá de Henares gedruckt, in der Werkstatt des Estanislao Polono, zwischen 1502 und 1503. Es war das erste Buch, das in jener Stadt gedruckt wurde. Die Königin erlebte es noch: sie starb 1504.",
-   "Das Exemplar vor Ihnen ist der dritte Teil, aus der Sevillaner Ausgabe der Cromberger von 1531.",
-   "Und achten Sie auf die Schrift. Montesino ließ die Stellen, die unmittelbar aus den Evangelien stammten, in besonderen, fetteren Lettern drucken, damit der Leser stets unterscheiden konnte, was Schrift und was Erklärung war. In jenen Jahren ist das ein erstaunlich moderner Einfall.",
-   "Kehren wir zum Soldaten zurück. 1521 zerschmetterte eine Kanonenkugel bei Pamplona einem baskischen Edelmann das Bein. Man brachte ihn zur Genesung ins Haus seiner Familie. Er bat um Ritterromane, um die Wochen zu vertreiben, und in jenem Haus gab es keine. Es gab nur zwei Bücher: ein Heiligenleben und diese Vita Christi in der Übersetzung des Montesino.",
-   "Er las sie, weil es nichts anderes gab. Jener Mann hieß Íñigo de Loyola, und aus jener Lektüre kam seine Bekehrung, und aus seiner Bekehrung kam die Gesellschaft Jesu. Die Methode, sich selbst in die Szene hineinzudenken, die er später zu seinen Exerzitien machte, hat er hier gelernt.",
-   "Denken Sie auch an das Datum. Zwanzig Jahre nach dem Druck dieses Exemplars, 1551, verbot die Inquisition den Besitz der Bibel in der Volkssprache, und dieses Verbot dauerte zweihunderteinunddreißig Jahre. Ein anderes Werk desselben Montesino, seine Episteln und Evangelien, landete 1559 auf dem Index der verbotenen Bücher. Dieses Buch konnte in einem Fenster entstehen, das sich danach schloss.",
-   "Noch eine Einzelheit, die uns nahegeht. Das Haus, das dieses Exemplar druckte, die Cromberger aus Sevilla, ist dasselbe, das 1539 die erste Druckerpresse des amerikanischen Kontinents einrichtete, in Mexiko-Stadt.",
-   "Und behalten Sie dies für die letzte Vitrine. Vier Evangelien zu einem verschmolzen, durch Kommentar erweitert, in der Sprache des Volkes, und mit typographischen Zeichen, die den heiligen Text von der Umschreibung trennen. Das ist es, was Sie vor sich haben, gedruckt vor fast fünfhundert Jahren."
+   "Hundertzwanzig Stiche, und eine Handschrift, die nicht die des Druckers ist.",
+   "Das Titelblatt sagt es auf Latein und auf Französisch: Leben und Wunder Christi, aus dem Neuen Testament gezogen. Und darunter die Druckadresse: zu Paris, im Hause Daumont, in der Rue de la Ferronnerie, zum Goldenen Adler.",
+   "Diese Adresse datiert es fast von selbst. Daumont war einer der großen Bilderhändler von Paris: er verkaufte Ansichten, Karten, Tapeten und volkstümliche Blätter. Er war ab 1746 in der Rue de la Ferronnerie, und 1757 zog er in die Rue Saint-Martin. Und das Papier bestätigt es: gegen das Licht trägt es das Wasserzeichen Auvergne, 1742, das eine französische königliche Verordnung von jenem Jahr an vorschrieb. Dieses Buch entstand also in der Mitte des achtzehnten Jahrhunderts.",
+   "Im Inneren erzählen die hundertzwanzig Tafeln Szene für Szene das Leben Jesu. Am Fuß jeder Tafel steht die Bildunterschrift in zwei Sprachen gestochen: erst das Latein, dann das Französische.",
+   "Und nun treten Sie näher, denn worauf es ankommt, steht darunter. Unter jeder gedruckten Unterschrift stehen einige von Hand mit Tinte geschriebene Zeilen auf Spanisch. Es ist die Übersetzung. Und es ist keine beiläufige Notiz und keine Kritzelei eines Vorübergehenden: es ist dieselbe Hand auf allen hundertzwanzig Tafeln, von der ersten bis zur letzten.",
+   "Denken Sie, was das bedeutet. Jemand hielt dieses Buch in Händen, begriff, dass der, der es ansehen würde, weder Latein noch Französisch las, und setzte sich hin, um es ganz zu übersetzen, Tafel für Tafel, mit der eigenen Feder. Niemand hatte es ihm aufgetragen. Es gibt keine Unterschrift. Bezahlt wurde er dafür nicht.",
+   "Und sehen Sie die drei Bücher dieser Vitrine an. Das linke übersetzte ein Ordensmann im Auftrag einer Königin. Das rechte zwei Übersetzer im Auftrag eines Pariser Verlegers. Und dieses ein Mensch ohne Namen, am Tisch seines Hauses, damit jemand, den er liebte, verstehen könne, was er sah.",
+   "Drei Arten, genau dasselbe zu tun. Und nur eine ohne Unterschrift."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 14 · Museo di Storia della Bibbia",
-   "titulo": "La Vita Christi di Montesino",
-   "siglo": "Siviglia, Cromberger, 1531 · terza parte",
+   "sala": "Vetrina 15b · Museo di Storia della Bibbia",
+   "titulo": "La Vita e i miracoli di Gesù Cristo",
+   "siglo": "Parigi, Daumont · metà del Settecento",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Questo è il libro più antico di questo museo. E non è una Bibbia.",
-   "È la Vita Christi, la Vita di Cristo, scritta in latino nel Trecento da un religioso tedesco dell'ordine certosino, Ludolfo di Sassonia, priore a Coblenza, che vi dedicò buona parte della vita. Non fu un libro qualsiasi: fu copiato a mano a centinaia, stampato appena ci fu la stampa, e fu uno dei libri più letti di tutto il Medioevo europeo.",
-   "E ora l'essenziale, visibile sulla pagina. Questa non è una biografia. È una rifusione dei quattro vangeli in uno solo, raccontati come un'unica narrazione, con commenti intercalati che spiegano ogni scena.",
-   "E ha un metodo che conviene conoscere, perché senza di esso non si capisce la sua influenza. Ludolfo non si accontenta di raccontare. Chiede al lettore di entrare nella scena: di immaginare il luogo, di guardare i volti, di udire le voci, di stare in piedi fra i presenti. Leggere non era ricevere informazioni: era entrare.",
-   "Due secoli dopo, quest'opera avrebbe cambiato la vita a un soldato. Ma andiamo con ordine. Nel 1499 la regina Isabella la Cattolica affidò personalmente la traduzione in castigliano a fra Ambrosio Montesino, francescano di Huete, poeta e predicatore di corte.",
-   "Montesino vi lavorò due anni, fra Cifuentes, Granada e il suo paese, e l'opera fu stampata in quattro parti ad Alcalá de Henares, nella bottega di Estanislao Polono, fra il 1502 e il 1503. Fu il primo libro stampato in quella città. La regina fece in tempo a vederlo: morì nel 1504.",
-   "L'esemplare che ha davanti è la terza parte, dell'edizione sivigliana dei Cromberger, del 1531.",
-   "E guardi i caratteri. Montesino fece stampare con caratteri speciali, più grossi, i passi che venivano direttamente dai vangeli, perché il lettore potesse sempre distinguere che cosa era Scrittura e che cosa spiegazione. In quegli anni, è un'idea sorprendentemente moderna.",
-   "Torniamo al soldato. Nel 1521 un cavaliere basco si ritrovò con una gamba spezzata da una palla di cannone a Pamplona. Lo portarono a casa della sua famiglia a convalescere. Chiese romanzi cavallereschi per passare le settimane, e in quella casa non ce n'era nessuno. C'erano soltanto due libri: una vita dei santi e questa Vita Christi nella traduzione di Montesino.",
-   "Li lesse perché non c'era altro. Quell'uomo si chiamava Íñigo de Loyola, e da quella lettura nacque la sua conversione, e dalla sua conversione nacque la Compagnia di Gesù. Il metodo di immaginarsi dentro la scena, che poi trasformò nei suoi Esercizi spirituali, lo imparò qui.",
-   "Pensi anche alla data. Vent'anni dopo la stampa di questo esemplare, nel 1551, l'Inquisizione proibì di possedere la Bibbia in lingua volgare, e quel divieto durò duecentotrentun anni. Un'altra opera dello stesso Montesino, le sue Epistole e Vangeli, finì nell'Indice dei libri proibiti del 1559. Questo libro fece in tempo a esistere in una finestra che poi si chiuse.",
-   "Un altro dato, che ci tocca da vicino. La casa che stampò questo esemplare, quella dei Cromberger di Siviglia, è la stessa che nel 1539 impiantò il primo torchio tipografico del continente americano, a Città del Messico.",
-   "E si tenga questo per l'ultima vetrina. Quattro vangeli rifusi in uno, amplificati dal commento, in lingua del popolo, e con marche tipografiche per separare il testo sacro dalla parafrasi. È questo che ha davanti, stampato quasi cinquecento anni fa."
+   "Centoventi stampe, e una scrittura a mano che non è dello stampatore.",
+   "Il frontespizio lo dice in latino e in francese: Vita e miracoli di Cristo, tratti dal Nuovo Testamento. E sotto, la nota tipografica: a Parigi, presso Daumont, via della Ferronnerie, all'Aquila d'Oro.",
+   "Quell'indirizzo lo data quasi da solo. Daumont fu uno dei grandi mercanti di stampe di Parigi: vendeva vedute, carte, carta da parati e tavole popolari. Stette in via della Ferronnerie dal 1746, e nel 1757 si trasferì in via San Martino. E la carta lo conferma: in controluce porta la filigrana Alvernia, 1742, quella che impose un'ordinanza reale francese a partire da quell'anno. Dunque questo libro fu fatto a metà del Settecento.",
+   "Dentro, le centoventi tavole raccontano scena per scena la vita di Gesù. In calce a ciascuna, la didascalia è incisa in due lingue: prima il latino e subito dopo il francese.",
+   "E ora si avvicini, perché ciò che conta sta sotto. Sotto ogni didascalia stampata ci sono alcune righe scritte a mano, a inchiostro, in spagnolo. Sono la traduzione. E non è una nota sciolta né l'appunto di qualcuno di passaggio: è la stessa scrittura in tutte le centoventi tavole, dalla prima all'ultima.",
+   "Pensi a che cosa significa. Qualcuno ebbe questo libro fra le mani, capì che chi lo avrebbe guardato non leggeva né latino né francese, e si sedette a tradurlo per intero, tavola dopo tavola, con la propria penna. Nessuno glielo chiese. Non c'è firma. Non fu pagato per questo.",
+   "E guardi i tre libri di questa vetrina. Quello di sinistra lo tradusse un frate per incarico di una regina. Quello di destra, due traduttori per incarico di un editore di Parigi. E questo, una persona senza nome, al tavolo di casa sua, perché qualcuno a cui voleva bene potesse capire ciò che stava vedendo.",
+   "Tre modi di fare esattamente la stessa cosa. E uno solo senza firma."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 15b · Museu de História da Bíblia",
+   "titulo": "A Vida e os milagres de Jesus Cristo",
+   "siglo": "Paris, Daumont · meados do século XVIII",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Cento e vinte estampas, e uma letra à mão que não é do impressor.",
+   "O frontispício di-lo em latim e em francês: Vida e milagres de Cristo, tirados do Novo Testamento. E embaixo, o pé de imprensa: em Paris, em casa de Daumont, rua da Ferronnerie, na Águia de Ouro.",
+   "Esse endereço data-o quase sozinho. Daumont foi um dos grandes mercadores de estampas de Paris: vendia vistas, mapas, papel pintado e lâminas populares. Esteve na rua da Ferronnerie desde 1746, e em 1757 mudou-se para a rua São Martinho. E o papel confirma-o: contra a luz traz a marca de água Auvérnia, 1742, que foi a que impôs uma ordenança real francesa a partir desse ano. Portanto este livro foi feito em meados do século dezoito.",
+   "Dentro, as cento e vinte lâminas contam cena por cena a vida de Jesus. Ao pé de cada uma, a legenda vai gravada em duas línguas: primeiro o latim e logo o francês.",
+   "E agora aproxime-se, porque o que importa está embaixo. Debaixo de cada legenda impressa há umas linhas escritas à mão, com tinta, em espanhol. São a tradução. E não é uma nota solta nem o apontamento de alguém que passava: é a mesma letra nas cento e vinte lâminas, da primeira à última.",
+   "Pense no que isso significa. Alguém teve este livro nas mãos, entendeu que quem o iria ver não lia latim nem francês, e sentou-se a traduzi-lo inteiro, lâmina por lâmina, com a sua própria pena. Ninguém lho encomendou. Não há assinatura. Não cobrou por isso.",
+   "E repare nos três livros desta vitrine. O da esquerda traduziu-o um frade por encomenda de uma rainha. O da direita, dois tradutores por encomenda de um editor de Paris. E este, uma pessoa sem nome, à mesa da sua casa, para que alguém a quem queria pudesse entender o que estava vendo.",
+   "Três maneiras de fazer exatamente o mesmo. E só uma sem assinatura."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 15b · Музей истории Библии",
+   "titulo": "Жизнь и чудеса Иисуса Христа",
+   "siglo": "Париж, Домон · середина XVIII века",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Сто двадцать гравюр — и почерк, который не принадлежит печатнику.",
+   "Титульный лист говорит это по-латыни и по-французски: Жизнь и чудеса Христа, извлечённые из Нового Завета. А внизу выходные данные: в Париже, в доме Домона, на улице Ферронри, под вывеской Золотого орла.",
+   "Этот адрес датирует книгу почти сам по себе. Домон был одним из крупных парижских торговцев эстампами: он продавал виды, карты, обои и лубочные листы. На улице Ферронри он был с 1746 года, а в 1757-м переехал на улицу Сен-Мартен. И бумага это подтверждает: на просвет видна водяная знак «Овернь, 1742» — та, что ввёл французский королевский указ начиная с того года. Значит, книга сделана в середине восемнадцатого века.",
+   "Внутри сто двадцать листов рассказывают сцену за сценой жизнь Иисуса. Под каждым подпись выгравирована на двух языках: сперва по-латыни, затем по-французски.",
+   "А теперь подойдите ближе, потому что самое важное — ниже. Под каждой печатной подписью идут несколько строк, написанных от руки чернилами, по-испански. Это перевод. И это не случайная заметка и не помета мимоходом: это один и тот же почерк на всех ста двадцати листах, от первого до последнего.",
+   "Подумайте, что это значит. Кто-то держал эту книгу в руках, понял, что тот, кто будет её смотреть, не читает ни по-латыни, ни по-французски, и сел переводить её целиком, лист за листом, собственным пером. Никто его об этом не просил. Подписи нет. Денег он за это не брал.",
+   "И посмотрите на три книги этой витрины. Ту, что слева, перевёл монах по заказу королевы. Ту, что справа, — два переводчика по заказу парижского издателя. А эту — человек без имени, за столом у себя дома, чтобы кто-то, кого он любил, мог понять то, что видит.",
+   "Три способа сделать в точности одно и то же. И лишь один — без подписи."
   ]
  }
 };
@@ -311,6 +334,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

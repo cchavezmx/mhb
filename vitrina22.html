@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia Políglota Complutense — Museo de Historia de la Biblia</title>
+<title>El Nuevo Testamento de Erasmo — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2ECDE;--claro:#FCF7EB;--tinta:#2A231B;--cabecera:#6E1B26;--acento:#8E2B24;--marca:rgba(142,43,36,.18); }
+  :root{ --fondo:#F0EFE9;--claro:#FAF9F4;--tinta:#1C1C17;--cabecera:#2F4438;--acento:#9A7C2C;--marca:rgba(154,124,44,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,9 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .columnas{flex:none;background:var(--claro);padding:6px;display:flex;gap:5px}
-  .col{width:20px;height:64px;background:repeating-linear-gradient(to bottom,var(--tinta) 0 1.2px,transparent 1.2px 4.6px)}
-  .col.centro{width:26px;background:repeating-linear-gradient(to bottom,var(--acento) 0 1.2px,transparent 1.2px 4.6px)}
+  .dos{flex:none;display:flex;gap:5px}
+  .dos i{display:block;width:26px;height:60px;background:repeating-linear-gradient(to bottom,var(--tinta) 0 1.4px,transparent 1.4px 5px);opacity:.6}
+  .dos i.gr{background:repeating-linear-gradient(to bottom,var(--acento) 0 1.6px,transparent 1.6px 5px);opacity:1}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -40,11 +40,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="columnas" aria-hidden="true"><div class="col"></div><div class="col centro"></div><div class="col"></div></div>
+  <div class="dos" aria-hidden="true"><i class="gr"></i><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -73,110 +74,168 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 10 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia Políglota Complutense",
-   "siglo": "Alcalá de Henares, 1514–1517 · seis tomos",
+   "sala": "Vitrina 13 · Museo de Historia de la Biblia",
+   "titulo": "El Nuevo Testamento de Erasmo",
+   "siglo": "Basilea, 1,516 · el Textus Receptus",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Seis tomos. Quince años de trabajo. Y la idea más ambiciosa que había tenido nadie hasta entonces con la Biblia: ponerla en sus lenguas originales, todas a la vez, en la misma página.",
-   "Alcalá de Henares, España. La ciudad se llamaba Complutum en latín, y de ahí el nombre. El que lo mandó hacer fue el cardenal Cisneros, que fundó la universidad con este propósito. Reunió a los mejores hebraístas y helenistas de España, varios de ellos judíos conversos: Alfonso de Zamora, Pablo Coronel, Alfonso de Alcalá. También llamó a Antonio de Nebrija, el de la primera gramática castellana.",
-   "Abra cualquier página del Antiguo Testamento y verá tres columnas. En medio, la Vulgata latina. A un lado, el texto hebreo. Al otro, el griego de los Setenta con su traducción latina entre renglones. En el Pentateuco, además, abajo, el arameo.",
-   "El prólogo explica esa disposición con una imagen muy de su tiempo: el latín va en medio, dice, como Jesús entre los dos ladrones. Hoy nadie lo diría así, pero ahí está escrito, y dice mucho de cómo se veía entonces.",
-   "El quinto tomo es el Nuevo Testamento en griego, y tiene un récord: se imprimió en 1,514, y es el primer Nuevo Testamento griego que salió de una imprenta en la historia. El sexto tomo es un diccionario hebreo y arameo, una gramática y un vocabulario griego. El primer manual de estudio bíblico que se imprimió.",
-   "Pero el libro no se pudo vender. Había que esperar el permiso de Roma, que llegó en 1,520, y los ejemplares no se repartieron hasta 1,522. Para entonces Cisneros llevaba cinco años muerto, y otro hombre, en Basilea, ya había ganado la carrera. De él hablamos en la sala siguiente.",
-   "Se tiraron seiscientos ejemplares. Sobreviven muy pocos. Y es, hasta hoy, uno de los trabajos de erudición más impresionantes que ha producido España."
+   "Este libro se hizo de prisa, con pocos manuscritos y con errores, pero, aun así, cambió al mundo.",
+   "Basilea, Suiza, marzo de 1,516. Erasmo de Rotterdam, el humanista más famoso de Europa, publica el Nuevo Testamento en griego con una nueva traducción latina hecha por él. El impresor Froben quería ganarle a los españoles, que ya tenían el suyo impreso pero detenido, esperando permiso. Y ganaron: éste fue el primer Nuevo Testamento griego publicado.",
+   "El propio Erasmo lo reconoció después con una frase que todavía se cita: más que editado, dijo, fue precipitado. Y es cierto. Usó los pocos manuscritos griegos que había en Basilea, todos tardíos. Al llegar al Apocalipsis descubrió que a su ejemplar le faltaba la última hoja. ¿Qué hizo? Tomó la Vulgata latina y tradujo esos versículos finales al griego, él mismo. Quedaron en el texto unas palabras que no aparecen en ningún manuscrito griego del mundo.",
+   "Lo verdaderamente explosivo, sin embargo, no fue el griego: fue su traducción latina. Al corregir la Vulgata, Erasmo demostró que el texto oficial de la Iglesia se podía discutir, y si se podía discutir, se podía traducir.",
+   "Lo que vino después lo conoce usted. Lutero tradujo al alemán desde la segunda edición de Erasmo. Tyndale, al inglés. Casiodoro de Reina y Cipriano de Valera, al castellano. De este tomo descienden la Biblia del rey Jacobo y la Reina-Valera.",
+   "Y el nombre viene de un anuncio publicitario. En 1,633, los impresores Elzevir escribieron en su prólogo que el lector tenía en las manos el texto recibido por todos. Textus Receptus. Se les quedó.",
+   "Y aquí termina la primera parte del recorrido. De este tomo de Basilea salieron las traducciones a las lenguas vivas, y son las que verá a partir de ahora.",
+   "Empezamos con un monje que copiaba a mano en una montaña de Cantabria, para que el Libro no se perdiera. Terminamos con un texto impreso del que descienden las Biblias que hoy están en su casa. Mil doscientos años entre una hoja y la otra, y siempre la misma obsesión: que no se pierda, y que llegue a las manos de todos.",
+   "Un libro apresurado y con errores hizo más por la Escritura que muchos libros perfectos. Porque llegó a tiempo."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 10 · Museum of the History of the Bible",
-   "titulo": "The Complutensian Polyglot Bible",
-   "siglo": "Alcalá de Henares, 1514–1517 · six volumes",
+   "sala": "Case 13 · Museum of the History of the Bible",
+   "titulo": "Erasmus's New Testament",
+   "siglo": "Basel, 1516 · the Textus Receptus",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Six volumes. Fifteen years of work. And the most ambitious idea anyone had yet had with the Bible: to set it out in its original languages, all of them at once, on the same page.",
-   "Alcalá de Henares, in Spain. The town was called Complutum in Latin, and that is where the name comes from. It was commissioned by Cardinal Cisneros, who founded the university for this very purpose. He gathered the best Hebrew and Greek scholars in Spain, several of them Jewish converts: Alfonso de Zamora, Pablo Coronel, Alfonso de Alcalá. He also called in Antonio de Nebrija, author of the first grammar of the Spanish language.",
-   "Open any page of the Old Testament and you will see three columns. In the middle, the Latin Vulgate. On one side, the Hebrew text. On the other, the Greek of the Seventy, with a Latin translation between the lines. In the Pentateuch there is Aramaic as well, along the foot of the page.",
-   "The preface explains that arrangement with an image very much of its time: the Latin goes in the middle, it says, like Jesus between the two thieves. Nobody would put it that way today, but there it stands, and it tells you a great deal about how things were seen then.",
-   "The fifth volume is the New Testament in Greek, and it holds a record: it was printed in 1514, and it is the first Greek New Testament ever to come off a printing press. The sixth volume is a Hebrew and Aramaic dictionary, a grammar and a Greek vocabulary. The first handbook of biblical study ever printed.",
-   "But the book could not be sold. Permission from Rome had to be waited for; it came in 1520, and the copies were not distributed until 1522. By then Cisneros had been dead five years, and another man, in Basel, had already won the race. We shall speak of him in the next case.",
-   "Six hundred copies were printed. Very few survive. And it remains, to this day, one of the most impressive works of scholarship Spain has ever produced."
+   "This book was made in haste, with few manuscripts and with mistakes, and even so it changed the world.",
+   "Basel, Switzerland, March 1516. Erasmus of Rotterdam, the most famous humanist in Europe, publishes the New Testament in Greek with a new Latin translation of his own. The printer Froben wanted to beat the Spaniards, who already had theirs printed but held back, awaiting permission. And they won: this was the first Greek New Testament published.",
+   "Erasmus himself acknowledged it afterwards with a phrase still quoted: rather than edited, he said, it was rushed out. And it is true. He used the few Greek manuscripts to be had in Basel, all of them late. On reaching Revelation he found that his copy was missing its last leaf. What did he do? He took the Latin Vulgate and translated those final verses into Greek himself. There remain in the text some words that appear in no Greek manuscript in the world.",
+   "What was truly explosive, however, was not the Greek: it was his Latin translation. By correcting the Vulgate, Erasmus showed that the official text of the Church could be argued with, and if it could be argued with, it could be translated.",
+   "What came afterwards you know. Luther translated into German from Erasmus's second edition. Tyndale, into English. Casiodoro de Reina and Cipriano de Valera, into Spanish. From this volume descend the King James Bible and the Reina-Valera.",
+   "And the name comes from an advertisement. In 1633 the Elzevir printers wrote in their preface that the reader held in his hands the text received by all. Textus Receptus. The name stuck.",
+   "And here the first part of the tour ends. From this volume of Basel came the translations into the living languages, and those are what you will see from now on.",
+   "We began with a monk copying by hand on a mountain in Cantabria, so that the Book should not be lost. We end with a printed text from which the Bibles in your house today descend. Twelve hundred years between one leaf and the other, and always the same obsession: that it be not lost, and that it reach everyone's hands.",
+   "A hurried book full of mistakes did more for Scripture than many perfect books. Because it arrived in time."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 10 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible polyglotte d'Alcalá",
-   "siglo": "Alcalá de Henares, 1514–1517 · six volumes",
+   "sala": "Vitrine 13 · Musée de l'Histoire de la Bible",
+   "titulo": "Le Nouveau Testament d'Érasme",
+   "siglo": "Bâle, 1516 · le Textus Receptus",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Six volumes. Quinze années de travail. Et l'idée la plus ambitieuse que quiconque ait eue jusque-là avec la Bible : la présenter dans ses langues originales, toutes à la fois, sur la même page.",
-   "Alcalá de Henares, en Espagne. La ville s'appelait Complutum en latin, et c'est de là que vient le nom. Le commanditaire fut le cardinal Cisneros, qui fonda l'université précisément dans ce but. Il réunit les meilleurs hébraïsants et hellénistes d'Espagne, plusieurs d'entre eux juifs convertis : Alfonso de Zamora, Pablo Coronel, Alfonso de Alcalá. Il fit aussi venir Antonio de Nebrija, auteur de la première grammaire castillane.",
-   "Ouvrez n'importe quelle page de l'Ancien Testament et vous verrez trois colonnes. Au milieu, la Vulgate latine. D'un côté, le texte hébreu. De l'autre, le grec des Septante, avec sa traduction latine entre les lignes. Dans le Pentateuque s'ajoute encore l'araméen, en bas de page.",
-   "La préface explique cette disposition par une image bien de son temps : le latin est au milieu, dit-elle, comme Jésus entre les deux larrons. Personne ne le dirait ainsi aujourd'hui, mais c'est écrit là, et cela en dit long sur le regard de l'époque.",
-   "Le cinquième volume est le Nouveau Testament en grec, et il détient un record : imprimé en 1514, c'est le premier Nouveau Testament grec sorti d'une presse dans l'histoire. Le sixième volume est un dictionnaire hébreu et araméen, une grammaire et un vocabulaire grec. Le premier manuel d'étude biblique jamais imprimé.",
-   "Mais le livre ne put être vendu. Il fallait attendre l'autorisation de Rome, qui arriva en 1520, et les exemplaires ne furent distribués qu'en 1522. Cisneros était mort depuis cinq ans, et un autre homme, à Bâle, avait déjà gagné la course. Nous parlerons de lui dans la vitrine suivante.",
-   "On en tira six cents exemplaires. Il en subsiste très peu. Et c'est, aujourd'hui encore, l'un des travaux d'érudition les plus impressionnants que l'Espagne ait produits."
+   "Ce livre fut fait à la hâte, avec peu de manuscrits et avec des fautes, et pourtant il changea le monde.",
+   "Bâle, en Suisse, mars 1516. Érasme de Rotterdam, l'humaniste le plus célèbre d'Europe, publie le Nouveau Testament en grec avec une nouvelle traduction latine de sa main. L'imprimeur Froben voulait devancer les Espagnols, qui avaient déjà le leur imprimé mais retenu, en attente de permission. Et ils gagnèrent : ce fut le premier Nouveau Testament grec publié.",
+   "Érasme lui-même le reconnut ensuite par une phrase qu'on cite encore : plus que édité, dit-il, il fut précipité. Et c'est vrai. Il usa des rares manuscrits grecs qu'on trouvait à Bâle, tous tardifs. Arrivé à l'Apocalypse, il découvrit qu'il manquait à son exemplaire le dernier feuillet. Que fit-il ? Il prit la Vulgate latine et traduisit lui-même ces derniers versets en grec. Il resta dans le texte des mots qui ne figurent dans aucun manuscrit grec au monde.",
+   "Ce qui fut vraiment explosif, pourtant, ne fut pas le grec : ce fut sa traduction latine. En corrigeant la Vulgate, Érasme montra que le texte officiel de l'Église pouvait être discuté, et que s'il pouvait être discuté, il pouvait être traduit.",
+   "Ce qui vint ensuite, vous le connaissez. Luther traduisit en allemand à partir de la deuxième édition d'Érasme. Tyndale, en anglais. Casiodoro de Reina et Cipriano de Valera, en castillan. De ce volume descendent la Bible du roi Jacques et la Reina-Valera.",
+   "Et le nom vient d'une réclame. En 1633, les imprimeurs Elzevier écrivirent dans leur préface que le lecteur tenait entre les mains le texte reçu par tous. Textus Receptus. Le nom leur est resté.",
+   "Et ici s'achève la première partie du parcours. De ce volume de Bâle sortirent les traductions dans les langues vivantes, et ce sont elles que vous verrez désormais.",
+   "Nous avons commencé avec un moine qui copiait à la main sur une montagne de Cantabrie, pour que le Livre ne se perdît pas. Nous finissons avec un texte imprimé dont descendent les Bibles qui sont aujourd'hui chez vous. Douze cents ans entre un feuillet et l'autre, et toujours la même obsession : qu'il ne se perde pas, et qu'il parvienne aux mains de tous.",
+   "Un livre hâtif et fautif fit davantage pour l'Écriture que bien des livres parfaits. Parce qu'il arriva à temps."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 10 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Complutensische Polyglotte",
-   "siglo": "Alcalá de Henares, 1514–1517 · sechs Bände",
+   "sala": "Vitrine 13 · Museum zur Geschichte der Bibel",
+   "titulo": "Das Neue Testament des Erasmus",
+   "siglo": "Basel, 1516 · der Textus Receptus",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Sechs Bände. Fünfzehn Jahre Arbeit. Und der ehrgeizigste Einfall, den bis dahin jemand mit der Bibel gehabt hatte: sie in ihren Ursprachen darzubieten, alle zugleich, auf derselben Seite.",
-   "Alcalá de Henares in Spanien. Die Stadt hieß auf Latein Complutum, daher der Name. In Auftrag gab es Kardinal Cisneros, der die Universität eigens zu diesem Zweck gründete. Er versammelte die besten Hebraisten und Gräzisten Spaniens, mehrere von ihnen getaufte Juden: Alfonso de Zamora, Pablo Coronel, Alfonso de Alcalá. Auch Antonio de Nebrija holte er, den Verfasser der ersten spanischen Grammatik.",
-   "Schlagen Sie irgendeine Seite des Alten Testaments auf, und Sie sehen drei Spalten. In der Mitte die lateinische Vulgata. Auf der einen Seite der hebräische Text. Auf der anderen das Griechisch der Siebzig, mit lateinischer Übersetzung zwischen den Zeilen. Im Pentateuch kommt unten noch das Aramäische hinzu.",
-   "Die Vorrede erklärt diese Anordnung mit einem Bild ganz ihrer Zeit: das Latein stehe in der Mitte, heißt es, wie Jesus zwischen den beiden Schächern. Heute würde es niemand mehr so sagen, aber dort steht es, und es sagt viel darüber, wie man damals sah.",
-   "Der fünfte Band ist das Neue Testament auf Griechisch, und er hält einen Rekord: gedruckt 1514, ist er das erste griechische Neue Testament, das je eine Druckerpresse verließ. Der sechste Band ist ein hebräisch-aramäisches Wörterbuch, eine Grammatik und ein griechisches Vokabular. Das erste gedruckte Handbuch des Bibelstudiums.",
-   "Doch das Buch durfte nicht verkauft werden. Man musste auf die Erlaubnis aus Rom warten; sie kam 1520, und die Exemplare wurden erst 1522 ausgeliefert. Da war Cisneros seit fünf Jahren tot, und ein anderer Mann in Basel hatte das Rennen längst gewonnen. Von ihm sprechen wir in der nächsten Vitrine.",
-   "Sechshundert Exemplare wurden gedruckt. Nur sehr wenige haben überdauert. Und es ist bis heute eine der beeindruckendsten Gelehrtenleistungen, die Spanien hervorgebracht hat."
+   "Dieses Buch entstand in Eile, mit wenigen Handschriften und mit Fehlern, und dennoch veränderte es die Welt.",
+   "Basel, Schweiz, März 1516. Erasmus von Rotterdam, der berühmteste Humanist Europas, veröffentlicht das Neue Testament auf Griechisch mit einer neuen lateinischen Übersetzung von seiner Hand. Der Drucker Froben wollte den Spaniern zuvorkommen, die das ihre schon gedruckt, aber zurückgehalten hatten, in Erwartung der Erlaubnis. Und sie gewannen: dies war das erste veröffentlichte griechische Neue Testament.",
+   "Erasmus selbst gab es später mit einem bis heute zitierten Satz zu: mehr hinausgestürzt als herausgegeben, sagte er. Und es stimmt. Er benutzte die wenigen griechischen Handschriften, die in Basel zu haben waren, allesamt spät. Bei der Offenbarung stellte er fest, dass seinem Exemplar das letzte Blatt fehlte. Was tat er? Er nahm die lateinische Vulgata und übersetzte diese Schlussverse selbst ins Griechische. Im Text blieben Wörter stehen, die in keiner griechischen Handschrift der Welt vorkommen.",
+   "Das wahrhaft Sprengende war jedoch nicht das Griechische: es war seine lateinische Übersetzung. Indem er die Vulgata verbesserte, zeigte Erasmus, dass der amtliche Text der Kirche bestreitbar war, und wenn er bestreitbar war, war er auch übersetzbar.",
+   "Was danach kam, kennen Sie. Luther übersetzte aus der zweiten Ausgabe des Erasmus ins Deutsche. Tyndale ins Englische. Casiodoro de Reina und Cipriano de Valera ins Spanische. Von diesem Band stammen die King-James-Bibel und die Reina-Valera ab.",
+   "Und der Name kommt von einer Werbeanzeige. 1633 schrieben die Drucker Elzevier in ihrer Vorrede, der Leser halte den von allen angenommenen Text in Händen. Textus Receptus. Der Name blieb hängen.",
+   "Und hier endet der erste Teil des Rundgangs. Aus diesem Basler Band gingen die Übersetzungen in die lebenden Sprachen hervor, und sie sind es, die Sie von nun an sehen werden.",
+   "Wir begannen mit einem Mönch, der auf einem Berg in Kantabrien von Hand abschrieb, damit das Buch nicht verloren ginge. Wir enden mit einem gedruckten Text, von dem die Bibeln abstammen, die heute bei Ihnen zu Hause stehen. Zwölfhundert Jahre zwischen dem einen Blatt und dem anderen, und immer dieselbe Besessenheit: dass es nicht verloren gehe und dass es in aller Hände gelange.",
+   "Ein hastiges, fehlerhaftes Buch tat mehr für die Schrift als viele vollkommene Bücher. Weil es rechtzeitig kam."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 10 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia Poliglotta Complutense",
-   "siglo": "Alcalá de Henares, 1514–1517 · sei volumi",
+   "sala": "Vetrina 13 · Museo di Storia della Bibbia",
+   "titulo": "Il Nuovo Testamento di Erasmo",
+   "siglo": "Basilea, 1516 · il Textus Receptus",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Sei volumi. Quindici anni di lavoro. E l'idea più ambiziosa che qualcuno avesse avuto fino ad allora con la Bibbia: presentarla nelle sue lingue originali, tutte insieme, sulla stessa pagina.",
-   "Alcalá de Henares, in Spagna. La città si chiamava Complutum in latino, e di lì viene il nome. La fece fare il cardinale Cisneros, che fondò l'università proprio a questo scopo. Riunì i migliori ebraisti e grecisti di Spagna, molti dei quali ebrei convertiti: Alfonso de Zamora, Pablo Coronel, Alfonso de Alcalá. Chiamò anche Antonio de Nebrija, autore della prima grammatica castigliana.",
-   "Apra una pagina qualsiasi dell'Antico Testamento e vedrà tre colonne. Al centro, la Vulgata latina. Da un lato, il testo ebraico. Dall'altro, il greco dei Settanta, con la traduzione latina tra le righe. Nel Pentateuco, in basso, si aggiunge l'aramaico.",
-   "La prefazione spiega quella disposizione con un'immagine molto del suo tempo: il latino sta in mezzo, dice, come Gesù fra i due ladroni. Oggi nessuno lo direbbe così, ma è scritto lì, e dice molto di come si guardava allora.",
-   "Il quinto volume è il Nuovo Testamento in greco, e detiene un primato: stampato nel 1514, è il primo Nuovo Testamento greco uscito da un torchio nella storia. Il sesto volume è un dizionario ebraico e aramaico, una grammatica e un vocabolario greco. Il primo manuale di studio biblico mai stampato.",
-   "Ma il libro non si poté vendere. Bisognava attendere il permesso di Roma, che arrivò nel 1520, e le copie furono distribuite soltanto nel 1522. Cisneros era morto da cinque anni, e un altro uomo, a Basilea, aveva già vinto la corsa. Di lui parleremo nella vetrina seguente.",
-   "Ne furono tirate seicento copie. Ne sopravvivono pochissime. Ed è, ancora oggi, uno dei lavori di erudizione più impressionanti che la Spagna abbia prodotto."
+   "Questo libro si fece in fretta, con pochi manoscritti e con errori, eppure cambiò il mondo.",
+   "Basilea, Svizzera, marzo 1516. Erasmo da Rotterdam, l'umanista più famoso d'Europa, pubblica il Nuovo Testamento in greco con una nuova traduzione latina fatta da lui. Lo stampatore Froben voleva battere gli spagnoli, che avevano già il loro stampato ma trattenuto, in attesa del permesso. E vinsero: questo fu il primo Nuovo Testamento greco pubblicato.",
+   "Lo stesso Erasmo lo riconobbe poi con una frase che ancora si cita: più che curato, disse, fu precipitato. Ed è vero. Usò i pochi manoscritti greci che c'erano a Basilea, tutti tardivi. Giunto all'Apocalisse scoprì che al suo esemplare mancava l'ultimo foglio. Che fece? Prese la Vulgata latina e tradusse lui stesso quei versetti finali in greco. Rimasero nel testo alcune parole che non compaiono in nessun manoscritto greco al mondo.",
+   "Ciò che fu davvero esplosivo, però, non fu il greco: fu la sua traduzione latina. Correggendo la Vulgata, Erasmo dimostrò che il testo ufficiale della Chiesa si poteva discutere, e che se si poteva discutere, si poteva tradurre.",
+   "Quello che venne dopo lei lo conosce. Lutero tradusse in tedesco dalla seconda edizione di Erasmo. Tyndale, in inglese. Casiodoro de Reina e Cipriano de Valera, in castigliano. Da questo volume discendono la Bibbia di re Giacomo e la Reina-Valera.",
+   "E il nome viene da un annuncio pubblicitario. Nel 1633 gli stampatori Elzevier scrissero nella loro prefazione che il lettore aveva fra le mani il testo ricevuto da tutti. Textus Receptus. Il nome restò.",
+   "E qui finisce la prima parte del percorso. Da questo volume di Basilea uscirono le traduzioni nelle lingue vive, e sono quelle che vedrà d'ora in poi.",
+   "Abbiamo cominciato con un monaco che copiava a mano su una montagna della Cantabria, perché il Libro non si perdesse. Finiamo con un testo stampato da cui discendono le Bibbie che oggi stanno in casa sua. Milleduecento anni fra un foglio e l'altro, e sempre la stessa ossessione: che non si perda, e che arrivi nelle mani di tutti.",
+   "Un libro affrettato e pieno di errori fece per la Scrittura più di molti libri perfetti. Perché arrivò in tempo."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 13 · Museu de História da Bíblia",
+   "titulo": "O Novo Testamento de Erasmo",
+   "siglo": "Basileia, 1516 · o Textus Receptus",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Este livro fez-se depressa, com poucos manuscritos e com erros, mas, ainda assim, mudou o mundo.",
+   "Basileia, Suíça, março de 1516. Erasmo de Roterdã, o humanista mais famoso da Europa, publica o Novo Testamento em grego com uma nova tradução latina feita por ele. O impressor Froben queria ganhar dos espanhóis, que já tinham o seu impresso mas retido, à espera de permissão. E ganharam: este foi o primeiro Novo Testamento grego publicado.",
+   "O próprio Erasmo o reconheceu depois com uma frase que ainda se cita: mais do que editado, disse, foi precipitado. E é verdade. Usou os poucos manuscritos gregos que havia em Basileia, todos tardios. Ao chegar ao Apocalipse descobriu que ao seu exemplar faltava a última folha. Que fez? Pegou na Vulgata latina e traduziu ele mesmo esses versículos finais para o grego. Ficaram no texto umas palavras que não aparecem em nenhum manuscrito grego do mundo.",
+   "O verdadeiramente explosivo, contudo, não foi o grego: foi a sua tradução latina. Ao corrigir a Vulgata, Erasmo demonstrou que o texto oficial da Igreja se podia discutir, e se se podia discutir, podia-se traduzir.",
+   "O que veio depois você conhece. Lutero traduziu para o alemão a partir da segunda edição de Erasmo. Tyndale, para o inglês. Casiodoro de Reina e Cipriano de Valera, para o castelhano. Deste volume descendem a Bíblia do rei Jaime e a Reina-Valera.",
+   "E o nome vem de um anúncio publicitário. Em 1633, os impressores Elzevier escreveram no seu prólogo que o leitor tinha nas mãos o texto recebido por todos. Textus Receptus. O nome ficou.",
+   "E aqui termina a primeira parte do percurso. Deste volume de Basileia saíram as traduções para as línguas vivas, e são essas que você verá a partir de agora.",
+   "Começamos com um monge que copiava à mão numa montanha da Cantábria, para que o Livro não se perdesse. Terminamos com um texto impresso do qual descendem as Bíblias que hoje estão na sua casa. Mil e duzentos anos entre uma folha e a outra, e sempre a mesma obsessão: que não se perca, e que chegue às mãos de todos.",
+   "Um livro apressado e com erros fez mais pela Escritura do que muitos livros perfeitos. Porque chegou a tempo."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 13 · Музей истории Библии",
+   "titulo": "Новый Завет Эразма",
+   "siglo": "Базель, 1516 · Textus Receptus",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Эта книга делалась второпях, по немногим рукописям и с ошибками — и всё же изменила мир.",
+   "Базель, Швейцария, март 1516 года. Эразм Роттердамский, самый знаменитый гуманист Европы, издаёт Новый Завет по-гречески с новым латинским переводом собственной работы. Печатник Фробен хотел опередить испанцев, у которых свой уже был напечатан, но задержан в ожидании разрешения. И они опередили: это был первый изданный греческий Новый Завет.",
+   "Сам Эразм потом признал это фразой, которую цитируют доныне: не столько издано, сказал он, сколько выброшено впопыхах. И это правда. Он пользовался теми немногими греческими рукописями, что нашлись в Базеле, все поздние. Дойдя до Откровения, он обнаружил, что в его списке недостаёт последнего листа. Что он сделал? Взял латинскую Вульгату и сам перевёл эти последние стихи на греческий. В тексте остались слова, которых нет ни в одной греческой рукописи мира.",
+   "Однако по-настоящему взрывным был не греческий текст, а его латинский перевод. Исправляя Вульгату, Эразм показал, что официальный текст Церкви можно оспаривать, а если можно оспаривать, то можно и переводить.",
+   "Что было дальше, вы знаете. Лютер переводил на немецкий со второго издания Эразма. Тиндейл — на английский. Касиодоро де Рейна и Сиприано де Валера — на испанский. От этого тома происходят Библия короля Иакова и Рейна-Валера.",
+   "А название пошло от рекламного объявления. В 1633 году печатники Эльзевиры написали в предисловии, что читатель держит в руках текст, принятый всеми. Textus Receptus. Название так и осталось.",
+   "И здесь кончается первая часть нашего пути. Из этого базельского тома вышли переводы на живые языки, и именно их вы увидите дальше.",
+   "Мы начали с монаха, переписывавшего от руки в горах Кантабрии, чтобы Книга не пропала. Мы заканчиваем печатным текстом, от которого происходят Библии, стоящие сегодня у вас дома. Тысяча двести лет между одним листом и другим — и всё та же одержимость: чтобы не пропало и чтобы дошло до рук всех.",
+   "Поспешная книга с ошибками сделала для Писания больше, чем многие безупречные книги. Потому что подоспела вовремя."
   ]
  }
 };
@@ -281,6 +340,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

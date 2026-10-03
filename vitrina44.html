@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia de Dalí — Museo de Historia de la Biblia</title>
+<title>Las lenguas de México — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F3EFE6;--claro:#FCF8F0;--tinta:#1E1D1A;--cabecera:#1F4E6B;--acento:#C4482E;--marca:rgba(196,72,46,.2); }
+  :root{ --fondo:#F2F0E6;--claro:#FBF9F1;--tinta:#1C1B15;--cabecera:#2E4A3A;--acento:#B0682E;--marca:rgba(176,104,46,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,8 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .mancha{flex:none;width:70px;height:66px}
+  .muchos{flex:none;display:grid;grid-template-columns:repeat(6,9px);gap:3px}
+  .muchos i{display:block;width:9px;height:26px;border-radius:1px}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,15 +39,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="mancha" viewBox="0 0 70 66" aria-hidden="true">
-   <circle cx="26" cy="26" r="19" fill="#C4482E" opacity=".55"/>
-   <circle cx="44" cy="34" r="16" fill="#D8A62C" opacity=".6"/>
-   <circle cx="32" cy="45" r="13" fill="#2F6E9B" opacity=".55"/>
-   <path d="M52 12 C56 20 58 28 55 38" stroke="#1E1D1A" stroke-width="1.6" fill="none"/></svg>
+  <div class="muchos" aria-hidden="true"><i style="background:#B0682E"></i><i style="background:#2E4A3A"></i><i style="background:#8A7A3A"></i><i style="background:#B0682E"></i><i style="background:#6B4A6B"></i><i style="background:#2E4A3A"></i><i style="background:#8A7A3A"></i><i style="background:#B0682E"></i><i style="background:#2E4A3A"></i><i style="background:#6B4A6B"></i><i style="background:#B0682E"></i><i style="background:#8A7A3A"></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -75,115 +73,168 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 25 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia de Dalí",
-   "siglo": "Milán, 1964 · ciento cinco acuarelas",
+   "sala": "Librero 5 · Museo de Historia de la Biblia",
+   "titulo": "Las lenguas de México",
+   "siglo": "Cincuenta y seis variantes",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Ciento cinco acuarelas, y el pintor más escandaloso del siglo veinte.",
-   "En 1963, un médico de Turín llamado Giuseppe Albaretto le encargó a Salvador Dalí que ilustrara la Biblia. Albaretto era católico devoto y amigo suyo, y lo hizo con una intención declarada: que Dalí, obligado a leer la Escritura entera para pintarla, volviera a la fe.",
-   "Dalí aceptó. Trabajó entre 1,963 y 1,964. El resultado se publicó en Milán, en la casa Rizzoli: cinco tomos con el texto de la Vulgata latina y las acuarelas reproducidas una por una, en una edición corta y numerada. La que usted tiene delante es aquella primera, la de 1,964.",
-   "Lo que hizo no se parece a nada de lo que ha visto en las vitrinas anteriores. No hay contorno, no hay línea firme, no hay escena ordenada. Hay manchas de color que estallan, figuras que se disuelven a medio formar, espacios en blanco enormes. A veces arrojaba la pintura sobre el papel y después dibujaba encima lo que la mancha le sugería.",
-   "Compare con la vitrina de los grabados. Schnorr dibujaba lo que se ve. Doré dibujaba la luz. Dalí no hace ninguna de las dos cosas: pinta lo que ocurre dentro de uno mientras lee. Es la Escritura vista desde el sueño.",
-   "Y ahí está la paradoja que hace grande a esta pieza. La Iglesia llevaba mil quinientos años discutiendo cuál es la manera correcta de representar lo sagrado. Y una de las respuestas más poderosas del siglo veinte la dio un surrealista al que muchos tenían por un payaso.",
-   "¿Funcionó el plan del doctor Albaretto? Dalí murió en 1,989 y está enterrado bajo la cúpula de su propio museo, en Figueras. Cada quien juzgará. Lo que quedó de aquel encargo es esto que usted tiene delante.",
-   "Y todavía faltan vitrinas por ver. Las que siguen ya no tratan de cómo se tradujo este Libro, sino de hasta dónde llegó."
+   "En este librero no hay ninguna pieza famosa. Y sin embargo es, probablemente, el que ningún otro museo del mundo podría armar.",
+   "Son Biblias en las lenguas de este país: cincuenta y seis variantes. Náhuatl, maya, tzeltal, tzotzil, mixteco, zapoteco, totonaco, chinanteco, purépecha, mazahua, huasteco, yaqui, mayo, tarahumara, tojolabal, triqui, mixe, mazateco, popoluca, tlapaneco, chol, y siguen.",
+   "Y conviene empezar diciendo una cosa: son lenguas, no dialectos, porque tienen gramática, literatura y siglos de historia escrita. En México hay sesenta y ocho agrupaciones lingüísticas reconocidas, y varias de ellas se escribieron por primera vez porque alguien quiso poner en ellas un texto bíblico.",
+   "La historia arranca en el siglo dieciséis. Recién consumada la conquista, los frailes se pusieron a aprender estas lenguas para poder predicar en ellas. Escribieron gramáticas y vocabularios que hoy son nuestra principal fuente para conocerlas, y tradujeron doctrinas y pasajes de los evangelios. Lo hicieron por razones suyas, pero el resultado fue que esas lenguas entraron a la imprenta.",
+   "Después vinieron siglos de silencio. Las traducciones completas y sistemáticas son trabajo del siglo veinte, y muchas siguen en curso ahora mismo, hechas con hablantes nativos y no sólo sobre ellos.",
+   "Y ahora lo importante. A lo largo de este recorrido usted ha visto la misma escena repetida: alguien decide que la Escritura tiene que hablar la lengua de su gente, y le cuesta la vida o el destierro. Tyndale. Casiodoro de Reina. Julianillo Hernández.",
+   "Ese mismo trabajo, con la misma tenacidad, se ha venido haciendo en este país en decenas de lenguas, sin hogueras pero también sin ruido, y casi nadie lo cuenta.",
+   "Ahí está el librero. Si usted habla alguna de estas lenguas, búsquela. Seguramente está aquí.",
+   "Una lengua a la que llega la Escritura ya no se pierde tan fácil: alguien la escribió."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 25 · Museum of the History of the Bible",
-   "titulo": "Dalí's Bible",
-   "siglo": "Milan, 1964 · one hundred and five watercolours",
+   "sala": "Bookcase 5 · Museum of the History of the Bible",
+   "titulo": "The languages of Mexico",
+   "siglo": "Fifty-six varieties",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "One hundred and five watercolours, and the most scandalous painter of the twentieth century.",
-   "In 1963 a physician from Turin named Giuseppe Albaretto commissioned Salvador Dalí to illustrate the Bible. Albaretto was a devout Catholic and a friend of his, and he did it with a declared intention: that Dalí, obliged to read the whole of Scripture in order to paint it, would come back to the faith.",
-   "Dalí accepted. He worked between 1963 and 1964. The result was published in Milan, by the house of Rizzoli: five volumes with the text of the Latin Vulgate and the watercolours reproduced one by one, in a short numbered edition. The one before you is that first edition, of 1964.",
-   "What he did is like nothing you have seen in the previous cases. There is no outline, no firm line, no orderly scene. There are bursts of colour, figures dissolving half-formed, huge empty spaces. Sometimes he threw the paint onto the paper and then drew on top of whatever the stain suggested to him.",
-   "Compare it with the case of the engravings. Schnorr drew what the eye sees. Doré drew the light. Dalí does neither: he paints what happens inside you while you read. It is Scripture seen from within a dream.",
-   "And there is the paradox that makes this piece great. The Church had spent fifteen hundred years arguing about the right way to represent the sacred. And one of the most powerful answers of the twentieth century came from a surrealist whom many took for a clown.",
-   "Did Doctor Albaretto's plan work? Dalí died in 1989 and is buried beneath the dome of his own museum, in Figueres. Everyone may judge for himself. What remains of that commission is this, before you.",
-   "And there are still cases to see. The ones that follow are no longer about how this Book was translated, but about how far it travelled."
+   "In this bookcase there is no famous piece. And yet it is, in all likelihood, the one no other museum in the world could assemble.",
+   "They are Bibles in the languages of this country: fifty-six varieties. Nahuatl, Maya, Tzeltal, Tzotzil, Mixtec, Zapotec, Totonac, Chinantec, Purépecha, Mazahua, Huastec, Yaqui, Mayo, Tarahumara, Tojolabal, Triqui, Mixe, Mazatec, Popoluca, Tlapanec, Chol, and there are more.",
+   "And it is best to begin by saying one thing: they are languages, not dialects, because they have grammar, literature and centuries of written history. In Mexico there are sixty-eight recognised language groupings, and several of them were written down for the first time because somebody wanted to put a biblical text into them.",
+   "The story begins in the sixteenth century. With the conquest barely completed, the friars set about learning these languages in order to preach in them. They wrote grammars and vocabularies that are today our chief source for knowing them, and they translated doctrines and passages of the gospels. They did it for reasons of their own, but the result was that those languages entered the printing house.",
+   "Then came centuries of silence. The complete and systematic translations are the work of the twentieth century, and many are under way right now, made with native speakers and not merely about them.",
+   "And now the important thing. All along this tour you have seen the same scene repeated: someone decides that Scripture must speak the language of his own people, and it costs him his life or his exile. Tyndale. Casiodoro de Reina. Julianillo Hernández.",
+   "That same work, with the same stubbornness, has been going on in this country in dozens of languages, without bonfires but also without noise, and almost nobody tells of it.",
+   "There is the bookcase. If you speak one of these languages, look for it. It is very likely here.",
+   "A language that Scripture reaches is not so easily lost: somebody wrote it down."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 25 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible de Dalí",
-   "siglo": "Milan, 1964 · cent cinq aquarelles",
+   "sala": "Rayon 5 · Musée de l'Histoire de la Bible",
+   "titulo": "Les langues du Mexique",
+   "siglo": "Cinquante-six variantes",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Cent cinq aquarelles, et le peintre le plus scandaleux du vingtième siècle.",
-   "En 1963, un médecin de Turin nommé Giuseppe Albaretto commanda à Salvador Dalí d'illustrer la Bible. Albaretto était catholique fervent et son ami, et il le fit avec une intention déclarée : que Dalí, obligé de lire toute l'Écriture pour la peindre, revienne à la foi.",
-   "Dalí accepta. Il travailla entre 1963 et 1964. Le résultat parut à Milan, chez Rizzoli : cinq volumes avec le texte de la Vulgate latine et les aquarelles reproduites une à une, dans une édition courte et numérotée. Celle que vous avez devant vous est cette première édition, celle de 1964.",
-   "Ce qu'il a fait ne ressemble à rien de ce que vous avez vu dans les vitrines précédentes. Pas de contour, pas de trait ferme, pas de scène ordonnée. Il y a des taches de couleur qui éclatent, des figures qui se dissolvent à mi-formation, d'immenses espaces blancs. Parfois il jetait la peinture sur le papier, puis dessinait par-dessus ce que la tache lui suggérait.",
-   "Comparez avec la vitrine des gravures. Schnorr dessinait ce que l'on voit. Doré dessinait la lumière. Dalí ne fait ni l'un ni l'autre : il peint ce qui se passe en vous pendant que vous lisez. C'est l'Écriture vue depuis le rêve.",
-   "Et voilà le paradoxe qui fait la grandeur de cette pièce. L'Église avait passé mille cinq cents ans à débattre de la juste manière de représenter le sacré. Et l'une des réponses les plus puissantes du vingtième siècle est venue d'un surréaliste que beaucoup prenaient pour un clown.",
-   "Le plan du docteur Albaretto a-t-il marché ? Dalí est mort en 1989 et il est enterré sous la coupole de son propre musée, à Figueras. Chacun jugera. Ce qui reste de cette commande, c'est ce que vous avez sous les yeux.",
-   "Et il reste encore des vitrines à voir. Celles qui suivent ne parlent plus de la façon dont ce Livre fut traduit, mais de jusqu'où il est allé."
+   "Dans ce rayon il n'y a aucune pièce célèbre. Et pourtant c'est, très probablement, celui qu'aucun autre musée au monde ne pourrait réunir.",
+   "Ce sont des Bibles dans les langues de ce pays : cinquante-six variantes. Nahuatl, maya, tzeltal, tzotzil, mixtèque, zapotèque, totonaque, chinantèque, purépecha, mazahua, huastèque, yaqui, mayo, tarahumara, tojolabal, triqui, mixe, mazatèque, popoluca, tlapanèque, chol, et il y en a d'autres.",
+   "Et il convient de commencer par dire une chose : ce sont des langues, non des dialectes, car elles ont une grammaire, une littérature et des siècles d'histoire écrite. Au Mexique il y a soixante-huit groupes linguistiques reconnus, et plusieurs d'entre eux furent écrits pour la première fois parce que quelqu'un voulut y mettre un texte biblique.",
+   "L'histoire commence au seizième siècle. La conquête à peine achevée, les frères se mirent à apprendre ces langues pour pouvoir y prêcher. Ils écrivirent des grammaires et des vocabulaires qui sont aujourd'hui notre principale source pour les connaître, et ils traduisirent des doctrines et des passages des évangiles. Ils le firent pour leurs propres raisons, mais le résultat fut que ces langues entrèrent à l'imprimerie.",
+   "Vinrent ensuite des siècles de silence. Les traductions complètes et systématiques sont l'œuvre du vingtième siècle, et beaucoup sont en cours en ce moment même, faites avec des locuteurs natifs et non seulement à leur sujet.",
+   "Et voici l'important. Tout au long de ce parcours vous avez vu la même scène se répéter : quelqu'un décide que l'Écriture doit parler la langue de son peuple, et cela lui coûte la vie ou l'exil. Tyndale. Casiodoro de Reina. Julianillo Hernández.",
+   "Ce même travail, avec la même ténacité, se poursuit dans ce pays en des dizaines de langues, sans bûchers mais aussi sans bruit, et presque personne ne le raconte.",
+   "Voilà le rayon. Si vous parlez l'une de ces langues, cherchez-la. Elle est très probablement ici.",
+   "Une langue que l'Écriture atteint ne se perd plus si facilement : quelqu'un l'a écrite."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 25 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Bibel von Dalí",
-   "siglo": "Mailand, 1964 · hundertfünf Aquarelle",
+   "sala": "Regal 5 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Sprachen Mexikos",
+   "siglo": "Sechsundfünfzig Varianten",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Hundertfünf Aquarelle, und der skandalöseste Maler des zwanzigsten Jahrhunderts.",
-   "1963 gab ein Arzt aus Turin namens Giuseppe Albaretto bei Salvador Dalí die Illustration der Bibel in Auftrag. Albaretto war ein gläubiger Katholik und sein Freund, und er tat es mit einer erklärten Absicht: Dalí sollte, gezwungen die ganze Schrift zu lesen, um sie zu malen, zum Glauben zurückfinden.",
-   "Dalí nahm an. Er arbeitete zwischen 1963 und 1964. Das Ergebnis erschien in Mailand, im Hause Rizzoli: fünf Bände mit dem Text der lateinischen Vulgata und den einzeln reproduzierten Aquarellen, in einer kleinen, nummerierten Auflage. Was Sie vor sich haben, ist jene erste Ausgabe von 1964.",
-   "Was er machte, gleicht nichts von dem, was Sie in den vorigen Vitrinen gesehen haben. Keine Umrisse, keine feste Linie, keine geordnete Szene. Es gibt explodierende Farbflecken, halb entstandene, sich auflösende Gestalten, riesige weiße Flächen. Manchmal warf er die Farbe aufs Papier und zeichnete dann darüber, was der Fleck ihm eingab.",
-   "Vergleichen Sie es mit der Vitrine der Stiche. Schnorr zeichnete, was man sieht. Doré zeichnete das Licht. Dalí tut weder das eine noch das andere: er malt, was in einem vorgeht, während man liest. Es ist die Schrift, vom Traum her gesehen.",
-   "Und da liegt das Paradox, das dieses Stück groß macht. Die Kirche hatte fünfzehnhundert Jahre darüber gestritten, wie man das Heilige richtig darstellt. Und eine der stärksten Antworten des zwanzigsten Jahrhunderts gab ein Surrealist, den viele für einen Clown hielten.",
-   "Ist der Plan von Doktor Albaretto aufgegangen? Dalí starb 1989 und liegt unter der Kuppel seines eigenen Museums in Figueres begraben. Jeder mag selbst urteilen. Was von jenem Auftrag blieb, ist dies hier vor Ihnen.",
-   "Und es sind noch Vitrinen zu sehen. Die folgenden handeln nicht mehr davon, wie dieses Buch übersetzt wurde, sondern davon, wie weit es gelangte."
+   "In diesem Regal gibt es kein berühmtes Stück. Und doch ist es höchstwahrscheinlich dasjenige, das kein anderes Museum der Welt zusammenbringen könnte.",
+   "Es sind Bibeln in den Sprachen dieses Landes: sechsundfünfzig Varianten. Nahuatl, Maya, Tzeltal, Tzotzil, Mixtekisch, Zapotekisch, Totonakisch, Chinantekisch, Purépecha, Mazahua, Huastekisch, Yaqui, Mayo, Tarahumara, Tojolabal, Triqui, Mixe, Mazatekisch, Popoluca, Tlapanekisch, Chol, und es kommen noch mehr.",
+   "Und man sollte mit einem Satz beginnen: es sind Sprachen, keine Dialekte, denn sie haben Grammatik, Literatur und Jahrhunderte geschriebener Geschichte. In Mexiko gibt es achtundsechzig anerkannte Sprachgruppen, und mehrere von ihnen wurden zum ersten Mal aufgeschrieben, weil jemand einen biblischen Text in sie legen wollte.",
+   "Die Geschichte beginnt im sechzehnten Jahrhundert. Kaum war die Eroberung vollendet, machten sich die Ordensbrüder daran, diese Sprachen zu lernen, um in ihnen predigen zu können. Sie schrieben Grammatiken und Wörterbücher, die heute unsere wichtigste Quelle sind, um sie zu kennen, und übersetzten Lehrtexte und Abschnitte der Evangelien. Sie taten es aus eigenen Gründen, doch das Ergebnis war, dass jene Sprachen in die Druckerei einzogen.",
+   "Dann kamen Jahrhunderte des Schweigens. Die vollständigen und planmäßigen Übersetzungen sind Arbeit des zwanzigsten Jahrhunderts, und viele laufen gerade jetzt, gemacht mit Muttersprachlern und nicht bloß über sie.",
+   "Und nun das Wichtige. Auf diesem ganzen Rundgang haben Sie dieselbe Szene wiederkehren sehen: jemand entscheidet, dass die Schrift die Sprache seiner Leute sprechen muss, und es kostet ihn das Leben oder die Verbannung. Tyndale. Casiodoro de Reina. Julianillo Hernández.",
+   "Ebendiese Arbeit wird mit derselben Hartnäckigkeit in diesem Land in Dutzenden Sprachen getan, ohne Scheiterhaufen, aber auch ohne Aufsehen, und fast niemand erzählt davon.",
+   "Da steht das Regal. Wenn Sie eine dieser Sprachen sprechen, suchen Sie sie. Sehr wahrscheinlich ist sie hier.",
+   "Eine Sprache, die die Schrift erreicht, geht nicht mehr so leicht verloren: jemand hat sie aufgeschrieben."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 25 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia di Dalí",
-   "siglo": "Milano, 1964 · centocinque acquerelli",
+   "sala": "Scaffale 5 · Museo di Storia della Bibbia",
+   "titulo": "Le lingue del Messico",
+   "siglo": "Cinquantasei varianti",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Centocinque acquerelli, e il pittore più scandaloso del Novecento.",
-   "Nel 1963 un medico di Torino di nome Giuseppe Albaretto commissionò a Salvador Dalí di illustrare la Bibbia. Albaretto era cattolico devoto e suo amico, e lo fece con un'intenzione dichiarata: che Dalí, costretto a leggere tutta la Scrittura per dipingerla, tornasse alla fede.",
-   "Dalí accettò. Lavorò fra il 1963 e il 1964. Il risultato fu pubblicato a Milano, dalla casa Rizzoli: cinque volumi con il testo della Vulgata latina e gli acquerelli riprodotti uno per uno, in un'edizione breve e numerata. Quella che ha davanti è proprio la prima, quella del 1964.",
-   "Quello che fece non somiglia a nulla di ciò che ha visto nelle vetrine precedenti. Non c'è contorno, non c'è linea ferma, non c'è scena ordinata. Ci sono macchie di colore che esplodono, figure che si dissolvono a metà, enormi spazi bianchi. A volte gettava il colore sulla carta e poi disegnava sopra ciò che la macchia gli suggeriva.",
-   "Confronti con la vetrina delle incisioni. Schnorr disegnava ciò che si vede. Doré disegnava la luce. Dalí non fa né l'una né l'altra cosa: dipinge ciò che accade dentro di noi mentre leggiamo. È la Scrittura vista dal sogno.",
-   "Ed ecco il paradosso che rende grande questo pezzo. La Chiesa aveva passato millecinquecento anni a discutere quale sia il modo giusto di rappresentare il sacro. E una delle risposte più potenti del Novecento la diede un surrealista che molti ritenevano un pagliaccio.",
-   "Funzionò il piano del dottor Albaretto? Dalí morì nel 1989 ed è sepolto sotto la cupola del suo stesso museo, a Figueres. Ciascuno giudicherà. Quello che è rimasto di quella commissione è ciò che ha davanti.",
-   "E restano ancora vetrine da vedere. Quelle che seguono non parlano più di come questo Libro fu tradotto, ma di fin dove arrivò."
+   "In questo scaffale non c'è nessun pezzo famoso. Eppure è, molto probabilmente, quello che nessun altro museo al mondo potrebbe mettere insieme.",
+   "Sono Bibbie nelle lingue di questo paese: cinquantasei varianti. Nahuatl, maya, tzeltal, tzotzil, mixteco, zapoteco, totonaco, chinanteco, purépecha, mazahua, huasteco, yaqui, mayo, tarahumara, tojolabal, triqui, mixe, mazateco, popoluca, tlapaneco, chol, e altre ancora.",
+   "E conviene cominciare dicendo una cosa: sono lingue, non dialetti, perché hanno grammatica, letteratura e secoli di storia scritta. In Messico ci sono sessantotto raggruppamenti linguistici riconosciuti, e parecchi di essi furono scritti per la prima volta perché qualcuno volle mettervi un testo biblico.",
+   "La storia comincia nel Cinquecento. Appena compiuta la conquista, i frati si misero a imparare queste lingue per poterci predicare. Scrissero grammatiche e vocabolari che oggi sono la nostra principale fonte per conoscerle, e tradussero dottrine e passi dei vangeli. Lo fecero per ragioni proprie, ma il risultato fu che quelle lingue entrarono in tipografia.",
+   "Poi vennero secoli di silenzio. Le traduzioni complete e sistematiche sono lavoro del Novecento, e molte sono in corso proprio adesso, fatte con parlanti nativi e non soltanto su di loro.",
+   "E ora l'importante. Lungo tutto questo percorso lei ha visto ripetersi la stessa scena: qualcuno decide che la Scrittura deve parlare la lingua della sua gente, e gli costa la vita o l'esilio. Tyndale. Casiodoro de Reina. Julianillo Hernández.",
+   "Quello stesso lavoro, con la stessa tenacia, si sta facendo in questo paese in decine di lingue, senza roghi ma anche senza rumore, e quasi nessuno lo racconta.",
+   "Ecco lo scaffale. Se lei parla una di queste lingue, la cerchi. Molto probabilmente è qui.",
+   "Una lingua a cui arriva la Scrittura non si perde più tanto facilmente: qualcuno l'ha scritta."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Estante 5 · Museu de História da Bíblia",
+   "titulo": "As línguas do México",
+   "siglo": "Cinquenta e seis variantes",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Nesta estante não há nenhuma peça famosa. E no entanto é, provavelmente, a que nenhum outro museu do mundo poderia montar.",
+   "São Bíblias nas línguas deste país: cinquenta e seis variantes. Náuatle, maia, tzeltal, tzotzil, mixteco, zapoteco, totonaco, chinanteco, purépecha, mazahua, huasteco, yaqui, mayo, tarahumara, tojolabal, triqui, mixe, mazateco, popoluca, tlapaneco, chol, e seguem.",
+   "E convém começar dizendo uma coisa: são línguas, não dialetos, porque têm gramática, literatura e séculos de história escrita. No México há sessenta e oito agrupamentos linguísticos reconhecidos, e vários deles se escreveram pela primeira vez porque alguém quis pôr neles um texto bíblico.",
+   "A história começa no século dezesseis. Recém-consumada a conquista, os frades puseram-se a aprender estas línguas para poder pregar nelas. Escreveram gramáticas e vocabulários que hoje são a nossa principal fonte para conhecê-las, e traduziram doutrinas e passagens dos evangelhos. Fizeram-no por razões suas, mas o resultado foi que essas línguas entraram na imprensa.",
+   "Depois vieram séculos de silêncio. As traduções completas e sistemáticas são trabalho do século vinte, e muitas seguem em curso agora mesmo, feitas com falantes nativos e não apenas sobre eles.",
+   "E agora o importante. Ao longo deste percurso você viu a mesma cena repetida: alguém decide que a Escritura tem de falar a língua da sua gente, e isso lhe custa a vida ou o desterro. Tyndale. Casiodoro de Reina. Julianillo Hernández.",
+   "Esse mesmo trabalho, com a mesma tenacidade, vem sendo feito neste país em dezenas de línguas, sem fogueiras mas também sem ruído, e quase ninguém o conta.",
+   "Aí está a estante. Se você fala alguma destas línguas, procure-a. Certamente está aqui.",
+   "Uma língua a que chega a Escritura já não se perde tão facilmente: alguém a escreveu."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Стеллаж 5 · Музей истории Библии",
+   "titulo": "Языки Мексики",
+   "siglo": "Пятьдесят шесть разновидностей",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "На этом стеллаже нет ни одного знаменитого экспоната. И всё же это, вероятно, тот стеллаж, который не смог бы собрать ни один другой музей мира.",
+   "Это Библии на языках этой страны: пятьдесят шесть разновидностей. Науатль, майя, цельталь, цоциль, миштекский, сапотекский, тотонакский, чинантекский, пурепеча, масауа, уастекский, яки, майо, тараумара, тохолабаль, трики, михе, масатекский, пополука, тлапанекский, чоль — и это не всё.",
+   "И начать стоит с одного: это языки, а не диалекты, потому что у них есть грамматика, литература и века письменной истории. В Мексике признано шестьдесят восемь языковых групп, и некоторые из них были впервые записаны потому, что кто-то захотел вложить в них библейский текст.",
+   "История начинается в шестнадцатом веке. Едва завершилось завоевание, монахи принялись учить эти языки, чтобы проповедовать на них. Они написали грамматики и словари, которые сегодня служат нам главным источником для их изучения, и перевели вероучительные тексты и отрывки Евангелий. Делали они это по своим причинам, но в итоге эти языки вошли в типографию.",
+   "Потом настали века молчания. Полные и последовательные переводы — дело двадцатого века, и многие идут прямо сейчас, выполняемые вместе с носителями языка, а не только о них.",
+   "А теперь главное. На всём этом пути вы видели повторение одной и той же сцены: кто-то решает, что Писание должно заговорить на языке его народа, и платит за это жизнью или изгнанием. Тиндейл. Касиодоро де Рейна. Хулианильо Эрнандес.",
+   "Та же самая работа с тем же упорством ведётся в этой стране на десятках языков — без костров, но и без шума, и почти никто о ней не рассказывает.",
+   "Вот этот стеллаж. Если вы говорите на одном из этих языков, поищите его. Скорее всего, он здесь.",
+   "Язык, до которого дошло Писание, уже не пропадает так легко: кто-то его записал."
   ]
  }
 };
@@ -288,6 +339,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

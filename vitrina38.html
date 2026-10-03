@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia de Torres Amat — Museo de Historia de la Biblia</title>
+<title>La Biblia de Vence, de Galván — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F1EBDE;--claro:#FAF5E9;--tinta:#241E18;--cabecera:#3B3A52;--acento:#8A5A2B;--marca:rgba(138,90,43,.24); }
+  :root{ --fondo:#F0F1E9;--claro:#FAFBF4;--tinta:#1B1C16;--cabecera:#2E4A32;--acento:#8A6A2A;--marca:rgba(138,106,42,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,8 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .tomos{flex:none;display:flex;gap:3px;align-items:flex-end}
-  .tomos i{display:block;width:6px;background:var(--acento);border-radius:1px}
+  .prensa{flex:none;width:64px;height:62px;border:2.5px solid var(--cabecera);border-radius:3px;display:flex;flex-direction:column;justify-content:space-between;padding:6px}
+  .prensa b{display:block;height:10px;background:var(--acento)}
+  .prensa i{display:block;height:5px;background:var(--cabecera);opacity:.55}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -39,11 +40,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="tomos" aria-hidden="true"><i style="height:46px"></i><i style="height:52px"></i><i style="height:48px"></i><i style="height:56px"></i><i style="height:50px"></i><i style="height:58px"></i><i style="height:46px"></i><i style="height:54px"></i><i style="height:50px"></i></div>
+  <div class="prensa" aria-hidden="true"><b></b><i></i><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -73,21 +75,25 @@ const GUIA = {
   "voz": "es-MX",
   "ui": {
    "sala": "Vitrina 21 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia de Torres Amat",
-   "siglo": "Madrid, 1823–1825 · nueve tomos",
+   "titulo": "La Biblia de Vence, de Galván",
+   "siglo": "México, 1,831 · la primera impresa en América",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Y ésta es la que llegó a México. La que estuvo en los burós, en los libreros de las salas, en las manos de nuestros bisabuelos.",
-   "La hizo Félix Torres Amat, catalán, capellán del rey y después obispo de Astorga. Se publicó en Madrid, en nueve tomos, entre 1,823 y 1,825. También traducida de la Vulgata latina, también con notas al pie, en la línea que había abierto el padre Scío treinta años antes.",
-   "Pero ésta corrió con otra suerte. Se reimprimió una vez y otra, en España y en América, durante todo el siglo diecinueve y buena parte del veinte. Fue, sin discusión, la Biblia en español más leída de su tiempo. Si en su familia hubo una Biblia antigua, es muy probable que fuera ésta.",
-   "Y ahora la sombra, porque en este museo se cuenta todo.",
-   "Casi desde el primer día se le acusó a Torres Amat de que la traducción no era suya. Que había trabajado sobre el manuscrito inédito de un jesuita, el padre José Miguel Petisco, muerto en 1,800, y que no le dio el crédito que le tocaba. El pleito lleva dos siglos sin resolverse. Hay ediciones modernas que, por si acaso, la llaman Petisco Torres Amat, con los dos apellidos.",
-   "No podemos decirle a usted quién tenía la razón. Nadie puede, todavía. Pero fíjese en lo que significa esa discusión: llevamos dos siglos peleando por quién merece el crédito de haber traducido la Biblia al español. Hubo un tiempo, no tan lejano, en que por hacerlo lo quemaban a uno.",
-   "Con ésta, la Biblia en español ya estaba en las casas. Faltaba que se imprimiera aquí, en nuestro país. Eso es la sala siguiente."
+   "Ésta es la primera Biblia impresa en América. Y se imprimió aquí, en el México libre.",
+   "El país tenía diez años de nacido. La Independencia se había consumado en 1,821, y en 1,831 un librero de la Ciudad de México, Mariano Galván Rivera, empezó a sacar de su taller los tomos de esta obra. Veinticinco tomos, más un atlas grabado aparte.",
+   "Y fíjese quién la hizo. No la mandó hacer ningún obispo ni ninguna autoridad de la Iglesia. La hizo un impresor por su cuenta, con ocho sacerdotes mexicanos y algunos seglares, entre ellos el médico y poeta Manuel Carpio y el presbítero Anastasio María Ochoa.",
+   "El texto no viene directo del latín. Viene de la versión francesa de la Vulgata que hizo Lemaistre de Sacy, la de Port-Royal, en su edición de 1,820, con los comentarios del abate de Vence y del benedictino Calmet. De ahí el nombre con que la conocemos: la Biblia de Vence.",
+   "Ábrala y verá dos columnas: el latín de un lado, el castellano del otro. Y además notas, disertaciones y mapas. No es una Biblia de bolsillo: es una biblioteca entera sobre la Biblia.",
+   "Hay una tradición que no podemos probar, según la cual el cura Miguel Hidalgo leía esta obra en su versión francesa durante sus años de seminario. Cierto o no, lo importante es que los libros que formaron a los hombres de la Independencia y los que se imprimieron después venían del mismo mundo.",
+   "El taller de Galván, por cierto, sacó también la primera edición mexicana del Quijote, la del Periquillo Sarniento y uno de los primeros recetarios de cocina mexicana. La misma prensa que le dio a México su primera novela le dio también su primera Biblia.",
+   "Aquí está el corazón de este museo. México se hizo independiente y, diez años después, imprimió su propia Biblia. No la trajo de fuera: la hizo aquí.",
+   "Y hay algo más en esta vitrina que no es del siglo diecinueve. En 2,010, al cumplirse doscientos años del inicio de la Independencia, esta misma obra se volvió a imprimir en México: una edición conmemorativa hecha por la Sociedad Bíblica de México y la Iglesia del Tercer Día, tomando como base esta Vence de Galván.",
+   "Las dos están aquí, una junto a otra. La Biblia que este país imprimió a diez años de su Independencia, y la que volvió a imprimir a doscientos. La misma obra, el mismo país, dos aniversarios.",
+   "Un país recién nacido no imprimió primero sus leyes. Imprimió su Biblia."
   ]
  },
  "en": {
@@ -95,21 +101,25 @@ const GUIA = {
   "voz": "en-GB",
   "ui": {
    "sala": "Case 21 · Museum of the History of the Bible",
-   "titulo": "The Torres Amat Bible",
-   "siglo": "Madrid, 1823–1825 · nine volumes",
+   "titulo": "Galván's Vence Bible",
+   "siglo": "Mexico, 1831 · the first printed in America",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "And this is the one that reached Mexico. The one on the bedside tables, on the shelves of the front room, in the hands of our great-grandparents.",
-   "It was made by Félix Torres Amat, a Catalan, chaplain to the king and later bishop of Astorga. It was published in Madrid, in nine volumes, between 1823 and 1825. Translated from the Latin Vulgate as well, with footnotes as well, along the line that Father Scío had opened thirty years earlier.",
-   "But this one had a different fate. It was reprinted again and again, in Spain and in the Americas, throughout the nineteenth century and much of the twentieth. It was, beyond argument, the most widely read Catholic Bible in Spanish of its time. If there was an old Bible in your family, it was very probably this one.",
-   "And now the shadow, because in this museum everything gets told.",
-   "Almost from the first day Torres Amat was accused of the translation not being his. That he had worked from the unpublished manuscript of a Jesuit, Father José Miguel Petisco, who died in 1800, and that he did not give him the credit he was owed. The quarrel has gone two centuries without being settled. There are modern editions which, just in case, call it the Petisco–Torres Amat, with both surnames.",
-   "We cannot tell you who was right. Nobody can, not yet. But consider what that argument means: we have spent two centuries fighting over who deserves the credit for translating the Bible into Spanish. There was a time, not so long ago, when men were burned for doing it.",
-   "With this one, the Bible in Spanish was already in people's homes. What was still missing was for it to be printed here, in our own country. That is the next case."
+   "This is the first Bible printed in America. And it was printed here, in a free Mexico.",
+   "The country was ten years old. Independence had been completed in 1821, and in 1831 a bookseller of Mexico City, Mariano Galván Rivera, began bringing out of his workshop the volumes of this work. Twenty-five volumes, and an engraved atlas besides.",
+   "And notice who made it. No bishop ordered it, nor any authority of the Church. A printer made it on his own account, with eight Mexican priests and some laymen, among them the physician and poet Manuel Carpio and the presbyter Anastasio María Ochoa.",
+   "The text does not come straight from the Latin. It comes from the French version of the Vulgate made by Lemaistre de Sacy, the Port-Royal one, in its edition of 1820, with the commentaries of the abbé de Vence and of the Benedictine Calmet. Hence the name by which we know it: the Vence Bible.",
+   "Open it and you will see two columns: the Latin on one side, the Spanish on the other. And notes besides, dissertations and maps. It is not a pocket Bible: it is a whole library about the Bible.",
+   "There is a tradition we cannot prove, that the priest Miguel Hidalgo read this work in its French version during his seminary years. True or not, what matters is that the books which formed the men of Independence and those printed afterwards came out of the same world.",
+   "Galván's workshop, by the way, also brought out the first Mexican edition of Don Quixote, that of the Periquillo Sarniento, and one of the first cookery books of Mexican cuisine. The same press that gave Mexico its first novel gave it also its first Bible.",
+   "Here is the heart of this museum. Mexico became independent and, ten years later, printed its own Bible. It did not bring it from abroad: it made it here.",
+   "And there is something else in this case that is not from the nineteenth century. In 2010, on the two hundredth anniversary of the beginning of Independence, this same work was printed again in Mexico: a commemorative edition made by the Bible Society of Mexico and the Church of the Third Day, taking this Vence of Galván as its base.",
+   "Both are here, side by side. The Bible this country printed ten years after its Independence, and the one it printed again at two hundred. The same work, the same country, two anniversaries.",
+   "A newborn country did not print its laws first. It printed its Bible."
   ]
  },
  "fr": {
@@ -117,21 +127,25 @@ const GUIA = {
   "voz": "fr-FR",
   "ui": {
    "sala": "Vitrine 21 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible de Torres Amat",
-   "siglo": "Madrid, 1823–1825 · neuf volumes",
+   "titulo": "La Bible de Vence, de Galván",
+   "siglo": "Mexico, 1831 · la première imprimée en Amérique",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Et voici celle qui est arrivée au Mexique. Celle des tables de nuit, des étagères du salon, des mains de nos arrière-grands-parents.",
-   "Elle fut faite par Félix Torres Amat, catalan, chapelain du roi puis évêque d'Astorga. Elle parut à Madrid, en neuf volumes, entre 1823 et 1825. Traduite elle aussi de la Vulgate latine, avec des notes en bas de page elle aussi, dans la ligne ouverte par le père Scío trente ans plus tôt.",
-   "Mais celle-ci connut un autre sort. Elle fut réimprimée encore et encore, en Espagne et en Amérique, tout au long du dix-neuvième siècle et pendant une bonne partie du vingtième. Ce fut, sans discussion, la Bible catholique en espagnol la plus lue de son temps. S'il y avait une vieille Bible dans votre famille, c'était très probablement celle-ci.",
-   "Et maintenant l'ombre au tableau, car dans ce musée on raconte tout.",
-   "Presque dès le premier jour, on reprocha à Torres Amat que la traduction ne fût pas de lui. Qu'il avait travaillé sur le manuscrit inédit d'un jésuite, le père José Miguel Petisco, mort en 1800, sans lui rendre le crédit qui lui revenait. La querelle dure depuis deux siècles sans être tranchée. Certaines éditions modernes, par précaution, l'appellent Petisco–Torres Amat, avec les deux noms.",
-   "Nous ne pouvons pas vous dire qui avait raison. Personne ne le peut encore. Mais voyez ce que signifie cette dispute : cela fait deux siècles que l'on se bat pour savoir qui mérite d'avoir traduit la Bible en espagnol. Il fut un temps, pas si lointain, où l'on vous brûlait pour l'avoir fait.",
-   "Avec celle-ci, la Bible en espagnol était déjà dans les maisons. Il restait qu'elle fût imprimée ici, dans notre pays. C'est la vitrine suivante."
+   "Voici la première Bible imprimée en Amérique. Et elle fut imprimée ici, dans le Mexique libre.",
+   "Le pays avait dix ans. L'Indépendance s'était achevée en 1821, et en 1831 un libraire de Mexico, Mariano Galván Rivera, commença à sortir de son atelier les volumes de cette œuvre. Vingt-cinq volumes, plus un atlas gravé à part.",
+   "Et voyez qui la fit. Aucun évêque ne la commanda, aucune autorité de l'Église. Ce fut un imprimeur à son compte, avec huit prêtres mexicains et quelques laïcs, parmi eux le médecin et poète Manuel Carpio et le prêtre Anastasio María Ochoa.",
+   "Le texte ne vient pas directement du latin. Il vient de la version française de la Vulgate faite par Lemaistre de Sacy, celle de Port-Royal, dans son édition de 1820, avec les commentaires de l'abbé de Vence et du bénédictin Calmet. De là le nom sous lequel nous la connaissons : la Bible de Vence.",
+   "Ouvrez-la et vous verrez deux colonnes : le latin d'un côté, le castillan de l'autre. Et en outre des notes, des dissertations et des cartes. Ce n'est pas une Bible de poche : c'est toute une bibliothèque sur la Bible.",
+   "Il existe une tradition que nous ne pouvons prouver, selon laquelle le curé Miguel Hidalgo lisait cette œuvre dans sa version française pendant ses années de séminaire. Vrai ou non, l'important est que les livres qui formèrent les hommes de l'Indépendance et ceux qui furent imprimés ensuite venaient du même monde.",
+   "L'atelier de Galván, d'ailleurs, publia aussi la première édition mexicaine du Quichotte, celle du Periquillo Sarniento et l'un des premiers livres de cuisine mexicaine. La même presse qui donna au Mexique son premier roman lui donna aussi sa première Bible.",
+   "Voici le cœur de ce musée. Le Mexique devint indépendant et, dix ans plus tard, imprima sa propre Bible. Il ne la fit pas venir de l'étranger : il la fit ici.",
+   "Et il y a dans cette vitrine autre chose qui n'est pas du dix-neuvième siècle. En 2010, au bicentenaire du début de l'Indépendance, cette même œuvre fut réimprimée au Mexique : une édition commémorative faite par la Société biblique du Mexique et l'Église du Troisième Jour, prenant pour base cette Vence de Galván.",
+   "Les deux sont ici, l'une près de l'autre. La Bible que ce pays imprima dix ans après son Indépendance, et celle qu'il réimprima à deux cents ans. La même œuvre, le même pays, deux anniversaires.",
+   "Un pays nouveau-né n'imprima pas d'abord ses lois. Il imprima sa Bible."
   ]
  },
  "de": {
@@ -139,21 +153,25 @@ const GUIA = {
   "voz": "de-DE",
   "ui": {
    "sala": "Vitrine 21 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Torres-Amat-Bibel",
-   "siglo": "Madrid, 1823–1825 · neun Bände",
+   "titulo": "Die Vence-Bibel von Galván",
+   "siglo": "Mexiko, 1831 · die erste in Amerika gedruckte",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Und dies ist die, die nach Mexiko kam. Die auf den Nachttischen stand, in den Regalen der guten Stube, in den Händen unserer Urgroßeltern.",
-   "Gemacht hat sie Félix Torres Amat, ein Katalane, Kaplan des Königs und später Bischof von Astorga. Sie erschien in Madrid, in neun Bänden, zwischen 1823 und 1825. Ebenfalls aus der lateinischen Vulgata übersetzt, ebenfalls mit Fußnoten, in der Linie, die Pater Scío dreißig Jahre zuvor eröffnet hatte.",
-   "Doch diese hatte ein anderes Schicksal. Sie wurde immer wieder nachgedruckt, in Spanien und in Amerika, das ganze neunzehnte Jahrhundert hindurch und einen guten Teil des zwanzigsten. Sie war, unbestritten, die meistgelesene katholische Bibel auf Spanisch ihrer Zeit. Wenn es in Ihrer Familie eine alte Bibel gab, war es höchstwahrscheinlich diese.",
-   "Und nun der Schatten, denn in diesem Museum wird alles erzählt.",
-   "Fast vom ersten Tag an wurde Torres Amat vorgeworfen, die Übersetzung sei nicht von ihm. Er habe nach der unveröffentlichten Handschrift eines Jesuiten gearbeitet, des 1800 verstorbenen Paters José Miguel Petisco, und ihm nicht die gebührende Anerkennung gegeben. Der Streit ist seit zwei Jahrhunderten nicht entschieden. Es gibt moderne Ausgaben, die sie vorsichtshalber Petisco–Torres Amat nennen, mit beiden Namen.",
-   "Wir können Ihnen nicht sagen, wer recht hatte. Niemand kann das bislang. Aber bedenken Sie, was dieser Streit bedeutet: seit zwei Jahrhunderten streiten wir darüber, wem die Ehre gebührt, die Bibel ins Spanische übersetzt zu haben. Es gab eine Zeit, gar nicht so lange her, in der man dafür verbrannt wurde.",
-   "Mit dieser war die Bibel auf Spanisch bereits in den Häusern. Es fehlte noch, dass sie hier gedruckt wurde, in unserem eigenen Land. Das ist der nächste Vitrine."
+   "Dies ist die erste in Amerika gedruckte Bibel. Und gedruckt wurde sie hier, im freien Mexiko.",
+   "Das Land war zehn Jahre alt. Die Unabhängigkeit war 1821 vollendet worden, und 1831 begann ein Buchhändler aus Mexiko-Stadt, Mariano Galván Rivera, die Bände dieses Werkes aus seiner Werkstatt herauszubringen. Fünfundzwanzig Bände, dazu ein gestochener Atlas.",
+   "Und sehen Sie, wer sie machte. Kein Bischof gab sie in Auftrag und keine kirchliche Obrigkeit. Ein Drucker machte sie auf eigene Rechnung, mit acht mexikanischen Priestern und einigen Laien, darunter der Arzt und Dichter Manuel Carpio und der Presbyter Anastasio María Ochoa.",
+   "Der Text kommt nicht unmittelbar aus dem Lateinischen. Er kommt aus der französischen Fassung der Vulgata von Lemaistre de Sacy, jener von Port-Royal, in ihrer Ausgabe von 1820, mit den Kommentaren des Abbé de Vence und des Benediktiners Calmet. Daher der Name, unter dem wir sie kennen: die Bibel von Vence.",
+   "Schlagen Sie sie auf, und Sie sehen zwei Spalten: das Latein auf der einen Seite, das Spanische auf der anderen. Und dazu Anmerkungen, Abhandlungen und Karten. Es ist keine Taschenbibel: es ist eine ganze Bibliothek über die Bibel.",
+   "Es gibt eine Überlieferung, die wir nicht beweisen können, wonach der Pfarrer Miguel Hidalgo dieses Werk in seiner französischen Fassung während seiner Seminarjahre las. Wahr oder nicht, wichtig ist, dass die Bücher, welche die Männer der Unabhängigkeit prägten, und jene, die danach gedruckt wurden, aus derselben Welt kamen.",
+   "Die Werkstatt Galváns brachte übrigens auch die erste mexikanische Ausgabe des Don Quijote heraus, die des Periquillo Sarniento und eines der ersten Kochbücher der mexikanischen Küche. Dieselbe Presse, die Mexiko seinen ersten Roman gab, gab ihm auch seine erste Bibel.",
+   "Hier liegt das Herz dieses Museums. Mexiko wurde unabhängig und druckte zehn Jahre später seine eigene Bibel. Es holte sie nicht von außen: es machte sie hier.",
+   "Und es gibt in dieser Vitrine noch etwas, das nicht aus dem neunzehnten Jahrhundert stammt. 2010, zum zweihundertsten Jahrestag des Beginns der Unabhängigkeit, wurde eben dieses Werk in Mexiko neu gedruckt: eine Gedenkausgabe der Bibelgesellschaft von Mexiko und der Kirche des Dritten Tages, mit dieser Vence von Galván als Grundlage.",
+   "Beide stehen hier, nebeneinander. Die Bibel, die dieses Land zehn Jahre nach seiner Unabhängigkeit druckte, und die, die es nach zweihundert Jahren wieder druckte. Dasselbe Werk, dasselbe Land, zwei Jahrestage.",
+   "Ein neugeborenes Land druckte nicht zuerst seine Gesetze. Es druckte seine Bibel."
   ]
  },
  "it": {
@@ -161,21 +179,77 @@ const GUIA = {
   "voz": "it-IT",
   "ui": {
    "sala": "Vetrina 21 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia di Torres Amat",
-   "siglo": "Madrid, 1823–1825 · nove volumi",
+   "titulo": "La Bibbia di Vence, di Galván",
+   "siglo": "Messico, 1831 · la prima stampata in America",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "E questa è quella che arrivò in Messico. Quella dei comodini, degli scaffali del salotto, delle mani dei nostri bisnonni.",
-   "La fece Félix Torres Amat, catalano, cappellano del re e poi vescovo di Astorga. Fu pubblicata a Madrid, in nove volumi, fra il 1823 e il 1825. Tradotta anch'essa dalla Vulgata latina, anch'essa con note a piè di pagina, nella linea aperta da padre Scío trent'anni prima.",
-   "Ma questa ebbe altra sorte. Fu ristampata una volta e un'altra, in Spagna e in America, per tutto l'Ottocento e buona parte del Novecento. Fu, senza discussione, la Bibbia cattolica in spagnolo più letta del suo tempo. Se nella sua famiglia c'era una Bibbia antica, molto probabilmente era questa.",
-   "E ora l'ombra, perché in questo museo si racconta tutto.",
-   "Quasi dal primo giorno si accusò Torres Amat che la traduzione non fosse sua. Che avesse lavorato sul manoscritto inedito di un gesuita, padre José Miguel Petisco, morto nel 1800, senza dargli il credito dovuto. La lite dura da due secoli senza soluzione. Ci sono edizioni moderne che, per prudenza, la chiamano Petisco–Torres Amat, con i due cognomi.",
-   "Non possiamo dirle chi avesse ragione. Nessuno può ancora. Ma guardi che cosa significa quella discussione: sono due secoli che litighiamo su chi merita il credito di aver tradotto la Bibbia in spagnolo. C'è stato un tempo, non tanto lontano, in cui per farlo si finiva sul rogo.",
-   "Con questa, la Bibbia in spagnolo era già nelle case. Mancava che si stampasse qui, nel nostro paese. È la vetrina seguente."
+   "Questa è la prima Bibbia stampata in America. E fu stampata qui, nel Messico libero.",
+   "Il paese aveva dieci anni di vita. L'Indipendenza si era compiuta nel 1821, e nel 1831 un libraio di Città del Messico, Mariano Galván Rivera, cominciò a far uscire dalla sua bottega i tomi di quest'opera. Venticinque tomi, più un atlante inciso a parte.",
+   "E guardi chi la fece. Non la ordinò nessun vescovo né alcuna autorità della Chiesa. La fece uno stampatore per conto proprio, con otto sacerdoti messicani e alcuni laici, fra loro il medico e poeta Manuel Carpio e il presbitero Anastasio María Ochoa.",
+   "Il testo non viene direttamente dal latino. Viene dalla versione francese della Vulgata fatta da Lemaistre de Sacy, quella di Port-Royal, nella sua edizione del 1820, con i commenti dell'abate di Vence e del benedettino Calmet. Di lì il nome con cui la conosciamo: la Bibbia di Vence.",
+   "La apra e vedrà due colonne: il latino da un lato, il castigliano dall'altro. E inoltre note, dissertazioni e carte. Non è una Bibbia tascabile: è un'intera biblioteca sulla Bibbia.",
+   "C'è una tradizione che non possiamo provare, secondo cui il curato Miguel Hidalgo leggeva quest'opera nella versione francese durante gli anni di seminario. Vero o no, l'importante è che i libri che formarono gli uomini dell'Indipendenza e quelli che si stamparono dopo venivano dallo stesso mondo.",
+   "La bottega di Galván, per inciso, pubblicò anche la prima edizione messicana del Don Chisciotte, quella del Periquillo Sarniento e uno dei primi ricettari di cucina messicana. Lo stesso torchio che diede al Messico il suo primo romanzo gli diede anche la sua prima Bibbia.",
+   "Qui sta il cuore di questo museo. Il Messico divenne indipendente e, dieci anni dopo, stampò la propria Bibbia. Non la portò da fuori: la fece qui.",
+   "E c'è in questa vetrina qualcos'altro che non è dell'Ottocento. Nel 2010, al compiersi di duecento anni dall'inizio dell'Indipendenza, quest'opera stessa fu ristampata in Messico: un'edizione commemorativa fatta dalla Società Biblica del Messico e dalla Chiesa del Terzo Giorno, prendendo come base questa Vence di Galván.",
+   "Le due stanno qui, una accanto all'altra. La Bibbia che questo paese stampò a dieci anni dalla sua Indipendenza, e quella che tornò a stampare a duecento. La stessa opera, lo stesso paese, due anniversari.",
+   "Un paese appena nato non stampò per prime le sue leggi. Stampò la sua Bibbia."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 21 · Museu de História da Bíblia",
+   "titulo": "A Bíblia de Vence, de Galván",
+   "siglo": "México, 1831 · a primeira impressa na América",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Esta é a primeira Bíblia impressa na América. E imprimiu-se aqui, no México livre.",
+   "O país tinha dez anos de nascido. A Independência consumara-se em 1821, e em 1831 um livreiro da Cidade do México, Mariano Galván Rivera, começou a tirar da sua oficina os tomos desta obra. Vinte e cinco tomos, mais um atlas gravado à parte.",
+   "E repare em quem a fez. Não a mandou fazer nenhum bispo nem nenhuma autoridade da Igreja. Fê-la um impressor por sua conta, com oito sacerdotes mexicanos e alguns leigos, entre eles o médico e poeta Manuel Carpio e o presbítero Anastasio María Ochoa.",
+   "O texto não vem direto do latim. Vem da versão francesa da Vulgata que fez Lemaistre de Sacy, a de Port-Royal, na sua edição de 1820, com os comentários do abade de Vence e do beneditino Calmet. Daí o nome com que a conhecemos: a Bíblia de Vence.",
+   "Abra-a e verá duas colunas: o latim de um lado, o castelhano do outro. E além disso notas, dissertações e mapas. Não é uma Bíblia de bolso: é uma biblioteca inteira sobre a Bíblia.",
+   "Há uma tradição que não podemos provar, segundo a qual o padre Miguel Hidalgo lia esta obra na sua versão francesa durante os anos de seminário. Verdade ou não, o importante é que os livros que formaram os homens da Independência e os que se imprimiram depois vinham do mesmo mundo.",
+   "A oficina de Galván, aliás, publicou também a primeira edição mexicana do Quixote, a do Periquillo Sarniento e um dos primeiros livros de receitas da cozinha mexicana. A mesma prensa que deu ao México o seu primeiro romance deu-lhe também a sua primeira Bíblia.",
+   "Aqui está o coração deste museu. O México tornou-se independente e, dez anos depois, imprimiu a sua própria Bíblia. Não a trouxe de fora: fê-la aqui.",
+   "E há nesta vitrine algo mais que não é do século dezenove. Em 2010, ao cumprirem-se duzentos anos do início da Independência, esta mesma obra voltou a imprimir-se no México: uma edição comemorativa feita pela Sociedade Bíblica do México e pela Igreja do Terceiro Dia, tomando como base esta Vence de Galván.",
+   "As duas estão aqui, uma junto à outra. A Bíblia que este país imprimiu aos dez anos da sua Independência, e a que voltou a imprimir aos duzentos. A mesma obra, o mesmo país, dois aniversários.",
+   "Um país recém-nascido não imprimiu primeiro as suas leis. Imprimiu a sua Bíblia."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 21 · Музей истории Библии",
+   "titulo": "Библия де Ванса, изданная Гальваном",
+   "siglo": "Мехико, 1831 · первая, напечатанная в Америке",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Это первая Библия, напечатанная в Америке. И напечатана она здесь, в свободной Мексике.",
+   "Стране было десять лет от роду. Независимость завершилась в 1821 году, а в 1831-м книготорговец из города Мехико, Мариано Гальван Ривера, начал выпускать из своей мастерской тома этого труда. Двадцать пять томов и отдельный гравированный атлас.",
+   "И посмотрите, кто её сделал. Её не заказывал ни епископ, ни какая-либо церковная власть. Её сделал печатник на свой страх и риск, вместе с восемью мексиканскими священниками и несколькими мирянами, среди которых врач и поэт Мануэль Карпио и пресвитер Анастасио Мария Очоа.",
+   "Текст идёт не прямо с латыни. Он идёт с французского перевода Вульгаты, сделанного Лемэстром де Саси, того, что из Пор-Рояля, в издании 1820 года, с комментариями аббата де Ванса и бенедиктинца Кальме. Отсюда и имя, под которым мы её знаем: Библия де Ванса.",
+   "Откройте её — и увидите два столбца: латынь с одной стороны, кастильский с другой. И вдобавок примечания, рассуждения и карты. Это не карманная Библия: это целая библиотека о Библии.",
+   "Есть предание, которого мы не можем доказать: будто священник Мигель Идальго читал этот труд во французском переводе в семинарские годы. Правда это или нет, важно другое: книги, воспитавшие людей Независимости, и книги, напечатанные потом, вышли из одного мира.",
+   "Мастерская Гальвана, к слову, выпустила и первое мексиканское издание «Дон Кихота», «Перикильо Сарньенто» и одну из первых поваренных книг мексиканской кухни. Тот же станок, что дал Мексике её первый роман, дал ей и её первую Библию.",
+   "Здесь сердце нашего музея. Мексика стала независимой и через десять лет напечатала собственную Библию. Она не привезла её извне: она сделала её здесь.",
+   "И есть в этой витрине ещё кое-что, не из девятнадцатого века. В 2010 году, к двухсотлетию начала Независимости, этот же труд был напечатан в Мексике заново: памятное издание, сделанное Библейским обществом Мексики и Церковью Третьего Дня, взявшее за основу эту Вансовскую Библию Гальвана.",
+   "Обе стоят здесь, рядом. Библия, которую эта страна напечатала через десять лет после Независимости, и та, что она напечатала вновь через двести. Тот же труд, та же страна, две годовщины.",
+   "Новорождённая страна напечатала первыми не свои законы. Она напечатала свою Библию."
   ]
  }
 };
@@ -280,6 +354,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

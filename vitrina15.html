@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Biblia Alfonsina — Museo de Historia de la Biblia</title>
+<title>La Biblia del Duque de Alba — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  :root{ --fondo:#F1ECE2;--claro:#FBF6EE;--tinta:#221C16;--cabecera:#2E4A3A;--acento:#A8722E;--marca:rgba(168,114,46,.28); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
+  .glosa{flex:none;background:var(--claro);padding:6px;display:flex;gap:4px}
+  .glosa .c{width:30px;height:58px;background:repeating-linear-gradient(to bottom,var(--tinta) 0 1.2px,transparent 1.2px 4.4px)}
+  .glosa .m{width:14px;height:58px;background:repeating-linear-gradient(to bottom,var(--acento) 0 1px,transparent 1px 3.2px)}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,20 +40,21 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="emb" aria-hidden="true"></div>
+  <div class="glosa" aria-hidden="true"><div class="m"></div><div class="c"></div><div class="m"></div></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
     <p class="siglo" id="ui-siglo"></p>
   </div>
 </header>
-
   <div class="progreso"><i id="mhb-barra"></i></div>
   <nav class="mhb-nav" id="mhb-nav" aria-label="Navegación"></nav>
+
 <main>
   <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
   <div class="mandos">
@@ -71,22 +74,154 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Librero 3a · Museo de Historia de la Biblia",
-   "titulo": "Biblia Alfonsina",
-   "siglo": "",
+   "sala": "Librero 3b · Museo de Historia de la Biblia",
+   "titulo": "La Biblia del Duque de Alba",
+   "siglo": "Castilla, 1,422-1,433 · Moisés Arragel",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Aquí empieza el castellano.",
-   "Hacia 1,280, en el scriptorium de Alfonso X, al que llamamos el Sabio, un equipo de traductores puso por escrito la Biblia entera en lengua castellana. Es la primera vez que eso ocurre. Doscientos sesenta años antes que Enzinas, y doscientos setenta antes de que tenerla en esa lengua se volviera delito.",
-   "Pero no busque un libro que se llame Biblia. El texto sagrado está dentro de otra obra, la General Estoria, que es una historia del mundo desde la creación. Alfonso X quiso contarlo todo y en orden: por eso, en sus páginas, Moisés camina junto a los faraones, y el Génesis se cruza con los mitos de Grecia. La Escritura no está aparte: está dentro de la historia de los hombres.",
-   "Y ahora lo que hace a este rey distinto de todos los de su tiempo. Alfonso mandó traducir del árabe, del hebreo y del latín, pero no al latín, como todos hacían, sino al castellano. Era la lengua de la calle, la que no servía para el saber. Él decidió que sirviera.",
-   "El emblema de la Alfonsina es una corona con un libro abierto dentro.",
-   "En sus talleres trabajaron cristianos, judíos y conversos, y eso se nota en el resultado: para muchos pasajes no se conformaron con la Vulgata, sino que fueron a ver qué decía el hebreo.",
-   "Piense en lo que eso significa para todo este recorrido. Cuando Casiodoro de Reina huya de Sevilla en 1,557 para poder traducir la Biblia al castellano, estará haciendo algo que un rey de Castilla había mandado hacer, con todos los honores, tres siglos antes. Lo que cambió en medio no fue la lengua. Fue el permiso."
+   "Un rabino y una orden militar cristiana hicieron juntos este libro. Y casi no se hace.",
+   "En 1,422, don Luis de Guzmán, maestre de la Orden de Calatrava, le encargó a Moisés Arragel, rabino de Maqueda, que tradujera la Biblia del hebreo al castellano y que además la comentara.",
+   "Arragel dijo que no. Y lo dijo por escrito, con sus razones: que un judío glosando la Escritura para cristianos iba a incomodar a unos y a otros, y que él no quería ese problema. El maestre insistió. Las cartas que se cruzaron se conservan, y son un documento extraordinario: dos hombres de religiones distintas negociando, durante meses, hasta dónde puede llegar cada uno.",
+   "Al final Arragel aceptó, con condiciones. Trabajó ocho años. Tradujo directamente del hebreo y llenó los márgenes de comentarios, apoyándose en los grandes maestros judíos y también en autores cristianos. Cuando terminó, frailes de Toledo revisaron su trabajo, y pintores cristianos lo iluminaron con más de trescientas miniaturas.",
+   "Mire lo que tiene delante. En el mismo volumen, en la misma página, conviven la voz de un rabino y la mano de un iluminador cristiano. Eso ocurrió en Castilla, en 1,430.",
+   "Sesenta años después, los judíos fueron expulsados de España. Ciento veinte años después, tener la Biblia en castellano se volvió delito.",
+   "Por eso este libro está aquí. No para decir que aquello fue un paraíso, pues no lo fue. Sino para que quede constancia de que hubo un momento en que se pudo, y de que lo que vino después no era la única manera posible."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Bookcase 3b · Museum of the History of the Bible",
+   "titulo": "The Duke of Alba Bible",
+   "siglo": "Castile, 1422-1433 · Moses Arragel",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "A rabbi and a Christian military order made this book together. And it very nearly was not made.",
+   "In 1422, Don Luis de Guzmán, master of the Order of Calatrava, commissioned Moses Arragel, rabbi of Maqueda, to translate the Bible from Hebrew into Castilian and to write a commentary on it as well.",
+   "Arragel said no. And he said it in writing, with his reasons: that a Jew glossing Scripture for Christians would make both sides uneasy, and that he did not want that trouble. The master insisted. The letters they exchanged survive, and they are an extraordinary document: two men of different religions negotiating, for months, how far each of them may go.",
+   "In the end Arragel accepted, on conditions. He worked for eight years. He translated directly from the Hebrew and filled the margins with commentary, drawing on the great Jewish masters and on Christian authors too. When he finished, friars from Toledo reviewed his work, and Christian painters illuminated it with more than three hundred miniatures.",
+   "Look at what is in front of you. In the same volume, on the same page, the voice of a rabbi and the hand of a Christian illuminator live side by side. That happened in Castile, in 1430.",
+   "Sixty years later, the Jews were expelled from Spain. A hundred and twenty years later, owning the Bible in Spanish became a crime.",
+   "That is why this book is here. Not to say that those days were a paradise, because they were not. But so that it stands on record that there was a moment when it could be done, and that what came afterwards was not the only possible way."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Rayon 3b · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible du duc d'Albe",
+   "siglo": "Castille, 1422-1433 · Moïse Arragel",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Un rabbin et un ordre militaire chrétien ont fait ce livre ensemble. Et il a failli ne pas se faire.",
+   "En 1422, don Luis de Guzmán, maître de l'ordre de Calatrava, chargea Moïse Arragel, rabbin de Maqueda, de traduire la Bible de l'hébreu en castillan et d'en écrire aussi le commentaire.",
+   "Arragel dit non. Et il le dit par écrit, avec ses raisons : qu'un juif glosant l'Écriture pour des chrétiens allait gêner les uns et les autres, et qu'il ne voulait pas de cet ennui. Le maître insista. Les lettres qu'ils échangèrent sont conservées, et c'est un document extraordinaire : deux hommes de religions différentes négociant, des mois durant, jusqu'où chacun peut aller.",
+   "À la fin Arragel accepta, sous conditions. Il travailla huit ans. Il traduisit directement de l'hébreu et remplit les marges de commentaires, s'appuyant sur les grands maîtres juifs et aussi sur des auteurs chrétiens. Quand il eut fini, des frères de Tolède révisèrent son travail, et des peintres chrétiens l'enluminèrent de plus de trois cents miniatures.",
+   "Regardez ce que vous avez devant vous. Dans le même volume, sur la même page, cohabitent la voix d'un rabbin et la main d'un enlumineur chrétien. Cela s'est passé en Castille, en 1430.",
+   "Soixante ans plus tard, les juifs furent expulsés d'Espagne. Cent vingt ans plus tard, posséder la Bible en castillan devint un délit.",
+   "C'est pourquoi ce livre est ici. Non pour dire que ce temps fut un paradis, car il ne le fut pas. Mais pour qu'il reste trace qu'il y eut un moment où cela fut possible, et que ce qui vint ensuite n'était pas la seule manière possible."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Regal 3b · Museum zur Geschichte der Bibel",
+   "titulo": "Die Bibel des Herzogs von Alba",
+   "siglo": "Kastilien, 1422-1433 · Moses Arragel",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Ein Rabbiner und ein christlicher Ritterorden haben dieses Buch gemeinsam gemacht. Und beinahe wäre es nicht entstanden.",
+   "1422 beauftragte Don Luis de Guzmán, Meister des Calatrava-Ordens, Moses Arragel, den Rabbiner von Maqueda, die Bibel aus dem Hebräischen ins Kastilische zu übersetzen und sie überdies zu kommentieren.",
+   "Arragel sagte nein. Und er sagte es schriftlich, mit seinen Gründen: dass ein Jude, der die Schrift für Christen auslegt, beiden Seiten unangenehm sein werde und dass er diesen Ärger nicht wolle. Der Meister beharrte. Die Briefe, die sie wechselten, sind erhalten, und sie sind ein außergewöhnliches Dokument: zwei Männer verschiedener Religionen, die monatelang aushandeln, wie weit jeder gehen darf.",
+   "Am Ende nahm Arragel an, unter Bedingungen. Er arbeitete acht Jahre. Er übersetzte unmittelbar aus dem Hebräischen und füllte die Ränder mit Kommentaren, gestützt auf die großen jüdischen Lehrer und auch auf christliche Autoren. Als er fertig war, prüften Mönche aus Toledo seine Arbeit, und christliche Maler schmückten sie mit mehr als dreihundert Miniaturen.",
+   "Sehen Sie, was Sie vor sich haben. In demselben Band, auf derselben Seite, stehen die Stimme eines Rabbiners und die Hand eines christlichen Buchmalers nebeneinander. Das geschah in Kastilien, im Jahr 1430.",
+   "Sechzig Jahre später wurden die Juden aus Spanien vertrieben. Hundertzwanzig Jahre später wurde der Besitz der Bibel auf Spanisch ein Vergehen.",
+   "Darum steht dieses Buch hier. Nicht um zu sagen, jene Zeit sei ein Paradies gewesen, denn das war sie nicht. Sondern damit verzeichnet bleibt, dass es einen Augenblick gab, in dem es möglich war, und dass das, was danach kam, nicht der einzig mögliche Weg war."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Scaffale 3b · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia del duca d'Alba",
+   "siglo": "Castiglia, 1422-1433 · Mosè Arragel",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Un rabbino e un ordine militare cristiano fecero insieme questo libro. E per poco non si fece.",
+   "Nel 1422 don Luis de Guzmán, maestro dell'Ordine di Calatrava, incaricò Mosè Arragel, rabbino di Maqueda, di tradurre la Bibbia dall'ebraico in castigliano e per di più di commentarla.",
+   "Arragel disse di no. E lo disse per iscritto, con le sue ragioni: che un ebreo che glossa la Scrittura per i cristiani avrebbe dato fastidio agli uni e agli altri, e che lui non voleva quel guaio. Il maestro insistette. Le lettere che si scambiarono si conservano, e sono un documento straordinario: due uomini di religioni diverse che negoziano, per mesi, fin dove ciascuno può arrivare.",
+   "Alla fine Arragel accettò, a condizioni. Lavorò otto anni. Tradusse direttamente dall'ebraico e riempì i margini di commenti, appoggiandosi ai grandi maestri ebrei e anche ad autori cristiani. Quando finì, frati di Toledo rividero il suo lavoro, e pittori cristiani lo miniarono con più di trecento miniature.",
+   "Guardi ciò che ha davanti. Nello stesso volume, nella stessa pagina, convivono la voce di un rabbino e la mano di un miniatore cristiano. Questo accadde in Castiglia, nel 1430.",
+   "Sessant'anni dopo, gli ebrei furono espulsi dalla Spagna. Centovent'anni dopo, possedere la Bibbia in castigliano divenne reato.",
+   "Per questo questo libro sta qui. Non per dire che quel tempo fu un paradiso, perché non lo fu. Ma perché resti testimonianza che ci fu un momento in cui si poté, e che quello che venne dopo non era l'unico modo possibile."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Estante 3b · Museu de História da Bíblia",
+   "titulo": "A Bíblia do Duque de Alba",
+   "siglo": "Castela, 1422-1433 · Moisés Arragel",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Um rabino e uma ordem militar cristã fizeram juntos este livro. E por pouco não se fez.",
+   "Em 1422, dom Luis de Guzmán, mestre da Ordem de Calatrava, encarregou Moisés Arragel, rabino de Maqueda, de traduzir a Bíblia do hebraico para o castelhano e ainda de comentá-la.",
+   "Arragel disse que não. E disse-o por escrito, com as suas razões: que um judeu glosando a Escritura para cristãos iria incomodar uns e outros, e que ele não queria esse problema. O mestre insistiu. As cartas que trocaram conservam-se, e são um documento extraordinário: dois homens de religiões distintas negociando, durante meses, até onde cada um pode chegar.",
+   "No fim Arragel aceitou, com condições. Trabalhou oito anos. Traduziu diretamente do hebraico e encheu as margens de comentários, apoiando-se nos grandes mestres judeus e também em autores cristãos. Quando terminou, frades de Toledo revisaram o seu trabalho, e pintores cristãos o iluminaram com mais de trezentas miniaturas.",
+   "Olhe o que tem diante de si. No mesmo volume, na mesma página, convivem a voz de um rabino e a mão de um iluminador cristão. Isso aconteceu em Castela, em 1430.",
+   "Sessenta anos depois, os judeus foram expulsos da Espanha. Cento e vinte anos depois, ter a Bíblia em castelhano tornou-se crime.",
+   "Por isso este livro está aqui. Não para dizer que aquilo foi um paraíso, pois não foi. Mas para que fique constância de que houve um momento em que se pôde, e de que o que veio depois não era a única maneira possível."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Стеллаж 3b · Музей истории Библии",
+   "titulo": "Библия герцога Альбы",
+   "siglo": "Кастилия, 1422-1433 · Моисей Аррагель",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Раввин и христианский рыцарский орден сделали эту книгу вместе. И она едва не осталась несделанной.",
+   "В 1422 году дон Луис де Гусман, магистр ордена Калатравы, поручил Моисею Аррагелю, раввину из Македы, перевести Библию с еврейского на кастильский и вдобавок снабдить её толкованием.",
+   "Аррагель отказался. И отказался письменно, с доводами: что иудей, толкующий Писание для христиан, будет неудобен и тем и другим, и что он не хочет этой беды. Магистр настоял. Письма, которыми они обменивались, сохранились, и это необычайный документ: двое людей разных вер месяцами договариваются, до какого предела может идти каждый.",
+   "В конце концов Аррагель согласился — с условиями. Он работал восемь лет. Он переводил прямо с еврейского и заполнил поля толкованиями, опираясь на великих иудейских учителей, а также на христианских авторов. Когда он закончил, монахи из Толедо проверили его труд, а христианские живописцы украсили его более чем тремястами миниатюрами.",
+   "Взгляните на то, что перед вами. В одном томе, на одной странице соседствуют голос раввина и рука христианского миниатюриста. Это произошло в Кастилии, в 1430 году.",
+   "Шестьдесят лет спустя евреев изгнали из Испании. Сто двадцать лет спустя хранить Библию по-кастильски стало преступлением.",
+   "Потому эта книга и стоит здесь. Не затем, чтобы сказать, будто то время было раем, — оно им не было. А затем, чтобы осталось свидетельство: был миг, когда это оказалось возможно, и то, что пришло потом, не было единственно возможным путём."
   ]
  }
 };
@@ -191,6 +326,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

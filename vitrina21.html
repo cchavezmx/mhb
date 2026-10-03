@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Las Grandes Horas de Ana de Bretaña — Museo de Historia de la Biblia</title>
+<title>La Biblia Políglota Complutense — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F3EEE1;--claro:#FBF7EC;--tinta:#2B261D;--cabecera:#14110D;--acento:#BE9433;--marca:rgba(190,148,51,.3); }
+  :root{ --fondo:#F1EFE7;--claro:#FAF8F2;--tinta:#1D1C17;--cabecera:#5B2E2E;--acento:#A8832C;--marca:rgba(168,131,44,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,8 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .rama{flex:none;width:34px;height:76px}
-  .marco{border:2px solid var(--acento);padding:1rem .9rem;display:flex;gap:1rem;align-items:center}
+  .cuatro{flex:none;display:flex;gap:4px}
+  .cuatro i{display:block;width:13px;height:60px;background:repeating-linear-gradient(to bottom,var(--tinta) 0 1.3px,transparent 1.3px 4.6px);opacity:.65}
+  .cuatro i.medio{background:repeating-linear-gradient(to bottom,var(--acento) 0 1.6px,transparent 1.6px 4.6px);opacity:1}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -39,16 +40,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="rama" viewBox="0 0 34 76" aria-hidden="true">
-   <path d="M17 74 V22" stroke="#4C6B33" stroke-width="2" fill="none"/>
-   <path d="M17 58 C9 56 5 48 6 42 C14 43 18 50 17 58 Z" fill="#4C6B33"/>
-   <path d="M17 46 C25 44 29 36 28 30 C20 31 16 38 17 46 Z" fill="#5E7F41"/>
-   <path d="M17 34 C9 32 5 24 6 18 C14 19 18 26 17 34 Z" fill="#4C6B33"/>
-   <circle cx="17" cy="14" r="6" fill="#BE9433"/><circle cx="17" cy="14" r="2.4" fill="#14110D"/></svg>
+  <div class="cuatro" aria-hidden="true"><i></i><i class="medio"></i><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -77,115 +74,161 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 9 · Museo de Historia de la Biblia",
-   "titulo": "Las Grandes Horas de Ana de Bretaña",
-   "siglo": "Tours, 1503–1508 · Jean Bourdichon",
+   "sala": "Vitrina 12 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia Políglota Complutense",
+   "siglo": "Alcalá de Henares, 1,514-1,517",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Cincuenta años después de Gutenberg, una reina de Francia mandó hacer un libro a mano. Ésta se llamaba Ana de Bretaña y fue reina de Francia dos veces: primero con Carlos VIII y, al morir éste, con Luis XII. Podía comprar libros impresos, que ya se contaban por miles, pero encargó uno solo, único, e irrepetible.",
-   "Lo pintó Jean Bourdichon, pintor de cuatro reyes de Francia, entre 1,503 y 1,508. Cinco años de trabajo para un solo ejemplar.",
-   "Y conviene decir qué es un libro de horas, porque no es una Biblia. Es el libro para orar en casa. Contiene salmos, pasajes del Evangelio, oraciones repartidas por las horas del día. Fue el libro más copiado de toda la Edad Media. El verdadero libro de la gente.",
-   "Mire las cuarenta y nueve pinturas de página entera, con su marco de oro sobre pergamino teñido de negro. No son miniaturas: son cuadros. Tienen perspectiva, primer plano, y sobre todo tienen noche. La Natividad alumbrada por la estrella. La huida a Egipto entre montañas oscuras. El beso de Judas, entre lámparas y antorchas.",
-   "Y ahora mire los márgenes. Ahí está lo que hace único a este libro en el mundo: trescientas treinta y siete plantas pintadas del natural, con su nombre científico en latín arriba y su nombre popular en francés abajo. Entre ellas, insectos, caracoles, animalitos. Son dos libros en uno: un devocionario y un herbario.",
-   "Piense en la fecha. Mientras Bourdichon pintaba con tanto cuidado las plantas de su jardín, del otro lado del mar empezaban a llegar a Europa plantas que nadie allá había visto nunca.",
-   "Ana murió en 1,514, a los treinta y seis años. Su libro se conserva hoy en París.",
-   "Aquí la Escritura ya no está en el monasterio, ni en la corte, ni en el taller del impresor. Está en la recámara de una mujer que oraba sola, con un jardín pintado en las orillas de cada página."
+   "Seis tomos. Quince años de trabajo. Y la idea más ambiciosa que había tenido nadie hasta entonces con la Biblia: ponerla en sus lenguas originales, todas a la vez, en la misma página.",
+   "Alcalá de Henares, España. La ciudad se llamaba Complutum en latín, y de ahí el nombre. El que la mandó hacer fue el cardenal Cisneros, que fundó la universidad con este propósito. Reunió a los mejores hebraístas y helenistas de España, varios de ellos judíos conversos: Alfonso de Zamora, Pablo Coronel, Alfonso de Alcalá. También llamó a Antonio de Nebrija, el de la primera gramática castellana.",
+   "Abra cualquier página del Antiguo Testamento y verá tres columnas. En medio, la Vulgata latina. A un lado, el texto hebreo. Al otro, el griego de los Setenta con su traducción latina entre renglones. En el Pentateuco, además, abajo, el arameo.",
+   "El prólogo explica esa disposición con una imagen muy de su tiempo: el latín va en medio, dice, como Jesús entre los dos ladrones. Hoy nadie lo diría así, pero ahí está escrito, y dice mucho de cómo se veía entonces.",
+   "El quinto tomo es el Nuevo Testamento en griego, y tiene un récord: se imprimió en 1,514, y es el primer Nuevo Testamento griego que salió de una imprenta en la historia. El sexto tomo es un diccionario hebreo y arameo, una gramática y un vocabulario griego. El primer manual de estudio bíblico que se imprimió.",
+   "Pero el libro no se pudo vender. Había que esperar el permiso de Roma, que llegó en 1,520, y los ejemplares no se repartieron hasta 1,522. Para entonces Cisneros llevaba cinco años muerto, y otro hombre, en Basilea, ya había ganado la carrera. De él hablamos en la vitrina siguiente.",
+   "Se tiraron seiscientos ejemplares. Sobreviven muy pocos. Y es, hasta hoy, uno de los trabajos de erudición más impresionantes que ha producido España.",
+   "Mil trescientos años antes, Orígenes había puesto seis columnas para comparar. Cisneros hizo lo mismo con una imprenta, y así lo que un hombre tardaba una vida en consultar quedó al alcance de seiscientos a la vez."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 9 · Museum of the History of the Bible",
-   "titulo": "The Great Hours of Anne of Brittany",
-   "siglo": "Tours, 1503–1508 · Jean Bourdichon",
+   "sala": "Case 12 · Museum of the History of the Bible",
+   "titulo": "The Complutensian Polyglot Bible",
+   "siglo": "Alcalá de Henares, 1514-1517",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Fifty years after Gutenberg, a queen of France had a book made by hand. This one. Her name was Anne of Brittany, and she was queen of France twice over: first with Charles the Eighth and, when he died, with Louis the Twelfth. She could have bought printed books, which by then ran into the thousands. She commissioned a single one, unique, unrepeatable.",
-   "It was painted by Jean Bourdichon, court painter to four kings of France, between 1503 and 1508. Five years of work for one single copy.",
-   "And it is worth saying what a book of hours is, because it is not a Bible. It is the book for praying at home: psalms, passages from the Gospels, prayers spread across the hours of the day. It was the most copied book of the whole Middle Ages. The real book of the people.",
-   "Look at the forty-nine full-page paintings, framed in gold against parchment dyed black. They are not miniatures: they are pictures. They have perspective, they have a foreground, and above all they have night. The Nativity lit by the star. The flight into Egypt among dark mountains. The kiss of Judas, among lamps and torches.",
-   "And now look at the margins. That is what makes this book unique in the world: three hundred and thirty-seven plants painted from life, with their scientific name in Latin above and their common name in French below. Among them, insects, snails, small creatures. It is two books in one: a prayer book and a herbal.",
-   "Think about the date. While Bourdichon was painting the plants of his garden with such care, from the other side of the sea plants were beginning to reach Europe that nobody there had ever seen.",
-   "Anne died in 1514, at the age of thirty-six. Her book is kept today in Paris.",
-   "Here Scripture is no longer in the monastery, nor at court, nor in the printer's workshop. It is in the bedchamber of a woman praying alone, with a garden painted along the edge of every page."
+   "Six volumes. Fifteen years of work. And the most ambitious idea anyone had yet had with the Bible: to set it out in its original languages, all at once, on the same page.",
+   "Alcalá de Henares, in Spain. The city was called Complutum in Latin, and hence the name. It was ordered by Cardinal Cisneros, who founded the university for this very purpose. He gathered the best Hebraists and Hellenists in Spain, several of them Jewish converts: Alfonso de Zamora, Pablo Coronel, Alfonso de Alcalá. He also called in Antonio de Nebrija, the author of the first Castilian grammar.",
+   "Open any page of the Old Testament and you will see three columns. In the middle, the Latin Vulgate. On one side, the Hebrew text. On the other, the Greek of the Seventy with its Latin translation between the lines. In the Pentateuch there is also the Aramaic, below.",
+   "The preface explains that arrangement with an image very much of its time: the Latin goes in the middle, it says, like Jesus between the two thieves. Nobody would put it that way today, but there it stands written, and it tells us a great deal about how things were seen then.",
+   "The fifth volume is the New Testament in Greek, and it holds a record: it was printed in 1514, and it is the first Greek New Testament ever to come off a printing press. The sixth volume is a Hebrew and Aramaic dictionary, a grammar and a Greek vocabulary. The first handbook of biblical study ever printed.",
+   "But the book could not be sold. Rome's permission had to be awaited; it came in 1520, and the copies were not distributed until 1522. By then Cisneros had been dead five years, and another man, in Basel, had already won the race. Of him we speak in the next case.",
+   "Six hundred copies were printed. Very few survive. And it is, to this day, one of the most impressive works of scholarship Spain has produced.",
+   "Thirteen hundred years earlier, Origen had set six columns side by side to compare. Cisneros did the same with a printing press, and so what took one man a lifetime to consult was within reach of six hundred at once."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 9 · Musée de l'Histoire de la Bible",
-   "titulo": "Les Grandes Heures d'Anne de Bretagne",
-   "siglo": "Tours, 1503–1508 · Jean Bourdichon",
+   "sala": "Vitrine 12 · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible polyglotte d'Alcalá",
+   "siglo": "Alcalá de Henares, 1514-1517",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Cinquante ans après Gutenberg, une reine de France fit faire un livre à la main. Celui-ci. Elle s'appelait Anne de Bretagne et fut reine de France deux fois : d'abord avec Charles VIII et, à la mort de celui-ci, avec Louis XII. Elle pouvait acheter des livres imprimés, qui se comptaient déjà par milliers. Elle en commanda un seul, unique, irremplaçable.",
-   "Il fut peint par Jean Bourdichon, peintre de quatre rois de France, entre 1503 et 1508. Cinq années de travail pour un seul exemplaire.",
-   "Et il faut dire ce qu'est un livre d'heures, car ce n'est pas une Bible. C'est le livre pour prier chez soi : des psaumes, des passages de l'Évangile, des prières réparties selon les heures du jour. Ce fut le livre le plus copié de tout le Moyen Âge. Le véritable livre des gens.",
-   "Regardez les quarante-neuf peintures pleine page, encadrées d'or sur un parchemin teint en noir. Ce ne sont pas des miniatures : ce sont des tableaux. Ils ont de la perspective, un premier plan, et surtout ils ont la nuit. La Nativité éclairée par l'étoile. La fuite en Égypte parmi des montagnes obscures. Le baiser de Judas, entre lampes et torches.",
-   "Et maintenant regardez les marges. C'est là ce qui rend ce livre unique au monde : trois cent trente-sept plantes peintes d'après nature, avec leur nom scientifique en latin au-dessus et leur nom populaire en français au-dessous. Parmi elles, des insectes, des escargots, de petits animaux. Ce sont deux livres en un : un livre de prière et un herbier.",
-   "Pensez à la date. Pendant que Bourdichon peignait avec tant de soin les plantes de son jardin, de l'autre côté de la mer commençaient à arriver en Europe des plantes que personne là-bas n'avait jamais vues.",
-   "Anne mourut en 1514, à trente-six ans. Son livre est conservé aujourd'hui à Paris.",
-   "Ici l'Écriture n'est plus au monastère, ni à la cour, ni dans l'atelier de l'imprimeur. Elle est dans la chambre d'une femme qui priait seule, avec un jardin peint au bord de chaque page."
+   "Six volumes. Quinze ans de travail. Et l'idée la plus ambitieuse que quiconque eût eue jusqu'alors avec la Bible : la présenter dans ses langues d'origine, toutes à la fois, sur la même page.",
+   "Alcalá de Henares, en Espagne. La ville s'appelait Complutum en latin, d'où le nom. Celui qui la fit faire fut le cardinal Cisneros, qui fonda l'université dans ce but. Il réunit les meilleurs hébraïsants et hellénistes d'Espagne, plusieurs d'entre eux juifs convertis : Alfonso de Zamora, Pablo Coronel, Alfonso de Alcalá. Il appela aussi Antonio de Nebrija, l'auteur de la première grammaire castillane.",
+   "Ouvrez n'importe quelle page de l'Ancien Testament et vous verrez trois colonnes. Au milieu, la Vulgate latine. D'un côté, le texte hébreu. De l'autre, le grec des Septante avec sa traduction latine entre les lignes. Dans le Pentateuque, en outre, l'araméen, en bas.",
+   "Le prologue explique cette disposition par une image bien de son temps : le latin va au milieu, dit-il, comme Jésus entre les deux larrons. Personne ne le dirait ainsi aujourd'hui, mais c'est écrit là, et cela en dit long sur la façon dont on voyait les choses alors.",
+   "Le cinquième volume est le Nouveau Testament en grec, et il détient un record : il fut imprimé en 1514, et c'est le premier Nouveau Testament grec sorti d'une imprimerie dans l'histoire. Le sixième volume est un dictionnaire hébreu et araméen, une grammaire et un vocabulaire grec. Le premier manuel d'étude biblique qui ait été imprimé.",
+   "Mais le livre ne put être vendu. Il fallait attendre la permission de Rome, qui arriva en 1520, et les exemplaires ne furent distribués qu'en 1522. Cisneros était mort depuis cinq ans, et un autre homme, à Bâle, avait déjà gagné la course. Nous parlerons de lui dans la vitrine suivante.",
+   "On en tira six cents exemplaires. Il en survit très peu. Et c'est, jusqu'à ce jour, l'un des travaux d'érudition les plus impressionnants qu'ait produits l'Espagne.",
+   "Treize cents ans plus tôt, Origène avait dressé six colonnes pour comparer. Cisneros fit de même avec une imprimerie, et ainsi ce qu'un homme mettait une vie à consulter se trouva à la portée de six cents à la fois."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 9 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Grandes Heures der Anne de Bretagne",
-   "siglo": "Tours, 1503–1508 · Jean Bourdichon",
+   "sala": "Vitrine 12 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Complutensische Polyglotte",
+   "siglo": "Alcalá de Henares, 1514-1517",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Fünfzig Jahre nach Gutenberg ließ eine Königin von Frankreich ein Buch von Hand anfertigen. Dieses. Sie hieß Anne de Bretagne und war zweimal Königin von Frankreich: zuerst mit Karl dem Achten und, nach dessen Tod, mit Ludwig dem Zwölften. Sie hätte gedruckte Bücher kaufen können, die es damals schon zu Tausenden gab. Sie gab ein einziges in Auftrag, einmalig, unwiederholbar.",
-   "Gemalt hat es Jean Bourdichon, Hofmaler von vier französischen Königen, zwischen 1503 und 1508. Fünf Jahre Arbeit für ein einziges Exemplar.",
-   "Und man sollte sagen, was ein Stundenbuch ist, denn eine Bibel ist es nicht. Es ist das Buch zum Beten zu Hause: Psalmen, Stellen aus den Evangelien, Gebete, verteilt über die Stunden des Tages. Es war das meistabgeschriebene Buch des gesamten Mittelalters. Das wirkliche Buch der Leute.",
-   "Sehen Sie die neunundvierzig ganzseitigen Gemälde, in Gold gerahmt auf schwarz gefärbtem Pergament. Es sind keine Miniaturen: es sind Bilder. Sie haben Perspektive, sie haben einen Vordergrund, und vor allem haben sie Nacht. Die Geburt Christi, vom Stern erhellt. Die Flucht nach Ägypten zwischen dunklen Bergen. Der Judaskuss, zwischen Lampen und Fackeln.",
-   "Und nun sehen Sie sich die Ränder an. Dort liegt, was dieses Buch weltweit einzigartig macht: dreihundertsiebenunddreißig nach der Natur gemalte Pflanzen, mit ihrem wissenschaftlichen Namen auf Latein darüber und ihrem volkstümlichen Namen auf Französisch darunter. Dazwischen Insekten, Schnecken, kleine Tiere. Es sind zwei Bücher in einem: ein Gebetbuch und ein Kräuterbuch.",
-   "Denken Sie an das Datum. Während Bourdichon die Pflanzen seines Gartens mit solcher Sorgfalt malte, begannen von der anderen Seite des Meeres Pflanzen nach Europa zu kommen, die dort noch niemand gesehen hatte.",
-   "Anne starb 1514, im Alter von sechsunddreißig Jahren. Ihr Buch wird heute in Paris aufbewahrt.",
-   "Hier ist die Schrift nicht mehr im Kloster, nicht mehr bei Hofe, nicht mehr in der Werkstatt des Druckers. Sie ist in der Kammer einer Frau, die allein betete, mit einem Garten, gemalt an den Rand jeder Seite."
+   "Sechs Bände. Fünfzehn Jahre Arbeit. Und der ehrgeizigste Gedanke, den bis dahin jemand mit der Bibel gehabt hatte: sie in ihren Ursprachen darzubieten, alle zugleich, auf derselben Seite.",
+   "Alcalá de Henares in Spanien. Die Stadt hieß auf Latein Complutum, daher der Name. In Auftrag gab sie Kardinal Cisneros, der die Universität eben zu diesem Zweck gründete. Er versammelte die besten Hebraisten und Gräzisten Spaniens, mehrere von ihnen getaufte Juden: Alfonso de Zamora, Pablo Coronel, Alfonso de Alcalá. Er rief auch Antonio de Nebrija herbei, den Verfasser der ersten kastilischen Grammatik.",
+   "Schlagen Sie irgendeine Seite des Alten Testaments auf, und Sie sehen drei Spalten. In der Mitte die lateinische Vulgata. Auf der einen Seite der hebräische Text. Auf der anderen das Griechisch der Siebzig mit seiner lateinischen Übersetzung zwischen den Zeilen. Im Pentateuch steht zudem unten das Aramäische.",
+   "Die Vorrede erklärt diese Anordnung mit einem ganz zeittypischen Bild: das Latein stehe in der Mitte, heißt es, wie Jesus zwischen den beiden Schächern. Heute würde das niemand so sagen, aber dort steht es geschrieben, und es sagt viel darüber, wie man damals sah.",
+   "Der fünfte Band ist das Neue Testament auf Griechisch, und er hält einen Rekord: er wurde 1514 gedruckt und ist das erste griechische Neue Testament, das je aus einer Druckerpresse kam. Der sechste Band ist ein hebräisch-aramäisches Wörterbuch, eine Grammatik und ein griechisches Vokabular. Das erste gedruckte Handbuch des Bibelstudiums.",
+   "Doch das Buch durfte nicht verkauft werden. Man musste die Erlaubnis Roms abwarten; sie kam 1520, und die Exemplare wurden erst 1522 verteilt. Da war Cisneros seit fünf Jahren tot, und ein anderer Mann in Basel hatte das Rennen bereits gewonnen. Von ihm sprechen wir in der nächsten Vitrine.",
+   "Sechshundert Exemplare wurden gedruckt. Nur sehr wenige sind erhalten. Und es ist bis heute eine der beeindruckendsten Gelehrtenleistungen, die Spanien hervorgebracht hat.",
+   "Dreizehnhundert Jahre zuvor hatte Origenes sechs Spalten nebeneinandergestellt, um zu vergleichen. Cisneros tat dasselbe mit einer Druckerpresse, und so lag das, wozu ein Mann ein Leben lang brauchte, sechshundert Menschen zugleich zur Hand."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 9 · Museo di Storia della Bibbia",
-   "titulo": "Le Grandi Ore di Anna di Bretagna",
-   "siglo": "Tours, 1503–1508 · Jean Bourdichon",
+   "sala": "Vetrina 12 · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia Poliglotta Complutense",
+   "siglo": "Alcalá de Henares, 1514-1517",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Cinquant'anni dopo Gutenberg, una regina di Francia fece fare un libro a mano. Questo. Si chiamava Anna di Bretagna e fu regina di Francia due volte: prima con Carlo VIII e, alla morte di lui, con Luigi XII. Poteva comprare libri stampati, che ormai si contavano a migliaia. Ne commissionò uno solo, unico, irripetibile.",
-   "Lo dipinse Jean Bourdichon, pittore di quattro re di Francia, tra il 1503 e il 1508. Cinque anni di lavoro per una sola copia.",
-   "E conviene dire che cos'è un libro d'ore, perché non è una Bibbia. È il libro per pregare in casa: salmi, passi del Vangelo, preghiere distribuite lungo le ore del giorno. Fu il libro più copiato di tutto il Medioevo. Il vero libro della gente.",
-   "Guardi i quarantanove dipinti a piena pagina, incorniciati d'oro su pergamena tinta di nero. Non sono miniature: sono quadri. Hanno prospettiva, hanno un primo piano, e soprattutto hanno la notte. La Natività illuminata dalla stella. La fuga in Egitto tra montagne scure. Il bacio di Giuda, tra lampade e torce.",
-   "E ora guardi i margini. Lì sta ciò che rende questo libro unico al mondo: trecentotrentasette piante dipinte dal vero, con il loro nome scientifico in latino sopra e il loro nome popolare in francese sotto. In mezzo, insetti, lumache, piccoli animali. Sono due libri in uno: un devozionale e un erbario.",
-   "Pensi alla data. Mentre Bourdichon dipingeva con tanta cura le piante del suo giardino, dall'altra parte del mare cominciavano ad arrivare in Europa piante che nessuno là aveva mai visto.",
-   "Anna morì nel 1514, a trentasei anni. Il suo libro è conservato oggi a Parigi.",
-   "Qui la Scrittura non è più nel monastero, né a corte, né nella bottega dello stampatore. È nella camera di una donna che pregava da sola, con un giardino dipinto sul bordo di ogni pagina."
+   "Sei volumi. Quindici anni di lavoro. E l'idea più ambiziosa che nessuno avesse avuto fino allora con la Bibbia: presentarla nelle sue lingue originali, tutte insieme, nella stessa pagina.",
+   "Alcalá de Henares, in Spagna. La città si chiamava Complutum in latino, e di lì il nome. La fece fare il cardinale Cisneros, che fondò l'università proprio a questo scopo. Riunì i migliori ebraisti ed ellenisti di Spagna, parecchi di loro ebrei convertiti: Alfonso de Zamora, Pablo Coronel, Alfonso de Alcalá. Chiamò anche Antonio de Nebrija, quello della prima grammatica castigliana.",
+   "Apra una pagina qualsiasi dell'Antico Testamento e vedrà tre colonne. In mezzo, la Vulgata latina. Da un lato, il testo ebraico. Dall'altro, il greco dei Settanta con la sua traduzione latina fra le righe. Nel Pentateuco, inoltre, in basso, l'aramaico.",
+   "Il prologo spiega quella disposizione con un'immagine molto del suo tempo: il latino sta in mezzo, dice, come Gesù fra i due ladroni. Oggi nessuno lo direbbe così, ma sta scritto lì, e dice molto di come si vedeva allora.",
+   "Il quinto volume è il Nuovo Testamento in greco, e detiene un primato: fu stampato nel 1514, ed è il primo Nuovo Testamento greco uscito da una stamperia nella storia. Il sesto volume è un dizionario ebraico e aramaico, una grammatica e un vocabolario greco. Il primo manuale di studio biblico che sia stato stampato.",
+   "Ma il libro non si poté vendere. Bisognava attendere il permesso di Roma, che arrivò nel 1520, e gli esemplari non furono distribuiti fino al 1522. Allora Cisneros era morto da cinque anni, e un altro uomo, a Basilea, aveva già vinto la corsa. Di lui parliamo nella vetrina seguente.",
+   "Se ne tirarono seicento esemplari. Ne sopravvivono pochissimi. Ed è, ancora oggi, uno dei lavori di erudizione più impressionanti che abbia prodotto la Spagna.",
+   "Milletrecento anni prima, Origene aveva messo sei colonne per confrontare. Cisneros fece lo stesso con una stamperia, e così ciò che a un uomo costava una vita da consultare restò alla portata di seicento alla volta."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 12 · Museu de História da Bíblia",
+   "titulo": "A Bíblia Poliglota Complutense",
+   "siglo": "Alcalá de Henares, 1514-1517",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Seis volumes. Quinze anos de trabalho. E a ideia mais ambiciosa que alguém havia tido até então com a Bíblia: pô-la nas suas línguas originais, todas ao mesmo tempo, na mesma página.",
+   "Alcalá de Henares, na Espanha. A cidade chamava-se Complutum em latim, e daí o nome. Quem a mandou fazer foi o cardeal Cisneros, que fundou a universidade com este propósito. Reuniu os melhores hebraístas e helenistas da Espanha, vários deles judeus conversos: Alfonso de Zamora, Pablo Coronel, Alfonso de Alcalá. Chamou também Antonio de Nebrija, o da primeira gramática castelhana.",
+   "Abra qualquer página do Antigo Testamento e verá três colunas. No meio, a Vulgata latina. De um lado, o texto hebraico. Do outro, o grego dos Setenta com a sua tradução latina entre as linhas. No Pentateuco, além disso, embaixo, o aramaico.",
+   "O prólogo explica essa disposição com uma imagem muito do seu tempo: o latim vai no meio, diz, como Jesus entre os dois ladrões. Hoje ninguém o diria assim, mas ali está escrito, e diz muito de como se via então.",
+   "O quinto volume é o Novo Testamento em grego, e tem um recorde: foi impresso em 1514, e é o primeiro Novo Testamento grego que saiu de uma imprensa na história. O sexto volume é um dicionário hebraico e aramaico, uma gramática e um vocabulário grego. O primeiro manual de estudo bíblico que se imprimiu.",
+   "Mas o livro não se pôde vender. Havia que esperar a permissão de Roma, que chegou em 1520, e os exemplares só foram distribuídos em 1522. Por então Cisneros estava morto havia cinco anos, e outro homem, em Basileia, já tinha ganhado a corrida. Dele falamos na vitrine seguinte.",
+   "Tiraram-se seiscentos exemplares. Sobrevivem pouquíssimos. E é, até hoje, um dos trabalhos de erudição mais impressionantes que a Espanha produziu.",
+   "Mil e trezentos anos antes, Orígenes tinha posto seis colunas para comparar. Cisneros fez o mesmo com uma imprensa, e assim o que a um homem custava uma vida consultar ficou ao alcance de seiscentos ao mesmo tempo."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 12 · Музей истории Библии",
+   "titulo": "Комплютенская Полиглотта",
+   "siglo": "Алькала-де-Энарес, 1514-1517",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Шесть томов. Пятнадцать лет труда. И самый честолюбивый замысел, какой кто-либо до тех пор имел относительно Библии: представить её на языках подлинника, все сразу, на одной странице.",
+   "Алькала-де-Энарес в Испании. По-латыни город назывался Complutum — отсюда и название. Заказал её кардинал Сиснерос, основавший университет именно для этой цели. Он собрал лучших гебраистов и эллинистов Испании, среди них нескольких крещёных евреев: Альфонсо де Самора, Пабло Коронель, Альфонсо де Алькала. Призвал он и Антонио де Небриху, автора первой кастильской грамматики.",
+   "Откройте любую страницу Ветхого Завета — и увидите три столбца. В середине латинская Вульгата. С одной стороны еврейский текст. С другой — греческий Семидесяти с латинским переводом между строк. В Пятикнижии внизу добавлен ещё и арамейский.",
+   "Предисловие объясняет это расположение образом вполне в духе своего времени: латынь стоит посредине, говорит оно, как Иисус между двумя разбойниками. Сегодня никто так не сказал бы, но там это написано, и это многое говорит о тогдашнем взгляде на вещи.",
+   "Пятый том — Новый Завет по-гречески, и за ним числится рекорд: он напечатан в 1514 году и является первым греческим Новым Заветом, вышедшим из типографии в истории. Шестой том — словарь еврейского и арамейского, грамматика и греческий словник. Первое напечатанное пособие для изучения Библии.",
+   "Но книгу нельзя было продавать. Надо было дождаться разрешения Рима; оно пришло в 1520 году, а экземпляры разошлись лишь в 1522-м. К тому времени Сиснерос уже пять лет как умер, а другой человек, в Базеле, успел выиграть гонку. О нём мы расскажем в следующей витрине.",
+   "Было отпечатано шестьсот экземпляров. Уцелело очень немного. И это по сей день одна из самых впечатляющих учёных работ, какие создала Испания.",
+   "Тысячу триста лет назад Ориген поставил рядом шесть столбцов, чтобы сравнивать. Сиснерос сделал то же самое с печатным станком — и то, на изучение чего у одного человека уходила жизнь, оказалось под рукой сразу у шестисот."
   ]
  }
 };
@@ -290,6 +333,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Peshitta — Museo de Historia de la Biblia</title>
+<title>El Códice Amiatino — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F1ECE1;--claro:#FBF6EC;--tinta:#231C15;--cabecera:#6B3A2E;--acento:#B5892F;--marca:rgba(181,137,47,.3); }
+  :root{ --fondo:#F1EFE9;--claro:#FAF8F3;--tinta:#1D1C18;--cabecera:#3E3B2F;--acento:#8A7448;--marca:rgba(138,116,72,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,8 +17,11 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .oriente{flex:none;width:70px;height:62px}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .tomo{flex:none;width:52px;height:64px;background:var(--acento);border-left:8px solid var(--cabecera);border-radius:2px 5px 5px 2px}
 
+  
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
   .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
@@ -38,14 +41,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="oriente" viewBox="0 0 70 62" aria-hidden="true">
-   <g stroke="#B5892F" stroke-width="3" fill="none" stroke-linecap="round">
-     <path d="M8 16 H62"/><path d="M8 28 H50"/><path d="M8 40 H58"/><path d="M8 52 H44"/></g>
-   <circle cx="62" cy="31" r="5" fill="#B5892F"/></svg>
+  <div class="tomo" aria-hidden="true"></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -74,120 +75,168 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 4 · Museo de Historia de la Biblia",
-   "titulo": "La Peshitta",
-   "siglo": "La Biblia siríaca · siglos II al V",
+   "sala": "Vitrina 5b · Museo de Historia de la Biblia",
+   "titulo": "El Códice Amiatino",
+   "siglo": "Northumbria, hacia el año 700 · la Vulgata",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Todo lo que va a ver en este museo viajó hacia el poniente: de Jerusalén a Roma, a España, a Alemania, a Inglaterra, y de ahí cruzando el mar hasta aquí. Esta vitrina es la otra mitad de la historia: la rama que se fue hacia el oriente.",
-   "Se llama Peshitta, que en siríaco quiere decir la sencilla, la común. Es la Biblia de las iglesias de Siria y de Mesopotamia.",
-   "Su Antiguo Testamento se tradujo directamente del hebreo, probablemente en el siglo segundo. Su Nuevo Testamento quedó fijado a principios del siglo quinto, y vino a sustituir algo aún más antiguo: una armonía de los cuatro evangelios contados como una sola narración, que las iglesias siríacas usaron antes que los evangelios por separado.",
-   "Y ahora lo que hace única a esta pieza. El siríaco es una forma del arameo, que era la lengua de la casa y de la calle en la Galilea de Jesús. En los evangelios quedaron unas cuantas palabras sin traducir: talitha kumi, effetá, eloí eloí lemá sabactani. Ésas están en arameo. No es exactamente la misma variante que usted tiene delante, pero es la misma familia. Es lo más cerca que se puede estar del sonido original.",
-   "Otro detalle que sorprende: a este Nuevo Testamento le faltan libros. No trae la segunda de Pedro, ni la segunda y tercera de Juan, ni Judas, ni el Apocalipsis. Veintidós libros en vez de veintisiete. No es un error ni una mutilación: es una fotografía de un momento en que todavía se estaba decidiendo qué entraba y qué no.",
-   "Y viajó lejísimos. Los misioneros siríacos la llevaron a Persia, a la India y a Asia central. En la ciudad china de Xi'an se conserva una estela del año 781 que deja constancia de cristianos usando esta lengua en China. En Kerala, al sur de la India, hay comunidades que la siguen usando hoy.",
-   "A Europa llegó tarde y casi por casualidad: el primer Nuevo Testamento siríaco impreso en Occidente se hizo en Viena, en 1,555, porque un sacerdote de Mardin llamado Moisés cruzó medio mundo con un manuscrito bajo el brazo.",
-   "El ejemplar que usted ve es una edición moderna, y eso no es un defecto: es precisamente lo que queremos mostrarle. Este texto lleva mil setecientos años imprimiéndose sin interrupción porque nunca ha dejado de usarse. Se lee en voz alta, cada semana, en las iglesias siríacas de Medio Oriente y de la India.",
-   "Guárdese esa idea para todo el recorrido. Lo que va a ver a partir de aquí no son reliquias. Son herramientas de trabajo que alguien sigue usando."
+   "Treinta y cuatro kilos y más de dos mil páginas. Para hacerlo hizo falta sacrificar más de quinientas reses, porque cada hoja es piel curtida de animal.",
+   "Éste es el Códice Amiatino, y es la copia completa más antigua que se conserva de la Vulgata latina, la Biblia en latín que tradujo san Jerónimo a finales del siglo cuarto.",
+   "Pero es algo más, y es lo que de verdad importa. Es la primera vez que toda la Escritura cupo en un solo volumen. Antes de esto, una Biblia completa era un estante entero de códices: los profetas por un lado, los evangelios por otro, los salmos aparte. Aquí está todo junto, del Génesis al Apocalipsis. El libro tal como usted lo conoce empieza aquí.",
+   "Lo hicieron monjes ingleses hacia el año 700, en los monasterios de Wearmouth y Jarrow, en Northumbria, en el extremo norte del mundo entonces conocido. Hicieron tres ejemplares gigantes: dos se quedaron en sus iglesias y el tercero era un regalo para el papa.",
+   "Ese tercero es éste. El abad Ceolfrido salió con él rumbo a Roma en el año 716, siendo ya un anciano. Murió en el camino, en Langres, en la Galia. El libro siguió solo y llegó a Italia sin él.",
+   "Y ahí empieza un engaño que duró mil años. En la página de la dedicatoria, alguien raspó el pergamino, borró el nombre de Ceolfrido y el de los anglos, y escribió encima el de un abad lombardo. Durante siglos se creyó que el códice era italiano. Apenas en el siglo diecinueve un estudioso leyó lo que había debajo de la raspadura y le devolvió el libro a sus autores.",
+   "Hoy el original está en Florencia.",
+   "Y fíjese en lo que significa para este recorrido. Al lado está viendo la Peshitta, la rama que se fue hacia el oriente. Ésta es la que se fue hacia el poniente: el latín de Jerónimo, que va a ser la Biblia de Europa durante mil años. De aquí salen el Beato que verá enseguida, la Biblia de San Luis, la de Gutenberg, la del padre Scío y la que se imprimió en México en 1,831.",
+   "Hebreo, griego, siríaco y latín, y entre medias el hombre que los puso en columnas para compararlos. Con ésta se cierra el tronco. Todo lo que sigue son ramas."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 4 · Museum of the History of the Bible",
-   "titulo": "The Peshitta",
-   "siglo": "The Syriac Bible · second to fifth century",
+   "sala": "Case 5b · Museum of the History of the Bible",
+   "titulo": "The Codex Amiatinus",
+   "siglo": "Northumbria, about the year 700 · the Vulgate",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Everything you are about to see in this museum travelled westward: from Jerusalem to Rome, to Spain, to Germany, to England, and from there across the sea to here. This case is the other half of the story: the branch that went east.",
-   "It is called the Peshitta, which in Syriac means the simple one, the common one. It is the Bible of the churches of Syria and Mesopotamia.",
-   "Its Old Testament was translated directly from the Hebrew, probably in the second century. Its New Testament was settled at the beginning of the fifth century, and it replaced something older still: a harmony of the four Gospels told as a single narrative, which the Syriac churches used before they used the Gospels separately.",
-   "And now what makes this piece unique. Syriac is a form of Aramaic, which was the language of the house and the street in the Galilee of Jesus. A few words were left untranslated in the Gospels: talitha kumi, ephphatha, eloi eloi lema sabachthani. Those are Aramaic. It is not exactly the same variety you have before you, but it is the same family. It is as close as one can get to the original sound.",
-   "Another detail that surprises people: this New Testament is missing books. It does not contain the second letter of Peter, nor the second and third of John, nor Jude, nor Revelation. Twenty-two books instead of twenty-seven. It is not an error or a mutilation: it is a photograph of a moment when it was still being decided what was in and what was out.",
-   "And it travelled enormously far. Syriac missionaries carried it to Persia, to India and to central Asia. In the Chinese city of Xi'an there survives a stele of the year 781 recording Christians using this language in China. In Kerala, in southern India, there are communities still using it today.",
-   "It reached Europe late and almost by chance: the first Syriac New Testament printed in the West was made in Vienna in 1555, because a priest from Mardin named Moses crossed half the world with a manuscript under his arm.",
-   "The copy you see is a modern edition, and that is not a shortcoming: it is precisely what we want to show you. This text has been printed without interruption for seventeen hundred years because it has never stopped being used. It is read aloud, every week, in the Syriac churches of the Middle East and of India.",
-   "Keep that idea with you for the whole tour. What you are going to see from here on are not relics. They are working tools that somebody is still using."
+   "Thirty-four kilos and more than two thousand pages. To make it, more than five hundred head of cattle had to be slaughtered, because every leaf is tanned animal skin.",
+   "This is the Codex Amiatinus, and it is the oldest complete copy that survives of the Latin Vulgate, the Bible in Latin that Saint Jerome translated at the end of the fourth century.",
+   "But it is something more, and this is what really matters. It is the first time the whole of Scripture fitted into a single volume. Before this, a complete Bible was a whole shelf of codices: the prophets on one side, the gospels on another, the psalms apart. Here it is all together, from Genesis to Revelation. The book as you know it begins here.",
+   "It was made by English monks about the year 700, in the monasteries of Wearmouth and Jarrow, in Northumbria, at the far north of the world then known. They made three giant copies: two stayed in their churches and the third was a gift for the pope.",
+   "That third one is this. Abbot Ceolfrith set out with it for Rome in the year 716, already an old man. He died on the way, at Langres, in Gaul. The book went on alone and reached Italy without him.",
+   "And there begins a deception that lasted a thousand years. On the dedication page, someone scraped the parchment, erased the name of Ceolfrith and that of the Angles, and wrote over it the name of a Lombard abbot. For centuries the codex was believed to be Italian. Only in the nineteenth century did a scholar read what lay beneath the scraping and give the book back to its makers.",
+   "Today the original is in Florence.",
+   "And consider what it means for this tour. Beside it you are looking at the Peshitta, the branch that went east. This is the one that went west: Jerome's Latin, which will be the Bible of Europe for a thousand years. From here come the Beatus you will see next, the Bible of Saint Louis, Gutenberg's, Father Scío's, and the one printed in Mexico in 1831.",
+   "Hebrew, Greek, Syriac and Latin, and in between the man who set them in columns to compare them. With this the trunk is complete. Everything that follows is branches."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 4 · Musée de l'Histoire de la Bible",
-   "titulo": "La Peshitta",
-   "siglo": "La Bible syriaque · du deuxième au cinquième siècle",
+   "sala": "Vitrine 5b · Musée de l'Histoire de la Bible",
+   "titulo": "Le Codex Amiatinus",
+   "siglo": "Northumbrie, vers l'an 700 · la Vulgate",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Tout ce que vous allez voir dans ce musée a voyagé vers l'ouest : de Jérusalem à Rome, en Espagne, en Allemagne, en Angleterre, et de là en traversant la mer jusqu'ici. Cette vitrine est l'autre moitié de l'histoire : la branche qui est partie vers l'orient.",
-   "Elle s'appelle Peshitta, ce qui en syriaque veut dire la simple, la commune. C'est la Bible des Églises de Syrie et de Mésopotamie.",
-   "Son Ancien Testament fut traduit directement de l'hébreu, probablement au deuxième siècle. Son Nouveau Testament fut fixé au début du cinquième siècle, et il remplaça quelque chose de plus ancien encore : une harmonie des quatre évangiles racontés comme un seul récit, que les Églises syriaques utilisèrent avant les évangiles séparés.",
-   "Et voici ce qui rend cette pièce unique. Le syriaque est une forme de l'araméen, qui était la langue de la maison et de la rue dans la Galilée de Jésus. Quelques mots sont restés sans traduction dans les évangiles : talitha koumi, effata, éloï éloï lema sabachthani. Ceux-là sont en araméen. Ce n'est pas exactement la même variante que celle que vous avez devant vous, mais c'est la même famille. C'est ce qu'on peut approcher de plus près du son original.",
-   "Autre détail surprenant : il manque des livres à ce Nouveau Testament. Il ne contient pas la deuxième de Pierre, ni la deuxième et la troisième de Jean, ni Jude, ni l'Apocalypse. Vingt-deux livres au lieu de vingt-sept. Ce n'est ni une erreur ni une mutilation : c'est la photographie d'un moment où l'on décidait encore ce qui entrait et ce qui n'entrait pas.",
-   "Et elle a voyagé très loin. Les missionnaires syriaques la portèrent en Perse, en Inde et en Asie centrale. Dans la ville chinoise de Xi'an se conserve une stèle de l'an 781 attestant des chrétiens usant de cette langue en Chine. Au Kerala, au sud de l'Inde, des communautés l'utilisent encore aujourd'hui.",
-   "Elle arriva en Europe tard et presque par hasard : le premier Nouveau Testament syriaque imprimé en Occident fut fait à Vienne, en 1555, parce qu'un prêtre de Mardin nommé Moïse traversa la moitié du monde avec un manuscrit sous le bras.",
-   "L'exemplaire que vous voyez est une édition moderne, et ce n'est pas un défaut : c'est précisément ce que nous voulons vous montrer. Ce texte s'imprime sans interruption depuis mille sept cents ans parce qu'il n'a jamais cessé d'être utilisé. On le lit à voix haute, chaque semaine, dans les Églises syriaques du Moyen-Orient et de l'Inde.",
-   "Gardez cette idée pour tout le parcours. Ce que vous allez voir à partir d'ici ne sont pas des reliques. Ce sont des outils de travail que quelqu'un utilise encore."
+   "Trente-quatre kilos et plus de deux mille pages. Pour le faire il fallut abattre plus de cinq cents bêtes, car chaque feuillet est une peau d'animal tannée.",
+   "Voici le Codex Amiatinus, la plus ancienne copie complète conservée de la Vulgate latine, la Bible en latin que traduisit saint Jérôme à la fin du quatrième siècle.",
+   "Mais il est quelque chose de plus, et c'est là ce qui importe vraiment. C'est la première fois que toute l'Écriture tint en un seul volume. Auparavant, une Bible complète était toute une étagère de codex : les prophètes d'un côté, les évangiles de l'autre, les psaumes à part. Ici tout est réuni, de la Genèse à l'Apocalypse. Le livre tel que vous le connaissez commence ici.",
+   "Il fut fait par des moines anglais vers l'an 700, dans les monastères de Wearmouth et de Jarrow, en Northumbrie, à l'extrême nord du monde alors connu. Ils en firent trois exemplaires géants : deux restèrent dans leurs églises et le troisième était un cadeau pour le pape.",
+   "Ce troisième, c'est celui-ci. L'abbé Ceolfrid partit avec lui pour Rome en l'an 716, déjà vieillard. Il mourut en chemin, à Langres, en Gaule. Le livre poursuivit seul et parvint en Italie sans lui.",
+   "Et là commence une tromperie qui dura mille ans. Sur la page de la dédicace, quelqu'un gratta le parchemin, effaça le nom de Ceolfrid et celui des Angles, et écrivit par-dessus celui d'un abbé lombard. Pendant des siècles on crut le codex italien. Ce n'est qu'au dix-neuvième siècle qu'un savant lut ce qui se trouvait sous le grattage et rendit le livre à ses auteurs.",
+   "Aujourd'hui l'original est à Florence.",
+   "Et voyez ce que cela signifie pour ce parcours. À côté, vous voyez la Peshitta, la branche partie vers l'orient. Celle-ci est celle qui partit vers l'occident : le latin de Jérôme, qui sera la Bible de l'Europe pendant mille ans. D'ici sortent le Beatus que vous verrez tout de suite, la Bible de Saint Louis, celle de Gutenberg, celle du père Scío et celle qui fut imprimée au Mexique en 1831.",
+   "Hébreu, grec, syriaque et latin, et entre les deux l'homme qui les mit en colonnes pour les comparer. Avec celui-ci le tronc se referme. Tout ce qui suit, ce sont des branches."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 4 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Peschitta",
-   "siglo": "Die syrische Bibel · 2. bis 5. Jahrhundert",
+   "sala": "Vitrine 5b · Museum zur Geschichte der Bibel",
+   "titulo": "Der Codex Amiatinus",
+   "siglo": "Northumbrien, um das Jahr 700 · die Vulgata",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Alles, was Sie in diesem Museum sehen werden, reiste nach Westen: von Jerusalem nach Rom, nach Spanien, nach Deutschland, nach England und von dort über das Meer bis hierher. Diese Vitrine ist die andere Hälfte der Geschichte: der Zweig, der nach Osten ging.",
-   "Sie heißt Peschitta, was auf Syrisch die Einfache, die Gewöhnliche bedeutet. Es ist die Bibel der Kirchen Syriens und Mesopotamiens.",
-   "Ihr Altes Testament wurde unmittelbar aus dem Hebräischen übersetzt, wahrscheinlich im zweiten Jahrhundert. Ihr Neues Testament wurde zu Beginn des fünften Jahrhunderts festgelegt und trat an die Stelle von etwas noch Älterem: einer Harmonie der vier Evangelien, als eine einzige Erzählung erzählt, die die syrischen Kirchen benutzten, bevor sie die Evangelien einzeln benutzten.",
-   "Und nun das, was dieses Stück einzigartig macht. Syrisch ist eine Form des Aramäischen, und Aramäisch war die Sprache des Hauses und der Straße im Galiläa Jesu. In den Evangelien blieben einige Wörter unübersetzt: talitha kumi, effata, eloi eloi lema sabachthani. Diese sind aramäisch. Es ist nicht genau dieselbe Spielart, die Sie vor sich haben, aber es ist dieselbe Familie. Näher kann man dem ursprünglichen Klang nicht kommen.",
-   "Noch eine überraschende Einzelheit: diesem Neuen Testament fehlen Bücher. Es enthält weder den zweiten Petrusbrief noch den zweiten und dritten Johannesbrief, weder den Judasbrief noch die Offenbarung. Zweiundzwanzig Bücher statt siebenundzwanzig. Das ist kein Fehler und keine Verstümmelung: es ist eine Momentaufnahme aus einer Zeit, in der noch entschieden wurde, was dazugehört und was nicht.",
-   "Und sie reiste sehr weit. Syrische Missionare trugen sie nach Persien, nach Indien und nach Zentralasien. In der chinesischen Stadt Xi'an steht eine Stele aus dem Jahr 781, die Christen bezeugt, die in China diese Sprache benutzten. In Kerala, im Süden Indiens, gibt es Gemeinden, die sie bis heute gebrauchen.",
-   "Nach Europa kam sie spät und fast durch Zufall: das erste im Westen gedruckte syrische Neue Testament entstand 1555 in Wien, weil ein Priester aus Mardin namens Moses mit einer Handschrift unter dem Arm die halbe Welt durchquerte.",
-   "Das Exemplar, das Sie sehen, ist eine moderne Ausgabe, und das ist kein Mangel: es ist genau das, was wir Ihnen zeigen wollen. Dieser Text wird seit siebzehnhundert Jahren ohne Unterbrechung gedruckt, weil er nie aufgehört hat, gebraucht zu werden. Er wird jede Woche laut gelesen, in den syrischen Kirchen des Nahen Ostens und Indiens.",
-   "Behalten Sie diesen Gedanken für den ganzen Rundgang. Was Sie von hier an sehen werden, sind keine Reliquien. Es sind Arbeitsgeräte, die jemand noch benutzt."
+   "Vierunddreißig Kilo und mehr als zweitausend Seiten. Um ihn herzustellen, mussten mehr als fünfhundert Rinder geschlachtet werden, denn jedes Blatt ist gegerbte Tierhaut.",
+   "Dies ist der Codex Amiatinus, die älteste erhaltene vollständige Abschrift der lateinischen Vulgata, der Bibel auf Latein, die Hieronymus am Ende des vierten Jahrhunderts übersetzte.",
+   "Doch er ist mehr, und darauf kommt es wirklich an. Hier passte zum ersten Mal die ganze Schrift in einen einzigen Band. Zuvor war eine vollständige Bibel ein ganzes Regal von Kodizes: die Propheten hier, die Evangelien dort, die Psalmen gesondert. Hier ist alles beisammen, von der Genesis bis zur Offenbarung. Das Buch, wie Sie es kennen, beginnt hier.",
+   "Gemacht haben ihn englische Mönche um das Jahr 700, in den Klöstern Wearmouth und Jarrow in Northumbrien, am äußersten Norden der damals bekannten Welt. Sie fertigten drei riesige Exemplare: zwei blieben in ihren Kirchen, das dritte war ein Geschenk für den Papst.",
+   "Dieses dritte ist dieses hier. Abt Ceolfrid brach mit ihm im Jahr 716 nach Rom auf, schon ein Greis. Er starb unterwegs, in Langres in Gallien. Das Buch zog allein weiter und erreichte Italien ohne ihn.",
+   "Und dort beginnt ein Betrug, der tausend Jahre währte. Auf der Widmungsseite schabte jemand das Pergament ab, löschte den Namen Ceolfrids und den der Angeln und schrieb darüber den eines langobardischen Abtes. Jahrhundertelang hielt man den Kodex für italienisch. Erst im neunzehnten Jahrhundert las ein Gelehrter, was unter der Schabung stand, und gab das Buch seinen Urhebern zurück.",
+   "Heute liegt das Original in Florenz.",
+   "Und bedenken Sie, was das für diesen Rundgang bedeutet. Daneben sehen Sie die Peschitta, den Zweig, der nach Osten ging. Dies ist der, der nach Westen ging: das Latein des Hieronymus, das tausend Jahre lang die Bibel Europas sein wird. Von hier stammen der Beatus, den Sie gleich sehen, die Bibel des heiligen Ludwig, die Gutenbergs, die des Paters Scío und jene, die 1831 in Mexiko gedruckt wurde.",
+   "Hebräisch, Griechisch, Syrisch und Latein, und dazwischen der Mann, der sie in Spalten stellte, um sie zu vergleichen. Mit diesem schließt sich der Stamm. Alles Weitere sind Zweige."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 4 · Museo di Storia della Bibbia",
-   "titulo": "La Peshitta",
-   "siglo": "La Bibbia siriaca · dal II al V secolo",
+   "sala": "Vetrina 5b · Museo di Storia della Bibbia",
+   "titulo": "Il Codice Amiatino",
+   "siglo": "Northumbria, verso l'anno 700 · la Vulgata",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Tutto ciò che vedrà in questo museo viaggiò verso occidente: da Gerusalemme a Roma, in Spagna, in Germania, in Inghilterra, e di lì attraverso il mare fino a qui. Questa vetrina è l'altra metà della storia: il ramo che andò verso oriente.",
-   "Si chiama Peshitta, che in siriaco vuol dire la semplice, la comune. È la Bibbia delle chiese di Siria e di Mesopotamia.",
-   "Il suo Antico Testamento fu tradotto direttamente dall'ebraico, probabilmente nel secondo secolo. Il suo Nuovo Testamento fu fissato all'inizio del quinto secolo, e venne a sostituire qualcosa di ancora più antico: un'armonia dei quattro vangeli raccontati come un'unica narrazione, che le chiese siriache usarono prima dei vangeli separati.",
-   "E ora ciò che rende unico questo pezzo. Il siriaco è una forma dell'aramaico, che era la lingua della casa e della strada nella Galilea di Gesù. Nei vangeli rimasero alcune parole non tradotte: talitha kumi, effatà, eloì eloì lemà sabactàni. Quelle sono in aramaico. Non è esattamente la stessa variante che ha davanti, ma è la stessa famiglia. È quanto di più vicino si possa stare al suono originale.",
-   "Un altro dettaglio che sorprende: a questo Nuovo Testamento mancano dei libri. Non contiene la seconda di Pietro, né la seconda e la terza di Giovanni, né Giuda, né l'Apocalisse. Ventidue libri invece di ventisette. Non è un errore né una mutilazione: è la fotografia di un momento in cui si stava ancora decidendo che cosa entrava e che cosa no.",
-   "E viaggiò lontanissimo. I missionari siriaci la portarono in Persia, in India e in Asia centrale. Nella città cinese di Xi'an si conserva una stele dell'anno 781 che attesta cristiani che usavano questa lingua in Cina. In Kerala, nel sud dell'India, ci sono comunità che la usano ancora oggi.",
-   "In Europa arrivò tardi e quasi per caso: il primo Nuovo Testamento siriaco stampato in Occidente fu fatto a Vienna, nel 1555, perché un sacerdote di Mardin di nome Mosè attraversò mezzo mondo con un manoscritto sotto il braccio.",
-   "L'esemplare che vede è un'edizione moderna, e non è un difetto: è proprio quello che vogliamo mostrarle. Questo testo si stampa senza interruzione da millesettecento anni perché non ha mai smesso di essere usato. Si legge ad alta voce, ogni settimana, nelle chiese siriache del Medio Oriente e dell'India.",
-   "Si tenga questa idea per tutto il percorso. Quello che vedrà da qui in avanti non sono reliquie. Sono strumenti di lavoro che qualcuno sta ancora usando."
+   "Trentaquattro chili e più di duemila pagine. Per farlo fu necessario abbattere più di cinquecento capi di bestiame, perché ogni foglio è pelle conciata di animale.",
+   "Questo è il Codice Amiatino, ed è la copia completa più antica che si conservi della Vulgata latina, la Bibbia in latino che tradusse san Girolamo alla fine del quarto secolo.",
+   "Ma è qualcosa di più, ed è ciò che davvero conta. È la prima volta che tutta la Scrittura entrò in un solo volume. Prima di questo, una Bibbia completa era uno scaffale intero di codici: i profeti da una parte, i vangeli dall'altra, i salmi a parte. Qui c'è tutto insieme, dalla Genesi all'Apocalisse. Il libro così come lei lo conosce comincia qui.",
+   "Lo fecero monaci inglesi verso l'anno 700, nei monasteri di Wearmouth e Jarrow, in Northumbria, all'estremo nord del mondo allora conosciuto. Ne fecero tre esemplari giganteschi: due rimasero nelle loro chiese e il terzo era un dono per il papa.",
+   "Quel terzo è questo. L'abate Ceolfrido partì con esso verso Roma nell'anno 716, ormai vecchio. Morì per strada, a Langres, in Gallia. Il libro proseguì da solo e arrivò in Italia senza di lui.",
+   "E lì comincia un inganno durato mille anni. Nella pagina della dedica, qualcuno raschiò la pergamena, cancellò il nome di Ceolfrido e quello degli angli, e vi scrisse sopra quello di un abate longobardo. Per secoli si credette che il codice fosse italiano. Solo nell'Ottocento uno studioso lesse ciò che stava sotto la raschiatura e restituì il libro ai suoi autori.",
+   "Oggi l'originale è a Firenze.",
+   "E guardi che cosa significa per questo percorso. Accanto sta vedendo la Peshitta, il ramo che andò verso oriente. Questo è quello che andò verso occidente: il latino di Girolamo, che sarà la Bibbia d'Europa per mille anni. Di qui escono il Beato che vedrà subito, la Bibbia di San Luigi, quella di Gutenberg, quella del padre Scío e quella che si stampò in Messico nel 1831.",
+   "Ebraico, greco, siriaco e latino, e in mezzo l'uomo che li mise in colonne per confrontarli. Con questo si chiude il tronco. Tutto ciò che segue sono rami."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 5b · Museu de História da Bíblia",
+   "titulo": "O Códice Amiatino",
+   "siglo": "Nortúmbria, por volta do ano 700 · a Vulgata",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Trinta e quatro quilos e mais de duas mil páginas. Para fazê-lo foi necessário abater mais de quinhentas reses, porque cada folha é pele curtida de animal.",
+   "Este é o Códice Amiatino, e é a cópia completa mais antiga que se conserva da Vulgata latina, a Bíblia em latim que são Jerônimo traduziu no fim do século quarto.",
+   "Mas é algo mais, e é isso que de verdade importa. É a primeira vez que toda a Escritura coube num só volume. Antes disto, uma Bíblia completa era uma estante inteira de códices: os profetas de um lado, os evangelhos de outro, os salmos à parte. Aqui está tudo junto, do Gênesis ao Apocalipse. O livro tal como você o conhece começa aqui.",
+   "Fizeram-no monges ingleses por volta do ano 700, nos mosteiros de Wearmouth e Jarrow, na Nortúmbria, no extremo norte do mundo então conhecido. Fizeram três exemplares gigantes: dois ficaram nas suas igrejas e o terceiro era um presente para o papa.",
+   "Esse terceiro é este. O abade Ceolfrido partiu com ele rumo a Roma no ano 716, já ancião. Morreu no caminho, em Langres, na Gália. O livro seguiu sozinho e chegou à Itália sem ele.",
+   "E aí começa um engano que durou mil anos. Na página da dedicatória, alguém raspou o pergaminho, apagou o nome de Ceolfrido e o dos anglos, e escreveu por cima o de um abade lombardo. Durante séculos acreditou-se que o códice era italiano. Apenas no século dezenove um estudioso leu o que havia sob a raspagem e devolveu o livro aos seus autores.",
+   "Hoje o original está em Florença.",
+   "E repare no que significa para este percurso. Ao lado você está vendo a Peshitta, o ramo que foi para o oriente. Este é o que foi para o poente: o latim de Jerônimo, que será a Bíblia da Europa durante mil anos. Daqui saem o Beato que verá em seguida, a Bíblia de São Luís, a de Gutenberg, a do padre Scío e a que se imprimiu no México em 1831.",
+   "Hebraico, grego, siríaco e latim, e no meio o homem que os pôs em colunas para compará-los. Com este fecha-se o tronco. Tudo o que segue são ramos."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 5b · Музей истории Библии",
+   "titulo": "Амиатинский кодекс",
+   "siglo": "Нортумбрия, около 700 года · Вульгата",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Тридцать четыре килограмма и более двух тысяч страниц. Чтобы его изготовить, пришлось забить более пятисот голов скота, потому что каждый лист — выделанная шкура животного.",
+   "Это Амиатинский кодекс, древнейший сохранившийся полный список латинской Вульгаты — Библии на латыни, которую перевёл святой Иероним в конце четвёртого века.",
+   "Но он нечто большее, и вот что действительно важно. Здесь впервые всё Писание уместилось в одном томе. До этого полная Библия была целой полкой кодексов: пророки отдельно, Евангелия отдельно, псалмы особо. Здесь всё вместе, от Бытия до Откровения. Книга в том виде, в каком вы её знаете, начинается здесь.",
+   "Его сделали английские монахи около 700 года в монастырях Уэрмут и Ярроу в Нортумбрии, на крайнем севере известного тогда мира. Они изготовили три огромных экземпляра: два остались в их церквах, а третий предназначался в дар папе.",
+   "Этот третий — перед вами. Аббат Кеолфрид отправился с ним в Рим в 716 году, будучи уже стариком. Он умер в пути, в Лангре, в Галлии. Книга пошла дальше одна и добралась до Италии без него.",
+   "И тут начинается обман, длившийся тысячу лет. На странице посвящения кто-то выскоблил пергамент, стёр имя Кеолфрида и упоминание англов и написал поверх имя лангобардского аббата. Веками кодекс считали итальянским. Лишь в девятнадцатом веке один учёный прочёл то, что было под соскобом, и вернул книгу её создателям.",
+   "Сегодня подлинник хранится во Флоренции.",
+   "И подумайте, что это значит для нашего пути. Рядом вы видите Пешитту — ветвь, ушедшую на восток. А это ветвь, ушедшая на запад: латынь Иеронима, которая тысячу лет будет Библией Европы. Отсюда происходят Беат, которого вы увидите сейчас, Библия святого Людовика, Библия Гутенберга, Библия отца Сио и та, что была напечатана в Мексике в 1831 году.",
+   "Еврейский, греческий, сирийский и латинский — и между ними человек, поставивший их в столбцы, чтобы сравнить. На этом ствол завершён. Всё дальнейшее — ветви."
   ]
  }
 };
@@ -292,6 +341,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

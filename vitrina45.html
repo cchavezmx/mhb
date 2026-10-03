@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Las lenguas de México — Museo de Historia de la Biblia</title>
+<title>La sección infantil — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EDE0;--claro:#FBF6E9;--tinta:#241E16;--cabecera:#7A3B1E;--acento:#1F5134;--marca:rgba(31,81,52,.2); }
+  :root{ --fondo:#F6F2E6;--claro:#FDFAF1;--tinta:#1E1B14;--cabecera:#2E5A8A;--acento:#D8A029;--marca:rgba(216,160,41,.35); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .greca{flex:none;width:72px;height:60px}
+  .arca{flex:none;display:flex;flex-direction:column;align-items:center}
+  .arca b{display:block;width:34px;height:18px;background:#C2502E;border-radius:4px 4px 0 0}
+  .arca i{display:block;width:62px;height:26px;background:#8A5A2E;border-radius:0 0 26px 26px}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,14 +40,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="greca" viewBox="0 0 72 60" aria-hidden="true">
-   <g fill="none" stroke="#E8C77A" stroke-width="5">
-     <path d="M4 52 V28 H20 V40 H12"/><path d="M28 52 V28 H44 V40 H36"/>
-     <path d="M52 52 V28 H68 V40 H60"/><path d="M4 16 H68"/></g></svg>
+  <div class="arca" aria-hidden="true"><b></b><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -74,115 +74,161 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 28 · Museo de Historia de la Biblia",
-   "titulo": "Las lenguas de México",
-   "siglo": "Cincuenta y seis variantes lingüísticas",
+   "sala": "Librero 6 · Museo de Historia de la Biblia",
+   "titulo": "La sección infantil",
+   "siglo": "El lector que menos entiende",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "En esta vitrina no hay ninguna pieza famosa. Y sin embargo es, probablemente, la que ningún otro museo del mundo podría armar.",
-   "Son Biblias en las lenguas de este país: cincuenta y seis variantes. Náhuatl, maya, tzeltal, tzotzil, mixteco, zapoteco, totonaco, chinanteco, purépecha, mazahua, huasteco, yaqui, mayo, tarahumara, tojolabal, triqui, mixe, mazateco, popoluca, tlapaneco, ch´ol, y siguen.",
-   "Y conviene empezar diciendo una cosa: son lenguas, no dialectos, porque tienen gramática, literatura y siglos de historia escrita. En México hay sesenta y ocho agrupaciones lingüísticas reconocidas, y varias de ellas se escribieron por primera vez porque alguien quiso poner en ellas un texto bíblico.",
-   "La historia arranca en el siglo dieciséis. Recién consumada la conquista, los frailes se pusieron a aprender estas lenguas para poder predicar en ellas. Escribieron gramáticas y vocabularios que hoy son nuestra principal fuente para conocerlas, y tradujeron doctrinas y pasajes de los evangelios. Lo hicieron por razones suyas, pero el resultado fue que esas lenguas entraron a la imprenta.",
-   "Después vinieron siglos de silencio. Las traducciones completas y sistemáticas son trabajo del siglo veinte, y muchas siguen en curso ahora mismo, hechas con hablantes nativos y no sólo sobre ellos.",
-   "Y ahora lo importante. A lo largo de este recorrido usted ha visto la misma escena repetida: alguien decide que la Escritura tiene que hablar la lengua de su gente, y le cuesta la vida o el destierro. Tyndale. Casiodoro de Reina, Julianillo Hernández.",
-   "Ese mismo trabajo, con la misma tenacidad, se ha venido haciendo en este país en decenas de lenguas, sin hogueras pero también sin ruido, y casi nadie lo cuenta.",
-   "Ahí está la vitrina. Si usted habla alguna de estas lenguas, búsquela. Seguramente está aquí."
+   "Jesús dijo: dejen a los niños venir a mí, y no se lo impidan, porque de los tales es el Reino de los Cielos.",
+   "Mateo, capítulo 19, versículo 14.",
+   "Y llegamos al librero más importante del museo. Se lo digo en serio. Todo lo que ha visto en el recorrido existe por una razón sencilla: que alguien pudiera entender. Y el lector que menos entiende, y al que más hay que explicarle, es un niño de cinco años.",
+   "Mire lo que hicieron para conseguirlo. Menos texto y más dibujo. Palabras cortas. Las historias que un niño aguanta: Noé, José, David, Jonás, el nacimiento, la tormenta en el lago. Páginas de cartón para manos que aún no saben pasar hojas. Letra grande. Colores fuertes.",
+   "Nada de eso es nuevo, y ahí está lo hermoso. Vuelva un momento a las primeras vitrinas de este museo. El Beato de Liébana contaba el Apocalipsis con colores planos y figuras de ojos enormes, para gente que no sabía leer. La Biblia de San Luis lo contaba en medallones, imagen y explicación, imagen y explicación, para educar a un niño rey.",
+   "Es exactamente el mismo método, mil años después. Sólo cambió el precio: aquéllas costaban un reino, y éstas se compran en cualquier librería.",
+   "Y una aclaración, para los adultos que están oyendo esto. No crea que la Biblia infantil es una Biblia de menor valor. Casi todos los que hicieron algo en esta historia, los traductores, los impresores, los que huyeron con el manuscrito bajo el brazo, conocieron este Libro de niños, contado por alguien, en la lengua de su casa. Todo lo demás vino después.",
+   "Nadie empieza leyendo. Todos empezamos escuchando."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 28 · Museum of the History of the Bible",
-   "titulo": "The languages of Mexico",
-   "siglo": "Fifty-six linguistic varieties",
+   "sala": "Bookcase 6 · Museum of the History of the Bible",
+   "titulo": "The children's section",
+   "siglo": "The reader who understands least",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "There is no famous piece in this case. And yet it is probably the one no other museum in the world could put together.",
-   "These are Bibles in the languages of this country: fifty-six varieties. Nahuatl, Maya, Tzeltal, Tzotzil, Mixtec, Zapotec, Totonac, Chinantec, Purépecha, Mazahua, Huastec, Yaqui, Mayo, Tarahumara, Tojolabal, Trique, Mixe, Mazatec, Popoluca, Tlapanec, Ch'ol, and more.",
-   "And it is worth saying one thing at the outset: these are languages, not dialects. They have grammar, literature and centuries of written history. Mexico has sixty-eight recognised linguistic groupings, and several of them were written down for the first time because somebody wanted to put a biblical text into them.",
-   "The story begins in the sixteenth century. With the conquest barely finished, the friars set about learning these languages in order to preach in them. They wrote grammars and vocabularies that are now our chief source for knowing them, and they translated catechisms and passages of the Gospels. They did it for reasons of their own, but the result was that those languages entered the printing press.",
-   "Then came centuries of silence. The complete, systematic translations are the work of the twentieth century, and many are still under way right now, made with native speakers and not merely about them.",
-   "And now the important part. Throughout this tour you have seen the same scene repeated: somebody decides that Scripture must speak the language of his own people, and it costs him his life or his exile. Tyndale. Casiodoro de Reina. Julianillo Hernández.",
-   "That same work, with the same stubbornness, has been going on in this country in dozens of languages, without bonfires but also without noise, and hardly anyone tells the story.",
-   "There is the case. If you speak one of these languages, look for it. It is here."
+   "Jesus said: let the children come to me, and do not hinder them, for of such is the Kingdom of Heaven.",
+   "Matthew, chapter 19, verse 14.",
+   "And we come to the most important bookcase in the museum. I say it in earnest. Everything you have seen on this tour exists for one simple reason: that somebody might understand. And the reader who understands least, and to whom most must be explained, is a child of five.",
+   "Look at what was done to manage it. Less text and more drawing. Short words. The stories a child can take: Noah, Joseph, David, Jonah, the nativity, the storm on the lake. Board pages for hands that cannot yet turn leaves. Large type. Strong colours.",
+   "None of that is new, and there lies the beauty of it. Go back a moment to the first cases of this museum. The Beatus of Liébana told the book of Revelation with flat colours and figures with enormous eyes, for people who could not read. The Bible of Saint Louis told it in medallions, image and explanation, image and explanation, to teach a child king.",
+   "It is exactly the same method, a thousand years later. Only the price changed: those cost a kingdom, and these can be bought in any bookshop.",
+   "And a word for the adults listening to this. Do not think a children's Bible is a Bible of lesser worth. Almost everyone who did anything in this history, the translators, the printers, those who fled with the manuscript under their arm, first knew this Book as children, told by somebody, in the language of their home. Everything else came afterwards.",
+   "Nobody begins by reading. We all begin by listening."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 28 · Musée de l'Histoire de la Bible",
-   "titulo": "Les langues du Mexique",
-   "siglo": "Cinquante-six variétés linguistiques",
+   "sala": "Rayon 6 · Musée de l'Histoire de la Bible",
+   "titulo": "La section enfantine",
+   "siglo": "Le lecteur qui comprend le moins",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Dans cette vitrine, il n'y a aucune pièce célèbre. Et pourtant c'est probablement celle qu'aucun autre musée au monde ne pourrait réunir.",
-   "Ce sont des Bibles dans les langues de ce pays : cinquante-six variétés. Nahuatl, maya, tzeltal, tzotzil, mixtèque, zapotèque, totonaque, chinantèque, purépecha, mazahua, huastèque, yaqui, mayo, tarahumara, tojolabal, trique, mixe, mazatèque, popoluca, tlapanèque, ch'ol, et d'autres encore.",
-   "Et il convient de dire une chose d'emblée : ce sont des langues, non des dialectes. Elles ont une grammaire, une littérature et des siècles d'histoire écrite. Le Mexique compte soixante-huit groupements linguistiques reconnus, et plusieurs d'entre eux ont été écrits pour la première fois parce que quelqu'un a voulu y mettre un texte biblique.",
-   "L'histoire commence au seizième siècle. La conquête à peine achevée, les frères se mirent à apprendre ces langues pour pouvoir y prêcher. Ils écrivirent des grammaires et des vocabulaires qui sont aujourd'hui notre principale source pour les connaître, et traduisirent des catéchismes et des passages des Évangiles. Ils le firent pour leurs propres raisons, mais le résultat fut que ces langues entrèrent dans l'imprimerie.",
-   "Puis vinrent des siècles de silence. Les traductions complètes et systématiques sont l'œuvre du vingtième siècle, et beaucoup sont encore en cours aujourd'hui, faites avec des locuteurs natifs et non seulement à leur sujet.",
-   "Et maintenant l'essentiel. Tout au long de ce parcours, vous avez vu la même scène se répéter : quelqu'un décide que l'Écriture doit parler la langue de son peuple, et cela lui coûte la vie ou l'exil. Tyndale. Casiodoro de Reina. Julianillo Hernández.",
-   "Ce même travail, avec la même obstination, se fait dans ce pays depuis des décennies et dans des dizaines de langues, sans bûchers mais aussi sans bruit, et presque personne ne le raconte.",
-   "Voilà la vitrine. Si vous parlez l'une de ces langues, cherchez-la. Elle est ici."
+   "Jésus dit : laissez les enfants venir à moi, et ne les en empêchez pas, car le Royaume des Cieux est à ceux qui leur ressemblent.",
+   "Matthieu, chapitre 19, verset 14.",
+   "Et nous arrivons au rayon le plus important du musée. Je vous le dis sérieusement. Tout ce que vous avez vu dans ce parcours existe pour une raison simple : que quelqu'un puisse comprendre. Et le lecteur qui comprend le moins, et à qui il faut le plus expliquer, c'est un enfant de cinq ans.",
+   "Regardez ce qu'on a fait pour y parvenir. Moins de texte et plus de dessin. Des mots courts. Les histoires qu'un enfant supporte : Noé, Joseph, David, Jonas, la nativité, la tempête sur le lac. Des pages de carton pour des mains qui ne savent pas encore tourner les feuillets. Grands caractères. Couleurs franches.",
+   "Rien de cela n'est nouveau, et c'est là ce qui est beau. Revenez un instant aux premières vitrines de ce musée. Le Beatus de Liébana racontait l'Apocalypse avec des couleurs plates et des figures aux yeux énormes, pour des gens qui ne savaient pas lire. La Bible de Saint Louis la racontait en médaillons, image et explication, image et explication, pour éduquer un roi enfant.",
+   "C'est exactement la même méthode, mille ans plus tard. Seul le prix a changé : celles-là coûtaient un royaume, et celles-ci s'achètent dans n'importe quelle librairie.",
+   "Et une précision, pour les adultes qui écoutent. Ne croyez pas que la Bible pour enfants soit une Bible de moindre valeur. Presque tous ceux qui ont fait quelque chose dans cette histoire, les traducteurs, les imprimeurs, ceux qui ont fui avec le manuscrit sous le bras, ont connu ce Livre enfants, raconté par quelqu'un, dans la langue de leur maison. Tout le reste est venu après.",
+   "Personne ne commence en lisant. Nous commençons tous en écoutant."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 28 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Sprachen Mexikos",
-   "siglo": "Sechsundfünfzig sprachliche Varietäten",
+   "sala": "Regal 6 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Kinderabteilung",
+   "siglo": "Der Leser, der am wenigsten versteht",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "In dieser Vitrine gibt es kein berühmtes Stück. Und doch ist es wahrscheinlich der Vitrine, den kein anderes Museum der Welt zusammenbringen könnte.",
-   "Es sind Bibeln in den Sprachen dieses Landes: sechsundfünfzig Varietäten. Nahuatl, Maya, Tzeltal, Tzotzil, Mixtekisch, Zapotekisch, Totonakisch, Chinantekisch, Purépecha, Mazahua, Huastekisch, Yaqui, Mayo, Tarahumara, Tojolabal, Trique, Mixe, Mazatekisch, Popoluca, Tlapanekisch, Ch'ol, und weitere.",
-   "Und man sollte gleich eines sagen: das sind Sprachen, keine Dialekte. Sie haben Grammatik, Literatur und Jahrhunderte schriftlicher Geschichte. In Mexiko gibt es achtundsechzig anerkannte Sprachgruppen, und mehrere von ihnen wurden zum ersten Mal aufgeschrieben, weil jemand einen biblischen Text in sie übertragen wollte.",
-   "Die Geschichte beginnt im sechzehnten Jahrhundert. Kaum war die Eroberung vollendet, machten sich die Mönche daran, diese Sprachen zu lernen, um in ihnen predigen zu können. Sie schrieben Grammatiken und Wörterbücher, die heute unsere wichtigste Quelle sind, um sie zu kennen, und sie übersetzten Katechismen und Abschnitte der Evangelien. Sie taten es aus eigenen Gründen, aber das Ergebnis war, dass diese Sprachen in den Druck kamen.",
-   "Dann kamen Jahrhunderte des Schweigens. Die vollständigen, planmäßigen Übersetzungen sind Werk des zwanzigsten Jahrhunderts, und viele sind gerade jetzt noch im Gange, gemacht mit Muttersprachlern und nicht bloß über sie.",
-   "Und nun das Wichtige. Auf diesem ganzen Rundgang haben Sie dieselbe Szene wiederkehren sehen: jemand entscheidet, dass die Schrift die Sprache seiner Leute sprechen muss, und es kostet ihn das Leben oder die Verbannung. Tyndale. Casiodoro de Reina. Julianillo Hernández.",
-   "Dieselbe Arbeit, mit derselben Hartnäckigkeit, wird in diesem Land in Dutzenden von Sprachen getan, ohne Scheiterhaufen, aber auch ohne Aufsehen, und kaum jemand erzählt davon.",
-   "Da ist die Vitrine. Wenn Sie eine dieser Sprachen sprechen, suchen Sie sie. Sie ist hier."
+   "Jesus sagte: lasst die Kinder zu mir kommen und hindert sie nicht, denn solchen gehört das Himmelreich.",
+   "Matthäus, Kapitel 19, Vers 14.",
+   "Und wir kommen zum wichtigsten Regal des Museums. Ich meine es ernst. Alles, was Sie auf diesem Rundgang gesehen haben, ist aus einem einfachen Grund da: damit jemand verstehen könne. Und der Leser, der am wenigsten versteht und dem man am meisten erklären muss, ist ein Kind von fünf Jahren.",
+   "Sehen Sie, was man tat, um das zu erreichen. Weniger Text und mehr Bild. Kurze Wörter. Die Geschichten, die ein Kind aushält: Noah, Josef, David, Jona, die Geburt, der Sturm auf dem See. Pappseiten für Hände, die noch nicht blättern können. Große Schrift. Kräftige Farben.",
+   "Nichts davon ist neu, und darin liegt das Schöne. Kehren Sie einen Augenblick zu den ersten Vitrinen dieses Museums zurück. Der Beatus von Liébana erzählte die Offenbarung mit flachen Farben und Gestalten mit riesigen Augen, für Leute, die nicht lesen konnten. Die Bibel des heiligen Ludwig erzählte sie in Medaillons, Bild und Erklärung, Bild und Erklärung, um einen Kinderkönig zu erziehen.",
+   "Es ist genau dieselbe Methode, tausend Jahre später. Nur der Preis hat sich geändert: jene kosteten ein Königreich, und diese kauft man in jeder Buchhandlung.",
+   "Und ein Wort für die Erwachsenen, die zuhören. Glauben Sie nicht, eine Kinderbibel sei eine Bibel geringeren Wertes. Fast alle, die in dieser Geschichte etwas getan haben, die Übersetzer, die Drucker, jene, die mit der Handschrift unterm Arm flohen, lernten dieses Buch als Kinder kennen, von jemandem erzählt, in der Sprache ihres Hauses. Alles andere kam danach.",
+   "Niemand fängt mit Lesen an. Wir alle fangen mit Zuhören an."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 28 · Museo di Storia della Bibbia",
-   "titulo": "Le lingue del Messico",
-   "siglo": "Cinquantasei varietà linguistiche",
+   "sala": "Scaffale 6 · Museo di Storia della Bibbia",
+   "titulo": "La sezione per bambini",
+   "siglo": "Il lettore che capisce di meno",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "In questa vetrina non c'è nessun pezzo famoso. Eppure è probabilmente quella che nessun altro museo al mondo potrebbe mettere insieme.",
-   "Sono Bibbie nelle lingue di questo paese: cinquantasei varietà. Nahuatl, maya, tzeltal, tzotzil, mixteco, zapoteco, totonaco, chinanteco, purépecha, mazahua, huasteco, yaqui, mayo, tarahumara, tojolabal, trique, mixe, mazateco, popoluca, tlapaneco, ch'ol, e altre ancora.",
-   "E conviene dire subito una cosa: sono lingue, non dialetti. Hanno grammatica, letteratura e secoli di storia scritta. In Messico ci sono sessantotto raggruppamenti linguistici riconosciuti, e parecchi di essi furono scritti per la prima volta perché qualcuno volle mettervi un testo biblico.",
-   "La storia comincia nel Cinquecento. Appena compiuta la conquista, i frati si misero a imparare queste lingue per potervi predicare. Scrissero grammatiche e vocabolari che oggi sono la nostra fonte principale per conoscerle, e tradussero dottrine e passi dei Vangeli. Lo fecero per ragioni loro, ma il risultato fu che quelle lingue entrarono nella stampa.",
-   "Poi vennero secoli di silenzio. Le traduzioni complete e sistematiche sono lavoro del Novecento, e molte sono tuttora in corso, fatte con parlanti nativi e non soltanto su di loro.",
-   "E ora la cosa importante. Lungo questo percorso lei ha visto la stessa scena ripetersi: qualcuno decide che la Scrittura deve parlare la lingua della sua gente, e gli costa la vita o l'esilio. Tyndale. Casiodoro de Reina. Julianillo Hernández.",
-   "Quello stesso lavoro, con la stessa ostinazione, si va facendo in questo paese in decine di lingue, senza roghi ma anche senza rumore, e quasi nessuno lo racconta.",
-   "Ecco la vetrina. Se lei parla una di queste lingue, la cerchi. È qui."
+   "Gesù disse: lasciate che i bambini vengano a me, e non glielo impedite, perché di questi è il Regno dei Cieli.",
+   "Matteo, capitolo 19, versetto 14.",
+   "E arriviamo allo scaffale più importante del museo. Glielo dico sul serio. Tutto ciò che ha visto nel percorso esiste per una ragione semplice: che qualcuno potesse capire. E il lettore che capisce di meno, e a cui più bisogna spiegare, è un bambino di cinque anni.",
+   "Guardi che cosa hanno fatto per riuscirci. Meno testo e più disegno. Parole corte. Le storie che un bambino regge: Noè, Giuseppe, Davide, Giona, la natività, la tempesta sul lago. Pagine di cartone per mani che ancora non sanno voltare i fogli. Caratteri grandi. Colori forti.",
+   "Nulla di questo è nuovo, e lì sta la bellezza. Torni un momento alle prime vetrine di questo museo. Il Beato di Liébana raccontava l'Apocalisse con colori piatti e figure dagli occhi enormi, per gente che non sapeva leggere. La Bibbia di San Luigi la raccontava in medaglioni, immagine e spiegazione, immagine e spiegazione, per educare un re bambino.",
+   "È esattamente lo stesso metodo, mille anni dopo. È cambiato solo il prezzo: quelle costavano un regno, e queste si comprano in qualunque libreria.",
+   "E una precisazione, per gli adulti che stanno ascoltando. Non creda che la Bibbia per bambini sia una Bibbia di minor valore. Quasi tutti quelli che fecero qualcosa in questa storia, i traduttori, gli stampatori, quelli che fuggirono con il manoscritto sotto il braccio, conobbero questo Libro da bambini, raccontato da qualcuno, nella lingua di casa. Tutto il resto venne dopo.",
+   "Nessuno comincia leggendo. Tutti cominciamo ascoltando."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Estante 6 · Museu de História da Bíblia",
+   "titulo": "A secção infantil",
+   "siglo": "O leitor que menos entende",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Jesus disse: deixem as crianças vir a mim, e não as impeçam, porque delas é o Reino dos Céus.",
+   "Mateus, capítulo 19, versículo 14.",
+   "E chegamos à estante mais importante do museu. Digo-lhe a sério. Tudo o que viu no percurso existe por uma razão simples: que alguém pudesse entender. E o leitor que menos entende, e a quem mais é preciso explicar, é uma criança de cinco anos.",
+   "Olhe o que fizeram para consegui-lo. Menos texto e mais desenho. Palavras curtas. As histórias que uma criança aguenta: Noé, José, Davi, Jonas, o nascimento, a tempestade no lago. Páginas de cartão para mãos que ainda não sabem virar folhas. Letra grande. Cores fortes.",
+   "Nada disso é novo, e aí está o belo. Volte um momento às primeiras vitrines deste museu. O Beato de Liébana contava o Apocalipse com cores planas e figuras de olhos enormes, para gente que não sabia ler. A Bíblia de São Luís contava-o em medalhões, imagem e explicação, imagem e explicação, para educar um rei menino.",
+   "É exatamente o mesmo método, mil anos depois. Só mudou o preço: aquelas custavam um reino, e estas compram-se em qualquer livraria.",
+   "E um esclarecimento, para os adultos que estão ouvindo isto. Não pense que a Bíblia infantil é uma Bíblia de menor valor. Quase todos os que fizeram algo nesta história, os tradutores, os impressores, os que fugiram com o manuscrito debaixo do braço, conheceram este Livro em crianças, contado por alguém, na língua da sua casa. Todo o resto veio depois.",
+   "Ninguém começa lendo. Todos começamos ouvindo."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Стеллаж 6 · Музей истории Библии",
+   "titulo": "Детский раздел",
+   "siglo": "Читатель, который понимает меньше всех",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Иисус сказал: пустите детей приходить ко Мне и не препятствуйте им, ибо таковых есть Царство Небесное.",
+   "Евангелие от Матфея, глава 19, стих 14.",
+   "И мы подходим к самому важному стеллажу музея. Говорю это всерьёз. Всё, что вы видели на этом пути, существует по простой причине: чтобы кто-то смог понять. А читатель, который понимает меньше всех и которому надо объяснять больше всех, — это пятилетний ребёнок.",
+   "Посмотрите, что для этого сделали. Меньше текста и больше рисунка. Короткие слова. Истории, которые ребёнок выдерживает: Ной, Иосиф, Давид, Иона, Рождество, буря на озере. Картонные страницы для рук, которые ещё не умеют перелистывать. Крупный шрифт. Сильные цвета.",
+   "Ничто из этого не ново, и в этом вся красота. Вернитесь на минуту к первым витринам музея. Беат Лиебанский рассказывал Откровение плоскими цветами и фигурами с огромными глазами — для людей, не умевших читать. Библия святого Людовика рассказывала его медальонами: образ и объяснение, образ и объяснение, чтобы воспитать короля-ребёнка.",
+   "Это в точности тот же приём, тысячу лет спустя. Изменилась лишь цена: те стоили королевства, а эти покупаются в любом книжном.",
+   "И пояснение для взрослых, которые это слушают. Не думайте, будто детская Библия — Библия меньшей ценности. Почти все, кто что-то сделал в этой истории, — переводчики, печатники, те, кто бежал с рукописью под мышкой, — узнали эту Книгу детьми, из чьих-то уст, на языке своего дома. Всё остальное пришло потом.",
+   "Никто не начинает с чтения. Все мы начинаем со слушания."
   ]
  }
 };
@@ -287,6 +333,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

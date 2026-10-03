@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>El Códice Amiatino — Museo de Historia de la Biblia</title>
+<title>El Beato de Liébana — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  :root{ --fondo:#F6EFE2;--claro:#FDF8EE;--tinta:#20190F;--cabecera:#8C3620;--acento:#C8922A;--marca:rgba(200,146,42,.32); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,8 +17,15 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .franjas{flex:none;display:flex;flex-direction:column;width:66px;height:62px;border-radius:3px;overflow:hidden}
+  .franjas i{display:block;flex:1}
 
+  
+  
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
   .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
@@ -38,20 +45,21 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="emb" aria-hidden="true"></div>
+  <div class="franjas" aria-hidden="true"><i style="background:#C8922A"></i><i style="background:#8C3620"></i><i style="background:#4A6B3A"></i><i style="background:#C8922A"></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
     <p class="siglo" id="ui-siglo"></p>
   </div>
 </header>
-
   <div class="progreso"><i id="mhb-barra"></i></div>
   <nav class="mhb-nav" id="mhb-nav" aria-label="Navegación"></nav>
+
 <main>
   <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
   <div class="mandos">
@@ -71,24 +79,168 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 5b · Museo de Historia de la Biblia",
-   "titulo": "El Códice Amiatino",
-   "siglo": "",
+   "sala": "Vitrina 6 · Museo de Historia de la Biblia",
+   "titulo": "El Beato de Liébana",
+   "siglo": "Cantabria, hacia el año 776",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Treinta y cuatro kilos, más de 2,000 páginas, para lograr hacerlo fue necesario sacrificar más de quinientas reses, porque cada hoja es piel curtida de animal.",
-   "Éste es el Códice Amiatino, y es la copia completa más antigua que se conserva de la Vulgata Latina, la Biblia en latín que tradujo san Jerónimo a finales del siglo cuarto.",
-   "Pero es algo más, y es lo que de verdad importa. Es la primera vez que toda la Escritura cupo en un solo volumen. Antes de esto, una Biblia completa era un estante entero de códices: los profetas por un lado, los evangelios por otro, los salmos aparte. Aquí está todo junto, del Génesis al Apocalipsis. El libro tal como usted lo conoce empieza aquí.",
-   "Lo hicieron monjes ingleses hacia el año 700, en los monasterios de Wearmouth y Jarrow, en Northumbria, en el extremo norte del mundo entonces conocido. Hicieron tres ejemplares gigantes: dos se quedaron en sus iglesias y el tercero era un regalo para el papa.",
-   "Ese tercero es éste. El abad Ceolfrido salió con él rumbo a Roma en el año 716, siendo ya un anciano. Murió en el camino, en Langres, en la Galia. El libro siguió solo y llegó a Italia sin él.",
-   "Y ahí empieza un engaño que duró mil años. En la página de la dedicatoria, alguien raspó el pergamino, borró el nombre de Ceolfrido y el de los anglos, y escribió encima el de un abad lombardo. Durante siglos se creyó que el códice era italiano. Apenas en el siglo diecinueve un estudioso leyó lo que había debajo de la raspadura y le devolvió el libro a sus autores.",
-   "Hoy el original está en Florencia. Lo que usted tiene delante es el facsímil completo.",
-   "Y fíjese en lo que significa para este recorrido. A lado está viendo la Peshita, la rama que se fue hacia el oriente. Ésta es la que se fue hacia el poniente: el latín de Jerónimo, que va a ser la Biblia de Europa durante mil años. De aquí salen el Beato que verá enseguida, la Biblia de San Luis, la de Gutenberg, la del padre Scío de San Miguel y la que se imprimió en México en 1,831.",
-   "Hebreo, griego, siríaco y latín, y entre medias el hombre que los puso en columnas para compararlos. Con ésta se cierra el tronco. Todo lo que sigue son ramas."
+   "Tiene usted delante uno de los libros más extraños de este museo. Y conviene decirlo desde ahora: no es una Biblia. Es un comentario al Apocalipsis.",
+   "Hacia el año 776, en un monasterio perdido entre las montañas de Cantabria, un monje llamado Beato se sentó a explicar el último libro de las Escrituras. España vivía entonces bajo la conquista musulmana. Del norte cristiano quedaba apenas una franja de montaña. Y en esa franja, un monje decidió que lo más urgente era entender el fin del mundo.",
+   "Beato no inventó nada, y lo sabía. Reunió lo que otros habían escrito antes que él: Ticonio, Jerónimo, Agustín, Isidoro, Gregorio. Su obra es un arca. Metió dentro lo que estaba a punto de perderse. Lo que él nunca imaginó fue lo que harían sus copistas. Doscientos años después, los monjes que volvieron a escribir su libro lo llenaron de pinturas. Y ahí nació algo que no existe en ningún otro sitio del mundo.",
+   "Mire los colores. Rojo, amarillo, verde, franjas enteras de color puro. Las figuras lo miran a usted de frente, con los ojos enormes. Nadie intentó que pareciera real. No pintaban lo que se ve: pintaban lo que se cree.",
+   "Ahí está la Mujer vestida del sol. Ahí está la Bestia. Y ahí está uno de los mapas del mundo más antiguos de toda la cristiandad.",
+   "Dos nombres para recordar. Magio, que firmó su copia hacia el año 945. Y Ende, una mujer, que se llamó a sí misma pintora y ayudante de Dios. Es la primera pintora con nombre conocido de Occidente.",
+   "Un último dato: estas páginas, mil años después, inspiraron una novela que quizá usted haya leído o visto en película, El nombre de la rosa.",
+   "Este libro le enseñó a ver la Escritura a gente que no sabía leerla. Ésa será, de aquí en adelante, la historia de todo el recorrido.",
+   "Una imagen dice más que mil palabras. Por eso, antes de aprender a leer, la gente aprendió a contemplar: observar para aprender. La contemplación toma más tiempo, sí, pero deja una huella más permanente."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 6 · Museum of the History of the Bible",
+   "titulo": "The Beatus of Liébana",
+   "siglo": "Cantabria, about the year 776",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "You have before you one of the strangest books in this museum. And it is best said at once: it is not a Bible. It is a commentary on the book of Revelation.",
+   "About the year 776, in a monastery lost among the mountains of Cantabria, a monk named Beatus sat down to explain the last book of the Scriptures. Spain then lived under the Muslim conquest. Of the Christian north there remained scarcely a strip of mountain. And in that strip, a monk decided that the most urgent thing was to understand the end of the world.",
+   "Beatus invented nothing, and he knew it. He gathered what others had written before him: Tyconius, Jerome, Augustine, Isidore, Gregory. His work is an ark. He put inside it what was about to be lost. What he never imagined was what his copyists would do. Two hundred years later, the monks who wrote his book out again filled it with paintings. And there was born something that exists nowhere else in the world.",
+   "Look at the colours. Red, yellow, green, whole bands of pure colour. The figures look straight at you, with enormous eyes. Nobody tried to make it look real. They were not painting what is seen: they were painting what is believed.",
+   "There is the Woman clothed with the sun. There is the Beast. And there is one of the oldest maps of the world in all Christendom.",
+   "Two names to remember. Magius, who signed his copy about the year 945. And Ende, a woman, who called herself a painter and helper of God. She is the first woman painter in the West whose name we know.",
+   "One last thing: these pages, a thousand years later, inspired a novel you may have read or seen as a film, The Name of the Rose.",
+   "This book taught people who could not read the Scriptures how to see them. That, from here on, will be the story of the whole tour.",
+   "A picture says more than a thousand words. That is why, before learning to read, people learned to contemplate: to observe in order to learn. Contemplation takes longer, yes, but it leaves a more lasting mark."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 6 · Musée de l'Histoire de la Bible",
+   "titulo": "Le Beatus de Liébana",
+   "siglo": "Cantabrie, vers l'an 776",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Vous avez devant vous l'un des livres les plus étranges de ce musée. Et autant le dire tout de suite : ce n'est pas une Bible. C'est un commentaire de l'Apocalypse.",
+   "Vers l'an 776, dans un monastère perdu parmi les montagnes de Cantabrie, un moine nommé Beatus s'assit pour expliquer le dernier livre des Écritures. L'Espagne vivait alors sous la conquête musulmane. Du nord chrétien il ne restait qu'une bande de montagne. Et dans cette bande, un moine décida que le plus urgent était de comprendre la fin du monde.",
+   "Beatus n'inventa rien, et il le savait. Il rassembla ce que d'autres avaient écrit avant lui : Tyconius, Jérôme, Augustin, Isidore, Grégoire. Son œuvre est une arche. Il y mit ce qui était sur le point de se perdre. Ce qu'il n'imagina jamais, c'est ce que feraient ses copistes. Deux cents ans plus tard, les moines qui récrivirent son livre le remplirent de peintures. Et là naquit quelque chose qui n'existe nulle part ailleurs au monde.",
+   "Regardez les couleurs. Rouge, jaune, vert, des bandes entières de couleur pure. Les figures vous regardent de face, avec des yeux énormes. Personne n'a cherché à faire vrai. Ils ne peignaient pas ce qui se voit : ils peignaient ce que l'on croit.",
+   "Voici la Femme vêtue de soleil. Voici la Bête. Et voici l'une des plus anciennes cartes du monde de toute la chrétienté.",
+   "Deux noms à retenir. Magius, qui signa sa copie vers l'an 945. Et Ende, une femme, qui se nomma elle-même peintre et servante de Dieu. C'est la première femme peintre d'Occident dont on connaisse le nom.",
+   "Un dernier détail : ces pages, mille ans plus tard, inspirèrent un roman que vous avez peut-être lu ou vu au cinéma, Le Nom de la rose.",
+   "Ce livre apprit à voir l'Écriture à des gens qui ne savaient pas la lire. Ce sera, désormais, l'histoire de tout le parcours.",
+   "Une image en dit plus que mille mots. C'est pourquoi, avant d'apprendre à lire, les gens apprirent à contempler : observer pour apprendre. La contemplation prend plus de temps, certes, mais elle laisse une trace plus durable."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 6 · Museum zur Geschichte der Bibel",
+   "titulo": "Der Beatus von Liébana",
+   "siglo": "Kantabrien, um das Jahr 776",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Sie haben eines der seltsamsten Bücher dieses Museums vor sich. Und man sagt es am besten gleich: es ist keine Bibel. Es ist ein Kommentar zur Offenbarung.",
+   "Um das Jahr 776 setzte sich in einem Kloster, verloren in den Bergen Kantabriens, ein Mönch namens Beatus hin, um das letzte Buch der Schrift zu erklären. Spanien lebte damals unter der muslimischen Eroberung. Vom christlichen Norden blieb kaum ein Streifen Gebirge. Und in diesem Streifen entschied ein Mönch, das Dringendste sei, das Ende der Welt zu verstehen.",
+   "Beatus erfand nichts, und er wusste es. Er sammelte, was andere vor ihm geschrieben hatten: Tyconius, Hieronymus, Augustinus, Isidor, Gregor. Sein Werk ist eine Arche. Er legte hinein, was drohte verloren zu gehen. Was er nie ahnte, war, was seine Abschreiber tun würden. Zweihundert Jahre später füllten die Mönche, die sein Buch neu schrieben, es mit Malereien. Und da entstand etwas, das es nirgendwo sonst auf der Welt gibt.",
+   "Sehen Sie die Farben. Rot, Gelb, Grün, ganze Bänder reiner Farbe. Die Gestalten blicken Sie frontal an, mit riesigen Augen. Niemand versuchte, es wirklich aussehen zu lassen. Sie malten nicht, was man sieht: sie malten, was man glaubt.",
+   "Da ist die Frau, mit der Sonne bekleidet. Da ist das Tier. Und da ist eine der ältesten Weltkarten der ganzen Christenheit.",
+   "Zwei Namen zum Behalten. Magius, der seine Abschrift um das Jahr 945 unterzeichnete. Und Ende, eine Frau, die sich selbst Malerin und Gehilfin Gottes nannte. Sie ist die erste namentlich bekannte Malerin des Abendlandes.",
+   "Eine letzte Einzelheit: diese Seiten haben tausend Jahre später einen Roman angeregt, den Sie vielleicht gelesen oder im Kino gesehen haben, Der Name der Rose.",
+   "Dieses Buch lehrte Menschen, die nicht lesen konnten, die Schrift zu sehen. Das wird von hier an die Geschichte des ganzen Rundgangs sein.",
+   "Ein Bild sagt mehr als tausend Worte. Darum lernten die Menschen, bevor sie lesen lernten, zu betrachten: beobachten, um zu lernen. Das Betrachten dauert länger, gewiss, aber es hinterlässt eine dauerhaftere Spur."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 6 · Museo di Storia della Bibbia",
+   "titulo": "Il Beato di Liébana",
+   "siglo": "Cantabria, verso l'anno 776",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Ha davanti uno dei libri più strani di questo museo. E conviene dirlo subito: non è una Bibbia. È un commento all'Apocalisse.",
+   "Verso l'anno 776, in un monastero perduto tra le montagne della Cantabria, un monaco di nome Beato si mise a spiegare l'ultimo libro delle Scritture. La Spagna viveva allora sotto la conquista musulmana. Del nord cristiano restava appena una striscia di montagna. E in quella striscia, un monaco decise che la cosa più urgente era capire la fine del mondo.",
+   "Beato non inventò nulla, e lo sapeva. Raccolse ciò che altri avevano scritto prima di lui: Ticonio, Girolamo, Agostino, Isidoro, Gregorio. La sua opera è un'arca. Vi mise dentro ciò che stava per perdersi. Ciò che non immaginò mai fu quello che avrebbero fatto i suoi copisti. Duecento anni dopo, i monaci che riscrissero il suo libro lo riempirono di pitture. E lì nacque qualcosa che non esiste in nessun altro luogo del mondo.",
+   "Guardi i colori. Rosso, giallo, verde, fasce intere di colore puro. Le figure la guardano di fronte, con occhi enormi. Nessuno cercò di farlo sembrare reale. Non dipingevano ciò che si vede: dipingevano ciò che si crede.",
+   "Ecco la Donna vestita di sole. Ecco la Bestia. Ed ecco una delle carte del mondo più antiche di tutta la cristianità.",
+   "Due nomi da ricordare. Magio, che firmò la sua copia verso l'anno 945. E Ende, una donna, che chiamò sé stessa pittrice e aiutante di Dio. È la prima pittrice d'Occidente di cui si conosca il nome.",
+   "Un ultimo dato: queste pagine, mille anni dopo, ispirarono un romanzo che lei forse ha letto o visto al cinema, Il nome della rosa.",
+   "Questo libro insegnò a vedere la Scrittura a gente che non sapeva leggerla. Quella sarà, da qui in avanti, la storia di tutto il percorso.",
+   "Un'immagine dice più di mille parole. Per questo, prima di imparare a leggere, la gente imparò a contemplare: osservare per apprendere. La contemplazione richiede più tempo, sì, ma lascia un'impronta più duratura."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 6 · Museu de História da Bíblia",
+   "titulo": "O Beato de Liébana",
+   "siglo": "Cantábria, por volta do ano 776",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Você tem diante de si um dos livros mais estranhos deste museu. E convém dizê-lo desde já: não é uma Bíblia. É um comentário ao Apocalipse.",
+   "Por volta do ano 776, num mosteiro perdido entre as montanhas da Cantábria, um monge chamado Beato sentou-se para explicar o último livro das Escrituras. A Espanha vivia então sob a conquista muçulmana. Do norte cristão restava apenas uma faixa de montanha. E nessa faixa, um monge decidiu que o mais urgente era entender o fim do mundo.",
+   "Beato não inventou nada, e sabia disso. Reuniu o que outros haviam escrito antes dele: Ticônio, Jerônimo, Agostinho, Isidoro, Gregório. A sua obra é uma arca. Pôs dentro o que estava a ponto de se perder. O que ele nunca imaginou foi o que fariam os seus copistas. Duzentos anos depois, os monges que voltaram a escrever o seu livro encheram-no de pinturas. E ali nasceu algo que não existe em nenhum outro lugar do mundo.",
+   "Olhe as cores. Vermelho, amarelo, verde, faixas inteiras de cor pura. As figuras olham para você de frente, com olhos enormes. Ninguém tentou que parecesse real. Não pintavam o que se vê: pintavam o que se crê.",
+   "Ali está a Mulher vestida de sol. Ali está a Besta. E ali está um dos mapas do mundo mais antigos de toda a cristandade.",
+   "Dois nomes para lembrar. Mágio, que assinou a sua cópia por volta do ano 945. E Ende, uma mulher, que chamou a si mesma pintora e ajudante de Deus. É a primeira pintora do Ocidente de nome conhecido.",
+   "Um último dado: estas páginas, mil anos depois, inspiraram um romance que você talvez tenha lido ou visto em filme, O Nome da Rosa.",
+   "Este livro ensinou a ver a Escritura a gente que não sabia lê-la. Essa será, daqui em diante, a história de todo o percurso.",
+   "Uma imagem diz mais que mil palavras. Por isso, antes de aprender a ler, as pessoas aprenderam a contemplar: observar para aprender. A contemplação leva mais tempo, sim, mas deixa uma marca mais permanente."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 6 · Музей истории Библии",
+   "titulo": "Беат Лиебанский",
+   "siglo": "Кантабрия, около 776 года",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Перед вами одна из самых странных книг этого музея. И лучше сказать сразу: это не Библия. Это толкование на Откровение.",
+   "Около 776 года в монастыре, затерянном в горах Кантабрии, монах по имени Беат сел объяснять последнюю книгу Писания. Испания жила тогда под мусульманским завоеванием. От христианского севера оставалась лишь полоса гор. И в этой полосе монах решил, что самое неотложное — понять конец мира.",
+   "Беат ничего не выдумал и знал это. Он собрал написанное до него другими: Тиконием, Иеронимом, Августином, Исидором, Григорием. Его труд — ковчег. Он положил в него то, что готово было погибнуть. Чего он никогда не предполагал, так это того, что сделают его переписчики. Двести лет спустя монахи, заново переписывавшие его книгу, наполнили её живописью. И тогда родилось нечто, чего нет больше нигде в мире.",
+   "Взгляните на цвета. Красный, жёлтый, зелёный, целые полосы чистого цвета. Фигуры смотрят на вас прямо, огромными глазами. Никто не пытался сделать похоже на действительность. Они писали не то, что видно, а то, во что верят.",
+   "Вот Жена, облечённая в солнце. Вот Зверь. И вот одна из древнейших карт мира во всём христианском мире.",
+   "Два имени, которые стоит запомнить. Магий, подписавший свой список около 945 года. И Энде, женщина, назвавшая себя живописицей и помощницей Божией. Это первая художница Запада, чьё имя нам известно.",
+   "И последнее: эти страницы тысячу лет спустя вдохновили роман, который вы, может быть, читали или видели в кино, — «Имя розы».",
+   "Эта книга научила видеть Писание людей, которые не умели его читать. Таков отныне будет сюжет всего нашего пути.",
+   "Одно изображение говорит больше тысячи слов. Поэтому, прежде чем научиться читать, люди научились созерцать: наблюдать, чтобы учиться. Созерцание требует больше времени — да, но оставляет более прочный след."
   ]
  }
 };
@@ -193,6 +345,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

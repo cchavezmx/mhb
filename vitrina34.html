@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Los Evangelios de Juan de Valdés — Museo de Historia de la Biblia</title>
+<title>La Biblia del Oso — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  :root{ --fondo:#F2EEE4;--claro:#FBF7EE;--tinta:#1D1A14;--cabecera:#3E2E1E;--acento:#8A6A2A;--marca:rgba(138,106,42,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,10 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
+  .oso{flex:none;display:flex;align-items:flex-end;gap:4px}
+  .oso b{display:block;width:26px;height:44px;background:var(--cabecera);border-radius:12px 12px 4px 4px}
+  .oso i{display:block;width:12px;height:58px;background:var(--acento);border-radius:3px;position:relative}
+  .oso i:after{content:'';position:absolute;left:-7px;top:6px;width:26px;height:14px;background:var(--acento);border-radius:50%;opacity:.8}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,20 +41,21 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="emb" aria-hidden="true"></div>
+  <div class="oso" aria-hidden="true"><b></b><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
     <p class="siglo" id="ui-siglo"></p>
   </div>
 </header>
-
   <div class="progreso"><i id="mhb-barra"></i></div>
   <nav class="mhb-nav" id="mhb-nav" aria-label="Navegación"></nav>
+
 <main>
   <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
   <div class="mandos">
@@ -71,22 +75,161 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 17e · Museo de Historia de la Biblia",
-   "titulo": "Los Evangelios de Juan de Valdés",
-   "siglo": "",
+   "sala": "Vitrina 18a · Museo de Historia de la Biblia",
+   "titulo": "La Biblia del Oso",
+   "siglo": "Basilea, 1,569 · Casiodoro de Reina",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Este hombre escribió una frase que cualquier traductor de la Biblia podría firmar: escribo como hablo.",
-   "Juan de Valdés nació en Cuenca, una ciudad de España, en Castilla-La Mancha, a comienzos del siglo dieciséis. Su hermano Alfonso, fue secretario de Carlos V. Juan fue humanista, lector de Erasmo, y en 1,529 publicó en Alcalá un diálogo sobre la doctrina cristiana.",
-   "La Inquisición empezó una investigación formal contra él por lo que decía su libro: lo citó, examinó el texto buscando herejías y se preparaba para juzgarlo, pero Juan Valdés no esperó a ver en qué terminaba. Salió de España hacia Italia y ya no volvió. Al libro sí lo condenaron después.",
-   "Se instaló en Nápoles, y ahí reunió durante siete años a un círculo de nobles, predicadores y poetas. En el centro estaba una mujer: Giulia Gonzaga, noble napolitana y viuda. Y para ella tradujo.",
-   "Antes de terminar 1,536 le envió los Salmos, traducidos del hebreo. Al año siguiente, las cartas de Pablo a los Romanos y a los Corintios, traducidas del griego y comentadas. Tradujo también las demás cartas de Pablo, salvo la de Hebreos, pero ésas se perdieron. Y en 1,540 terminó el evangelio de San Mateo, con su explicación frase por frase, y se lo mandó a ella. Todo lo que Valdés tradujo lo escribió, en primer lugar, para una lectora.",
-   "Murió en 1,541 sin haber publicado casi nada. Y aquí la cadena del museo se vuelve visible: quien imprimió sus cartas de Pablo fue Juan Pérez de Pineda, en Ginebra, con el mismo pie de imprenta falso que puso en su Nuevo Testamento. Sin Pineda, a Valdés lo habríamos perdido. Su San Mateo tuvo peor suerte: quedó en un manuscrito en Viena y no se publicó hasta 1,880.",
-   "En otro libro suyo, el Diálogo de la lengua, dejó escrito su criterio: el estilo que tengo me es natural, y sin afectación ninguna escribo como hablo. Es la misma idea de Lutero de salir a la calle y oír cómo habla la gente y la misma que cierra este museo, en la versión de su última vitrina."
+   "Ésta es la nuestra. La primera Biblia completa en castellano traducida directamente del hebreo y del griego. Y la hizo un hombre que pasó doce años huyendo mientras la escribía.",
+   "Se llamaba Casiodoro de Reina. Era monje en el monasterio de San Isidoro del Campo, a las afueras de Sevilla. En 1,557, él y una docena de hermanos escaparon de España con la Inquisición pisándoles los talones. Los que no alcanzaron a huir fueron quemados. A Casiodoro, como no lo pudieron atrapar, lo quemaron en efigie en Sevilla, en un muñeco con su cara.",
+   "Doce años anduvo de un país a otro: Ginebra, Londres, Amberes, Fráncfort, Basilea. Perseguido por agentes que lo buscaban por encargo, acusado por todos los bandos, sin dinero, cargando el manuscrito. Y sin dejar de traducir un solo año.",
+   "Se imprimió en Basilea en septiembre de 1,569. Dos mil seiscientos ejemplares.",
+   "Ahora, el nombre del libro. Mire la portada: hay un oso parado contra un árbol, estirándose para alcanzar un panal de miel. Ése es el emblema del impresor, que se apellidaba Apiario, es decir, colmenero. Lo usaron a propósito, para que en la portada no apareciera ninguna señal religiosa que delatara de dónde salía el libro. Por ese oso la conocemos hoy como la Biblia del Oso.",
+   "En el prólogo, Casiodoro escribió que prohibir la Biblia en lengua del pueblo no se puede defender con ningún argumento honesto. Lo escribió cuando eso costaba la vida.",
+   "Murió en Fráncfort, en 1,594, siendo pastor de una comunidad de refugiados. Su amigo Cipriano de Valera, que había huido de Sevilla la misma noche que él, revisó después el texto y le dedicó más de veinte años. De esos dos apellidos viene la Biblia que millones de personas tienen hoy en su casa: la Reina-Valera. Ésa es la que verá en la vitrina siguiente.",
+   "Doce años huyendo con un manuscrito a cuestas. Hoy esa traducción se lee en voz alta, cada domingo, en medio mundo."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 18a · Museum of the History of the Bible",
+   "titulo": "The Bear Bible",
+   "siglo": "Basel, 1569 · Casiodoro de Reina",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "This is ours. The first complete Bible in Spanish translated directly from the Hebrew and the Greek. And it was made by a man who spent twelve years on the run while he wrote it.",
+   "His name was Casiodoro de Reina. He was a monk at the monastery of San Isidoro del Campo, outside Seville. In 1557, he and a dozen brothers escaped from Spain with the Inquisition at their heels. Those who did not manage to flee were burned. Casiodoro, since they could not catch him, was burned in effigy in Seville, in a figure made with his face.",
+   "For twelve years he went from country to country: Geneva, London, Antwerp, Frankfurt, Basel. Hunted by agents paid to find him, accused by every side, without money, carrying the manuscript. And without stopping his translating for a single year.",
+   "It was printed in Basel in September 1569. Two thousand six hundred copies.",
+   "Now, the name of the book. Look at the title page: there is a bear standing against a tree, stretching up to reach a honeycomb. That is the printer's device; his name was Apiarius, that is, beekeeper. They used it on purpose, so that no religious sign should appear on the title page to betray where the book came from. Because of that bear we know it today as the Bear Bible.",
+   "In the preface, Casiodoro wrote that forbidding the Bible in the language of the people cannot be defended by any honest argument. He wrote it when that cost a man his life.",
+   "He died in Frankfurt, in 1594, as pastor of a community of refugees. His friend Cipriano de Valera, who had fled Seville the same night as he, afterwards revised the text and gave more than twenty years to it. From those two surnames comes the Bible that millions of people have in their houses today: the Reina-Valera. That is what you will see in the next case.",
+   "Twelve years on the run with a manuscript on his back. Today that translation is read aloud, every Sunday, across half the world."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 18a · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible de l'Ours",
+   "siglo": "Bâle, 1569 · Casiodoro de Reina",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "C'est la nôtre. La première Bible complète en castillan traduite directement de l'hébreu et du grec. Et elle fut faite par un homme qui passa douze ans en fuite tandis qu'il l'écrivait.",
+   "Il s'appelait Casiodoro de Reina. Il était moine au monastère de San Isidoro del Campo, aux portes de Séville. En 1557, lui et une douzaine de frères s'échappèrent d'Espagne avec l'Inquisition sur les talons. Ceux qui ne purent fuir furent brûlés. Casiodoro, faute de pouvoir l'attraper, fut brûlé en effigie à Séville, dans un mannequin portant son visage.",
+   "Douze ans durant il alla d'un pays à l'autre : Genève, Londres, Anvers, Francfort, Bâle. Poursuivi par des agents payés pour le trouver, accusé par tous les camps, sans argent, portant le manuscrit. Et sans cesser de traduire une seule année.",
+   "Elle fut imprimée à Bâle en septembre 1569. Deux mille six cents exemplaires.",
+   "Maintenant, le nom du livre. Regardez la page de titre : il y a un ours dressé contre un arbre, qui s'étire pour atteindre un rayon de miel. C'est l'emblème de l'imprimeur, qui se nommait Apiarius, c'est-à-dire apiculteur. On l'employa exprès, pour qu'aucun signe religieux ne parût sur la page de titre et ne trahît d'où sortait le livre. À cause de cet ours nous la connaissons aujourd'hui comme la Bible de l'Ours.",
+   "Dans le prologue, Casiodoro écrivit qu'interdire la Bible en langue du peuple ne se peut défendre par aucun argument honnête. Il l'écrivit quand cela coûtait la vie.",
+   "Il mourut à Francfort, en 1594, étant pasteur d'une communauté de réfugiés. Son ami Cipriano de Valera, qui avait fui Séville la même nuit que lui, révisa ensuite le texte et y consacra plus de vingt ans. De ces deux noms vient la Bible que des millions de personnes ont aujourd'hui chez elles : la Reina-Valera. C'est celle que vous verrez dans la vitrine suivante.",
+   "Douze ans de fuite avec un manuscrit sur le dos. Aujourd'hui cette traduction se lit à voix haute, chaque dimanche, dans la moitié du monde."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 18a · Museum zur Geschichte der Bibel",
+   "titulo": "Die Bärenbibel",
+   "siglo": "Basel, 1569 · Casiodoro de Reina",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Dies ist die unsere. Die erste vollständige Bibel auf Spanisch, unmittelbar aus dem Hebräischen und dem Griechischen übersetzt. Und gemacht hat sie ein Mann, der zwölf Jahre auf der Flucht war, während er sie schrieb.",
+   "Er hieß Casiodoro de Reina. Er war Mönch im Kloster San Isidoro del Campo vor den Toren Sevillas. 1557 entkamen er und ein Dutzend Brüder aus Spanien, die Inquisition auf den Fersen. Wer nicht fliehen konnte, wurde verbrannt. Casiodoro verbrannte man, da man seiner nicht habhaft wurde, in Sevilla im Bildnis, an einer Puppe mit seinem Gesicht.",
+   "Zwölf Jahre zog er von Land zu Land: Genf, London, Antwerpen, Frankfurt, Basel. Verfolgt von Agenten, die man auf ihn angesetzt hatte, von allen Seiten beschuldigt, ohne Geld, die Handschrift bei sich. Und ohne ein einziges Jahr mit dem Übersetzen auszusetzen.",
+   "Gedruckt wurde sie in Basel im September 1569. Zweitausendsechshundert Exemplare.",
+   "Nun der Name des Buches. Sehen Sie das Titelblatt an: da steht ein Bär an einem Baum und streckt sich nach einer Honigwabe. Das ist das Zeichen des Druckers, der Apiarius hieß, das heißt Imker. Man benutzte es mit Absicht, damit auf dem Titelblatt kein religiöses Zeichen erscheine, das verriete, woher das Buch kam. Nach jenem Bären nennen wir sie heute die Bärenbibel.",
+   "In der Vorrede schrieb Casiodoro, die Bibel in der Sprache des Volkes zu verbieten lasse sich mit keinem redlichen Argument verteidigen. Er schrieb es, als das das Leben kostete.",
+   "Er starb 1594 in Frankfurt als Pfarrer einer Flüchtlingsgemeinde. Sein Freund Cipriano de Valera, der in derselben Nacht aus Sevilla geflohen war, überarbeitete später den Text und wandte mehr als zwanzig Jahre daran. Von diesen beiden Namen kommt die Bibel, die heute Millionen Menschen zu Hause haben: die Reina-Valera. Sie werden sie in der nächsten Vitrine sehen.",
+   "Zwölf Jahre Flucht mit einer Handschrift auf dem Rücken. Heute wird diese Übersetzung jeden Sonntag in der halben Welt laut gelesen."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 18a · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia dell'Orso",
+   "siglo": "Basilea, 1569 · Casiodoro de Reina",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Questa è la nostra. La prima Bibbia completa in castigliano tradotta direttamente dall'ebraico e dal greco. E la fece un uomo che passò dodici anni in fuga mentre la scriveva.",
+   "Si chiamava Casiodoro de Reina. Era monaco nel monastero di San Isidoro del Campo, fuori Siviglia. Nel 1557 lui e una dozzina di fratelli scapparono dalla Spagna con l'Inquisizione alle calcagna. Quelli che non fecero in tempo a fuggire furono bruciati. Casiodoro, non potendo prenderlo, lo bruciarono in effigie a Siviglia, in un fantoccio con la sua faccia.",
+   "Per dodici anni andò da un paese all'altro: Ginevra, Londra, Anversa, Francoforte, Basilea. Inseguito da agenti pagati per trovarlo, accusato da tutte le parti, senza denaro, portandosi dietro il manoscritto. E senza smettere di tradurre un solo anno.",
+   "Fu stampata a Basilea nel settembre del 1569. Duemilaseicento esemplari.",
+   "Ora, il nome del libro. Guardi il frontespizio: c'è un orso ritto contro un albero, che si allunga per raggiungere un favo di miele. Quello è l'emblema dello stampatore, che si chiamava Apiario, cioè apicoltore. Lo usarono di proposito, perché sul frontespizio non comparisse alcun segno religioso che tradisse da dove usciva il libro. Per quell'orso oggi la conosciamo come la Bibbia dell'Orso.",
+   "Nel prologo, Casiodoro scrisse che proibire la Bibbia in lingua del popolo non si può difendere con nessun argomento onesto. Lo scrisse quando questo costava la vita.",
+   "Morì a Francoforte, nel 1594, essendo pastore di una comunità di profughi. Il suo amico Cipriano de Valera, che era fuggito da Siviglia la stessa notte, revisionò poi il testo e vi dedicò più di vent'anni. Da quei due cognomi viene la Bibbia che milioni di persone hanno oggi in casa: la Reina-Valera. È quella che vedrà nella vetrina seguente.",
+   "Dodici anni in fuga con un manoscritto addosso. Oggi quella traduzione si legge ad alta voce, ogni domenica, in mezzo mondo."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 18a · Museu de História da Bíblia",
+   "titulo": "A Bíblia do Urso",
+   "siglo": "Basileia, 1569 · Casiodoro de Reina",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Esta é a nossa. A primeira Bíblia completa em castelhano traduzida diretamente do hebraico e do grego. E fê-la um homem que passou doze anos fugindo enquanto a escrevia.",
+   "Chamava-se Casiodoro de Reina. Era monge no mosteiro de San Isidoro del Campo, nos arredores de Sevilha. Em 1557, ele e uma dúzia de irmãos escaparam da Espanha com a Inquisição nos calcanhares. Os que não conseguiram fugir foram queimados. A Casiodoro, como não o puderam apanhar, queimaram-no em efígie em Sevilha, num boneco com o seu rosto.",
+   "Doze anos andou de um país a outro: Genebra, Londres, Antuérpia, Frankfurt, Basileia. Perseguido por agentes pagos para encontrá-lo, acusado por todos os lados, sem dinheiro, carregando o manuscrito. E sem deixar de traduzir um só ano.",
+   "Imprimiu-se em Basileia em setembro de 1569. Dois mil e seiscentos exemplares.",
+   "Agora, o nome do livro. Olhe o frontispício: há um urso apoiado numa árvore, esticando-se para alcançar um favo de mel. Esse é o emblema do impressor, que se chamava Apiário, isto é, colmeeiro. Usaram-no de propósito, para que no frontispício não aparecesse nenhum sinal religioso que denunciasse de onde saía o livro. Por esse urso a conhecemos hoje como a Bíblia do Urso.",
+   "No prólogo, Casiodoro escreveu que proibir a Bíblia em língua do povo não se pode defender com nenhum argumento honesto. Escreveu-o quando isso custava a vida.",
+   "Morreu em Frankfurt, em 1594, sendo pastor de uma comunidade de refugiados. O seu amigo Cipriano de Valera, que fugira de Sevilha na mesma noite, reviu depois o texto e dedicou-lhe mais de vinte anos. Desses dois sobrenomes vem a Bíblia que milhões de pessoas têm hoje em casa: a Reina-Valera. Essa é a que verá na vitrine seguinte.",
+   "Doze anos fugindo com um manuscrito às costas. Hoje essa tradução lê-se em voz alta, todos os domingos, em meio mundo."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 18a · Музей истории Библии",
+   "titulo": "Библия Медведя",
+   "siglo": "Базель, 1569 · Касиодоро де Рейна",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Эта — наша. Первая полная Библия по-испански, переведённая прямо с еврейского и греческого. И сделал её человек, который двенадцать лет скрывался, пока её писал.",
+   "Его звали Касиодоро де Рейна. Он был монахом в монастыре Сан-Исидоро-дель-Кампо под Севильей. В 1557 году он и около дюжины братьев бежали из Испании, а инквизиция шла за ними по пятам. Тех, кто не успел уйти, сожгли. Касиодоро, которого схватить не сумели, сожгли в изображении — чучело с его лицом, в Севилье.",
+   "Двенадцать лет он переходил из страны в страну: Женева, Лондон, Антверпен, Франкфурт, Базель. Преследуемый нанятыми агентами, обвиняемый всеми сторонами, без денег, с рукописью при себе. И ни на год не переставал переводить.",
+   "Книга напечатана в Базеле в сентябре 1569 года. Две тысячи шестьсот экземпляров.",
+   "Теперь о названии. Взгляните на титульный лист: медведь стоит у дерева, тянется к медовым сотам. Это знак печатника, которого звали Апиарий, то есть пасечник. Его поставили нарочно, чтобы на титуле не было никакого религиозного знака, выдающего происхождение книги. По этому медведю мы и зовём её сегодня Библией Медведя.",
+   "В предисловии Касиодоро написал, что запрет Библии на языке народа нельзя защитить ни одним честным доводом. Он написал это тогда, когда за такое платили жизнью.",
+   "Он умер во Франкфурте в 1594 году, будучи пастором общины беженцев. Его друг Сиприано де Валера, бежавший из Севильи в ту же ночь, позже выправил текст и отдал этому более двадцати лет. От этих двух фамилий происходит Библия, которая сегодня стоит в домах у миллионов людей: Рейна-Валера. Её вы увидите в следующей витрине.",
+   "Двенадцать лет бегства с рукописью за плечами. Сегодня этот перевод читают вслух каждое воскресенье в половине мира."
   ]
  }
 };
@@ -191,6 +334,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

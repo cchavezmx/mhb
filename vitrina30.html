@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>El Nuevo Testamento de Enzinas — Museo de Historia de la Biblia</title>
+<title>La Biblia de Ferrara — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EBDF;--claro:#FBF5EA;--tinta:#251C16;--cabecera:#6B2230;--acento:#B07C22;--marca:rgba(176,124,34,.3); }
+  :root{ --fondo:#F0EDE6;--claro:#FAF7F1;--tinta:#1C1A15;--cabecera:#2E3A4A;--acento:#8A6A3A;--marca:rgba(138,106,58,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,10 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .corona{flex:none;width:64px;height:64px}
+  .llave{flex:none;display:flex;align-items:center;gap:4px}
+  .llave b{display:block;width:20px;height:20px;border:3px solid var(--acento);border-radius:50%}
+  .llave i{display:block;width:34px;height:5px;background:var(--acento);position:relative}
+  .llave i:after{content:'';position:absolute;right:0;top:5px;width:5px;height:10px;background:var(--acento)}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,15 +41,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="corona" viewBox="0 0 64 64" aria-hidden="true">
-   <path d="M10 44 L10 26 L20 34 L32 18 L44 34 L54 26 L54 44 Z" fill="#B07C22"/>
-   <rect x="10" y="46" width="44" height="7" fill="#B07C22"/>
-   <circle cx="10" cy="24" r="3.5" fill="#F7EFDF"/><circle cx="32" cy="15" r="4" fill="#F7EFDF"/>
-   <circle cx="54" cy="24" r="3.5" fill="#F7EFDF"/></svg>
+  <div class="llave" aria-hidden="true"><b></b><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -75,95 +75,154 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 15 · Museo de Historia de la Biblia",
-   "titulo": "El Nuevo Testamento de Enzinas",
-   "siglo": "Amberes, 1543 · el primero en castellano",
+   "sala": "Vitrina 17b · Museo de Historia de la Biblia",
+   "titulo": "La Biblia de Ferrara",
+   "siglo": "Ferrara, 1,553 · la lengua que se llevaron",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Un muchacho de veintisiete años le puso este libro en las manos al hombre más poderoso del mundo. Y por eso terminó en la cárcel. Se llamaba Francisco de Enzinas, era de Burgos, y había estudiado en Lovaina y en Wittenberg, donde vivió en casa de Melanchthon. Tradujo el Nuevo Testamento al castellano desde el griego de Erasmo, el mismo que usted vio unas salas atrás. Se imprimió en Amberes, en 1,543. Es el primer Nuevo Testamento completo en nuestra lengua salido de una imprenta.",
-   "Y entonces hizo algo que nadie esperaba: en lugar de esconderlo, pidió audiencia con el emperador Carlos V y se lo entregó en persona, en Bruselas. El emperador le preguntó quién era el autor. Él contestó que él mismo. Carlos V le dijo que si el libro era lo que decía ser, no habría problema, y lo mandó con su confesor.",
-   "Pocos días después estaba preso. Quince meses encerrado en Bruselas. Escapó en 1,545 por una puerta que encontró abierta una noche, y ya nunca volvió a España. Murió de peste en Estrasburgo en 1,552, a los treinta y cuatro años.",
-   "Fíjese en el detalle, porque dice mucho: no lo encarcelaron por esconder el libro. Lo encarcelaron por enseñarlo. Y con éste empieza la parte del recorrido que más nos toca. De aquí en adelante, todo lo que verá está en nuestra lengua."
+   "Ésta es la Biblia de los que se fueron.",
+   "En 1,492 los judíos expulsados de España salieron con su lengua a cuestas: siguieron hablando castellano en Salónica, en Esmirna, en Ámsterdam, durante siglos. Y en 1,553, en la ciudad italiana de Ferrara, cuyo duque les había dado refugio, imprimieron el Antiguo Testamento en esa lengua que se habían llevado.",
+   "La tradujeron dos hombres, y cada uno tenía dos nombres. Abraham Usque, que en Portugal se había llamado Duarte Pinel. Y Yom Tob Atias, que se había llamado Jerónimo de Vargas. Dos nombres cada uno, porque habían vivido fingiendo ser cristianos para sobrevivir. Aquí, por fin, firmaron con el suyo.",
+   "Tradujeron del hebreo palabra por palabra, pegados al original hasta donde el castellano aguanta. Por eso suena rara, antigua, con el orden de las frases volteado. No es torpeza: es fidelidad llevada al extremo.",
+   "Se hicieron dos emisiones. Una dedicada al duque de Ferrara. Otra dedicada a doña Gracia Nasi, la gran señora judía que rescataba refugiados por media Europa.",
+   "Y hay un puente que vale la pena que usted conozca. Casiodoro de Reina, el de la Biblia del Oso, usó esta traducción y lo dijo por escrito, con elogios. Un monje católico fugado de Sevilla, apoyándose en el trabajo de unos judíos expulsados de la misma tierra.",
+   "Los dos desterrados por lo mismo, ayudándose sin conocerse."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 15 · Museum of the History of the Bible",
-   "titulo": "The New Testament of Enzinas",
-   "siglo": "Antwerp, 1543 · the first in Spanish",
+   "sala": "Case 17b · Museum of the History of the Bible",
+   "titulo": "The Ferrara Bible",
+   "siglo": "Ferrara, 1553 · the language they carried away",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "A young man of twenty-seven placed this book in the hands of the most powerful man in the world. And that is how he ended up in prison. His name was Francisco de Enzinas. He came from Burgos and had studied in Louvain and in Wittenberg, where he lodged in the house of Melanchthon. He translated the New Testament into Spanish from the Greek of Erasmus, the very book you saw a few cases back. It was printed in Antwerp in 1543. It is the first complete New Testament in our language to come off a printing press.",
-   "And then he did something nobody expected: instead of hiding it, he asked for an audience with the emperor Charles the Fifth and handed it to him in person, in Brussels. The emperor asked who the author was. He answered that he was. Charles told him that if the book was what it claimed to be there would be no problem, and sent him to his confessor.",
-   "A few days later he was under arrest. Fifteen months shut up in Brussels. He escaped in 1545 through a door he found open one night, and never returned to Spain. He died of the plague in Strasbourg in 1552, aged thirty-four.",
-   "Notice the detail, because it says a great deal: he was not imprisoned for hiding the book. He was imprisoned for showing it. And notice the difference from the previous case. That one told the Gospels and explained them. This one is the text itself, plain, with nobody in between. From here on, that is what you will see."
+   "This is the Bible of those who left.",
+   "In 1492 the Jews expelled from Spain went out carrying their language with them: they went on speaking Spanish in Salonica, in Smyrna, in Amsterdam, for centuries. And in 1553, in the Italian city of Ferrara, whose duke had given them refuge, they printed the Old Testament in that language they had carried away.",
+   "Two men translated it, and each had two names. Abraham Usque, who in Portugal had been called Duarte Pinel. And Yom Tob Atias, who had been called Jerónimo de Vargas. Two names each, because they had lived pretending to be Christians in order to survive. Here, at last, they signed with their own.",
+   "They translated from the Hebrew word for word, clinging to the original as far as Spanish will bear. That is why it sounds strange, old, with the order of the phrases turned about. It is not clumsiness: it is faithfulness carried to the limit.",
+   "Two issues were made. One dedicated to the duke of Ferrara. The other dedicated to doña Gracia Nasi, the great Jewish lady who rescued refugees across half of Europe.",
+   "And there is a bridge here worth knowing about. Casiodoro de Reina, of the Bear Bible, used this translation and said so in writing, with praise. A Catholic monk who had fled Seville, leaning on the work of Jews expelled from that same land.",
+   "Both banished for the same thing, helping each other without ever meeting."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 15 · Musée de l'Histoire de la Bible",
-   "titulo": "Le Nouveau Testament d'Enzinas",
-   "siglo": "Anvers, 1543 · le premier en espagnol",
+   "sala": "Vitrine 17b · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible de Ferrare",
+   "siglo": "Ferrare, 1553 · la langue qu'ils emportèrent",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Un jeune homme de vingt-sept ans mit ce livre entre les mains de l'homme le plus puissant du monde. Et c'est ainsi qu'il finit en prison. Il s'appelait Francisco de Enzinas, il était de Burgos, et il avait étudié à Louvain et à Wittenberg, où il logeait chez Melanchthon. Il traduisit le Nouveau Testament en espagnol à partir du grec d'Érasme, celui-là même que vous avez vu quelques vitrines plus tôt. Il fut imprimé à Anvers en 1543. C'est le premier Nouveau Testament complet dans notre langue sorti d'une presse.",
-   "Et alors il fit une chose que personne n'attendait : au lieu de le cacher, il demanda audience à l'empereur Charles Quint et le lui remit en personne, à Bruxelles. L'empereur demanda qui en était l'auteur. Il répondit que c'était lui. Charles Quint lui dit que si le livre était ce qu'il prétendait être, il n'y aurait pas de problème, et l'envoya à son confesseur.",
-   "Quelques jours plus tard il était en prison. Quinze mois enfermé à Bruxelles. Il s'évada en 1545 par une porte trouvée ouverte une nuit, et ne revint jamais en Espagne. Il mourut de la peste à Strasbourg en 1552, à trente-quatre ans.",
-   "Remarquez le détail, car il en dit long : on ne l'a pas emprisonné pour avoir caché le livre. On l'a emprisonné pour l'avoir montré. Et voyez la différence avec la vitrine précédente. Celle-là racontait les évangiles et les expliquait. Celle-ci est le texte lui-même, tel quel, sans personne entre deux. À partir d'ici, c'est cela que vous verrez."
+   "Voici la Bible de ceux qui sont partis.",
+   "En 1492, les juifs expulsés d'Espagne s'en allèrent avec leur langue sur le dos : ils continuèrent à parler castillan à Salonique, à Smyrne, à Amsterdam, pendant des siècles. Et en 1553, dans la ville italienne de Ferrare, dont le duc leur avait donné refuge, ils imprimèrent l'Ancien Testament dans cette langue qu'ils avaient emportée.",
+   "Deux hommes la traduisirent, et chacun avait deux noms. Abraham Usque, qui au Portugal s'était appelé Duarte Pinel. Et Yom Tob Atias, qui s'était appelé Jerónimo de Vargas. Deux noms chacun, parce qu'ils avaient vécu en feignant d'être chrétiens pour survivre. Ici, enfin, ils signèrent du leur.",
+   "Ils traduisirent de l'hébreu mot à mot, collés à l'original autant que le castillan le supporte. C'est pourquoi elle sonne étrange, ancienne, avec l'ordre des phrases renversé. Ce n'est pas de la maladresse : c'est la fidélité poussée à l'extrême.",
+   "On en fit deux émissions. L'une dédiée au duc de Ferrare. L'autre dédiée à doña Gracia Nasi, la grande dame juive qui sauvait des réfugiés dans la moitié de l'Europe.",
+   "Et il y a là un pont qu'il vaut la peine de connaître. Casiodoro de Reina, celui de la Bible de l'Ours, se servit de cette traduction et le dit par écrit, avec éloges. Un moine catholique en fuite de Séville, s'appuyant sur le travail de juifs expulsés de cette même terre.",
+   "Tous deux bannis pour la même chose, s'aidant sans se connaître."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 15 · Museum zur Geschichte der Bibel",
-   "titulo": "Das Neue Testament des Enzinas",
-   "siglo": "Antwerpen, 1543 · das erste auf Spanisch",
+   "sala": "Vitrine 17b · Museum zur Geschichte der Bibel",
+   "titulo": "Die Bibel von Ferrara",
+   "siglo": "Ferrara, 1553 · die mitgenommene Sprache",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Ein junger Mann von siebenundzwanzig Jahren legte dieses Buch dem mächtigsten Mann der Welt in die Hände. Und darum landete er im Gefängnis. Er hieß Francisco de Enzinas, stammte aus Burgos und hatte in Löwen und in Wittenberg studiert, wo er im Hause Melanchthons wohnte. Er übersetzte das Neue Testament ins Spanische aus dem Griechischen des Erasmus, eben jenem Buch, das Sie einige Vitrinen zuvor gesehen haben. Gedruckt wurde es 1543 in Antwerpen. Es ist das erste vollständige Neue Testament in unserer Sprache, das eine Druckerpresse verließ.",
-   "Und dann tat er etwas, das niemand erwartete: statt es zu verbergen, erbat er eine Audienz bei Kaiser Karl dem Fünften und überreichte es ihm persönlich, in Brüssel. Der Kaiser fragte, wer der Verfasser sei. Er antwortete: er selbst. Karl sagte ihm, wenn das Buch sei, was es zu sein vorgebe, werde es kein Problem geben, und schickte ihn zu seinem Beichtvater.",
-   "Wenige Tage später saß er in Haft. Fünfzehn Monate eingeschlossen in Brüssel. 1545 entkam er durch eine Tür, die er eines Nachts offen fand, und kehrte nie nach Spanien zurück. Er starb 1552 in Straßburg an der Pest, vierunddreißig Jahre alt.",
-   "Achten Sie auf diese Einzelheit, denn sie sagt viel: man sperrte ihn nicht ein, weil er das Buch versteckte. Man sperrte ihn ein, weil er es zeigte. Und sehen Sie den Unterschied zur vorigen Vitrine. Jene erzählte die Evangelien und erklärte sie. Diese ist der Text selbst, unvermittelt, ohne jemanden dazwischen. Von hier an werden Sie das sehen."
+   "Dies ist die Bibel derer, die fortgingen.",
+   "1492 zogen die aus Spanien vertriebenen Juden mit ihrer Sprache auf dem Rücken davon: sie sprachen weiter Spanisch in Saloniki, in Smyrna, in Amsterdam, jahrhundertelang. Und 1553 druckten sie in der italienischen Stadt Ferrara, deren Herzog ihnen Zuflucht gewährt hatte, das Alte Testament in jener Sprache, die sie mitgenommen hatten.",
+   "Zwei Männer übersetzten es, und jeder hatte zwei Namen. Abraham Usque, der in Portugal Duarte Pinel geheißen hatte. Und Jom Tob Atias, der Jerónimo de Vargas geheißen hatte. Je zwei Namen, weil sie gelebt hatten, indem sie sich als Christen ausgaben, um zu überleben. Hier unterschrieben sie endlich mit dem eigenen.",
+   "Sie übersetzten aus dem Hebräischen Wort für Wort, dem Original so nah, wie das Spanische es erträgt. Darum klingt sie fremd, alt, mit umgestellter Satzfolge. Das ist keine Ungeschicklichkeit: es ist Treue bis zum Äußersten.",
+   "Es gab zwei Ausgaben. Eine dem Herzog von Ferrara gewidmet. Die andere Doña Gracia Nasi, der großen jüdischen Dame, die in halb Europa Flüchtlinge rettete.",
+   "Und hier gibt es eine Brücke, die zu kennen sich lohnt. Casiodoro de Reina, der von der Bärenbibel, benutzte diese Übersetzung und sagte es schriftlich, mit Lob. Ein katholischer Mönch auf der Flucht aus Sevilla, gestützt auf die Arbeit von Juden, die aus demselben Land vertrieben worden waren.",
+   "Beide um derselben Sache willen verbannt, einander helfend, ohne sich zu kennen."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 15 · Museo di Storia della Bibbia",
-   "titulo": "Il Nuovo Testamento di Enzinas",
-   "siglo": "Anversa, 1543 · il primo in spagnolo",
+   "sala": "Vetrina 17b · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia di Ferrara",
+   "siglo": "Ferrara, 1553 · la lingua che si portarono via",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Un ragazzo di ventisette anni mise questo libro nelle mani dell'uomo più potente del mondo. Ed è così che finì in carcere. Si chiamava Francisco de Enzinas, era di Burgos, e aveva studiato a Lovanio e a Wittenberg, dove abitava in casa di Melantone. Tradusse il Nuovo Testamento in spagnolo dal greco di Erasmo, proprio quello che ha visto alcune vetrine fa. Fu stampato ad Anversa nel 1543. È il primo Nuovo Testamento completo nella nostra lingua uscito da un torchio.",
-   "E allora fece una cosa che nessuno si aspettava: invece di nasconderlo, chiese udienza all'imperatore Carlo V e glielo consegnò di persona, a Bruxelles. L'imperatore chiese chi ne fosse l'autore. Rispose che era lui. Carlo gli disse che se il libro era quello che diceva di essere non ci sarebbero stati problemi, e lo mandò dal suo confessore.",
-   "Pochi giorni dopo era in prigione. Quindici mesi rinchiuso a Bruxelles. Fuggì nel 1545 da una porta che una notte trovò aperta, e non tornò mai più in Spagna. Morì di peste a Strasburgo nel 1552, a trentaquattro anni.",
-   "Noti il dettaglio, perché dice molto: non lo incarcerarono per aver nascosto il libro. Lo incarcerarono per averlo mostrato. E guardi la differenza con la vetrina precedente. Quella raccontava i vangeli e li spiegava. Questa è il testo stesso, tale e quale, senza nessuno in mezzo. Da qui in avanti, è questo che vedrà."
+   "Questa è la Bibbia di quelli che se ne andarono.",
+   "Nel 1492 gli ebrei espulsi dalla Spagna partirono con la loro lingua addosso: continuarono a parlare castigliano a Salonicco, a Smirne, ad Amsterdam, per secoli. E nel 1553, nella città italiana di Ferrara, il cui duca aveva dato loro rifugio, stamparono l'Antico Testamento in quella lingua che si erano portati via.",
+   "La tradussero due uomini, e ciascuno aveva due nomi. Abraham Usque, che in Portogallo si era chiamato Duarte Pinel. E Yom Tob Atias, che si era chiamato Jerónimo de Vargas. Due nomi a testa, perché erano vissuti fingendosi cristiani per sopravvivere. Qui, finalmente, firmarono con il proprio.",
+   "Tradussero dall'ebraico parola per parola, attaccati all'originale fin dove il castigliano regge. Per questo suona strana, antica, con l'ordine delle frasi rovesciato. Non è goffaggine: è fedeltà portata all'estremo.",
+   "Se ne fecero due emissioni. Una dedicata al duca di Ferrara. L'altra dedicata a donna Gracia Nasi, la gran signora ebrea che riscattava profughi in mezza Europa.",
+   "E c'è un ponte che vale la pena conoscere. Casiodoro de Reina, quello della Bibbia dell'Orso, usò questa traduzione e lo disse per iscritto, con elogi. Un monaco cattolico fuggito da Siviglia, appoggiandosi al lavoro di ebrei espulsi dalla stessa terra.",
+   "Entrambi esiliati per la stessa cosa, aiutandosi senza conoscersi."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 17b · Museu de História da Bíblia",
+   "titulo": "A Bíblia de Ferrara",
+   "siglo": "Ferrara, 1553 · a língua que levaram consigo",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Esta é a Bíblia dos que se foram.",
+   "Em 1492 os judeus expulsos da Espanha saíram com a sua língua às costas: continuaram falando castelhano em Salónica, em Esmirna, em Amesterdão, durante séculos. E em 1553, na cidade italiana de Ferrara, cujo duque lhes dera refúgio, imprimiram o Antigo Testamento nessa língua que tinham levado consigo.",
+   "Traduziram-na dois homens, e cada um tinha dois nomes. Abraham Usque, que em Portugal se chamara Duarte Pinel. E Yom Tob Atias, que se chamara Jerónimo de Vargas. Dois nomes cada um, porque haviam vivido fingindo ser cristãos para sobreviver. Aqui, enfim, assinaram com o seu.",
+   "Traduziram do hebraico palavra por palavra, colados ao original até onde o castelhano aguenta. Por isso soa estranha, antiga, com a ordem das frases invertida. Não é falta de jeito: é fidelidade levada ao extremo.",
+   "Fizeram-se duas emissões. Uma dedicada ao duque de Ferrara. Outra dedicada a dona Gracia Nasi, a grande senhora judia que resgatava refugiados por meia Europa.",
+   "E há uma ponte que vale a pena conhecer. Casiodoro de Reina, o da Bíblia do Urso, usou esta tradução e disse-o por escrito, com elogios. Um monge católico fugido de Sevilha, apoiando-se no trabalho de uns judeus expulsos da mesma terra.",
+   "Ambos desterrados pelo mesmo, ajudando-se sem se conhecerem."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 17b · Музей истории Библии",
+   "titulo": "Феррарская Библия",
+   "siglo": "Феррара, 1553 · язык, унесённый с собой",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Это Библия тех, кто ушёл.",
+   "В 1492 году изгнанные из Испании евреи ушли, унося с собой свой язык: они продолжали говорить по-кастильски в Салониках, в Смирне, в Амстердаме — веками. И в 1553 году в итальянском городе Ферраре, герцог которого дал им приют, они напечатали Ветхий Завет на том языке, который унесли с собой.",
+   "Перевели её двое, и у каждого было по два имени. Авраам Уске, которого в Португалии звали Дуарте Пинель. И Йом Тов Атиас, которого звали Херонимо де Варгас. По два имени у каждого — потому что они жили, выдавая себя за христиан, чтобы уцелеть. Здесь они наконец подписались своими.",
+   "Они переводили с еврейского слово в слово, держась подлинника настолько, насколько испанский это выдерживает. Оттого перевод звучит странно, старомодно, с перевёрнутым порядком слов. Это не неуклюжесть: это верность, доведённая до предела.",
+   "Было сделано два выпуска. Один посвящён герцогу Феррарскому. Другой — донье Грации Наси, знатной еврейке, выкупавшей беженцев по всей половине Европы.",
+   "И здесь есть мост, о котором стоит знать. Касиодоро де Рейна, создатель Библии Медведя, пользовался этим переводом и написал об этом с похвалой. Католический монах, бежавший из Севильи, опирался на труд евреев, изгнанных из той же земли.",
+   "Оба изгнаны за одно и то же — и помогли друг другу, никогда не встретившись."
   ]
  }
 };
@@ -268,6 +327,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

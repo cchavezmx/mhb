@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Biblia del Duque de Alba — Museo de Historia de la Biblia</title>
+<title>La Biblia Pauperum — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  :root{ --fondo:#F2EEE6;--claro:#FBF8F1;--tinta:#1F1D18;--cabecera:#4A3A24;--acento:#8A6B3C;--marca:rgba(138,107,60,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
+  .tres{flex:none;display:flex;gap:4px;align-items:center}
+  .tres i{display:block;width:16px;height:44px;background:var(--acento);opacity:.6;border-radius:2px}
+  .tres i.centro{width:26px;height:58px;opacity:1}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,20 +40,21 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="emb" aria-hidden="true"></div>
+  <div class="tres" aria-hidden="true"><i></i><i class="centro"></i><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
     <p class="siglo" id="ui-siglo"></p>
   </div>
 </header>
-
   <div class="progreso"><i id="mhb-barra"></i></div>
   <nav class="mhb-nav" id="mhb-nav" aria-label="Navegación"></nav>
+
 <main>
   <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
   <div class="mandos">
@@ -71,23 +74,147 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Librero 3b · Museo de Historia de la Biblia",
-   "titulo": "Biblia del Duque de Alba",
-   "siglo": "",
+   "sala": "Librero 4 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia Pauperum",
+   "siglo": "Libro xilográfico · siglo XV",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Un rabino y una orden militar cristiana hicieron juntos este libro. Y casi no se hace.",
-   "En 1,422, don Luis de Guzmán, maestre de la Orden de Calatrava, le encargó a Moisés Arragel, rabino de Maqueda, que tradujera la Biblia del hebreo al castellano y que además la comentara.",
-   "Arragel dijo que no. Y lo dijo por escrito, con sus razones: que un judío glosando la Escritura para cristianos iba a incomodar a unos y a otros, y que él no quería ese problema. El maestre insistió. Las cartas que se cruzaron se conservan, y son un documento extraordinario: dos hombres de religiones distintas negociando, durante meses, hasta dónde puede llegar cada uno.",
-   "Al final Arragel aceptó, con condiciones. Trabajó ocho años. Tradujo directamente del hebreo",
-   "y llenó los márgenes de comentarios, apoyándose en los grandes maestros judíos y también en autores cristianos. Cuando terminó, frailes de Toledo revisaron su trabajo, y pintores cristianos lo iluminaron con más de trescientas miniaturas.",
-   "Mire lo que tiene delante. En el mismo volumen, en la misma página, conviven la voz de un rabino y la mano de un iluminador cristiano. Eso ocurrió en Castilla, en 1,430.",
-   "Sesenta años después, los judíos fueron expulsados de España. Ciento veinte años después, tener la Biblia en castellano se volvió delito.",
-   "Por eso este libro está aquí. No para decir que aquello fue un paraíso, pues no lo fue. Sino para que quede constancia de que hubo un momento en que se pudo, y de que lo que vino después no era la única manera posible."
+   "Ahora mire estos libros pequeños: la Biblia Pauperum, la Biblia de los pobres. Este libro se imprimió sin una sola letra de metal. Cada página salió de una única plancha de madera, tallada entera: el dibujo y las palabras juntos, en la misma pieza, como un sello gigante. Si el tallador se equivocaba en una letra, se perdía la página completa.",
+   "A estos libros se les llama xilográficos, y en Europa se hacían así antes de que existieran los tipos móviles, y todavía un buen tiempo después.",
+   "Y ahora mire cómo está armada la página, porque es una máquina de pensar. En el centro va una escena del Nuevo Testamento. A los lados, dos escenas del Antiguo. Y arriba y abajo, cuatro profetas sosteniendo filacterias con sus frases. La idea es que las tres imágenes se lean juntas: lo del centro es lo que ocurrió, y lo de los lados es lo que lo anunciaba. La Anunciación al centro, y a los flancos la zarza que arde sin consumirse y el vellón de Gedeón.",
+   "Reconocerá usted el método. Es exactamente lo mismo que hace la Biblia de San Luis, que acaba de ver: una imagen y su interpretación. Allá van arriba y abajo; aquí, al centro y a los flancos. Pero el mecanismo es el mismo, y el propósito también: que quien no puede leer el texto pueda entender la idea.",
+   "Sobre el nombre hay discusión, y conviene decirlo. Biblia de los pobres suena a libro para gente humilde, pero eran objetos caros y quienes los usaban no eran pobres de dinero. La explicación que más peso tiene hoy es otra: que se hizo para los predicadores pobres, los frailes que iban de pueblo en pueblo y necesitaban tener a la mano qué decir y con qué ejemplos.",
+   "Y guárdese el contraste para la vitrina de Gutenberg. Aquí la página entera es una sola pieza de madera: para cambiar una palabra hay que tallarlo todo de nuevo. Lo que Gutenberg inventó no fue imprimir. Fue poder deshacer lo impreso y volver a usar las mismas letras."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Bookcase 4 · Museum of the History of the Bible",
+   "titulo": "The Biblia Pauperum",
+   "siglo": "Blockbook · fifteenth century",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Now look at these small books: the Biblia Pauperum, the Bible of the poor. This book was printed without a single letter of metal. Every page came from a single block of wood, carved whole: the picture and the words together, in the same piece, like a giant stamp. If the carver made a mistake in one letter, the whole page was lost.",
+   "Such books are called blockbooks, and in Europe they were made this way before movable type existed, and for a good while afterwards too.",
+   "And now look at how the page is built, because it is a machine for thinking. In the centre goes a scene from the New Testament. At the sides, two scenes from the Old. And above and below, four prophets holding scrolls with their sayings. The idea is that the three images be read together: the one in the middle is what happened, and those at the sides are what foretold it. The Annunciation in the centre, and at the flanks the bush that burns without being consumed and the fleece of Gideon.",
+   "You will recognise the method. It is exactly what the Bible of Saint Louis does, which you have just seen: an image and its interpretation. There they go above and below; here, in the centre and at the flanks. But the mechanism is the same, and so is the purpose: that whoever cannot read the text may understand the idea.",
+   "About the name there is argument, and it is worth saying so. Bible of the poor sounds like a book for humble folk, but these were costly objects and those who used them were not poor in money. The explanation that carries most weight today is another: that it was made for the poor preachers, the friars who went from village to village and needed to have at hand what to say and with what examples.",
+   "And keep the contrast for the Gutenberg case. Here the whole page is a single piece of wood: to change one word you must carve it all again. What Gutenberg invented was not printing. It was being able to undo what was printed and use the same letters again."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Rayon 4 · Musée de l'Histoire de la Bible",
+   "titulo": "La Biblia Pauperum",
+   "siglo": "Livre xylographique · XVe siècle",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Regardez maintenant ces petits livres : la Biblia Pauperum, la Bible des pauvres. Ce livre fut imprimé sans une seule lettre de métal. Chaque page sortit d'une unique planche de bois, gravée tout entière : le dessin et les mots ensemble, dans la même pièce, comme un sceau géant. Si le graveur se trompait d'une lettre, la page entière était perdue.",
+   "On appelle ces livres xylographiques, et en Europe on les faisait ainsi avant que n'existent les caractères mobiles, et encore un bon moment après.",
+   "Et regardez maintenant comment la page est bâtie, car c'est une machine à penser. Au centre, une scène du Nouveau Testament. Sur les côtés, deux scènes de l'Ancien. Et en haut et en bas, quatre prophètes tenant des phylactères avec leurs paroles. L'idée est que les trois images se lisent ensemble : celle du centre est ce qui arriva, celles des côtés sont ce qui l'annonçait. L'Annonciation au centre, et sur les flancs le buisson qui brûle sans se consumer et la toison de Gédéon.",
+   "Vous reconnaîtrez la méthode. C'est exactement ce que fait la Bible de Saint Louis, que vous venez de voir : une image et son interprétation. Là elles vont en haut et en bas ; ici, au centre et sur les flancs. Mais le mécanisme est le même, et le propos aussi : que celui qui ne peut lire le texte puisse comprendre l'idée.",
+   "Sur le nom il y a discussion, et il convient de le dire. Bible des pauvres sonne comme un livre pour gens humbles, mais c'étaient des objets coûteux et ceux qui s'en servaient n'étaient pas pauvres d'argent. L'explication qui pèse le plus aujourd'hui est autre : qu'elle fut faite pour les prédicateurs pauvres, les frères qui allaient de village en village et avaient besoin d'avoir sous la main quoi dire et avec quels exemples.",
+   "Et gardez le contraste pour la vitrine de Gutenberg. Ici la page entière est une seule pièce de bois : pour changer un mot il faut tout graver de nouveau. Ce que Gutenberg inventa, ce ne fut pas l'impression. Ce fut de pouvoir défaire l'imprimé et réemployer les mêmes lettres."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Regal 4 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Biblia Pauperum",
+   "siglo": "Blockbuch · 15. Jahrhundert",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Sehen Sie nun diese kleinen Bücher: die Biblia Pauperum, die Bibel der Armen. Dieses Buch wurde ohne einen einzigen Buchstaben aus Metall gedruckt. Jede Seite kam von einer einzigen Holztafel, ganz geschnitten: Bild und Worte zusammen, in demselben Stück, wie ein riesiger Stempel. Verschnitt sich der Schneider bei einem Buchstaben, war die ganze Seite verloren.",
+   "Solche Bücher nennt man Blockbücher, und in Europa machte man sie so, bevor es bewegliche Lettern gab, und noch eine gute Weile danach.",
+   "Und sehen Sie nun, wie die Seite gebaut ist, denn sie ist eine Denkmaschine. In der Mitte steht eine Szene aus dem Neuen Testament. An den Seiten zwei Szenen aus dem Alten. Und oben und unten vier Propheten mit Spruchbändern. Der Gedanke ist, dass die drei Bilder zusammen gelesen werden: das in der Mitte ist, was geschah, und die an den Seiten sind, was es ankündigte. Die Verkündigung in der Mitte, und an den Flanken der Dornbusch, der brennt und nicht verbrennt, und das Vlies Gideons.",
+   "Sie werden die Methode wiedererkennen. Es ist genau das, was die Bibel des heiligen Ludwig tut, die Sie eben gesehen haben: ein Bild und seine Deutung. Dort stehen sie oben und unten; hier in der Mitte und an den Flanken. Aber der Mechanismus ist derselbe, und der Zweck auch: dass wer den Text nicht lesen kann, den Gedanken verstehe.",
+   "Über den Namen gibt es Streit, und das sollte man sagen. Bibel der Armen klingt nach einem Buch für einfache Leute, aber es waren teure Gegenstände, und wer sie benutzte, war nicht arm an Geld. Die heute gewichtigste Erklärung ist eine andere: dass sie für die armen Prediger gemacht wurde, für die Brüder, die von Dorf zu Dorf zogen und zur Hand haben mussten, was sie sagen sollten und mit welchen Beispielen.",
+   "Und behalten Sie den Gegensatz für die Gutenberg-Vitrine. Hier ist die ganze Seite ein einziges Stück Holz: um ein Wort zu ändern, muss man alles neu schneiden. Was Gutenberg erfand, war nicht das Drucken. Es war die Möglichkeit, das Gedruckte wieder aufzulösen und dieselben Lettern erneut zu benutzen."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Scaffale 4 · Museo di Storia della Bibbia",
+   "titulo": "La Biblia Pauperum",
+   "siglo": "Libro xilografico · XV secolo",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Guardi ora questi libri piccoli: la Biblia Pauperum, la Bibbia dei poveri. Questo libro fu stampato senza una sola lettera di metallo. Ogni pagina uscì da un'unica tavola di legno, intagliata per intero: il disegno e le parole insieme, nello stesso pezzo, come un sigillo gigante. Se l'intagliatore sbagliava una lettera, si perdeva la pagina intera.",
+   "Questi libri si chiamano xilografici, e in Europa si facevano così prima che esistessero i caratteri mobili, e ancora per un bel pezzo dopo.",
+   "E ora guardi come è costruita la pagina, perché è una macchina per pensare. Al centro va una scena del Nuovo Testamento. Ai lati, due scene dell'Antico. E sopra e sotto, quattro profeti che reggono cartigli con le loro frasi. L'idea è che le tre immagini si leggano insieme: quella del centro è ciò che accadde, e quelle dei lati sono ciò che lo annunciava. L'Annunciazione al centro, e ai fianchi il roveto che arde senza consumarsi e il vello di Gedeone.",
+   "Riconoscerà il metodo. È esattamente ciò che fa la Bibbia di San Luigi, che ha appena visto: un'immagine e la sua interpretazione. Là vanno sopra e sotto; qui, al centro e ai fianchi. Ma il meccanismo è lo stesso, e anche lo scopo: che chi non sa leggere il testo possa capire l'idea.",
+   "Sul nome c'è discussione, e conviene dirlo. Bibbia dei poveri suona come un libro per gente umile, ma erano oggetti cari e chi li usava non era povero di denaro. La spiegazione che oggi pesa di più è un'altra: che fu fatta per i predicatori poveri, i frati che andavano di paese in paese e avevano bisogno di avere sottomano che cosa dire e con quali esempi.",
+   "E si tenga il contrasto per la vetrina di Gutenberg. Qui la pagina intera è un solo pezzo di legno: per cambiare una parola bisogna intagliare tutto di nuovo. Ciò che Gutenberg inventò non fu stampare. Fu poter disfare lo stampato e riusare le stesse lettere."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Estante 4 · Museu de História da Bíblia",
+   "titulo": "A Biblia Pauperum",
+   "siglo": "Livro xilográfico · século XV",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Agora olhe estes livros pequenos: a Biblia Pauperum, a Bíblia dos pobres. Este livro foi impresso sem uma única letra de metal. Cada página saiu de uma única chapa de madeira, entalhada por inteiro: o desenho e as palavras juntos, na mesma peça, como um selo gigante. Se o entalhador errasse numa letra, perdia-se a página completa.",
+   "A estes livros chamam-se xilográficos, e na Europa faziam-se assim antes de existirem os tipos móveis, e ainda por um bom tempo depois.",
+   "E agora olhe como está armada a página, porque é uma máquina de pensar. No centro vai uma cena do Novo Testamento. Aos lados, duas cenas do Antigo. E acima e abaixo, quatro profetas segurando filactérios com as suas frases. A ideia é que as três imagens se leiam juntas: a do centro é o que aconteceu, e as dos lados são o que o anunciava. A Anunciação ao centro, e aos flancos a sarça que arde sem se consumir e o velo de Gedeão.",
+   "Você reconhecerá o método. É exatamente o mesmo que faz a Bíblia de São Luís, que acabou de ver: uma imagem e a sua interpretação. Lá vão acima e abaixo; aqui, ao centro e aos flancos. Mas o mecanismo é o mesmo, e o propósito também: que quem não pode ler o texto possa entender a ideia.",
+   "Sobre o nome há discussão, e convém dizê-lo. Bíblia dos pobres soa a livro para gente humilde, mas eram objetos caros e quem os usava não era pobre de dinheiro. A explicação que hoje tem mais peso é outra: que foi feita para os pregadores pobres, os frades que iam de aldeia em aldeia e precisavam ter à mão o que dizer e com que exemplos.",
+   "E guarde o contraste para a vitrine de Gutenberg. Aqui a página inteira é uma só peça de madeira: para mudar uma palavra é preciso entalhar tudo de novo. O que Gutenberg inventou não foi imprimir. Foi poder desfazer o impresso e voltar a usar as mesmas letras."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Стеллаж 4 · Музей истории Библии",
+   "titulo": "Библия бедных",
+   "siglo": "Ксилографическая книга · XV век",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "А теперь взгляните на эти маленькие книги: Biblia Pauperum, Библия бедных. Эта книга напечатана без единой металлической литеры. Каждая страница вышла с одной деревянной доски, вырезанной целиком: рисунок и слова вместе, в одном куске, как огромная печать. Если резчик ошибался в одной букве, пропадала вся страница.",
+   "Такие книги называют ксилографическими, и в Европе их делали так до появления подвижных литер — и ещё довольно долго после.",
+   "А теперь посмотрите, как построена страница, потому что это машина для размышления. В середине — сцена из Нового Завета. По сторонам — две сцены из Ветхого. А сверху и снизу — четыре пророка со свитками своих речений. Замысел в том, чтобы три изображения читались вместе: то, что в середине, — это происшедшее, а то, что по сторонам, — то, что его предвещало. Благовещение в центре, а по бокам — куст, горящий и несгорающий, и руно Гедеона.",
+   "Вы узнаете этот приём. Это в точности то, что делает Библия святого Людовика, которую вы только что видели: образ и его толкование. Там они идут сверху и снизу, здесь — в центре и по бокам. Но механизм тот же, и цель та же: чтобы тот, кто не может прочесть текст, понял мысль.",
+   "О названии спорят, и об этом стоит сказать. «Библия бедных» звучит как книга для простолюдинов, но это были дорогие вещи, и пользовавшиеся ими не были бедны деньгами. Сегодня весомее другое объяснение: она была сделана для бедных проповедников — монахов, которые ходили из села в село и нуждались в том, чтобы под рукой было, что сказать и какими примерами.",
+   "И приберегите это сравнение для витрины Гутенберга. Здесь вся страница — один кусок дерева: чтобы изменить одно слово, надо вырезать всё заново. Гутенберг изобрёл не печать. Он изобрёл возможность разобрать напечатанное и снова употребить те же литеры."
   ]
  }
 };
@@ -192,6 +319,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>
