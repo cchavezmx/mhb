@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia de Vence, de Galván — Museo de Historia de la Biblia</title>
+<title>La Tierra Santa — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EBDB;--claro:#FBF5E6;--tinta:#241D14;--cabecera:#1F5134;--acento:#A8232B;--marca:rgba(168,35,43,.18); }
+  :root{ --fondo:#F1EFE6;--claro:#FAF8F0;--tinta:#1C1B15;--cabecera:#3E4A3A;--acento:#8A7A3A;--marca:rgba(138,122,58,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,8 +17,13 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .aguila{flex:none;width:66px;height:66px}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .mapa{flex:none;width:66px;height:60px;background:var(--claro);border:1.5px solid var(--acento);position:relative;overflow:hidden}
+  .mapa i{position:absolute;background:var(--acento);opacity:.5}
+  .mapa b{position:absolute;width:7px;height:7px;background:var(--cabecera);border-radius:50%}
 
+  
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
   .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
@@ -38,16 +43,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="aguila" viewBox="0 0 66 66" aria-hidden="true">
-   <rect x="0" y="6" width="22" height="54" fill="#1F5134"/>
-   <rect x="22" y="6" width="22" height="54" fill="#F7F1E4"/>
-   <rect x="44" y="6" width="22" height="54" fill="#A8232B"/>
-   <g fill="#1F5134"><path d="M33 26 C29 26 27 29 27 32 C27 37 30 40 33 40 C36 40 39 37 39 32 C39 29 37 26 33 26 Z"/>
-   <path d="M27 42 h12 v3 h-12 Z"/></g></svg>
+  <div class="mapa" aria-hidden="true"><i style="left:14px;top:0;width:3px;height:60px"></i><i style="left:0;top:34px;width:66px;height:3px;transform:rotate(-8deg)"></i><b style="left:30px;top:20px"></b><b style="left:46px;top:40px"></b></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -77,23 +78,22 @@ const GUIA = {
   "voz": "es-MX",
   "ui": {
    "sala": "Vitrina 22 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia de Vence, de Galván",
-   "siglo": "México, 1831–1833 · veinticinco tomos",
+   "titulo": "La Tierra Santa",
+   "siglo": "Barcelona, 1,878-1,879 · Víctor Gebhardt",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Ésta es la primera Biblia impresa en América. Y se imprimió aquí, en el México libre.",
-   "El país tenía diez años de nacido. La Independencia se había consumado en 1,821, y en 1,831 un librero de la Ciudad de México, Mariano Galván Rivera, empezó a sacar de su taller los tomos de esta obra. Veinticinco tomos, más un atlas grabado aparte.",
-   "Y fíjese quién la hizo. No la mandó hacer ningún obispo ni ninguna autoridad de la Iglesia. La hizo un impresor por su cuenta, con ocho sacerdotes mexicanos y algunos seglares, entre ellos el médico y poeta Manuel Carpio y el presbítero Anastasio María Ochoa.",
-   "El texto no viene directo del latín. Viene de la versión francesa de la Vulgata que hizo Lemaistre de Sacy, la de Port-Royal, en su edición de 1,820, con los comentarios del abate de Vence y del benedictino Calmet. De ahí el nombre con que la conocemos: la Biblia de Vence.",
-   "Ábrala y verá dos columnas: el latín de un lado, el castellano del otro. Y además notas, disertaciones y mapas. No es una Biblia de bolsillo: es una biblioteca entera sobre la Biblia.",
-   "Hay una tradición que no podemos probar, según la cual el cura Hidalgo leía esta obra en su versión francesa durante sus años de seminario. No lo afirmamos. Pero la sola posibilidad dice algo: los libros que formaron a los hombres de la Independencia y los que se imprimieron después venían del mismo mundo.",
-   "El taller de Galván, por cierto, sacó también la primera edición mexicana del Quijote, la del Periquillo Sarniento y uno de los primeros recetarios de cocina mexicana. La misma prensa que le dio a México su primera novela le dio su primera Biblia.",
-   "Y aquí está el corazón de este museo. México se hizo independiente y, diez años después, imprimió su propia Biblia. No la trajo de fuera: la hizo.",
-   "Y hay algo más en esta vitrina que no es del siglo diecinueve. En 2010, al cumplirse doscientos años del inicio de la Independencia, esta misma obra se volvió a imprimir en México: una edición conmemorativa hecha por la Sociedad Bíblica de México y la Iglesia del Tercer Día, tomando como base esta Vence de Galván. Las dos están aquí, una junto a otra. La Biblia que este país imprimió a diez años de su Independencia, y la que volvió a imprimir a doscientos. La misma obra, el mismo país, dos aniversarios."
+   "Este libro no ilustra escenas. Ilustra lugares.",
+   "Se llama La Tierra Santa, lo escribió Víctor Gebhardt y lo publicó Espasa en Barcelona entre 1,878 y 1,879. Dos tomos enormes, cerca de mil cuatrocientas páginas entre los dos, con láminas grabadas al acero, mapas iluminados a mano y grabados repartidos por el texto. Pesan cinco kilos cada uno.",
+   "El subtítulo dice lo que se propone: su historia, sus monumentos, sus tradiciones, sus recuerdos y su estado actual. Fíjese en esa última parte. No describe la Tierra Santa de los evangelios: describe la que había en 1,878, con sus ruinas, sus caminos y su gente.",
+   "Y ahora piense para quién se hizo un libro así. En aquellos años, ir a Jerusalén era cosa de muy pocos: meses de viaje y una fortuna. Para todos los demás, este libro era el viaje. Se compraba por entregas, se encuadernaba y se ponía en la sala, y con él una familia entera recorría con el dedo los lugares que oía nombrar cada domingo.",
+   "Le tocó además un buen momento. En esos años empezaba la arqueología moderna en Palestina: se estaba levantando el primer mapa serio del territorio, y por primera vez se podía decir con precisión dónde quedaba cada sitio.",
+   "Y ahora lo que hace que esté en este museo. Todas las demás vitrinas cuentan cómo llegó el texto hasta sus manos: quién lo copió, quién lo tradujo, quién lo imprimió. Ésta responde otra pregunta, que el visitante también se hace: dónde ocurrió.",
+   "Lo que otros hicieron con las escenas, Gebhardt lo hizo con los caminos. Y es el bisabuelo de los mapas que trae hoy, al final, cualquier Biblia de estudio.",
+   "No hay mejor forma de comprender un texto que conociendo su contexto."
   ]
  },
  "en": {
@@ -101,23 +101,22 @@ const GUIA = {
   "voz": "en-GB",
   "ui": {
    "sala": "Case 22 · Museum of the History of the Bible",
-   "titulo": "Galván's Vence Bible",
-   "siglo": "Mexico City, 1831–1833 · twenty-five volumes",
+   "titulo": "The Holy Land",
+   "siglo": "Barcelona, 1878-1879 · Víctor Gebhardt",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "This is the first Bible printed in the Americas. And it was printed here, in Mexico.",
-   "The country was ten years old. Independence had been completed in 1821, and in 1831 a bookseller in Mexico City, Mariano Galván Rivera, began bringing the volumes of this work out of his workshop. Twenty-five volumes, plus an atlas engraved separately.",
-   "And notice who made it. No bishop ordered it, no authority of the Church. It was made by a printer on his own account, with eight Mexican priests and some laymen, among them the physician and poet Manuel Carpio and the priest Anastasio María Ochoa.",
-   "The text does not come straight from the Latin. It comes from the French version of the Vulgate made by Lemaistre de Sacy, the Port-Royal one, in its edition of 1820, with the commentaries of the abbé de Vence and the Benedictine Calmet. Hence the name by which we know it: the Vence Bible.",
-   "Open it and you will see two columns: the Latin on one side, the Spanish on the other. And notes besides, and dissertations, and maps. This is not a pocket Bible: it is an entire library about the Bible.",
-   "There is a tradition we cannot prove, according to which Father Hidalgo read this work in its French version during his seminary years. We do not assert it. But the mere possibility says something: the books that formed the men of Independence and the books printed afterwards came out of the same world.",
-   "Galván's workshop, by the way, also produced the first Mexican edition of Don Quixote, the edition of El Periquillo Sarniento, and one of the earliest Mexican cookery books. The same press that gave Mexico its first novel gave it its first Bible.",
-   "And here is the heart of this museum. Mexico became independent and, ten years later, printed its own Bible. It did not bring it from abroad: it made it.",
-   "And there is something else in this case that is not from the nineteenth century. In 2010, on the two-hundredth anniversary of the start of Independence, this same work was printed again in Mexico: a commemorative edition made by the Bible Society of Mexico and the Church of the Third Day, taking this Vence of Galván as its basis. Both are here, side by side. The Bible this country printed ten years after its Independence, and the one it printed again two hundred years after. The same work, the same country, two anniversaries."
+   "This book does not illustrate scenes. It illustrates places.",
+   "It is called The Holy Land, it was written by Víctor Gebhardt and published by Espasa in Barcelona between 1878 and 1879. Two enormous volumes, some fourteen hundred pages between them, with steel-engraved plates, hand-coloured maps and engravings scattered through the text. They weigh five kilos each.",
+   "The subtitle says what it sets out to do: its history, its monuments, its traditions, its memories and its present state. Note that last part. It does not describe the Holy Land of the gospels: it describes the one that existed in 1878, with its ruins, its roads and its people.",
+   "And now think whom such a book was made for. In those years, going to Jerusalem was a thing for very few: months of travel and a fortune. For everyone else, this book was the journey. It was bought in instalments, bound and set in the sitting room, and with it a whole family traced with a finger the places they heard named every Sunday.",
+   "It also came at a good moment. In those years modern archaeology was beginning in Palestine: the first serious map of the territory was being drawn, and for the first time one could say precisely where each site lay.",
+   "And now what makes it belong in this museum. Every other case tells how the text reached your hands: who copied it, who translated it, who printed it. This one answers another question, which the visitor also asks: where did it happen.",
+   "What others did with the scenes, Gebhardt did with the roads. And it is the great-grandfather of the maps that any study Bible carries today, at the back.",
+   "There is no better way to understand a text than to know its context."
   ]
  },
  "fr": {
@@ -125,23 +124,22 @@ const GUIA = {
   "voz": "fr-FR",
   "ui": {
    "sala": "Vitrine 22 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible de Vence, de Galván",
-   "siglo": "Mexico, 1831–1833 · vingt-cinq volumes",
+   "titulo": "La Terre Sainte",
+   "siglo": "Barcelone, 1878-1879 · Víctor Gebhardt",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Voici la première Bible imprimée en Amérique. Et elle fut imprimée ici, au Mexique.",
-   "Le pays avait dix ans. L'Indépendance avait été consommée en 1821, et en 1831 un libraire de Mexico, Mariano Galván Rivera, commença à sortir de son atelier les volumes de cet ouvrage. Vingt-cinq volumes, plus un atlas gravé à part.",
-   "Et voyez qui l'a faite. Aucun évêque ne l'a commandée, aucune autorité de l'Église. Elle fut faite par un imprimeur à son propre compte, avec huit prêtres mexicains et quelques laïcs, parmi eux le médecin et poète Manuel Carpio et le prêtre Anastasio María Ochoa.",
-   "Le texte ne vient pas directement du latin. Il vient de la version française de la Vulgate faite par Lemaistre de Sacy, celle de Port-Royal, dans son édition de 1820, avec les commentaires de l'abbé de Vence et du bénédictin Calmet. D'où le nom sous lequel nous la connaissons : la Bible de Vence.",
-   "Ouvrez-la et vous verrez deux colonnes : le latin d'un côté, l'espagnol de l'autre. Et en plus des notes, des dissertations et des cartes. Ce n'est pas une Bible de poche : c'est toute une bibliothèque sur la Bible.",
-   "Il existe une tradition que nous ne pouvons pas prouver, selon laquelle le curé Hidalgo lisait cet ouvrage dans sa version française pendant ses années de séminaire. Nous ne l'affirmons pas. Mais la seule possibilité dit quelque chose : les livres qui ont formé les hommes de l'Indépendance et ceux qu'on imprima ensuite venaient du même monde.",
-   "L'atelier de Galván, soit dit en passant, a aussi sorti la première édition mexicaine du Quichotte, celle du Periquillo Sarniento et l'un des premiers livres de cuisine mexicaine. La même presse qui a donné au Mexique son premier roman lui a donné sa première Bible.",
-   "Et voici le cœur de ce musée. Le Mexique est devenu indépendant et, dix ans plus tard, a imprimé sa propre Bible. Il ne l'a pas fait venir de l'étranger : il l'a faite.",
-   "Et il y a dans cette vitrine autre chose qui n'est pas du dix-neuvième siècle. En 2010, pour le deuxième centenaire du début de l'Indépendance, ce même ouvrage fut réimprimé au Mexique : une édition commémorative réalisée par la Société biblique du Mexique et l'Église du Troisième Jour, prenant pour base cette Vence de Galván. Les deux sont ici, l'une à côté de l'autre. La Bible que ce pays a imprimée dix ans après son Indépendance, et celle qu'il a réimprimée deux cents ans après. La même œuvre, le même pays, deux anniversaires."
+   "Ce livre n'illustre pas des scènes. Il illustre des lieux.",
+   "Il s'appelle La Terre Sainte, il fut écrit par Víctor Gebhardt et publié par Espasa à Barcelone entre 1878 et 1879. Deux volumes énormes, près de mille quatre cents pages à eux deux, avec des planches gravées sur acier, des cartes enluminées à la main et des gravures réparties dans le texte. Ils pèsent cinq kilos chacun.",
+   "Le sous-titre dit ce qu'il se propose : son histoire, ses monuments, ses traditions, ses souvenirs et son état actuel. Remarquez cette dernière partie. Il ne décrit pas la Terre Sainte des évangiles : il décrit celle qui existait en 1878, avec ses ruines, ses chemins et ses gens.",
+   "Et pensez maintenant pour qui un tel livre fut fait. En ces années-là, aller à Jérusalem était l'affaire de très peu : des mois de voyage et une fortune. Pour tous les autres, ce livre était le voyage. On l'achetait par livraisons, on le reliait et on le posait au salon, et avec lui toute une famille parcourait du doigt les lieux qu'elle entendait nommer chaque dimanche.",
+   "Il tomba en outre à un bon moment. En ces années commençait l'archéologie moderne en Palestine : on dressait la première carte sérieuse du territoire, et pour la première fois on pouvait dire avec précision où se trouvait chaque site.",
+   "Et voici ce qui fait qu'il est dans ce musée. Toutes les autres vitrines racontent comment le texte est parvenu jusqu'à vos mains : qui l'a copié, qui l'a traduit, qui l'a imprimé. Celle-ci répond à une autre question, que le visiteur se pose aussi : où cela s'est-il passé.",
+   "Ce que d'autres ont fait avec les scènes, Gebhardt l'a fait avec les chemins. Et c'est l'arrière-grand-père des cartes que porte aujourd'hui, à la fin, n'importe quelle Bible d'étude.",
+   "Il n'y a pas de meilleure façon de comprendre un texte que d'en connaître le contexte."
   ]
  },
  "de": {
@@ -149,23 +147,22 @@ const GUIA = {
   "voz": "de-DE",
   "ui": {
    "sala": "Vitrine 22 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Vence-Bibel von Galván",
-   "siglo": "Mexiko-Stadt, 1831–1833 · fünfundzwanzig Bände",
+   "titulo": "Das Heilige Land",
+   "siglo": "Barcelona, 1878-1879 · Víctor Gebhardt",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Dies ist die erste in Amerika gedruckte Bibel. Und gedruckt wurde sie hier, in Mexiko.",
-   "Das Land war zehn Jahre alt. Die Unabhängigkeit war 1821 vollendet worden, und 1831 begann ein Buchhändler in Mexiko-Stadt, Mariano Galván Rivera, die Bände dieses Werkes aus seiner Werkstatt herauszubringen. Fünfundzwanzig Bände, dazu ein gesondert gestochener Atlas.",
-   "Und sehen Sie, wer sie gemacht hat. Kein Bischof gab sie in Auftrag, keine kirchliche Obrigkeit. Gemacht hat sie ein Drucker auf eigene Rechnung, mit acht mexikanischen Priestern und einigen Laien, darunter der Arzt und Dichter Manuel Carpio und der Priester Anastasio María Ochoa.",
-   "Der Text kommt nicht unmittelbar aus dem Lateinischen. Er kommt aus der französischen Vulgata-Fassung von Lemaistre de Sacy, der von Port-Royal, in ihrer Ausgabe von 1820, mit den Kommentaren des Abbé de Vence und des Benediktiners Calmet. Daher der Name, unter dem wir sie kennen: die Vence-Bibel.",
-   "Schlagen Sie sie auf, und Sie sehen zwei Spalten: das Latein auf der einen Seite, das Spanische auf der anderen. Dazu Anmerkungen, Abhandlungen und Karten. Das ist keine Taschenbibel: das ist eine ganze Bibliothek über die Bibel.",
-   "Es gibt eine Überlieferung, die wir nicht beweisen können, nach der Pfarrer Hidalgo dieses Werk in seiner französischen Fassung während seiner Seminarjahre gelesen habe. Wir behaupten es nicht. Aber schon die Möglichkeit sagt etwas: die Bücher, die die Männer der Unabhängigkeit prägten, und die danach gedruckten kamen aus derselben Welt.",
-   "Aus Galváns Werkstatt kam übrigens auch die erste mexikanische Ausgabe des Don Quijote, die des Periquillo Sarniento und eines der frühesten mexikanischen Kochbücher. Dieselbe Presse, die Mexiko seinen ersten Roman gab, gab ihm seine erste Bibel.",
-   "Und hier ist das Herz dieses Museums. Mexiko wurde unabhängig und druckte zehn Jahre später seine eigene Bibel. Es holte sie nicht von außen: es machte sie selbst.",
-   "Und in dieser Vitrine steht noch etwas, das nicht aus dem neunzehnten Jahrhundert stammt. 2010, zum zweihundertsten Jahrestag des Beginns der Unabhängigkeit, wurde dasselbe Werk in Mexiko erneut gedruckt: eine Gedenkausgabe der Bibelgesellschaft von Mexiko und der Kirche des Dritten Tages, die diese Vence von Galván zur Grundlage nahm. Beide stehen hier nebeneinander. Die Bibel, die dieses Land zehn Jahre nach seiner Unabhängigkeit druckte, und die, die es zweihundert Jahre danach erneut druckte. Dasselbe Werk, dasselbe Land, zwei Jahrestage."
+   "Dieses Buch bebildert keine Szenen. Es bebildert Orte.",
+   "Es heißt Das Heilige Land, geschrieben hat es Víctor Gebhardt, und Espasa gab es in Barcelona zwischen 1878 und 1879 heraus. Zwei gewaltige Bände, zusammen an die vierzehnhundert Seiten, mit stahlgestochenen Tafeln, von Hand kolorierten Karten und Stichen im Text verteilt. Jeder wiegt fünf Kilo.",
+   "Der Untertitel sagt, was es sich vornimmt: seine Geschichte, seine Denkmäler, seine Überlieferungen, seine Erinnerungen und sein gegenwärtiger Zustand. Beachten Sie diesen letzten Teil. Es beschreibt nicht das Heilige Land der Evangelien: es beschreibt jenes, das es 1878 gab, mit seinen Ruinen, seinen Wegen und seinen Menschen.",
+   "Und denken Sie nun, für wen ein solches Buch gemacht wurde. In jenen Jahren war eine Reise nach Jerusalem etwas für sehr wenige: Monate Weg und ein Vermögen. Für alle anderen war dieses Buch die Reise. Man kaufte es in Lieferungen, ließ es binden und stellte es ins Wohnzimmer, und mit ihm durchlief eine ganze Familie mit dem Finger die Orte, die sie jeden Sonntag nennen hörte.",
+   "Es traf zudem einen guten Augenblick. In jenen Jahren begann die moderne Archäologie in Palästina: die erste ernsthafte Karte des Gebiets entstand, und zum ersten Mal konnte man genau sagen, wo jeder Ort lag.",
+   "Und nun, was es in dieses Museum gehören lässt. Alle anderen Vitrinen erzählen, wie der Text in Ihre Hände kam: wer ihn abschrieb, wer ihn übersetzte, wer ihn druckte. Diese beantwortet eine andere Frage, die der Besucher sich ebenfalls stellt: wo ist es geschehen.",
+   "Was andere mit den Szenen taten, tat Gebhardt mit den Wegen. Und es ist der Urgroßvater der Karten, die heute jede Studienbibel hinten enthält.",
+   "Es gibt keinen besseren Weg, einen Text zu verstehen, als seinen Zusammenhang zu kennen."
   ]
  },
  "it": {
@@ -173,23 +170,68 @@ const GUIA = {
   "voz": "it-IT",
   "ui": {
    "sala": "Vetrina 22 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia di Vence, di Galván",
-   "siglo": "Città del Messico, 1831–1833 · venticinque volumi",
+   "titulo": "La Terra Santa",
+   "siglo": "Barcellona, 1878-1879 · Víctor Gebhardt",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Questa è la prima Bibbia stampata in America. E fu stampata qui, in Messico.",
-   "Il paese aveva dieci anni di vita. L'Indipendenza si era compiuta nel 1821, e nel 1831 un libraio di Città del Messico, Mariano Galván Rivera, cominciò a far uscire dalla sua bottega i volumi di quest'opera. Venticinque volumi, più un atlante inciso a parte.",
-   "E guardi chi la fece. Non la ordinò nessun vescovo né alcuna autorità della Chiesa. La fece uno stampatore per conto proprio, con otto sacerdoti messicani e alcuni laici, fra cui il medico e poeta Manuel Carpio e il presbitero Anastasio María Ochoa.",
-   "Il testo non viene direttamente dal latino. Viene dalla versione francese della Vulgata fatta da Lemaistre de Sacy, quella di Port-Royal, nella sua edizione del 1820, con i commenti dell'abate di Vence e del benedettino Calmet. Di qui il nome con cui la conosciamo: la Bibbia di Vence.",
-   "La apra e vedrà due colonne: il latino da un lato, lo spagnolo dall'altro. E poi note, dissertazioni e mappe. Non è una Bibbia tascabile: è un'intera biblioteca sulla Bibbia.",
-   "C'è una tradizione che non possiamo provare, secondo cui il curato Hidalgo leggeva quest'opera nella sua versione francese durante gli anni di seminario. Non lo affermiamo. Ma la sola possibilità dice qualcosa: i libri che formarono gli uomini dell'Indipendenza e quelli stampati dopo venivano dallo stesso mondo.",
-   "La bottega di Galván, per inciso, produsse anche la prima edizione messicana del Chisciotte, quella del Periquillo Sarniento e uno dei primi ricettari di cucina messicana. La stessa stampa che diede al Messico il suo primo romanzo gli diede la sua prima Bibbia.",
-   "Ed ecco il cuore di questo museo. Il Messico divenne indipendente e, dieci anni dopo, stampò la propria Bibbia. Non la fece venire da fuori: la fece.",
-   "E c'è in questa vetrina qualcos'altro che non è dell'Ottocento. Nel 2010, ai duecento anni dall'inizio dell'Indipendenza, quest'opera fu stampata di nuovo in Messico: un'edizione commemorativa realizzata dalla Società Biblica del Messico e dalla Chiesa del Terzo Giorno, prendendo come base questa Vence di Galván. Sono qui tutte e due, una accanto all'altra. La Bibbia che questo paese stampò dieci anni dopo la sua Indipendenza, e quella che ristampò duecento anni dopo. La stessa opera, lo stesso paese, due anniversari."
+   "Questo libro non illustra scene. Illustra luoghi.",
+   "Si chiama La Terra Santa, lo scrisse Víctor Gebhardt e lo pubblicò Espasa a Barcellona fra il 1878 e il 1879. Due tomi enormi, circa millequattrocento pagine in tutto, con tavole incise in acciaio, carte miniate a mano e incisioni distribuite nel testo. Pesano cinque chili l'uno.",
+   "Il sottotitolo dice ciò che si propone: la sua storia, i suoi monumenti, le sue tradizioni, i suoi ricordi e il suo stato attuale. Noti quest'ultima parte. Non descrive la Terra Santa dei vangeli: descrive quella che c'era nel 1878, con le sue rovine, le sue strade e la sua gente.",
+   "E ora pensi per chi fu fatto un libro così. In quegli anni andare a Gerusalemme era cosa di pochissimi: mesi di viaggio e una fortuna. Per tutti gli altri, questo libro era il viaggio. Si comprava a dispense, si rilegava e si metteva in salotto, e con esso un'intera famiglia percorreva col dito i luoghi che sentiva nominare ogni domenica.",
+   "Gli toccò inoltre un buon momento. In quegli anni cominciava l'archeologia moderna in Palestina: si stava tracciando la prima carta seria del territorio, e per la prima volta si poteva dire con precisione dove stava ciascun sito.",
+   "E ora ciò che fa sì che stia in questo museo. Tutte le altre vetrine raccontano come il testo giunse fino alle sue mani: chi lo copiò, chi lo tradusse, chi lo stampò. Questa risponde a un'altra domanda, che il visitatore pure si fa: dove accadde.",
+   "Ciò che altri fecero con le scene, Gebhardt lo fece con le strade. Ed è il bisnonno delle carte che porta oggi, in fondo, qualunque Bibbia di studio.",
+   "Non c'è modo migliore di comprendere un testo che conoscerne il contesto."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 22 · Museu de História da Bíblia",
+   "titulo": "A Terra Santa",
+   "siglo": "Barcelona, 1878-1879 · Víctor Gebhardt",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Este livro não ilustra cenas. Ilustra lugares.",
+   "Chama-se A Terra Santa, escreveu-o Víctor Gebhardt e publicou-o Espasa em Barcelona entre 1878 e 1879. Dois tomos enormes, perto de mil e quatrocentas páginas entre os dois, com lâminas gravadas a aço, mapas iluminados à mão e gravuras repartidas pelo texto. Pesam cinco quilos cada um.",
+   "O subtítulo diz o que se propõe: a sua história, os seus monumentos, as suas tradições, as suas recordações e o seu estado atual. Repare nessa última parte. Não descreve a Terra Santa dos evangelhos: descreve a que havia em 1878, com as suas ruínas, os seus caminhos e a sua gente.",
+   "E agora pense para quem se fez um livro assim. Naqueles anos, ir a Jerusalém era coisa de muito poucos: meses de viagem e uma fortuna. Para todos os demais, este livro era a viagem. Comprava-se em fascículos, encadernava-se e punha-se na sala, e com ele uma família inteira percorria com o dedo os lugares que ouvia nomear todos os domingos.",
+   "Coube-lhe além disso um bom momento. Naqueles anos começava a arqueologia moderna na Palestina: levantava-se o primeiro mapa sério do território, e pela primeira vez se podia dizer com precisão onde ficava cada sítio.",
+   "E agora o que faz com que esteja neste museu. Todas as demais vitrines contam como o texto chegou até as suas mãos: quem o copiou, quem o traduziu, quem o imprimiu. Esta responde a outra pergunta, que o visitante também se faz: onde aconteceu.",
+   "O que outros fizeram com as cenas, Gebhardt fê-lo com os caminhos. E é o bisavô dos mapas que traz hoje, no fim, qualquer Bíblia de estudo.",
+   "Não há melhor forma de compreender um texto do que conhecendo o seu contexto."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 22 · Музей истории Библии",
+   "titulo": "Святая Земля",
+   "siglo": "Барселона, 1878-1879 · Виктор Гебхардт",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Эта книга изображает не сцены. Она изображает места.",
+   "Она называется «Святая Земля», написал её Виктор Гебхардт, а издал Эспаса в Барселоне в 1878–1879 годах. Два огромных тома, вместе около тысячи четырёхсот страниц, с гравюрами на стали, картами, раскрашенными от руки, и гравюрами, рассыпанными по тексту. Каждый весит пять килограммов.",
+   "Подзаголовок говорит, чего книга хочет: её история, её памятники, её предания, её воспоминания и её нынешнее состояние. Обратите внимание на последнее. Она описывает не Святую Землю Евангелий, а ту, что была в 1878 году, с её развалинами, дорогами и людьми.",
+   "А теперь подумайте, для кого делалась такая книга. В те годы поездка в Иерусалим была уделом очень немногих: месяцы пути и целое состояние. Для всех остальных эта книга и была путешествием. Её покупали выпусками, переплетали и ставили в гостиной, и по ней целая семья водила пальцем по местам, которые слышала названными каждое воскресенье.",
+   "Ей досталось к тому же удачное время. В те годы в Палестине начиналась современная археология: составлялась первая серьёзная карта края, и впервые можно было точно сказать, где какое место находится.",
+   "А теперь о том, почему она в этом музее. Все прочие витрины рассказывают, как текст дошёл до ваших рук: кто его переписал, кто перевёл, кто напечатал. Эта отвечает на другой вопрос, который посетитель тоже себе задаёт: где это происходило.",
+   "То, что другие сделали со сценами, Гебхардт сделал с дорогами. И это прадед тех карт, которые сегодня помещают в конце любой учебной Библии.",
+   "Нет лучшего способа понять текст, чем узнать его контекст."
   ]
  }
 };
@@ -294,6 +336,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

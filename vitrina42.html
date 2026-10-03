@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>El cobre y la madera — Museo de Historia de la Biblia</title>
+<title>La línea. Schnorr von Carolsfeld — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  :root{ --fondo:#F2F1EC;--claro:#FBFAF6;--tinta:#1B1B17;--cabecera:#33332C;--acento:#6A6A5A;--marca:rgba(106,106,90,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,8 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
+  .linea{flex:none;width:64px;height:62px;border:2px solid var(--acento);border-radius:3px;display:flex;align-items:center;justify-content:center}
+  .linea svg{width:44px;height:44px}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,20 +39,21 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="emb" aria-hidden="true"></div>
+  <div class="linea" aria-hidden="true"><svg viewBox="0 0 44 44" fill="none" stroke="#33332C" stroke-width="1.6"><circle cx="22" cy="12" r="7"/><path d="M22 19 L22 34 M22 23 L12 30 M22 23 L32 30 M22 34 L15 43 M22 34 L29 43"/></svg></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
     <p class="siglo" id="ui-siglo"></p>
   </div>
 </header>
-
   <div class="progreso"><i id="mhb-barra"></i></div>
   <nav class="mhb-nav" id="mhb-nav" aria-label="Navegación"></nav>
+
 <main>
   <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
   <div class="mandos">
@@ -71,26 +73,154 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 24 a y b · Museo de Historia de la Biblia",
-   "titulo": "El cobre y la madera",
-   "siglo": "",
+   "sala": "Vitrina 25a · Museo de Historia de la Biblia",
+   "titulo": "La línea. Schnorr von Carolsfeld",
+   "siglo": "México, Uguet, 1,878",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Pieter de Hondt y Gustave Doré",
-   "Dos libros de estampas, con ciento cuarenta años de distancia. Y entre ellos cambió algo que no se ve en el dibujo, sino en cómo está hecho.",
-   "Empecemos por el de la izquierda. La Haya, 1,728. Este libro no es una Biblia, pues no trae el texto sagrado. El editor Pieter de Hondt publica doscientas catorce láminas que cuentan, escena por escena, las historias del Antiguo y del Nuevo Testamento. Los dibujos son de Gerard Hoet, Bernard Picart y Arnold Houbraken, y para pasarlos al metal hicieron falta más de treinta grabadores.",
-   "Están grabadas en cobre, a buril. El grabador abre el surco en la plancha, la tinta se mete en el hueco y el papel, bajo una presión enorme, va a buscarla. Es lento, es caro y no admite errores. Por eso un libro así se vendía por suscripción y llevaba dedicatoria a un noble, con su escudo de armas en lo alto.",
-   "Y fíjese en el pie de cada lámina, porque ahí está el detalle que lo vuelve pieza de este museo: la leyenda va en seis lenguas. Hebreo, inglés, alemán, latín, francés y holandés. Una sola tirada servía para media Europa, porque la imagen no necesita traducirse. Es una políglota hecha de dibujos.",
-   "Ahora mire el de la derecha. Tours, 1,866. Gustave Doré ilustra la Biblia con más de doscientas treinta estampas, y esta vez el grabado no está en metal, sino en madera de boj cortada a contrahílo. Ahí el dibujo queda en relieve, no en hueco. Y esa diferencia técnica lo cambió todo: una plancha en relieve se puede montar junto a los tipos de plomo e imprimirse de un solo golpe, con la página entera.",
-   "En otras palabras: el cobre obliga a imprimir la imagen aparte y encarece el libro; la madera permite meterla en la misma página que el texto y abaratarlo.",
-   "De Hondt es para el salón de un noble. Doré es para la mesa de una casa.",
-   "Y el dibujo cambia con la técnica. Doré no dibuja escenas ordenadas: dibuja luz, tormenta y multitudes. Sus estampas se copiaron en medio mundo y terminaron siendo la manera en que Occidente se imagina las Escrituras. Cuando usted se imagina a Sansón derribando las columnas, lo más probable es que esté recordando un grabado de Doré sin saber que es suyo.",
-   "Dos maneras de abrir un surco. Una en metal, para pocos; otra en madera, para todos. En la vitrina de al lado el dibujo se acaba: lo que sigue es pintura.",
-   "Segunda Vitrina"
+   "En la vitrina anterior vio dos maneras de grabar. Aquí y en la de al lado va a ver dos maneras de mirar.",
+   "Éste es Julius Schnorr von Carolsfeld, pintor alemán, en la edición que publicó en México el editor Justo Uguet en 1,878 con el título de Las Primeras Bellezas del Mundo. Los grabados son suyos: los había publicado en Alemania entre 1,852 y 1,860, doscientas cuarenta estampas, en una obra que se llamó La Biblia en imágenes.",
+   "Mire cómo dibuja. Contorno limpio, composición serena, cada figura en su lugar. Usted puede decir sin dudar qué escena está viendo y quién es cada quien. No hay nada que descifrar: todo está dicho con la línea.",
+   "Eso no es falta de ambición, es un propósito. Schnorr dibujaba para enseñar. Sus estampas se usaron durante generaciones en escuelas y en catecismos, y pasaron de ahí a las estampitas, a los misales y a los cuadros de las casas.",
+   "Y aquí nos toca de cerca: este ejemplar se imprimió en México, en 1,878, por una imprenta y librería religiosa de esta ciudad. No llegó de Europa hecho: se compuso y se tiró aquí.",
+   "Ahora vuélvase hacia la vitrina de al lado. El libro que está ahí se hizo ochenta y seis años después, y no se parece en nada.",
+   "Dibujar con la línea es decidir por el lector qué está viendo."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Case 25a · Museum of the History of the Bible",
+   "titulo": "The line. Schnorr von Carolsfeld",
+   "siglo": "Mexico, Uguet, 1878",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "In the previous case you saw two ways of engraving. Here and next door you will see two ways of looking.",
+   "This is Julius Schnorr von Carolsfeld, a German painter, in the edition published in Mexico by the printer Justo Uguet in 1878 under the title The First Beauties of the World. The engravings are his: he had published them in Germany between 1852 and 1860, two hundred and forty prints, in a work called The Bible in Pictures.",
+   "Look at how he draws. A clean outline, a serene composition, every figure in its place. You can say without hesitation what scene you are looking at and who each person is. There is nothing to decipher: everything is said with the line.",
+   "That is not want of ambition, it is a purpose. Schnorr drew in order to teach. His prints were used for generations in schools and catechisms, and passed from there to holy cards, to missals and to the pictures hanging in people's houses.",
+   "And here it touches us closely: this copy was printed in Mexico, in 1878, by a religious press and bookshop of this city. It did not arrive ready-made from Europe: it was set and run off here.",
+   "Now turn to the case beside this one. The book there was made eighty-six years later, and it is nothing like it.",
+   "To draw with the line is to decide for the reader what he is looking at."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Vitrine 25a · Musée de l'Histoire de la Bible",
+   "titulo": "La ligne. Schnorr von Carolsfeld",
+   "siglo": "Mexico, Uguet, 1878",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Dans la vitrine précédente vous avez vu deux manières de graver. Ici et dans celle d'à côté vous verrez deux manières de regarder.",
+   "Voici Julius Schnorr von Carolsfeld, peintre allemand, dans l'édition que publia au Mexique l'éditeur Justo Uguet en 1878 sous le titre Les Premières Beautés du Monde. Les gravures sont de lui : il les avait publiées en Allemagne entre 1852 et 1860, deux cent quarante estampes, dans une œuvre appelée La Bible en images.",
+   "Regardez comme il dessine. Contour net, composition sereine, chaque figure à sa place. Vous pouvez dire sans hésiter quelle scène vous voyez et qui est chacun. Il n'y a rien à déchiffrer : tout est dit par la ligne.",
+   "Ce n'est pas un manque d'ambition, c'est un dessein. Schnorr dessinait pour enseigner. Ses estampes servirent pendant des générations dans les écoles et les catéchismes, et passèrent de là aux images pieuses, aux missels et aux tableaux des maisons.",
+   "Et ici cela nous touche de près : cet exemplaire fut imprimé au Mexique, en 1878, par une imprimerie et librairie religieuse de cette ville. Il n'arriva pas tout fait d'Europe : il fut composé et tiré ici.",
+   "Tournez-vous maintenant vers la vitrine d'à côté. Le livre qui s'y trouve fut fait quatre-vingt-six ans plus tard, et il ne lui ressemble en rien.",
+   "Dessiner avec la ligne, c'est décider pour le lecteur ce qu'il est en train de voir."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Vitrine 25a · Museum zur Geschichte der Bibel",
+   "titulo": "Die Linie. Schnorr von Carolsfeld",
+   "siglo": "Mexiko, Uguet, 1878",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "In der vorigen Vitrine sahen Sie zwei Arten zu stechen. Hier und nebenan sehen Sie zwei Arten zu schauen.",
+   "Dies ist Julius Schnorr von Carolsfeld, deutscher Maler, in der Ausgabe, die der Verleger Justo Uguet 1878 in Mexiko unter dem Titel Die ersten Schönheiten der Welt herausbrachte. Die Stiche sind die seinen: er hatte sie in Deutschland zwischen 1852 und 1860 veröffentlicht, zweihundertvierzig Blätter, in einem Werk mit dem Namen Die Bibel in Bildern.",
+   "Sehen Sie, wie er zeichnet. Reiner Umriss, ruhige Komposition, jede Gestalt an ihrem Platz. Sie können ohne Zögern sagen, welche Szene Sie sehen und wer wer ist. Es gibt nichts zu entziffern: alles ist mit der Linie gesagt.",
+   "Das ist kein Mangel an Ehrgeiz, es ist Absicht. Schnorr zeichnete, um zu lehren. Seine Blätter wurden über Generationen in Schulen und Katechismen benutzt und gingen von dort auf Andachtsbildchen, Messbücher und die Bilder in den Wohnungen über.",
+   "Und hier geht es uns nahe an: dieses Exemplar wurde 1878 in Mexiko gedruckt, von einer religiösen Druckerei und Buchhandlung dieser Stadt. Es kam nicht fertig aus Europa: es wurde hier gesetzt und gedruckt.",
+   "Wenden Sie sich nun der Vitrine nebenan zu. Das Buch, das dort steht, entstand sechsundachtzig Jahre später und gleicht ihm in nichts.",
+   "Mit der Linie zeichnen heißt für den Leser entscheiden, was er sieht."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Vetrina 25a · Museo di Storia della Bibbia",
+   "titulo": "La linea. Schnorr von Carolsfeld",
+   "siglo": "Messico, Uguet, 1878",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Nella vetrina precedente ha visto due modi di incidere. Qui e in quella accanto vedrà due modi di guardare.",
+   "Questo è Julius Schnorr von Carolsfeld, pittore tedesco, nell'edizione che pubblicò in Messico l'editore Justo Uguet nel 1878 con il titolo Le Prime Bellezze del Mondo. Le incisioni sono sue: le aveva pubblicate in Germania fra il 1852 e il 1860, duecentoquaranta stampe, in un'opera chiamata La Bibbia in immagini.",
+   "Guardi come disegna. Contorno pulito, composizione serena, ogni figura al suo posto. Lei può dire senza esitare quale scena sta vedendo e chi è ciascuno. Non c'è nulla da decifrare: tutto è detto con la linea.",
+   "Non è mancanza di ambizione, è un proposito. Schnorr disegnava per insegnare. Le sue stampe furono usate per generazioni nelle scuole e nei catechismi, e passarono di lì alle immaginette, ai messali e ai quadri delle case.",
+   "E qui ci tocca da vicino: questo esemplare fu stampato in Messico, nel 1878, da una stamperia e libreria religiosa di questa città. Non arrivò già fatto dall'Europa: fu composto e tirato qui.",
+   "Ora si volti verso la vetrina accanto. Il libro che sta lì fu fatto ottantasei anni dopo, e non gli somiglia in nulla.",
+   "Disegnare con la linea è decidere per il lettore che cosa sta vedendo."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 25a · Museu de História da Bíblia",
+   "titulo": "A linha. Schnorr von Carolsfeld",
+   "siglo": "México, Uguet, 1878",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Na vitrine anterior viu duas maneiras de gravar. Aqui e na do lado vai ver duas maneiras de olhar.",
+   "Este é Julius Schnorr von Carolsfeld, pintor alemão, na edição que publicou no México o editor Justo Uguet em 1878 com o título As Primeiras Belezas do Mundo. As gravuras são suas: publicara-as na Alemanha entre 1852 e 1860, duzentas e quarenta estampas, numa obra chamada A Bíblia em imagens.",
+   "Olhe como desenha. Contorno limpo, composição serena, cada figura no seu lugar. Você pode dizer sem hesitar que cena está vendo e quem é cada um. Não há nada para decifrar: tudo está dito com a linha.",
+   "Isso não é falta de ambição, é um propósito. Schnorr desenhava para ensinar. As suas estampas usaram-se durante gerações em escolas e catecismos, e passaram daí às santinhas, aos missais e aos quadros das casas.",
+   "E aqui toca-nos de perto: este exemplar imprimiu-se no México, em 1878, por uma imprensa e livraria religiosa desta cidade. Não chegou da Europa feito: compôs-se e tirou-se aqui.",
+   "Agora volte-se para a vitrine do lado. O livro que está ali fez-se oitenta e seis anos depois, e não se parece em nada.",
+   "Desenhar com a linha é decidir pelo leitor o que ele está vendo."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 25a · Музей истории Библии",
+   "titulo": "Линия. Шнорр фон Карольсфельд",
+   "siglo": "Мехико, Угет, 1878",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "В предыдущей витрине вы видели два способа гравировать. Здесь и в соседней вы увидите два способа смотреть.",
+   "Это Юлиус Шнорр фон Карольсфельд, немецкий живописец, в издании, выпущенном в Мексике издателем Хусто Угетом в 1878 году под названием «Первые красоты мира». Гравюры его: он издал их в Германии между 1852 и 1860 годом — двести сорок листов, в труде, который назывался «Библия в картинах».",
+   "Посмотрите, как он рисует. Чистый контур, спокойная композиция, каждая фигура на своём месте. Вы без колебаний скажете, какую сцену видите и кто есть кто. Расшифровывать нечего: всё сказано линией.",
+   "Это не недостаток честолюбия, это замысел. Шнорр рисовал, чтобы учить. Его гравюры поколениями использовали в школах и катехизисах, а оттуда они перешли на образки, в служебники и на картины в домах.",
+   "И здесь дело касается нас близко: этот экземпляр напечатан в Мексике, в 1878 году, религиозной типографией и книжной лавкой этого города. Он не пришёл готовым из Европы: его набрали и оттиснули здесь.",
+   "А теперь повернитесь к соседней витрине. Книга, что стоит там, сделана восемьдесят шесть лет спустя и не похожа на эту ничем.",
+   "Рисовать линией — значит решать за читателя, что он видит."
   ]
  }
 };
@@ -195,6 +325,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

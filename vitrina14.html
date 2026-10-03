@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia de San Luis — Museo de Historia de la Biblia</title>
+<title>La Biblia Alfonsina — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F0E8D5;--claro:#FAF4E6;--tinta:#33261A;--cabecera:#22407E;--acento:#C8992C;--marca:rgba(200,153,44,.3); }
+  :root{ --fondo:#F2EDDF;--claro:#FBF6E9;--tinta:#241E15;--cabecera:#7A2E2E;--acento:#B08A2E;--marca:rgba(176,138,46,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,9 +17,7 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .reticula{display:grid;grid-template-columns:repeat(2,14px);gap:7px;flex:none}
-  .reticula i{display:block;width:14px;height:14px;border-radius:50%;border:1.5px solid var(--acento)}
-  .reticula i.lleno{background:var(--acento)}
+  .corona{flex:none;width:66px;height:66px}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -40,11 +38,16 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="reticula" aria-hidden="true"><i class="lleno"></i><i class="lleno"></i><i></i><i></i><i class="lleno"></i><i class="lleno"></i><i></i><i></i></div>
+  <svg class="corona" viewBox="0 0 66 66" aria-hidden="true">
+   <path d="M10 46 L10 24 L22 34 L33 16 L44 34 L56 24 L56 46 Z" fill="#B08A2E"/>
+   <rect x="10" y="48" width="46" height="7" fill="#B08A2E"/>
+   <rect x="24" y="28" width="18" height="14" fill="#FBF6E9"/>
+   <g stroke="#7A2E2E" stroke-width="1.6"><path d="M27 32 H39"/><path d="M27 36 H39"/></g></svg>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -73,110 +76,147 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 6 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia de San Luis",
-   "siglo": "París, 1226–1234 · tres tomos",
+   "sala": "Librero 3a · Museo de Historia de la Biblia",
+   "titulo": "La Biblia Alfonsina",
+   "siglo": "Castilla, hacia 1,280 · en la General Estoria",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Tres tomos. Mil doscientas treinta páginas. Casi cinco mil medallones pintados uno por uno. Está usted delante del libro más caro de su siglo.",
-   "Lo mandó hacer una madre para su hijo. Blanca de Castilla, hija de Alfonso VIII, reina de Francia, quiso que su primogénito aprendiera las Escrituras antes de aprender a gobernar. El taller de París tardó ocho años, de 1,226 a 1,234. El niño se llamaba Luis. Hoy lo conocemos como san Luis, rey de Francia.",
-   "Mire cómo está armada la página. Dos columnas de cuatro círculos cada una: ocho medallones. Los de la primera y la tercera fila cuentan la escena bíblica. Los de la segunda y la cuarta dicen lo que esa escena significa. Imagen, sentido. Imagen, sentido. Al lado, unas pocas líneas de letra gótica, y nada más.",
-   "No es una Biblia completa. Es otra cosa: es más bien una Biblia para ver. Y no es casualidad que parezca un vitral. En esos mismos años se estaban levantando las catedrales góticas, y quien pasaba estas hojas estaba acostumbrado a leer su fe en los rosetones, a contraluz.",
-   "El fondo es oro bruñido. El azul es lapislázuli, piedra traída de Oriente y molida. Sólo el pergamino consumió los rebaños de media comarca.",
-   "Y ahora lo que nos toca de cerca. Años después, el rey Luis le regaló esta Biblia a Alfonso X de Castilla, el Sabio, que la nombra en su testamento: otra Biblia en tres libros estoriada que nos dio el rey Luis de Francia. Desde entonces se guarda en la catedral de Toledo. Las últimas hojas del tercer tomo acabaron en Nueva York, y allí siguen.",
-   "El Beato enseñó a ver la Escritura. Esta Biblia enseñó a entenderla. Falta todavía que alguien la ponga en las manos de todos. Eso ocurrirá doscientos años después, en la sala siguiente."
+   "Aquí empieza el castellano.",
+   "Hacia 1,280, en el scriptorium de Alfonso décimo, al que llamamos el Sabio, un equipo de traductores puso por escrito la Biblia entera en lengua castellana. Es la primera vez que eso ocurre. Doscientos sesenta años antes que Enzinas, y doscientos setenta antes de que tenerla en esa lengua se volviera delito.",
+   "Pero no busque un libro que se llame Biblia. El texto sagrado está dentro de otra obra, la General Estoria, que es una historia del mundo desde la creación. Alfonso quiso contarlo todo y en orden: por eso, en sus páginas, Moisés camina junto a los faraones, y el Génesis se cruza con los mitos de Grecia. La Escritura no está aparte: está dentro de la historia de los hombres.",
+   "Y ahora lo que hace a este rey distinto de todos los de su tiempo. Alfonso mandó traducir del árabe, del hebreo y del latín, pero no al latín, como todos hacían, sino al castellano. Era la lengua de la calle, la que no servía para el saber. Él decidió que sirviera.",
+   "En sus talleres trabajaron cristianos, judíos y conversos, y eso se nota en el resultado: para muchos pasajes no se conformaron con la Vulgata, sino que fueron a ver qué decía el hebreo.",
+   "Piense en lo que eso significa para todo este recorrido. Cuando Casiodoro de Reina huya de Sevilla en 1,557 para poder traducir la Biblia al castellano, estará haciendo algo que un rey de Castilla había mandado hacer, con todos los honores, tres siglos antes. Lo que cambió en medio no fue la lengua. Fue el permiso."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 6 · Museum of the History of the Bible",
-   "titulo": "The Bible of Saint Louis",
-   "siglo": "Paris, 1226–1234 · three volumes",
+   "sala": "Bookcase 3a · Museum of the History of the Bible",
+   "titulo": "The Alfonsine Bible",
+   "siglo": "Castile, about 1280 · within the General Estoria",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Three volumes. One thousand two hundred and thirty pages. Almost five thousand medallions, painted one by one. You are standing before the most expensive book of its century.",
-   "A mother had it made for her son. Blanche of Castile, daughter of Alfonso the Eighth, queen of France, wanted her first-born to learn the Scriptures before he learned to govern. The Paris workshop took eight years, from 1226 to 1234. The boy was called Louis. Today we know him as Saint Louis, king of France.",
-   "Look at how the page is built. Two columns of four circles each: eight medallions. The first and third rows tell the biblical scene. The second and fourth tell you what that scene means. Image, meaning. Image, meaning. Beside them, a few lines of gothic script, and nothing more.",
-   "It is not a complete Bible. It is something else: a Bible made to be looked at. And it is no accident that it resembles stained glass. In those very years the gothic cathedrals were going up, and whoever turned these pages was used to reading his faith in the rose windows, against the light.",
-   "The background is burnished gold. The blue is lapis lazuli, stone brought from the East and ground to powder. The parchment alone consumed the flocks of half a county.",
-   "And now the part that belongs to us. Years later King Louis gave this Bible to Alfonso the Tenth of Castile, the Wise, who names it in his will: another Bible, in three books, with pictures, that King Louis of France gave us. Since then it has been kept in the cathedral of Toledo. The last leaves of the third volume ended up in New York, and there they remain.",
-   "The Beatus taught people to see Scripture. This Bible taught them to understand it. What is still missing is someone to put it into everybody's hands. That will happen two hundred years later, in the next case."
+   "Spanish begins here.",
+   "About 1280, in the scriptorium of Alfonso the Tenth, whom we call the Wise, a team of translators set down the whole Bible in the Castilian tongue. It is the first time that happens. Two hundred and sixty years before Enzinas, and two hundred and seventy before owning it in that language became a crime.",
+   "But do not look for a book called Bible. The sacred text sits inside another work, the General Estoria, a history of the world from the creation onwards. Alfonso wanted to tell everything, and in order: that is why, on his pages, Moses walks beside the pharaohs and Genesis crosses the myths of Greece. Scripture is not set apart: it is inside the history of mankind.",
+   "And now what makes this king unlike any other of his time. Alfonso had works translated from Arabic, from Hebrew and from Latin, but not into Latin, as everyone else did: into Castilian. That was the language of the street, the one that was no use for learning. He decided it would be.",
+   "Christians, Jews and converts worked in his workshops, and it shows in the result: for many passages they were not content with the Vulgate, but went to see what the Hebrew said.",
+   "Think what that means for this whole tour. When Casiodoro de Reina flees Seville in 1557 in order to translate the Bible into Spanish, he will be doing what a king of Castile had ordered done, with every honour, three centuries earlier. What changed in between was not the language. It was the permission."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 6 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible de Saint Louis",
-   "siglo": "Paris, 1226–1234 · trois volumes",
+   "sala": "Rayon 3a · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible alphonsine",
+   "siglo": "Castille, vers 1280 · dans la General Estoria",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Trois volumes. Mille deux cent trente pages. Près de cinq mille médaillons peints un par un. Vous avez devant vous le livre le plus cher de son siècle.",
-   "C'est une mère qui l'a fait faire pour son fils. Blanche de Castille, fille d'Alphonse VIII, reine de France, voulait que son aîné apprenne les Écritures avant d'apprendre à gouverner. L'atelier parisien y a mis huit ans, de 1226 à 1234. L'enfant s'appelait Louis. Nous le connaissons aujourd'hui comme saint Louis, roi de France.",
-   "Regardez comment la page est construite. Deux colonnes de quatre cercles chacune : huit médaillons. Ceux de la première et de la troisième rangée racontent la scène biblique. Ceux de la deuxième et de la quatrième disent ce que cette scène signifie. Image, sens. Image, sens. À côté, quelques lignes d'écriture gothique, et rien de plus.",
-   "Ce n'est pas une Bible complète. C'est autre chose : une Bible faite pour être regardée. Et ce n'est pas un hasard si elle ressemble à un vitrail. Dans ces mêmes années s'élevaient les cathédrales gothiques, et celui qui tournait ces feuillets avait l'habitude de lire sa foi dans les rosaces, à contre-jour.",
-   "Le fond est en or bruni. Le bleu est du lapis-lazuli, pierre venue d'Orient et broyée. Le parchemin à lui seul a consommé les troupeaux d'une demi-contrée.",
-   "Et voici ce qui nous touche de près. Des années plus tard, le roi Louis offrit cette Bible à Alphonse X de Castille, le Sage, qui la nomme dans son testament : une autre Bible, en trois livres, à images, que nous donna le roi Louis de France. Depuis lors elle est conservée dans la cathédrale de Tolède. Les derniers feuillets du troisième volume ont fini à New York, et y sont encore.",
-   "Le Beatus a appris aux hommes à voir l'Écriture. Cette Bible leur a appris à la comprendre. Il manque encore quelqu'un pour la mettre entre toutes les mains. Cela arrivera deux cents ans plus tard, dans la vitrine suivante."
+   "C'est ici que commence le castillan.",
+   "Vers 1280, dans le scriptorium d'Alphonse X, que nous appelons le Sage, une équipe de traducteurs mit par écrit la Bible entière en langue castillane. C'est la première fois que cela arrive. Deux cent soixante ans avant Enzinas, et deux cent soixante-dix avant que la posséder dans cette langue ne devienne un délit.",
+   "Mais ne cherchez pas un livre qui s'appelle Bible. Le texte sacré se trouve à l'intérieur d'une autre œuvre, la General Estoria, une histoire du monde depuis la création. Alphonse voulut tout raconter, et dans l'ordre : c'est pourquoi, dans ses pages, Moïse marche auprès des pharaons et la Genèse croise les mythes de la Grèce. L'Écriture n'est pas à part : elle est dans l'histoire des hommes.",
+   "Et voici ce qui rend ce roi différent de tous ceux de son temps. Alphonse fit traduire de l'arabe, de l'hébreu et du latin, mais non vers le latin, comme tout le monde : vers le castillan. C'était la langue de la rue, celle qui ne servait pas au savoir. Il décida qu'elle servirait.",
+   "Dans ses ateliers travaillèrent des chrétiens, des juifs et des convertis, et cela se voit au résultat : pour bien des passages, ils ne se contentèrent pas de la Vulgate et allèrent voir ce que disait l'hébreu.",
+   "Pensez à ce que cela signifie pour tout ce parcours. Quand Casiodoro de Reina fuira Séville en 1557 pour pouvoir traduire la Bible en castillan, il fera ce qu'un roi de Castille avait ordonné de faire, avec tous les honneurs, trois siècles plus tôt. Ce qui changea entre-temps, ce ne fut pas la langue. Ce fut la permission."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 6 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Bibel des heiligen Ludwig",
-   "siglo": "Paris, 1226–1234 · drei Bände",
+   "sala": "Regal 3a · Museum zur Geschichte der Bibel",
+   "titulo": "Die alfonsinische Bibel",
+   "siglo": "Kastilien, um 1280 · in der General Estoria",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Drei Bände. Eintausendzweihundertdreißig Seiten. Fast fünftausend Medaillons, eines nach dem anderen gemalt. Sie stehen vor dem teuersten Buch seines Jahrhunderts.",
-   "Eine Mutter ließ es für ihren Sohn anfertigen. Blanka von Kastilien, Tochter Alfons' des Achten, Königin von Frankreich, wollte, dass ihr Erstgeborener die Heilige Schrift lernte, bevor er das Regieren lernte. Die Pariser Werkstatt brauchte acht Jahre, von 1226 bis 1234. Der Junge hieß Ludwig. Heute kennen wir ihn als den heiligen Ludwig, König von Frankreich.",
-   "Sehen Sie, wie die Seite aufgebaut ist. Zwei Spalten mit je vier Kreisen: acht Medaillons. Die erste und die dritte Reihe erzählen die biblische Szene. Die zweite und die vierte sagen, was diese Szene bedeutet. Bild, Deutung. Bild, Deutung. Daneben ein paar Zeilen gotischer Schrift, und nichts weiter.",
-   "Es ist keine vollständige Bibel. Es ist etwas anderes: eine Bibel zum Anschauen. Und es ist kein Zufall, dass sie wie ein Kirchenfenster aussieht. In genau diesen Jahren wuchsen die gotischen Kathedralen empor, und wer diese Blätter umschlug, war es gewohnt, seinen Glauben in den Rosetten zu lesen, gegen das Licht.",
-   "Der Grund ist poliertes Gold. Das Blau ist Lapislazuli, ein Stein aus dem Osten, zu Pulver gemahlen. Allein das Pergament verbrauchte die Herden einer halben Landschaft.",
-   "Und nun das, was uns näher angeht. Jahre später schenkte König Ludwig diese Bibel Alfons dem Zehnten von Kastilien, dem Weisen, der sie in seinem Testament nennt: eine andere Bibel, in drei Büchern, mit Bildern, die uns König Ludwig von Frankreich gab. Seither wird sie in der Kathedrale von Toledo aufbewahrt. Die letzten Blätter des dritten Bandes landeten in New York und sind bis heute dort.",
-   "Der Beatus lehrte die Menschen, die Schrift zu sehen. Diese Bibel lehrte sie, die Schrift zu verstehen. Es fehlt noch jemand, der sie allen in die Hand gibt. Das geschieht zweihundert Jahre später, in der nächsten Vitrine."
+   "Hier beginnt das Spanische.",
+   "Um 1280 setzte im Skriptorium Alfons des Zehnten, den wir den Weisen nennen, eine Gruppe von Übersetzern die ganze Bibel in kastilischer Sprache nieder. Es ist das erste Mal, dass dies geschieht. Zweihundertsechzig Jahre vor Enzinas, und zweihundertsiebzig, bevor ihr Besitz in dieser Sprache ein Vergehen wurde.",
+   "Doch suchen Sie kein Buch, das Bibel heißt. Der heilige Text steht in einem anderen Werk, der General Estoria, einer Weltgeschichte von der Schöpfung an. Alfons wollte alles erzählen, und der Reihe nach: darum geht auf seinen Seiten Mose neben den Pharaonen, und die Genesis kreuzt die Mythen Griechenlands. Die Schrift steht nicht abseits: sie steht in der Geschichte der Menschen.",
+   "Und nun das, was diesen König von allen seiner Zeit unterscheidet. Alfons ließ aus dem Arabischen, dem Hebräischen und dem Lateinischen übersetzen, aber nicht ins Lateinische, wie alle es taten, sondern ins Kastilische. Das war die Sprache der Gasse, die zum Wissen nicht taugte. Er beschloss, dass sie tauge.",
+   "In seinen Werkstätten arbeiteten Christen, Juden und Konvertiten, und das sieht man am Ergebnis: bei vielen Stellen gaben sie sich nicht mit der Vulgata zufrieden, sondern sahen nach, was das Hebräische sagte.",
+   "Denken Sie, was das für diesen ganzen Rundgang bedeutet. Wenn Casiodoro de Reina 1557 aus Sevilla flieht, um die Bibel ins Spanische übersetzen zu können, tut er das, was ein König von Kastilien drei Jahrhunderte zuvor mit allen Ehren hatte tun lassen. Was sich dazwischen änderte, war nicht die Sprache. Es war die Erlaubnis."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 6 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia di San Luigi",
-   "siglo": "Parigi, 1226–1234 · tre volumi",
+   "sala": "Scaffale 3a · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia alfonsina",
+   "siglo": "Castiglia, verso il 1280 · nella General Estoria",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Tre volumi. Milleduecentotrenta pagine. Quasi cinquemila medaglioni dipinti uno per uno. Ha davanti a sé il libro più caro del suo secolo.",
-   "Lo fece fare una madre per suo figlio. Bianca di Castiglia, figlia di Alfonso VIII, regina di Francia, volle che il suo primogenito imparasse le Scritture prima di imparare a governare. La bottega parigina impiegò otto anni, dal 1226 al 1234. Il bambino si chiamava Luigi. Oggi lo conosciamo come san Luigi, re di Francia.",
-   "Guardi come è costruita la pagina. Due colonne di quattro cerchi ciascuna: otto medaglioni. Quelli della prima e della terza fila raccontano la scena biblica. Quelli della seconda e della quarta dicono che cosa quella scena significa. Immagine, senso. Immagine, senso. Accanto, poche righe di scrittura gotica, e nulla più.",
-   "Non è una Bibbia completa. È un'altra cosa: una Bibbia fatta per essere guardata. E non è un caso che sembri una vetrata. In quegli stessi anni si innalzavano le cattedrali gotiche, e chi voltava questi fogli era abituato a leggere la propria fede nei rosoni, in controluce.",
-   "Il fondo è oro brunito. L'azzurro è lapislazzuli, pietra portata dall'Oriente e macinata. La sola pergamena consumò le greggi di mezza contrada.",
-   "E ora ciò che ci tocca da vicino. Anni dopo, il re Luigi regalò questa Bibbia ad Alfonso X di Castiglia, il Saggio, che la nomina nel suo testamento: un'altra Bibbia, in tre libri, con figure, che ci diede il re Luigi di Francia. Da allora è custodita nella cattedrale di Toledo. Gli ultimi fogli del terzo volume finirono a New York, e lì si trovano ancora.",
-   "Il Beato insegnò a vedere la Scrittura. Questa Bibbia insegnò a comprenderla. Manca ancora qualcuno che la metta nelle mani di tutti. Accadrà duecento anni dopo, nella vetrina seguente."
+   "Qui comincia il castigliano.",
+   "Verso il 1280, nello scriptorium di Alfonso decimo, che chiamiamo il Saggio, una squadra di traduttori mise per iscritto l'intera Bibbia in lingua castigliana. È la prima volta che accade. Duecentosessant'anni prima di Enzinas, e duecentosettanta prima che possederla in quella lingua diventasse reato.",
+   "Ma non cerchi un libro che si chiami Bibbia. Il testo sacro sta dentro un'altra opera, la General Estoria, una storia del mondo dalla creazione. Alfonso volle raccontare tutto, e in ordine: per questo, nelle sue pagine, Mosè cammina accanto ai faraoni e la Genesi incrocia i miti della Grecia. La Scrittura non sta a parte: sta dentro la storia degli uomini.",
+   "E ora ciò che rende questo re diverso da tutti quelli del suo tempo. Alfonso fece tradurre dall'arabo, dall'ebraico e dal latino, ma non verso il latino, come facevano tutti: verso il castigliano. Era la lingua della strada, quella che non serviva al sapere. Lui decise che servisse.",
+   "Nelle sue botteghe lavorarono cristiani, ebrei e convertiti, e si vede nel risultato: per molti passi non si accontentarono della Vulgata, ma andarono a vedere che cosa diceva l'ebraico.",
+   "Pensi a che cosa significa per tutto questo percorso. Quando Casiodoro de Reina fuggirà da Siviglia nel 1557 per poter tradurre la Bibbia in castigliano, farà ciò che un re di Castiglia aveva ordinato di fare, con ogni onore, tre secoli prima. Quello che cambiò nel frattempo non fu la lingua. Fu il permesso."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Estante 3a · Museu de História da Bíblia",
+   "titulo": "A Bíblia Afonsina",
+   "siglo": "Castela, por volta de 1280 · na General Estoria",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Aqui começa o castelhano.",
+   "Por volta de 1280, no scriptorium de Afonso décimo, a quem chamamos o Sábio, uma equipe de tradutores pôs por escrito a Bíblia inteira em língua castelhana. É a primeira vez que isso acontece. Duzentos e sessenta anos antes de Enzinas, e duzentos e setenta antes de que tê-la nessa língua se tornasse crime.",
+   "Mas não procure um livro que se chame Bíblia. O texto sagrado está dentro de outra obra, a General Estoria, que é uma história do mundo desde a criação. Afonso quis contar tudo e em ordem: por isso, nas suas páginas, Moisés caminha junto aos faraós, e o Gênesis se cruza com os mitos da Grécia. A Escritura não está à parte: está dentro da história dos homens.",
+   "E agora o que torna este rei diferente de todos os do seu tempo. Afonso mandou traduzir do árabe, do hebraico e do latim, mas não para o latim, como todos faziam, e sim para o castelhano. Era a língua da rua, a que não servia para o saber. Ele decidiu que servisse.",
+   "Nas suas oficinas trabalharam cristãos, judeus e conversos, e isso se nota no resultado: em muitas passagens não se contentaram com a Vulgata, mas foram ver o que dizia o hebraico.",
+   "Pense no que isso significa para todo este percurso. Quando Casiodoro de Reina fugir de Sevilha em 1557 para poder traduzir a Bíblia para o castelhano, estará fazendo algo que um rei de Castela mandara fazer, com todas as honras, três séculos antes. O que mudou no meio não foi a língua. Foi a permissão."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Стеллаж 3a · Музей истории Библии",
+   "titulo": "Альфонсова Библия",
+   "siglo": "Кастилия, около 1280 года · во «Всеобщей истории»",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Здесь начинается испанский язык.",
+   "Около 1280 года в скриптории Альфонсо Десятого, которого мы называем Мудрым, группа переводчиков записала всю Библию по-кастильски. Это происходит впервые. За двести шестьдесят лет до Энсинаса и за двести семьдесят до того, как хранить её на этом языке стало преступлением.",
+   "Но не ищите книгу под названием «Библия». Священный текст находится внутри другого сочинения — «Всеобщей истории», истории мира от сотворения. Альфонсо хотел рассказать всё и по порядку: поэтому на его страницах Моисей идёт рядом с фараонами, а Бытие пересекается с мифами Греции. Писание не стоит особняком: оно внутри истории людей.",
+   "А теперь то, что отличает этого короля от всех государей его времени. Альфонсо велел переводить с арабского, с еврейского и с латыни — но не на латынь, как делали все, а на кастильский. Это был язык улицы, язык, не годный для учёности. Он решил, что будет годен.",
+   "В его мастерских работали христиане, иудеи и новообращённые, и это видно по результату: во многих местах они не довольствовались Вульгатой, а смотрели, что говорит еврейский текст.",
+   "Подумайте, что это значит для всего нашего пути. Когда Касиодоро де Рейна побежит из Севильи в 1557 году, чтобы перевести Библию на испанский, он будет делать то, что король Кастилии повелел сделать со всеми почестями тремя веками раньше. Изменился за это время не язык. Изменилось разрешение."
   ]
  }
 };
@@ -281,6 +321,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

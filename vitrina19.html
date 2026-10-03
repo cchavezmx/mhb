@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia de Nápoles — Museo de Historia de la Biblia</title>
+<title>La Biblia de Gutenberg — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EAD8;--claro:#FBF5E7;--tinta:#241D14;--cabecera:#1B3A93;--acento:#D4A32A;--marca:rgba(212,163,42,.3); }
+  :root{ --fondo:#F2EFE8;--claro:#FBF9F3;--tinta:#1B1A16;--cabecera:#2E2C26;--acento:#8A4B2A;--marca:rgba(138,75,42,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,14 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .lis{flex:none;width:66px;height:62px;background:var(--acento);opacity:.9;border-radius:3px}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .tipos{flex:none;display:grid;grid-template-columns:repeat(3,19px);gap:4px}
+  .tipos i{display:block;width:19px;height:19px;background:var(--cabecera);border-radius:2px}
+  .tipos i.roja{background:var(--acento)}
+
+  
+  p.ref{font-size:.82em;letter-spacing:.04em;opacity:.7;margin-top:-.4em}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,11 +45,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="lis" aria-hidden="true"></div>
+  <div class="tipos" aria-hidden="true"><i></i><i class="roja"></i><i></i><i></i><i></i><i class="roja"></i><i class="roja"></i><i></i><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -71,115 +79,196 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 7 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia de Nápoles",
-   "siglo": "Nápoles, hacia 1340–1350",
+   "sala": "Vitrina 10 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia de Gutenberg",
+   "siglo": "Maguncia, 1,455 · cuarenta y dos líneas",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Estamos en Nápoles, a mediados del siglo catorce. Y este libro es nieto del que usted acaba de ver. Se lo explico.",
-   "El hermano menor de san Luis, Carlos de Anjou, se llevó a Nápoles una Biblia de medallones como la de su hermano. Cien años después, sus descendientes quisieron la suya. La mandaron hacer aquí, en la corte del rey Roberto el Sabio, para su nieta Juana, que heredaría el reino.",
-   "Era una corte extraordinaria. Giotto había pintado en Nápoles pocos años antes. Por ahí pasaron Petrarca y Boccaccio. Todo lo que Italia estaba inventando en ese momento entró en este taller. Y se nota.",
-   "Compare con la sala anterior. Allá, ocho círculos cerrados, uno junto a otro, como un vitral. Aquí las escenas se sueltan: páginas enteras, franjas horizontales, figuras que pesan, que tienen volumen, que proyectan sombra. El armazón todavía es francés y gótico. El cuerpo ya es italiano.",
-   "Doscientas cuatro miniaturas sobre fondo de oro.",
-   "Y hay otro cambio, que no se ve pero importa más. El texto de este libro no está en latín. Está en francés, la lengua que hablaba la corte. La Escritura empieza a salirse de la lengua de los sabios.",
-   "Después vino el viaje. La reina Juana. Violante de Aragón. Margarita de Austria. María de Hungría. La biblioteca de los duques de Borgoña. Siglos de manos ilustres, hasta llegar a París, donde hoy se conserva. Perdió por el camino su encuadernación original: la que tiene ahora es del siglo diecinueve, y lleva estampado en oro el monograma de Napoleón.",
-   "Y fíjese en lo que llevamos recorrido. Un libro para un monje. Un libro para un rey niño. Un libro para una reina. Siempre uno solo, siempre para uno solo. En la sala siguiente eso se acaba para siempre."
+   "Cuarenta y dos renglones por columna. Ése es el nombre técnico de este libro: la Biblia de cuarenta y dos líneas. Y es el objeto que parte en dos la historia del mundo.",
+   "Maguncia, Alemania, 1,455. Un orfebre llamado Juan Gutenberg lleva años trabajando casi en secreto. Su idea no fue la imprenta: en China ya se imprimía. Su idea fue fundir en metal cada letra por separado, para armar una página, imprimirla, deshacer los tipos y volver a armarlos con otras palabras. Así nació la imprenta de tipos móviles.",
+   "Ahora deténgase un momento en estas palabras. Son del libro de Job, y se escribieron más de mil años antes que cualquiera de estos libros.",
+   "Quién diera que mis palabras quedaran escritas. Quién diera que se grabaran en un libro, con punzón de hierro y con plomo, esculpidas en la roca para siempre.",
+   "Job, capítulo 19, versículos 23 y 24.",
+   "Job pedía un libro. Y pedía hierro y plomo. Tres mil años después, un orfebre de Maguncia grabó punzones de hierro y fundió letras de plomo y, así, cumplió el deseo de Job sin proponérselo. ¿Y qué escogió imprimir? Pudiendo escoger cualquier cosa, escogió la Biblia.",
+   "Mire la página y notará algo curioso: no parece impresa. Gutenberg quiso que su libro pareciera un manuscrito. Cortó cerca de doscientos noventa tipos distintos, sólo para imitar las ligaduras y las abreviaturas del copista. Las capitulares y los adornos en rojo se pintaron después, a mano, uno por uno.",
+   "Se hicieron unos ciento ochenta ejemplares: la mayoría en papel, unos cuarenta y cinco en pergamino. Hoy sobreviven cuarenta y ocho, y sólo veintiuno completos. Hace décadas que no sale uno entero a la venta.",
+   "La historia no terminó bien para él. Gutenberg no tenía dinero: se lo prestó un socio, Johann Fust. Cuando la Biblia estaba por terminarse, Fust lo demandó, ganó el pleito y se quedó con el taller y con los libros. El hombre que inventó la imprenta murió sin ella.",
+   "Y ahora piense en lo que cambió. Copiar una Biblia a mano le costaba a un monje dos o tres años de su vida. De este taller salieron ciento ochenta en ese mismo tiempo. El Libro dejó de ser pieza única, hecha para un rey, y empezó a multiplicarse.",
+   "Ochenta y cuatro años después, en 1,539, llegaba a la Ciudad de México la primera imprenta del continente americano. De Maguncia hasta acá, en menos de un siglo.",
+   "Hasta aquí hemos visto un libro para un monje, un libro para un rey niño y un libro para una reina. Desde aquí, por fin, un libro para todos. Falta ver cómo ese libro volvió a sus lenguas originales, y cómo desde ahí llegó a la nuestra.",
+   "Job pidió que sus palabras no se perdieran. La respuesta tardó tres mil años y llegó en forma de plomo."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 7 · Museum of the History of the Bible",
-   "titulo": "The Bible of Naples",
-   "siglo": "Naples, about 1340–1350",
+   "sala": "Case 10 · Museum of the History of the Bible",
+   "titulo": "The Gutenberg Bible",
+   "siglo": "Mainz, 1455 · forty-two lines",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "We are in Naples, in the middle of the fourteenth century. And this book is the grandchild of the one you have just seen.",
-   "Let me explain. The younger brother of Saint Louis, Charles of Anjou, took to Naples a Bible of medallions like his brother's. A hundred years later his descendants wanted one of their own. They had it made here, at the court of King Robert the Wise, for his granddaughter Joanna, who would inherit the kingdom.",
-   "It was an extraordinary court. Giotto had been painting in Naples only a few years earlier. Petrarch and Boccaccio passed through. Everything Italy was inventing at that moment came into this workshop.",
-   "And you can see it. Compare it with the previous case. There, eight closed circles, one beside the other, like a stained-glass window. Here the scenes break loose: whole pages, horizontal bands, figures that have weight, that have volume, that cast a shadow. The framework is still French and gothic. The body is already Italian.",
-   "Two hundred and four miniatures on a ground of gold.",
-   "And there is another change, one you cannot see but which matters more. The text of this book is not in Latin. It is in French, the language the court actually spoke. Scripture is beginning to step out of the language of scholars.",
-   "Then came the journey. Queen Joanna. Yolande of Aragon. Margaret of Austria. Mary of Hungary. The library of the dukes of Burgundy. Centuries of illustrious hands, until it reached Paris, where it is kept today. Along the way it lost its original binding: the one it wears now is from the nineteenth century, and it carries Napoleon's monogram stamped in gold.",
-   "And look at the road we have travelled. A book for a monk. A book for a boy king. A book for a queen. Always one single copy, always for one single person. In the next case that ends for ever."
+   "Forty-two lines to the column. That is the technical name of this book: the forty-two-line Bible. And it is the object that splits the history of the world in two.",
+   "Mainz, Germany, 1455. A goldsmith named Johann Gutenberg has spent years working almost in secret. His idea was not printing: in China they were already printing. His idea was to cast each letter separately in metal, so as to build a page, print it, take the types apart and build them again with other words. That is how printing with movable type was born.",
+   "Now stop a moment at these words. They are from the book of Job, and they were written more than a thousand years before any of these books.",
+   "Oh that my words were written. Oh that they were engraved in a book, with an iron stylus and with lead, carved in the rock for ever.",
+   "Job, chapter 19, verses 23 and 24.",
+   "Job asked for a book. And he asked for iron and lead. Three thousand years later, a goldsmith of Mainz cut punches of iron and cast letters of lead, and so fulfilled Job's wish without meaning to. And what did he choose to print? Able to choose anything, he chose the Bible.",
+   "Look at the page and you will notice something curious: it does not look printed. Gutenberg wanted his book to look like a manuscript. He cut nearly two hundred and ninety different types, only to imitate the ligatures and abbreviations of the copyist. The initials and the red ornaments were painted afterwards, by hand, one by one.",
+   "About a hundred and eighty copies were made: most on paper, some forty-five on parchment. Forty-eight survive today, and only twenty-one complete. It is decades since a whole one came up for sale.",
+   "The story did not end well for him. Gutenberg had no money: a partner, Johann Fust, lent it to him. When the Bible was near completion, Fust sued him, won the case and kept the workshop and the books. The man who invented printing died without it.",
+   "And now think what changed. Copying a Bible by hand cost a monk two or three years of his life. From this workshop came a hundred and eighty in that same time. The Book ceased to be a unique object, made for a king, and began to multiply.",
+   "Eighty-four years later, in 1539, the first printing press of the American continent reached Mexico City. From Mainz to here in less than a century.",
+   "So far we have seen a book for a monk, a book for a child king and a book for a queen. From here on, at last, a book for everyone. It remains to see how that book went back to its original languages, and how from there it reached our own.",
+   "Job asked that his words might not be lost. The answer took three thousand years and came in the form of lead."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 7 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible de Naples",
-   "siglo": "Naples, vers 1340–1350",
+   "sala": "Vitrine 10 · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible de Gutenberg",
+   "siglo": "Mayence, 1455 · quarante-deux lignes",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Nous sommes à Naples, au milieu du quatorzième siècle. Et ce livre est le petit-fils de celui que vous venez de voir.",
-   "Je vous explique. Le frère cadet de saint Louis, Charles d'Anjou, emporta à Naples une Bible à médaillons comme celle de son frère. Cent ans plus tard, ses descendants voulurent la leur. Ils la firent faire ici, à la cour du roi Robert le Sage, pour sa petite-fille Jeanne, qui allait hériter du royaume.",
-   "C'était une cour extraordinaire. Giotto avait peint à Naples quelques années plus tôt. Pétrarque et Boccace y passèrent. Tout ce que l'Italie inventait à ce moment-là est entré dans cet atelier.",
-   "Et cela se voit. Comparez avec la vitrine précédente. Là-bas, huit cercles fermés, l'un à côté de l'autre, comme un vitrail. Ici les scènes se libèrent : des pages entières, des bandes horizontales, des figures qui pèsent, qui ont du volume, qui projettent une ombre. La charpente est encore française et gothique. Le corps est déjà italien.",
-   "Deux cent quatre miniatures sur fond d'or.",
-   "Et il y a un autre changement, qu'on ne voit pas mais qui compte davantage. Le texte de ce livre n'est pas en latin. Il est en français, la langue que parlait la cour. L'Écriture commence à sortir de la langue des savants.",
-   "Puis vint le voyage. La reine Jeanne. Yolande d'Aragon. Marguerite d'Autriche. Marie de Hongrie. La bibliothèque des ducs de Bourgogne. Des siècles de mains illustres, jusqu'à Paris, où il est conservé aujourd'hui. Il a perdu en chemin sa reliure d'origine : celle qu'il porte maintenant date du dix-neuvième siècle, et porte le monogramme de Napoléon estampé à l'or.",
-   "Et regardez le chemin parcouru. Un livre pour un moine. Un livre pour un roi enfant. Un livre pour une reine. Toujours un seul exemplaire, toujours pour une seule personne. Dans la vitrine suivante, cela prend fin pour toujours."
+   "Quarante-deux lignes par colonne. C'est le nom technique de ce livre : la Bible à quarante-deux lignes. Et c'est l'objet qui coupe en deux l'histoire du monde.",
+   "Mayence, en Allemagne, 1455. Un orfèvre nommé Jean Gutenberg travaille depuis des années presque en secret. Son idée ne fut pas l'imprimerie : en Chine on imprimait déjà. Son idée fut de fondre en métal chaque lettre séparément, pour composer une page, l'imprimer, défaire les caractères et les recomposer avec d'autres mots. Ainsi naquit l'imprimerie à caractères mobiles.",
+   "Arrêtez-vous maintenant un instant sur ces paroles. Elles sont du livre de Job, et furent écrites plus de mille ans avant n'importe lequel de ces livres.",
+   "Oh, que mes paroles soient écrites. Oh, qu'elles soient gravées dans un livre, avec un burin de fer et avec du plomb, sculptées dans le roc pour toujours.",
+   "Job, chapitre 19, versets 23 et 24.",
+   "Job demandait un livre. Et il demandait du fer et du plomb. Trois mille ans plus tard, un orfèvre de Mayence grava des poinçons de fer et fondit des lettres de plomb, et accomplit ainsi le vœu de Job sans le vouloir. Et que choisit-il d'imprimer ? Pouvant choisir n'importe quoi, il choisit la Bible.",
+   "Regardez la page et vous remarquerez une chose curieuse : elle ne paraît pas imprimée. Gutenberg voulut que son livre ressemblât à un manuscrit. Il tailla près de deux cent quatre-vingt-dix caractères différents, rien que pour imiter les ligatures et les abréviations du copiste. Les lettrines et les ornements rouges furent peints ensuite, à la main, un à un.",
+   "On en fit quelque cent quatre-vingts exemplaires : la plupart sur papier, environ quarante-cinq sur parchemin. Quarante-huit survivent aujourd'hui, et vingt et un seulement complets. Voilà des décennies qu'un exemplaire entier n'est pas mis en vente.",
+   "L'histoire ne finit pas bien pour lui. Gutenberg n'avait pas d'argent : un associé, Johann Fust, lui en prêta. Quand la Bible était près d'être achevée, Fust lui fit un procès, le gagna et garda l'atelier et les livres. L'homme qui inventa l'imprimerie mourut sans elle.",
+   "Et pensez maintenant à ce qui changea. Copier une Bible à la main coûtait à un moine deux ou trois ans de sa vie. De cet atelier en sortirent cent quatre-vingts dans le même temps. Le Livre cessa d'être une pièce unique, faite pour un roi, et commença à se multiplier.",
+   "Quatre-vingt-quatre ans plus tard, en 1539, la première imprimerie du continent américain arrivait à Mexico. De Mayence jusqu'ici en moins d'un siècle.",
+   "Jusqu'ici nous avons vu un livre pour un moine, un livre pour un roi enfant et un livre pour une reine. À partir d'ici, enfin, un livre pour tous. Il reste à voir comment ce livre revint à ses langues d'origine, et comment de là il parvint à la nôtre.",
+   "Job demanda que ses paroles ne se perdissent pas. La réponse mit trois mille ans et vint sous forme de plomb."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 7 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Bibel von Neapel",
-   "siglo": "Neapel, um 1340–1350",
+   "sala": "Vitrine 10 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Gutenberg-Bibel",
+   "siglo": "Mainz, 1455 · zweiundvierzig Zeilen",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Wir sind in Neapel, in der Mitte des vierzehnten Jahrhunderts. Und dieses Buch ist der Enkel desjenigen, das Sie gerade gesehen haben.",
-   "Ich erkläre es Ihnen. Der jüngere Bruder des heiligen Ludwig, Karl von Anjou, brachte eine Medaillon-Bibel wie die seines Bruders nach Neapel. Hundert Jahre später wollten seine Nachkommen eine eigene. Sie ließen sie hier anfertigen, am Hof König Roberts des Weisen, für seine Enkelin Johanna, die das Königreich erben sollte.",
-   "Es war ein außergewöhnlicher Hof. Giotto hatte wenige Jahre zuvor in Neapel gemalt. Petrarca und Boccaccio gingen dort ein und aus. Alles, was Italien in jenem Augenblick erfand, kam in diese Werkstatt.",
-   "Und man sieht es. Vergleichen Sie es mit dem vorigen Vitrine. Dort acht geschlossene Kreise, einer neben dem anderen, wie ein Kirchenfenster. Hier lösen sich die Szenen: ganze Seiten, waagerechte Bänder, Gestalten, die Gewicht haben, die Volumen haben, die einen Schatten werfen. Das Gerüst ist noch französisch und gotisch. Der Körper ist schon italienisch.",
-   "Zweihundertvier Miniaturen auf Goldgrund.",
-   "Und es gibt noch eine Veränderung, die man nicht sieht, die aber schwerer wiegt. Der Text dieses Buches ist nicht auf Latein. Er ist auf Französisch, in der Sprache, die der Hof wirklich sprach. Die Schrift beginnt, die Sprache der Gelehrten zu verlassen.",
-   "Dann kam die Reise. Königin Johanna. Yolande von Aragón. Margarete von Österreich. Maria von Ungarn. Die Bibliothek der Herzöge von Burgund. Jahrhunderte erlauchter Hände, bis nach Paris, wo es heute aufbewahrt wird. Unterwegs verlor es seinen ursprünglichen Einband: der heutige stammt aus dem neunzehnten Jahrhundert und trägt in Gold das Monogramm Napoleons.",
-   "Und sehen Sie, welchen Weg wir zurückgelegt haben. Ein Buch für einen Mönch. Ein Buch für einen Kinderkönig. Ein Buch für eine Königin. Immer ein einziges Exemplar, immer für einen einzigen Menschen. Im nächsten Vitrine ist damit für immer Schluss."
+   "Zweiundvierzig Zeilen je Spalte. Das ist der Fachname dieses Buches: die zweiundvierzigzeilige Bibel. Und es ist der Gegenstand, der die Geschichte der Welt in zwei Teile schneidet.",
+   "Mainz, Deutschland, 1455. Ein Goldschmied namens Johannes Gutenberg arbeitet seit Jahren fast im Verborgenen. Seine Idee war nicht der Druck: in China druckte man längst. Seine Idee war, jeden Buchstaben einzeln in Metall zu gießen, um eine Seite zu setzen, sie zu drucken, die Lettern wieder auseinanderzunehmen und sie mit anderen Wörtern neu zu setzen. So entstand der Druck mit beweglichen Lettern.",
+   "Halten Sie nun einen Augenblick bei diesen Worten inne. Sie stammen aus dem Buch Ijob und wurden mehr als tausend Jahre vor jedem dieser Bücher geschrieben.",
+   "Dass doch meine Worte aufgeschrieben würden. Dass sie doch in ein Buch gegraben würden, mit eisernem Griffel und mit Blei, in den Fels gehauen für immer.",
+   "Ijob, Kapitel 19, Verse 23 und 24.",
+   "Ijob bat um ein Buch. Und er bat um Eisen und Blei. Dreitausend Jahre später schnitt ein Goldschmied in Mainz Stempel aus Eisen und goss Lettern aus Blei und erfüllte so Ijobs Wunsch, ohne es zu wollen. Und was wählte er zum Druck? Er hätte alles wählen können, und er wählte die Bibel.",
+   "Sehen Sie die Seite an, und Ihnen wird etwas Seltsames auffallen: sie sieht nicht gedruckt aus. Gutenberg wollte, dass sein Buch wie eine Handschrift aussehe. Er schnitt fast zweihundertneunzig verschiedene Typen, nur um die Ligaturen und Abkürzungen des Abschreibers nachzuahmen. Die Initialen und der rote Schmuck wurden danach von Hand gemalt, eines nach dem anderen.",
+   "Es wurden etwa hundertachtzig Exemplare hergestellt: die meisten auf Papier, etwa fünfundvierzig auf Pergament. Achtundvierzig sind heute erhalten, und nur einundzwanzig vollständig. Seit Jahrzehnten kam kein vollständiges mehr zum Verkauf.",
+   "Für ihn ging die Geschichte nicht gut aus. Gutenberg hatte kein Geld: ein Teilhaber, Johann Fust, lieh es ihm. Als die Bibel fast fertig war, verklagte Fust ihn, gewann den Prozess und behielt Werkstatt und Bücher. Der Mann, der den Druck erfand, starb ohne ihn.",
+   "Und denken Sie nun daran, was sich änderte. Eine Bibel von Hand abzuschreiben kostete einen Mönch zwei oder drei Jahre seines Lebens. Aus dieser Werkstatt kamen in derselben Zeit hundertachtzig. Das Buch hörte auf, ein Einzelstück für einen König zu sein, und begann sich zu vervielfältigen.",
+   "Vierundachtzig Jahre später, 1539, kam die erste Druckerpresse des amerikanischen Kontinents nach Mexiko-Stadt. Von Mainz bis hierher in weniger als einem Jahrhundert.",
+   "Bis hierher haben wir ein Buch für einen Mönch gesehen, ein Buch für einen Kinderkönig und ein Buch für eine Königin. Von hier an endlich ein Buch für alle. Es bleibt zu sehen, wie dieses Buch zu seinen Ursprachen zurückkehrte und wie es von dort zu der unseren gelangte.",
+   "Ijob bat darum, dass seine Worte nicht verloren gingen. Die Antwort brauchte dreitausend Jahre und kam in Gestalt von Blei."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 7 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia di Napoli",
-   "siglo": "Napoli, verso il 1340–1350",
+   "sala": "Vetrina 10 · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia di Gutenberg",
+   "siglo": "Magonza, 1455 · quarantadue linee",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Siamo a Napoli, a metà del quattordicesimo secolo. E questo libro è nipote di quello che ha appena visto.",
-   "Glielo spiego. Il fratello minore di san Luigi, Carlo d'Angiò, portò a Napoli una Bibbia a medaglioni come quella del fratello. Cento anni dopo i suoi discendenti vollero la propria. La fecero fare qui, alla corte di re Roberto il Saggio, per sua nipote Giovanna, che avrebbe ereditato il regno.",
-   "Era una corte straordinaria. Giotto aveva dipinto a Napoli pochi anni prima. Di lì passarono Petrarca e Boccaccio. Tutto ciò che l'Italia stava inventando in quel momento entrò in questa bottega.",
-   "E si vede. Confronti con la vetrina precedente. Là, otto cerchi chiusi, uno accanto all'altro, come una vetrata. Qui le scene si liberano: pagine intere, fasce orizzontali, figure che pesano, che hanno volume, che proiettano un'ombra. L'impianto è ancora francese e gotico. Il corpo è già italiano.",
-   "Duecentoquattro miniature su fondo d'oro.",
-   "E c'è un altro cambiamento, che non si vede ma pesa di più. Il testo di questo libro non è in latino. È in francese, la lingua che la corte parlava davvero. La Scrittura comincia a uscire dalla lingua dei dotti.",
-   "Poi venne il viaggio. La regina Giovanna. Iolanda d'Aragona. Margherita d'Austria. Maria d'Ungheria. La biblioteca dei duchi di Borgogna. Secoli di mani illustri, fino a Parigi, dove oggi è conservato. Per strada perse la sua legatura originale: quella che porta adesso è dell'Ottocento, e reca impresso in oro il monogramma di Napoleone.",
-   "E guardi la strada che abbiamo fatto. Un libro per un monaco. Un libro per un re bambino. Un libro per una regina. Sempre una sola copia, sempre per una sola persona. Nella vetrina seguente questo finisce per sempre."
+   "Quarantadue righe per colonna. Questo è il nome tecnico di questo libro: la Bibbia a quarantadue linee. Ed è l'oggetto che taglia in due la storia del mondo.",
+   "Magonza, Germania, 1455. Un orefice di nome Giovanni Gutenberg lavora da anni quasi in segreto. La sua idea non fu la stampa: in Cina si stampava già. La sua idea fu fondere in metallo ogni lettera separatamente, per comporre una pagina, stamparla, disfare i caratteri e ricomporli con altre parole. Così nacque la stampa a caratteri mobili.",
+   "Ora si fermi un momento su queste parole. Sono del libro di Giobbe, e furono scritte più di mille anni prima di qualunque di questi libri.",
+   "Oh, se le mie parole fossero scritte. Oh, se fossero incise in un libro, con stilo di ferro e con piombo, scolpite nella roccia per sempre.",
+   "Giobbe, capitolo 19, versetti 23 e 24.",
+   "Giobbe chiedeva un libro. E chiedeva ferro e piombo. Tremila anni dopo, un orefice di Magonza incise punzoni di ferro e fuse lettere di piombo e così esaudì il desiderio di Giobbe senza proporselo. E che cosa scelse di stampare? Potendo scegliere qualunque cosa, scelse la Bibbia.",
+   "Guardi la pagina e noterà una cosa curiosa: non sembra stampata. Gutenberg volle che il suo libro sembrasse un manoscritto. Incise quasi duecentonovanta caratteri diversi, solo per imitare le legature e le abbreviazioni del copista. Le capitali e gli ornamenti in rosso furono dipinti dopo, a mano, uno per uno.",
+   "Se ne fecero circa centottanta esemplari: la maggior parte su carta, una quarantina su pergamena. Oggi ne sopravvivono quarantotto, e solo ventuno completi. Sono decenni che non ne esce uno intero in vendita.",
+   "La storia non finì bene per lui. Gutenberg non aveva denaro: glielo prestò un socio, Johann Fust. Quando la Bibbia stava per finire, Fust gli fece causa, la vinse e si tenne la bottega e i libri. L'uomo che inventò la stampa morì senza di essa.",
+   "E ora pensi a che cosa cambiò. Copiare una Bibbia a mano costava a un monaco due o tre anni della sua vita. Da questa bottega ne uscirono centottanta nello stesso tempo. Il Libro smise di essere pezzo unico, fatto per un re, e cominciò a moltiplicarsi.",
+   "Ottantaquattro anni dopo, nel 1539, arrivava a Città del Messico la prima stamperia del continente americano. Da Magonza fin qui in meno di un secolo.",
+   "Fin qui abbiamo visto un libro per un monaco, un libro per un re bambino e un libro per una regina. Da qui in poi, finalmente, un libro per tutti. Resta da vedere come quel libro tornò alle sue lingue originali, e come di lì arrivò alla nostra.",
+   "Giobbe chiese che le sue parole non si perdessero. La risposta impiegò tremila anni e arrivò in forma di piombo."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 10 · Museu de História da Bíblia",
+   "titulo": "A Bíblia de Gutenberg",
+   "siglo": "Mogúncia, 1455 · quarenta e duas linhas",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Quarenta e duas linhas por coluna. Esse é o nome técnico deste livro: a Bíblia de quarenta e duas linhas. E é o objeto que parte em dois a história do mundo.",
+   "Mogúncia, Alemanha, 1455. Um ourives chamado João Gutenberg trabalha há anos quase em segredo. A sua ideia não foi a imprensa: na China já se imprimia. A sua ideia foi fundir em metal cada letra separadamente, para compor uma página, imprimi-la, desfazer os tipos e voltar a compô-los com outras palavras. Assim nasceu a imprensa de tipos móveis.",
+   "Agora detenha-se um momento nestas palavras. São do livro de Jó, e foram escritas mais de mil anos antes de qualquer destes livros.",
+   "Quem dera que as minhas palavras ficassem escritas. Quem dera que fossem gravadas num livro, com estilete de ferro e com chumbo, esculpidas na rocha para sempre.",
+   "Jó, capítulo 19, versículos 23 e 24.",
+   "Jó pedia um livro. E pedia ferro e chumbo. Três mil anos depois, um ourives de Mogúncia gravou punções de ferro e fundiu letras de chumbo e, assim, cumpriu o desejo de Jó sem se propor a isso. E o que escolheu imprimir? Podendo escolher qualquer coisa, escolheu a Bíblia.",
+   "Olhe a página e notará algo curioso: não parece impressa. Gutenberg quis que o seu livro parecesse um manuscrito. Cortou cerca de duzentos e noventa tipos diferentes, só para imitar as ligaduras e as abreviaturas do copista. As capitulares e os ornamentos em vermelho foram pintados depois, à mão, um a um.",
+   "Fizeram-se uns cento e oitenta exemplares: a maioria em papel, uns quarenta e cinco em pergaminho. Hoje sobrevivem quarenta e oito, e só vinte e um completos. Há décadas que não sai um inteiro à venda.",
+   "A história não acabou bem para ele. Gutenberg não tinha dinheiro: emprestou-lho um sócio, Johann Fust. Quando a Bíblia estava para terminar, Fust processou-o, ganhou a causa e ficou com a oficina e com os livros. O homem que inventou a imprensa morreu sem ela.",
+   "E agora pense no que mudou. Copiar uma Bíblia à mão custava a um monge dois ou três anos da sua vida. Desta oficina saíram cento e oitenta no mesmo tempo. O Livro deixou de ser peça única, feita para um rei, e começou a multiplicar-se.",
+   "Oitenta e quatro anos depois, em 1539, chegava à Cidade do México a primeira imprensa do continente americano. De Mogúncia até aqui em menos de um século.",
+   "Até aqui vimos um livro para um monge, um livro para um rei menino e um livro para uma rainha. Daqui em diante, enfim, um livro para todos. Falta ver como esse livro voltou às suas línguas originais, e como dali chegou à nossa.",
+   "Jó pediu que as suas palavras não se perdessem. A resposta demorou três mil anos e chegou em forma de chumbo."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 10 · Музей истории Библии",
+   "titulo": "Библия Гутенберга",
+   "siglo": "Майнц, 1455 · сорок две строки",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Сорок две строки в столбце. Таково техническое название этой книги: Библия сорока двух строк. И это предмет, который надвое рассекает историю мира.",
+   "Майнц, Германия, 1455 год. Ювелир по имени Иоганн Гутенберг уже годы работает почти тайно. Его мысль была не о печати: в Китае печатали давно. Его мысль была отлить каждую букву в металле по отдельности, чтобы набрать страницу, оттиснуть её, разобрать литеры и снова сложить их в другие слова. Так родилось книгопечатание подвижными литерами.",
+   "А теперь остановитесь на мгновение на этих словах. Они из книги Иова и написаны более чем за тысячу лет до любой из этих книг.",
+   "О, если бы слова мои были записаны. О, если бы они были начертаны в книге резцом железным и свинцом, высечены в скале навеки.",
+   "Книга Иова, глава 19, стихи 23 и 24.",
+   "Иов просил книгу. И просил железа и свинца. Три тысячи лет спустя ювелир из Майнца вырезал железные пуансоны и отлил свинцовые литеры — и так, сам того не замышляя, исполнил желание Иова. А что он выбрал напечатать? Имея возможность выбрать что угодно, он выбрал Библию.",
+   "Взгляните на страницу, и вы заметите странность: она не выглядит печатной. Гутенберг хотел, чтобы его книга походила на рукопись. Он вырезал около двухсот девяноста разных литер — только чтобы повторить лигатуры и сокращения переписчика. Инициалы и красные украшения дописывали потом, от руки, одно за другим.",
+   "Было изготовлено около ста восьмидесяти экземпляров: большинство на бумаге, около сорока пяти на пергаменте. Сегодня сохранилось сорок восемь, и лишь двадцать один полный. Уже десятилетия ни один целый не выставлялся на продажу.",
+   "Для него эта история кончилась плохо. У Гутенберга не было денег: их одолжил компаньон, Иоганн Фуст. Когда Библия была почти готова, Фуст подал на него в суд, выиграл дело и забрал мастерскую и книги. Человек, изобретший печать, умер без неё.",
+   "А теперь подумайте, что переменилось. Переписать Библию от руки стоило монаху двух-трёх лет жизни. Из этой мастерской за то же время вышло сто восемьдесят. Книга перестала быть единственным предметом, сделанным для короля, и начала умножаться.",
+   "Восемьдесят четыре года спустя, в 1539 году, в город Мехико прибыл первый печатный станок американского континента. От Майнца досюда — менее чем за век.",
+   "До сих пор мы видели книгу для монаха, книгу для короля-ребёнка и книгу для королевы. Отсюда — наконец книга для всех. Остаётся увидеть, как эта книга вернулась к своим первоначальным языкам и как оттуда пришла к нашему.",
+   "Иов просил, чтобы слова его не пропали. Ответ шёл три тысячи лет и пришёл в виде свинца."
   ]
  }
 };
@@ -284,6 +373,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

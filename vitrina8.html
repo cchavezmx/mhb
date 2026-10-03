@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Septuaginta — Museo de Historia de la Biblia</title>
+<title>La Biblia de Jünemann — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#EFEDE5;--claro:#FAF8F1;--tinta:#1C1B18;--cabecera:#1F5A63;--acento:#C08A2A;--marca:rgba(192,138,42,.3); }
+  :root{ --fondo:#EFF0EA;--claro:#FAFBF5;--tinta:#1C1E1A;--cabecera:#2E4636;--acento:#9A7C2C;--marca:rgba(154,124,44,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .setenta{flex:none;width:70px;height:62px}
+  .tomos{flex:none;display:flex;gap:5px;align-items:flex-end}
+  .tomos i{display:block;width:17px;height:62px;background:var(--acento);border-radius:2px}
+  .tomos i.abierto{height:46px;background:var(--cabecera)}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,11 +40,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="setenta" viewBox="0 0 70 62" aria-hidden="true"><text x="35" y="44" text-anchor="middle" font-size="40" font-family="Georgia,serif" fill="#C08A2A">Ο′</text></svg>
+  <div class="tomos" aria-hidden="true"><i></i><i class="abierto"></i><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -71,110 +74,168 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 3 · Museo de Historia de la Biblia",
-   "titulo": "La Septuaginta",
-   "siglo": "Alejandría, siglo III a.C. · la primera traducción",
+   "sala": "Vitrina 3b · Museo de Historia de la Biblia",
+   "titulo": "La Biblia de Jünemann",
+   "siglo": "Concepción, Chile · 1,928",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Alejandría, Egipto, siglo tercero antes de Cristo. Aquí empieza la historia de la traducción.",
-   "Había en esa ciudad una comunidad judía enorme que ya no hablaba hebreo. Hablaba griego, que era la lengua franca del Mediterráneo. Sus hijos no entendían la Escritura de sus abuelos. Así que la tradujeron. Es la primera vez en la historia que un pueblo traduce su libro sagrado a otra lengua. Nada parecido se había hecho antes.",
-   "El nombre viene de una leyenda recogida en la Carta de Aristeas: que setenta y dos sabios trabajaron por separado y produjeron traducciones idénticas. De ahí Septuaginta, los setenta. La leyenda no es historia, pero dice algo verdadero: que aquella traducción se consideró autorizada, y no un sucedáneo del original.",
-   "Y ahora lo que importa para todo el resto del recorrido. Ésta es la Biblia que citan los evangelios.",
-   "Cuando el Nuevo Testamento cita el Antiguo, casi siempre cita en griego, de aquí. Ésta es la Biblia de la iglesia primitiva, la que leyeron Pablo y los primeros cristianos. De ella salen la Vulgata latina y buena parte de la Peshitta que verá en la vitrina siguiente.",
-   "Trae además algo que quizá haya notado en algunas Biblias: incluye libros que el canon hebreo no tiene, como Tobías, Judit, Baruc, Sabiduría, Eclesiástico y los Macabeos. De ahí viene, en el fondo, toda la discusión posterior sobre qué libros entran y cuáles no.",
-   "Y guárdese esta idea para todo el museo. La traducción no es un accidente tardío ni una concesión a los que no saben. Está en el origen. Trescientos años antes de Cristo, alguien ya había decidido que valía más entender que conservar la lengua."
+   "Ésta es la única Biblia en español que desciende directamente del libro que tiene usted al lado.",
+   "Todas las demás versiones castellanas de este museo se tradujeron del hebreo o de la Vulgata latina. Ésta no. Ésta se tradujo del griego de los Setenta, el mismo que se hizo en Alejandría doscientos años antes de Cristo y que está en la vitrina de junto. Entre aquel rollo y estos tres tomos hay veintidós siglos, y una línea recta.",
+   "La hizo un sacerdote llamado Guillermo Jünemann, nacido en Alemania y llegado de niño a Chile. Fue profesor en Concepción, y ahí, sin equipo, sin universidad detrás y sin encargo de nadie, tradujo la Biblia entera.",
+   "Y la tradujo de una manera que hoy sorprende: casi palabra por palabra, respetando el orden del griego. No buscaba que sonara bonito en castellano. Buscaba que se viera el griego a través del español. Por eso a veces cuesta leerla, y por eso mismo, para quien estudia, vale lo que pesa.",
+   "La terminó en 1,928. Y aquí viene lo que a mí me detiene cada vez que lo cuento.",
+   "No se publicó. Fue sacando pedazos en cuadernos, como pudo, y la obra completa se quedó guardada. Jünemann murió en 1,938, diez años después de terminarla. La Biblia completa no se imprimió sino hasta 1,992, cincuenta y cuatro años después de su muerte.",
+   "Un hombre traduce la Biblia entera, solo, en el sur de Chile, y no alcanza a verla publicada. Y sin embargo ahí está, tres tomos de casi mil páginas cada uno, esperando en un estante a que alguien la abriera.",
+   "Es, además, la primera Biblia traducida al español en toda América Latina.",
+   "Y fíjese en lo que eso significa junto a otra vitrina de este museo. La Biblia de Galván, de 1,831, fue la primera Biblia impresa en América, pero se tradujo de un texto europeo. Ésta fue la primera traducida en América, con el griego delante. Una la imprimió este continente; la otra la pensó."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 3 · Museum of the History of the Bible",
-   "titulo": "The Septuagint",
-   "siglo": "Alexandria, third century BC · the first translation",
+   "sala": "Case 3b · Museum of the History of the Bible",
+   "titulo": "The Jünemann Bible",
+   "siglo": "Concepción, Chile · 1928",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Alexandria, Egypt, in the third century before Christ. Here the history of translation begins.",
-   "In that city there was an enormous Jewish community that no longer spoke Hebrew. It spoke Greek, the common tongue of the Mediterranean. Their children could not understand the Scripture of their grandparents. So they translated it. It is the first time in history that a people translated its sacred book into another language. Nothing like it had been done before.",
-   "The name comes from a legend recorded in the Letter of Aristeas: that seventy-two scholars worked separately and produced identical translations. Hence Septuagint, the seventy. The legend is not history, but it says something true: that this translation was held to be authoritative, and not a substitute for the original.",
-   "And now what matters for the whole of the rest of the tour. This is the Bible the Gospels quote.",
-   "When the New Testament quotes the Old, it almost always quotes in Greek, from here. This is the Bible of the early church, the one Paul and the first Christians read. From it come the Latin Vulgate and much of the Peshitta you will see in the next case.",
-   "It also contains something you may have noticed in your own Bibles: it includes books the Hebrew canon does not have, such as Tobit, Judith, Baruch, Wisdom, Sirach and the Maccabees. From this comes, at bottom, the whole later argument about which books are in and which are out.",
-   "And keep this idea with you for the whole museum. Translation is not a late accident or a concession to those who do not know. It is there at the origin. Three hundred years before Christ, somebody had already decided that understanding mattered more than keeping the language."
+   "This is the only Bible in Spanish that descends directly from the book standing beside it.",
+   "Every other Spanish version in this museum was translated from the Hebrew or from the Latin Vulgate. Not this one. This was translated from the Greek of the Seventy, the very version made in Alexandria two hundred years before Christ, which is in the case next door. Between that scroll and these three volumes lie twenty-two centuries, and a straight line.",
+   "It was made by a priest named Guillermo Jünemann, born in Germany and brought to Chile as a child. He taught in Concepción, and there, with no team, no university behind him and no commission from anyone, he translated the whole Bible.",
+   "And he translated it in a way that surprises us today: almost word for word, keeping the order of the Greek. He was not after fine Spanish. He wanted the Greek to show through the Spanish. That is why it is sometimes hard going, and that is exactly why, for the student, it is worth its weight.",
+   "He finished it in 1928. And here comes the part that stops me every time I tell it.",
+   "It was not published. He brought out pieces in booklets, as best he could, and the complete work stayed put away. Jünemann died in 1938, ten years after finishing it. The complete Bible was not printed until 1992, fifty-four years after his death.",
+   "A man translates the whole Bible, alone, in the south of Chile, and never sees it published. And yet there it is, three volumes of nearly a thousand pages each, waiting on a shelf for someone to open it.",
+   "It is, besides, the first Bible translated into Spanish in the whole of Latin America.",
+   "And consider what that means beside another case in this museum. The Galván Bible, of 1831, was the first Bible printed in America, but it was translated from a European text. This was the first translated in America, with the Greek in front of him. One this continent printed; the other it thought."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 3 · Musée de l'Histoire de la Bible",
-   "titulo": "La Septante",
-   "siglo": "Alexandrie, IIIe siècle av. J.-C. · la première traduction",
+   "sala": "Vitrine 3b · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible de Jünemann",
+   "siglo": "Concepción, Chili · 1928",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Alexandrie, en Égypte, au troisième siècle avant Jésus-Christ. C'est ici que commence l'histoire de la traduction.",
-   "Il y avait dans cette ville une énorme communauté juive qui ne parlait plus l'hébreu. Elle parlait grec, la langue commune de la Méditerranée. Leurs enfants ne comprenaient pas l'Écriture de leurs grands-parents. Alors ils l'ont traduite. C'est la première fois dans l'histoire qu'un peuple traduit son livre sacré dans une autre langue. Rien de tel n'avait été fait auparavant.",
-   "Le nom vient d'une légende rapportée par la Lettre d'Aristée : soixante-douze sages auraient travaillé séparément et produit des traductions identiques. D'où Septante, les soixante-dix. La légende n'est pas de l'histoire, mais elle dit quelque chose de vrai : cette traduction fut tenue pour autorisée, et non pour un succédané de l'original.",
-   "Et voici ce qui compte pour tout le reste du parcours. C'est la Bible que citent les évangiles.",
-   "Quand le Nouveau Testament cite l'Ancien, il cite presque toujours en grec, d'ici. C'est la Bible de l'Église primitive, celle que lurent Paul et les premiers chrétiens. D'elle sortent la Vulgate latine et une bonne part de la Peshitta que vous verrez dans la vitrine suivante.",
-   "Elle contient en outre quelque chose que vous avez peut-être remarqué dans vos propres Bibles : elle inclut des livres que le canon hébreu n'a pas, comme Tobie, Judith, Baruch, la Sagesse, le Siracide et les Maccabées. De là vient, au fond, toute la discussion ultérieure sur les livres qui entrent et ceux qui n'entrent pas.",
-   "Et gardez cette idée pour tout le musée. La traduction n'est pas un accident tardif ni une concession à ceux qui ne savent pas. Elle est à l'origine. Trois cents ans avant Jésus-Christ, quelqu'un avait déjà décidé qu'il valait mieux comprendre que conserver la langue."
+   "Voici la seule Bible en espagnol qui descende directement du livre que vous avez à côté.",
+   "Toutes les autres versions castillanes de ce musée furent traduites de l'hébreu ou de la Vulgate latine. Pas celle-ci. Celle-ci fut traduite du grec des Septante, celui-là même qui fut fait à Alexandrie deux cents ans avant le Christ et qui se trouve dans la vitrine voisine. Entre ce rouleau et ces trois volumes il y a vingt-deux siècles, et une ligne droite.",
+   "Elle est l'œuvre d'un prêtre nommé Guillermo Jünemann, né en Allemagne et arrivé enfant au Chili. Il fut professeur à Concepción, et là, sans équipe, sans université derrière lui et sans commande de personne, il traduisit la Bible entière.",
+   "Et il la traduisit d'une manière qui surprend aujourd'hui : presque mot à mot, en respectant l'ordre du grec. Il ne cherchait pas la beauté en castillan. Il voulait qu'on vît le grec à travers l'espagnol. C'est pourquoi elle coûte parfois à lire, et c'est pour cela même que, pour qui étudie, elle vaut son pesant.",
+   "Il l'acheva en 1928. Et vient ici ce qui m'arrête chaque fois que je le raconte.",
+   "Elle ne fut pas publiée. Il en fit paraître des morceaux en cahiers, comme il put, et l'œuvre complète resta rangée. Jünemann mourut en 1938, dix ans après l'avoir achevée. La Bible complète ne fut imprimée qu'en 1992, cinquante-quatre ans après sa mort.",
+   "Un homme traduit la Bible entière, seul, dans le sud du Chili, et ne la voit pas publiée. Et pourtant la voici, trois volumes de près de mille pages chacun, attendant sur une étagère que quelqu'un l'ouvre.",
+   "C'est en outre la première Bible traduite en espagnol dans toute l'Amérique latine.",
+   "Et voyez ce que cela signifie à côté d'une autre vitrine de ce musée. La Bible de Galván, de 1831, fut la première Bible imprimée en Amérique, mais traduite d'un texte européen. Celle-ci fut la première traduite en Amérique, avec le grec sous les yeux. L'une, ce continent l'a imprimée ; l'autre, il l'a pensée."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 3 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Septuaginta",
-   "siglo": "Alexandria, 3. Jahrhundert v. Chr. · die erste Übersetzung",
+   "sala": "Vitrine 3b · Museum zur Geschichte der Bibel",
+   "titulo": "Die Jünemann-Bibel",
+   "siglo": "Concepción, Chile · 1928",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Alexandria in Ägypten, im dritten Jahrhundert vor Christus. Hier beginnt die Geschichte der Übersetzung.",
-   "In jener Stadt lebte eine riesige jüdische Gemeinde, die kein Hebräisch mehr sprach. Sie sprach Griechisch, die Verkehrssprache des Mittelmeers. Ihre Kinder verstanden die Schrift ihrer Großeltern nicht. Also übersetzten sie sie. Es ist das erste Mal in der Geschichte, dass ein Volk sein heiliges Buch in eine andere Sprache übersetzt. Nichts dergleichen war zuvor geschehen.",
-   "Der Name kommt von einer Legende im Aristeasbrief: zweiundsiebzig Gelehrte hätten getrennt gearbeitet und wortgleiche Übersetzungen hervorgebracht. Daher Septuaginta, die Siebzig. Die Legende ist keine Geschichte, aber sie sagt etwas Wahres: dass diese Übersetzung als maßgeblich galt und nicht als Ersatz für das Original.",
-   "Und nun das, worauf es für den ganzen übrigen Rundgang ankommt. Dies ist die Bibel, die die Evangelien zitieren.",
-   "Wenn das Neue Testament das Alte zitiert, zitiert es fast immer auf Griechisch, von hier. Dies ist die Bibel der frühen Kirche, die Paulus und die ersten Christen lasen. Aus ihr gehen die lateinische Vulgata hervor und ein guter Teil der Peschitta, die Sie in der nächsten Vitrine sehen werden.",
-   "Sie enthält außerdem etwas, das Ihnen in Ihren eigenen Bibeln vielleicht aufgefallen ist: sie führt Bücher, die der hebräische Kanon nicht hat, wie Tobit, Judit, Baruch, die Weisheit, Jesus Sirach und die Makkabäer. Daher rührt im Grunde die ganze spätere Auseinandersetzung darüber, welche Bücher dazugehören und welche nicht.",
-   "Und behalten Sie diesen Gedanken für das ganze Museum. Übersetzung ist kein später Unfall und kein Zugeständnis an die Unwissenden. Sie steht am Anfang. Dreihundert Jahre vor Christus hatte jemand bereits entschieden, dass Verstehen mehr wiegt als das Bewahren der Sprache."
+   "Dies ist die einzige spanische Bibel, die unmittelbar von dem Buch abstammt, das Sie daneben sehen.",
+   "Alle anderen spanischen Fassungen dieses Museums wurden aus dem Hebräischen oder aus der lateinischen Vulgata übersetzt. Diese nicht. Diese wurde aus dem Griechischen der Siebzig übersetzt, eben jener Fassung, die zweihundert Jahre vor Christus in Alexandria entstand und die in der Vitrine nebenan steht. Zwischen jener Rolle und diesen drei Bänden liegen zweiundzwanzig Jahrhunderte und eine gerade Linie.",
+   "Gemacht hat sie ein Priester namens Guillermo Jünemann, in Deutschland geboren und als Kind nach Chile gekommen. Er war Lehrer in Concepción, und dort übersetzte er, ohne Mitarbeiter, ohne Universität im Rücken und ohne Auftrag von irgendwem, die ganze Bibel.",
+   "Und er übersetzte sie auf eine Weise, die heute erstaunt: fast Wort für Wort, unter Wahrung der griechischen Wortfolge. Er suchte keinen schönen spanischen Klang. Er wollte, dass das Griechische durch das Spanische hindurch sichtbar bleibe. Darum liest sie sich bisweilen schwer, und eben darum ist sie für den, der studiert, Gold wert.",
+   "Er vollendete sie 1928. Und nun kommt das, was mich jedes Mal innehalten lässt.",
+   "Sie wurde nicht veröffentlicht. Er brachte Stücke in Heften heraus, so gut es ging, und das vollständige Werk blieb liegen. Jünemann starb 1938, zehn Jahre nach der Vollendung. Die vollständige Bibel wurde erst 1992 gedruckt, vierundfünfzig Jahre nach seinem Tod.",
+   "Ein Mann übersetzt allein im Süden Chiles die ganze Bibel und erlebt ihre Veröffentlichung nicht. Und doch steht sie hier, drei Bände von je fast tausend Seiten, und wartete im Regal darauf, dass jemand sie aufschlüge.",
+   "Sie ist überdies die erste ins Spanische übersetzte Bibel in ganz Lateinamerika.",
+   "Und bedenken Sie, was das neben einer anderen Vitrine dieses Museums bedeutet. Die Galván-Bibel von 1831 war die erste in Amerika gedruckte Bibel, aber aus einem europäischen Text übersetzt. Diese war die erste in Amerika übersetzte, mit dem Griechischen vor Augen. Die eine hat dieser Kontinent gedruckt, die andere hat er gedacht."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 3 · Museo di Storia della Bibbia",
-   "titulo": "La Settanta",
-   "siglo": "Alessandria, III secolo a.C. · la prima traduzione",
+   "sala": "Vetrina 3b · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia di Jünemann",
+   "siglo": "Concepción, Cile · 1928",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Alessandria d'Egitto, terzo secolo avanti Cristo. Qui comincia la storia della traduzione.",
-   "In quella città c'era un'enorme comunità ebraica che non parlava più ebraico. Parlava greco, la lingua franca del Mediterraneo. I loro figli non capivano la Scrittura dei nonni. Così la tradussero. È la prima volta nella storia che un popolo traduce il proprio libro sacro in un'altra lingua. Nulla di simile era stato fatto prima.",
-   "Il nome viene da una leggenda raccolta nella Lettera di Aristea: settantadue sapienti avrebbero lavorato separatamente producendo traduzioni identiche. Di qui Settanta. La leggenda non è storia, ma dice qualcosa di vero: che quella traduzione fu considerata autorevole, e non un surrogato dell'originale.",
-   "E ora ciò che conta per tutto il resto del percorso. Questa è la Bibbia che citano i vangeli.",
-   "Quando il Nuovo Testamento cita l'Antico, cita quasi sempre in greco, da qui. Questa è la Bibbia della chiesa primitiva, quella che lessero Paolo e i primi cristiani. Da essa nascono la Vulgata latina e buona parte della Peshitta che vedrà nella vetrina seguente.",
-   "Contiene inoltre qualcosa che forse ha notato nelle sue Bibbie: include libri che il canone ebraico non ha, come Tobia, Giuditta, Baruc, la Sapienza, il Siracide e i Maccabei. Di qui viene, in fondo, tutta la discussione successiva su quali libri entrano e quali no.",
-   "E si tenga questa idea per tutto il museo. La traduzione non è un incidente tardivo né una concessione a chi non sa. Sta all'origine. Trecento anni prima di Cristo, qualcuno aveva già deciso che valeva più capire che conservare la lingua."
+   "Questa è l'unica Bibbia in spagnolo che discende direttamente dal libro che ha qui accanto.",
+   "Tutte le altre versioni castigliane di questo museo furono tradotte dall'ebraico o dalla Vulgata latina. Questa no. Questa fu tradotta dal greco dei Settanta, lo stesso che fu fatto ad Alessandria duecento anni prima di Cristo e che si trova nella vetrina vicina. Fra quel rotolo e questi tre volumi ci sono ventidue secoli, e una linea retta.",
+   "La fece un sacerdote di nome Guillermo Jünemann, nato in Germania e giunto bambino in Cile. Fu professore a Concepción, e lì, senza équipe, senza un'università alle spalle e senza incarico di nessuno, tradusse la Bibbia intera.",
+   "E la tradusse in un modo che oggi sorprende: quasi parola per parola, rispettando l'ordine del greco. Non cercava che suonasse bella in castigliano. Voleva che il greco si vedesse attraverso lo spagnolo. Per questo a volte costa leggerla, e proprio per questo, per chi studia, vale quanto pesa.",
+   "La terminò nel 1928. E qui viene ciò che mi ferma ogni volta che lo racconto.",
+   "Non fu pubblicata. Ne fece uscire pezzi in quaderni, come poté, e l'opera completa rimase riposta. Jünemann morì nel 1938, dieci anni dopo averla finita. La Bibbia completa fu stampata solo nel 1992, cinquantaquattro anni dopo la sua morte.",
+   "Un uomo traduce la Bibbia intera, da solo, nel sud del Cile, e non fa in tempo a vederla pubblicata. Eppure eccola, tre volumi di quasi mille pagine ciascuno, che aspettavano su uno scaffale che qualcuno li aprisse.",
+   "È inoltre la prima Bibbia tradotta in spagnolo in tutta l'America Latina.",
+   "E guardi che cosa significa accanto a un'altra vetrina di questo museo. La Bibbia di Galván, del 1831, fu la prima Bibbia stampata in America, ma tradotta da un testo europeo. Questa fu la prima tradotta in America, con il greco davanti. Una l'ha stampata questo continente; l'altra l'ha pensata."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 3b · Museu de História da Bíblia",
+   "titulo": "A Bíblia de Jünemann",
+   "siglo": "Concepción, Chile · 1928",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Esta é a única Bíblia em espanhol que descende diretamente do livro que você tem ao lado.",
+   "Todas as outras versões castelhanas deste museu foram traduzidas do hebraico ou da Vulgata latina. Esta não. Esta foi traduzida do grego dos Setenta, o mesmo que foi feito em Alexandria duzentos anos antes de Cristo e que está na vitrine ao lado. Entre aquele rolo e estes três volumes há vinte e dois séculos, e uma linha reta.",
+   "Fê-la um sacerdote chamado Guillermo Jünemann, nascido na Alemanha e chegado criança ao Chile. Foi professor em Concepción, e ali, sem equipe, sem universidade atrás e sem encomenda de ninguém, traduziu a Bíblia inteira.",
+   "E traduziu-a de um modo que hoje surpreende: quase palavra por palavra, respeitando a ordem do grego. Não buscava que soasse bonito em castelhano. Queria que se visse o grego através do espanhol. Por isso às vezes custa lê-la, e por isso mesmo, para quem estuda, vale o que pesa.",
+   "Terminou-a em 1928. E aqui vem o que me detém cada vez que o conto.",
+   "Não foi publicada. Foi lançando pedaços em cadernos, como pôde, e a obra completa ficou guardada. Jünemann morreu em 1938, dez anos depois de terminá-la. A Bíblia completa só foi impressa em 1992, cinquenta e quatro anos após a sua morte.",
+   "Um homem traduz a Bíblia inteira, sozinho, no sul do Chile, e não chega a vê-la publicada. E no entanto ali está, três volumes de quase mil páginas cada um, esperando numa estante que alguém a abrisse.",
+   "É, além disso, a primeira Bíblia traduzida para o espanhol em toda a América Latina.",
+   "E repare no que isso significa ao lado de outra vitrine deste museu. A Bíblia de Galván, de 1831, foi a primeira Bíblia impressa na América, mas traduzida de um texto europeu. Esta foi a primeira traduzida na América, com o grego diante dos olhos. Uma este continente imprimiu; a outra, pensou."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 3b · Музей истории Библии",
+   "titulo": "Библия Юнемана",
+   "siglo": "Консепсьон, Чили · 1928",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Это единственная испанская Библия, которая происходит напрямую от книги, стоящей рядом с ней.",
+   "Все прочие испанские версии этого музея переводились с еврейского или с латинской Вульгаты. Эта — нет. Эта переведена с греческого Семидесяти, того самого перевода, что был сделан в Александрии за двести лет до Рождества Христова и который стоит в соседней витрине. Между тем свитком и этими тремя томами — двадцать два века и прямая линия.",
+   "Её сделал священник по имени Гильермо Юнеман, родившийся в Германии и ребёнком привезённый в Чили. Он преподавал в Консепсьоне, и там, без помощников, без университета за спиной и без чьего-либо заказа, перевёл всю Библию.",
+   "И перевёл так, что это удивляет и сегодня: почти слово в слово, сохраняя греческий порядок слов. Он не добивался красоты испанской речи. Он хотел, чтобы сквозь испанский просвечивал греческий. Поэтому читать её порой трудно — и именно поэтому для того, кто занимается изучением, она бесценна.",
+   "Он закончил её в 1928 году. И вот то, что останавливает меня всякий раз, когда я об этом рассказываю.",
+   "Она не была напечатана. Он выпускал отрывки тетрадями, как мог, а полный труд остался лежать. Юнеман умер в 1938 году, через десять лет после её завершения. Полная Библия была напечатана только в 1992 году — через пятьдесят четыре года после его смерти.",
+   "Человек в одиночку переводит на юге Чили всю Библию и не успевает увидеть её изданной. И всё же вот она: три тома почти по тысяче страниц каждый, ждавшие на полке, чтобы кто-нибудь их открыл.",
+   "К тому же это первая Библия, переведённая на испанский во всей Латинской Америке.",
+   "И подумайте, что это значит рядом с другой витриной музея. Библия Гальвана 1831 года была первой Библией, напечатанной в Америке, но переведена она была с европейского текста. Эта была первой, переведённой в Америке, с греческим текстом перед глазами. Одну этот континент напечатал, другую — продумал."
   ]
  }
 };
@@ -279,6 +340,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

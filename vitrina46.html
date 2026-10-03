@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La sección infantil — Museo de Historia de la Biblia</title>
+<title>Las Biblias miniatura — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#FAF2E2;--claro:#FFFAF0;--tinta:#2A231A;--cabecera:#1F6F8B;--acento:#D4762A;--marca:rgba(212,118,42,.3); }
+  :root{ --fondo:#F1EFE9;--claro:#FAF8F3;--tinta:#1C1B17;--cabecera:#33302A;--acento:#8A7A4A;--marca:rgba(138,122,74,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,8 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .arcoiris{flex:none;width:72px;height:56px}
+  .peq{flex:none;display:flex;align-items:flex-end;gap:5px}
+  .peq i{display:block;background:var(--acento);border-radius:1px}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,15 +39,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="arcoiris" viewBox="0 0 72 56" aria-hidden="true">
-   <g fill="none" stroke-width="6">
-     <path d="M6 50 A30 30 0 0 1 66 50" stroke="#D4762A"/>
-     <path d="M15 50 A21 21 0 0 1 57 50" stroke="#E8C24A"/>
-     <path d="M24 50 A12 12 0 0 1 48 50" stroke="#4E8F62"/></g></svg>
+  <div class="peq" aria-hidden="true"><i style="width:26px;height:34px"></i><i style="width:15px;height:20px"></i><i style="width:8px;height:11px"></i><i style="width:4px;height:5px"></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -75,100 +73,154 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 31 · Museo de Historia de la Biblia",
-   "titulo": "La sección infantil",
-   "siglo": "La primera Biblia de casi todos",
+   "sala": "Vitrina 26 · Museo de Historia de la Biblia",
+   "titulo": "Las Biblias miniatura",
+   "siglo": "Tres siglos de hacerse pequeñas",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Y llegamos a la vitrina más importante del museo. Se lo digo en serio. Todo lo que ha visto en el recorrido existe por una razón sencilla: que alguien pudiera entender. Y el lector que menos entiende, y al que más hay que explicarle, es un niño de cinco años.",
-   "Mire lo que hicieron para conseguirlo. Menos texto y más dibujo. Palabras cortas. Las historias que un niño aguanta: Noé, José, David, Jonás, el nacimiento, la tormenta en el lago. Páginas de cartón para manos que aún no saben pasar hojas. Letra grande. Colores fuertes.",
-   "Nada de eso es nuevo, y ahí está lo bonito. Vuelva un momento a las primeras vitrinas de este museo. El Beato de Liébana contaba el Apocalipsis con colores planos y figuras de ojos enormes, para gente que no sabía leer. La Biblia de San Luis lo contaba en medallones, imagen y explicación, imagen y explicación, para educar a un niño rey.",
-   "Es exactamente el mismo método, mil años después. Sólo cambió el precio: aquéllas costaban un reino, y éstas se compran en cualquier librería.",
-   "Y una aclaración, para los adultos que están oyendo esto. No crea que la Biblia infantil es la Biblia rebajada. Casi todos los que hicieron algo en esta historia, los traductores, los impresores, los que huyeron con el manuscrito bajo el brazo, conocieron este Libro de niños, contado por alguien, en la lengua de su casa. Todo lo demás vino después."
+   "Acérquese. Todo lo de esta vitrina cabe en la palma de una mano, y una de las piezas no la va a poder ver sin ayuda.",
+   "Las Biblias miniatura tienen tres siglos de historia y no se hicieron por capricho. Se hicieron para viajar escondidas. Cabían en un bolsillo de chaleco, en un relicario, dentro de un reloj. Hubo tiempos y lugares donde llevar una Biblia encima era peligroso, y el tamaño era la única forma de llevarla.",
+   "Después vinieron las de los soldados. En la Primera y en la Segunda Guerra se repartieron millones de Nuevos Testamentos diminutos, para que cupieran en el uniforme. Muchos volvieron a casa en el bolsillo de alguien que regresó.",
+   "Y luego está el puro alarde técnico. En 1,896, en Glasgow, la casa Bryce imprimió un Nuevo Testamento de menos de dos centímetros de alto, con tipo tan pequeño que se vendía con su propia lupa. Le decían la Biblia de pulga.",
+   "En el siglo veinte la cosa se volvió difícil de creer: hay Biblias grabadas en superficies del tamaño de la cabeza de un alfiler, escritas con haz de iones, que sólo se leen con microscopio. Una de ellas viajó al espacio.",
+   "Ahora piense en el contraste dentro de este mismo museo. En la vitrina de Galván hay tomos de varios kilos que se leen en un atril, con las dos manos. Aquí tiene el mismo texto, completo, en algo que pesa menos que una moneda.",
+   "Mil doscientos años empujando en la misma dirección: que quepa en más manos. Al final también empezó a caber en más bolsillos."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 31 · Museum of the History of the Bible",
-   "titulo": "The children's section",
-   "siglo": "Almost everyone's first Bible",
+   "sala": "Case 26 · Museum of the History of the Bible",
+   "titulo": "Miniature Bibles",
+   "siglo": "Three centuries of growing smaller",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "And we come to the most important case in the museum. I mean that seriously. Everything you have seen on this tour exists for one simple reason: so that somebody could understand. And the reader who understands least, and to whom most must be explained, is a child of five.",
-   "Look at what was done to manage it. Less text and more drawing. Short words. The stories a child can take: Noah, Joseph, David, Jonah, the nativity, the storm on the lake. Board pages for hands that cannot yet turn a leaf. Large type. Strong colours.",
-   "None of that is new, and that is the lovely part. Go back for a moment to the first case of this museum. The Beatus of Liébana told the Apocalypse in flat colours and figures with enormous eyes, for people who could not read. The Bible of Saint Louis told it in medallions, image and explanation, image and explanation, to educate a boy king.",
-   "It is exactly the same method, a thousand years later. Only the price changed: those cost a kingdom, and these can be bought in any bookshop.",
-   "And a warning, for the adults listening. Do not think the children's Bible is the Bible watered down. Almost everyone who did anything in this story, the translators, the printers, those who fled with the manuscript under their arm, first knew this Book as children, told by somebody, in the language of their own home. Everything else came afterwards."
+   "Come closer. Everything in this case fits in the palm of a hand, and one of the pieces you will not be able to see without help.",
+   "Miniature Bibles have three centuries of history and were not made on a whim. They were made to travel hidden. They fitted in a waistcoat pocket, in a reliquary, inside a watch. There were times and places where carrying a Bible about you was dangerous, and smallness was the only way to carry it.",
+   "Then came the soldiers' ones. In the First and the Second World War millions of tiny New Testaments were handed out, to fit in a uniform. Many came home in the pocket of someone who came home.",
+   "And then there is sheer technical display. In 1896, in Glasgow, the firm of Bryce printed a New Testament less than two centimetres high, with type so small that it was sold with its own magnifying glass. They called it the flea Bible.",
+   "In the twentieth century the thing became hard to believe: there are Bibles engraved on surfaces the size of a pinhead, written with an ion beam, readable only under a microscope. One of them travelled into space.",
+   "Now think of the contrast within this very museum. In the Galván case there are volumes of several kilos, read on a lectern, with both hands. Here you have the same text, complete, in something that weighs less than a coin.",
+   "Twelve hundred years pushing in the same direction: that it should fit in more hands. In the end it began to fit in more pockets too."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 31 · Musée de l'Histoire de la Bible",
-   "titulo": "La section enfants",
-   "siglo": "La première Bible de presque tous",
+   "sala": "Vitrine 26 · Musée de l'Histoire de la Bible",
+   "titulo": "Les Bibles miniatures",
+   "siglo": "Trois siècles à rapetisser",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Et nous arrivons à la vitrine la plus importante du musée. Je le dis sérieusement. Tout ce que vous avez vu dans ce parcours existe pour une raison simple : que quelqu'un puisse comprendre. Et le lecteur qui comprend le moins, et à qui il faut le plus expliquer, c'est un enfant de cinq ans.",
-   "Regardez ce qu'on a fait pour y arriver. Moins de texte et plus de dessin. Des mots courts. Les histoires qu'un enfant supporte : Noé, Joseph, David, Jonas, la nativité, la tempête sur le lac. Des pages cartonnées pour des mains qui ne savent pas encore tourner un feuillet. Gros caractères. Couleurs franches.",
-   "Rien de tout cela n'est nouveau, et c'est là le plus beau. Revenez un instant aux premières vitrines de ce musée. Le Beatus de Liébana racontait l'Apocalypse en couleurs plates et en figures aux yeux immenses, pour des gens qui ne savaient pas lire. La Bible de Saint Louis la racontait en médaillons, image et explication, image et explication, pour éduquer un roi enfant.",
-   "C'est exactement la même méthode, mille ans plus tard. Seul le prix a changé : celles-là coûtaient un royaume, celles-ci s'achètent dans n'importe quelle librairie.",
-   "Et un avertissement, pour les adultes qui écoutent. Ne croyez pas que la Bible pour enfants soit la Bible au rabais. Presque tous ceux qui ont fait quelque chose dans cette histoire, les traducteurs, les imprimeurs, ceux qui ont fui avec le manuscrit sous le bras, ont d'abord connu ce Livre enfants, raconté par quelqu'un, dans la langue de leur maison. Tout le reste est venu après."
+   "Approchez-vous. Tout ce qui est dans cette vitrine tient dans la paume d'une main, et l'une des pièces, vous ne pourrez pas la voir sans aide.",
+   "Les Bibles miniatures ont trois siècles d'histoire et ne furent pas faites par caprice. Elles furent faites pour voyager cachées. Elles tenaient dans une poche de gilet, dans un reliquaire, dans une montre. Il y eut des temps et des lieux où porter une Bible sur soi était dangereux, et la petitesse était le seul moyen de la porter.",
+   "Puis vinrent celles des soldats. Pendant la Première et la Seconde Guerre on distribua des millions de minuscules Nouveaux Testaments, pour qu'ils tiennent dans l'uniforme. Beaucoup revinrent à la maison dans la poche de quelqu'un qui revint.",
+   "Et il y a ensuite la pure prouesse technique. En 1896, à Glasgow, la maison Bryce imprima un Nouveau Testament de moins de deux centimètres de haut, avec des caractères si petits qu'il se vendait avec sa propre loupe. On l'appelait la Bible puce.",
+   "Au vingtième siècle la chose devint difficile à croire : il existe des Bibles gravées sur des surfaces grandes comme une tête d'épingle, écrites au faisceau d'ions, qui ne se lisent qu'au microscope. L'une d'elles a voyagé dans l'espace.",
+   "Pensez maintenant au contraste à l'intérieur de ce même musée. Dans la vitrine de Galván il y a des volumes de plusieurs kilos qui se lisent sur un lutrin, à deux mains. Ici vous avez le même texte, complet, dans quelque chose qui pèse moins qu'une pièce de monnaie.",
+   "Douze cents ans à pousser dans la même direction : qu'il tienne dans plus de mains. À la fin il commença aussi à tenir dans plus de poches."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 31 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Kinderabteilung",
-   "siglo": "Die erste Bibel fast aller",
+   "sala": "Vitrine 26 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Miniaturbibeln",
+   "siglo": "Drei Jahrhunderte des Kleinerwerdens",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Und wir kommen zur wichtigsten Vitrine des Museums. Das meine ich ernst. Alles, was Sie auf diesem Rundgang gesehen haben, gibt es aus einem einfachen Grund: damit jemand verstehen kann. Und der Leser, der am wenigsten versteht und dem man am meisten erklären muss, ist ein fünfjähriges Kind.",
-   "Sehen Sie, was man dafür getan hat. Weniger Text und mehr Bild. Kurze Wörter. Die Geschichten, die ein Kind aushält: Noah, Josef, David, Jona, die Geburt, der Sturm auf dem See. Pappseiten für Hände, die noch kein Blatt umschlagen können. Große Schrift. Kräftige Farben.",
-   "Nichts davon ist neu, und darin liegt das Schöne. Gehen Sie einen Augenblick zurück in den ersten Vitrine dieses Museums. Der Beatus von Liébana erzählte die Offenbarung in flachen Farben und Gestalten mit riesigen Augen, für Menschen, die nicht lesen konnten. Die Bibel des heiligen Ludwig erzählte sie in Medaillons, Bild und Deutung, Bild und Deutung, um einen Kinderkönig zu erziehen.",
-   "Es ist genau dieselbe Methode, tausend Jahre später. Nur der Preis hat sich geändert: jene kosteten ein Königreich, diese kauft man in jeder Buchhandlung.",
-   "Und eine Warnung für die Erwachsenen, die zuhören. Halten Sie die Kinderbibel nicht für die heruntergesetzte Bibel. Fast alle, die in dieser Geschichte etwas getan haben, die Übersetzer, die Drucker, jene, die mit der Handschrift unterm Arm flohen, kannten dieses Buch zuerst als Kinder, erzählt von jemandem, in der Sprache ihres Hauses. Alles andere kam danach."
+   "Treten Sie näher. Alles in dieser Vitrine passt in eine Handfläche, und eines der Stücke werden Sie ohne Hilfe nicht sehen können.",
+   "Miniaturbibeln haben drei Jahrhunderte Geschichte und wurden nicht aus Laune gemacht. Sie wurden gemacht, um verborgen zu reisen. Sie passten in eine Westentasche, in ein Reliquiar, in eine Taschenuhr. Es gab Zeiten und Orte, da war es gefährlich, eine Bibel bei sich zu tragen, und die Kleinheit war die einzige Art, sie zu tragen.",
+   "Dann kamen die der Soldaten. Im Ersten und im Zweiten Weltkrieg wurden Millionen winziger Neuer Testamente verteilt, damit sie in die Uniform passten. Viele kamen in der Tasche eines Heimkehrers nach Hause.",
+   "Und dann gibt es die reine technische Schaustellung. 1896 druckte in Glasgow das Haus Bryce ein Neues Testament von weniger als zwei Zentimetern Höhe, mit so kleiner Schrift, dass es mit eigener Lupe verkauft wurde. Man nannte es die Flohbibel.",
+   "Im zwanzigsten Jahrhundert wurde die Sache kaum mehr glaublich: es gibt Bibeln, auf Flächen von der Größe eines Stecknadelkopfes eingeschrieben, mit einem Ionenstrahl geschrieben, die sich nur unter dem Mikroskop lesen lassen. Eine von ihnen ist ins All gereist.",
+   "Denken Sie nun an den Gegensatz innerhalb dieses Museums. In der Vitrine Galváns stehen Bände von mehreren Kilo, die man auf einem Pult mit beiden Händen liest. Hier haben Sie denselben Text, vollständig, in etwas, das weniger wiegt als eine Münze.",
+   "Zwölfhundert Jahre in dieselbe Richtung gedrängt: dass es in mehr Hände passe. Am Ende begann es auch in mehr Taschen zu passen."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 31 · Museo di Storia della Bibbia",
-   "titulo": "La sezione per bambini",
-   "siglo": "La prima Bibbia di quasi tutti",
+   "sala": "Vetrina 26 · Museo di Storia della Bibbia",
+   "titulo": "Le Bibbie in miniatura",
+   "siglo": "Tre secoli a farsi piccole",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "E arriviamo alla vetrina più importante del museo. Glielo dico sul serio. Tutto quello che ha visto nel percorso esiste per una ragione semplice: che qualcuno potesse capire. E il lettore che capisce di meno, e a cui più bisogna spiegare, è un bambino di cinque anni.",
-   "Guardi che cosa si è fatto per riuscirci. Meno testo e più disegno. Parole corte. Le storie che un bambino regge: Noè, Giuseppe, Davide, Giona, la natività, la tempesta sul lago. Pagine di cartone per mani che ancora non sanno voltare un foglio. Caratteri grandi. Colori forti.",
-   "Niente di tutto questo è nuovo, ed è qui il bello. Torni un momento alle prime vetrine di questo museo. Il Beato di Liébana raccontava l'Apocalisse con colori piatti e figure dagli occhi enormi, per gente che non sapeva leggere. La Bibbia di San Luigi la raccontava in medaglioni, immagine e spiegazione, immagine e spiegazione, per educare un re bambino.",
-   "È esattamente lo stesso metodo, mille anni dopo. È cambiato solo il prezzo: quelle costavano un regno, queste si comprano in qualsiasi libreria.",
-   "E un avvertimento, per gli adulti che stanno ascoltando. Non creda che la Bibbia per bambini sia la Bibbia scontata. Quasi tutti quelli che hanno fatto qualcosa in questa storia, i traduttori, gli stampatori, quelli che fuggirono con il manoscritto sotto il braccio, conobbero questo Libro da bambini, raccontato da qualcuno, nella lingua di casa loro. Tutto il resto venne dopo."
+   "Si avvicini. Tutto ciò che c'è in questa vetrina sta nel palmo di una mano, e uno dei pezzi non lo potrà vedere senza aiuto.",
+   "Le Bibbie in miniatura hanno tre secoli di storia e non furono fatte per capriccio. Furono fatte per viaggiare nascoste. Stavano in una tasca del panciotto, in un reliquiario, dentro un orologio. Ci furono tempi e luoghi in cui portare una Bibbia addosso era pericoloso, e la piccolezza era l'unico modo di portarla.",
+   "Poi vennero quelle dei soldati. Nella Prima e nella Seconda Guerra si distribuirono milioni di Nuovi Testamenti minuscoli, perché stessero nella divisa. Molti tornarono a casa nella tasca di qualcuno che tornò.",
+   "E poi c'è il puro sfoggio tecnico. Nel 1896, a Glasgow, la casa Bryce stampò un Nuovo Testamento alto meno di due centimetri, con caratteri così piccoli che si vendeva con la propria lente. Lo chiamavano la Bibbia pulce.",
+   "Nel Novecento la cosa divenne difficile da credere: ci sono Bibbie incise su superfici grandi come una capocchia di spillo, scritte con un fascio di ioni, leggibili solo al microscopio. Una di esse ha viaggiato nello spazio.",
+   "Ora pensi al contrasto dentro questo stesso museo. Nella vetrina di Galván ci sono tomi di parecchi chili che si leggono su un leggio, con due mani. Qui ha lo stesso testo, completo, in qualcosa che pesa meno di una moneta.",
+   "Milleduecento anni a spingere nella stessa direzione: che stia in più mani. Alla fine cominciò a stare anche in più tasche."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 26 · Museu de História da Bíblia",
+   "titulo": "As Bíblias miniatura",
+   "siglo": "Três séculos a tornar-se pequenas",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Aproxime-se. Tudo o que há nesta vitrine cabe na palma de uma mão, e uma das peças não a vai poder ver sem ajuda.",
+   "As Bíblias miniatura têm três séculos de história e não se fizeram por capricho. Fizeram-se para viajar escondidas. Cabiam num bolso de colete, num relicário, dentro de um relógio. Houve tempos e lugares em que levar uma Bíblia consigo era perigoso, e o tamanho era a única forma de levá-la.",
+   "Depois vieram as dos soldados. Na Primeira e na Segunda Guerra distribuíram-se milhões de Novos Testamentos diminutos, para que coubessem no uniforme. Muitos voltaram para casa no bolso de alguém que regressou.",
+   "E depois está o puro alarde técnico. Em 1896, em Glasgow, a casa Bryce imprimiu um Novo Testamento de menos de dois centímetros de altura, com tipo tão pequeno que se vendia com a sua própria lupa. Chamavam-lhe a Bíblia pulga.",
+   "No século vinte a coisa tornou-se difícil de acreditar: há Bíblias gravadas em superfícies do tamanho da cabeça de um alfinete, escritas com feixe de iões, que só se leem ao microscópio. Uma delas viajou ao espaço.",
+   "Agora pense no contraste dentro deste mesmo museu. Na vitrine de Galván há tomos de vários quilos que se leem num atril, com as duas mãos. Aqui tem o mesmo texto, completo, em algo que pesa menos que uma moeda.",
+   "Mil e duzentos anos empurrando na mesma direção: que caiba em mais mãos. No fim também começou a caber em mais bolsos."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 26 · Музей истории Библии",
+   "titulo": "Миниатюрные Библии",
+   "siglo": "Три века уменьшения",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Подойдите ближе. Всё, что есть в этой витрине, умещается на ладони, а один из экспонатов вы без помощи и не разглядите.",
+   "У миниатюрных Библий три века истории, и делали их не из прихоти. Их делали, чтобы они путешествовали спрятанными. Они помещались в жилетный карман, в мощевик, внутрь часов. Бывали времена и места, где носить Библию при себе было опасно, и малый размер был единственным способом её носить.",
+   "Потом появились солдатские. В Первую и Вторую мировую войну раздали миллионы крошечных Новых Заветов, чтобы они умещались в форме. Многие вернулись домой в кармане того, кто вернулся.",
+   "А ещё есть чистое техническое щегольство. В 1896 году в Глазго дом Брайса напечатал Новый Завет высотой меньше двух сантиметров, шрифтом настолько мелким, что книгу продавали с собственной лупой. Её называли блошиной Библией.",
+   "В двадцатом веке дело стало и вовсе невероятным: есть Библии, выгравированные на поверхности размером с булавочную головку, написанные ионным пучком и читаемые только под микроскопом. Одна из них побывала в космосе.",
+   "А теперь подумайте о контрасте внутри самого этого музея. В витрине Гальвана стоят тома в несколько килограммов, которые читают на пюпитре, обеими руками. Здесь тот же текст, полностью, в чём-то, что весит меньше монеты.",
+   "Тысяча двести лет усилий в одном направлении: чтобы помещалось в большем числе рук. В конце концов оно стало помещаться и в большем числе карманов."
   ]
  }
 };
@@ -273,6 +325,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia del Padre Scío — Museo de Historia de la Biblia</title>
+<title>La Biblia de Torres Amat — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EDE0;--claro:#FBF6EB;--tinta:#231E17;--cabecera:#5A4A2E;--acento:#8C6B2F;--marca:rgba(140,107,47,.26); }
+  :root{ --fondo:#F1EEE7;--claro:#FAF7F1;--tinta:#1C1B16;--cabecera:#3E3026;--acento:#8A5A3A;--marca:rgba(138,90,58,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,11 +17,8 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .dos{flex:none;background:var(--claro);padding:6px;display:flex;gap:6px}
-  .dos .c{width:24px;height:58px;background:repeating-linear-gradient(to bottom,var(--tinta) 0 1.2px,transparent 1.2px 4.4px)}
-  .dos .n{width:54px;height:12px;background:repeating-linear-gradient(to bottom,var(--acento) 0 1px,transparent 1px 3px)}
-  .dos .caja{display:flex;flex-direction:column;gap:5px}
-  .dos .fila{display:flex;gap:6px}
+  .lomos{flex:none;display:flex;gap:3px;align-items:flex-end}
+  .lomos i{display:block;width:8px;background:var(--acento);border-radius:2px}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -42,11 +39,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="dos" aria-hidden="true"><div class="caja"><div class="fila"><div class="c"></div><div class="c"></div></div><div class="n"></div></div></div>
+  <div class="lomos" aria-hidden="true"><i style="height:54px;opacity:.95"></i><i style="height:58px;opacity:.85"></i><i style="height:52px;opacity:.9"></i><i style="height:60px;opacity:.8"></i><i style="height:55px;opacity:.92"></i><i style="height:57px;opacity:.86"></i><i style="height:53px;opacity:.9"></i><i style="height:59px;opacity:.82"></i><i style="height:56px;opacity:.88"></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -76,21 +74,21 @@ const GUIA = {
   "voz": "es-MX",
   "ui": {
    "sala": "Vitrina 20 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia del Padre Scío",
-   "siglo": "Valencia, 1790–1793 · primera edición",
+   "titulo": "La Biblia de Torres Amat",
+   "siglo": "Madrid, 1,823-1,825 · la de nuestros bisabuelos",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Doscientos treinta y un años. Ése es el tiempo que estuvo prohibido en España tener la Biblia en castellano.",
-   "La prohibición venía del Índice de 1,551. Poseer las Escrituras en lengua vulgar era delito de Inquisición. Por eso Casiodoro de Reina, el de unas salas atrás, tuvo que imprimir la suya en Suiza y a escondidas.",
-   "En 1,782, bajo Carlos III, la regla cambió. La Inquisición permitió por fin las traducciones a lengua vulgar, con una condición: que llevaran notas tomadas de los Padres de la Iglesia. Nadie debía leer la Biblia solo.",
-   "El primero en aprovechar ese permiso fue Felipe Scío de San Miguel, sacerdote escolapio, maestro de los hijos del rey y después obispo electo de Segovia. Tradujo de la Vulgata latina, no del hebreo ni del griego, porque la Vulgata era el texto oficial de la Iglesia.",
-   "Los tomos fueron saliendo en Valencia, de la imprenta de los Orga, entre 1,790 y 1,793. Y el que usted tiene delante es de aquella primera edición.",
-   "Ábralo y verá dos columnas: el latín de un lado, el castellano del otro. Debajo, las notas. Esa disposición no es un capricho de editor: es la ley de 1,782 hecha página.",
-   "Y ahora la comparación que sólo se puede hacer en un museo como éste. Vaya usted de esta vitrina a la de la Biblia del Oso, y regrese. Dos hombres tradujeron la Biblia al castellano. Al primero lo quemaron en efigie en Sevilla y murió desterrado. Al segundo lo nombraron obispo y maestro de príncipes. Entre uno y otro hay doscientos veintiún años, y ninguna diferencia en el trabajo. Lo único que cambió fue el permiso."
+   "Ésta es la Biblia que llegó a México después. La que estuvo en los burós, en los libreros de las salas, en las manos de nuestros bisabuelos.",
+   "La hizo Félix Torres Amat, catalán, capellán del rey y después obispo de Astorga. Se publicó en Madrid, en nueve tomos, entre 1,823 y 1,825. También traducida de la Vulgata latina, también con notas al pie, en la línea que había abierto el padre Scío treinta años antes.",
+   "Pero ésta corrió con otra suerte. Se reimprimió una vez y otra, en España y en América, durante todo el siglo diecinueve y buena parte del veinte. Fue, sin discusión, la Biblia en español más leída de su tiempo. Si en su familia hubo una Biblia antigua, es muy probable que fuera ésta.",
+   "Y ahora la sombra, porque en este museo se cuenta todo. Casi desde el primer día se le acusó a Torres Amat de que la traducción no era suya. Que había trabajado sobre el manuscrito inédito de un jesuita, el padre José Miguel Petisco, muerto en 1,800, y que no le dio el crédito que le tocaba. El pleito lleva dos siglos sin resolverse. Hay ediciones modernas que, por si acaso, la llaman Petisco Torres Amat, con los dos apellidos.",
+   "No podemos decirle quién tenía la razón. Nadie puede, todavía. Pero fíjese en lo que significa esa discusión: llevamos dos siglos peleando por quién merece el crédito de haber traducido la Biblia al español. Hubo un tiempo, no tan lejano, en que por hacerlo lo quemaban a uno.",
+   "Con ésta, la Biblia en español ya estaba en las casas. Faltaba que se imprimiera aquí, en nuestro país. Ésa está en la vitrina siguiente.",
+   "Se discute quién la tradujo porque ya nadie discute si podía traducirse."
   ]
  },
  "en": {
@@ -98,21 +96,21 @@ const GUIA = {
   "voz": "en-GB",
   "ui": {
    "sala": "Case 20 · Museum of the History of the Bible",
-   "titulo": "Father Scío's Bible",
-   "siglo": "Valencia, 1790–1793 · first edition",
+   "titulo": "The Torres Amat Bible",
+   "siglo": "Madrid, 1823-1825 · our great-grandparents' Bible",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Two hundred and thirty-one years. That is how long it was forbidden in Spain to own the Bible in Spanish.",
-   "The ban came from the Index of 1551. To possess the Scriptures in the common tongue was an offence for the Inquisition. That is why Casiodoro de Reina, from a few cases back, had to print his in Switzerland and in secret.",
-   "In 1782, under Charles the Third, the rule changed. The Inquisition at last permitted translations into the common tongue, on one condition: that they carry notes drawn from the Fathers of the Church. Nobody was to read the Bible alone.",
-   "The first to take up that permission was Felipe Scío de San Miguel, a Piarist priest, tutor to the king's children and later bishop-elect of Segovia. He translated from the Latin Vulgate, not from the Hebrew or the Greek, because the Vulgate was the official text of the Church.",
-   "The volumes came out in Valencia, from the Orga press, between 1790 and 1793. And the one before you belongs to that first edition.",
-   "Open it and you will see two columns: the Latin on one side, the Spanish on the other. Underneath, the notes. That arrangement is not a publisher's whim: it is the law of 1782 turned into a page.",
-   "And now the comparison that can only be made in a museum like this one. Walk from this case to the one with the Bear Bible, and come back. Two men translated the Bible into Spanish. The first was burned in effigy in Seville and died in exile. The second was made a bishop and tutor to princes. Two hundred and twenty-one years lie between them, and there is no difference in the work. The only thing that changed was the permission."
+   "This is the Bible that reached Mexico later. The one that stood on bedside tables, in the bookcases of sitting rooms, in the hands of our great-grandparents.",
+   "It was made by Félix Torres Amat, a Catalan, chaplain to the king and later bishop of Astorga. It was published in Madrid, in nine volumes, between 1823 and 1825. Also translated from the Latin Vulgate, also with footnotes, along the line that Father Scío had opened thirty years earlier.",
+   "But this one had a different fortune. It was reprinted again and again, in Spain and in America, throughout the nineteenth century and a good part of the twentieth. It was, beyond argument, the most read Spanish Bible of its time. If there was an old Bible in your family, it was very likely this one.",
+   "And now the shadow, because in this museum everything gets told. Almost from the first day Torres Amat was accused of the translation not being his. That he had worked on the unpublished manuscript of a Jesuit, Father José Miguel Petisco, who died in 1800, and had not given him the credit he was owed. The quarrel has gone two centuries without being settled. There are modern editions which, to be safe, call it Petisco Torres Amat, with both surnames.",
+   "We cannot tell you who was right. Nobody can, yet. But consider what that argument means: we have spent two centuries fighting over who deserves the credit for translating the Bible into Spanish. There was a time, not so long ago, when for doing it a man was burned.",
+   "With this one, the Bible in Spanish was already in people's houses. It remained for one to be printed here, in our own country. That one is in the next case.",
+   "They argue over who translated it because nobody argues any more over whether it could be translated."
   ]
  },
  "fr": {
@@ -120,21 +118,21 @@ const GUIA = {
   "voz": "fr-FR",
   "ui": {
    "sala": "Vitrine 20 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible du Père Scío",
-   "siglo": "Valence, 1790–1793 · première édition",
+   "titulo": "La Bible de Torres Amat",
+   "siglo": "Madrid, 1823-1825 · celle de nos arrière-grands-parents",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Deux cent trente et un ans. C'est le temps pendant lequel il fut interdit en Espagne de posséder la Bible en espagnol.",
-   "L'interdiction venait de l'Index de 1551. Posséder les Écritures en langue vulgaire était un délit relevant de l'Inquisition. C'est pourquoi Casiodoro de Reina, celui de quelques vitrines plus tôt, dut imprimer la sienne en Suisse et en cachette.",
-   "En 1782, sous Charles III, la règle changea. L'Inquisition permit enfin les traductions en langue vulgaire, à une condition : qu'elles portent des notes tirées des Pères de l'Église. Personne ne devait lire la Bible seul.",
-   "Le premier à profiter de cette permission fut Felipe Scío de San Miguel, prêtre piariste, précepteur des enfants du roi et plus tard évêque élu de Ségovie. Il traduisit de la Vulgate latine, non de l'hébreu ni du grec, parce que la Vulgate était le texte officiel de l'Église.",
-   "Les volumes parurent à Valence, sur les presses des Orga, entre 1790 et 1793. Et celui que vous avez devant vous appartient à cette première édition.",
-   "Ouvrez-le et vous verrez deux colonnes : le latin d'un côté, l'espagnol de l'autre. En dessous, les notes. Cette disposition n'est pas un caprice d'éditeur : c'est la loi de 1782 devenue page.",
-   "Et maintenant la comparaison que seul un musée comme celui-ci permet. Allez de cette vitrine à celle de la Bible de l'Ours, puis revenez. Deux hommes ont traduit la Bible en espagnol. Le premier fut brûlé en effigie à Séville et mourut en exil. Le second fut fait évêque et précepteur de princes. Deux cent vingt et un ans les séparent, et aucune différence dans le travail. La seule chose qui ait changé, c'est la permission."
+   "Voici la Bible qui arriva au Mexique ensuite. Celle qui fut sur les tables de chevet, dans les bibliothèques des salons, entre les mains de nos arrière-grands-parents.",
+   "Elle fut faite par Félix Torres Amat, Catalan, chapelain du roi et plus tard évêque d'Astorga. Elle parut à Madrid, en neuf volumes, entre 1823 et 1825. Également traduite de la Vulgate latine, également avec des notes en bas de page, dans la ligne qu'avait ouverte le père Scío trente ans plus tôt.",
+   "Mais celle-ci connut un autre sort. Elle fut réimprimée encore et encore, en Espagne et en Amérique, tout au long du dix-neuvième siècle et une bonne part du vingtième. Elle fut, sans conteste, la Bible en espagnol la plus lue de son temps. S'il y eut une vieille Bible dans votre famille, il est fort probable que ce fût celle-là.",
+   "Et voici l'ombre, car dans ce musée on raconte tout. Presque dès le premier jour on accusa Torres Amat de ce que la traduction n'était pas de lui. Qu'il avait travaillé sur le manuscrit inédit d'un jésuite, le père José Miguel Petisco, mort en 1800, et qu'il ne lui avait pas donné le crédit qui lui revenait. La querelle dure depuis deux siècles sans se résoudre. Il y a des éditions modernes qui, par prudence, l'appellent Petisco Torres Amat, avec les deux noms.",
+   "Nous ne pouvons pas vous dire qui avait raison. Personne ne le peut, encore. Mais voyez ce que signifie cette discussion : voilà deux siècles que nous nous disputons pour savoir qui mérite le crédit d'avoir traduit la Bible en espagnol. Il fut un temps, pas si lointain, où pour l'avoir fait on vous brûlait.",
+   "Avec celle-ci, la Bible en espagnol était déjà dans les maisons. Il restait qu'on l'imprimât ici, dans notre pays. Celle-là est dans la vitrine suivante.",
+   "On se dispute pour savoir qui l'a traduite parce que plus personne ne se dispute pour savoir si elle pouvait être traduite."
   ]
  },
  "de": {
@@ -142,21 +140,21 @@ const GUIA = {
   "voz": "de-DE",
   "ui": {
    "sala": "Vitrine 20 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Bibel des Pater Scío",
-   "siglo": "Valencia, 1790–1793 · Erstausgabe",
+   "titulo": "Die Bibel von Torres Amat",
+   "siglo": "Madrid, 1823-1825 · die unserer Urgroßeltern",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Zweihunderteinunddreißig Jahre. So lange war es in Spanien verboten, die Bibel auf Spanisch zu besitzen.",
-   "Das Verbot stammte aus dem Index von 1551. Die Schrift in der Volkssprache zu besitzen war ein Fall für die Inquisition. Darum musste Casiodoro de Reina, der Mann aus einem der früheren Vitrinen, die seine heimlich in der Schweiz drucken lassen.",
-   "1782, unter Karl dem Dritten, änderte sich die Regel. Die Inquisition erlaubte endlich Übersetzungen in die Volkssprache, unter einer Bedingung: sie mussten Anmerkungen aus den Kirchenvätern enthalten. Niemand sollte die Bibel allein lesen.",
-   "Der erste, der diese Erlaubnis nutzte, war Felipe Scío de San Miguel, Piaristenpater, Lehrer der Königskinder und später erwählter Bischof von Segovia. Er übersetzte aus der lateinischen Vulgata, nicht aus dem Hebräischen oder Griechischen, denn die Vulgata war der amtliche Text der Kirche.",
-   "Die Bände erschienen in Valencia, in der Druckerei der Orga, zwischen 1790 und 1793. Und der vor Ihnen gehört zu jener ersten Ausgabe.",
-   "Schlagen Sie ihn auf, und Sie sehen zwei Spalten: das Latein auf der einen Seite, das Spanische auf der anderen. Darunter die Anmerkungen. Diese Anordnung ist keine Laune des Verlegers: sie ist das Gesetz von 1782, zur Seite geworden.",
-   "Und nun der Vergleich, den nur ein Museum wie dieses erlaubt. Gehen Sie von dieser Vitrine zu der mit der Bärenbibel und kommen Sie zurück. Zwei Männer haben die Bibel ins Spanische übersetzt. Den ersten verbrannte man in Sevilla in effigie, und er starb in der Verbannung. Den zweiten machte man zum Bischof und zum Lehrer von Prinzen. Zweihunderteinundzwanzig Jahre liegen dazwischen, und an der Arbeit ist kein Unterschied. Geändert hat sich nur die Erlaubnis."
+   "Dies ist die Bibel, die später nach Mexiko kam. Die, die auf den Nachttischen stand, in den Bücherschränken der Wohnzimmer, in den Händen unserer Urgroßeltern.",
+   "Gemacht hat sie Félix Torres Amat, ein Katalane, Kaplan des Königs und später Bischof von Astorga. Erschienen ist sie in Madrid, in neun Bänden, zwischen 1823 und 1825. Ebenfalls aus der lateinischen Vulgata übersetzt, ebenfalls mit Fußnoten, in der Linie, die Pater Scío dreißig Jahre zuvor eröffnet hatte.",
+   "Doch dieser erging es anders. Sie wurde immer wieder nachgedruckt, in Spanien und in Amerika, das ganze neunzehnte Jahrhundert hindurch und einen guten Teil des zwanzigsten. Sie war ohne Frage die meistgelesene spanische Bibel ihrer Zeit. Wenn es in Ihrer Familie eine alte Bibel gab, war es sehr wahrscheinlich diese.",
+   "Und nun der Schatten, denn in diesem Museum wird alles erzählt. Fast vom ersten Tag an warf man Torres Amat vor, die Übersetzung sei nicht die seine. Er habe an der unveröffentlichten Handschrift eines Jesuiten gearbeitet, des Paters José Miguel Petisco, gestorben 1800, und ihm nicht die gebührende Anerkennung gegeben. Der Streit währt seit zwei Jahrhunderten ungelöst. Es gibt moderne Ausgaben, die sie vorsichtshalber Petisco Torres Amat nennen, mit beiden Namen.",
+   "Wir können Ihnen nicht sagen, wer recht hatte. Niemand kann es bisher. Aber sehen Sie, was dieser Streit bedeutet: seit zwei Jahrhunderten streiten wir darüber, wem die Ehre gebührt, die Bibel ins Spanische übersetzt zu haben. Es gab eine Zeit, so fern ist sie nicht, da wurde man dafür verbrannt.",
+   "Mit dieser war die Bibel auf Spanisch schon in den Häusern. Es fehlte noch, dass eine hier gedruckt würde, in unserem Land. Diese steht in der nächsten Vitrine.",
+   "Man streitet darüber, wer sie übersetzt hat, weil niemand mehr darüber streitet, ob sie übersetzt werden durfte."
   ]
  },
  "it": {
@@ -164,21 +162,65 @@ const GUIA = {
   "voz": "it-IT",
   "ui": {
    "sala": "Vetrina 20 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia di padre Scío",
-   "siglo": "Valencia, 1790–1793 · prima edizione",
+   "titulo": "La Bibbia di Torres Amat",
+   "siglo": "Madrid, 1823-1825 · quella dei nostri bisnonni",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Duecentotrentun anni. È il tempo per cui in Spagna fu proibito possedere la Bibbia in spagnolo.",
-   "Il divieto veniva dall'Indice del 1551. Possedere le Scritture in lingua volgare era reato di Inquisizione. Per questo Casiodoro de Reina, quello di alcune vetrine fa, dovette stampare la sua in Svizzera e di nascosto.",
-   "Nel 1782, sotto Carlo III, la regola cambiò. L'Inquisizione permise finalmente le traduzioni in lingua volgare, a una condizione: che portassero note tratte dai Padri della Chiesa. Nessuno doveva leggere la Bibbia da solo.",
-   "Il primo ad approfittare di quel permesso fu Felipe Scío de San Miguel, sacerdote scolopio, maestro dei figli del re e poi vescovo eletto di Segovia. Tradusse dalla Vulgata latina, non dall'ebraico né dal greco, perché la Vulgata era il testo ufficiale della Chiesa.",
-   "I volumi uscirono a Valencia, dalla stamperia degli Orga, fra il 1790 e il 1793. E quello che ha davanti appartiene a quella prima edizione.",
-   "Lo apra e vedrà due colonne: il latino da un lato, lo spagnolo dall'altro. Sotto, le note. Quella disposizione non è un capriccio dell'editore: è la legge del 1782 fatta pagina.",
-   "E ora il confronto che solo un museo come questo consente. Vada da questa vetrina a quella della Bibbia dell'Orso, e torni. Due uomini tradussero la Bibbia in spagnolo. Il primo fu bruciato in effigie a Siviglia e morì esule. Il secondo fu fatto vescovo e maestro di principi. Fra i due ci sono duecentoventun anni, e nessuna differenza nel lavoro. L'unica cosa che cambiò fu il permesso."
+   "Questa è la Bibbia che arrivò in Messico dopo. Quella che stette sui comodini, negli scaffali dei salotti, nelle mani dei nostri bisnonni.",
+   "La fece Félix Torres Amat, catalano, cappellano del re e poi vescovo di Astorga. Fu pubblicata a Madrid, in nove tomi, fra il 1823 e il 1825. Anch'essa tradotta dalla Vulgata latina, anch'essa con note a piè di pagina, nella linea che aveva aperto il padre Scío trent'anni prima.",
+   "Ma questa ebbe altra sorte. Fu ristampata una volta e un'altra, in Spagna e in America, per tutto l'Ottocento e buona parte del Novecento. Fu, senza discussione, la Bibbia in spagnolo più letta del suo tempo. Se nella sua famiglia ci fu una Bibbia antica, è molto probabile che fosse questa.",
+   "E ora l'ombra, perché in questo museo si racconta tutto. Quasi dal primo giorno si accusò Torres Amat che la traduzione non fosse sua. Che avesse lavorato sul manoscritto inedito di un gesuita, il padre José Miguel Petisco, morto nel 1800, e che non gli avesse dato il credito che gli spettava. La lite dura da due secoli senza risolversi. Ci sono edizioni moderne che, per prudenza, la chiamano Petisco Torres Amat, con i due cognomi.",
+   "Non possiamo dirle chi avesse ragione. Nessuno può, ancora. Ma guardi che cosa significa quella discussione: sono due secoli che litighiamo per chi merita il credito di aver tradotto la Bibbia in spagnolo. Ci fu un tempo, non tanto lontano, in cui per farlo ti bruciavano.",
+   "Con questa, la Bibbia in spagnolo era già nelle case. Mancava che se ne stampasse una qui, nel nostro paese. Quella sta nella vetrina seguente.",
+   "Si discute chi l'abbia tradotta perché nessuno discute più se si potesse tradurre."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 20 · Museu de História da Bíblia",
+   "titulo": "A Bíblia de Torres Amat",
+   "siglo": "Madri, 1823-1825 · a dos nossos bisavós",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Esta é a Bíblia que chegou ao México depois. A que esteve nos criados-mudos, nas estantes das salas, nas mãos dos nossos bisavós.",
+   "Fê-la Félix Torres Amat, catalão, capelão do rei e depois bispo de Astorga. Publicou-se em Madri, em nove tomos, entre 1823 e 1825. Também traduzida da Vulgata latina, também com notas de rodapé, na linha que abrira o padre Scío trinta anos antes.",
+   "Mas esta teve outra sorte. Reimprimiu-se uma vez e outra, na Espanha e na América, durante todo o século dezenove e boa parte do vinte. Foi, sem discussão, a Bíblia em espanhol mais lida do seu tempo. Se na sua família houve uma Bíblia antiga, é muito provável que fosse esta.",
+   "E agora a sombra, porque neste museu se conta tudo. Quase desde o primeiro dia acusaram Torres Amat de que a tradução não era sua. Que tinha trabalhado sobre o manuscrito inédito de um jesuíta, o padre José Miguel Petisco, morto em 1800, e que não lhe deu o crédito que lhe tocava. A pendência leva dois séculos sem se resolver. Há edições modernas que, por via das dúvidas, a chamam Petisco Torres Amat, com os dois sobrenomes.",
+   "Não podemos dizer-lhe quem tinha razão. Ninguém pode, ainda. Mas repare no que significa essa discussão: levamos dois séculos brigando por quem merece o crédito de ter traduzido a Bíblia para o espanhol. Houve um tempo, não tão distante, em que por fazê-lo queimavam a gente.",
+   "Com esta, a Bíblia em espanhol já estava nas casas. Faltava que se imprimisse aqui, no nosso país. Essa está na vitrine seguinte.",
+   "Discute-se quem a traduziu porque já ninguém discute se podia ser traduzida."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 20 · Музей истории Библии",
+   "titulo": "Библия Торреса Амата",
+   "siglo": "Мадрид, 1823-1825 · Библия наших прадедов",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Это Библия, пришедшая в Мексику позже. Та, что стояла на тумбочках, на книжных полках в гостиных, была в руках наших прадедов.",
+   "Её сделал Феликс Торрес Амат, каталонец, королевский капеллан, а затем епископ Асторги. Издана она в Мадриде, в девяти томах, с 1823 по 1825 год. Тоже переведена с латинской Вульгаты, тоже с примечаниями внизу страницы, по линии, открытой отцом Сио тридцатью годами раньше.",
+   "Но её судьба сложилась иначе. Её переиздавали снова и снова, в Испании и в Америке, весь девятнадцатый век и добрую часть двадцатого. Это была, без всякого спора, самая читаемая испанская Библия своего времени. Если в вашей семье была старая Библия, скорее всего это была она.",
+   "А теперь тень, потому что в этом музее рассказывают всё. Почти с первого дня Торреса Амата обвиняли в том, что перевод не его. Что он работал по неизданной рукописи иезуита, отца Хосе Мигеля Петиско, умершего в 1800 году, и не отдал ему должного. Спор длится два века и не разрешён. Есть современные издания, которые на всякий случай называют её Петиско-Торрес Амат, с обеими фамилиями.",
+   "Мы не можем сказать вам, кто был прав. Пока этого не может никто. Но подумайте, что значит сам этот спор: два века мы препираемся о том, кому принадлежит заслуга перевода Библии на испанский. А ведь было время, не такое уж далёкое, когда за это сжигали.",
+   "С нею Библия по-испански уже стояла в домах. Оставалось, чтобы её напечатали здесь, в нашей стране. Эта — в следующей витрине.",
+   "Спорят о том, кто её перевёл, потому что уже никто не спорит, можно ли было её переводить."
   ]
  }
 };
@@ -283,6 +325,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

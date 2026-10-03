@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia en Braille — Museo de Historia de la Biblia</title>
+<title>Las Biblias digitales — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F1EEE7;--claro:#FBF8F2;--tinta:#1D1C1A;--cabecera:#3A3A46;--acento:#8A6E3C;--marca:rgba(138,110,60,.26); }
+  :root{ --fondo:#EDEFF1;--claro:#F9FAFB;--tinta:#1B1D1F;--cabecera:#2C3A45;--acento:#8A7A3C;--marca:rgba(138,122,60,.28); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,9 +17,8 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .puntos{flex:none;display:grid;grid-template-columns:repeat(2,14px);gap:8px}
-  .puntos i{display:block;width:14px;height:14px;border-radius:50%;background:var(--claro);opacity:.35}
-  .puntos i.alto{opacity:1;box-shadow:0 2px 0 rgba(0,0,0,.35)}
+  .sop{flex:none;display:flex;flex-direction:column;gap:5px;align-items:center}
+  .sop i{display:block;background:var(--acento);border-radius:2px}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -40,11 +39,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="puntos" aria-hidden="true"><i class="alto"></i><i></i><i class="alto"></i><i class="alto"></i><i></i><i class="alto"></i></div>
+  <div class="sop" aria-hidden="true"><i style="width:56px;height:16px"></i><i style="width:44px;height:44px;border-radius:50%"></i><i style="width:22px;height:10px"></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -73,110 +73,189 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 27 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia en Braille",
-   "siglo": "Seis puntos · unos cuarenta volúmenes",
+   "sala": "Librero 7 · Museo de Historia de la Biblia",
+   "titulo": "Las Biblias digitales",
+   "siglo": "Casete, disquete, disco compacto y memoria",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Ésta no se lee con los ojos, se lee con las manos.",
-   "El sistema lo inventó un muchacho francés llamado Louis Braille. Se quedó ciego a los tres años, jugando con una herramienta de punta en el taller de su padre, que era talabartero. A los diez entró al instituto de jóvenes ciegos de París. A los quince ya tenía resuelto el problema.",
-   "Partió de un invento militar. Un capitán llamado Charles Barbier había ideado una escritura de puntos en relieve para que los soldados pudieran leer órdenes de noche, sin encender una luz que los delatara. Usaba doce puntos y era muy difícil de manejar. Braille la redujo a seis. Seis puntos, que caben enteros bajo la yema de un dedo, y cuyas sesenta y tres combinaciones alcanzan para todo el alfabeto, los números, la puntuación y hasta la música.",
-   "Y no se lo aceptaron. La escuela prohibió su método durante años; los maestros, que veían, preferían las letras de imprenta en relieve, porque ésas ellos las podían leer. Braille murió de tuberculosis en 1,852, a los cuarenta y tres años. Francia adoptó su sistema oficialmente dos años después de enterrarlo.",
-   "Ahora mire el tamaño de esta vitrina. La Biblia en braille no cabe en un tomo: son alrededor de cuarenta volúmenes, decenas de kilos, varios metros de repisa. El punto en relieve ocupa muchísimo más espacio que la tinta. Quien la lee completa recorre kilómetros con los dedos.",
-   "Y piense en lo que ha visto en el recorrido. Un monje la pintó para quien no sabía leer. Gutenberg la multiplicó para quien no podía pagarla. Casiodoro la tradujo para quien no entendía latín. Todos le abrieron la puerta a alguien que estaba afuera.",
-   "Esto es lo mismo, con otro sentido. Durante tres mil años el Libro se recibió por el oído o por la vista. Aquí, por primera vez, se recibe por las manos."
+   "Todo lo que hay en este librero fue, en su momento, el futuro.",
+   "Aquí está la Biblia en casete, en disquete, en disco compacto y en memoria de bolsillo. Cada uno de estos objetos se anunció como la manera definitiva de guardar un texto. Y mire dónde están: en una vitrina de museo, junto al papiro.",
+   "Empecemos por el casete, porque es el más antiguo y el que más se usó. Las sociedades bíblicas repartieron millones de Biblias grabadas, para los ciegos, para los que no sabían leer y para los que no tenían tiempo. Alguien se sentaba frente a un micrófono y leía la Biblia entera en voz alta, durante semanas.",
+   "Deténgase un momento en eso, porque usted lo está haciendo ahora mismo. Está oyendo la Biblia contada por una voz, con un aparato en la mano. Esto es lo mismo, cuarenta años antes.",
+   "El disquete guardaba un megabyte y medio. La Biblia completa, sólo el texto, ocupa cuatro o cinco. No cabía: había que repartirla en varios discos o comprimirla.",
+   "El disco compacto cambió eso de golpe: setecientos megabytes. Ahí cabía la Biblia con concordancia, con diccionario, con varias versiones a la vez, y por primera vez se podía buscar una palabra en toda la Escritura y encontrarla en un segundo. Lo que a un hombre solo le costaba años de trabajo.",
+   "Y la memoria que ve al final, del tamaño de un dedo, guarda hoy más que todos los libros de este museo juntos.",
+   "Ahora la pregunta incómoda, que es la razón de que este librero exista.",
+   "¿Cuál de estos objetos puede usted leer hoy? El casete necesita una grabadora. El disquete, una computadora que ya no se fabrica. El disco compacto, una lectora que casi ningún equipo trae. Treinta años, y ya hace falta un arqueólogo.",
+   "Y a tres vitrinas de aquí hay un libro impreso en Sevilla en 1,531 que usted puede abrir y leer ahora mismo, sin aparato, sin corriente y sin permiso de nadie.",
+   "Durante siglos el enemigo del Libro fue el fuego. Hoy el enemigo es más callado: se llama obsolescencia, y no quema nada. Simplemente, un día ya no hay con qué abrirlo.",
+   "Por eso este museo colecciona papel. Y por eso este librero, que parece el más moderno, es en realidad el más triste."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 27 · Museum of the History of the Bible",
-   "titulo": "The Bible in Braille",
-   "siglo": "Six dots · some forty volumes",
+   "sala": "Bookcase 7 · Museum of the History of the Bible",
+   "titulo": "The digital Bibles",
+   "siglo": "Cassette, floppy disk, compact disc and memory stick",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "This one is not read with the eyes.",
-   "The system was invented by a French boy named Louis Braille. He went blind at three, playing with a sharp tool in the workshop of his father, who was a harness maker. At ten he entered the institute for blind youth in Paris. By fifteen he had solved the problem.",
-   "He started from a military invention. A captain named Charles Barbier had devised a writing of raised dots so that soldiers could read orders at night without striking a light that would give them away. It used twelve dots and was very hard to handle. Braille reduced it to six. Six dots, which fit whole beneath the pad of a finger, and whose sixty-three combinations are enough for the entire alphabet, the numbers, the punctuation and even music.",
-   "And they would not accept it. The school banned his method for years; the teachers, who could see, preferred raised printed letters, because those they themselves could read. Braille died of tuberculosis in 1852, at forty-three. France officially adopted his system two years after burying him.",
-   "Now look at the size of this case. The Bible in braille does not fit in one volume: it runs to some forty volumes, tens of kilos, several metres of shelf. A raised dot takes up far more case than ink. Whoever reads it through travels kilometres with the fingers.",
-   "And think about what you have seen on this tour. A monk painted it for those who could not read. Gutenberg multiplied it for those who could not pay for it. Casiodoro translated it for those who did not understand Latin. Every one of them opened the door to somebody who was outside.",
-   "This is the same thing, through another sense. For three thousand years the Book was received by the ear or by the eye. Here, for the first time, it is received by the hands."
+   "Everything in this bookcase was, in its day, the future.",
+   "Here is the Bible on cassette, on floppy disk, on compact disc and on a pocket memory stick. Every one of these objects was announced as the definitive way to keep a text. And look where they are: in a museum case, next to the papyrus.",
+   "Let us begin with the cassette, because it is the oldest and the most used. The Bible societies handed out millions of recorded Bibles, for the blind, for those who could not read and for those who had no time. Somebody sat in front of a microphone and read the whole Bible aloud, for weeks.",
+   "Stop a moment on that, because you are doing it right now. You are hearing the Bible told by a voice, with a device in your hand. This is the same thing, forty years earlier.",
+   "The floppy disk held a megabyte and a half. The complete Bible, text alone, takes four or five. It did not fit: it had to be split across several disks or compressed.",
+   "The compact disc changed that at a stroke: seven hundred megabytes. There the Bible fitted with a concordance, with a dictionary, with several versions at once, and for the first time one could search for a word in the whole of Scripture and find it in a second. What took one man years of work.",
+   "And the memory stick you see at the end, the size of a finger, holds today more than all the books in this museum together.",
+   "Now the uncomfortable question, which is the reason this bookcase exists.",
+   "Which of these objects can you read today? The cassette needs a tape player. The floppy disk, a computer no longer made. The compact disc, a drive that hardly any machine carries. Thirty years, and already you need an archaeologist.",
+   "And three cases from here there is a book printed in Seville in 1531 that you can open and read right now, with no device, no electricity and nobody's permission.",
+   "For centuries the enemy of the Book was fire. Today the enemy is quieter: it is called obsolescence, and it burns nothing. One day, simply, there is no longer anything to open it with.",
+   "That is why this museum collects paper. And that is why this bookcase, which looks the most modern, is in truth the saddest."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 27 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible en braille",
-   "siglo": "Six points · une quarantaine de volumes",
+   "sala": "Rayon 7 · Musée de l'Histoire de la Bible",
+   "titulo": "Les Bibles numériques",
+   "siglo": "Cassette, disquette, disque compact et mémoire",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Celle-ci ne se lit pas avec les yeux.",
-   "Le système fut inventé par un garçon français nommé Louis Braille. Il devint aveugle à trois ans, en jouant avec un outil pointu dans l'atelier de son père, qui était bourrelier. À dix ans il entra à l'institut des jeunes aveugles de Paris. À quinze ans, il avait résolu le problème.",
-   "Il partit d'une invention militaire. Un capitaine nommé Charles Barbier avait imaginé une écriture de points en relief pour que les soldats puissent lire des ordres la nuit, sans allumer une lumière qui les trahirait. Elle utilisait douze points et était très difficile à manier. Braille la réduisit à six. Six points, qui tiennent entiers sous la pulpe d'un doigt, et dont les soixante-trois combinaisons suffisent pour tout l'alphabet, les chiffres, la ponctuation et même la musique.",
-   "Et on ne l'accepta pas. L'école interdit sa méthode pendant des années ; les maîtres, qui voyaient, préféraient les lettres d'imprimerie en relief, parce que celles-là, eux, ils pouvaient les lire. Braille mourut de la tuberculose en 1852, à quarante-trois ans. La France adopta officiellement son système deux ans après l'avoir enterré.",
-   "Regardez maintenant la taille de cette vitrine. La Bible en braille ne tient pas en un volume : elle fait environ quarante volumes, des dizaines de kilos, plusieurs mètres d'étagère. Le point en relief occupe bien plus de place que l'encre. Celui qui la lit en entier parcourt des kilomètres avec les doigts.",
-   "Et pensez à ce que vous avez vu dans ce parcours. Un moine l'a peinte pour ceux qui ne savaient pas lire. Gutenberg l'a multipliée pour ceux qui ne pouvaient pas la payer. Casiodoro l'a traduite pour ceux qui ne comprenaient pas le latin. Tous ont ouvert la porte à quelqu'un qui était dehors.",
-   "Ceci est la même chose, par un autre sens. Pendant trois mille ans, le Livre s'est reçu par l'oreille ou par les yeux. Ici, pour la première fois, il se reçoit par les mains."
+   "Tout ce qui est dans ce rayon fut, en son temps, l'avenir.",
+   "Voici la Bible sur cassette, sur disquette, sur disque compact et sur mémoire de poche. Chacun de ces objets fut annoncé comme la manière définitive de conserver un texte. Et voyez où ils sont : dans une vitrine de musée, à côté du papyrus.",
+   "Commençons par la cassette, car c'est la plus ancienne et la plus employée. Les sociétés bibliques distribuèrent des millions de Bibles enregistrées, pour les aveugles, pour ceux qui ne savaient pas lire et pour ceux qui n'avaient pas le temps. Quelqu'un s'asseyait devant un micro et lisait la Bible entière à voix haute, pendant des semaines.",
+   "Arrêtez-vous un instant là-dessus, car vous êtes en train de le faire. Vous écoutez la Bible racontée par une voix, un appareil à la main. Ceci est la même chose, quarante ans plus tôt.",
+   "La disquette gardait un méga-octet et demi. La Bible complète, texte seul, en occupe quatre ou cinq. Elle n'y tenait pas : il fallait la répartir sur plusieurs disques ou la comprimer.",
+   "Le disque compact changea cela d'un coup : sept cents méga-octets. Là tenait la Bible avec concordance, avec dictionnaire, avec plusieurs versions à la fois, et pour la première fois on pouvait chercher un mot dans toute l'Écriture et le trouver en une seconde. Ce qui coûtait à un homme seul des années de travail.",
+   "Et la mémoire que vous voyez au bout, de la taille d'un doigt, contient aujourd'hui plus que tous les livres de ce musée réunis.",
+   "Maintenant la question gênante, qui est la raison d'être de ce rayon.",
+   "Lequel de ces objets pouvez-vous lire aujourd'hui ? La cassette exige un magnétophone. La disquette, un ordinateur qu'on ne fabrique plus. Le disque compact, un lecteur que presque aucune machine ne porte. Trente ans, et il faut déjà un archéologue.",
+   "Et à trois vitrines d'ici il y a un livre imprimé à Séville en 1531 que vous pouvez ouvrir et lire à l'instant, sans appareil, sans courant et sans la permission de personne.",
+   "Pendant des siècles l'ennemi du Livre fut le feu. Aujourd'hui l'ennemi est plus silencieux : il s'appelle obsolescence, et il ne brûle rien. Simplement, un jour il n'y a plus rien pour l'ouvrir.",
+   "C'est pourquoi ce musée collectionne du papier. Et c'est pourquoi ce rayon, qui paraît le plus moderne, est en réalité le plus triste."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 27 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Bibel in Blindenschrift",
-   "siglo": "Sechs Punkte · etwa vierzig Bände",
+   "sala": "Regal 7 · Museum zur Geschichte der Bibel",
+   "titulo": "Die digitalen Bibeln",
+   "siglo": "Kassette, Diskette, Compact Disc und Speicher",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Diese hier liest man nicht mit den Augen.",
-   "Erfunden hat das System ein französischer Junge namens Louis Braille. Mit drei Jahren erblindete er, als er in der Werkstatt seines Vaters, eines Sattlers, mit einem spitzen Werkzeug spielte. Mit zehn kam er in das Institut für blinde Jugendliche in Paris. Mit fünfzehn hatte er das Problem gelöst.",
-   "Er ging von einer militärischen Erfindung aus. Ein Hauptmann namens Charles Barbier hatte eine Punktschrift ersonnen, damit Soldaten nachts Befehle lesen konnten, ohne ein Licht anzuzünden, das sie verraten hätte. Sie benutzte zwölf Punkte und war sehr schwer zu handhaben. Braille verringerte sie auf sechs. Sechs Punkte, die ganz unter die Fingerkuppe passen, und deren dreiundsechzig Kombinationen für das ganze Alphabet reichen, für die Zahlen, die Zeichensetzung und sogar für die Noten.",
-   "Und man nahm es ihm nicht ab. Die Schule verbot seine Methode jahrelang; die Lehrer, die sehen konnten, zogen erhabene Druckbuchstaben vor, weil sie die selbst lesen konnten. Braille starb 1852 mit dreiundvierzig Jahren an Tuberkulose. Frankreich übernahm sein System amtlich zwei Jahre nachdem man ihn begraben hatte.",
-   "Sehen Sie nun die Größe dieser Vitrine. Die Bibel in Blindenschrift passt nicht in einen Band: es sind etwa vierzig Bände, Dutzende Kilo, mehrere Meter Regal. Ein erhabener Punkt braucht weit mehr Platz als Tinte. Wer sie ganz liest, legt mit den Fingern Kilometer zurück.",
-   "Und denken Sie an das, was Sie auf diesem Rundgang gesehen haben. Ein Mönch malte sie für die, die nicht lesen konnten. Gutenberg vervielfältigte sie für die, die sie nicht bezahlen konnten. Casiodoro übersetzte sie für die, die kein Latein verstanden. Alle öffneten die Tür für jemanden, der draußen stand.",
-   "Dies ist dasselbe, durch einen anderen Sinn. Dreitausend Jahre lang wurde das Buch mit dem Ohr oder mit den Augen empfangen. Hier wird es zum ersten Mal mit den Händen empfangen."
+   "Alles in diesem Regal war zu seiner Zeit die Zukunft.",
+   "Hier ist die Bibel auf Kassette, auf Diskette, auf Compact Disc und auf einem Speicherstift. Jeder dieser Gegenstände wurde als die endgültige Art angekündigt, einen Text zu bewahren. Und sehen Sie, wo sie sind: in einer Museumsvitrine, neben dem Papyrus.",
+   "Beginnen wir mit der Kassette, denn sie ist die älteste und die meistgebrauchte. Die Bibelgesellschaften verteilten Millionen aufgenommener Bibeln, für Blinde, für die, die nicht lesen konnten, und für die, die keine Zeit hatten. Jemand setzte sich vor ein Mikrofon und las die ganze Bibel laut vor, wochenlang.",
+   "Halten Sie darauf einen Augenblick inne, denn Sie tun es gerade jetzt. Sie hören die Bibel von einer Stimme erzählt, mit einem Gerät in der Hand. Dies ist dasselbe, vierzig Jahre früher.",
+   "Die Diskette fasste anderthalb Megabyte. Die vollständige Bibel, nur der Text, braucht vier oder fünf. Sie passte nicht: man musste sie auf mehrere Disketten verteilen oder zusammenpressen.",
+   "Die Compact Disc änderte das mit einem Schlag: siebenhundert Megabyte. Darauf passte die Bibel mit Konkordanz, mit Wörterbuch, mit mehreren Fassungen zugleich, und zum ersten Mal konnte man ein Wort in der ganzen Schrift suchen und es in einer Sekunde finden. Wofür ein einzelner Mann Jahre brauchte.",
+   "Und der Speicher, den Sie am Ende sehen, von der Größe eines Fingers, fasst heute mehr als alle Bücher dieses Museums zusammen.",
+   "Nun die unbequeme Frage, die der Grund für dieses Regal ist.",
+   "Welchen dieser Gegenstände können Sie heute lesen? Die Kassette braucht ein Tonbandgerät. Die Diskette einen Rechner, den man nicht mehr baut. Die Compact Disc ein Laufwerk, das kaum ein Gerät noch hat. Dreißig Jahre, und man braucht schon einen Archäologen.",
+   "Und drei Vitrinen von hier steht ein Buch, 1531 in Sevilla gedruckt, das Sie jetzt gleich aufschlagen und lesen können, ohne Gerät, ohne Strom und ohne jemandes Erlaubnis.",
+   "Jahrhundertelang war der Feind des Buches das Feuer. Heute ist der Feind leiser: er heißt Veralten, und er verbrennt nichts. Eines Tages gibt es einfach nichts mehr, womit man es öffnen könnte.",
+   "Darum sammelt dieses Museum Papier. Und darum ist dieses Regal, das am modernsten aussieht, in Wahrheit das traurigste."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 27 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia in braille",
-   "siglo": "Sei punti · una quarantina di volumi",
+   "sala": "Scaffale 7 · Museo di Storia della Bibbia",
+   "titulo": "Le Bibbie digitali",
+   "siglo": "Cassetta, dischetto, disco compatto e memoria",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Questa non si legge con gli occhi.",
-   "Il sistema lo inventò un ragazzo francese di nome Louis Braille. Divenne cieco a tre anni, giocando con un attrezzo appuntito nella bottega del padre, che era sellaio. A dieci entrò nell'istituto dei giovani ciechi di Parigi. A quindici aveva già risolto il problema.",
-   "Partì da un'invenzione militare. Un capitano di nome Charles Barbier aveva ideato una scrittura a punti in rilievo perché i soldati potessero leggere gli ordini di notte, senza accendere una luce che li tradisse. Usava dodici punti ed era molto difficile da maneggiare. Braille la ridusse a sei. Sei punti, che stanno interi sotto il polpastrello di un dito, e le cui sessantatré combinazioni bastano per tutto l'alfabeto, i numeri, la punteggiatura e perfino la musica.",
-   "E non glielo accettarono. La scuola proibì il suo metodo per anni; i maestri, che ci vedevano, preferivano le lettere a stampa in rilievo, perché quelle loro potevano leggerle. Braille morì di tubercolosi nel 1852, a quarantatré anni. La Francia adottò ufficialmente il suo sistema due anni dopo averlo seppellito.",
-   "Ora guardi la dimensione di questa vetrina. La Bibbia in braille non sta in un volume: sono circa quaranta volumi, decine di chili, vari metri di scaffale. Il punto in rilievo occupa molto più spazio dell'inchiostro. Chi la legge tutta percorre chilometri con le dita.",
-   "E pensi a ciò che ha visto nel percorso. Un monaco la dipinse per chi non sapeva leggere. Gutenberg la moltiplicò per chi non poteva pagarla. Casiodoro la tradusse per chi non capiva il latino. Tutti aprirono la porta a qualcuno che stava fuori.",
-   "Questo è lo stesso, con un altro senso. Per tremila anni il Libro si è ricevuto con l'udito o con la vista. Qui, per la prima volta, si riceve con le mani."
+   "Tutto ciò che c'è in questo scaffale fu, a suo tempo, il futuro.",
+   "Ecco la Bibbia su cassetta, su dischetto, su disco compatto e su memoria tascabile. Ognuno di questi oggetti fu annunciato come il modo definitivo di conservare un testo. E guardi dove stanno: in una vetrina di museo, accanto al papiro.",
+   "Cominciamo dalla cassetta, perché è la più antica e la più usata. Le società bibliche distribuirono milioni di Bibbie registrate, per i ciechi, per chi non sapeva leggere e per chi non aveva tempo. Qualcuno si sedeva davanti a un microfono e leggeva la Bibbia intera ad alta voce, per settimane.",
+   "Si fermi un momento su questo, perché lo sta facendo proprio adesso. Sta ascoltando la Bibbia raccontata da una voce, con un apparecchio in mano. Questo è lo stesso, quarant'anni prima.",
+   "Il dischetto conteneva un megabyte e mezzo. La Bibbia completa, solo il testo, ne occupa quattro o cinque. Non ci stava: bisognava dividerla su più dischi o comprimerla.",
+   "Il disco compatto cambiò questo di colpo: settecento megabyte. Lì ci stava la Bibbia con concordanza, con dizionario, con più versioni insieme, e per la prima volta si poteva cercare una parola in tutta la Scrittura e trovarla in un secondo. Ciò che a un uomo solo costava anni di lavoro.",
+   "E la memoria che vede in fondo, grande come un dito, contiene oggi più di tutti i libri di questo museo messi insieme.",
+   "Ora la domanda scomoda, che è la ragione per cui questo scaffale esiste.",
+   "Quale di questi oggetti può leggere oggi? La cassetta ha bisogno di un registratore. Il dischetto, di un computer che non si fabbrica più. Il disco compatto, di un lettore che quasi nessuna macchina porta. Trent'anni, e serve già un archeologo.",
+   "E a tre vetrine da qui c'è un libro stampato a Siviglia nel 1531 che lei può aprire e leggere adesso, senza apparecchi, senza corrente e senza il permesso di nessuno.",
+   "Per secoli il nemico del Libro fu il fuoco. Oggi il nemico è più silenzioso: si chiama obsolescenza, e non brucia nulla. Semplicemente, un giorno non c'è più con che aprirlo.",
+   "Per questo questo museo colleziona carta. E per questo questo scaffale, che sembra il più moderno, è in realtà il più triste."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Estante 7 · Museu de História da Bíblia",
+   "titulo": "As Bíblias digitais",
+   "siglo": "Cassete, disquete, disco compacto e memória",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Tudo o que há nesta estante foi, no seu tempo, o futuro.",
+   "Aqui está a Bíblia em cassete, em disquete, em disco compacto e em memória de bolso. Cada um destes objetos anunciou-se como a maneira definitiva de guardar um texto. E veja onde estão: numa vitrine de museu, junto ao papiro.",
+   "Comecemos pela cassete, porque é a mais antiga e a que mais se usou. As sociedades bíblicas distribuíram milhões de Bíblias gravadas, para os cegos, para os que não sabiam ler e para os que não tinham tempo. Alguém sentava-se diante de um microfone e lia a Bíblia inteira em voz alta, durante semanas.",
+   "Detenha-se um momento nisso, porque você está fazendo isso agora mesmo. Está ouvindo a Bíblia contada por uma voz, com um aparelho na mão. Isto é o mesmo, quarenta anos antes.",
+   "A disquete guardava um megabyte e meio. A Bíblia completa, só o texto, ocupa quatro ou cinco. Não cabia: havia que reparti-la por vários discos ou comprimi-la.",
+   "O disco compacto mudou isso de golpe: setecentos megabytes. Ali cabia a Bíblia com concordância, com dicionário, com várias versões ao mesmo tempo, e pela primeira vez se podia procurar uma palavra em toda a Escritura e encontrá-la num segundo. O que a um homem só custava anos de trabalho.",
+   "E a memória que vê no fim, do tamanho de um dedo, guarda hoje mais do que todos os livros deste museu juntos.",
+   "Agora a pergunta incômoda, que é a razão de esta estante existir.",
+   "Qual destes objetos pode você ler hoje? A cassete precisa de um gravador. A disquete, de um computador que já não se fabrica. O disco compacto, de uma leitora que quase nenhuma máquina traz. Trinta anos, e já faz falta um arqueólogo.",
+   "E a três vitrines daqui há um livro impresso em Sevilha em 1531 que você pode abrir e ler agora mesmo, sem aparelho, sem corrente e sem permissão de ninguém.",
+   "Durante séculos o inimigo do Livro foi o fogo. Hoje o inimigo é mais calado: chama-se obsolescência, e não queima nada. Simplesmente, um dia já não há com que abri-lo.",
+   "Por isso este museu coleciona papel. E por isso esta estante, que parece a mais moderna, é na realidade a mais triste."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Стеллаж 7 · Музей истории Библии",
+   "titulo": "Цифровые Библии",
+   "siglo": "Кассета, дискета, компакт-диск и флеш-память",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Всё, что стоит на этом стеллаже, было в своё время будущим.",
+   "Вот Библия на кассете, на дискете, на компакт-диске и на карманной флеш-памяти. Каждый из этих предметов объявляли окончательным способом хранить текст. И посмотрите, где они: в музейной витрине, рядом с папирусом.",
+   "Начнём с кассеты, потому что она самая старая и самая употребительная. Библейские общества раздали миллионы записанных Библий — для слепых, для тех, кто не умел читать, и для тех, у кого не было времени. Кто-то садился перед микрофоном и неделями читал вслух всю Библию.",
+   "Задержитесь на этом, потому что вы делаете это прямо сейчас. Вы слушаете Библию, рассказанную голосом, держа устройство в руке. Это то же самое, только сорок лет назад.",
+   "Дискета вмещала полтора мегабайта. Полная Библия, один текст, занимает четыре-пять. Она не помещалась: её приходилось разбивать на несколько дискет или сжимать.",
+   "Компакт-диск переменил это разом: семьсот мегабайт. Туда помещалась Библия с симфонией, со словарём, с несколькими переводами сразу, и впервые можно было искать слово по всему Писанию и находить его за секунду. То, на что у одного человека уходили годы работы.",
+   "А память, которую вы видите в конце, величиной с палец, хранит сегодня больше, чем все книги этого музея вместе взятые.",
+   "Теперь неудобный вопрос — та причина, ради которой этот стеллаж существует.",
+   "Какой из этих предметов вы можете прочесть сегодня? Кассете нужен магнитофон. Дискете — компьютер, который уже не выпускают. Компакт-диску — привод, которого почти ни в одной машине нет. Тридцать лет — и уже нужен археолог.",
+   "А в трёх витринах отсюда стоит книга, напечатанная в Севилье в 1531 году, которую вы можете открыть и прочесть прямо сейчас — без устройства, без электричества и без чьего-либо разрешения.",
+   "Веками врагом Книги был огонь. Сегодня враг тише: он называется устареванием и ничего не сжигает. Просто однажды уже нечем её открыть.",
+   "Потому этот музей собирает бумагу. И потому этот стеллаж, который кажется самым современным, на деле самый печальный."
   ]
  }
 };
@@ -281,6 +360,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

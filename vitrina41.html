@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Las seis del siglo veinte — Museo de Historia de la Biblia</title>
+<title>El cobre y la madera — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F0EDE4;--claro:#FAF7EF;--tinta:#1F1D18;--cabecera:#2E4A5A;--acento:#B4763A;--marca:rgba(180,118,58,.28); }
+  :root{ --fondo:#F0EEE8;--claro:#FAF8F3;--tinta:#1B1A16;--cabecera:#33302A;--acento:#8A6A4A;--marca:rgba(138,106,74,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,8 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .tres{flex:none;display:flex;gap:4px;align-items:flex-end}
-  .tres i{display:block;width:10px;border-radius:1px}
+  .surcos{flex:none;display:flex;gap:6px;align-items:center}
+  .surcos b{display:block;width:28px;height:56px;background:#B08A5A;border-radius:2px;background-image:repeating-linear-gradient(to bottom,rgba(0,0,0,.35) 0 1px,transparent 1px 5px)}
+  .surcos i{display:block;width:28px;height:56px;background:#6B4A2A;border-radius:2px;background-image:repeating-linear-gradient(to bottom,rgba(255,255,255,.3) 0 2px,transparent 2px 6px)}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -39,11 +40,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="tres" aria-hidden="true"><i style="height:56px;background:#B4763A"></i><i style="height:48px;background:#7C5A7A"></i><i style="height:60px;background:#3F6B5A"></i><i style="height:52px;background:#A8443A"></i><i style="height:44px;background:#4A6A8A"></i><i style="height:58px;background:#8A7A3A"></i></div>
+  <div class="surcos" aria-hidden="true"><b></b><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -72,140 +74,168 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 24 · Museo de Historia de la Biblia",
-   "titulo": "Las seis del siglo veinte",
-   "siglo": "De Nácar-Colunga a Schökel · 1944-1975",
+   "sala": "Vitrina 24 a y b · Museo de Historia de la Biblia",
+   "titulo": "El cobre y la madera",
+   "siglo": "De Hondt, 1,728 · Doré, 1,866",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Seis Biblias en una sola vitrina, de un lado y otro del mar, hechas casi al mismo tiempo. Y las seis nacieron del mismo documento.",
-   "El 30 de septiembre de 1943, el papa Pío XII publicó la encíclica Divino afflante Spiritu. En ella autorizó por fin a los católicos a traducir la Biblia directamente del hebreo y del griego, y no de la Vulgata latina. Cuatro siglos llevaba la Iglesia traduciendo del latín. Ese día se abrió la puerta.",
-   "Y mire lo rápido que entraron.",
-   "En 1944, en Madrid, apareció la de Nácar-Colunga. Eloíno Nácar tradujo el Antiguo Testamento del hebreo; Alberto Colunga, el Nuevo del griego. Es la primera Biblia católica completa en español traducida de las lenguas originales.",
-   "En 1947, también en Madrid, la de Bover-Cantera. José María Bover, jesuita, y Francisco Cantera, hebraísta. Ésta es la edición de estudio: crítica, anotada, con aparato. La que se usa para trabajar el texto, no para leerlo de corrido.",
-   "Y en 1951, del otro lado del mar, la de Straubinger. Juan Straubinger era un sacerdote alemán que tuvo que salir de su país por su oposición al nazismo. Acabó en La Plata, Argentina, dando clases de Sagrada Escritura. Ahí la tradujo, desde los originales. Es la primera Biblia católica completa traducida de las lenguas originales en América Latina, y la hizo un refugiado.",
-   "Y en 1963 apareció ésta, la de los siete tomos. Se llama La Sagrada Biblia más bella del mundo, la dirigió Alejandro Díez Macho y la publicó Editorial Codex. Díez Macho era el mayor especialista del mundo en los targumes, las versiones arameas del Antiguo Testamento. También tradujo de los originales, con comentarios, y el texto va a tres columnas.",
-   "Pero fíjese en la diferencia con las demás. Aquéllas se hicieron para estudiar. Ésta se hizo para entrar a las casas: salió por fascículos, semana con semana, en formato grande, a todo color, con cientos de ilustraciones. La gente la fue juntando y después la mandó encuadernar. Es la Biblia de la sala, no la del escritorio.",
-   "En 1967 apareció en español la Biblia de Jerusalén. Había nacido en francés, en la Escuela Bíblica de Jerusalén, y llegó con algo que ninguna de las anteriores traía: las notas de una escuela que estaba excavando en el propio terreno. No sólo traduce. Le dice al lector dónde queda ese lugar, cuándo ocurrió aquello y qué se ha encontrado bajo la tierra. Por eso se volvió la Biblia de estudio más usada del mundo hispano.",
-   "Y en 1975, la Nueva Biblia Española, de Luis Alonso Schökel y Juan Mateos. Ésta se propuso algo distinto de todas las demás: que el castellano bíblico dejara de sonar a traducción. Schökel era poeta además de biblista, y eso se nota en cada página. Es la que mejor suena leída en voz alta de todas las de esta vitrina.",
-   "Ahora sume. Entre 1944 y 1975, en poco más de treinta años, el español tuvo seis Biblias nuevas traducidas desde el hebreo y el griego. Antes de eso habían pasado casi cuatro siglos sin ninguna.",
-   "Y ahora vuelva usted a la fecha de aquella encíclica: 30 de septiembre. No es un día cualquiera. Es la fiesta de san Jerónimo, el hombre que hizo la Vulgata dieciséis siglos antes. Por eso, en México, septiembre es el mes de la Biblia.",
-   "Con estas seis se cierra la cadena de traductores"
+   "Dos libros de estampas, con ciento cuarenta años de distancia. Y entre ellos cambió algo que no se ve en el dibujo, sino en cómo está hecho.",
+   "Empecemos por el de la izquierda. La Haya, 1,728. Este libro no es una Biblia, porque no trae el texto sagrado. El editor Pieter de Hondt publica doscientas catorce láminas que cuentan, escena por escena, las historias del Antiguo y del Nuevo Testamento. Los dibujos son de Gerard Hoet, Bernard Picart y Arnold Houbraken, y para pasarlos al metal hicieron falta más de treinta grabadores.",
+   "Están grabadas en cobre, a buril. El grabador abre el surco en la plancha, la tinta se mete en el hueco y el papel, bajo una presión enorme, va a buscarla. Es lento, es caro y no admite errores. Por eso un libro así se vendía por suscripción y llevaba dedicatoria a un noble, con su escudo de armas en lo alto.",
+   "Y fíjese en el pie de cada lámina, porque ahí está el detalle que lo vuelve pieza de este museo: la leyenda va en seis lenguas. Hebreo, inglés, alemán, latín, francés y holandés. Una sola tirada servía para media Europa, porque la imagen no necesita traducirse. Es una políglota hecha de dibujos.",
+   "Ahora mire el de la derecha. Tours, 1,866. Gustave Doré ilustra la Biblia con más de doscientas treinta estampas, y esta vez el grabado no está en metal, sino en madera de boj cortada a contrahílo. Ahí el dibujo queda en relieve, no en hueco. Y esa diferencia técnica lo cambió todo: una plancha en relieve se puede montar junto a los tipos de plomo e imprimirse de un solo golpe, con la página entera.",
+   "En otras palabras: el cobre obliga a imprimir la imagen aparte y encarece el libro; la madera permite meterla en la misma página que el texto y abaratarlo.",
+   "De Hondt es para el salón de un noble. Doré es para la mesa de una casa.",
+   "Y el dibujo cambia con la técnica. Doré no dibuja escenas ordenadas: dibuja luz, tormenta y multitudes. Sus estampas se copiaron en medio mundo y terminaron siendo la manera en que Occidente se imagina las Escrituras. Cuando usted se imagina a Sansón derribando las columnas, lo más probable es que esté recordando un grabado de Doré sin saber que es suyo.",
+   "Dos maneras de abrir un surco. Una en metal, para pocos; otra en madera, para todos."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 24 · Museum of the History of the Bible",
-   "titulo": "The six of the twentieth century",
-   "siglo": "From Nácar-Colunga to Schökel · 1944-1975",
+   "sala": "Case 24 a and b · Museum of the History of the Bible",
+   "titulo": "Copper and wood",
+   "siglo": "De Hondt, 1728 · Doré, 1866",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "Six Bibles in a single case, from either side of the ocean, made at almost the same time. And all six were born of the same document.",
-   "On the thirtieth of September 1943, Pope Pius the Twelfth published the encyclical Divino afflante Spiritu. In it he at last authorised Catholics to translate the Bible directly from the Hebrew and the Greek, and not from the Latin Vulgate. For four centuries the Church had been translating from Latin. That day the door opened.",
-   "And see how quickly they went through it.",
-   "In 1944, in Madrid, the Nácar-Colunga appeared. Eloíno Nácar translated the Old Testament from the Hebrew; Alberto Colunga, the New from the Greek. It is the first complete Catholic Bible in Spanish translated from the original languages.",
-   "In 1947, also in Madrid, the Bover-Cantera. José María Bover, a Jesuit, and Francisco Cantera, a Hebrew scholar. This is the study edition: critical, annotated, with an apparatus. The one you use to work on the text, not to read straight through.",
-   "And in 1951, on the other side of the ocean, the Straubinger. Juan Straubinger was a German priest who had to leave his country for his opposition to Nazism. He ended up in La Plata, in Argentina, teaching Sacred Scripture. There he translated it, from the originals. It is the first complete Catholic Bible translated from the original languages in Latin America, and a refugee made it.",
-   "And in 1963 this one appeared, the one in seven volumes. It is called The Most Beautiful Bible in the World, it was directed by Alejandro Díez Macho and published by Editorial Codex. Díez Macho was the world's foremost specialist in the Targums, the Aramaic versions of the Old Testament. He too translated from the originals, with commentary, and the text runs in three columns.",
-   "But notice the difference from the others. Those were made for study. This one was made to come into people's homes: it appeared in instalments, week by week, in large format, in full colour, with hundreds of illustrations. People collected it and then had it bound. It is the Bible of the front room, not of the desk.",
-   "In 1967 the Jerusalem Bible appeared in Spanish. It had been born in French, at the École Biblique in Jerusalem, and it came with something none of the others had: the notes of a school that was digging in the ground itself. It does not merely translate. It tells the reader where that place is, when that happened, and what has been found beneath the soil. That is why it became the most widely used study Bible in the Spanish-speaking world.",
-   "And in 1975, the Nueva Biblia Española, by Luis Alonso Schökel and Juan Mateos. This one set itself a different aim from all the rest: that biblical Spanish should stop sounding like a translation. Schökel was a poet as well as a biblical scholar, and it shows on every page. Of everything in this case, it is the one that sounds best read aloud.",
-   "Now add it up. Between 1944 and 1975, in a little over thirty years, Spanish gained six new Bibles translated from the Hebrew and the Greek. Before that, almost four centuries had gone by without a single one.",
-   "And now go back to the date of that encyclical: the thirtieth of September. It is not just any day. It is the feast of Saint Jerome, the man who made the Vulgate sixteen centuries earlier. That is why, in Mexico, September is the month of the Bible.",
-   "With these six, the chain of translators"
+   "Two books of prints, a hundred and forty years apart. And between them something changed that cannot be seen in the drawing, but in how it was made.",
+   "Let us begin with the one on the left. The Hague, 1728. This book is not a Bible, because it does not carry the sacred text. The publisher Pieter de Hondt brings out two hundred and fourteen plates that tell, scene by scene, the stories of the Old and the New Testament. The drawings are by Gerard Hoet, Bernard Picart and Arnold Houbraken, and to carry them over to metal took more than thirty engravers.",
+   "They are engraved on copper, with the burin. The engraver cuts the furrow in the plate, the ink settles into the hollow and the paper, under enormous pressure, goes to fetch it. It is slow, it is dear and it admits no mistakes. That is why such a book was sold by subscription and carried a dedication to a nobleman, with his coat of arms at the top.",
+   "And look at the foot of each plate, because there is the detail that makes it a piece for this museum: the caption is in six languages. Hebrew, English, German, Latin, French and Dutch. A single printing served half of Europe, because an image needs no translation. It is a polyglot made of drawings.",
+   "Now look at the one on the right. Tours, 1866. Gustave Doré illustrates the Bible with more than two hundred and thirty prints, and this time the engraving is not in metal but in boxwood cut across the grain. There the drawing stands in relief, not in hollow. And that technical difference changed everything: a relief block can be set alongside the leaden types and printed at a single stroke, with the whole page.",
+   "In other words: copper forces you to print the image separately and makes the book dearer; wood lets you put it on the same page as the text and makes it cheaper.",
+   "De Hondt is for a nobleman's drawing room. Doré is for the table of a house.",
+   "And the drawing changes with the technique. Doré does not draw orderly scenes: he draws light, storm and crowds. His prints were copied across half the world and ended up being the way the West imagines the Scriptures. When you picture Samson pulling down the pillars, you are most likely remembering an engraving by Doré without knowing it is his.",
+   "Two ways of cutting a furrow. One in metal, for the few; the other in wood, for everyone."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 24 · Musée de l'Histoire de la Bible",
-   "titulo": "Les six du vingtième siècle",
-   "siglo": "De Nácar-Colunga à Schökel · 1944-1975",
+   "sala": "Vitrine 24 a et b · Musée de l'Histoire de la Bible",
+   "titulo": "Le cuivre et le bois",
+   "siglo": "De Hondt, 1728 · Doré, 1866",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Six Bibles dans une seule vitrine, des deux côtés de la mer, faites presque en même temps. Et toutes six sont nées du même document.",
-   "Le 30 septembre 1943, le pape Pie XII publia l'encyclique Divino afflante Spiritu. Il y autorisait enfin les catholiques à traduire la Bible directement de l'hébreu et du grec, et non de la Vulgate latine. Depuis quatre siècles, l'Église traduisait du latin. Ce jour-là, la porte s'ouvrit.",
-   "Et voyez avec quelle rapidité ils s'y sont engouffrés.",
-   "En 1944, à Madrid, parut la Nácar-Colunga. Eloíno Nácar traduisit l'Ancien Testament de l'hébreu ; Alberto Colunga, le Nouveau du grec. C'est la première Bible catholique complète en espagnol traduite des langues originales.",
-   "En 1947, à Madrid également, la Bover-Cantera. José María Bover, jésuite, et Francisco Cantera, hébraïsant. C'est l'édition d'étude : critique, annotée, avec un apparat. Celle dont on se sert pour travailler le texte, non pour le lire d'un trait.",
-   "Et en 1951, de l'autre côté de la mer, la Straubinger. Juan Straubinger était un prêtre allemand qui dut quitter son pays pour son opposition au nazisme. Il finit à La Plata, en Argentine, enseignant l'Écriture sainte. C'est là qu'il la traduisit, à partir des originaux. C'est la première Bible catholique complète traduite des langues originales en Amérique latine, et elle est l'œuvre d'un réfugié.",
-   "Et en 1963 parut celle-ci, celle des sept volumes. Elle s'appelle La plus belle Bible du monde, elle fut dirigée par Alejandro Díez Macho et publiée par Editorial Codex. Díez Macho était le plus grand spécialiste mondial des targums, les versions araméennes de l'Ancien Testament. Lui aussi traduisit des originaux, avec commentaires, et le texte court sur trois colonnes.",
-   "Mais voyez la différence avec les autres. Celles-là furent faites pour l'étude. Celle-ci fut faite pour entrer dans les maisons : elle parut en fascicules, semaine après semaine, en grand format, en couleurs, avec des centaines d'illustrations. Les gens la réunissaient puis la faisaient relier. C'est la Bible du salon, non celle du bureau.",
-   "En 1967 parut en espagnol la Bible de Jérusalem. Elle était née en français, à l'École biblique de Jérusalem, et elle apportait quelque chose qu'aucune des précédentes n'avait : les notes d'une école qui fouillait sur le terrain même. Elle ne se contente pas de traduire. Elle dit au lecteur où se trouve ce lieu, quand cela s'est passé et ce qu'on a trouvé sous la terre. C'est pourquoi elle est devenue la Bible d'étude la plus utilisée du monde hispanophone.",
-   "Et en 1975, la Nueva Biblia Española, de Luis Alonso Schökel et Juan Mateos. Celle-ci s'est fixé un but différent de toutes les autres : que l'espagnol biblique cesse de sonner comme une traduction. Schökel était poète autant que bibliste, et cela se voit à chaque page. De tout ce qui est dans cette vitrine, c'est celle qui sonne le mieux lue à voix haute.",
-   "Faites le compte. Entre 1944 et 1975, en un peu plus de trente ans, l'espagnol a eu six Bibles nouvelles traduites de l'hébreu et du grec. Auparavant, près de quatre siècles s'étaient écoulés sans aucune.",
-   "Et maintenant revenez à la date de cette encyclique : le 30 septembre. Ce n'est pas un jour quelconque. C'est la fête de saint Jérôme, l'homme qui fit la Vulgate seize siècles plus tôt. C'est pourquoi, au Mexique, septembre est le mois de la Bible.",
-   "Avec ces six-là s'achève la chaîne des traducteurs"
+   "Deux livres d'estampes, à cent quarante ans de distance. Et entre eux changea quelque chose qui ne se voit pas dans le dessin, mais dans sa fabrication.",
+   "Commençons par celui de gauche. La Haye, 1728. Ce livre n'est pas une Bible, car il ne porte pas le texte sacré. L'éditeur Pieter de Hondt publie deux cent quatorze planches qui racontent, scène par scène, les histoires de l'Ancien et du Nouveau Testament. Les dessins sont de Gerard Hoet, Bernard Picart et Arnold Houbraken, et pour les faire passer au métal il fallut plus de trente graveurs.",
+   "Elles sont gravées sur cuivre, au burin. Le graveur ouvre le sillon dans la planche, l'encre se loge dans le creux et le papier, sous une pression énorme, va l'y chercher. C'est lent, c'est cher et cela n'admet pas d'erreurs. C'est pourquoi un tel livre se vendait par souscription et portait une dédicace à un noble, avec ses armes en haut.",
+   "Et regardez le bas de chaque planche, car c'est là le détail qui en fait une pièce de ce musée : la légende est en six langues. Hébreu, anglais, allemand, latin, français et néerlandais. Un seul tirage servait à la moitié de l'Europe, parce que l'image n'a pas besoin d'être traduite. C'est une polyglotte faite de dessins.",
+   "Regardez maintenant celui de droite. Tours, 1866. Gustave Doré illustre la Bible de plus de deux cent trente estampes, et cette fois la gravure n'est pas sur métal, mais sur buis coupé en bois de bout. Là le dessin reste en relief, non en creux. Et cette différence technique changea tout : une planche en relief peut se monter à côté des caractères de plomb et s'imprimer d'un seul coup, avec la page entière.",
+   "Autrement dit : le cuivre oblige à imprimer l'image à part et renchérit le livre ; le bois permet de la mettre sur la même page que le texte et de le rendre bon marché.",
+   "De Hondt est pour le salon d'un noble. Doré est pour la table d'une maison.",
+   "Et le dessin change avec la technique. Doré ne dessine pas des scènes ordonnées : il dessine la lumière, la tempête et les foules. Ses estampes furent copiées dans la moitié du monde et finirent par être la manière dont l'Occident se représente les Écritures. Quand vous imaginez Samson abattant les colonnes, vous vous souvenez très probablement d'une gravure de Doré sans savoir qu'elle est de lui.",
+   "Deux manières d'ouvrir un sillon. L'une dans le métal, pour quelques-uns ; l'autre dans le bois, pour tous."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 24 · Museum zur Geschichte der Bibel",
-   "titulo": "Die sechs des zwanzigsten Jahrhunderts",
-   "siglo": "Von Nácar-Colunga bis Schökel · 1944-1975",
+   "sala": "Vitrine 24 a und b · Museum zur Geschichte der Bibel",
+   "titulo": "Kupfer und Holz",
+   "siglo": "De Hondt, 1728 · Doré, 1866",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Sechs Bibeln in einer einzigen Vitrine, von beiden Seiten des Meeres, fast zur selben Zeit entstanden. Und alle sechs gehen auf dasselbe Dokument zurück.",
-   "Am 30. September 1943 veröffentlichte Papst Pius der Zwölfte die Enzyklika Divino afflante Spiritu. Darin erlaubte er den Katholiken endlich, die Bibel unmittelbar aus dem Hebräischen und dem Griechischen zu übersetzen und nicht aus der lateinischen Vulgata. Vier Jahrhunderte lang hatte die Kirche aus dem Lateinischen übersetzt. An jenem Tag ging die Tür auf.",
-   "Und sehen Sie, wie schnell sie hindurchgingen.",
-   "1944 erschien in Madrid die Nácar-Colunga. Eloíno Nácar übersetzte das Alte Testament aus dem Hebräischen, Alberto Colunga das Neue aus dem Griechischen. Es ist die erste vollständige katholische Bibel auf Spanisch, die aus den Ursprachen übersetzt wurde.",
-   "1947, ebenfalls in Madrid, die Bover-Cantera. José María Bover, Jesuit, und Francisco Cantera, Hebraist. Dies ist die Studienausgabe: kritisch, kommentiert, mit Apparat. Die, mit der man am Text arbeitet, nicht die, die man durchliest.",
-   "Und 1951, jenseits des Meeres, die Straubinger. Juan Straubinger war ein deutscher Priester, der wegen seines Widerstands gegen den Nationalsozialismus sein Land verlassen musste. Er landete in La Plata in Argentinien und lehrte dort Heilige Schrift. Dort übersetzte er sie, aus den Ursprachen. Es ist die erste vollständige katholische Bibel, die in Lateinamerika aus den Ursprachen übersetzt wurde, und gemacht hat sie ein Flüchtling.",
-   "Und 1963 erschien diese hier, die in sieben Bänden. Sie heißt Die schönste Bibel der Welt, geleitet hat sie Alejandro Díez Macho, verlegt wurde sie bei Editorial Codex. Díez Macho war der weltweit führende Fachmann für die Targumim, die aramäischen Fassungen des Alten Testaments. Auch er übersetzte aus den Ursprachen, mit Kommentaren, und der Text läuft in drei Spalten.",
-   "Doch sehen Sie den Unterschied zu den anderen. Jene waren zum Studium gemacht. Diese war gemacht, um in die Häuser zu kommen: sie erschien in Lieferungen, Woche für Woche, in großem Format, in Farbe, mit Hunderten von Abbildungen. Die Leute sammelten sie und ließen sie dann binden. Es ist die Bibel der guten Stube, nicht die des Schreibtischs.",
-   "1967 erschien die Jerusalemer Bibel auf Spanisch. Geboren war sie auf Französisch, an der École Biblique in Jerusalem, und sie brachte etwas mit, was keine der früheren hatte: die Anmerkungen einer Schule, die im Boden selbst grub. Sie übersetzt nicht nur. Sie sagt dem Leser, wo jener Ort liegt, wann jenes geschah und was man unter der Erde gefunden hat. Darum wurde sie zur meistgebrauchten Studienbibel der spanischsprachigen Welt.",
-   "Und 1975 die Nueva Biblia Española von Luis Alonso Schökel und Juan Mateos. Diese setzte sich ein anderes Ziel als alle übrigen: das biblische Spanisch sollte aufhören, nach Übersetzung zu klingen. Schökel war Dichter und Bibelwissenschaftler zugleich, und das merkt man auf jeder Seite. Von allem in dieser Vitrine klingt sie laut gelesen am besten.",
-   "Nun rechnen Sie zusammen. Zwischen 1944 und 1975, in etwas mehr als dreißig Jahren, bekam das Spanische sechs neue Bibeln, aus dem Hebräischen und dem Griechischen übersetzt. Davor waren fast vier Jahrhunderte ohne eine einzige vergangen.",
-   "Und nun kehren Sie zum Datum jener Enzyklika zurück: der 30. September. Das ist kein beliebiger Tag. Es ist das Fest des heiligen Hieronymus, des Mannes, der sechzehn Jahrhunderte zuvor die Vulgata schuf. Darum ist in Mexiko der September der Monat der Bibel.",
-   "Mit diesen sechs schließt sich die Kette der Übersetzer"
+   "Zwei Bilderbücher, hundertvierzig Jahre voneinander entfernt. Und zwischen ihnen änderte sich etwas, das man nicht an der Zeichnung sieht, sondern daran, wie sie gemacht ist.",
+   "Beginnen wir mit dem linken. Den Haag, 1728. Dieses Buch ist keine Bibel, denn es enthält den heiligen Text nicht. Der Verleger Pieter de Hondt gibt zweihundertvierzehn Tafeln heraus, die Szene für Szene die Geschichten des Alten und des Neuen Testaments erzählen. Die Zeichnungen stammen von Gerard Hoet, Bernard Picart und Arnold Houbraken, und um sie aufs Metall zu bringen, brauchte es mehr als dreißig Stecher.",
+   "Sie sind in Kupfer gestochen, mit dem Grabstichel. Der Stecher öffnet die Furche in der Platte, die Farbe setzt sich in die Vertiefung, und das Papier holt sie unter gewaltigem Druck heraus. Es ist langsam, teuer und verzeiht keine Fehler. Darum wurde ein solches Buch auf Subskription verkauft und trug eine Widmung an einen Adligen, mit dessen Wappen zuoberst.",
+   "Und sehen Sie auf den Fuß jeder Tafel, denn dort ist die Einzelheit, die es zu einem Stück dieses Museums macht: die Bildunterschrift steht in sechs Sprachen. Hebräisch, Englisch, Deutsch, Latein, Französisch und Niederländisch. Eine einzige Auflage genügte für halb Europa, denn das Bild braucht keine Übersetzung. Es ist eine Polyglotte aus Zeichnungen.",
+   "Sehen Sie nun das rechte an. Tours, 1866. Gustave Doré bebildert die Bibel mit mehr als zweihundertdreißig Stichen, und diesmal ist der Schnitt nicht in Metall, sondern in Buchsbaum quer zur Faser. Dort steht die Zeichnung erhaben, nicht vertieft. Und dieser technische Unterschied änderte alles: ein Hochdruckstock lässt sich neben die Bleilettern setzen und mit der ganzen Seite in einem Zug drucken.",
+   "Mit anderen Worten: Kupfer zwingt dazu, das Bild gesondert zu drucken, und verteuert das Buch; Holz erlaubt, es auf dieselbe Seite wie den Text zu setzen, und verbilligt es.",
+   "De Hondt ist für den Salon eines Adligen. Doré ist für den Tisch eines Hauses.",
+   "Und die Zeichnung wandelt sich mit der Technik. Doré zeichnet keine geordneten Szenen: er zeichnet Licht, Sturm und Menschenmengen. Seine Blätter wurden in der halben Welt nachgedruckt und wurden am Ende die Art, wie der Westen sich die Schrift vorstellt. Wenn Sie sich Samson vorstellen, wie er die Säulen niederreißt, erinnern Sie sich höchstwahrscheinlich an einen Stich Dorés, ohne zu wissen, dass er von ihm ist.",
+   "Zwei Arten, eine Furche zu ziehen. Eine im Metall, für wenige; eine im Holz, für alle."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 24 · Museo di Storia della Bibbia",
-   "titulo": "Le sei del Novecento",
-   "siglo": "Da Nácar-Colunga a Schökel · 1944-1975",
+   "sala": "Vetrina 24 a e b · Museo di Storia della Bibbia",
+   "titulo": "Il rame e il legno",
+   "siglo": "De Hondt, 1728 · Doré, 1866",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Sei Bibbie in una sola vetrina, di qua e di là dal mare, fatte quasi nello stesso momento. E tutte e sei nacquero dallo stesso documento.",
-   "Il 30 settembre 1943 papa Pio XII pubblicò l'enciclica Divino afflante Spiritu. In essa autorizzava finalmente i cattolici a tradurre la Bibbia direttamente dall'ebraico e dal greco, e non dalla Vulgata latina. Per quattro secoli la Chiesa aveva tradotto dal latino. Quel giorno si aprì la porta.",
-   "E guardi con quanta rapidità vi entrarono.",
-   "Nel 1944, a Madrid, uscì la Nácar-Colunga. Eloíno Nácar tradusse l'Antico Testamento dall'ebraico; Alberto Colunga il Nuovo dal greco. È la prima Bibbia cattolica completa in spagnolo tradotta dalle lingue originali.",
-   "Nel 1947, sempre a Madrid, la Bover-Cantera. José María Bover, gesuita, e Francisco Cantera, ebraista. Questa è l'edizione di studio: critica, annotata, con apparato. Quella che si usa per lavorare sul testo, non per leggerlo di seguito.",
-   "E nel 1951, dall'altra parte del mare, la Straubinger. Juan Straubinger era un sacerdote tedesco che dovette lasciare il suo paese per la sua opposizione al nazismo. Finì a La Plata, in Argentina, a insegnare Sacra Scrittura. Lì la tradusse, dagli originali. È la prima Bibbia cattolica completa tradotta dalle lingue originali in America Latina, e la fece un rifugiato.",
-   "E nel 1963 uscì questa, quella dei sette volumi. Si chiama La Bibbia più bella del mondo, la diresse Alejandro Díez Macho e la pubblicò Editorial Codex. Díez Macho era il massimo specialista mondiale dei targumim, le versioni aramaiche dell'Antico Testamento. Anche lui tradusse dagli originali, con commenti, e il testo corre su tre colonne.",
-   "Ma guardi la differenza con le altre. Quelle furono fatte per studiare. Questa fu fatta per entrare nelle case: uscì a fascicoli, settimana dopo settimana, in grande formato, a colori, con centinaia di illustrazioni. La gente la metteva insieme e poi la faceva rilegare. È la Bibbia del salotto, non quella della scrivania.",
-   "Nel 1967 uscì in spagnolo la Bibbia di Gerusalemme. Era nata in francese, all'École Biblique di Gerusalemme, e arrivava con qualcosa che nessuna delle precedenti aveva: le note di una scuola che stava scavando sul terreno stesso. Non si limita a tradurre. Dice al lettore dove si trova quel luogo, quando accadde quel fatto e che cosa si è trovato sotto la terra. Per questo divenne la Bibbia di studio più usata del mondo ispanico.",
-   "E nel 1975, la Nueva Biblia Española, di Luis Alonso Schökel e Juan Mateos. Questa si propose qualcosa di diverso da tutte le altre: che lo spagnolo biblico smettesse di suonare come una traduzione. Schökel era poeta oltre che biblista, e si vede a ogni pagina. Di tutto ciò che sta in questa vetrina, è quella che suona meglio letta ad alta voce.",
-   "Ora faccia la somma. Fra il 1944 e il 1975, in poco più di trent'anni, lo spagnolo ebbe sei Bibbie nuove tradotte dall'ebraico e dal greco. Prima di allora erano passati quasi quattro secoli senza nessuna.",
-   "E ora torni alla data di quell'enciclica: 30 settembre. Non è un giorno qualunque. È la festa di san Girolamo, l'uomo che fece la Vulgata sedici secoli prima. Per questo, in Messico, settembre è il mese della Bibbia.",
-   "Con queste sei si chiude la catena di traduttori"
+   "Due libri di stampe, a centoquarant'anni di distanza. E fra essi cambiò qualcosa che non si vede nel disegno, ma in come è fatto.",
+   "Cominciamo da quello di sinistra. L'Aia, 1728. Questo libro non è una Bibbia, perché non porta il testo sacro. L'editore Pieter de Hondt pubblica duecentoquattordici tavole che raccontano, scena per scena, le storie dell'Antico e del Nuovo Testamento. I disegni sono di Gerard Hoet, Bernard Picart e Arnold Houbraken, e per passarli al metallo occorsero più di trenta incisori.",
+   "Sono incise in rame, a bulino. L'incisore apre il solco nella lastra, l'inchiostro entra nell'incavo e la carta, sotto una pressione enorme, va a prenderlo. È lento, è caro e non ammette errori. Per questo un libro così si vendeva per sottoscrizione e portava una dedica a un nobile, con il suo stemma in alto.",
+   "E guardi in calce a ogni tavola, perché lì sta il dettaglio che ne fa un pezzo di questo museo: la didascalia è in sei lingue. Ebraico, inglese, tedesco, latino, francese e olandese. Una sola tiratura serviva a mezza Europa, perché l'immagine non ha bisogno di traduzione. È una poliglotta fatta di disegni.",
+   "Ora guardi quello di destra. Tours, 1866. Gustave Doré illustra la Bibbia con più di duecentotrenta stampe, e stavolta l'incisione non è in metallo, ma in legno di bosso tagliato di testa. Lì il disegno resta in rilievo, non in incavo. E quella differenza tecnica cambiò tutto: una matrice in rilievo si può montare accanto ai caratteri di piombo e stampare in un solo colpo, con l'intera pagina.",
+   "In altre parole: il rame obbliga a stampare l'immagine a parte e rincara il libro; il legno permette di metterla nella stessa pagina del testo e di abbassarne il prezzo.",
+   "De Hondt è per il salone di un nobile. Doré è per il tavolo di una casa.",
+   "E il disegno cambia con la tecnica. Doré non disegna scene ordinate: disegna luce, tempesta e folle. Le sue stampe furono copiate in mezzo mondo e finirono per essere il modo in cui l'Occidente si immagina le Scritture. Quando lei si immagina Sansone che abbatte le colonne, con ogni probabilità sta ricordando un'incisione di Doré senza sapere che è sua.",
+   "Due modi di aprire un solco. Uno nel metallo, per pochi; l'altro nel legno, per tutti."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 24 a e b · Museu de História da Bíblia",
+   "titulo": "O cobre e a madeira",
+   "siglo": "De Hondt, 1728 · Doré, 1866",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Dois livros de estampas, com cento e quarenta anos de distância. E entre eles mudou algo que não se vê no desenho, mas em como está feito.",
+   "Comecemos pelo da esquerda. Haia, 1728. Este livro não é uma Bíblia, porque não traz o texto sagrado. O editor Pieter de Hondt publica duzentas e catorze lâminas que contam, cena por cena, as histórias do Antigo e do Novo Testamento. Os desenhos são de Gerard Hoet, Bernard Picart e Arnold Houbraken, e para passá-los ao metal foram precisos mais de trinta gravadores.",
+   "Estão gravadas em cobre, a buril. O gravador abre o sulco na chapa, a tinta mete-se no vazio e o papel, sob uma pressão enorme, vai buscá-la. É lento, é caro e não admite erros. Por isso um livro assim vendia-se por subscrição e levava dedicatória a um nobre, com o seu brasão no alto.",
+   "E repare no pé de cada lâmina, porque ali está o detalhe que o torna peça deste museu: a legenda vai em seis línguas. Hebraico, inglês, alemão, latim, francês e holandês. Uma só tiragem servia para meia Europa, porque a imagem não precisa de tradução. É uma poliglota feita de desenhos.",
+   "Agora olhe o da direita. Tours, 1866. Gustave Doré ilustra a Bíblia com mais de duzentas e trinta estampas, e desta vez a gravura não está em metal, mas em madeira de buxo cortada de topo. Ali o desenho fica em relevo, não em vazio. E essa diferença técnica mudou tudo: uma chapa em relevo pode montar-se junto aos tipos de chumbo e imprimir-se de um só golpe, com a página inteira.",
+   "Por outras palavras: o cobre obriga a imprimir a imagem à parte e encarece o livro; a madeira permite metê-la na mesma página do texto e baratear.",
+   "De Hondt é para o salão de um nobre. Doré é para a mesa de uma casa.",
+   "E o desenho muda com a técnica. Doré não desenha cenas ordenadas: desenha luz, tempestade e multidões. As suas estampas copiaram-se em meio mundo e acabaram sendo a maneira como o Ocidente imagina as Escrituras. Quando você imagina Sansão derrubando as colunas, o mais provável é que esteja recordando uma gravura de Doré sem saber que é dele.",
+   "Duas maneiras de abrir um sulco. Uma no metal, para poucos; outra na madeira, para todos."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 24 a и b · Музей истории Библии",
+   "titulo": "Медь и дерево",
+   "siglo": "Де Хондт, 1728 · Доре, 1866",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Две книги гравюр, между ними сто сорок лет. И между ними переменилось то, что видно не в рисунке, а в том, как он сделан.",
+   "Начнём с той, что слева. Гаага, 1728 год. Эта книга не Библия, потому что священного текста в ней нет. Издатель Питер де Хондт выпускает двести четырнадцать листов, которые сцена за сценой рассказывают истории Ветхого и Нового Завета. Рисунки принадлежат Герарду Хуту, Бернару Пикару и Арнольду Хоубракену, а чтобы перенести их на металл, понадобилось более тридцати гравёров.",
+   "Они резаны по меди, резцом. Гравёр прорезает борозду на доске, краска ложится в углубление, и бумага под огромным давлением её оттуда вытягивает. Это медленно, дорого и не прощает ошибок. Потому такую книгу продавали по подписке, и она несла посвящение вельможе, с его гербом наверху.",
+   "И посмотрите на подпись под каждым листом, потому что в ней та подробность, которая делает книгу экспонатом этого музея: подпись дана на шести языках. Еврейском, английском, немецком, латинском, французском и голландском. Одного тиража хватало на половину Европы, потому что изображение не нуждается в переводе. Это полиглотта, составленная из рисунков.",
+   "А теперь посмотрите на ту, что справа. Тур, 1866 год. Гюстав Доре иллюстрирует Библию более чем двумястами тридцатью гравюрами, и на этот раз резьба не по металлу, а по самшиту, резанному поперёк волокна. Там рисунок остаётся выпуклым, а не углублённым. И это техническое различие изменило всё: выпуклую доску можно поставить рядом со свинцовыми литерами и оттиснуть за один раз, вместе со всей страницей.",
+   "Иначе говоря: медь вынуждает печатать изображение отдельно и удорожает книгу; дерево позволяет поместить его на ту же страницу, что и текст, и удешевить её.",
+   "Де Хондт — для салона вельможи. Доре — для стола обычного дома.",
+   "И рисунок меняется вместе с техникой. Доре рисует не упорядоченные сцены: он рисует свет, бурю и толпы. Его гравюры копировали по полмиру, и в конце концов они стали тем, как Запад представляет себе Писание. Когда вы воображаете Самсона, обрушивающего колонны, вы почти наверняка вспоминаете гравюру Доре, не зная, что она его.",
+   "Два способа провести борозду. Один по металлу, для немногих; другой по дереву, для всех."
   ]
  }
 };
@@ -310,6 +340,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

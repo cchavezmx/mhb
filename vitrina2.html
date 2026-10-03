@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>El Arca del Pacto — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EFE7;--claro:#FBF8F1;--tinta:#1F1E1B;--cabecera:#2B2A28;--acento:#A8832C;--marca:rgba(168,131,44,.28); }
+  :root{ --fondo:#F4EFE0;--claro:#FCF8EC;--tinta:#1F1C15;--cabecera:#6B5218;--acento:#B08A2E;--marca:rgba(176,138,46,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,8 +17,15 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .arca{flex:none;width:70px;height:56px;border:3px solid var(--acento);border-radius:3px;position:relative}
+  .arca:before{content:'';position:absolute;left:-6px;right:-6px;top:-9px;height:7px;background:var(--acento);border-radius:2px}
 
+  
+  
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
   .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
@@ -38,20 +45,21 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="emb" aria-hidden="true"></div>
+  <div class="arca" aria-hidden="true"></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
     <p class="siglo" id="ui-siglo"></p>
   </div>
 </header>
-
   <div class="progreso"><i id="mhb-barra"></i></div>
   <nav class="mhb-nav" id="mhb-nav" aria-label="Navegación"></nav>
+
 <main>
   <div class="idiomas" id="idiomas" role="group" aria-label="Idioma"></div>
   <div class="mandos">
@@ -73,7 +81,7 @@ const GUIA = {
   "ui": {
    "sala": "Maqueta 1 · Museo de Historia de la Biblia",
    "titulo": "El Arca del Pacto",
-   "siglo": "",
+   "siglo": "Éxodo 25 · madera de acacia y oro",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
@@ -81,9 +89,123 @@ const GUIA = {
   },
   "t": [
    "Antes que cualquier libro de este museo, hubo una caja. Y fue la primera vitrina de la historia.",
-   "El libro del Éxodo la describe con medidas exactas. El Arca era un cofre de madera de acacia recubierto de oro puro por dentro y por fuera, de dos codos y medio de largo, codo y medio de ancho y codo y medio de alto. Lo cual equivale a unos 112.5 × 67.5 × 67.5 cm, con el codo común de 45 cm.",
+   "El libro del Éxodo la describe con medidas exactas. El Arca era un cofre de madera de acacia recubierto de oro puro por dentro y por fuera, de dos codos y medio de largo, codo y medio de ancho y codo y medio de alto. Lo cual equivale a unos 112.5 por 67.5 por 67.5 centímetros, con el codo común de 45 centímetros.",
    "La tapa era de oro puro y se llamaba el propiciatorio; sobre ella, dos querubines con las alas extendidas, mirándose de frente. Se transportaba con dos varas pasadas por anillos de oro, sobre los hombros de los levitas. Nadie debía tocarla.",
    "Dentro iban una urna con maná, la vara de Aarón que reverdeció y las dos tablas de piedra de la Ley escritas por el dedo de Dios. Lo primero que se guardó escrito de todo lo que aquí se exhibe no estaba en papiro ni en pergamino: estaba en piedra, y se guardó en esta Arca."
+  ]
+ },
+ "en": {
+  "nombre": "English",
+  "voz": "en-GB",
+  "ui": {
+   "sala": "Model 1 · Museum of the History of the Bible",
+   "titulo": "The Ark of the Covenant",
+   "siglo": "Exodus 25 · acacia wood and gold",
+   "play": "Listen",
+   "stop": "Stop",
+   "pie": "Museum of the History of the Bible",
+   "aviso": "This phone has no English voice available. You can read the text instead."
+  },
+  "t": [
+   "Before any book in this museum, there was a box. And it was the first display case in history.",
+   "The book of Exodus describes it with exact measurements. The Ark was a chest of acacia wood overlaid with pure gold inside and out, two cubits and a half long, a cubit and a half wide and a cubit and a half high. That comes to about 112.5 by 67.5 by 67.5 centimetres, taking the common cubit of 45 centimetres.",
+   "The lid was of pure gold and was called the mercy seat; upon it, two cherubim with outspread wings, facing one another. It was carried on two poles passed through rings of gold, on the shoulders of the Levites. No one was to touch it.",
+   "Inside were a jar of manna, the rod of Aaron that budded, and the two stone tablets of the Law written by the finger of God. The first written thing of all that is shown here was not on papyrus nor on parchment: it was on stone, and it was kept in this Ark."
+  ]
+ },
+ "fr": {
+  "nombre": "Français",
+  "voz": "fr-FR",
+  "ui": {
+   "sala": "Maquette 1 · Musée de l'Histoire de la Bible",
+   "titulo": "L'Arche d'Alliance",
+   "siglo": "Exode 25 · bois d'acacia et or",
+   "play": "Écouter",
+   "stop": "Arrêter",
+   "pie": "Musée de l'Histoire de la Bible",
+   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+  },
+  "t": [
+   "Avant tout livre de ce musée, il y eut une caisse. Et ce fut la première vitrine de l'histoire.",
+   "Le livre de l'Exode la décrit avec des mesures exactes. L'Arche était un coffre en bois d'acacia recouvert d'or pur au-dedans et au-dehors, de deux coudées et demie de long, une coudée et demie de large et une coudée et demie de haut. Cela fait environ 112,5 sur 67,5 sur 67,5 centimètres, avec la coudée commune de 45 centimètres.",
+   "Le couvercle était d'or pur et s'appelait le propitiatoire ; dessus, deux chérubins aux ailes déployées, se faisant face. On la portait au moyen de deux barres passées dans des anneaux d'or, sur les épaules des lévites. Nul ne devait la toucher.",
+   "À l'intérieur se trouvaient une urne de manne, le bâton d'Aaron qui avait fleuri, et les deux tables de pierre de la Loi écrites par le doigt de Dieu. La première chose écrite de tout ce qui est exposé ici n'était ni sur papyrus ni sur parchemin : elle était sur la pierre, et elle fut gardée dans cette Arche."
+  ]
+ },
+ "de": {
+  "nombre": "Deutsch",
+  "voz": "de-DE",
+  "ui": {
+   "sala": "Modell 1 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Bundeslade",
+   "siglo": "Exodus 25 · Akazienholz und Gold",
+   "play": "Anhören",
+   "stop": "Anhalten",
+   "pie": "Museum zur Geschichte der Bibel",
+   "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
+  },
+  "t": [
+   "Vor jedem Buch dieses Museums gab es eine Truhe. Und sie war die erste Vitrine der Geschichte.",
+   "Das Buch Exodus beschreibt sie mit genauen Maßen. Die Lade war ein Kasten aus Akazienholz, innen und außen mit reinem Gold überzogen, zweieinhalb Ellen lang, anderthalb Ellen breit und anderthalb Ellen hoch. Das sind etwa 112,5 mal 67,5 mal 67,5 Zentimeter, bei der gemeinen Elle von 45 Zentimetern.",
+   "Der Deckel war aus reinem Gold und hieß der Gnadenthron; darauf zwei Cherubim mit ausgebreiteten Flügeln, einander zugewandt. Getragen wurde sie an zwei Stangen, die durch goldene Ringe liefen, auf den Schultern der Leviten. Niemand durfte sie berühren.",
+   "Darin lagen ein Krug mit Manna, der Stab Aarons, der gegrünt hatte, und die beiden steinernen Tafeln des Gesetzes, geschrieben vom Finger Gottes. Das erste Geschriebene von allem, was hier gezeigt wird, stand weder auf Papyrus noch auf Pergament: es stand auf Stein, und es wurde in dieser Lade aufbewahrt."
+  ]
+ },
+ "it": {
+  "nombre": "Italiano",
+  "voz": "it-IT",
+  "ui": {
+   "sala": "Modello 1 · Museo di Storia della Bibbia",
+   "titulo": "L'Arca dell'Alleanza",
+   "siglo": "Esodo 25 · legno di acacia e oro",
+   "play": "Ascolta",
+   "stop": "Ferma",
+   "pie": "Museo di Storia della Bibbia",
+   "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
+  },
+  "t": [
+   "Prima di qualunque libro di questo museo, ci fu una cassa. E fu la prima vetrina della storia.",
+   "Il libro dell'Esodo la descrive con misure esatte. L'Arca era un cofano di legno di acacia rivestito d'oro puro dentro e fuori, lungo due cubiti e mezzo, largo un cubito e mezzo e alto un cubito e mezzo. Vale a dire circa 112,5 per 67,5 per 67,5 centimetri, con il cubito comune di 45 centimetri.",
+   "Il coperchio era d'oro puro e si chiamava il propiziatorio; sopra, due cherubini con le ali distese, rivolti l'uno verso l'altro. Si trasportava con due stanghe passate in anelli d'oro, sulle spalle dei leviti. Nessuno doveva toccarla.",
+   "Dentro c'erano un'urna con la manna, la verga di Aronne che era fiorita e le due tavole di pietra della Legge scritte dal dito di Dio. La prima cosa scritta di tutto ciò che qui si espone non era su papiro né su pergamena: era sulla pietra, e fu custodita in quest'Arca."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Maquete 1 · Museu de História da Bíblia",
+   "titulo": "A Arca da Aliança",
+   "siglo": "Êxodo 25 · madeira de acácia e ouro",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Antes de qualquer livro deste museu, houve uma caixa. E foi a primeira vitrine da história.",
+   "O livro do Êxodo a descreve com medidas exatas. A Arca era um cofre de madeira de acácia revestido de ouro puro por dentro e por fora, de dois côvados e meio de comprimento, um côvado e meio de largura e um côvado e meio de altura. Isso equivale a cerca de 112,5 por 67,5 por 67,5 centímetros, com o côvado comum de 45 centímetros.",
+   "A tampa era de ouro puro e se chamava propiciatório; sobre ela, dois querubins com as asas estendidas, voltados um para o outro. Era transportada por duas varas passadas em argolas de ouro, sobre os ombros dos levitas. Ninguém devia tocá-la.",
+   "Dentro iam uma urna com maná, a vara de Arão que floresceu e as duas tábuas de pedra da Lei escritas pelo dedo de Deus. A primeira coisa escrita de tudo o que aqui se expõe não estava em papiro nem em pergaminho: estava na pedra, e foi guardada nesta Arca."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Макет 1 · Музей истории Библии",
+   "titulo": "Ковчег Завета",
+   "siglo": "Исход 25 · дерево акации и золото",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Прежде всякой книги этого музея был ларец. И он был первой витриной в истории.",
+   "Книга Исход описывает его с точными размерами. Ковчег был ларцом из дерева акации, покрытым чистым золотом внутри и снаружи, два с половиной локтя в длину, полтора локтя в ширину и полтора локтя в высоту. Это около 112,5 на 67,5 на 67,5 сантиметра, если считать обычный локоть в 45 сантиметров.",
+   "Крышка была из чистого золота и называлась престолом милости; на ней — два херувима с распростёртыми крыльями, обращённые друг к другу. Ковчег несли на двух шестах, продетых в золотые кольца, на плечах левитов. Прикасаться к нему не дозволялось никому.",
+   "Внутри были сосуд с манной, расцветший жезл Аарона и две каменные скрижали Закона, написанные перстом Божиим. Самое первое из всего написанного, что здесь показано, было не на папирусе и не на пергаменте: оно было на камне и хранилось в этом Ковчеге."
   ]
  }
 };
@@ -188,6 +310,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

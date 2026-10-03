@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>El Nuevo Testamento de Erasmo — Museo de Historia de la Biblia</title>
+<title>La Biblia de Lutero — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F1ECE0;--claro:#FBF6EA;--tinta:#241F18;--cabecera:#2F4A3A;--acento:#A8712A;--marca:rgba(168,113,42,.26); }
+  :root{ --fondo:#F1EEE6;--claro:#FAF7F0;--tinta:#1C1B16;--cabecera:#3A3730;--acento:#8A5A2A;--marca:rgba(138,90,42,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,11 +17,12 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .paralelo{flex:none;background:var(--claro);padding:6px;display:flex;gap:6px}
-  .lado{width:24px;height:64px}
-  .lado.griego{background:repeating-linear-gradient(to bottom,var(--cabecera) 0 1.3px,transparent 1.3px 4.6px)}
-  .lado.latin{background:repeating-linear-gradient(to bottom,var(--acento) 0 1.3px,transparent 1.3px 4.6px)}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .torre{flex:none;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:38px solid var(--acento);position:relative}
+  .torre:after{content:'';position:absolute;left:-19px;top:38px;width:38px;height:24px;background:var(--acento)}
 
+  
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
   .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
@@ -41,11 +42,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="paralelo" aria-hidden="true"><div class="lado griego"></div><div class="lado latin"></div></div>
+  <div class="torre" aria-hidden="true"></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -74,110 +76,161 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 11 · Museo de Historia de la Biblia",
-   "titulo": "El Nuevo Testamento de Erasmo",
-   "siglo": "Basilea, 1516 · el Textus Receptus",
+   "sala": "Vitrina 14 · Museo de Historia de la Biblia",
+   "titulo": "La Biblia de Lutero",
+   "siglo": "Wartburgo, 1,521 · once semanas",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Este libro se hizo de prisa, con pocos manuscritos y con errores, pero, aun así, cambió al mundo.",
-   "Basilea, Suiza, marzo de 1,516. Erasmo de Rotterdam, el humanista más famoso de Europa, publica el Nuevo Testamento en griego con una nueva traducción latina hecha por él. El impresor Froben quería ganarle a los españoles, que ya tenían el suyo impreso pero detenido, esperando permiso. Y ganaron: éste fue el primer Nuevo Testamento griego publicado.",
-   "El propio Erasmo lo reconoció después con una frase que todavía se cita: más que editado, dijo, fue precipitado. Y es cierto. Usó los pocos manuscritos griegos que había en Basilea, todos tardíos. Al llegar al Apocalipsis descubrió que a su ejemplar le faltaba la última hoja. ¿Qué hizo? Tomó la Vulgata latina y tradujo esos versículos finales al griego, él mismo. Quedaron en el texto unas palabras que no aparecen en ningún manuscrito griego del mundo.",
-   "Lo verdaderamente explosivo, sin embargo, no fue el griego: fue su traducción latina. Al corregir la Vulgata, Erasmo demostró que el texto oficial de la Iglesia se podía discutir, y si se podía discutir, se podía traducir.",
-   "Lo que vino después lo conoce usted. Lutero tradujo al alemán desde la segunda edición de Erasmo. Tyndale, al inglés. Casiodoro de Reina y Cipriano de Valera, al castellano. De este tomo descienden la Biblia King James (Rey Jacobo) y la Reina-Valera.",
-   "Y el nombre viene de un anuncio publicitario. En 1,633, los impresores Elzevir escribieron en su prólogo que el lector tenía en las manos el texto recibido por todos. Textus receptus. Se les quedó.",
-   "Y aquí termina el recorrido. Empezamos con un monje que copiaba a mano en una montaña de Cantabria, para que el Libro no se perdiera. Terminamos con un texto impreso del que descienden las Biblias que hoy están en su casa. Mil doscientos años entre una hoja y la otra, y siempre la misma obsesión: que no se pierda, y que llegue a más manos."
+   "Un hombre escondido en un castillo, con nombre falso, tradujo esto en once semanas.",
+   "Año 1,521. Martín Lutero acaba de ser condenado en la Dieta de Worms. Está fuera de la ley: cualquiera puede matarlo sin castigo. Sus amigos lo secuestran y lo esconden en el castillo de Wartburgo, donde vive disfrazado, con barba y ropa de caballero, bajo el nombre de Jorge.",
+   "Ahí, encerrado, se pone a traducir el Nuevo Testamento al alemán. Trabaja sobre el griego de Erasmo, el libro que usted acaba de ver. Termina en once semanas. Se imprime en septiembre de 1,522. El Antiguo Testamento le llevaría doce años más, y la Biblia completa salió en 1,534.",
+   "Ahora bien: lo importante no fue la rapidez. Fue cómo tradujo. Lutero no quiso pasar el latín palabra por palabra. Decía que para traducir bien hay que salir a la calle y mirar cómo habla la gente: la madre en su casa, los niños jugando, el hombre en el mercado. Que hay que oírlos hablar, y escribir como ellos hablan.",
+   "Y ocurrió algo que casi nadie previó. Alemania estaba partida en decenas de hablas distintas. Este libro se imprimió tantas veces, y se leyó en tantos púlpitos, que la manera de hablar de Lutero acabó imponiéndose sobre todas las demás. El alemán moderno salió, en buena medida, de estas páginas. Una Biblia terminó fabricando un idioma. Y lo seguiría haciendo en otras lenguas.",
+   "Un detalle honesto, porque este museo no esconde nada. En la carta a los Romanos, Lutero agregó una palabra que no está en el griego: sola. Por la fe solamente. Se lo reclamaron, y él escribió un tratado entero defendiéndose, diciendo que así lo pedía el alemán para que la frase se entendiera. Ahí se ve algo que vale para toda esta vitrina: traducir nunca es sólo traducir. Siempre hay alguien interpretando y decidiendo.",
+   "Y lo que Lutero estaba haciendo en alemán, otros lo intentaban al mismo tiempo en inglés y en castellano, y varios de ellos lo pagaron con la vida. Eso lo verá usted más adelante.",
+   "Lutero no tradujo a la lengua de su pueblo. Tradujo de tal modo que su pueblo acabó teniendo una."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 11 · Museum of the History of the Bible",
-   "titulo": "The New Testament of Erasmus",
-   "siglo": "Basel, 1516 · the Textus Receptus",
+   "sala": "Case 14 · Museum of the History of the Bible",
+   "titulo": "Luther's Bible",
+   "siglo": "Wartburg, 1521 · eleven weeks",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "This book was made in a hurry, with few manuscripts and with mistakes in it. And it changed the world.",
-   "Basel, Switzerland, March 1516. Erasmus of Rotterdam, the most famous humanist in Europe, publishes the New Testament in Greek together with a new Latin translation of his own. The printer Froben wanted to beat the Spaniards, who had already printed theirs but were held up, waiting for permission. They won: this was the first Greek New Testament ever published.",
-   "Erasmus himself admitted it afterwards, in a phrase still quoted today: it was thrown together, he said, rather than edited. And it is true. He used the few Greek manuscripts available in Basel, all of them late. When he reached the Apocalypse he found that his copy was missing its last leaf. What did he do? He took the Latin Vulgate and translated those final verses back into Greek himself. A few words remain in the text that appear in no Greek manuscript anywhere in the world.",
-   "What was truly explosive, however, was not the Greek: it was his Latin translation. By correcting the Vulgate, Erasmus showed that the official text of the Church could be questioned. And if it could be questioned, it could be translated.",
-   "What came next you already know. Luther translated into German from Erasmus's second edition. Tyndale, into English. Casiodoro de Reina and Cipriano de Valera, into Spanish. From this volume descend the King James Bible and the Reina-Valera.",
-   "And the name comes from an advertisement. In 1633 the Elzevir printers wrote in their preface that the reader held in his hands the text received by all. Textus receptus. The name stuck.",
-   "From this volume printed in Basel came the translations into the living languages. The cases that follow are exactly those: German, English and, from there on, our own."
+   "A man hidden in a castle, under a false name, translated this in eleven weeks.",
+   "The year 1521. Martin Luther has just been condemned at the Diet of Worms. He is outside the law: anyone may kill him unpunished. His friends kidnap him and hide him in the castle of Wartburg, where he lives in disguise, with a beard and a knight's clothes, under the name of George.",
+   "There, shut away, he sets about translating the New Testament into German. He works from the Greek of Erasmus, the book you have just seen. He finishes in eleven weeks. It is printed in September 1522. The Old Testament would take him twelve years more, and the complete Bible came out in 1534.",
+   "Now then: what mattered was not the speed. It was how he translated. Luther would not pass the Latin across word for word. He said that to translate well you must go out into the street and watch how people speak: the mother in her house, the children at play, the man in the market. That you must hear them speak, and write as they speak.",
+   "And something happened that hardly anyone foresaw. Germany was split into dozens of different ways of speaking. This book was printed so often, and read from so many pulpits, that Luther's way of speaking ended by prevailing over all the rest. Modern German came, in good measure, out of these pages. A Bible ended up making a language. And it would do so again in other tongues.",
+   "An honest detail, because this museum hides nothing. In the letter to the Romans, Luther added a word that is not in the Greek: alone. By faith alone. He was taken to task for it, and he wrote a whole treatise in his defence, saying that German required it for the sentence to be understood. There you see something that holds for this whole case: translating is never only translating. There is always someone interpreting and deciding.",
+   "And what Luther was doing in German, others were attempting at the same time in English and in Spanish, and several of them paid for it with their lives. You will see that further on.",
+   "Luther did not translate into the language of his people. He translated in such a way that his people ended up having one."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 11 · Musée de l'Histoire de la Bible",
-   "titulo": "Le Nouveau Testament d'Érasme",
-   "siglo": "Bâle, 1516 · le Textus Receptus",
+   "sala": "Vitrine 14 · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible de Luther",
+   "siglo": "La Wartbourg, 1521 · onze semaines",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Ce livre fut fait à la hâte, avec peu de manuscrits et avec des fautes. Et il a changé le monde.",
-   "Bâle, Suisse, mars 1516. Érasme de Rotterdam, l'humaniste le plus célèbre d'Europe, publie le Nouveau Testament en grec accompagné d'une nouvelle traduction latine de sa main. L'imprimeur Froben voulait devancer les Espagnols, qui avaient déjà imprimé le leur mais restaient bloqués, en attente d'autorisation. Ils gagnèrent : ce fut le premier Nouveau Testament grec publié.",
-   "Érasme lui-même l'a reconnu ensuite, dans une phrase qu'on cite encore : il fut précipité, dit-il, plutôt qu'édité. Et c'est vrai. Il utilisa les rares manuscrits grecs disponibles à Bâle, tous tardifs. Arrivé à l'Apocalypse, il découvrit qu'il manquait le dernier feuillet à son exemplaire. Que fit-il ? Il prit la Vulgate latine et traduisit lui-même ces derniers versets en grec. Il reste dans le texte quelques mots qui ne figurent dans aucun manuscrit grec au monde.",
-   "Mais le vraiment explosif ne fut pas le grec : ce fut sa traduction latine. En corrigeant la Vulgate, Érasme montra que le texte officiel de l'Église pouvait être discuté. Et s'il pouvait être discuté, il pouvait être traduit.",
-   "Ce qui suivit, vous le connaissez. Luther traduisit en allemand à partir de la deuxième édition d'Érasme. Tyndale, en anglais. Casiodoro de Reina et Cipriano de Valera, en castillan. De ce volume descendent la Bible du roi Jacques et la Reina-Valera.",
-   "Et le nom vient d'une réclame. En 1633, les imprimeurs Elzevier écrivirent dans leur préface que le lecteur tenait entre ses mains le texte reçu par tous. Textus receptus. Le nom leur est resté.",
-   "De ce volume imprimé à Bâle sont sorties les traductions dans les langues vivantes. Les vitrines qui suivent sont celles-là : l'allemand, l'anglais et, à partir de là, la nôtre."
+   "Un homme caché dans un château, sous un faux nom, traduisit ceci en onze semaines.",
+   "Année 1521. Martin Luther vient d'être condamné à la Diète de Worms. Il est hors la loi : n'importe qui peut le tuer impunément. Ses amis l'enlèvent et le cachent au château de la Wartbourg, où il vit déguisé, avec barbe et habits de chevalier, sous le nom de Georges.",
+   "Là, enfermé, il se met à traduire le Nouveau Testament en allemand. Il travaille sur le grec d'Érasme, le livre que vous venez de voir. Il achève en onze semaines. L'impression paraît en septembre 1522. L'Ancien Testament lui prendrait douze ans de plus, et la Bible complète parut en 1534.",
+   "Or, l'important ne fut pas la rapidité. Ce fut la manière de traduire. Luther ne voulut pas faire passer le latin mot à mot. Il disait que pour bien traduire il faut sortir dans la rue et regarder comment parlent les gens : la mère dans sa maison, les enfants qui jouent, l'homme au marché. Qu'il faut les entendre parler et écrire comme ils parlent.",
+   "Et il se produisit une chose que presque personne n'avait prévue. L'Allemagne était partagée en des dizaines de parlers différents. Ce livre fut imprimé tant de fois, et lu dans tant de chaires, que la façon de parler de Luther finit par s'imposer sur toutes les autres. L'allemand moderne sortit, en bonne part, de ces pages. Une Bible finit par fabriquer une langue. Et elle le ferait encore dans d'autres langues.",
+   "Un détail honnête, car ce musée ne cache rien. Dans l'épître aux Romains, Luther ajouta un mot qui n'est pas dans le grec : seule. Par la foi seule. On le lui reprocha, et il écrivit tout un traité pour se défendre, disant que l'allemand l'exigeait pour que la phrase se comprît. On y voit une chose qui vaut pour toute cette vitrine : traduire n'est jamais seulement traduire. Il y a toujours quelqu'un qui interprète et qui décide.",
+   "Et ce que Luther faisait en allemand, d'autres le tentaient au même moment en anglais et en castillan, et plusieurs d'entre eux le payèrent de leur vie. Vous le verrez plus loin.",
+   "Luther ne traduisit pas dans la langue de son peuple. Il traduisit de telle sorte que son peuple finit par en avoir une."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 11 · Museum zur Geschichte der Bibel",
-   "titulo": "Das Neue Testament des Erasmus",
-   "siglo": "Basel, 1516 · der Textus Receptus",
+   "sala": "Vitrine 14 · Museum zur Geschichte der Bibel",
+   "titulo": "Die Lutherbibel",
+   "siglo": "Wartburg, 1521 · elf Wochen",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Dieses Buch entstand in Eile, mit wenigen Handschriften und mit Fehlern. Und es hat die Welt verändert.",
-   "Basel, Schweiz, März 1516. Erasmus von Rotterdam, der berühmteste Humanist Europas, veröffentlicht das Neue Testament auf Griechisch, zusammen mit einer neuen lateinischen Übersetzung aus seiner Feder. Der Drucker Froben wollte den Spaniern zuvorkommen, die das ihre bereits gedruckt hatten, aber auf die Erlaubnis warten mussten. Sie gewannen: dies war das erste veröffentlichte griechische Neue Testament.",
-   "Erasmus selbst hat es später eingeräumt, in einem Satz, der noch immer zitiert wird: es sei eher hinuntergestürzt als herausgegeben worden. Und das stimmt. Er benutzte die wenigen griechischen Handschriften, die in Basel zu haben waren, allesamt spät. Als er zur Offenbarung kam, fehlte seinem Exemplar das letzte Blatt. Was tat er? Er nahm die lateinische Vulgata und übersetzte diese Schlussverse selbst ins Griechische zurück. Im Text stehen bis heute einige Wörter, die in keiner griechischen Handschrift der Welt vorkommen.",
-   "Das wirklich Sprengkräftige war jedoch nicht das Griechische: es war seine lateinische Übersetzung. Indem er die Vulgata verbesserte, zeigte Erasmus, dass der amtliche Text der Kirche bestreitbar war. Und was bestreitbar ist, ist übersetzbar.",
-   "Was danach kam, kennen Sie. Luther übersetzte aus der zweiten Ausgabe des Erasmus ins Deutsche. Tyndale ins Englische. Casiodoro de Reina und Cipriano de Valera ins Spanische. Von diesem Band stammen die King-James-Bibel und die Reina-Valera ab.",
-   "Und der Name stammt aus einer Werbezeile. 1633 schrieben die Drucker Elzevier in ihrer Vorrede, der Leser halte den von allen angenommenen Text in Händen. Textus receptus. Der Name blieb haften.",
-   "Aus diesem in Basel gedruckten Band gingen die Übersetzungen in die lebenden Sprachen hervor. Die folgenden Vitrinen sind genau diese: das Deutsche, das Englische und, von da an, unsere eigene."
+   "Ein Mann, versteckt auf einer Burg, unter falschem Namen, übersetzte dies in elf Wochen.",
+   "Das Jahr 1521. Martin Luther ist eben auf dem Reichstag zu Worms verurteilt worden. Er ist vogelfrei: jeder darf ihn ungestraft töten. Seine Freunde entführen ihn und verbergen ihn auf der Wartburg, wo er verkleidet lebt, mit Bart und Rittertracht, unter dem Namen Junker Jörg.",
+   "Dort, eingeschlossen, macht er sich daran, das Neue Testament ins Deutsche zu übersetzen. Er arbeitet nach dem Griechischen des Erasmus, dem Buch, das Sie eben gesehen haben. Er wird in elf Wochen fertig. Im September 1522 wird es gedruckt. Das Alte Testament sollte ihn zwölf weitere Jahre kosten, und die vollständige Bibel erschien 1534.",
+   "Nun aber: wichtig war nicht die Schnelligkeit. Wichtig war, wie er übersetzte. Luther wollte das Latein nicht Wort für Wort hinübertragen. Er sagte, um gut zu übersetzen, müsse man auf die Gasse gehen und sehen, wie die Leute reden: die Mutter im Haus, die spielenden Kinder, der Mann auf dem Markt. Man müsse ihnen aufs Maul schauen und schreiben, wie sie reden.",
+   "Und es geschah etwas, das kaum jemand vorhersah. Deutschland war in Dutzende verschiedener Mundarten zerteilt. Dieses Buch wurde so oft gedruckt und von so vielen Kanzeln gelesen, dass Luthers Art zu reden sich schließlich über alle anderen durchsetzte. Das moderne Deutsch ging zu gutem Teil aus diesen Seiten hervor. Eine Bibel hat am Ende eine Sprache gemacht. Und sie sollte es in anderen Sprachen weiter tun.",
+   "Eine ehrliche Einzelheit, denn dieses Museum verbirgt nichts. Im Römerbrief fügte Luther ein Wort hinzu, das im Griechischen nicht steht: allein. Durch den Glauben allein. Man hielt es ihm vor, und er schrieb eine ganze Schrift zu seiner Verteidigung, das Deutsche verlange es, damit der Satz verstanden werde. Darin zeigt sich, was für diese ganze Vitrine gilt: Übersetzen ist nie bloß Übersetzen. Immer legt jemand aus und entscheidet.",
+   "Und was Luther auf Deutsch tat, versuchten andere zur selben Zeit auf Englisch und auf Spanisch, und mehrere von ihnen bezahlten es mit dem Leben. Das werden Sie weiter hinten sehen.",
+   "Luther übersetzte nicht in die Sprache seines Volkes. Er übersetzte so, dass sein Volk am Ende eine hatte."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 11 · Museo di Storia della Bibbia",
-   "titulo": "Il Nuovo Testamento di Erasmo",
-   "siglo": "Basilea, 1516 · il Textus Receptus",
+   "sala": "Vetrina 14 · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia di Lutero",
+   "siglo": "Wartburg, 1521 · undici settimane",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Questo libro fu fatto in fretta, con pochi manoscritti e con errori. E cambiò il mondo.",
-   "Basilea, Svizzera, marzo 1516. Erasmo da Rotterdam, l'umanista più famoso d'Europa, pubblica il Nuovo Testamento in greco insieme a una nuova traduzione latina di sua mano. Lo stampatore Froben voleva battere gli spagnoli, che il loro l'avevano già stampato ma tenuto fermo, in attesa del permesso. Vinsero: questo fu il primo Nuovo Testamento greco pubblicato.",
-   "Lo riconobbe poi Erasmo stesso, con una frase ancora citata: fu precipitato, disse, più che curato. Ed è vero. Usò i pochi manoscritti greci disponibili a Basilea, tutti tardi. Arrivato all'Apocalisse, scoprì che al suo esemplare mancava l'ultimo foglio. Che fece? Prese la Vulgata latina e tradusse lui stesso quei versetti finali in greco. Nel testo restano alcune parole che non compaiono in nessun manoscritto greco al mondo.",
-   "Ma la cosa davvero esplosiva non fu il greco: fu la sua traduzione latina. Correggendo la Vulgata, Erasmo dimostrò che il testo ufficiale della Chiesa poteva essere discusso. E se poteva essere discusso, poteva essere tradotto.",
-   "Quel che venne dopo lo conosce. Lutero tradusse in tedesco dalla seconda edizione di Erasmo. Tyndale in inglese. Casiodoro de Reina e Cipriano de Valera in castigliano. Da questo volume discendono la Bibbia di re Giacomo e la Reina-Valera.",
-   "E il nome viene da una frase pubblicitaria. Nel 1633 gli stampatori Elzevier scrissero nella prefazione che il lettore aveva tra le mani il testo ricevuto da tutti. Textus receptus. Il nome restò.",
-   "Da questo volume stampato a Basilea nacquero le traduzioni nelle lingue vive. Le vetrine che seguono sono proprio quelle: il tedesco, l'inglese e, da lì in avanti, la nostra."
+   "Un uomo nascosto in un castello, sotto falso nome, tradusse questo in undici settimane.",
+   "Anno 1521. Martin Lutero è appena stato condannato alla Dieta di Worms. È fuori legge: chiunque può ucciderlo impunemente. I suoi amici lo rapiscono e lo nascondono nel castello di Wartburg, dove vive travestito, con barba e abiti da cavaliere, sotto il nome di Giorgio.",
+   "Lì, rinchiuso, si mette a tradurre il Nuovo Testamento in tedesco. Lavora sul greco di Erasmo, il libro che lei ha appena visto. Finisce in undici settimane. Si stampa nel settembre del 1522. L'Antico Testamento gli avrebbe preso altri dodici anni, e la Bibbia completa uscì nel 1534.",
+   "Ora, l'importante non fu la rapidità. Fu come tradusse. Lutero non volle far passare il latino parola per parola. Diceva che per tradurre bene bisogna uscire in strada e guardare come parla la gente: la madre in casa, i bambini che giocano, l'uomo al mercato. Che bisogna sentirli parlare e scrivere come parlano.",
+   "E accadde una cosa che quasi nessuno previde. La Germania era divisa in decine di parlate diverse. Questo libro fu stampato tante volte, e letto da tanti pulpiti, che il modo di parlare di Lutero finì per imporsi su tutti gli altri. Il tedesco moderno uscì, in buona misura, da queste pagine. Una Bibbia finì per fabbricare una lingua. E lo avrebbe fatto ancora in altre lingue.",
+   "Un dettaglio onesto, perché questo museo non nasconde nulla. Nella lettera ai Romani, Lutero aggiunse una parola che non è nel greco: sola. Per la fede sola. Glielo rinfacciarono, e lui scrisse un intero trattato per difendersi, dicendo che il tedesco lo richiedeva perché la frase si capisse. Lì si vede qualcosa che vale per tutta questa vetrina: tradurre non è mai soltanto tradurre. C'è sempre qualcuno che interpreta e decide.",
+   "E ciò che Lutero faceva in tedesco, altri lo tentavano nello stesso momento in inglese e in castigliano, e parecchi di loro lo pagarono con la vita. Questo lo vedrà più avanti.",
+   "Lutero non tradusse nella lingua del suo popolo. Tradusse in modo tale che il suo popolo finì per averne una."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 14 · Museu de História da Bíblia",
+   "titulo": "A Bíblia de Lutero",
+   "siglo": "Wartburg, 1521 · onze semanas",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Um homem escondido num castelo, com nome falso, traduziu isto em onze semanas.",
+   "Ano de 1521. Martinho Lutero acaba de ser condenado na Dieta de Worms. Está fora da lei: qualquer um pode matá-lo sem castigo. Os seus amigos sequestram-no e escondem-no no castelo de Wartburg, onde vive disfarçado, de barba e roupa de cavaleiro, sob o nome de Jorge.",
+   "Ali, trancado, põe-se a traduzir o Novo Testamento para o alemão. Trabalha sobre o grego de Erasmo, o livro que você acabou de ver. Termina em onze semanas. Imprime-se em setembro de 1522. O Antigo Testamento levar-lhe-ia mais doze anos, e a Bíblia completa saiu em 1534.",
+   "Ora, o importante não foi a rapidez. Foi como traduziu. Lutero não quis passar o latim palavra por palavra. Dizia que para traduzir bem é preciso sair à rua e olhar como fala a gente: a mãe em sua casa, as crianças brincando, o homem no mercado. Que é preciso ouvi-los falar e escrever como eles falam.",
+   "E aconteceu algo que quase ninguém previu. A Alemanha estava partida em dezenas de falares diferentes. Este livro foi impresso tantas vezes, e lido em tantos púlpitos, que a maneira de falar de Lutero acabou impondo-se sobre todas as demais. O alemão moderno saiu, em boa medida, destas páginas. Uma Bíblia acabou fabricando um idioma. E continuaria fazendo-o em outras línguas.",
+   "Um detalhe honesto, porque este museu não esconde nada. Na carta aos Romanos, Lutero acrescentou uma palavra que não está no grego: somente. Pela fé somente. Reclamaram-lhe, e ele escreveu um tratado inteiro defendendo-se, dizendo que assim o exigia o alemão para que a frase se entendesse. Aí se vê algo que vale para toda esta vitrine: traduzir nunca é só traduzir. Há sempre alguém interpretando e decidindo.",
+   "E o que Lutero estava fazendo em alemão, outros tentavam ao mesmo tempo em inglês e em castelhano, e vários deles pagaram com a vida. Isso você verá mais adiante.",
+   "Lutero não traduziu para a língua do seu povo. Traduziu de tal modo que o seu povo acabou tendo uma."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 14 · Музей истории Библии",
+   "titulo": "Библия Лютера",
+   "siglo": "Вартбург, 1521 · одиннадцать недель",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Человек, укрывшийся в замке под чужим именем, перевёл это за одиннадцать недель.",
+   "1521 год. Мартина Лютера только что осудили на Вормсском рейхстаге. Он вне закона: любой может убить его безнаказанно. Друзья похищают его и прячут в замке Вартбург, где он живёт переодетым, с бородой и в рыцарском платье, под именем Юнкера Йорга.",
+   "Там, взаперти, он принимается переводить Новый Завет на немецкий. Работает по греческому тексту Эразма — той книге, которую вы только что видели. Заканчивает за одиннадцать недель. В сентябре 1522 года выходит печатное издание. Ветхий Завет займёт у него ещё двенадцать лет, а полная Библия вышла в 1534 году.",
+   "Но важна была не быстрота. Важно было, как он переводил. Лютер не стал перекладывать латынь слово за словом. Он говорил, что для хорошего перевода надо выйти на улицу и посмотреть, как говорят люди: мать в доме, играющие дети, человек на рынке. Надо слушать их и писать так, как говорят они.",
+   "И произошло то, чего почти никто не предвидел. Германия была расколота на десятки разных говоров. Эту книгу печатали столько раз и читали с такого множества кафедр, что манера речи Лютера в конце концов взяла верх над всеми прочими. Современный немецкий вышел в значительной мере из этих страниц. Библия в итоге создала язык. И повторит это потом в других языках.",
+   "Честная подробность, потому что этот музей ничего не скрывает. В Послании к Римлянам Лютер прибавил слово, которого нет в греческом: только. Верою только. Ему это поставили в упрёк, и он написал целый трактат в свою защиту, говоря, что немецкий этого требует, чтобы фраза была понятна. Здесь видно то, что верно для всей этой витрины: перевод никогда не бывает просто переводом. Всегда кто-то толкует и решает.",
+   "А то, что Лютер делал по-немецки, другие в то же самое время пытались делать по-английски и по-испански, и некоторые из них заплатили за это жизнью. Это вы увидите дальше.",
+   "Лютер переводил не на язык своего народа. Он переводил так, что у его народа в итоге появился язык."
   ]
  }
 };
@@ -282,6 +335,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia del Oso — Museo de Historia de la Biblia</title>
+<title>La Biblia del Cántaro — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#F2EBDC;--claro:#FBF5E8;--tinta:#2A2018;--cabecera:#4A3520;--acento:#C9922B;--marca:rgba(201,146,43,.34); }
+  :root{ --fondo:#F0F0E8;--claro:#FAFAF3;--tinta:#1B1C16;--cabecera:#2E4A2E;--acento:#7A8A3A;--marca:rgba(122,138,58,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,9 +17,11 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .panal{flex:none;width:70px;height:70px;display:grid;grid-template-columns:repeat(3,20px);gap:3px;align-content:center;justify-content:center}
-  .panal i{display:block;width:20px;height:22px;background:var(--acento);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
-  .panal i.tenue{background:rgba(201,146,43,.42)}
+  .cant{flex:none;display:flex;align-items:flex-end;gap:7px}
+  .cant b{display:block;width:30px;height:38px;background:var(--acento);border-radius:6px 6px 14px 14px;position:relative}
+  .cant b:after{content:'';position:absolute;left:8px;top:-8px;width:14px;height:10px;background:var(--acento);border-radius:3px 3px 0 0}
+  .cant i{display:block;width:5px;height:50px;background:var(--cabecera);border-radius:3px;position:relative}
+  .cant i:after{content:'';position:absolute;left:-10px;top:-6px;width:25px;height:16px;background:var(--cabecera);border-radius:50%;opacity:.85}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -40,11 +42,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="panal" aria-hidden="true"><i class="tenue"></i><i></i><i class="tenue"></i><i></i><i></i><i></i><i class="tenue"></i><i></i><i class="tenue"></i></div>
+  <div class="cant" aria-hidden="true"><b></b><i></i></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -73,115 +76,161 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 18 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia del Oso",
-   "siglo": "Basilea, 1569 · Casiodoro de Reina",
+   "sala": "Vitrina 18b · Museo de Historia de la Biblia",
+   "titulo": "La Biblia del Cántaro",
+   "siglo": "Ámsterdam, 1,602 · Cipriano de Valera",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Ésta es la nuestra. La primera Biblia completa en castellano traducida directamente del hebreo y del griego. Y la hizo un hombre que pasó doce años huyendo mientras la escribía.",
-   "Se llamaba Casiodoro de Reina. Era monje en el monasterio de San Isidoro del Campo, a las afueras de Sevilla. En 1,557, él y una docena de hermanos escaparon de España con la Inquisición pisándoles los talones. Los que no alcanzaron a huir fueron quemados. A Casiodoro, como no lo pudieron atrapar, lo quemaron en efigie en Sevilla, en un muñeco con su cara.",
-   "Doce años anduvo de un país a otro: Ginebra, Londres, Amberes, Fráncfort, Basilea. Perseguido por agentes que lo buscaban por encargo, acusado por todos los bandos, sin dinero, cargando el manuscrito. Y sin dejar de traducir un solo año.",
-   "Se imprimió en Basilea en septiembre de 1,569. Dos mil seiscientos ejemplares.",
-   "Ahora, el nombre del libro. Mire la portada: hay un oso parado contra un árbol, estirándose para alcanzar un panal de miel. Ése es el emblema del impresor, que se apellidaba Apiario, o sea, colmenero. Lo usaron a propósito, para que en la portada no apareciera ninguna señal religiosa que delatara de dónde salía el libro. Por ese oso la conocemos hoy como la Biblia del Oso.",
-   "En el prólogo, Casiodoro escribió que prohibir la Biblia en lengua del pueblo no se puede defender con ningún argumento honesto. Lo escribió cuando eso costaba la vida.",
-   "Murió en Fráncfort, en 1,594, siendo pastor de una comunidad de refugiados. Treinta y tres años después, su amigo Cipriano de Valera revisó el texto. Y de esos dos apellidos viene la Biblia que millones de personas tienen hoy en su casa: la Reina-Valera.",
-   "Pero esta Biblia todavía no estaba terminada. Otro hombre, que huyó de Sevilla la misma noche que él, le dedicaría veinte años más. Eso es lo que verá en la vitrina siguiente."
+   "Mire la portada. Hay dos hombres y un arbolito. Uno lo está plantando. El otro lo riega con un cántaro.",
+   "Eso no es un adorno. Es una cita de Pablo a los corintios: yo planté, Apolos regó, pero Dios dio el crecimiento. Y es también, exactamente, la historia de este libro. Por ese cántaro la conocemos hoy con ese nombre.",
+   "El que plantó fue Casiodoro de Reina, el de la vitrina anterior. El que regó fue Cipriano de Valera, su compañero en el monasterio de Sevilla, que huyó con él en 1,557.",
+   "Valera vivió casi cincuenta años en Inglaterra. Y dedicó veinte de esos años a revisar, cotejar y corregir la Biblia de su amigo. Veinte años sobre un libro que ya estaba hecho. Se publicó en Ámsterdam, en 1,602.",
+   "Y qué hizo exactamente. Limpió erratas, ajustó el castellano, ordenó el texto y movió los libros deuterocanónicos a una sección aparte, entre los dos Testamentos.",
+   "De esta revisión de 1,602 viene, por línea directa, la Reina-Valera que hoy leen millones de personas en toda América. Los dos apellidos del título son estos dos hombres, que se conocieron de jóvenes en un monasterio sevillano y escaparon juntos una noche de 1,557.",
+   "Casiodoro nunca vio esta edición: llevaba ocho años muerto cuando se logró imprimir.",
+   "Veinte años corrigiendo el libro de un amigo que ya no podía agradecérselo. Eso también es la cadena."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 18 · Museum of the History of the Bible",
-   "titulo": "The Bear Bible",
-   "siglo": "Basel, 1569 · Casiodoro de Reina",
+   "sala": "Case 18b · Museum of the History of the Bible",
+   "titulo": "The Pitcher Bible",
+   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "This one is ours. The first complete Bible in Spanish translated directly from the Hebrew and the Greek. And it was made by a man who spent twelve years on the run while he wrote it.",
-   "His name was Casiodoro de Reina. He was a monk at the monastery of San Isidoro del Campo, outside Seville. In 1557 he and a dozen of his brothers escaped from Spain with the Inquisition at their heels. Those who did not get away in time were burned. Casiodoro, since they could not catch him, was burned in effigy in Seville, in a dummy made to look like him.",
-   "For twelve years he moved from country to country: Geneva, London, Antwerp, Frankfurt, Basel. Hunted by agents paid to find him, accused by every side, without money, carrying the manuscript with him. And never stopping the translation for a single year.",
-   "It was printed in Basel in September 1569. Two thousand six hundred copies.",
-   "Now, the name. Look at the title page: there is a bear standing against a tree, reaching up for a honeycomb. That is the emblem of the printer, whose name was Apiarius, that is to say, beekeeper. It was used deliberately, so that no religious sign on the cover would betray where the book had come from. Because of that bear we know it today as the Bear Bible.",
-   "In his preface Casiodoro wrote that forbidding the Bible in the language of the people cannot be defended by any honest argument. He wrote that at a time when saying so cost a man his life.",
-   "He died in Frankfurt in 1594, serving as pastor to a community of refugees. Thirty-three years later his friend Cipriano de Valera revised the text. And from those two surnames comes the Bible that millions of people have in their homes today: the Reina-Valera.",
-   "But this Bible was not finished yet. Another man, who fled Seville on the same night he did, would give it twenty more years. That is what you will see in the next case."
+   "Look at the title page. There are two men and a little tree. One is planting it. The other waters it with a pitcher.",
+   "That is not an ornament. It is a quotation from Paul to the Corinthians: I planted, Apollos watered, but God gave the increase. And it is also, exactly, the story of this book. Because of that pitcher we know it today by that name.",
+   "The one who planted was Casiodoro de Reina, of the previous case. The one who watered was Cipriano de Valera, his companion at the monastery in Seville, who fled with him in 1557.",
+   "Valera lived almost fifty years in England. And he gave twenty of those years to revising, collating and correcting his friend's Bible. Twenty years on a book that was already made. It was published in Amsterdam, in 1602.",
+   "And what exactly did he do. He cleared up misprints, adjusted the Spanish, ordered the text and moved the deuterocanonical books to a section of their own, between the two Testaments.",
+   "From this revision of 1602 comes, in a direct line, the Reina-Valera that millions of people read today throughout America. The two surnames in the title are these two men, who met as young men in a Sevillian monastery and escaped together one night in 1557.",
+   "Casiodoro never saw this edition: he had been dead eight years when it was finally printed.",
+   "Twenty years correcting the book of a friend who could no longer thank him for it. That too is the chain."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 18 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible de l'Ours",
-   "siglo": "Bâle, 1569 · Casiodoro de Reina",
+   "sala": "Vitrine 18b · Musée de l'Histoire de la Bible",
+   "titulo": "La Bible de la Cruche",
+   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Celle-ci est la nôtre. La première Bible complète en espagnol traduite directement de l'hébreu et du grec. Et elle fut faite par un homme qui passa douze ans en fuite pendant qu'il l'écrivait.",
-   "Il s'appelait Casiodoro de Reina. Il était moine au monastère de San Isidoro del Campo, aux portes de Séville. En 1557, lui et une douzaine de ses frères s'enfuirent d'Espagne, l'Inquisition sur les talons. Ceux qui ne purent fuir à temps furent brûlés. Casiodoro, faute de pouvoir l'attraper, fut brûlé en effigie à Séville, dans un mannequin à son image.",
-   "Douze ans durant il alla d'un pays à l'autre : Genève, Londres, Anvers, Francfort, Bâle. Poursuivi par des agents payés pour le retrouver, accusé par tous les camps, sans argent, portant son manuscrit avec lui. Et sans interrompre la traduction une seule année.",
-   "Elle fut imprimée à Bâle en septembre 1569. Deux mille six cents exemplaires.",
-   "Et maintenant, le nom. Regardez la page de titre : un ours dressé contre un arbre, tendant la patte vers un rayon de miel. C'est l'emblème de l'imprimeur, qui s'appelait Apiarius, c'est-à-dire l'apiculteur. On l'a choisi exprès, pour qu'aucun signe religieux sur la couverture ne trahisse la provenance du livre. C'est à cause de cet ours qu'on l'appelle aujourd'hui la Bible de l'Ours.",
-   "Dans sa préface, Casiodoro écrivit qu'interdire la Bible dans la langue du peuple ne peut se défendre par aucun argument honnête. Il l'a écrit à une époque où le dire coûtait la vie.",
-   "Il mourut à Francfort en 1594, pasteur d'une communauté de réfugiés. Trente-trois ans plus tard, son ami Cipriano de Valera révisa le texte. Et de ces deux noms vient la Bible que des millions de personnes ont aujourd'hui chez elles : la Reina-Valera.",
-   "Mais cette Bible n'était pas encore achevée. Un autre homme, qui s'enfuit de Séville la même nuit que lui, allait lui consacrer vingt années de plus. C'est ce que vous verrez dans la vitrine suivante."
+   "Regardez la page de titre. Il y a deux hommes et un petit arbre. L'un le plante. L'autre l'arrose avec une cruche.",
+   "Ce n'est pas un ornement. C'est une citation de Paul aux Corinthiens : j'ai planté, Apollos a arrosé, mais Dieu a donné la croissance. Et c'est aussi, exactement, l'histoire de ce livre. À cause de cette cruche nous la connaissons aujourd'hui sous ce nom.",
+   "Celui qui planta fut Casiodoro de Reina, celui de la vitrine précédente. Celui qui arrosa fut Cipriano de Valera, son compagnon au monastère de Séville, qui s'enfuit avec lui en 1557.",
+   "Valera vécut près de cinquante ans en Angleterre. Et il consacra vingt de ces années à réviser, collationner et corriger la Bible de son ami. Vingt ans sur un livre déjà fait. Elle parut à Amsterdam, en 1602.",
+   "Et que fit-il exactement. Il nettoya les coquilles, ajusta le castillan, ordonna le texte et déplaça les livres deutérocanoniques dans une section à part, entre les deux Testaments.",
+   "De cette révision de 1602 vient, en ligne directe, la Reina-Valera que lisent aujourd'hui des millions de personnes dans toute l'Amérique. Les deux noms du titre sont ces deux hommes, qui se connurent jeunes dans un monastère sévillan et s'échappèrent ensemble une nuit de 1557.",
+   "Casiodoro ne vit jamais cette édition : il était mort depuis huit ans quand on parvint à l'imprimer.",
+   "Vingt ans à corriger le livre d'un ami qui ne pouvait plus l'en remercier. Cela aussi, c'est la chaîne."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 18 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Bärenbibel",
-   "siglo": "Basel, 1569 · Casiodoro de Reina",
+   "sala": "Vitrine 18b · Museum zur Geschichte der Bibel",
+   "titulo": "Die Krugbibel",
+   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Diese hier ist die unsere. Die erste vollständige Bibel auf Spanisch, unmittelbar aus dem Hebräischen und dem Griechischen übersetzt. Und gemacht hat sie ein Mann, der zwölf Jahre auf der Flucht war, während er sie schrieb.",
-   "Er hieß Casiodoro de Reina. Er war Mönch im Kloster San Isidoro del Campo vor den Toren Sevillas. 1557 entkamen er und ein Dutzend seiner Brüder aus Spanien, die Inquisition dicht hinter ihnen. Wer nicht rechtzeitig fliehen konnte, wurde verbrannt. Casiodoro, den man nicht fassen konnte, wurde in Sevilla in effigie verbrannt, in einer Puppe mit seinem Gesicht.",
-   "Zwölf Jahre zog er von Land zu Land: Genf, London, Antwerpen, Frankfurt, Basel. Verfolgt von Agenten, die man auf ihn angesetzt hatte, von allen Seiten angeklagt, ohne Geld, die Handschrift bei sich. Und ohne die Übersetzung ein einziges Jahr ruhen zu lassen.",
-   "Gedruckt wurde sie in Basel im September 1569. Zweitausendsechshundert Exemplare.",
-   "Nun der Name. Sehen Sie das Titelblatt an: ein Bär steht an einem Baum und streckt sich nach einer Honigwabe. Das ist das Zeichen des Druckers, der Apiarius hieß, also Imker. Man wählte es mit Absicht, damit kein religiöses Zeichen auf dem Umschlag verriet, woher das Buch kam. Dieses Bären wegen nennen wir sie heute die Bärenbibel.",
-   "In der Vorrede schrieb Casiodoro, dass sich das Verbot der Bibel in der Sprache des Volkes mit keinem redlichen Argument verteidigen lasse. Er schrieb das zu einer Zeit, in der das Leben kostete.",
-   "Er starb 1594 in Frankfurt als Pfarrer einer Flüchtlingsgemeinde. Dreiunddreißig Jahre später überarbeitete sein Freund Cipriano de Valera den Text. Und aus diesen beiden Namen stammt die Bibel, die heute Millionen Menschen zu Hause haben: die Reina-Valera.",
-   "Doch diese Bibel war noch nicht fertig. Ein anderer Mann, der in derselben Nacht wie er aus Sevilla floh, sollte ihr zwanzig weitere Jahre widmen. Das werden Sie in der nächsten Vitrine sehen."
+   "Sehen Sie das Titelblatt an. Da sind zwei Männer und ein Bäumchen. Der eine pflanzt es. Der andere begießt es aus einem Krug.",
+   "Das ist kein Zierat. Es ist ein Zitat des Paulus an die Korinther: ich habe gepflanzt, Apollos hat begossen, Gott aber hat das Gedeihen gegeben. Und es ist zugleich genau die Geschichte dieses Buches. Nach jenem Krug kennen wir sie heute unter diesem Namen.",
+   "Der Pflanzende war Casiodoro de Reina, der aus der vorigen Vitrine. Der Begießende war Cipriano de Valera, sein Gefährte im Kloster zu Sevilla, der 1557 mit ihm floh.",
+   "Valera lebte fast fünfzig Jahre in England. Und zwanzig dieser Jahre wandte er darauf, die Bibel seines Freundes durchzusehen, zu vergleichen und zu verbessern. Zwanzig Jahre an einem Buch, das schon fertig war. Erschienen ist sie in Amsterdam, 1602.",
+   "Und was tat er genau. Er tilgte Druckfehler, glättete das Spanische, ordnete den Text und stellte die deuterokanonischen Bücher in einen eigenen Abschnitt zwischen beide Testamente.",
+   "Aus dieser Durchsicht von 1602 stammt in gerader Linie die Reina-Valera, die heute Millionen Menschen in ganz Amerika lesen. Die beiden Namen im Titel sind diese beiden Männer, die sich als junge Leute in einem Kloster bei Sevilla kennenlernten und in einer Nacht des Jahres 1557 gemeinsam entkamen.",
+   "Casiodoro sah diese Ausgabe nie: er war seit acht Jahren tot, als sie endlich gedruckt wurde.",
+   "Zwanzig Jahre lang das Buch eines Freundes verbessern, der es ihm nicht mehr danken konnte. Auch das ist die Kette."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 18 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia dell'Orso",
-   "siglo": "Basilea, 1569 · Casiodoro de Reina",
+   "sala": "Vetrina 18b · Museo di Storia della Bibbia",
+   "titulo": "La Bibbia della Brocca",
+   "siglo": "Amsterdam, 1602 · Cipriano de Valera",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Questa è la nostra. La prima Bibbia completa in spagnolo tradotta direttamente dall'ebraico e dal greco. E la fece un uomo che passò dodici anni in fuga mentre la scriveva.",
-   "Si chiamava Casiodoro de Reina. Era monaco nel monastero di San Isidoro del Campo, alle porte di Siviglia. Nel 1557 lui e una dozzina di confratelli fuggirono dalla Spagna con l'Inquisizione alle calcagna. Quelli che non fecero in tempo furono bruciati. Casiodoro, poiché non riuscirono a prenderlo, fu bruciato in effigie a Siviglia, in un fantoccio con il suo volto.",
-   "Per dodici anni andò da un paese all'altro: Ginevra, Londra, Anversa, Francoforte, Basilea. Inseguito da agenti pagati per trovarlo, accusato da tutte le parti, senza denaro, con il manoscritto addosso. E senza interrompere la traduzione un solo anno.",
-   "Fu stampata a Basilea nel settembre del 1569. Duemilaseicento copie.",
-   "E ora il nome. Guardi il frontespizio: c'è un orso ritto contro un albero, teso verso un favo di miele. È l'emblema dello stampatore, che si chiamava Apiario, cioè apicoltore. Lo usarono di proposito, perché sulla copertina non comparisse alcun segno religioso che tradisse la provenienza del libro. Per quell'orso oggi la chiamiamo la Bibbia dell'Orso.",
-   "Nella prefazione Casiodoro scrisse che proibire la Bibbia nella lingua del popolo non si può difendere con nessun argomento onesto. Lo scrisse quando dirlo costava la vita.",
-   "Morì a Francoforte nel 1594, pastore di una comunità di rifugiati. Trentatré anni dopo il suo amico Cipriano de Valera rivide il testo. E da quei due cognomi viene la Bibbia che milioni di persone hanno oggi in casa: la Reina-Valera.",
-   "Ma questa Bibbia non era ancora finita. Un altro uomo, fuggito da Siviglia la stessa notte, le avrebbe dedicato altri vent'anni. È questo che vedrà nella vetrina seguente."
+   "Guardi il frontespizio. Ci sono due uomini e un alberello. Uno lo sta piantando. L'altro lo innaffia con una brocca.",
+   "Non è un ornamento. È una citazione di Paolo ai Corinzi: io ho piantato, Apollo ha innaffiato, ma Dio ha dato la crescita. Ed è anche, esattamente, la storia di questo libro. Per quella brocca oggi la conosciamo con quel nome.",
+   "Chi piantò fu Casiodoro de Reina, quello della vetrina precedente. Chi innaffiò fu Cipriano de Valera, suo compagno nel monastero di Siviglia, che fuggì con lui nel 1557.",
+   "Valera visse quasi cinquant'anni in Inghilterra. E dedicò venti di quegli anni a rivedere, collazionare e correggere la Bibbia dell'amico. Vent'anni su un libro già fatto. Fu pubblicata ad Amsterdam, nel 1602.",
+   "E che cosa fece esattamente. Ripulì i refusi, aggiustò il castigliano, ordinò il testo e spostò i libri deuterocanonici in una sezione a parte, fra i due Testamenti.",
+   "Da questa revisione del 1602 viene, per linea diretta, la Reina-Valera che oggi leggono milioni di persone in tutta l'America. I due cognomi del titolo sono questi due uomini, che si conobbero da giovani in un monastero sivigliano e fuggirono insieme una notte del 1557.",
+   "Casiodoro non vide mai questa edizione: era morto da otto anni quando si riuscì a stamparla.",
+   "Vent'anni a correggere il libro di un amico che non poteva più ringraziarlo. Anche questo è la catena."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 18b · Museu de História da Bíblia",
+   "titulo": "A Bíblia do Cântaro",
+   "siglo": "Amesterdão, 1602 · Cipriano de Valera",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Olhe o frontispício. Há dois homens e uma arvorezinha. Um está plantando-a. O outro rega-a com um cântaro.",
+   "Isso não é um adorno. É uma citação de Paulo aos coríntios: eu plantei, Apolo regou, mas Deus deu o crescimento. E é também, exatamente, a história deste livro. Por esse cântaro a conhecemos hoje com esse nome.",
+   "O que plantou foi Casiodoro de Reina, o da vitrine anterior. O que regou foi Cipriano de Valera, seu companheiro no mosteiro de Sevilha, que fugiu com ele em 1557.",
+   "Valera viveu quase cinquenta anos na Inglaterra. E dedicou vinte desses anos a rever, cotejar e corrigir a Bíblia do seu amigo. Vinte anos sobre um livro que já estava feito. Publicou-se em Amesterdão, em 1602.",
+   "E o que fez exatamente. Limpou erratas, ajustou o castelhano, ordenou o texto e passou os livros deuterocanônicos para uma secção à parte, entre os dois Testamentos.",
+   "Desta revisão de 1602 vem, por linha direta, a Reina-Valera que hoje leem milhões de pessoas em toda a América. Os dois sobrenomes do título são estes dois homens, que se conheceram jovens num mosteiro sevilhano e escaparam juntos numa noite de 1557.",
+   "Casiodoro nunca viu esta edição: levava oito anos morto quando se conseguiu imprimi-la.",
+   "Vinte anos corrigindo o livro de um amigo que já não podia agradecer-lho. Isso também é a corrente."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 18b · Музей истории Библии",
+   "titulo": "Библия Кувшина",
+   "siglo": "Амстердам, 1602 · Сиприано де Валера",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Посмотрите на титульный лист. Там двое мужчин и деревце. Один его сажает. Другой поливает из кувшина.",
+   "Это не украшение. Это слова Павла к коринфянам: я насадил, Аполлос полил, но возрастил Бог. И это в точности история этой книги. По тому кувшину мы и называем её сегодня так.",
+   "Насаждал Касиодоро де Рейна, тот, что в предыдущей витрине. Поливал Сиприано де Валера, его товарищ по севильскому монастырю, бежавший вместе с ним в 1557 году.",
+   "Валера прожил в Англии почти пятьдесят лет. И двадцать из этих лет отдал тому, чтобы выверить, сличить и исправить Библию своего друга. Двадцать лет над книгой, которая уже была готова. Издана она в Амстердаме, в 1602 году.",
+   "А что именно он сделал. Вычистил опечатки, выправил испанский язык, упорядочил текст и перенёс второканонические книги в отдельный раздел, между двумя Заветами.",
+   "От этой редакции 1602 года по прямой линии происходит Рейна-Валера, которую сегодня читают миллионы людей по всей Америке. Две фамилии в заглавии — это те двое, что познакомились юношами в севильском монастыре и вместе бежали одной ночью 1557 года.",
+   "Касиодоро так и не увидел этого издания: он уже восемь лет был мёртв, когда его удалось напечатать.",
+   "Двадцать лет править книгу друга, который уже не мог его поблагодарить. Это тоже цепь."
   ]
  }
 };
@@ -286,6 +335,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

@@ -17,9 +17,17 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .rutas{flex:none;display:flex;flex-direction:column;gap:7px;justify-content:center}
-  .rutas i{display:block;height:7px;border-radius:4px;background:var(--acento)}
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
+  
+  .emb{flex:none;width:64px;height:64px;border:2px solid var(--acento);border-radius:4px}
 
+  
+  
+  
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
   .idiomas button{font:inherit;font-size:.88em;padding:.6rem 1rem;min-height:48px;
@@ -39,11 +47,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <div class="rutas" aria-hidden="true"><i style="width:72px"></i><i style="width:44px"></i><i style="width:56px"></i></div>
+  <div class="emb" aria-hidden="true"></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -72,24 +81,22 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Museo de Historia de la Biblia",
+   "sala": "Bienvenida · Museo de Historia de la Biblia",
    "titulo": "Bienvenida",
-   "siglo": "Treinta y dos vitrinas · tres recorridos",
+   "siglo": "",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Bienvenido al Museo de Historia de la Biblia.",
-   "Lo que va a ver son treinta y dos vitrinas. El Libro que contienen empezó a escribirse hace unos tres mil quinientos años, con Moisés. Lo que aquí se exhibe es lo que vino después: el viaje de ese texto hasta llegar a sus manos. Ese viaje empieza en el material mismo sobre el que se escribió, y termina con un libro escrito en esta ciudad y terminado en septiembre de 2026.",
-   "En cada vitrina hay un código como el que acaba de escanear. Tóquelo, elija su idioma y escuche. Cada uno dura dos o tres minutos. No hace falta verlo todo. Le proponemos tres maneras de recorrerlo.",
-   "El recorrido completo: las treinta y dos vitrinas, en orden, poco más de una hora. Es el que cuenta la historia entera, de la copia a mano hasta la última impresión actual.",
-   "El recorrido corto, para quien trae prisa: seis vitrinas, quince minutos. La cinco, el Beato de Liébana. La ocho, Gutenberg. La dieciocho, la Biblia del Oso. La veintidós, la primera Biblia impresa en América. La veintiocho, las lenguas de este país. Y la treinta y dos, la última.",
-   "Y el recorrido de septiembre, porque en México septiembre es dos cosas a la vez: el mes de la Biblia y el mes de la Independencia. También son seis. La veinte, la veintiuna y la veintidós, que son las Biblias que llegaron a este país y la que se hizo aquí. La veinticuatro, donde se explica por qué septiembre es tan importante. La veintiocho, las lenguas de México. Y la treinta y dos.",
-   "Y una cosa que conviene decirle de antemano, antes de que empiece. Este museo no exhibe objetos: exhibe la historia de la Palabra. Cada página de cada libro es un eslabón que se une en la cadena del conocimiento de la humanidad, y lo que usted va a recorrer es esa cadena entera.",
-   "Por eso buena parte de lo que verá son facsímiles: reproducciones hechas hoja por hoja de originales que están en Módena, en Toledo, en París o en Nueva York. Cuando una pieza es original, la cédula lo dice.",
-   "Empiece por donde guste. El número está marcado en cada vitrina, pero lo recomendable es que haga el recorrido completo. Esperamos que sea de bendición para usted."
+   "Bienvenido al Museo de Historia de la Biblia, en México.",
+   "El Libro que va a ver empezó a escribirse hace unos tres mil quinientos años, con Moisés. Lo que aquí se exhibe es lo que vino después: el viaje de ese texto hasta llegar a sus manos. Ese viaje empieza en el material mismo sobre el que se escribió, y termina con un libro escrito en esta ciudad y terminado en septiembre de 2,026.",
+   "En cada vitrina hay un código como el que acaba de escanear. Tóquelo, elija su idioma y escuche. Cada uno dura dos o tres minutos.",
+   "Las vitrinas están numeradas: sígalas en orden, porque cada una continúa la historia de la anterior. El recorrido completo le llevará poco más de una hora. Y en los libreros encontrará algunas piezas más, cada una con su propio código.",
+   "Y una cosa que conviene decirle antes de que empiece. Este museo no exhibe objetos: exhibe la historia de las Escrituras. Cada página de cada libro es un eslabón que se une en la cadena del conocimiento de la humanidad y de los hijos de Dios.",
+   "Lo que usted va a recorrer es esa cadena completa, desde el año 1,500 antes de Cristo hasta el día de hoy.",
+   "Esperamos que su visita sea de bendición para usted."
   ]
  },
  "en": {
@@ -98,22 +105,20 @@ const GUIA = {
   "ui": {
    "sala": "Museum of the History of the Bible",
    "titulo": "Welcome",
-   "siglo": "Thirty-two cases · three tours",
+   "siglo": "A walk through the history of the Scriptures",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
-   "aviso": "This phone has no English voice available. You can read the text instead."
+   "aviso": "This phone has no English voice. You can read the text."
   },
   "t": [
-   "Welcome to the Museum of the History of the Bible.",
-   "What you are about to see is thirty-two cases. The Book they contain began to be written some three thousand five hundred years ago, with Moses. What is exhibited here is what came afterwards: the journey of that text until it reached your hands. That journey begins with the very material it was written on, and ends with a book written in this city and finished in September 2026.",
-   "On every case there is a code like the one you have just scanned. Tap it, choose your language and listen. Each one lasts two or three minutes. You do not have to see it all. We suggest three ways of going round.",
-   "The full tour: all thirty-two cases, in order, a little over an hour. It is the one that tells the whole story, from copying by hand to the latest printing of today.",
-   "The short tour, for anyone in a hurry: six cases, fifteen minutes. Number five, the Beatus of Liébana. Number eight, Gutenberg. Number eighteen, the Bear Bible. Number twenty-two, the first Bible printed in the Americas. Number twenty-eight, the languages of this country. And number thirty-two, the last one.",
-   "And the September tour, because in Mexico September is two things at once: the month of the Bible and the month of Independence. Six cases again. Twenty, twenty-one and twenty-two, the Bibles that arrived in this country and the one that was made here. Twenty-four, which explains why September matters so much. Twenty-eight, the languages of Mexico. And thirty-two.",
-   "And one thing worth telling you beforehand, before you begin. This museum does not exhibit objects: it exhibits the history of the Word. Every page of every book is a link joined into the chain of human knowledge, and what you are about to walk through is that whole chain.",
-   "That is why a good part of what you will see are facsimiles: reproductions made leaf by leaf from originals that are in Modena, in Toledo, in Paris or in New York. When a piece is an original, the label says so.",
-   "Begin wherever you like. The number is marked on every case, though we recommend doing the full tour. We hope it will be a blessing to you."
+   "Welcome to the Museum of the History of the Bible, in Mexico.",
+   "The Book you are about to see began to be written some three thousand five hundred years ago, with Moses. What is shown here is what came afterwards: the journey of that text until it reached your hands. That journey begins with the very material it was written on and ends with a book written in this city and finished in September 2026.",
+   "In every case there is a code like the one you have just scanned. Touch it, choose your language and listen. Each one lasts two or three minutes.",
+   "The cases are numbered: follow them in order, because each one continues the story of the one before. The whole tour takes a little over an hour. And on the bookcases, at the models, on the table and at the lectern you will find a few more pieces, each with its own code.",
+   "And one thing worth saying before you begin. This museum does not exhibit objects: it exhibits the history of the Scriptures. Every page of every book is a link joined into the chain of knowledge of mankind and of the children of God.",
+   "What you are about to walk through is that whole chain, from the year 1500 before Christ until today.",
+   "We hope your visit may be a blessing to you."
   ]
  },
  "fr": {
@@ -122,22 +127,20 @@ const GUIA = {
   "ui": {
    "sala": "Musée de l'Histoire de la Bible",
    "titulo": "Bienvenue",
-   "siglo": "Trente-deux vitrines · trois parcours",
+   "siglo": "Une promenade dans l'histoire des Écritures",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
-   "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
+   "aviso": "Ce téléphone n'a pas de voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Bienvenue au Musée de l'Histoire de la Bible.",
-   "Ce que vous allez voir, ce sont trente-deux vitrines. Le Livre qu'elles contiennent a commencé à s'écrire il y a quelque trois mille cinq cents ans, avec Moïse. Ce qui est exposé ici, c'est ce qui est venu après : le voyage de ce texte jusqu'à parvenir entre vos mains. Ce voyage commence par la matière même sur laquelle il fut écrit, et se termine avec un livre écrit dans cette ville et achevé en septembre 2026.",
-   "Sur chaque vitrine il y a un code comme celui que vous venez de scanner. Touchez-le, choisissez votre langue et écoutez. Chacun dure deux ou trois minutes. Il n'est pas nécessaire de tout voir. Nous vous proposons trois façons de parcourir le musée.",
-   "Le parcours complet : les trente-deux vitrines, dans l'ordre, un peu plus d'une heure. C'est celui qui raconte toute l'histoire, de la copie à la main jusqu'à la dernière impression d'aujourd'hui.",
-   "Le parcours court, pour qui est pressé : six vitrines, quinze minutes. La cinq, le Beatus de Liébana. La huit, Gutenberg. La dix-huit, la Bible de l'Ours. La vingt-deux, la première Bible imprimée en Amérique. La vingt-huit, les langues de ce pays. Et la trente-deux, la dernière.",
-   "Et le parcours de septembre, car au Mexique septembre est deux choses à la fois : le mois de la Bible et le mois de l'Indépendance. Six vitrines également. La vingt, la vingt et un et la vingt-deux, les Bibles qui sont arrivées dans ce pays et celle qui y a été faite. La vingt-quatre, qui explique pourquoi septembre compte tant. La vingt-huit, les langues du Mexique. Et la trente-deux.",
-   "Et une chose qu'il convient de vous dire d'avance, avant de commencer. Ce musée n'expose pas des objets : il expose l'histoire de la Parole. Chaque page de chaque livre est un maillon qui s'ajoute à la chaîne de la connaissance humaine, et ce que vous allez parcourir, c'est cette chaîne entière.",
-   "C'est pourquoi une bonne partie de ce que vous verrez sont des fac-similés : des reproductions faites feuillet par feuillet d'originaux qui se trouvent à Modène, à Tolède, à Paris ou à New York. Quand une pièce est un original, le cartel le dit.",
-   "Commencez où vous voulez. Le numéro est indiqué sur chaque vitrine, mais nous vous recommandons de faire le parcours complet. Nous espérons qu'il sera pour vous une bénédiction."
+   "Bienvenue au Musée de l'Histoire de la Bible, au Mexique.",
+   "Le Livre que vous allez voir commença à s'écrire il y a environ trois mille cinq cents ans, avec Moïse. Ce qui est exposé ici est ce qui vint après : le voyage de ce texte jusqu'à vos mains. Ce voyage commence par la matière même sur laquelle il fut écrit et s'achève par un livre écrit dans cette ville et terminé en septembre 2026.",
+   "Dans chaque vitrine il y a un code comme celui que vous venez de scanner. Touchez-le, choisissez votre langue et écoutez. Chacun dure deux ou trois minutes.",
+   "Les vitrines sont numérotées : suivez-les dans l'ordre, car chacune continue l'histoire de la précédente. Le parcours complet prend un peu plus d'une heure. Et sur les rayons, aux maquettes, sur la table et au pupitre vous trouverez quelques pièces de plus, chacune avec son propre code.",
+   "Et une chose qu'il convient de dire avant que vous ne commenciez. Ce musée n'expose pas des objets : il expose l'histoire des Écritures. Chaque page de chaque livre est un maillon qui s'unit à la chaîne de la connaissance de l'humanité et des enfants de Dieu.",
+   "Ce que vous allez parcourir, c'est cette chaîne entière, depuis l'an 1500 avant le Christ jusqu'à aujourd'hui.",
+   "Nous espérons que votre visite sera pour vous une bénédiction."
   ]
  },
  "de": {
@@ -146,22 +149,20 @@ const GUIA = {
   "ui": {
    "sala": "Museum zur Geschichte der Bibel",
    "titulo": "Willkommen",
-   "siglo": "Zweiunddreißig Vitrinen · drei Rundgänge",
+   "siglo": "Ein Gang durch die Geschichte der Schrift",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Willkommen im Museum zur Geschichte der Bibel.",
-   "Was Sie sehen werden, sind zweiunddreißig Vitrinen. Das Buch, das sie enthalten, begann vor etwa dreitausendfünfhundert Jahren geschrieben zu werden, mit Mose. Was hier ausgestellt wird, ist das, was danach kam: die Reise dieses Textes, bis er in Ihre Hände gelangte. Diese Reise beginnt beim Material selbst, auf dem er geschrieben wurde, und endet mit einem Buch, das in dieser Stadt geschrieben und im September 2026 vollendet wurde.",
-   "An jeder Vitrine ist ein Code wie der, den Sie eben gescannt haben. Tippen Sie ihn an, wählen Sie Ihre Sprache und hören Sie zu. Jeder dauert zwei bis drei Minuten. Sie müssen nicht alles sehen. Wir schlagen Ihnen drei Wege vor.",
-   "Der vollständige Rundgang: alle zweiunddreißig Vitrinen, der Reihe nach, etwas mehr als eine Stunde. Er erzählt die ganze Geschichte, vom Abschreiben von Hand bis zum jüngsten Druck von heute.",
-   "Der kurze Rundgang, für Eilige: sechs Vitrinen, fünfzehn Minuten. Nummer fünf, der Beatus von Liébana. Nummer acht, Gutenberg. Nummer achtzehn, die Bärenbibel. Nummer zweiundzwanzig, die erste in Amerika gedruckte Bibel. Nummer achtundzwanzig, die Sprachen dieses Landes. Und Nummer zweiunddreißig, die letzte.",
-   "Und der September-Rundgang, denn in Mexiko ist der September zweierlei zugleich: der Monat der Bibel und der Monat der Unabhängigkeit. Ebenfalls sechs Vitrinen. Zwanzig, einundzwanzig und zweiundzwanzig, die Bibeln, die in dieses Land kamen, und die, die hier gemacht wurde. Vierundzwanzig, wo erklärt wird, warum der September so wichtig ist. Achtundzwanzig, die Sprachen Mexikos. Und zweiunddreißig.",
-   "Und eines sollte vorher gesagt sein, bevor Sie beginnen. Dieses Museum stellt keine Gegenstände aus: es stellt die Geschichte des Wortes aus. Jede Seite jedes Buches ist ein Glied in der Kette des menschlichen Wissens, und was Sie durchwandern werden, ist diese ganze Kette.",
-   "Darum ist ein guter Teil dessen, was Sie sehen werden, Faksimiles: Blatt für Blatt gefertigte Nachbildungen von Originalen, die in Modena, in Toledo, in Paris oder in New York liegen. Wenn ein Stück ein Original ist, sagt es das Schild.",
-   "Beginnen Sie, wo Sie möchten. Die Nummer steht an jeder Vitrine, doch wir empfehlen den vollständigen Rundgang. Wir hoffen, dass er Ihnen zum Segen wird."
+   "Willkommen im Museum zur Geschichte der Bibel, in Mexiko.",
+   "Das Buch, das Sie sehen werden, begann vor etwa dreitausendfünfhundert Jahren geschrieben zu werden, mit Mose. Was hier gezeigt wird, ist das, was danach kam: die Reise dieses Textes, bis er in Ihre Hände gelangte. Diese Reise beginnt beim Material selbst, auf dem er geschrieben wurde, und endet bei einem Buch, das in dieser Stadt geschrieben und im September 2026 vollendet wurde.",
+   "In jeder Vitrine gibt es einen Code wie den, den Sie eben gescannt haben. Berühren Sie ihn, wählen Sie Ihre Sprache und hören Sie zu. Jeder dauert zwei oder drei Minuten.",
+   "Die Vitrinen sind nummeriert: folgen Sie ihnen der Reihe nach, denn jede setzt die Geschichte der vorigen fort. Der ganze Rundgang dauert etwas mehr als eine Stunde. Und an den Regalen, bei den Modellen, auf dem Tisch und am Pult finden Sie noch einige Stücke, jedes mit seinem eigenen Code.",
+   "Und eines sei gesagt, bevor Sie beginnen. Dieses Museum stellt keine Gegenstände aus: es stellt die Geschichte der Schrift aus. Jede Seite jedes Buches ist ein Glied, das sich in die Kette des Wissens der Menschheit und der Kinder Gottes fügt.",
+   "Was Sie durchschreiten werden, ist diese ganze Kette, vom Jahr 1500 vor Christus bis zum heutigen Tag.",
+   "Wir hoffen, dass Ihr Besuch Ihnen zum Segen wird."
   ]
  },
  "it": {
@@ -170,22 +171,64 @@ const GUIA = {
   "ui": {
    "sala": "Museo di Storia della Bibbia",
    "titulo": "Benvenuto",
-   "siglo": "Trentadue vetrine · tre percorsi",
+   "siglo": "Una passeggiata nella storia delle Scritture",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Benvenuto al Museo di Storia della Bibbia.",
-   "Quello che sta per vedere sono trentadue vetrine. Il Libro che contengono cominciò a scriversi circa tremilacinquecento anni fa, con Mosè. Quello che qui si espone è ciò che venne dopo: il viaggio di quel testo fino ad arrivare nelle sue mani. Quel viaggio comincia dalla materia stessa su cui fu scritto, e finisce con un libro scritto in questa città e terminato nel settembre del 2026.",
-   "Su ogni vetrina c'è un codice come quello che ha appena scansionato. Lo tocchi, scelga la sua lingua e ascolti. Ognuno dura due o tre minuti. Non è necessario vedere tutto. Le proponiamo tre modi di percorrerlo.",
-   "Il percorso completo: tutte le trentadue vetrine, in ordine, poco più di un'ora. È quello che racconta l'intera storia, dalla copia a mano fino all'ultima stampa di oggi.",
-   "Il percorso breve, per chi ha fretta: sei vetrine, quindici minuti. La cinque, il Beato di Liébana. La otto, Gutenberg. La diciotto, la Bibbia dell'Orso. La ventidue, la prima Bibbia stampata in America. La ventotto, le lingue di questo paese. E la trentadue, l'ultima.",
-   "E il percorso di settembre, perché in Messico settembre è due cose insieme: il mese della Bibbia e il mese dell'Indipendenza. Anche qui sei vetrine. La venti, la ventuno e la ventidue, le Bibbie che arrivarono in questo paese e quella che vi fu fatta. La ventiquattro, dove si spiega perché settembre conta tanto. La ventotto, le lingue del Messico. E la trentadue.",
-   "E una cosa che conviene dirle in anticipo, prima di cominciare. Questo museo non espone oggetti: espone la storia della Parola. Ogni pagina di ogni libro è un anello che si unisce alla catena della conoscenza dell'umanità, e quello che sta per percorrere è quella catena intera.",
-   "Per questo buona parte di ciò che vedrà sono facsimili: riproduzioni fatte foglio per foglio di originali che si trovano a Modena, a Toledo, a Parigi o a New York. Quando un pezzo è originale, la didascalia lo dice.",
-   "Cominci da dove preferisce. Il numero è segnato su ogni vetrina, ma le consigliamo di fare il percorso completo. Speriamo che sia di benedizione per lei."
+   "Benvenuto al Museo di Storia della Bibbia, in Messico.",
+   "Il Libro che sta per vedere cominciò a essere scritto circa tremilacinquecento anni fa, con Mosè. Ciò che qui si espone è quello che venne dopo: il viaggio di quel testo fino alle sue mani. Quel viaggio comincia dal materiale stesso su cui fu scritto e finisce con un libro scritto in questa città e terminato nel settembre del 2026.",
+   "In ogni vetrina c'è un codice come quello che ha appena scansionato. Lo tocchi, scelga la sua lingua e ascolti. Ciascuno dura due o tre minuti.",
+   "Le vetrine sono numerate: le segua in ordine, perché ciascuna continua la storia della precedente. Il percorso completo richiede poco più di un'ora. E negli scaffali, presso i modelli, sul tavolo e al leggio troverà qualche altro pezzo, ciascuno con il proprio codice.",
+   "E una cosa che conviene dirle prima di cominciare. Questo museo non espone oggetti: espone la storia delle Scritture. Ogni pagina di ogni libro è un anello che si unisce alla catena della conoscenza dell'umanità e dei figli di Dio.",
+   "Quello che percorrerà è questa catena intera, dall'anno 1500 avanti Cristo fino a oggi.",
+   "Speriamo che la sua visita sia per lei una benedizione."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Museu de História da Bíblia",
+   "titulo": "Bem-vindo",
+   "siglo": "Um passeio pela história das Escrituras",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Bem-vindo ao Museu de História da Bíblia, no México.",
+   "O Livro que você vai ver começou a ser escrito há cerca de três mil e quinhentos anos, com Moisés. O que aqui se expõe é o que veio depois: a viagem desse texto até chegar às suas mãos. Essa viagem começa no próprio material sobre o qual foi escrito e termina com um livro escrito nesta cidade e concluído em setembro de 2026.",
+   "Em cada vitrine há um código como o que você acabou de escanear. Toque nele, escolha o seu idioma e ouça. Cada um dura dois ou três minutos.",
+   "As vitrines são numeradas: siga-as em ordem, porque cada uma continua a história da anterior. O percurso completo leva pouco mais de uma hora. E nas estantes, nas maquetes, na mesa e na estante de leitura você encontrará mais algumas peças, cada uma com o seu próprio código.",
+   "E uma coisa que convém dizer antes de começar. Este museu não expõe objetos: expõe a história das Escrituras. Cada página de cada livro é um elo que se une à corrente do conhecimento da humanidade e dos filhos de Deus.",
+   "O que você vai percorrer é essa corrente inteira, do ano 1500 antes de Cristo até hoje.",
+   "Esperamos que a sua visita seja uma bênção para você."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Музей истории Библии",
+   "titulo": "Добро пожаловать",
+   "siglo": "Прогулка по истории Писания",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Добро пожаловать в Музей истории Библии в Мексике.",
+   "Книга, которую вы увидите, начала записываться около трёх с половиной тысяч лет назад, при Моисее. Здесь показано то, что было потом: путь этого текста до ваших рук. Путь начинается с самого материала, на котором писали, и заканчивается книгой, написанной в этом городе и завершённой в сентябре 2026 года.",
+   "На каждой витрине есть код, подобный тому, который вы только что отсканировали. Коснитесь его, выберите язык и слушайте. Каждая запись длится две-три минуты.",
+   "Витрины пронумерованы: идите по порядку, потому что каждая продолжает историю предыдущей. Полный осмотр займёт чуть больше часа. А на стеллажах, у макетов, на столе и на пюпитре вы найдёте ещё несколько экспонатов, у каждого свой код.",
+   "И ещё одно, прежде чем вы начнёте. Этот музей показывает не предметы: он показывает историю Писания. Каждая страница каждой книги — звено в цепи знания человечества и детей Божиих.",
+   "Вам предстоит пройти всю эту цепь, от 1500 года до Рождества Христова до наших дней.",
+   "Пусть это посещение станет для вас благословением."
   ]
  }
 };
@@ -290,6 +333,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>

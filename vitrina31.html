@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Biblia de Ferrara — Museo de Historia de la Biblia</title>
+<title>El Nuevo Testamento de Pérez de Pineda — Museo de Historia de la Biblia</title>
 <style>
-  :root{ --fondo:#EFEBE0;--claro:#FAF6EC;--tinta:#1F1C16;--cabecera:#1E3A5F;--acento:#B5912F;--marca:rgba(181,145,47,.3); }
+  :root{ --fondo:#F1EDE5;--claro:#FAF6EE;--tinta:#1C1A15;--cabecera:#4A2E2E;--acento:#8A5A3A;--marca:rgba(138,90,58,.3); }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tinta);
     font-family:"Iowan Old Style",Georgia,"Palatino Linotype",Palatino,serif;
@@ -17,7 +17,9 @@
   h1{font-size:1.8em;line-height:1.12;margin:0;font-weight:600}
   .siglo{margin:.5rem 0 0;font-size:.85em;font-style:italic;opacity:.88}
   
-  .estrella{flex:none;width:64px;height:64px}
+  .barril{flex:none;width:52px;height:62px;background:var(--acento);border-radius:12px/6px;position:relative;opacity:.9}
+  .barril:before,.barril:after{content:'';position:absolute;left:-3px;right:-3px;height:6px;background:var(--cabecera)}
+  .barril:before{top:14px}.barril:after{bottom:14px}
 
   main{padding:0 1.4rem}
   .idiomas{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 1.2rem}
@@ -38,13 +40,12 @@
   @media (prefers-reduced-motion:reduce){p.parrafo{transition:none}}
 </style>
   <link rel="stylesheet" href="menu-nav.css">
+  <script src="menu-nav.js" defer></script>
 </head>
 <body>
 <div class="hoja">
 <header>
-  <svg class="estrella" viewBox="0 0 64 64" aria-hidden="true">
-   <path d="M32 8 L54 46 L10 46 Z" fill="none" stroke="#B5912F" stroke-width="3"/>
-   <path d="M32 56 L10 18 L54 18 Z" fill="none" stroke="#B5912F" stroke-width="3"/></svg>
+  <div class="barril" aria-hidden="true"></div>
   <div>
     <p class="sala" id="ui-sala"></p>
     <h1 id="ui-titulo"></h1>
@@ -73,95 +74,154 @@ const GUIA = {
   "nombre": "Español",
   "voz": "es-MX",
   "ui": {
-   "sala": "Vitrina 16 · Museo de Historia de la Biblia",
-   "titulo": "La Biblia de Ferrara",
-   "siglo": "Ferrara, 1553 · el Antiguo Testamento sefardí",
+   "sala": "Vitrina 17c · Museo de Historia de la Biblia",
+   "titulo": "El Nuevo Testamento de Pérez de Pineda",
+   "siglo": "Ginebra, 1,556 · con pie de imprenta falso",
    "play": "Escuchar",
    "stop": "Detener",
    "pie": "Museo de Historia de la Biblia",
    "aviso": "Este teléfono no tiene voz en español. Puede leer el texto."
   },
   "t": [
-   "Ésta es la Biblia de los que se fueron. En 1,492 los judíos fueron expulsados de España. Salieron con su lengua a cuestas: siguieron hablando castellano en Salónica, en Esmirna, en Ámsterdam, durante siglos. Y en 1,553, en la ciudad italiana de Ferrara, cuyo duque les había dado refugio, imprimieron el Antiguo Testamento en esa lengua que se habían llevado.",
-   "La tradujeron dos hombres, y cada uno tenía dos nombres. Abraham Usque, que en Portugal se había llamado Duarte Pinel. Y Yom Tob Atias, que se había llamado Jerónimo de Vargas. Dos nombres cada uno, porque habían vivido fingiendo ser cristianos para sobrevivir. Aquí, por fin, firmaron con el suyo.",
-   "Tradujeron del hebreo palabra por palabra, pegados al original hasta donde el castellano aguanta. Por eso suena rara, antigua, con el orden de las frases volteado. No es torpeza: es fidelidad llevada al extremo. Se hicieron dos emisiones. Una dedicada al duque de Ferrara. Otra dedicada a doña Gracia Nasi, la gran señora judía que rescataba refugiados por media Europa.",
-   "Y hay un puente que vale la pena que usted conozca. Casiodoro de Reina, el de la Biblia del Oso, usó esta traducción y lo dijo por escrito, con elogios. Un monje católico fugado de Sevilla, apoyándose en el trabajo de unos judíos expulsados de la misma tierra. Los dos desterrados por lo mismo, ayudándose sin conocerse."
+   "Este libro entró a España escondido en barriles de vino.",
+   "Lo tradujo Juan Pérez de Pineda, sevillano, que había huido a Ginebra. Se imprimió en 1,556, y en la portada dice que se hizo en Venecia, en casa de un tal Juan Philadelpho. Es una mentira completa: ni Venecia, ni Philadelpho. Se imprimió en Ginebra. El pie falso era para proteger a quien lo llevara encima. Porque el problema no era traducirlo. Era meterlo a España.",
+   "De eso se encargó un hombre pequeño de estatura al que llamaban Julianillo: Julián Hernández. Cruzó la frontera con los ejemplares metidos entre toneles de vino y los repartió en Sevilla, en el mismo monasterio de San Isidoro del Campo donde estaban Casiodoro de Reina y Cipriano de Valera. Ese cargamento fue lo que encendió la mecha: poco después el monasterio entero tuvo que huir, perseguido por la Inquisición.",
+   "A Julianillo lo delataron. Lo torturaron durante tres años sin sacarle un nombre. Lo quemaron vivo en Sevilla, en el auto de fe de 1,560.",
+   "Juan Pérez murió en París en 1,567. Dejó dispuesto en su testamento que todo su dinero se usara para imprimir la Biblia en castellano.",
+   "Piénselo un momento: un traductor en Ginebra, un contrabandista en la frontera y unos monjes en Sevilla, ninguno en el mismo país, trabajando en la misma cadena. Uno murió quemado. Otro murió en el destierro. A los demás los veremos más adelante.",
+   "Un hombre aguantó tres años de tormento para no romper la cadena. Y no la rompió."
   ]
  },
  "en": {
   "nombre": "English",
   "voz": "en-GB",
   "ui": {
-   "sala": "Case 16 · Museum of the History of the Bible",
-   "titulo": "The Ferrara Bible",
-   "siglo": "Ferrara, 1553 · the Sephardic Old Testament",
+   "sala": "Case 17c · Museum of the History of the Bible",
+   "titulo": "Pérez de Pineda's New Testament",
+   "siglo": "Geneva, 1556 · with a false imprint",
    "play": "Listen",
    "stop": "Stop",
    "pie": "Museum of the History of the Bible",
    "aviso": "This phone has no English voice available. You can read the text instead."
   },
   "t": [
-   "This is the Bible of those who left. In 1492 the Jews were expelled from Spain. They went out carrying their language with them: they went on speaking Spanish in Salonica, in Smyrna, in Amsterdam, for centuries. And in 1553, in the Italian city of Ferrara, whose duke had given them refuge, they printed the Old Testament in that language they had carried away.",
-   "Two men translated it, and each of them had two names. Abraham Usque, who in Portugal had been called Duarte Pinel. And Yom Tob Atias, who had been called Jerónimo de Vargas. Two names each, because they had lived pretending to be Christians in order to survive. Here, at last, they signed with their own.",
-   "They translated from the Hebrew word for word, clinging to the original as far as Spanish will bear it. That is why it sounds strange, archaic, with the order of the phrases turned around. It is not clumsiness: it is faithfulness carried to the limit. Two issues were made. One dedicated to the Duke of Ferrara. The other dedicated to Doña Gracia Nasi, the great Jewish lady who was rescuing refugees across half of Europe.",
-   "And there is a bridge here worth knowing about. Casiodoro de Reina, the man behind the Bear Bible, used this translation and said so in writing, with praise. A Catholic monk on the run from Seville, leaning on the work of Jews expelled from that same land. Both exiled for the same thing, helping each other without ever meeting."
+   "This book entered Spain hidden in wine barrels.",
+   "It was translated by Juan Pérez de Pineda, a Sevillian who had fled to Geneva. It was printed in 1556, and the title page says it was made in Venice, at the house of one Juan Philadelpho. That is a complete lie: neither Venice nor Philadelpho. It was printed in Geneva. The false imprint was to protect whoever carried it. Because the problem was not translating it. It was getting it into Spain.",
+   "That was the work of a short man they called Julianillo: Julián Hernández. He crossed the border with the copies packed among casks of wine and handed them out in Seville, in the very monastery of San Isidoro del Campo where Casiodoro de Reina and Cipriano de Valera were. That shipment lit the fuse: soon afterwards the whole monastery had to flee, hunted by the Inquisition.",
+   "Julianillo was denounced. They tortured him for three years without getting one name out of him. They burned him alive in Seville, at the auto-da-fé of 1560.",
+   "Juan Pérez died in Paris in 1567. He laid down in his will that all his money should be used to print the Bible in Spanish.",
+   "Think about it a moment: a translator in Geneva, a smuggler at the border and some monks in Seville, none of them in the same country, working on the same chain. One died burned. Another died in exile. The rest we shall see further on.",
+   "One man bore three years of torment rather than break the chain. And he did not break it."
   ]
  },
  "fr": {
   "nombre": "Français",
   "voz": "fr-FR",
   "ui": {
-   "sala": "Vitrine 16 · Musée de l'Histoire de la Bible",
-   "titulo": "La Bible de Ferrare",
-   "siglo": "Ferrare, 1553 · l'Ancien Testament séfarade",
+   "sala": "Vitrine 17c · Musée de l'Histoire de la Bible",
+   "titulo": "Le Nouveau Testament de Pérez de Pineda",
+   "siglo": "Genève, 1556 · avec une fausse adresse",
    "play": "Écouter",
    "stop": "Arrêter",
    "pie": "Musée de l'Histoire de la Bible",
    "aviso": "Ce téléphone ne dispose pas d'une voix française. Vous pouvez lire le texte."
   },
   "t": [
-   "Voici la Bible de ceux qui sont partis. En 1492, les juifs furent expulsés d'Espagne. Ils partirent avec leur langue sur le dos : ils continuèrent à parler espagnol à Salonique, à Smyrne, à Amsterdam, pendant des siècles. Et en 1553, dans la ville italienne de Ferrare, dont le duc leur avait donné refuge, ils imprimèrent l'Ancien Testament dans cette langue qu'ils avaient emportée.",
-   "Deux hommes la traduisirent, et chacun avait deux noms. Abraham Usque, qui au Portugal s'était appelé Duarte Pinel. Et Yom Tob Atias, qui s'était appelé Jerónimo de Vargas. Deux noms chacun, parce qu'ils avaient vécu en feignant d'être chrétiens pour survivre. Ici, enfin, ils signèrent du leur.",
-   "Ils traduisirent de l'hébreu mot pour mot, collés à l'original autant que l'espagnol le supporte. C'est pourquoi cela sonne étrange, ancien, avec l'ordre des phrases retourné. Ce n'est pas de la maladresse : c'est la fidélité poussée à l'extrême. Il y eut deux émissions. L'une dédiée au duc de Ferrare. L'autre dédiée à doña Gracia Nasi, la grande dame juive qui sauvait des réfugiés à travers la moitié de l'Europe.",
-   "Et il y a là un pont qui mérite d'être connu. Casiodoro de Reina, celui de la Bible de l'Ours, s'est servi de cette traduction et l'a dit par écrit, avec éloges. Un moine catholique en fuite de Séville, s'appuyant sur le travail de juifs expulsés de cette même terre. Tous deux bannis pour la même chose, s'entraidant sans se connaître."
+   "Ce livre entra en Espagne caché dans des tonneaux de vin.",
+   "Il fut traduit par Juan Pérez de Pineda, Sévillan qui avait fui à Genève. Il fut imprimé en 1556, et la page de titre dit qu'il fut fait à Venise, chez un certain Juan Philadelpho. C'est un mensonge complet : ni Venise, ni Philadelpho. Il fut imprimé à Genève. L'adresse fausse servait à protéger celui qui le porterait sur lui. Car le problème n'était pas de le traduire. C'était de le faire entrer en Espagne.",
+   "De cela se chargea un homme de petite taille qu'on appelait Julianillo : Julián Hernández. Il passa la frontière avec les exemplaires glissés entre des tonneaux de vin et les distribua à Séville, dans ce même monastère de San Isidoro del Campo où se trouvaient Casiodoro de Reina et Cipriano de Valera. Cette cargaison alluma la mèche : peu après, le monastère entier dut fuir, traqué par l'Inquisition.",
+   "Julianillo fut dénoncé. On le tortura pendant trois ans sans lui arracher un seul nom. On le brûla vif à Séville, à l'autodafé de 1560.",
+   "Juan Pérez mourut à Paris en 1567. Il disposa par testament que tout son argent servît à imprimer la Bible en castillan.",
+   "Pensez-y un instant : un traducteur à Genève, un contrebandier à la frontière et des moines à Séville, aucun dans le même pays, travaillant à la même chaîne. L'un mourut brûlé. L'autre mourut en exil. Les autres, nous les verrons plus loin.",
+   "Un homme endura trois ans de tourment pour ne pas rompre la chaîne. Et il ne la rompit pas."
   ]
  },
  "de": {
   "nombre": "Deutsch",
   "voz": "de-DE",
   "ui": {
-   "sala": "Vitrine 16 · Museum zur Geschichte der Bibel",
-   "titulo": "Die Ferrara-Bibel",
-   "siglo": "Ferrara, 1553 · das sephardische Alte Testament",
+   "sala": "Vitrine 17c · Museum zur Geschichte der Bibel",
+   "titulo": "Das Neue Testament des Pérez de Pineda",
+   "siglo": "Genf, 1556 · mit falscher Druckadresse",
    "play": "Anhören",
    "stop": "Anhalten",
    "pie": "Museum zur Geschichte der Bibel",
    "aviso": "Dieses Telefon hat keine deutsche Stimme. Sie können den Text lesen."
   },
   "t": [
-   "Dies ist die Bibel derer, die fortgingen. 1492 wurden die Juden aus Spanien vertrieben. Sie gingen und trugen ihre Sprache mit sich: sie sprachen weiter Spanisch in Saloniki, in Smyrna, in Amsterdam, jahrhundertelang. Und 1553 druckten sie in der italienischen Stadt Ferrara, deren Herzog ihnen Zuflucht gewährt hatte, das Alte Testament in eben jener Sprache, die sie mitgenommen hatten.",
-   "Zwei Männer übersetzten es, und jeder von ihnen hatte zwei Namen. Abraham Usque, der in Portugal Duarte Pinel geheißen hatte. Und Yom Tob Atias, der Jerónimo de Vargas geheißen hatte. Je zwei Namen, weil sie gelebt hatten, indem sie Christen vortäuschten, um zu überleben. Hier unterschrieben sie endlich mit dem eigenen.",
-   "Sie übersetzten Wort für Wort aus dem Hebräischen, dicht am Original, so weit das Spanische es erträgt. Darum klingt es fremd, altertümlich, mit umgestellter Wortfolge. Das ist keine Ungeschicklichkeit: es ist bis zum Äußersten getriebene Treue. Es gab zwei Ausgaben. Eine dem Herzog von Ferrara gewidmet. Die andere Doña Gracia Nasi gewidmet, der großen jüdischen Dame, die in halb Europa Flüchtlinge rettete.",
-   "Und hier gibt es eine Brücke, die man kennen sollte. Casiodoro de Reina, der Mann der Bärenbibel, benutzte diese Übersetzung und sagte es schriftlich, mit Lob. Ein katholischer Mönch auf der Flucht aus Sevilla, gestützt auf die Arbeit von Juden, die aus demselben Land vertrieben worden waren. Beide verbannt um derselben Sache willen, einander helfend, ohne sich je zu begegnen."
+   "Dieses Buch kam in Weinfässern versteckt nach Spanien.",
+   "Übersetzt hat es Juan Pérez de Pineda, ein Sevillaner, der nach Genf geflohen war. Gedruckt wurde es 1556, und das Titelblatt sagt, es sei in Venedig gemacht, im Hause eines gewissen Juan Philadelpho. Das ist eine glatte Lüge: weder Venedig noch Philadelpho. Gedruckt wurde es in Genf. Die falsche Adresse sollte den schützen, der es bei sich trug. Denn das Problem war nicht, es zu übersetzen. Es war, es nach Spanien zu bringen.",
+   "Darum kümmerte sich ein kleingewachsener Mann, den man Julianillo nannte: Julián Hernández. Er überschritt die Grenze mit den Exemplaren zwischen Weinfässern und verteilte sie in Sevilla, in eben jenem Kloster San Isidoro del Campo, wo Casiodoro de Reina und Cipriano de Valera waren. Diese Ladung zündete die Lunte: bald darauf musste das ganze Kloster fliehen, von der Inquisition verfolgt.",
+   "Julianillo wurde angezeigt. Man folterte ihn drei Jahre lang, ohne ihm einen einzigen Namen zu entreißen. Man verbrannte ihn lebendig in Sevilla, beim Autodafé von 1560.",
+   "Juan Pérez starb 1567 in Paris. Er bestimmte in seinem Testament, dass sein ganzes Geld dazu verwendet werde, die Bibel auf Spanisch zu drucken.",
+   "Denken Sie einen Augenblick nach: ein Übersetzer in Genf, ein Schmuggler an der Grenze und einige Mönche in Sevilla, keiner im selben Land, und alle an derselben Kette arbeitend. Einer starb auf dem Scheiterhaufen. Ein anderer starb in der Verbannung. Die Übrigen werden wir weiter hinten sehen.",
+   "Ein Mann ertrug drei Jahre Folter, um die Kette nicht zu zerreißen. Und er zerriss sie nicht."
   ]
  },
  "it": {
   "nombre": "Italiano",
   "voz": "it-IT",
   "ui": {
-   "sala": "Vetrina 16 · Museo di Storia della Bibbia",
-   "titulo": "La Bibbia di Ferrara",
-   "siglo": "Ferrara, 1553 · l'Antico Testamento sefardita",
+   "sala": "Vetrina 17c · Museo di Storia della Bibbia",
+   "titulo": "Il Nuovo Testamento di Pérez de Pineda",
+   "siglo": "Ginevra, 1556 · con falsa nota tipografica",
    "play": "Ascolta",
    "stop": "Ferma",
    "pie": "Museo di Storia della Bibbia",
    "aviso": "Questo telefono non ha una voce italiana. Può leggere il testo."
   },
   "t": [
-   "Questa è la Bibbia di quelli che se ne andarono. Nel 1492 gli ebrei furono espulsi dalla Spagna. Partirono portandosi addosso la loro lingua: continuarono a parlare spagnolo a Salonicco, a Smirne, ad Amsterdam, per secoli. E nel 1553, nella città italiana di Ferrara, il cui duca aveva dato loro rifugio, stamparono l'Antico Testamento in quella lingua che si erano portati via.",
-   "La tradussero due uomini, e ciascuno aveva due nomi. Abraham Usque, che in Portogallo si era chiamato Duarte Pinel. E Yom Tob Atias, che si era chiamato Jerónimo de Vargas. Due nomi ciascuno, perché erano vissuti fingendosi cristiani per sopravvivere. Qui, finalmente, firmarono con il proprio.",
-   "Tradussero dall'ebraico parola per parola, attaccati all'originale fin dove lo spagnolo regge. Per questo suona strana, antica, con l'ordine delle frasi rovesciato. Non è goffaggine: è fedeltà portata all'estremo. Se ne fecero due emissioni. Una dedicata al duca di Ferrara. L'altra dedicata a donna Gracia Nasi, la grande signora ebrea che salvava rifugiati per mezza Europa.",
-   "E qui c'è un ponte che vale la pena conoscere. Casiodoro de Reina, quello della Bibbia dell'Orso, usò questa traduzione e lo disse per iscritto, con elogi. Un monaco cattolico in fuga da Siviglia, appoggiato al lavoro di ebrei espulsi dalla stessa terra. Entrambi esiliati per la stessa ragione, aiutandosi senza conoscersi."
+   "Questo libro entrò in Spagna nascosto in botti di vino.",
+   "Lo tradusse Juan Pérez de Pineda, sivigliano, che era fuggito a Ginevra. Fu stampato nel 1556, e il frontespizio dice che fu fatto a Venezia, in casa di un tal Juan Philadelpho. È una menzogna completa: né Venezia, né Philadelpho. Fu stampato a Ginevra. La falsa nota tipografica serviva a proteggere chi lo portasse addosso. Perché il problema non era tradurlo. Era farlo entrare in Spagna.",
+   "Di questo si incaricò un uomo di piccola statura che chiamavano Julianillo: Julián Hernández. Passò la frontiera con gli esemplari infilati fra botti di vino e li distribuì a Siviglia, nello stesso monastero di San Isidoro del Campo dove stavano Casiodoro de Reina e Cipriano de Valera. Quel carico accese la miccia: poco dopo l'intero monastero dovette fuggire, perseguitato dall'Inquisizione.",
+   "Julianillo fu denunciato. Lo torturarono per tre anni senza cavargli un nome. Lo bruciarono vivo a Siviglia, nell'autodafé del 1560.",
+   "Juan Pérez morì a Parigi nel 1567. Dispose nel testamento che tutto il suo denaro fosse usato per stampare la Bibbia in castigliano.",
+   "Ci pensi un momento: un traduttore a Ginevra, un contrabbandiere alla frontiera e alcuni monaci a Siviglia, nessuno nello stesso paese, che lavoravano alla stessa catena. Uno morì bruciato. Un altro morì in esilio. Gli altri li vedremo più avanti.",
+   "Un uomo sopportò tre anni di tormento per non spezzare la catena. E non la spezzò."
+  ]
+ },
+ "pt": {
+  "nombre": "Português",
+  "voz": "pt-BR",
+  "ui": {
+   "sala": "Vitrine 17c · Museu de História da Bíblia",
+   "titulo": "O Novo Testamento de Pérez de Pineda",
+   "siglo": "Genebra, 1556 · com pé de imprensa falso",
+   "play": "Ouvir",
+   "stop": "Parar",
+   "pie": "Museu de História da Bíblia",
+   "aviso": "Este telefone não tem voz em português. Você pode ler o texto."
+  },
+  "t": [
+   "Este livro entrou na Espanha escondido em barris de vinho.",
+   "Traduziu-o Juan Pérez de Pineda, sevilhano, que fugira para Genebra. Imprimiu-se em 1556, e no frontispício diz que se fez em Veneza, em casa de um tal Juan Philadelpho. É uma mentira completa: nem Veneza, nem Philadelpho. Imprimiu-se em Genebra. O pé falso era para proteger quem o levasse consigo. Porque o problema não era traduzi-lo. Era metê-lo na Espanha.",
+   "Disso se encarregou um homem pequeno de estatura a quem chamavam Julianillo: Julián Hernández. Cruzou a fronteira com os exemplares metidos entre tonéis de vinho e distribuiu-os em Sevilha, no mesmo mosteiro de San Isidoro del Campo onde estavam Casiodoro de Reina e Cipriano de Valera. Aquele carregamento acendeu o rastilho: pouco depois o mosteiro inteiro teve de fugir, perseguido pela Inquisição.",
+   "A Julianillo denunciaram-no. Torturaram-no durante três anos sem lhe arrancar um nome. Queimaram-no vivo em Sevilha, no auto de fé de 1560.",
+   "Juan Pérez morreu em Paris em 1567. Deixou disposto no seu testamento que todo o seu dinheiro fosse usado para imprimir a Bíblia em castelhano.",
+   "Pense um momento: um tradutor em Genebra, um contrabandista na fronteira e uns monges em Sevilha, nenhum no mesmo país, trabalhando na mesma corrente. Um morreu queimado. Outro morreu no desterro. Aos demais veremos mais adiante.",
+   "Um homem aguentou três anos de tormento para não quebrar a corrente. E não a quebrou."
+  ]
+ },
+ "ru": {
+  "nombre": "Русский",
+  "voz": "ru-RU",
+  "ui": {
+   "sala": "Витрина 17c · Музей истории Библии",
+   "titulo": "Новый Завет Переса де Пинеды",
+   "siglo": "Женева, 1556 · с ложными выходными данными",
+   "play": "Слушать",
+   "stop": "Стоп",
+   "pie": "Музей истории Библии",
+   "aviso": "На этом телефоне нет русского голоса. Вы можете прочитать текст."
+  },
+  "t": [
+   "Эта книга попала в Испанию спрятанной в винных бочках.",
+   "Перевёл её Хуан Перес де Пинеда, севилец, бежавший в Женеву. Она напечатана в 1556 году, и на титульном листе сказано, что сделана в Венеции, в доме некоего Хуана Филадельфо. Это чистая ложь: ни Венеции, ни Филадельфо. Напечатана она в Женеве. Ложные выходные данные должны были защитить того, кто понесёт её при себе. Потому что трудность была не в том, чтобы перевести. Трудность была в том, чтобы ввезти её в Испанию.",
+   "Этим занялся человек малого роста, которого звали Хулианильо, — Хулиан Эрнандес. Он перешёл границу с экземплярами, уложенными между винными бочками, и раздал их в Севилье, в том самом монастыре Сан-Исидоро-дель-Кампо, где были Касиодоро де Рейна и Сиприано де Валера. Этот груз и поджёг фитиль: вскоре весь монастырь вынужден был бежать, преследуемый инквизицией.",
+   "На Хулианильо донесли. Его пытали три года и не вырвали ни одного имени. Его сожгли заживо в Севилье, на аутодафе 1560 года.",
+   "Хуан Перес умер в Париже в 1567 году. В завещании он распорядился, чтобы все его деньги пошли на печатание Библии по-испански.",
+   "Подумайте минуту: переводчик в Женеве, контрабандист на границе и монахи в Севилье — ни один не в той же стране, и все работают в одной цепи. Один погиб в огне. Другой умер в изгнании. Остальных мы увидим дальше.",
+   "Человек вытерпел три года пытки, чтобы не разорвать цепь. И не разорвал."
   ]
  }
 };
@@ -266,6 +326,5 @@ $("btn-stop").onclick = detener;
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{};
 pintar();
 </script>
-  <script src="menu-nav.js" defer></script>
 </body>
 </html>
